@@ -1,0 +1,1614 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100;200;300;400;500;600;700;800&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,500;1,600;1,700;1,800&display=swap')
+
+$green: #0bda5d
+$deep: #121212
+$black: #171717
+$black2: #272727
+$white: #FFFFFF
+$white2: #d7d7d7
+$grey: #676767
+$grey2: #878787
+$grey3: #474747
+$cube1: cubic-bezier(0.995, 0.225, 0.750, 0.750)
+$cube2: cubic-bezier(0.995, 0.225, 0.000, 0.965)
+$cube3: cubic-bezier(0.320, 0.760, 0.875, 0.490)
+$cube4: cubic-bezier(0.000, 1.240, 0.875, 0.490)
+$cube5: cubic-bezier(1.000, 0.005, 1.000, 0.005)
+$easy: cubic-bezier(0.205, 0.655, 0.000, 0.995)
+
+:root
+	--dur: 0.08s
+	font-family: 'Space Grotesk', sans-serif
+	--mygradier: linear-gradient(90.16deg, #B1FE64 -0.25%, #24C75B 105.55%)
+	--gret: #0BC160
+	--green: #00C05A
+	--lime: #09e151
+	--current: 'Space Grotesk', sans-serif
+	--coder: 'Space Grotesk', sans-serif
+	box-sizing: border-box
+
+body, html
+	margin: 0
+	box-sizing: border-box
+
+pre
+	font-family: 'Space Grotesk', sans-serif
+	code
+		font-family: 'Space Grotesk', sans-serif
+code
+	font-family: 'Space Grotesk', sans-serif
+
+sup
+	color: var(--gret)
+
+.newblog pre, .newblog pre code
+	overflow-x: auto
+	box-sizing: border-box
+	white-space: pre-line
+	white-space: -moz-pre-line
+	white-space: -pre-line
+	white-space: -o-pre-line
+	word-wrap: break-word
+	word-break: break-word
+
+h6, small, cite
+	color: var(--textone)
+	font-family: var(--current)
+
+p, li, pre, ol, ul
+	color: var(--opposite)
+
+
+table
+	th
+		color: var(--opposite)
+		font-size: 14px
+	td
+		color: var(--textone)
+		font-size: 14px
+
+pre
+	overflow-x: auto
+	box-sizing: border-box
+	white-space: pre-line
+	white-space: -moz-pre-line
+	white-space: -pre-line
+	white-space: -o-pre-line
+	word-wrap: break-word
+	word-break: break-word
+
+a
+	text-decoration: none
+	font-family: inherit
+	color: inherit
+	&:hover
+		color: inherit
+
+
+.dark
+	--rgback: rgba(0,0,0,0.6)
+	--transback: rgba(18,18,18,0.8)
+	--borderline: #272727
+	--midline: #373737
+	--background: #040404
+	--contraster: #101010
+	--opposite: #FFFFFF
+	--near: #d7d7d7
+	--textone: #575757
+	--texttwo: #777777
+	--grey: #878787
+	--bord: 1px solid rgba(255,255,255,0.1)
+	--pale: rgba(255,255,255,0.1)
+	--lingrad: linear-gradient(91.95deg, #10D56C 0%, #10F026 99.27%)
+	p
+		color: var(--opposite)
+		font-family: var(--coder)
+	h5
+		color: var(--midline)
+		font-family: var(--coder)
+		&:hover
+			a
+				color: var(--gret)
+	.darken
+		h4
+			padding: 2px 8px
+			&:hover
+				background: rgba(0,0,0,0.9)
+
+.light
+	--transback: rgba(255,255,255,0.6)
+	--rgback: rgba(0,0,0,0.8)
+	--borderline: #e7e7e7
+	--midline: #a7a7a7
+	--background: #FFFFFF
+	--contraster: #f5f5f5
+	--opposite: #272727
+	--near: #373737
+	--textone: #878787
+	--texttwo: #474747
+	--grey: #878787
+	--bord: 1px solid rgba(0,0,0,0.065)
+	--pale: rgba(0,0,0,0.065)
+	--lingrad: linear-gradient(91.95deg, #10D56C 0%, #10F026 99.27%)
+	p
+		color: var(--opposite)
+		font-family: var(--coder)
+	h5
+		color: var(--texttwo)
+		font-family: var(--coder)
+		&:hover
+			a
+				color: var(--gret)
+	.darken
+		h4
+			padding: 2px 8px
+			color: white
+			&:hover
+				background: rgba(0,0,0,0.9)
+
+h3
+	font-family: var(--coder)
+	font-weight: 500
+
+
+p, li, small, cite, h6, ul, ol
+	margin-top: 0
+	margin-bottom: 1rem
+	font-family: var(--coder)
+
+pre
+	margin: 0
+
+p.space
+	font-family: var(--current)
+
+.space
+	p
+		font-family: var(--current)
+
+h1
+	margin-top: 0
+	margin-bottom: 0
+	font-family: var(--coder)
+	font-weight: 700
+	color: var(--opposite)
+
+.levelzero
+	h1
+		font-size: 4.8rem
+
+.levelone
+	h1
+		font-size: 4rem
+
+.leveltwo
+	h1
+		font-size: 3.2rem
+
+p.spline
+	font-family: var(--current)
+
+.newblog
+	p, li, pre
+		font-size: 1.2rem
+		color: var(--opposite)
+	p, li
+		font-family: var(--current)
+	blockquote
+		font-style: italic
+		border-left: 4px solid var(--gret)
+		margin-left: 1.5rem
+		padding-left: 1.5rem
+		p
+			color: var(--textone)
+			line-height: 1.2
+	h4
+		text-transform: uppercase
+		padding-top: 1.2rem
+		font-family: var(--coder)
+	h5
+		font-size: 1.44rem
+	small
+		font-family: var(--current)
+
+input, textarea, select, button
+	font-family: var(--current)
+	font-size: 15px
+
+ul, li, ol
+	font-family: var(--current)
+
+p, li, ul, pre, ol
+	font-size: 16px
+
+p, pre
+	line-height: 1.6
+h6
+	font-size: 1.2rem
+	font-weight: bold
+
+h5
+	font-size: 1.2em
+	margin-top: 8px
+	margin-bottom: 1rem
+	font-family: var(--coder)
+
+.newblog
+	.centerimage
+		margin-left: auto
+		margin-right: auto
+
+.leftone
+	h6
+		text-transform: uppercase
+
+h5.near
+	color: var(--near)
+
+h5.near.thin
+	color: var(--near)
+	font-weight: 400
+	margin: 0
+	padding: 0
+
+h4
+	font-size: 2.4rem
+	color: var(--near)
+
+h3
+	font-size: 2.8rem
+	color: var(--opposite)
+	margin-top: 0
+	margin-bottom: 0
+
+h3.bord-bot.p-bot-16
+	margin-top: 0
+
+
+.solopage.levelzero
+	h1
+		padding-top: 32px
+
+.twinpage.levelzero
+	h1
+		padding-top: 32px
+
+.solopage.levelone
+	h1
+		padding-top: 24px
+
+.twinpage.levelone
+	h1
+		padding-top: 24px
+
+.solopage.levelzero
+	h4
+		padding: 0
+		margin: 0
+
+.twinpage.levelzero
+	h4
+		padding: 0
+		margin: 0
+
+h2
+	color: var(--opposite)
+	letter-spacing: -0.2px
+	line-height: 1.12
+	font-weight: 700
+	font-family: var(--current)
+
+.levelzero
+	h2
+		font-size: 3.6rem
+
+.levelone
+	h2
+		font-size: 3.2rem
+
+.leveltwo
+	h2
+		font-size: 2.7rem
+
+//units
+$unit4: 4px
+$unit8: 8px
+$unit16: 16px
+$unit20: 20px
+$unit24: 24px
+$unit32: 32px
+$unit48: 48px
+$unit64: 64px
+$unit80: 80px
+$unit128: 128px
+
+.yeslink
+	p
+		a
+			color: var(--gret)
+			position: relative
+			&::after
+				position: absolute
+				content: ''
+				bottom: 0
+				left: 0
+				height: 1px
+				width: 0%
+				margin-left: 50%
+				background: var(--opposite)
+				transition: 0.2s
+			&:hover
+				&::after
+					width: 100%
+					margin-left: 0
+
+.zepad.levelzero, .zepad.levelone
+	padding-left: 200px
+	padding-right: 64px
+
+.zepad.all.levelzero, .zepad.all.levelone
+	padding: 0px 64px 64px 200px
+
+.zepad.all.leveltwo
+	padding: 80px 32px 64px 32px
+
+.zepad.leveltwo
+	padding-left: 32px
+	padding-right: 32px
+
+.zepad.y
+	padding-top: 64px
+	padding-bottom: 64px
+
+.zepad.thin.levelzero
+	padding: 80px 32px 32px 32px
+
+.zepad.thin.levelone
+	padding: 80px 32px 32px 32px
+
+.zepad.thin.leveltwo
+	padding: 80px 32px 32px 32px
+
+.levelzero
+	.zepad.single
+		width: 840px
+		margin-left: 6vw
+
+.levelzero
+	.single
+		width: 840px
+
+.levelone
+	.zepad.single
+		width: 800px
+		margin-left: 4vw
+
+.leveltwo
+	.zepad.y
+		padding-top: 80px
+
+//spacing
+@media screen and (min-width: 1024px)
+	.rowgap50
+		row-gap: 4px
+	.colgap100
+		column-gap: $unit8
+	.rowgap100
+		row-gap: $unit8
+	.gap100
+		gap: $unit8
+	.colgap200
+		column-gap: $unit16
+	.rowgap200
+		row-gap: $unit16
+	.gap200
+		gap: $unit16
+	.colgap300
+		column-gap: $unit24
+	.rowgap300
+		row-gap: $unit24
+	.gap300
+		gap: $unit24
+	.colgap400
+		column-gap: $unit32
+	.rowgap400
+		row-gap: $unit32
+	.gap400
+		gap: $unit32
+	.colgap500
+		column-gap: $unit48
+	.rowgap500
+		row-gap: $unit48
+	.gap500
+		gao: $unit48
+	.colgap600
+		column-gap: $unit64
+	.rowgap600
+		row-gap: $unit64
+	.gap600
+		gao: $unit64
+@media screen and (max-width: 1023px) and (min-width: 768px)
+	.colgap100
+		column-gap: $unit8
+	.rowgap100
+		row-gap: $unit8
+	.gap100
+		gap: $unit8
+	.colgap200
+		column-gap: $unit16
+	.rowgap200
+		row-gap: $unit16
+	.gap200
+		gap: $unit16
+	.colgap300
+		column-gap: $unit24
+	.rowgap300
+		row-gap: $unit24
+	.gap300
+		gap: $unit24
+	.colgap400
+		column-gap: $unit24
+	.rowgap400
+		row-gap: $unit24
+	.gap400
+		gap: $unit24
+	.colgap400
+		column-gap: $unit32
+	.rowgap400
+		row-gap: $unit32
+	.gap400
+		gap: $unit32
+	.colgap500
+		column-gap: $unit32
+	.rowgap500
+		row-gap: $unit32
+	.gap500
+		gao: $unit32
+	.colgap600
+		column-gap: $unit48
+	.rowgap600
+		row-gap: $unit48
+	.gap600
+		gao: $unit48
+@media screen and (max-width: 767px)
+	.colgap100
+		column-gap: $unit8
+	.rowgap100
+		row-gap: $unit8
+	.gap100
+		gap: $unit8
+	.colgap200
+		column-gap: $unit16
+	.rowgap200
+		row-gap: $unit16
+	.gap200
+		gap: $unit16
+	.colgap300
+		column-gap: $unit20
+	.rowgap300
+		row-gap: $unit20
+	.gap300
+		gap: $unit20
+	.colgap400
+		column-gap: $unit24
+	.rowgap400
+		row-gap: $unit24
+	.gap400
+		gap: $unit24
+	.colgap400
+		column-gap: $unit32
+	.rowgap400
+		row-gap: $unit32
+	.gap400
+		gap: $unit32
+	.colgap500
+		column-gap: $unit32
+	.rowgap500
+		row-gap: $unit32
+	.gap500
+		gao: $unit32
+	.colgap600
+		column-gap: $unit32
+	.rowgap600
+		row-gap: $unit32
+	.gap600
+		gao: $unit32
+
+
+body, html
+	box-sizing: border-box
+	margin: 0
+
+//global
+:root
+	box-sizing: border-box
+
+*
+	box-sizing: border-box
+
+.bdr
+	border: 1px solid red
+
+.back
+	background-position: center center
+	background-size: cover
+	background-repeat: no-repeat
+
+.rta-image
+	img
+		object-fit: cover
+		height: 100%
+		width: 100%
+
+//sizing
+.minH
+	@media screen and (min-width: 1024px)
+		min-height: calc(100vh - 64px)
+
+.minH.mob
+	min-height: calc(100vh - 64px)
+
+
+.height-60
+	@media screen and (min-width: 1024px)
+		height: 60vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
+
+.height-40
+	@media screen and (min-width: 1024px)
+		height: 50vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
+
+.height-40-20
+	@media screen and (min-width: 1024px)
+		height: 20vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
+
+.height-30
+	@media screen and (min-width: 1024px)
+		height: 30vh
+	@media screen and (max-width: 1023px)
+		height: 8vh
+
+.height-30-2
+	@media screen and (min-width: 1024px)
+		height: 30vh
+	@media screen and (max-width: 1023px)
+		height: 12vh
+
+.height-30-3
+	@media screen and (min-width: 1024px)
+		height: 30vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
+
+.height-20
+	@media screen and (min-width: 1024px)
+		height: 20vh
+	@media screen and (max-width: 1023px)
+		height: 8vh
+
+.height-24
+	@media screen and (min-width: 1024px)
+		height: 24vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
+
+.height-10
+	@media screen and (min-width: 1024px)
+		height: 10vh
+	@media screen and (max-width: 1023px)
+		height: 8vh
+
+.fullH
+	height: 100%
+
+.fullW
+	width: 100%
+
+.ta-c-d
+	@media screen and (min-width: 1024px)
+		text-align: center
+
+.ta-c-m
+	@media screen and (max-width: 1023px)
+		text-align: center
+
+.ta-r-d
+	@media screen and (min-width: 1024px)
+		text-align: right
+
+.ta-r
+	text-align: right
+
+.tt-u
+	text-transform: uppercase
+
+.tt-c
+	text-transform: capitalize
+
+//containers
+.rta-column
+	display: flex
+	flex-direction: column
+	&.ycenter
+		justify-content: center
+	&.ytop
+		justify-content: flex-start
+	&.ybot
+		justify-content: flex-end
+	&.ybetween
+		justify-content: space-between
+	&.xcenter
+		align-items: center
+	&.xleft
+		align-items: flex-start
+	&.xright
+		align-items: flex-end
+
+.rta-column.col-row
+	@media screen and (max-width: 1023px)
+		flex-direction: row
+		column-gap: 16px
+		.rta-image
+			width: 28%
+		.rta-column
+			width: 68%
+		
+
+.rta-row
+	display: flex
+	&.ycenter
+		align-items: center
+	&.xcenter-d
+		@media screen and (min-width: 1024px)
+			justify-content: center
+	&.xcenter-m
+		@media screen and (max-width: 1023px)
+			justify-content: center
+	&.xend
+		justify-content: flex-end
+	&:xstart
+		justify-content: flex-start
+	&.between
+		justify-content: space-between
+	&.ytop
+		align-items: flex-start
+	&.ybot
+		align-items: flex-end
+	@media screen and (min-width: 1024px)
+		flex-direction: row
+		.in50, .in50.w32, .in50.w64
+			width: calc(50% - 16px)
+		.w32
+			width: 32%
+		.w64
+			width: 60%
+	@media screen and (max-width: 1023px)
+		flex-direction: row
+		flex-wrap: wrap
+		.in50.w32
+			width: 32%
+		.in50.w64
+			width: 60%
+		.in50
+			width: 50%
+
+.rta-row
+	&.ytop-m
+		@media screen and (max-width: 1023px)
+			align-items: flex-start
+
+.rta-row.fixed
+	@media screen and (max-width: 1023px)
+		flex-wrap: nowrap
+		.w32
+			width: 32%
+		.w64
+			width: 60%
+
+.rta-row.row-col
+	@media screen and (min-width: 1024px)
+		&.ycenter
+			align-items: center
+		&.xend
+			justify-content: flex-end
+		&.between
+			justify-content: space-between
+		.w32
+			width: 32%
+		.w64
+			width: 64%
+	@media screen and (max-width: 1023px)
+		.w32, .w64
+			width: 100%
+		flex-direction: column
+
+.rta-grid
+	display: grid
+	grid-auto-flow: row
+	grid-template-rows: auto
+	width: 100%
+
+.rta-grid.ycenter
+	align-items: center
+
+@media screen and (min-width: 1024px)
+	.grid6
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . . . ."
+	.grid5
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . . ."	
+	.grid4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ."
+	.grid3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.grid2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+		transition: 0.2s
+	.grid2.left0
+		grid-template-columns: 320px 1fr
+		grid-template-areas: ". ."
+	.grid2.right0
+		grid-template-columns: 1fr 24%
+		grid-template-areas: ". ."
+	.grid2.left
+		grid-template-columns: 32% 1fr
+		grid-template-areas: ". ."
+	.grid2.right
+		grid-template-columns: 1fr 32%
+		grid-template-areas: ". ."	
+	.grid2.left2
+		grid-template-columns: 40% 1fr
+		grid-template-areas: ". ."
+		transition: 0.2s
+	.grid2.right2
+		grid-template-columns: 1fr 40%
+		grid-template-areas: ". ."	
+		transition: 0.2s
+	.grid2.right3
+		grid-template-columns: 1fr 27%
+		grid-template-areas: ". ."	
+		transition: 0.2s
+
+@media screen and (max-width: 1023px) and (min-width: 787px)
+	.grid6
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ." ". . ."
+
+@media screen and (max-width: 786px)
+	.grid6
+		grid-template-columns: 1fr
+		grid-template-areas: "." "." "." "." "." "."
+
+@media screen and (max-width: 1023px)
+	.grid5.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."	
+	.grid4
+		grid-template-columns: 1fr
+		grid-template-areas: "." "." "." "."
+	.grid4.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+	.grid4.stay3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.grid3
+		grid-template-columns: 1fr
+		grid-template-areas: "." "." "."
+	.grid3.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: "." "."
+	.grid2
+		grid-template-columns: 1fr
+		grid-template-areas: "up" "down"
+		.up
+			grid-area: up
+		.down
+			grid-area: down
+	.grid2.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+	.grid2.become4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-templare-areas: ". . . ."
+	
+
+.bord-top
+	border-top: 1px solid var(--borderline)
+
+.bord-bot
+	border-bottom: 1px solid var(--borderline)
+
+.bord-bot-m
+	@media screen and (max-width: 1023px)
+		border-bottom: 1px solid var(--borderline)
+
+.bord-right-d
+	@media screen and (min-width: 1024px)
+		border-right: 1px solid var(--borderline)
+
+.p-top-64
+	@media screen and (min-width: 1024px)
+		padding-top: 64px
+	@media screen and (max-width: 1023px)
+		padding-top: 32px
+
+.p-bot-64
+	@media screen and (min-width: 1024px)
+		padding-bottom: 64px
+	@media screen and (max-width: 1023px)
+		padding-bottom: 32px
+
+.p-bot-64-d
+	@media screen and (min-width: 1024px)
+		padding-bottom: 64px
+	@media screen and (max-width: 1023px)
+		padding-bottom: 0
+
+.p-top-32
+	padding-top: 32px
+.p-bot-32
+	padding-bottom: 32px
+.p-bot-32-m
+	@media screen and (max-width: 1023px)
+		padding-bottom: 32px
+.p-bot-32-d
+	@media screen and (min-width: 1024px)
+		padding-bottom: 32px
+.p-top-32-m
+	@media screen and (max-width: 1023px)
+		padding-top: 32px
+.p-top-8
+	padding-top: 8px
+.p-top-16
+	padding-top: 16px
+
+.m-top-32
+	@media screen and (min-width: 1024px)
+		margin-top: 32px
+	@media screen and (max-width: 1023px)
+		margin-top: 32px
+
+.m-top-16
+	margin-top: 16px
+.m-bot-16
+	margin-bottom: 16px
+.m-bot-32
+	margin-bottom: 32px
+.m-bot-4
+	margin-bottom: 4px
+
+.p-bot-16
+	@media screen and (min-width: 1024px)
+		padding-bottom: 16px
+	@media screen and (max-width: 1023px)
+		padding-bottom: 16px
+
+.p-bot-8
+	padding-bottom: 8px
+
+.p-bot-16-m
+	@media screen and (max-width: 1023px)
+		padding-bottom: 16px
+
+.p-all-32
+	@media screen and (min-width: 1024px)
+		padding: 32px
+	@media screen and (max-width: 1023px)
+		padding: 16px
+
+.p-all-16
+	padding: 16px
+
+//buttons
+.blank-button
+	background: none
+	border: none
+	padding: 0
+
+.blank-button2
+	background: none
+	border-top: none
+	border-right: none
+	border-left: none
+	padding: 0 0 8px 0
+	max-width: 300px
+	width: max-content
+	cursor: pointer
+	&:hover
+		.rta-icon
+			svg path
+				fill: var(--gret)
+
+.blank-button2.reading
+	width: 100%
+	max-width: 100%
+
+.point
+	cursor: pointer
+
+.rta-modal
+	width: 100vw
+	position: fixed
+	z-index: 2000
+	@media screen and (min-width: 1024px)
+		height: 100vh
+		left: 0
+		top: 0
+	@media screen and (max-width: 1023px)
+		height: 100vh
+		top: 0
+		height: 0
+		
+
+.snipstyle
+	.rta-image
+		img
+			margin: 0
+	img
+		object-fit: contain
+		width: 100%
+		margin: 8px 0 24px 0
+
+.newblog
+	em
+		font-style: normal
+		a
+			&:hover
+				color: var(--green) 
+	p a
+		position: relative
+		color: var(--gret)
+		&::after
+			position: absolute
+			content: ''
+			bottom: 0
+			left: 0
+			height: 1px
+			width: 0%
+			background: var(--gret)
+			transition: 0.2s
+		&:hover
+			color: var(--gret)
+			&::after
+				width: 100%
+	a.flat
+		color: var(--opposite)
+
+	
+
+.grid2.stdfix
+	@media screen and (min-width: 1024px)
+		grid-template-columns: 1fr 320px
+		grid-template-areas: "mainone rightone"
+	@media screen and (max-width: 1023px) and (min-width: 769px)
+		grid-template-columns: 1fr
+		grid-template-areas: "rightone" "mainone"
+	@media screen and (max-width: 768px)
+		grid-template-columns: 1fr
+		grid-template-areas: "rightone" "mainone"
+
+.grid2.stdfix.topsy
+	@media screen and (max-width: 1023px)
+		grid-template-columns: 1fr
+		grid-template-areas: "mainone" "rightone"
+
+.grid2.stdfix.secondlevel
+	grid-template-areas: "mainone" "rightone2"
+	.mainone
+		grid-area: mainone
+	.rightone2
+		grid-area: rightone2
+
+.grid2.stdfix2
+	@media screen and (min-width: 1024px)
+		grid-template-columns: 1fr 200px
+		grid-template-areas: "mainone rightone"
+		.rightone
+			text-align: right
+			height: calc(100vh - 128px)
+			position: sticky
+			top: 64px
+			overflow-y: scroll
+			p
+				font-size: 0.8rem
+				cursor: pointer
+				color: var(--textone)
+				&:hover
+					color: var(--gret)
+			p strong
+				color: var(--opposite)
+	@media screen and (max-width: 1023px) and (min-width: 769px)
+		grid-template-columns: 1fr
+		grid-template-areas: "rightone" "mainone"
+		.rightone
+			grid-area: rightone
+			position: sticky
+			top: 64px
+			background: var(--background)
+			p
+				font-size: 1rem
+				cursor: pointer
+				padding-left: 24px
+				padding-right: 24px
+				&:hover
+					color: var(--gret)
+			p strong
+				color: var(--opposite)
+			.rightmenu
+				margin-bottom: 16px
+				.iconchev
+					transition: 0.15s
+					svg path
+						fill: var(--textone)
+				.iconchev.rotated
+					transform: rotate(180deg)
+					svg path
+						fill: var(--opposite)
+		.rightone.opened
+			padding-bottom: 16px
+			margin-bottom: 32px
+			border-bottom: 1px solid var(--borderline)
+		.mainone
+			grid-area: mainone
+	@media screen and (max-width: 768px)
+		grid-template-columns: 1fr
+		grid-template-areas: "rightone" "mainone"
+		.rightone
+			grid-area: rightone
+			position: sticky
+			top: 64px
+			background: var(--background)
+			transition: 0.5s cubic-bezier(0.635, 0.405, 0.535, 0.035)
+			z-index: 900
+			overflow-y: scroll
+			p
+				font-size: 1rem
+				cursor: pointer
+				padding-left: 24px
+				padding-right: 24px
+				&:hover
+					color: var(--gret)
+			p strong
+				color: var(--opposite)
+			.rightmenu
+				.iconchev
+					transition: 0.15s
+				.iconchev.rotated
+					transform: rotate(180deg)
+		.rightone.opened
+			padding-bottom: 16px
+			margin-bottom: 32px
+			border-bottom: 1px solid var(--borderline)
+			.rightmenu
+				margin-bottom: 16px
+		.mainone
+			grid-area: mainone
+
+
+.grid2.stdfix.dark
+	@media screen and (max-width: 768px)
+		.rightone
+			.rightmenu
+				.iconchev
+					svg path
+						fill: var(--opposite)
+				.iconchev.rotated
+					svg path
+						fill: var(--gret)
+				.break899
+					color: var(--opposite)
+
+.greenlink
+	color: var(--gret)
+	position: relative
+	&:hover
+		color: var(--gret)
+		&::after
+			width: 100%
+			margin-left: 0
+	&::after
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 0%
+		height: 1px 
+		background: var(--opposite)
+		transition: 0.15s
+		content: ''
+		margin-left: 50%
+	
+.rightmenu
+	border-radius: 8px
+	cursor: pointer
+	transition: 0.15s
+	border: 1px solid var(--borderline)
+
+
+.dark, .light
+	.is-green
+		color: var(--gret)
+
+.mainbutton
+	background: var(--lingrad)
+	border: 1px solid transparent
+	color: var(--contraster)
+	max-width: 160px
+	width: max-content
+	padding: 4px 16px
+	border-radius: 6px
+	transform-origin: center center
+	transition: 0.08s
+	cursor: pointer
+	&:hover
+		border: 1px solid white
+		box-shadow: 5px 8px 12px var(--contraster)
+	&:active
+		transform: scale(0.9)
+
+.secondbutton, .dark .secondbutton, .light .secondbutton
+	color: var(--background)
+	max-width: 160px
+	background: var(--gret)
+	width: max-content
+	border: 2px solid transparent
+	padding: 2px 12px 0 12px
+	border-radius: 3px
+	transform-origin: center center
+	transition: 0.08s
+	letter-spacing: -0.12px
+	cursor: pointer
+	font-size: 14px
+	text-transform: uppercase
+	font-weight: 500
+	line-height: 1.75
+	font-family: var(--coder)
+	&:hover
+		border: 2px solid var(--gret)
+		color: var(--gret)
+		background: var(--background)
+
+.secondbutton.selected
+	background: var(--background)
+	color: var(--gret)
+	border: 2px solid var(--gret)
+
+.null
+	p, pre
+		margin: 0
+	small
+		margin: 0
+	h4, h1, h6, h5
+		margin: 0
+	h1
+		padding: 0
+	h3
+		margin-top: 0
+
+.hollow
+	background: none
+	border-top: none
+	border-left: none
+	border-right: none
+	border-bottom: 2px solid var(--gret)
+	font-weight: 700
+	text-transform: uppercase
+	padding: 2px 4px
+	color: var(--textone)
+	cursor: pointer
+	transition: 0.08s
+	&:hover
+		color: var(--opposite)
+	
+.usercol small, .gptcol small
+	margin: 0
+	font-size: 12px
+	text-transform: uppercase
+	color: var(--midline)
+
+.usercol
+	p
+		font-size: 12px
+		color: var(--midline)
+		&:hover
+			color: var(--opposite)
+	pre
+		color: var(--opposite)
+		margin: 0
+		font-size: 15px
+		line-height: 1.2
+		letter-spacing: -0.5px
+	pre.white
+		color: var(--gret)
+	small
+		margin: 0
+
+
+
+.usercol
+	padding-top: 16px
+	padding-bottom: 16px
+	@media screen and (max-width: 1023px)
+		padding-top: 16px
+		padding-bottom: 16px
+
+.gptcol
+	padding-top: 32px
+	padding-bottom: 32px
+
+.rightone::-webkit-scrollbar
+	width: 2px
+.rightone::-webkit-scrollbar-thumb
+	background: #10D56C
+	border-bottom: 300px solid var(--background)
+	border-top: 100px solid var(--background)
+
+.check
+	cursor: pointer
+	position: relative
+	margin: auto
+	width: 18px
+	height: 18px
+	-webkit-tap-highlight-color: transparent
+	transform: translate3d(0, 0, 0)
+	svg
+		position: relative
+		z-index: 1
+		fill: none
+		stroke-linecap: round
+		stroke-linejoin: round
+		stroke: var(--near)
+		stroke-width: 1.5
+		transform: translate3d(0, 0, 0)
+		transition: all 0.2s ease
+		path
+			stroke-dasharray: 60
+			stroke-dashoffset: 0
+		polyline
+			stroke-dasharray: 22
+			stroke-dashoffset: 66
+	&::before
+		content: ""
+		position: absolute
+		top: -15px
+		left: -15px
+		width: 48px
+		height: 48px
+		border-radius: 50%
+		background: var(--background)
+		opacity: 0
+		transition: opacity 0.2s ease
+	&:hover
+		&::before
+			opacity: 1
+		svg
+			stroke: #10d56c
+
+#cbx:checked + .check svg, #cby:checked + .check svg
+	stroke: #10d56c
+
+#cbx:checked + .check svg path, #cby:checked + .check svg path
+	stroke-dashoffset: 60
+	transition: all 0.3s linear
+
+#cbx:checked + .check svg polyline, #cby:checked + .check svg polyline
+	stroke-dashoffset: 42
+	transition: all 0.2s linear
+	transition-delay: 0.15s
+
+.is-fade
+	color: var(--midline)
+
+.levelzero
+	.fmlogo
+		width: 50%
+
+.levelone
+	.fmlogo
+		width: 64%
+
+.leveltwo
+	.fmlogo
+		width: 70%
+
+
+.newblog
+	pre
+		background: var(--borderline)
+		code
+			white-space: pre-line
+
+.featurebox
+	transition: 0.25s
+	border-radius: 6px
+	cursor: pointer
+	transform-origin: center center
+
+.levelzero
+	.featurebox
+		padding: 16px
+
+.leveltwo.midone
+	padding: 0px 0 64px 0
+	.rightone
+		z-index: 999
+		padding-top: 16px
+		margin-bottom: 16px
+		padding-right: 32px
+		padding-left: 32px
+		padding-bottom: 16px
+		.rightmenu
+			padding: 4px 8px
+		.break899
+			padding: 4px 8px
+			background: none
+			border: none
+			color: var(--opposite)
+	.mainone
+		z-index: 0
+		padding-top: 24px
+		padding-left: 32px
+		padding-right: 32px
+	.stickyboy.solo, .solo.cut
+		padding-top: 24px
+		padding-left: 32px
+		padding-right: 32px
+	.rightone2
+		padding: 32px
+
+.pagebox
+	.leftone
+		transition: 0.23s
+	.midone
+		.rightone
+			transition: 0.23s
+
+
+.pagebox.reader
+	.leftsticky
+		opacity: 0
+	.midone
+		.rightone
+			opacity: 0
+		.rightone2
+			opacity: 0
+		.mainone
+			padding-right: 0
+
+.headerbox.reader
+	transform: translateY(-64px)
+
+.outerunit
+	width: 100%
+	text-align: center
+	cite
+		font-style: normal
+		font-size: 10px
+		text-transform: uppercase
+		text-align: center
+
+.innerunit
+	display: flex
+	align-items: center
+	justify-content: center
+	width: 100%
+	border: 1px solid var(--borderline)
+	border-radius: 6px
+
+.levelzero
+	.innerunit
+		padding: 16px
+		min-height: 88px
+
+.levelone
+	.innerunit
+		padding: 8px
+		min-height: 88px
+
+.leveltwo
+	.innerunit
+		padding: 8px
+		min-height: 80px
+		
+
+
+.gptstyle
+	small
+		font-family: 'Martian Mono', monospace
+		text-transform: uppercase
+		font-size: 12px
+		color: var(--midline)
+
+
+.pagerightsticker
+	p
+		color: var(--midline)
+		line-height: 1.2
+		&:hover
+			a
+				color: var(--gret)
+	@media screen and (max-width: 1023px)
+		p
+			font-size: 21px
+
+.holdingpage.levelzero
+	padding: 4vw 24vw 4vw 6vw
+
+.rightmenu
+	background: var(--gret)
+	border: none
+	width: 100%
+	padding: 12px 16px
+
+.rightmenu
+	button
+		font-weight: 600
+		color: white
+		text-transform: uppercase
+		font-size: 1rem
+	.iconchev
+		transition: 0.15s
+	.iconchev.rotated
+		transform: rotate(180deg)
+
+.rightmenu.rotated
+	border: 1px solid var(--gret)
+	background: white
+	button
+		color: var(--gret)
+	svg path
+		fill: var(--gret)
+
+.subsection
+	p
+		color: var(--opposite)
+
+.insection
+	display: flex
+	flex-direction: column
+	row-gap: 8px
+	padding: 8px 0
+	p
+		color: var(--textone)
+		text-transform: uppercase
+		margin: 0
+		font-weight: 500
+		cursor: pointer
+		&:hover
+			color: var(--gret)
+
+
+.myappbox
+	position: relative
+	.drop-down
+		position: absolute
+		top: 80px
+		right: 216px
+		width: 240px
+		background: var(--background)
+		z-index: 1000
+		padding: 32px
+		border-radius: 4px
+
+.light
+	.drop-down
+		box-shadow: 0px 0px 0px #e3e3e3
+		transition: box-shadow 0.1s
+		&:hover
+			box-shadow: 5px 3px 7px #e3e3e3, -4px -4px 8px #f1f1f1
+
+.dark	
+	.rta-icon
+		svg
+			path
+				fill: #373737
+.light
+	.rta-icon
+		svg
+			path
+				fill: #878787
+
+.levelzero
+	.drop-down
+		height: 320px
+		text-align: right
+		.tt-u.space a
+			font-size: 21px
+			&:hover
+				color: var(--gret)
+
+.canstick
+	position: sticky
+	top: 112px
+	background: var(--background)
+
+
+.codeblock
+	margin-top: 4px
+
+.cutthis
+	margin-bottom: 0
+	margin-top: 0
+	padding: 0
+	line-height: 1
+
+.transparent-button
+	background: var(--transback)
+	backdrop-filter: blur(5px)
+	border: 1px solid var(--opposite)
+	color: var(--opposite)
+	font-family: var(--coder)
+	padding: 6px 16px
+	border-radius: 3px
+	transform-origin: center center
+	cursor: pointer
+	&:hover
+		transform: scale(0.95)
+		background: var(--gret)
+
+.codeparent
+	border: var(--bord)
+	border-radius: 6px
+
+.levelzero
+	.codeparent
+		padding: 24px
+		background: var(--contraster)
+
+.overlord
+	pre
+		border: var(--bord)
+		background: var(--contraster)
+		margin: 16px 0
+		border-radius: 6px
+
+.gpt-sys
+	display: none
+
+.gpt-user
+	background: var(--contraster)
+	text-align: right
+
+.gpt-user, .gpt-asst
+	padding: 8px 16px
+
+
+.ProseMirror
+	border-radius: 6px
+	background: var(--background)
+	padding: 8px
+
+.webdev
+	pre
+		background: var(--contraster)
+		margin-bottom: 16px
+
+.can-stick
+	h3
+		font-weight: 700
+
+.levelzero
+	.can-stick
+		position: sticky
+		top: 0
+		background: var(--background)
+		z-index: 600
+		padding-top: 32px
+
+.levelone
+	.can-stick
+		position: sticky
+		top: 0
+		background: var(--background)
+		z-index: 600
+		padding-top: 32px

@@ -1,0 +1,560 @@
+body, html
+    margin: 0
+    box-sizing: border-box
+
+pre
+    overflow-x: auto
+    box-sizing: border-box
+    white-space: pre-wrap
+    white-space: -moz-pre-wrap
+    white-space: -pre-wrap
+    white-space: -o-pre-wrap
+    word-wrap: break-word
+    word-break: break-word
+
+:root
+    box-sizing: border-box
+    font-family: 'Space Mono', monospace
+    --green: #0BC160
+
+*
+    box-sizing: border-box
+
+.bdr
+    border: 1px solid red
+
+.back
+    background-position: center center
+    background-size: cover
+    background-repeat: no-repeat
+
+
+.dark
+    --background: #FFFFFF
+    --textone: #a1a1a1
+    --opposite: #272727
+
+
+.light
+    --background: #121212
+    --textone: #373737
+    --opposite: #FFFFFF
+
+$unit4: 4px
+$unit8: 8px
+$unit16: 16px
+$unit20: 20px
+$unit24: 24px
+$unit32: 32px
+$unit48: 48px
+$unit64: 64px
+$unit80: 80px
+$unit128: 128px
+
+a
+    text-decoration: none
+    color: inherit
+
+a.hover
+    &:hover
+        color: var(--green)
+
+p
+    font-weight: 400
+    font-family: 'Space Grotesk', sans-serif
+
+p.grey
+    color: var(--textone)
+
+p.white
+    color: white
+
+h5.white
+    color: white
+
+pre
+    font-family: 'Space Mono', monospace
+
+code
+    font-family: 'Space Mono', monospace
+
+.ticket
+    p, ul li, ol li
+        font-size: 1.12em
+        position: relative
+        &::after
+            position: absolute
+            bottom: -8px
+            left: 0
+            width: 20%
+            height: 2px
+            content: ''
+            background: var(--green)
+    h4
+        font-family: 'Space Grotesk', sans-serif
+
+.tt-u
+    text-transform: uppercase
+
+.null
+    p, h1, h5, h6, h4, h3, h2, small
+        margin: 0
+
+p, h6, small, blockquote, h5, h4, h3, h2, h1
+    margin: 1.5em 0 1em 0
+
+h3
+    font-size: 2.8em
+    font-family: 'Space Grotesk', sans-serif
+    font-weight: 800
+    letter-spacing: -1.5px
+
+h4
+    font-size: 2em
+    letter-spacing: -1px
+    line-height: 1.12
+
+small
+    color: var(--textone)
+
+h5
+    font-size: 1.44em
+    font-family: 'Space Grotesk', sans-serif
+    font-weight: 800
+    letter-spacing: -0.25px
+
+h6
+    font-size: 1.32em
+    font-family: 'Space Mono', monospace
+    text-transform: uppercase
+    letter-spacing: -0.3px
+
+.rta-column
+    display: flex
+    flex-direction: column
+    &.ycenter
+        justify-content: center
+    &.ytop
+        justify-content: flex-start
+    &.ybot
+        justify-content: flex-end
+    &.ybetween
+        justify-content: space-between
+    &.xcenter
+        align-items: center
+    &.xleft
+        align-items: flex-start
+    &.xright
+        align-items: flex-end
+
+.rta-row
+    display: flex
+    &.ycenter
+        align-items: center
+    &.xcenter-d
+        @media screen and (min-width: 1024px)
+            justify-content: center
+    &.xcenter-m
+        @media screen and (max-width: 1023px)
+            justify-content: center
+    &.xend
+        justify-content: flex-end
+    &:xstart
+        justify-content: flex-start
+    &.between
+        justify-content: space-between
+    &.ytop
+        align-items: flex-start
+    &.ybot
+        align-items: flex-end
+    @media screen and (min-width: 1024px)
+        flex-direction: row
+        .in50, .in50.w32, .in50.w64
+            width: calc(50% - 16px)
+        .w32
+            width: 32%
+        .w64
+            width: 60%
+    @media screen and (max-width: 1023px)
+        flex-direction: row
+        flex-wrap: wrap
+        .in50.w32
+            width: 32%
+        .in50.w64
+            width: 60%
+        .in50
+            width: 50%
+
+//spacing
+@media screen and (min-width: 1024px)
+    .rowgap50
+        row-gap: 4px
+    .colgap100
+        column-gap: $unit8
+    .rowgap100
+        row-gap: $unit8
+    .gap100
+        gap: $unit8
+    .colgap200
+        column-gap: $unit16
+    .rowgap200
+        row-gap: $unit16
+    .gap200
+        gap: $unit16
+    .colgap300
+        column-gap: $unit24
+    .rowgap300
+        row-gap: $unit24
+    .gap300
+        gap: $unit24
+    .colgap400
+        column-gap: $unit32
+    .rowgap400
+        row-gap: $unit32
+    .gap400
+        gap: $unit32
+    .colgap500
+        column-gap: $unit48
+    .rowgap500
+        row-gap: $unit48
+    .gap500
+        gao: $unit48
+    .colgap600
+        column-gap: $unit64
+    .rowgap600
+        row-gap: $unit64
+    .gap600
+        gao: $unit64
+@media screen and (max-width: 1023px) and (min-width: 768px)
+    .colgap100
+        column-gap: $unit8
+    .rowgap100
+        row-gap: $unit8
+    .gap100
+        gap: $unit8
+    .colgap200
+        column-gap: $unit16
+    .rowgap200
+        row-gap: $unit16
+    .gap200
+        gap: $unit16
+    .colgap300
+        column-gap: $unit24
+    .rowgap300
+        row-gap: $unit24
+    .gap300
+        gap: $unit24
+    .colgap400
+        column-gap: $unit24
+    .rowgap400
+        row-gap: $unit24
+    .gap400
+        gap: $unit24
+    .colgap400
+        column-gap: $unit32
+    .rowgap400
+        row-gap: $unit32
+    .gap400
+        gap: $unit32
+    .colgap500
+        column-gap: $unit32
+    .rowgap500
+        row-gap: $unit32
+    .gap500
+        gao: $unit32
+    .colgap600
+        column-gap: $unit48
+    .rowgap600
+        row-gap: $unit48
+    .gap600
+        gao: $unit48
+@media screen and (max-width: 767px)
+    .colgap100
+        column-gap: $unit8
+    .rowgap100
+        row-gap: $unit8
+    .gap100
+        gap: $unit8
+    .colgap200
+        column-gap: $unit16
+    .rowgap200
+        row-gap: $unit16
+    .gap200
+        gap: $unit16
+    .colgap300
+        column-gap: $unit20
+    .rowgap300
+        row-gap: $unit20
+    .gap300
+        gap: $unit20
+    .colgap400
+        column-gap: $unit24
+    .rowgap400
+        row-gap: $unit24
+    .gap400
+        gap: $unit24
+    .colgap400
+        column-gap: $unit32
+    .rowgap400
+        row-gap: $unit32
+    .gap400
+        gap: $unit32
+    .colgap500
+        column-gap: $unit32
+    .rowgap500
+        row-gap: $unit32
+    .gap500
+        gao: $unit32
+    .colgap600
+        column-gap: $unit32
+    .rowgap600
+        row-gap: $unit32
+    .gap600
+        gao: $unit32
+
+
+.rta-grid
+    display: grid
+    grid-auto-flow: row
+    grid-template-rows: auto
+    width: 100%
+
+
+@media screen and (min-width: 1024px)
+    .grid6
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+        grid-template-areas: ". . . . . ."
+    .grid5
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+        grid-template-areas: ". . . . ."    
+    .grid4
+        grid-template-columns: 1fr 1fr 1fr 1fr
+        grid-template-areas: ". . . ."
+    .grid3
+        grid-template-columns: 1fr 1fr 1fr
+        grid-template-areas: ". . ."
+    .grid2
+        grid-template-columns: 1fr 1fr
+        grid-template-areas: ". ."
+        transition: 0.2s
+    .grid2.left0
+        grid-template-columns: 320px 1fr
+        grid-template-areas: ". ."
+    .grid2.right0
+        grid-template-columns: 1fr 24%
+        grid-template-areas: ". ."
+    .grid2.right00
+        grid-template-columns: 1fr 20%
+        grid-template-areas: ". ."
+    .grid2.left
+        grid-template-columns: 32% 1fr
+        grid-template-areas: ". ."
+    .grid2.right
+        grid-template-columns: 1fr 32%
+        grid-template-areas: ". ."    
+    .grid2.left2
+        grid-template-columns: 40% 1fr
+        grid-template-areas: ". ."
+        transition: 0.2s
+    .grid2.right2
+        grid-template-columns: 1fr 40%
+        grid-template-areas: ". ."    
+        transition: 0.2s
+    .grid2.right3
+        grid-template-columns: 1fr 27%
+        grid-template-areas: ". ."    
+        transition: 0.2s
+
+@media screen and (max-width: 1023px) and (min-width: 787px)
+    .grid6
+        grid-template-columns: 1fr 1fr 1fr
+        grid-template-areas: ". . ." ". . ."
+
+@media screen and (max-width: 786px)
+    .grid6
+        grid-template-columns: 1fr
+        grid-template-areas: "." "." "." "." "." "."
+
+@media screen and (max-width: 1023px)
+    .grid5.stay2
+        grid-template-columns: 1fr 1fr
+        grid-template-areas: ". ."    
+    .grid4
+        grid-template-columns: 1fr
+        grid-template-areas: "." "." "." "."
+    .grid4.stay2
+        grid-template-columns: 1fr 1fr
+        grid-template-areas: ". ."
+    .grid4.stay3
+        grid-template-columns: 1fr 1fr 1fr
+        grid-template-areas: ". . ."
+    .grid3
+        grid-template-columns: 1fr
+        grid-template-areas: "." "." "."
+    .grid3.stay2
+        grid-template-columns: 1fr 1fr
+        grid-template-areas: "." "."
+    .grid2
+        grid-template-columns: 1fr
+        grid-template-areas: "up" "down"
+        .up
+            grid-area: up
+        .down
+            grid-area: down
+    .grid2.stay2
+        grid-template-columns: 1fr 1fr
+        grid-template-areas: ". ."
+    .grid2.become4
+        grid-template-columns: 1fr 1fr 1fr 1fr
+        grid-templare-areas: ". . . ."
+    
+.dark
+    .screen
+        background: #121212
+
+.light
+    .screen
+        background: white
+
+.fullH
+    height: 100%
+
+
+.rta-image
+    img
+        object-fit: cover
+        width: 100%
+        height: 100%
+
+.titlebox
+    text-align: right
+    padding-left: 32px
+    row-gap: 16px
+    height: calc(100vh - 64px)
+    position: sticky
+    align-items: flex-end
+    top: 32px
+    img
+        object-fit: contain
+        width: 50%
+        border-radius: 50%
+    h4, h3
+        margin: 0
+
+.levelzero
+    .cushion
+        padding: 32px 32px 32px 32px
+
+.height-80
+    @media screen and (min-width: 1024px)
+        height: 90vh
+    @media screen and (max-width: 1023px)
+        height: 40vh
+
+.height-60
+    @media screen and (min-width: 1024px)
+        height: 60vh
+    @media screen and (max-width: 1023px)
+        height: 20vh
+
+.height-40
+    @media screen and (min-width: 1024px)
+        height: 50vh
+    @media screen and (max-width: 1023px)
+        height: 20vh
+
+.height-40-20
+    @media screen and (min-width: 1024px)
+        height: 20vh
+    @media screen and (max-width: 1023px)
+        height: 20vh
+
+.height-30
+    @media screen and (min-width: 1024px)
+        height: 30vh
+    @media screen and (max-width: 1023px)
+        height: 8vh
+
+.height-30-2
+    @media screen and (min-width: 1024px)
+        height: 30vh
+    @media screen and (max-width: 1023px)
+        height: 12vh
+
+.height-30-3
+    @media screen and (min-width: 1024px)
+        height: 30vh
+    @media screen and (max-width: 1023px)
+        height: 20vh
+
+.height-20
+    @media screen and (min-width: 1024px)
+        height: 20vh
+    @media screen and (max-width: 1023px)
+        height: 8vh
+
+.height-24
+    @media screen and (min-width: 1024px)
+        height: 24vh
+    @media screen and (max-width: 1023px)
+        height: 20vh
+
+.height-10
+    @media screen and (min-width: 1024px)
+        height: 10vh
+    @media screen and (max-width: 1023px)
+        height: 8vh
+
+
+.writing
+    p, ul li, ol li
+        font-size: 1.2em
+        font-family: 'Space Mono', monospace
+        letter-spacing: -0.7px
+        font-weight: 500
+        line-height: 1.4
+
+.levelzero
+    .writing
+        width: 720px
+        margin-left: 80px
+    .seven
+        width: 900px
+        margin-left: 80px
+
+
+.blank-button
+    padding: 0
+    background: none
+    border: none
+
+.p-top-32
+    padding-top: 32px
+
+.p-bot-32
+    padding-bottom: 32px
+
+.m-bot-32
+    margin-bottom: 32px
+
+.m-bot-16
+    margin-bottom: 16px
+
+.m-top-16
+    margin-top: 16px
+
+.thinner
+    padding-right: 32px
+
+.whitebutton
+    border: 1px solid white
+    background: none
+    color: white
+    text-transform: capitalize
+    padding: 5px 16px
+    border-radius: 4px
+    cursor: pointer
+    transform-origin: center center
+    transition: 0.07s
+    &:hover
+        transform: scale(0.9)

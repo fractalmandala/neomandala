@@ -8,7 +8,7 @@ id: 19
 
 This query allows one to create a column of vector embeddings.
 
-```sql
+```javascript
 alter table
   "brhatindex"
 add column

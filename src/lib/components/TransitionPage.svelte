@@ -6,7 +6,7 @@
 
 </script>
 
-<div class="transistor" in:fly={{ delay: 500, duration: 400, x: -700, easing: quadOut}} out:fly={{ delay: 0, duration: 350, opacity: 0, x: 700, easing: quadIn}} class:dark={$themeMode} class:light={!$themeMode}>
+<div class="transistor" in:fly={{ delay: 600, duration: 600, y: 700, easing: quadOut}} out:fly={{ delay: 0, duration: 550, opacity: 0, y: -700, easing: quadIn}} class:dark={$themeMode} class:light={!$themeMode}>
 	<slot></slot>
 </div>
 

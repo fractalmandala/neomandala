@@ -5,6 +5,11 @@
     import { allWritings } from '$lib/utils/localpulls'
     let pens:any
     let audio:any
+    let fake = false
+
+    function fauxfake(){
+        fake = !fake
+    }
 
     audioStore.subscribe(value => audio = value)
     onMount(async() => {
@@ -29,7 +34,7 @@
         </div>
     {/if}
     <div class="rta-column titlebox null">
-        <img class="jello-vertical" src="/images/k-writings.webp" alt="writing" on:mouseover={() => audio.play()} />
+        <img class="jello-vertical" src="/images/k-writings.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake} />
         <h3 class="tt-u">word</h3>
         <p class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</p>
     </div>

@@ -8,6 +8,12 @@
 	let images:any
     let audio:any
     audioStore.subscribe(value => audio = value)
+    let fake = false
+
+    function fauxfake(){
+        fake = !fake
+    }
+
 
 	onMount(async() => {
 		images = await allVideos();
@@ -35,7 +41,7 @@
         </div>
     {/if}
     <div class="rta-column titlebox null">
-        <img class="jello-vertical" src="/images/k-videos.webp" alt="writing" on:mouseover={() => audio.play()}/>
+        <img class="jello-vertical" src="/images/k-videos.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">video</h3>
         <p class="grey">Come bore yourself to my incessant dronings...</p>
     </div>

@@ -1,11 +1,15 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
-    import { allWebdev } from '$lib/utils/localpulls'
+    import { gptTitles } from '$lib/utils/supabase'
     import { audioStore } from '$lib/stores/modalstores'
     let pens:any
+    let thisChat:any
     let audio:any
     audioStore.subscribe(value => audio = value)
+    let low = 0
+    let top = 14
+
     let fake = false
 
     function fauxfake(){
@@ -14,7 +18,7 @@
 
 
     onMount(async() => {
-        pens = await allWebdev();
+        pens = await gptTitles(low, top);
     })
 
 </script>
@@ -22,22 +26,21 @@
 
 <div class="rta-grid grid2 right00 screen fullH cushion back">
     {#if pens && pens.length > 0}
-        <div class="rta-grid grid3 colgap300 rowgap300">
+        <div class="rta-grid grid2 colgap300 rowgap300 breaker">
             {#each pens as item}
-                <a class="rta-column ybetween rowgap400 ticket" href="{item.linkpath}">
+                <a class="rta-column ybetween rowgap400 ticket" href="/bot/{item.indexing}">
                     <div class="rta-column rowgap200 null">
-                        <p><i>{item.meta.type}</i></p>
-                        <h4 class="tt-u">{item.meta.id} - {item.meta.title}</h4>
-                        <small>{item.meta.tags}</small>
+                        <h4 class="tt-u">{item.indexing} - {item.title}</h4>
+                        <small>{item.theme}</small>
                     </div>
                 </a>
             {/each}
         </div>
     {/if}
     <div class="rta-column titlebox null">
-        <img class="jello-vertical" src="/images/k-webdev.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-        <h3 class="tt-u">code</h3>
-        <p class="grey">Just enough HTML, CSS and JS to have put this site together. And a bit more...</p>
+        <img class="jello-vertical" src="/images/k-gpt.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
+        <h3 class="tt-u">bot</h3>
+        <p class="grey">he thinks, therefore he is?</p>
     </div>
 </div>
 
@@ -48,6 +51,6 @@
     transition: 0.07s
     border-radius: 6px
     &:hover
-        box-shadow: 5px 8px 12px #e1e1e1, -5px -4px 10px #f1f1f1
+        box-shadow: 5px 8px 12px #e1e1e1 inset, -5px -4px 10px #f1f1f1 inset
 
 </style>

@@ -59,6 +59,7 @@ export let data
                 <Motif/>
             </a>
             <p>AI</p>
+            <p><a class="hover" href="/bot">Bot</a></p>
             <p><a class="hover" href="/word">Word</a></p>
             <p><a class="hover" href="/code">Code</a></p>
             <p><a href="/sound" class="hover">Sound</a></p>

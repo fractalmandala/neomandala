@@ -17,3 +17,25 @@ export async function supaImages(low:number, top:number){
     if (error) throw new Error(error.message)
     return data
 }
+
+export async function gptTitles(low:number, top: number){
+    const { data, error } = await supabase
+    .from('amrit-gpttitles')
+    .select()
+    .order('nextid', {ascending: false})
+    .range(low, top)
+    if (error) throw new Error(error.message)
+    return data
+}
+
+
+
+export async function thisChat(indexing:string){
+    const { data, error } = await supabase
+    .from('amrit-gpt')
+    .select()
+    .eq('indexing', indexing)
+    .order('id', {ascending: false})
+    if (error) throw new Error(error.message)
+    return data    
+}

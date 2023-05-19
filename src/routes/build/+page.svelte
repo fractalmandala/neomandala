@@ -50,6 +50,6 @@
     <div class="rta-column titlebox null">
         <img class="jello-vertical" src="/images/k-build.png" alt="writing" on:mouseover={() => audio.play()}/>
         <h3 class="tt-u">build</h3>
-        <p>felt cute, might build something.</p>
+        <p class="grey">felt cute, might build something.</p>
     </div>
 </div>

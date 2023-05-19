@@ -12,6 +12,16 @@ pre
     word-wrap: break-word
     word-break: break-word
 
+.breaker
+    overflow-x: auto
+    box-sizing: border-box
+    white-space: pre-wrap
+    white-space: -moz-pre-wrap
+    white-space: -pre-wrap
+    white-space: -o-pre-wrap
+    word-wrap: break-word
+    word-break: break-word
+
 :root
     box-sizing: border-box
     font-family: 'Space Mono', monospace
@@ -443,11 +453,11 @@ h6
 
 .levelzero
     .titlebox
-        width: 256px
+        width: 240px
 
 .levelzero
     .cushion
-        padding: 32px 32px 32px 32px
+        padding: 32px 80px 32px 32px
 
 .height-80
     @media screen and (min-width: 1024px)
@@ -511,7 +521,7 @@ h6
 
 
 .writing
-    p, ul li, ol li
+    p
         font-size: 1.2em
         font-family: 'Space Mono', monospace
         letter-spacing: -0.7px
@@ -521,10 +531,10 @@ h6
 .levelzero
     .writing
         width: 720px
-        margin-left: 80px
+        margin-left: 64px
     .seven
         width: 900px
-        margin-left: 80px
+        margin-left: 64px
 
 
 .blank-button

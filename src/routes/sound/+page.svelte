@@ -29,6 +29,6 @@
     
         <img class="jello-vertical" src="/images/k-music.webp" alt="writing" on:mouseover={() => audio.play()} />
         <h3 class="tt-u">sound</h3>
-        <p>because electronic music takes us to a place we want to go to...</p>
+        <p class="grey">because electronic music takes us to a place we want to go to...</p>
     </div>
 </div>

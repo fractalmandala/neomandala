@@ -31,6 +31,10 @@
         <img class="jello-vertical" src="/images/k-images.webp" alt="writing" on:mouseover={() => audio.play()}/>
         <h3 class="tt-u">image</h3>
         <p class="grey">I've been waiting for Midjourney since I was a kid!</p>
+        <div class="rta-row">
+            <div class="blank-button">Prev</div>
+            <div class="blank-button">Next</div>
+        </div>
     </div>
 </div>
 

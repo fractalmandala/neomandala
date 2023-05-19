@@ -14,13 +14,13 @@
 </script>
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion">
+<div class="rta-grid grid2 right00 screen fullH cushion back">
     {#if pens && pens.length > 0}
         <div class="rta-grid grid3 colgap300 rowgap300">
             {#each pens as item}
                 <a class="rta-column ybetween rowgap400 ticket" href="{item.linkpath}">
                     <div class="rta-column rowgap200 null">
-                        <p>{item.meta.type}</p>
+                        <p><i>{item.meta.type}</i></p>
                         <h4 class="tt-u">{item.meta.id} - {item.meta.title}</h4>
                         <small>{item.meta.tags}</small>
                     </div>
@@ -34,3 +34,14 @@
         <p class="grey">Just enough HTML, CSS and JS to have put this site together. And a bit more...</p>
     </div>
 </div>
+
+<style lang="sass">
+
+.ticket
+    padding: 16px
+    transition: 0.07s
+    border-radius: 6px
+    &:hover
+        box-shadow: 5px 8px 12px #e1e1e1, -5px -4px 10px #f1f1f1
+
+</style>

@@ -4,7 +4,6 @@
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores'
 	import { slide } from 'svelte/transition'
 	import { allVideos } from '$lib/utils/localpulls'
-	import BoxStandard from '$lib/deslib/BoxStandard.svelte'
 	import Youtuber from '$lib/components/Youtuber.svelte'
 	let vids:any
 	export let data

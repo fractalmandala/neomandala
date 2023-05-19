@@ -1,11 +1,11 @@
 <script lang="ts">
 
 	import { breakTwo } from '$lib/stores/globalstores'
-	let y: number;
+	let x: number;
 
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={x} />
 
 <div class="rta-row ycenter">
 <svg
@@ -15,7 +15,7 @@
 	viewBox="0 0 20 22"
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"
-	style="transform: rotate({y / 3}deg)"
+	style="transform: rotate({x / 3}deg)"
 >
 	<path
 		class="mot-0"

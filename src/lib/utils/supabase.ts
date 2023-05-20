@@ -17,6 +17,15 @@ export async function supaImages(low:number, top:number){
     return data
 }
 
+export async function thisImage(id:number){
+    const { data, error } = await supabase
+    .from('amrit-gallery')
+    .select()
+    .eq('id', id)
+    if (error) throw new Error(error.message)
+    return data
+}
+
 export async function gptTitles(low:number, top: number){
     const { data, error } = await supabase
     .from('amrit-gpttitles')

@@ -9,6 +9,12 @@
     let audio:any
     audioStore.subscribe(value => audio = value)
 
+    let fake = false
+
+    function fauxfake(){
+        fake = !fake
+    }
+
 	let inputValue = '';
 	let recording = false;
 
@@ -48,7 +54,7 @@
        
     </div>
     <div class="rta-column titlebox null">
-        <img class="jello-vertical" src="/images/k-build.png" alt="writing" on:mouseover={() => audio.play()}/>
+        <img class="jello-vertical" src="/images/k-build.png" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">build</h3>
         <p class="grey">felt cute, might build something.</p>
     </div>

@@ -26,9 +26,9 @@
     <div class="rta-grid grid4 colgap100 rowgap100">
         {#if images && images.length > 0}
             {#each images as item}
-                <div class="rta-image">
+                <a class="rta-image" href="/image/{item.slug}">
                     <img src={item.link} alt={item.id}/>
-                </div>
+                </a>
             {/each}
         {/if}
     </div>

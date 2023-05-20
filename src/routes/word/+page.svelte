@@ -44,7 +44,6 @@
 
 
 .ticket
-    background: var(--background)
     padding: 20px
     border-radius: 4px
 

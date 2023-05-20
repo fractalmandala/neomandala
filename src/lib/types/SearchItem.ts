@@ -4,3 +4,8 @@ export interface SearchItem {
     type: string;
     tags: string;
 }
+
+export interface createSvelteStore {
+    data: [];
+    init: () => {}
+}

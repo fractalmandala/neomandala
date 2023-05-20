@@ -21,7 +21,7 @@
 </script>
 
 <div class="rta-grid grid2 right00 screen fullH cushion">
-    <div class="rta-grid grid3 colgap300 rowgap300">
+    <div class="rta-grid grid3 colgap100 rowgap300 postgrid">
         {#if images && images.length > 0}
 			{#each images as item, i}
 				<div class="rta-column p-all-16">

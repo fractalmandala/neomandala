@@ -1,8 +1,8 @@
 <script lang="ts">
-
+//@ts-nocheck
     import { onMount } from 'svelte'
     import { audioStore } from '$lib/stores/modalstores'
-    import { allWritings } from '$lib/utils/localpulls'
+    import { allWritings } from '$lib/utils/supabase'
     let pens:any
     let audio:any
     let fake = false
@@ -20,14 +20,17 @@
 
 
 <div class="rta-grid grid2 right00 screen fullH cushion back">
-    <div class="rta-grid colgap300 rowgap100">
+    <div class="rta-grid colgap300 rowgap100 postgrid">
         {#if pens && pens.length > 0}
             {#each pens as item}
-                <a class="rta-column ybetween ticket" href="{item.linkpath}">
-                    <div class="rta-column rowgap100 null">
-                        <p>{item.meta.type}</p>
-                        <h4 class="tt-c">{item.meta.title}</h4>
-                        <small>{item.meta.tags}</small>
+                <a class="rta-row colgap300 ybetween ticket" href="/word/{item.slug}">
+                    <div class="rta-column rowgap100 null w64">
+                        <p class="green">{item.type}</p>
+                        <h4 class="tt-u">{item.id}-{item.title}</h4>
+                        <small>{item.tags}</small>
+                    </div>
+                    <div class="rta-image w32 height-24">
+                        <img src={item.image} alt={item.title}/>
                     </div>
                 </a>
             {/each}

@@ -4,7 +4,8 @@ tags: tech
 originallydated: Nov, 2017
 featured: false
 type: archival
-id: 7
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/3.webp
+id: 3
 ---
 
 *While I’ve known about Bitcoin for a long time, it’s only in 2017 that I’ve involved myself with blockchain technology, cryptocurrency trading and its investment. The learning curve, I’m realizing, is long and never-ending. In this and following articles, I will chronicle my learnings, experiences and strategies. These are completely personal views, designed more to help beginners understand the ever-growing and changing world of blockchain and cryptocurrency. Please do not make trades on the basis of what I write alone!*

@@ -3,7 +3,8 @@ title: A Chronology of the Daśāvatāra
 tags: chronology
 featured: false
 type: history
-id: 7
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/23.webp
+id: 23
 ---
 
 The daśāvatāra, or ten incarnations, of Mahāviṣṇu are a cardinal note in dhārmika tradition, and a multi-layered record both of historical memory and civilisational wisdom. When we speak of a chronology, we deal not only with the sequence in which the incarnations are presented (internal chronology), but also the historical plausibility of their absolute chronology. One might wonder why the sequence need be dealt with, for it appears obvious and is generally agreed:

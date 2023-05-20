@@ -1,19 +1,18 @@
 <script lang="ts">
 
-    import { showModal } from '$lib/stores/modalstores';
-    import Search from '$lib/components/SearchBox.svelte'
+	import { showModal } from '$lib/stores/modalstores';
 	import { SpeechSettings, SpeechStore } from 'talk2svelte';
-    import { audioStore } from '$lib/stores/modalstores'
+	import { audioStore } from '$lib/stores/modalstores';
 	import { filter } from 'rxjs';
 	import { onMount } from 'svelte';
-    let audio:any
-    audioStore.subscribe(value => audio = value)
+	let audio: any;
+	audioStore.subscribe((value) => (audio = value));
+	let fake = false;
 
-    let fake = false
+	function fauxfake() {
+		fake = !fake;
+	}
 
-    function fauxfake(){
-        fake = !fake
-    }
 
 	let inputValue = '';
 	let recording = false;
@@ -39,23 +38,23 @@
 			subscriptions.map((sub) => sub.unsubscribe());
 		};
 	});
+
 </script>
 
-
-
-
-
-
-
 <div class="rta-grid grid2 right00 screen fullH cushion">
-    <div class="rta-image height-80">
-        <img src="/images/psychedelic.webp" alt="psychedelic"/> 
-        <button on:click={() => showModal('Page 1 Modal', 'Hello from Page 1')}>Show modal</button>
-       
-    </div>
-    <div class="rta-column titlebox null">
-        <img class="jello-vertical" src="/images/k-build.png" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-        <h3 class="tt-u">build</h3>
-        <p class="grey">felt cute, might build something.</p>
-    </div>
+	<div class="rta-image height-80 postgrid">
+		<img src="/images/psychedelic.webp" alt="psychedelic" />
+		<button on:click={() => showModal('Page 1 Modal', 'Hello from Page 1')}>Show modal</button>
+	</div>
+	<div class="rta-column titlebox null">
+		<img
+			class="jello-vertical"
+			src="/images/k-build.png"
+			alt="writing"
+			on:mouseover={() => audio.play()}
+			on:focus={fauxfake}
+		/>
+		<h3 class="tt-u">build</h3>
+		<p class="grey">felt cute, might build something.</p>
+	</div>
 </div>

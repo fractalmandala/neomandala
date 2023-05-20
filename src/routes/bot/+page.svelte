@@ -24,12 +24,12 @@
 </script>
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion back">
-    <div class="rta-grid grid3 colgap300 rowgap100">
+<div class="rta-grid grid2 right00 screen back">
+    <div class="rta-grid grid3 colgap300 rowgap100 postgrid">
         {#if pens && pens.length > 0}
             {#each pens as item}
                 <a class="rta-column ybetween rowgap100 ticket" href="/bot/{item.indexing}">
-                    <div class="rta-column rowgap200 null">
+                    <div class="rta-column rowgap100 null">
                         <h5 class="tt-u">{item.indexing} - {item.title}</h5>
                         <small>{item.theme}</small>
                     </div>

@@ -1,51 +1,36 @@
 <script lang="ts">
 
-import { onMount } from 'svelte'
-import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores'
-import '$lib/styles/theme.sass'
-import '$lib/styles/typography.sass'
-import TransitionPage from '$lib/components/TransitionPage.svelte'
-import Modal from '$lib/components/Modal.svelte'
-import { showDrawer, hideDrawer, initialDrawer, drawerStore, audioStore } from '$lib/stores/modalstores'
-import Drawer from '$lib/components/Drawer.svelte'
-import Search from '$lib/icons/Search.svelte'
-import Dark from '$lib/icons/DarkMode.svelte'
-import '$lib/styles/animate.css'
-import Motif from '$lib/assets/Loader.svelte'
+    import { onMount } from 'svelte'
+    import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores'
+    import '$lib/styles/theme.sass'
+    import '$lib/styles/typography.sass'
+    import Modal from '$lib/components/Modal.svelte'
+    import { showDrawer, hideDrawer, initialDrawer, drawerStore, audioStore } from '$lib/stores/modalstores'
+    import TransitionPage from '$lib/components/TransitionPage.svelte'
+    import Motif from '$lib/assets/Loader.svelte'
+    import Drawer from '$lib/components/Drawer.svelte'
+    import Search from '$lib/icons/Search.svelte'
+    import Dark from '$lib/icons/DarkMode.svelte'
+    export let data:any
+    let audioElement:any
+    let timeIs = false
 
-let timeIs = false
-let audioElement:any
-
-function toggleDrawer(){
-    if ( timeIs === false ) {
-        showDrawer();
-        timeIs = !timeIs
-    } else {
-        hideDrawer();
-        timeIs = !timeIs
+    function toggleDrawer(){
+        if ( timeIs === false ) {
+            showDrawer();
+            timeIs = !timeIs
+        } else {
+            hideDrawer();
+            timeIs = !timeIs
+        }
     }
-}
 
-function theShift(){
- timeIs = !timeIs
- showDrawer();
-}
-
-onMount(() => {
-    audioElement = new Audio('/sounds/boing2.mp3')
-    audioStore.set(audioElement)
-})
-
-
-export let data
+    onMount(() => {
+        audioElement = new Audio('/sounds/boing2.mp3')
+        audioStore.set(audioElement)
+    })
 
 </script>
-
-<svelte:head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-</svelte:head>
 
 <div class="app-shell"
     class:levelzero={$breakZero}
@@ -55,11 +40,10 @@ export let data
     class:dark={!$themeMode}
     >
     <section class="menubar">
-        <div class="rta-column rowgap300 null">
+        <div class="rta-column rowgap100 null">
             <a href="/">
                 <Motif/>
             </a>
-            <div class="rta-column rowgap100">
             <p>AI</p>
             <p><a class="hover" href="/bot">Bot</a></p>
             <p><a class="hover" href="/word">Word</a></p>
@@ -68,8 +52,6 @@ export let data
             <p><a class="hover" href="/image">Image</a></p>
             <p><a href="/video" class="hover">Video</a></p>
             <p><a href="/build" class="hover">Build</a></p>
-            <p class="white">{$themeMode}</p>
-            </div>
         </div>
         <div class="row-column rowgap500">
             <button class="blank-button m-bot-16"
@@ -81,15 +63,23 @@ export let data
         </div>
     </section>
     <section class="pagearea">
-        {#key data.pathname}
-            <TransitionPage>
-                <slot/>
-            </TransitionPage>
-        {/key}
+        <div class="rta-grid grid2 right00 screen fullH cushion back">
+            <div class="rta-grid colgap300 rowgap100">
+                {#key data.pathname}
+                    <TransitionPage>
+                        <slot/>
+                    </TransitionPage>
+                {/key}
+            </div>
+        </div>
+        <div class="rta-column titlebox null">
+            <slot name="titlebox"></slot>
+        </div>
     </section>
     <Modal/>
     <Drawer/>
     <audio src="/sounds/boing2.mp3"/>
+
 </div>
 
 <style lang="sass">
@@ -127,8 +117,6 @@ export let data
         display: flex
         flex-direction: column
         justify-content: space-between
-    .pagearea
-        width: calc(100vw - 96px)
 
 
 .menubar
@@ -137,8 +125,5 @@ export let data
     p
         color: white
         text-transform: uppercase
-        font-size: 16px
-    p a
-        font-size: 16px
 
 </style>

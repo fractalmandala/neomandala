@@ -4,7 +4,8 @@ image: https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwe
 tags: civilization
 featured: true
 type: fractal maṇḍala
-id: 2
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/15.webp
+id: 15
 ---
 
 #### Visions of the Maṇḍala

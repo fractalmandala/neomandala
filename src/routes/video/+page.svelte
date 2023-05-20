@@ -24,7 +24,7 @@
 
 <div class="rta-grid grid2 right00 screen fullH cushion">
     {#if images && images.length > 0}
-        <div class="rta-column rowgap500">
+        <div class="rta-column rowgap500 postgrid">
             {#each images as item}
                 <div class="rta-row colgap300">
                     <div class="w32">
@@ -34,7 +34,6 @@
                     </div>
                     <div class="rta-column rowgap200 ticket w64 null">
                         <h4>{item.meta.title}</h4>
-                        <small>{item.meta.about.slice(0,250)}...</small>
                     </div>
                 </div>
             {/each}
@@ -47,19 +46,3 @@
     </div>
 </div>
 
-
-<style lang="sass">
-
-small
-    position: relative
-    padding-bottom: 8px
-    &::after
-        position: absolute
-        bottom: 0
-        left: 0
-        width: 20%
-        content: ''
-        height: 2px
-        background: var(--green)
-
-</style>

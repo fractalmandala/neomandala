@@ -51,7 +51,7 @@ import SearchBox from '$lib/components/SearchBox.svelte'
     position: fixed
     top: 0
     right: 0
-    width: 400px
+    width: 312px
     height: 100vh
     display: flex
     flex-direction: column

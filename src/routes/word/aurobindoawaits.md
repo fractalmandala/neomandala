@@ -4,7 +4,8 @@ tags: opinion
 originallydated: Oct, 2022
 featured: true
 type: archival
-id: 1
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/27.webp
+id: 27
 ---
 
 #### What is Aurobindo?

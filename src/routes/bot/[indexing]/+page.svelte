@@ -2,10 +2,13 @@
 
     import { onMount } from 'svelte'
     import GPTParser from '$lib/components/GPTParser.svelte'
+    import Pagination from '$lib/components/Pagination.svelte'
     import Prism from 'prismjs';
     import '$lib/prismextras.js'
     import '$lib/styles/prismextras.css'
-    let md = '# hello'
+    import ChevFRight from '$lib/icons/ChevFRight.svelte'
+    import ChevFLeft from '$lib/icons/ChevFLeft.svelte'
+    import ChevRight from '$lib/icons/ChevRight.svelte'
 
     import { thisChat } from '$lib/utils/supabase'
 
@@ -15,6 +18,10 @@
     let theme:any   
     let noC:any
     let offC:any
+    let prevID:number
+    let nextID:number
+    let prevPost:any
+    let nextPost:any
 
     onMount(async() => {
         noC = data.indexing
@@ -25,8 +32,8 @@
 </script>
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion colgap600">
-    <div class="rta-column writing">
+<div class="rta-grid grid2 right00 fullH">
+    <div class="rta-column writing rowgap200 postis botcode">
         {#if chatStream && chatStream.length > 0}
             {#each chatStream as item, i}
                 <pre class="rta-column breaker">
@@ -36,6 +43,27 @@
         {/if}
     </div>
     <div class="rta-column titlebox">
-        <h4 class="tt-u">{data.title}</h4>
+        <a href="/bot" class="rta-row null ycenter">
+            <small>Bot</small>
+            <ChevRight/>
+        </a>
+        <h4 class="tt-u">{data.indexing}-{data.title.replace('.','')}</h4>
+        <Pagination>
+            <a href="/bot/{data.previd}" slot="prev" class="blank-button">
+                <ChevFLeft/>
+            </a>
+            <a href="/bot/{data.nextid}" slot="next" class="blank-button">
+                <ChevFRight/>
+            </a>
+        </Pagination>
     </div>
 </div>
+
+<style lang="sass">
+
+.breaker
+    border-bottom: 1px solid var(--borderline)
+    padding-bottom: 16px
+
+</style>
+

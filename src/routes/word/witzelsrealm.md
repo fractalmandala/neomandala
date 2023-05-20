@@ -3,7 +3,8 @@ title: Witzel’s Realm – On Reputationist Concerns Over India’s Reclamation
 tags: OIT
 featured: true
 type: history
-id: 5
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/11.webp
+id: 11
 ---
 
 

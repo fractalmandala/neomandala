@@ -4,7 +4,8 @@ tags: opinion
 originallydated: Aug, 2020
 featured: false
 type: archival
-id: 6
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/10.webp
+id: 10
 ---
 
 This is a response to Harsh Mander’s article published on Scroll, titled “With the Ayodhya ceremony, has the inclusive India of my dreams been lost forever?”

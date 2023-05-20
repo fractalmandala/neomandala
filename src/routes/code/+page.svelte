@@ -3,6 +3,10 @@
     import { onMount } from 'svelte'
     import { allWebdev } from '$lib/utils/localpulls'
     import { audioStore } from '$lib/stores/modalstores'
+    import Pagination from '$lib/components/Pagination.svelte'
+    import ChevFRight from '$lib/icons/ChevFRight.svelte'
+    import ChevFLeft from '$lib/icons/ChevFLeft.svelte'
+    import ChevRight from '$lib/icons/ChevRight.svelte'
     let pens:any
     let audio:any
     audioStore.subscribe(value => audio = value)
@@ -20,14 +24,13 @@
 
 
 <div class="rta-grid grid2 right00 screen fullH cushion back">
-    <div class="rta-grid grid3 colgap300 rowgap100">
+    <div class="rta-grid grid3 colgap300 rowgap100 postgrid">
         {#if pens && pens.length > 0}
             {#each pens as item}
                 <a class="rta-column ybetween rowgap400 ticket" href="{item.linkpath}">
-                    <div class="rta-column rowgap200 null">
-                        <p><i>{item.meta.type}</i></p>
+                    <div class="rta-column rowgap100 null">
                         <h5 class="tt-u">{item.meta.id} - {item.meta.title}</h5>
-                        <small>{item.meta.tags}</small>
+                        <small>{item.meta.type} | {item.meta.tags}</small>
                     </div>
                 </a>
             {/each}
@@ -44,9 +47,5 @@
 
 .ticket
     padding: 16px
-    transition: 0.07s
-    border-radius: 6px
-    &:hover
-        box-shadow: 5px 8px 12px #e1e1e1, -5px -4px 10px #f1f1f1
 
 </style>

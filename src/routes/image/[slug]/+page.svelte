@@ -17,7 +17,7 @@
 
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion">
+<div class="rta-grid grid2 right00 screen fullH">
     <div class="rta-column writing">
         <img src={data.link} alt={data.id}/>
     </div>
@@ -42,7 +42,7 @@
 }
 
 .writing {
-    height: 90vh
+    height: 98vh
 }
 
 </style>

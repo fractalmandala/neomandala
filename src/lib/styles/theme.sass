@@ -23,12 +23,14 @@ body, html
     --background: #FFFFFF
     --textone: #a1a1a1
     --opposite: #272727
+    --borderline: #d7d7d7
 
 
 .light
     --background: #121212
     --textone: #373737
     --opposite: #FFFFFF
+    --borderline: #272727
 
 $unit4: 4px
 $unit8: 8px
@@ -44,6 +46,7 @@ $unit128: 128px
 .rta-column
     display: flex
     flex-direction: column
+    box-sizing: border-box
     &.ycenter
         justify-content: center
     &.ytop
@@ -61,6 +64,7 @@ $unit128: 128px
 
 .rta-row
     display: flex
+    box-sizing: border-box
     &.ycenter
         align-items: center
     &.xcenter-d
@@ -230,6 +234,7 @@ $unit128: 128px
     grid-auto-flow: row
     grid-template-rows: auto
     width: 100%
+    box-sizing: border-box
 
 
 @media screen and (min-width: 1024px)
@@ -256,7 +261,7 @@ $unit128: 128px
         grid-template-columns: 1fr 24%
         grid-template-areas: ". ."
     .grid2.right00
-        grid-template-columns: 1fr 200px
+        grid-template-columns: 1fr 240px
         grid-template-areas: ". ."
     .grid2.left00
         grid-template-columns: 200px 1fr
@@ -343,24 +348,27 @@ $unit128: 128px
 
 .titlebox
     text-align: right
-    padding-left: 32px
     row-gap: 16px
-    height: calc(100vh - 128px)
-    position: sticky
+    height: 100vh
+    border-left: 1px solid var(--borderline)
+    position: fixed
     align-items: flex-end
-    top: 32px
+    top: 0
+    right: 32px
+    padding-top: 32px
+    padding-left: 32px
     img
         object-fit: contain
         width: 50%
         border-radius: 50%
+    p.grey
+        font-size: 16px !important
+        font-family: 'Space Grotesk', sans-serif !important
+        font-weight: 400
 
 .levelzero
     .titlebox
-        width: 240px
-
-.levelzero
-    .cushion
-        padding: 32px 80px 32px 32px
+        width: 280px
 
 .height-80
     @media screen and (min-width: 1024px)
@@ -424,11 +432,15 @@ $unit128: 128px
 
 .levelzero
     .writing
-        width: 720px
-        margin-left: 64px
+        width: 800px
+        margin-left: 96px
     .seven
         width: 900px
         margin-left: 64px
+    .postgrid
+        width: 900px
+        margin-left: 64px
+        padding: 32px 0
 
 
 .blank-button
@@ -436,14 +448,35 @@ $unit128: 128px
     background: none
     border: none
 
+.bord-top
+    border-top: 1px solid var(--borderline)
+
+.bord-bot
+    border-bottom: 1px solid var(--borderline)
+
 .p-top-32
     padding-top: 32px
+
+.p-top-64
+    padding-top: 64px
+
+.p-top-16
+    padding-top: 16px
+
+.p-bot-16
+    padding-bottom: 16px
 
 .p-all-16
     padding: 16px
 
 .p-bot-32
     padding-bottom: 32px
+
+.p-bot-64
+    padding-bottom: 64px
+
+.m-bot-64
+    margin-bottom: 64px
 
 .m-bot-32
     margin-bottom: 32px
@@ -470,3 +503,34 @@ $unit128: 128px
 
 .point
     cursor: pointer
+
+.go-green
+    transform-origin: center center
+    transition: 0.07s
+    cursor: pointer
+    &:hover
+        transform: scale(0.9)
+        svg path
+            fill: var(--green)
+
+.mainbutton
+    color: white
+    max-width: 160px
+    background: var(--green)
+    width: max-content
+    border: 2px solid transparent
+    padding: 2px 12px 0 12px
+    border-radius: 3px
+    transform-origin: center center
+    transition: 0.08s
+    letter-spacing: -0.12px
+    cursor: pointer
+    font-size: 14px
+    text-transform: uppercase
+    font-weight: 500
+    line-height: 1.75
+    font-family: var(--coder)
+    &:hover
+        border: 2px solid var(--green)
+        color: var(--gret)
+        background: white

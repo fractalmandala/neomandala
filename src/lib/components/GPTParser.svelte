@@ -67,8 +67,13 @@
 	>
 	{#each blocks as block}
 		{#if block.type === 'text'}
-		<div class="rta-column nocodeparent">
-			<pre transition:slide>{block.content}</pre>
+		<div class="rta-column rowgap100 nocodeparent">
+            {#if fullText}
+                <pre transition:slide>{block.content}</pre>
+                <button class="mainbutton" on:click={toggleText}>Close</button>
+            {:else}
+			    <pre transition:slide>{block.content.slice(0,100)}...<span class="green" style="cursor: pointer" on:click={toggleText} on:keydown={fauxfake}>READ MORE</span></pre>
+            {/if}
 		</div>
 		{:else}
 		<div class="rta-column codeparent">
@@ -102,10 +107,6 @@
 .codeblock code
 	word-wrap: break-all
 	font-size: 16px
-
-
-pre
-	overflow: hidden
 
 
 </style>

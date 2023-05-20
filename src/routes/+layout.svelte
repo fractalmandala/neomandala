@@ -3,6 +3,7 @@
 import { onMount } from 'svelte'
 import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores'
 import '$lib/styles/theme.sass'
+import '$lib/styles/typography.sass'
 import TransitionPage from '$lib/components/TransitionPage.svelte'
 import Modal from '$lib/components/Modal.svelte'
 import { showDrawer, hideDrawer, initialDrawer, drawerStore, audioStore } from '$lib/stores/modalstores'
@@ -93,6 +94,7 @@ export let data
 .app-shell
     display: grid
     grid-auto-flow: row
+    width: 100vw
     .menubar
         grid-area: menubar
     .pagearea

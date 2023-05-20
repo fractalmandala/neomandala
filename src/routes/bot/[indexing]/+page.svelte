@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
+    import GPTParser from '$lib/components/GPTParser.svelte'
     import Prism from 'prismjs';
     import '$lib/prismextras.js'
     import '$lib/styles/prismextras.css'
@@ -29,7 +30,7 @@
         {#if chatStream && chatStream.length > 0}
             {#each chatStream as item, i}
                 <pre class="rta-column breaker">
-                    {item.value}
+                    <GPTParser response={item.value}/>
                 </pre>
             {/each}
         {/if}

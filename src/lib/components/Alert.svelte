@@ -1,9 +1,13 @@
 <script lang="ts">
-  import { uiStore } from '$lib/stores/modalstores';
+  import { toastStore, hideToast } from '$lib/stores/modalstores';
 
   let alertContent:any = null;
 
-  uiStore.subscribe(({ alert }) => {
+  function handleCloseClick() {
+    hideToast();
+  }
+
+  toastStore.subscribe(() => {
     alertContent = alert;
   });
 </script>
@@ -12,6 +16,6 @@
 <div class="alert">
   <h2>{alertContent.title}</h2>
   <svelte:component this={alertContent.component} {...alertContent.props} />
-  <button on:click={() => uiStore.close()}>Close</button>
+  <button on:click={handleCloseClick}>Close</button>
 </div>
 {/if}

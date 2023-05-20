@@ -12,7 +12,6 @@
         fake = !fake
     }
 
-
     onMount(async() => {
         pens = await allWebdev();
     })
@@ -21,19 +20,19 @@
 
 
 <div class="rta-grid grid2 right00 screen fullH cushion back">
-    {#if pens && pens.length > 0}
-        <div class="rta-grid grid3 colgap300 rowgap300">
+    <div class="rta-grid grid3 colgap300 rowgap100">
+        {#if pens && pens.length > 0}
             {#each pens as item}
                 <a class="rta-column ybetween rowgap400 ticket" href="{item.linkpath}">
                     <div class="rta-column rowgap200 null">
                         <p><i>{item.meta.type}</i></p>
-                        <h4 class="tt-u">{item.meta.id} - {item.meta.title}</h4>
+                        <h5 class="tt-u">{item.meta.id} - {item.meta.title}</h5>
                         <small>{item.meta.tags}</small>
                     </div>
                 </a>
             {/each}
-        </div>
-    {/if}
+        {/if}
+    </div>
     <div class="rta-column titlebox null">
         <img class="jello-vertical" src="/images/k-webdev.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">code</h3>

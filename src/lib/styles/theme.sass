@@ -2,26 +2,6 @@ body, html
     margin: 0
     box-sizing: border-box
 
-pre
-    overflow-x: auto
-    box-sizing: border-box
-    white-space: pre-wrap
-    white-space: -moz-pre-wrap
-    white-space: -pre-wrap
-    white-space: -o-pre-wrap
-    word-wrap: break-word
-    word-break: break-word
-
-.breaker
-    overflow-x: auto
-    box-sizing: border-box
-    white-space: pre-wrap
-    white-space: -moz-pre-wrap
-    white-space: -pre-wrap
-    white-space: -o-pre-wrap
-    word-wrap: break-word
-    word-break: break-word
-
 :root
     box-sizing: border-box
     font-family: 'Space Mono', monospace
@@ -60,84 +40,6 @@ $unit48: 48px
 $unit64: 64px
 $unit80: 80px
 $unit128: 128px
-
-a
-    text-decoration: none
-    color: inherit
-
-a.hover
-    &:hover
-        color: var(--green)
-
-p
-    font-weight: 400
-    font-family: 'Space Grotesk', sans-serif
-
-p.grey
-    color: var(--textone)
-
-p.white
-    color: white
-
-h5.white
-    color: white
-
-pre
-    font-family: 'Space Mono', monospace
-
-code
-    font-family: 'Space Mono', monospace
-
-.ticket
-    p, ul li, ol li
-        font-size: 1.12em
-        position: relative
-        &::after
-            position: absolute
-            bottom: -8px
-            left: 0
-            width: 20%
-            height: 2px
-            content: ''
-            background: var(--green)
-    h4
-        font-family: 'Space Grotesk', sans-serif
-
-.tt-u
-    text-transform: uppercase
-
-.null
-    p, h1, h5, h6, h4, h3, h2, small
-        margin: 0
-
-p, h6, small, blockquote, h5, h4, h3, h2, h1
-    margin: 1.5em 0 1em 0
-
-h3
-    font-size: 2.8em
-    font-family: 'Space Grotesk', sans-serif
-    font-weight: 800
-    letter-spacing: -1.5px
-
-h4
-    font-size: 2em
-    letter-spacing: -1px
-    line-height: 1.12
-
-small
-    color: var(--textone)
-
-h5
-    font-size: 1.44em
-    font-family: 'Space Grotesk', sans-serif
-    font-weight: 800
-    letter-spacing: -0.25px
-
-h6
-    font-size: 1.32em
-    font-family: 'Space Mono', monospace
-    text-transform: uppercase
-    letter-spacing: -0.3px
 
 .rta-column
     display: flex
@@ -354,7 +256,10 @@ h6
         grid-template-columns: 1fr 24%
         grid-template-areas: ". ."
     .grid2.right00
-        grid-template-columns: 1fr 20%
+        grid-template-columns: 1fr 200px
+        grid-template-areas: ". ."
+    .grid2.left00
+        grid-template-columns: 200px 1fr
         grid-template-areas: ". ."
     .grid2.left
         grid-template-columns: 32% 1fr
@@ -440,7 +345,7 @@ h6
     text-align: right
     padding-left: 32px
     row-gap: 16px
-    height: calc(100vh - 64px)
+    height: calc(100vh - 128px)
     position: sticky
     align-items: flex-end
     top: 32px
@@ -448,8 +353,6 @@ h6
         object-fit: contain
         width: 50%
         border-radius: 50%
-    h4, h3
-        margin: 0
 
 .levelzero
     .titlebox
@@ -519,15 +422,6 @@ h6
     @media screen and (max-width: 1023px)
         height: 8vh
 
-
-.writing
-    p
-        font-size: 1.2em
-        font-family: 'Space Mono', monospace
-        letter-spacing: -0.7px
-        font-weight: 500
-        line-height: 1.4
-
 .levelzero
     .writing
         width: 720px
@@ -545,6 +439,9 @@ h6
 .p-top-32
     padding-top: 32px
 
+.p-all-16
+    padding: 16px
+
 .p-bot-32
     padding-bottom: 32px
 
@@ -556,9 +453,6 @@ h6
 
 .m-top-16
     margin-top: 16px
-
-.thinner
-    padding-right: 32px
 
 .whitebutton
     border: 1px solid white
@@ -572,3 +466,7 @@ h6
     transition: 0.07s
     &:hover
         transform: scale(0.9)
+
+
+.point
+    cursor: pointer

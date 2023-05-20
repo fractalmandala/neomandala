@@ -34,3 +34,20 @@ export function hideDrawer(){
 }
 
 export const audioStore = writable(null);
+
+
+const initialToast = {
+  isShown: false,
+  title: '',
+  message: '',
+}
+
+export const toastStore = writable(initialToast);
+
+export function showToast(title:string, message:string) {
+  toastStore.update(state => ({...state, isShown: true, title, message}));
+}
+
+export function hideToast() {
+  toastStore.update(state => ({...state, isShown: false, title: '', message: ''}));
+}

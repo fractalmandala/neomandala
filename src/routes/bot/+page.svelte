@@ -25,18 +25,18 @@
 
 
 <div class="rta-grid grid2 right00 screen fullH cushion back">
-    {#if pens && pens.length > 0}
-        <div class="rta-grid grid2 colgap300 rowgap300 breaker">
+    <div class="rta-grid grid3 colgap300 rowgap100">
+        {#if pens && pens.length > 0}
             {#each pens as item}
-                <a class="rta-column ybetween rowgap400 ticket" href="/bot/{item.indexing}">
+                <a class="rta-column ybetween rowgap100 ticket" href="/bot/{item.indexing}">
                     <div class="rta-column rowgap200 null">
-                        <h4 class="tt-u">{item.indexing} - {item.title}</h4>
+                        <h5 class="tt-u">{item.indexing} - {item.title}</h5>
                         <small>{item.theme}</small>
                     </div>
                 </a>
             {/each}
-        </div>
-    {/if}
+        {/if}
+    </div>
     <div class="rta-column titlebox null">
         <img class="jello-vertical" src="/images/k-gpt.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">bot</h3>
@@ -50,7 +50,8 @@
     padding: 16px
     transition: 0.07s
     border-radius: 6px
+    overflow: visible
     &:hover
-        box-shadow: 5px 8px 12px #e1e1e1 inset, -5px -4px 10px #f1f1f1 inset
+        box-shadow: 5px 8px 12px #e1e1e1, -5px -4px 10px #f1f1f1
 
 </style>

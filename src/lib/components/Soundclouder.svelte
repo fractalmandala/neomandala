@@ -6,7 +6,7 @@
 	$: if ( iW <= 786 ) {
 		height = '100px'
 	}	 else {
-		height = '360px'
+		height = '280px'
 	}
 
 	export let soundcloudLink: string = ''

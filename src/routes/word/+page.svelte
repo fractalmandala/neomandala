@@ -20,8 +20,8 @@
 
 
 <div class="rta-grid grid2 right00 screen fullH cushion back">
-    {#if pens && pens.length > 0}
-        <div class="rta-grid colgap300 rowgap100 seven">
+    <div class="rta-grid colgap300 rowgap100">
+        {#if pens && pens.length > 0}
             {#each pens as item}
                 <a class="rta-column ybetween ticket" href="{item.linkpath}">
                     <div class="rta-column rowgap100 null">
@@ -31,8 +31,8 @@
                     </div>
                 </a>
             {/each}
-        </div>
-    {/if}
+        {/if}
+    </div>
     <div class="rta-column titlebox null">
         <img class="jello-vertical" src="/images/k-writings.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake} />
         <h3 class="tt-u">word</h3>

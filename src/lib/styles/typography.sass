@@ -1,0 +1,115 @@
+code
+    font-family: 'Space Mono', monospace
+    font-size: 1em !important
+
+pre
+    overflow-x: auto
+    box-sizing: border-box
+    white-space: pre-wrap
+    white-space: -moz-pre-wrap
+    white-space: -pre-wrap
+    white-space: -o-pre-wrap
+    word-wrap: break-word
+    word-break: break-word
+    font-family: 'Space Mono', monospace
+
+.breaker
+    overflow-x: auto
+    box-sizing: border-box
+    white-space: pre-wrap
+    white-space: -moz-pre-wrap
+    white-space: -pre-wrap
+    white-space: -o-pre-wrap
+    word-wrap: break-word
+    word-break: break-word
+
+a
+    text-decoration: none
+    color: inherit
+
+a.hover
+    &:hover
+        color: var(--green)
+
+p
+    font-weight: 400
+    font-family: 'Space Grotesk', sans-serif
+
+p.grey
+    color: var(--textone)
+
+p.white, small.white
+    color: white
+
+h5.white
+    color: white
+
+.ticket
+    p, ul li, ol li
+        font-size: 1.12em
+        position: relative
+        &::after
+            position: absolute
+            bottom: -8px
+            left: 0
+            width: 20%
+            height: 2px
+            content: ''
+            background: var(--green)
+    h4
+        font-family: 'Space Grotesk', sans-serif
+
+a.ticket
+    &:hover
+        h4
+            color: var(--green)
+
+.tt-u
+    text-transform: uppercase
+
+.null
+    p, h1, h5, h6, h4, h3, h2, small
+        margin: 0
+
+p, h6, small, blockquote, h5, h4, h3, h2, h1
+    margin: 1.5em 0 1em 0
+
+h3
+    font-size: 2.8em
+    font-family: 'Space Grotesk', sans-serif
+    font-weight: 800
+    letter-spacing: -1.5px
+
+h4
+    font-size: 2em
+    letter-spacing: -1px
+    line-height: 1.12
+
+small
+    color: var(--textone)
+
+h5
+    font-size: 1.44em
+    font-family: 'Space Grotesk', sans-serif
+    font-weight: 800
+    letter-spacing: -0.25px
+
+h6
+    font-size: 1.32em
+    font-family: 'Space Mono', monospace
+    text-transform: uppercase
+    letter-spacing: -0.3px
+
+.titlebox
+    h4, h3
+        margin: 0
+
+.writing
+    p, li, blockquote, pre
+        font-size: 1.2em
+        font-family: 'Space Mono', monospace
+        letter-spacing: -0.3px
+        font-weight: 500
+        line-height: 1.4
+    pre code
+        font-size: 1em

@@ -15,7 +15,7 @@
 		transition: 0.13s
 		transform-origin: center center
 		path
-			fill: var(--gret)
+			fill: #272727
 	&:hover
 		svg path
 			fill: var(--gret)

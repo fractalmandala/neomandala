@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { uiStore } from '$lib/stores/modalstores';
+  import { toastStore, hideToast } from '$lib/stores/modalstores';
 
-  let toastContent:any = null;
+  let alertContent:any = null;
 
-  uiStore.subscribe(({ toast }) => {
-    toastContent = toast;
+  function handleCloseClick() {
+    hideToast();
+  }
+
+  toastStore.subscribe(() => {
+    alertContent = alert;
   });
 </script>
 
-{#if toastContent}
-<div class="toast">
-  <svelte:component this={toastContent.component} {...toastContent.props} />
-  <button on:click={() => uiStore.close()}>Close</button>
+{#if alertContent}
+<div class="alert">
+  <h2>{alertContent.title}</h2>
+  <svelte:component this={alertContent.component} {...alertContent.props} />
+  <button on:click={handleCloseClick}>Close</button>
 </div>
 {/if}

@@ -68,7 +68,7 @@
 	{#each blocks as block}
 		{#if block.type === 'text'}
 		<div class="rta-column nocodeparent">
-			<pre class="cutthis" transition:slide>{block.content}</pre>
+			<pre transition:slide>{block.content}</pre>
 		</div>
 		{:else}
 		<div class="rta-column codeparent">
@@ -101,7 +101,11 @@
 
 .codeblock code
 	word-wrap: break-all
-	font-size: 1em
+	font-size: 16px
+
+
+pre
+	overflow: hidden
 
 
 </style>

@@ -50,7 +50,7 @@
     padding: 16px
     transition: 0.07s
     border-radius: 6px
-    overflow: visible
+    overflow: hidden
     &:hover
         box-shadow: 5px 8px 12px #e1e1e1, -5px -4px 10px #f1f1f1
 

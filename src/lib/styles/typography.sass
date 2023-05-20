@@ -1,6 +1,5 @@
 code
     font-family: 'Space Mono', monospace
-    font-size: 1em !important
 
 pre
     overflow-x: auto
@@ -45,8 +44,8 @@ h5.white
     color: white
 
 .ticket
-    p, ul li, ol li
-        font-size: 1.12em
+    >p, li
+        font-size: 18px
         position: relative
         &::after
             position: absolute
@@ -71,8 +70,8 @@ a.ticket
     p, h1, h5, h6, h4, h3, h2, small
         margin: 0
 
-p, h6, small, blockquote, h5, h4, h3, h2, h1
-    margin: 1.5em 0 1em 0
+p, h6, small, blockquote, h5, h4, h3, h2, h1, pre, code
+    margin: 0 0 20px 0
 
 h3
     font-size: 2.8em
@@ -104,12 +103,9 @@ h6
     h4, h3
         margin: 0
 
-.writing
-    p, li, blockquote, pre
-        font-size: 1.2em
-        font-family: 'Space Mono', monospace
-        letter-spacing: -0.3px
-        font-weight: 500
-        line-height: 1.4
-    pre code
-        font-size: 1em
+p, li, blockquote, pre, ol li, ul li
+    font-size: 18px !important
+    font-family: 'Space Mono', monospace
+    letter-spacing: -0.3px
+    font-weight: 500
+    line-height: 1.4

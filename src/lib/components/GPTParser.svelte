@@ -3,13 +3,12 @@
 	import { onMount } from 'svelte'
 	import { slide } from 'svelte/transition'
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores'
+    import { clickToCopyAction } from '$lib/utils/clicktocopy'
+	import { showToast, showAlert } from '$lib/stores/modalstores';
 	import Copy from '$lib/icons/Copy.svelte'
-	import ReadMore from '$lib/icons/ReadMore.svelte'
-	import ReadLess from '$lib/icons/ReadLess.svelte'
 	import Prism from 'prismjs'
 	import '$lib/styles/prism.css'
 	export let response:any 
-	let confirmCopy = false
 	let fake = false
 	let fullText = false
 	let rawBlocks = response.split('```');
@@ -34,15 +33,6 @@
 	    }
 	    blocks.push({ type: 'code', language: language.trim(), code: code.trim() });
 	  }
-	}
-
-
-	function handleCopyDone(){
-		confirmCopy = !confirmCopy
-	}
-
-	function handleCopyError(){
-		console.log('error')
 	}
 
   onMount(() => {
@@ -79,7 +69,7 @@
 		<div class="rta-column codeparent">
 			<div class="rta-row ycenter between">
 				<small class="white">{block.language}</small>
-				<button class="blank-button">
+				<button class="blank-button" use:clickToCopyAction={block.code} on:copy-done={() => showToast('Copied!')} on:copy-error={() => showAlert('Failed!')}>
                     <Copy/>
 				</button>
 			</div>

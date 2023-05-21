@@ -18,19 +18,24 @@ body, html
     background-size: cover
     background-repeat: no-repeat
 
+.minH
+    min-height: 100vh
+
 
 .dark
     --background: #FFFFFF
     --textone: #a1a1a1
     --opposite: #272727
-    --borderline: #d7d7d7
+    --borderline: #272727
+    --greyish: #878787
 
 
 .light
     --background: #121212
     --textone: #373737
     --opposite: #FFFFFF
-    --borderline: #272727
+    --borderline: #d7d7d7
+    --greyish: #878787
 
 $unit4: 4px
 $unit8: 8px
@@ -238,6 +243,9 @@ $unit128: 128px
 
 
 @media screen and (min-width: 1024px)
+    .grid8
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+        grid-template-areas: ". . . . . . . ."
     .grid6
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
         grid-template-areas: ". . . . . ."
@@ -366,9 +374,31 @@ $unit128: 128px
         font-family: 'Space Grotesk', sans-serif !important
         font-weight: 400
 
+.rightbox
+    text-align: right
+    row-gap: 16px
+    height: 100%
+    border-left: 1px solid var(--borderline)
+    align-items: flex-end
+    padding-top: 32px
+    padding-left: 32px
+    padding-right: 32px
+    img
+        object-fit: contain
+        width: 50%
+        border-radius: 50%
+    p.grey
+        font-size: 16px !important
+        font-family: 'Space Grotesk', sans-serif !important
+        font-weight: 400
+
 .levelzero
     .titlebox
         width: 280px
+
+.levelzero
+    .rightbox
+        width: 240px
 
 .height-80
     @media screen and (min-width: 1024px)
@@ -430,6 +460,12 @@ $unit128: 128px
     @media screen and (max-width: 1023px)
         height: 8vh
 
+.height-16
+    @media screen and (min-width: 1024px)
+        height: 16vh
+    @media screen and (max-width: 1023px)
+        height: 8vh
+
 .levelzero
     .writing
         width: 800px
@@ -462,6 +498,9 @@ $unit128: 128px
 
 .p-top-16
     padding-top: 16px
+
+.p-top-8
+    padding-top: 8px
 
 .p-bot-16
     padding-bottom: 16px
@@ -534,3 +573,7 @@ $unit128: 128px
         border: 2px solid var(--green)
         color: var(--gret)
         background: white
+
+
+.titlebox.invisible
+    opacity: 0

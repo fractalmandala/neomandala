@@ -1,13 +1,18 @@
 <script lang="ts">
 
 import { onMount } from 'svelte'
-import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores'
+import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
 import '$lib/styles/theme.sass'
 import '$lib/styles/typography.sass'
 import TransitionPage from '$lib/components/TransitionPage.svelte'
+import SideTrans from '$lib/components/SidebarTransition.svelte'
+import ArrowUp from '$lib/components/ArrowUp.svelte'
+import Read from '$lib/icons/Reading.svelte'
 import Modal from '$lib/components/Modal.svelte'
-import { showDrawer, hideDrawer, initialDrawer, drawerStore, audioStore } from '$lib/stores/modalstores'
+import { showDrawer, hideDrawer, initialDrawer, drawerStore, audioStore, toastStore, alertStore } from '$lib/stores/modalstores'
 import Drawer from '$lib/components/Drawer.svelte'
+import Toast from '$lib/components/Toast.svelte'
+import Alert from '$lib/components/Alert.svelte'
 import Search from '$lib/icons/Search.svelte'
 import Dark from '$lib/icons/DarkMode.svelte'
 import '$lib/styles/animate.css'
@@ -54,6 +59,8 @@ export let data
     class:light={$themeMode}
     class:dark={!$themeMode}
     >
+    {#key data.pathname}
+    <SideTrans>
     <section class="menubar">
         <div class="rta-column rowgap300 null">
             <a href="/">
@@ -68,7 +75,7 @@ export let data
             <p><a class="hover" href="/image">Image</a></p>
             <p><a href="/video" class="hover">Video</a></p>
             <p><a href="/build" class="hover">Build</a></p>
-            <p class="white">{$themeMode}</p>
+            <p>{$themeMode}</p>
             </div>
         </div>
         <div class="row-column rowgap500">
@@ -80,6 +87,8 @@ export let data
             <Dark/>
         </div>
     </section>
+    </SideTrans>
+    {/key}
     <section class="pagearea">
         {#key data.pathname}
             <TransitionPage>
@@ -87,12 +96,23 @@ export let data
             </TransitionPage>
         {/key}
     </section>
+    <div class="rta-row fixedicons colgap100">
+        <ArrowUp/>
+        <Read/>
+    </div>
     <Modal/>
     <Drawer/>
+    <Toast/>
+    <Alert/>
     <audio src="/sounds/boing2.mp3"/>
 </div>
 
 <style lang="sass">
+
+.fixedicons
+    position: fixed
+    bottom: 32px
+    right: 24px
 
 .app-shell
     display: grid
@@ -132,13 +152,19 @@ export let data
 
 
 .menubar
-    background-color: hsla(143,6%,4%,1)
-    background-image: radial-gradient(at 40% 20%, hsla(101,87%,5%,0.4) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(97,72%,9%,0.1) 0px, transparent 50%)
     p
         color: white
         text-transform: uppercase
         font-size: 16px
     p a
         font-size: 16px
+
+.light
+    .menubar
+        background: #171717
+
+.dark
+    .menubar
+        background: #171717
 
 </style>

@@ -17,6 +17,15 @@ export async function supaImages(low:number, top:number){
     return data
 }
 
+export async function womboImages(){
+    const { data, error } = await supabase
+    .from('amrit-wombo')
+    .select()
+    .order('id', {ascending: false})
+    if (error) throw new Error(error.message)
+    return data
+}
+
 export async function thisImage(id:number){
     const { data, error } = await supabase
     .from('amrit-gallery')
@@ -26,12 +35,11 @@ export async function thisImage(id:number){
     return data
 }
 
-export async function gptTitles(low:number, top: number){
+export async function gptTitles(){
     const { data, error } = await supabase
     .from('amrit-gpttitles')
     .select()
     .order('nextid', {ascending: false})
-    .range(low, top)
     if (error) throw new Error(error.message)
     return data
 }
@@ -71,6 +79,16 @@ export async function pageWritings(id:number){
     .from('amrit-posts')
     .select()
     .eq('id', id)
+    if (error) throw new Error(error.message)
+    return data
+}
+
+export async function featuredWritings(){
+    const { data, error } = await supabase
+    .from('amrit-posts')
+    .select()
+    .eq('featured', true)
+    .order('id', {ascending: false})
     if (error) throw new Error(error.message)
     return data
 }

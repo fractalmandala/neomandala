@@ -2,6 +2,8 @@
 
     import { onMount } from 'svelte'
     import { thisWebdev } from '$lib/utils/localpulls'
+    import { readingMode } from '$lib/stores/globalstores'
+	import Copy from '$lib/icons/Copy.svelte'
     import Pagination from '$lib/components/Pagination.svelte'
     import ChevFRight from '$lib/icons/ChevFRight.svelte'
     import ChevFLeft from '$lib/icons/ChevFLeft.svelte'
@@ -34,7 +36,7 @@
     <div class="rta-column writing postis codeis p-top-64">
         <svelte:component this={data.content}/>
     </div>
-    <div class="rta-column titlebox">
+    <div class="rta-column titlebox" class:invisible={$readingMode}>
         <a href="/code" class="rta-row null ycenter">
             <small>Code</small>
             <ChevRight/>

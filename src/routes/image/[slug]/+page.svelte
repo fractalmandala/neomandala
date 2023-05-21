@@ -2,6 +2,7 @@
 
     import { onMount } from 'svelte'
     import { thisImage } from '$lib/utils/supabase'
+    import { readingMode } from '$lib/stores/globalstores'
 
     let nextImage:any
     let nextID:any
@@ -21,7 +22,7 @@
     <div class="rta-column writing">
         <img src={data.link} alt={data.id}/>
     </div>
-    <div class="rta-column titlebox ybetween">
+    <div class="rta-column titlebox ybetween" class:invisible={$readingMode}>
         <h4 class="tt-u">{data.id}</h4>
         {#if nextImage && nextImage.length > 0}
             {#each nextImage as item}

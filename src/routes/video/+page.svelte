@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte'
 	import { allVideos } from '$lib/utils/localpulls'
     import { audioStore } from '$lib/stores/modalstores'
+    import { readingMode } from '$lib/stores/globalstores'
 	import Youtuber from '$lib/components/Youtuber.svelte'
 
 	let images:any
@@ -39,7 +40,7 @@
             {/each}
         </div>
     {/if}
-    <div class="rta-column titlebox null">
+    <div class="rta-column titlebox null" class:invisible={$readingMode}>
         <img class="jello-vertical" src="/images/k-videos.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">video</h3>
         <p class="grey">Come bore yourself to my incessant dronings...</p>

@@ -3,6 +3,8 @@
     import { onMount } from 'svelte'
     import { allWebdev } from '$lib/utils/localpulls'
     import { audioStore } from '$lib/stores/modalstores'
+    import { readingMode } from '$lib/stores/globalstores'
+
     import Pagination from '$lib/components/Pagination.svelte'
     import ChevFRight from '$lib/icons/ChevFRight.svelte'
     import ChevFLeft from '$lib/icons/ChevFLeft.svelte'
@@ -36,7 +38,7 @@
             {/each}
         {/if}
     </div>
-    <div class="rta-column titlebox null">
+    <div class="rta-column titlebox null" class:invisible={$readingMode}>
         <img class="jello-vertical" src="/images/k-webdev.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">code</h3>
         <p class="grey">Just enough HTML, CSS and JS to have put this site together. And a bit more...</p>

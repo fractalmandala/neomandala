@@ -2,7 +2,7 @@
 title: Store of Fonts
 tags: typography
 type: ui
-featured: true
+featured: false
 id: 4
 ---
 

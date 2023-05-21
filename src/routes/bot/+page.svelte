@@ -2,6 +2,7 @@
 
     import { onMount } from 'svelte'
     import { gptTitles } from '$lib/utils/supabase'
+    import { readingMode } from '$lib/stores/globalstores'
     import { audioStore } from '$lib/stores/modalstores'
     let pens:any
     let thisChat:any
@@ -18,7 +19,7 @@
 
 
     onMount(async() => {
-        pens = await gptTitles(low, top);
+        pens = await gptTitles();
     })
 
 </script>
@@ -37,7 +38,7 @@
             {/each}
         {/if}
     </div>
-    <div class="rta-column titlebox null">
+    <div class="rta-column titlebox null" class:invisible={$readingMode}>
         <img class="jello-vertical" src="/images/k-gpt.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">bot</h3>
         <p class="grey">he thinks, therefore he is?</p>

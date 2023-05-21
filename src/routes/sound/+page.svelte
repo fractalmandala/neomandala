@@ -2,6 +2,7 @@
 
     import { onMount } from 'svelte'
 	import { allMusic } from '$lib/utils/localpulls'
+    import { readingMode } from '$lib/stores/globalstores'
     import { audioStore } from '$lib/stores/modalstores'
    	import Soundclouder1 from '$lib/components/Soundclouder.svelte' 
 
@@ -30,7 +31,7 @@
 			{/each}
         {/if}
     </div>
-    <div class="rta-column titlebox null">
+    <div class="rta-column titlebox null" class:invisible={$readingMode}>
         <img class="jello-vertical" src="/images/k-music.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">sound</h3>
         <p class="grey">because electronic music takes us to a place we want to go to...</p>

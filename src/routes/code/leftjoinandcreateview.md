@@ -8,7 +8,7 @@ id: 10
 
 Say I want to join 2 tables and create a new view out of them.
 
-```sql
+```
 create view "dictionarywordrootsvedicconcordance" as
 select w.form, w.root, w.class, w.person, w.number, w.wordmode, w.voice,
 d.word as dword, d.grammar, d.meanings,

@@ -15,7 +15,7 @@ So, we have a Sveltekit project set up, and we have an OpenAI API key, let's beg
 #### API Key and OpenAI installation.
 If you do not have this already, create a file named '.env' in the root folder of your project, and store the API key there like so:
 
-```bash
+```
 VITE_OPENAI_API_KEY="your-key-here"
 ```
 
@@ -27,7 +27,7 @@ import { VITE_OPENAI_API_KEY } from '$env/static/private'
 
 And this is how you can use any private keys in fact. Next, install OpenAI's javascript library:
 
-```bash
+```
 npm install openai
 ```
 

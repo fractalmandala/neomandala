@@ -1,6 +1,7 @@
 <script lang="ts">
 
-	import { showModal } from '$lib/stores/modalstores';
+	import { showModal, showToast, showAlert } from '$lib/stores/modalstores';
+    import { readingMode } from '$lib/stores/globalstores'
 	import { SpeechSettings, SpeechStore } from 'talk2svelte';
 	import { audioStore } from '$lib/stores/modalstores';
 	import { filter } from 'rxjs';
@@ -45,8 +46,9 @@
 	<div class="rta-image height-80 postgrid">
 		<img src="/images/psychedelic.webp" alt="psychedelic" />
 		<button on:click={() => showModal('Page 1 Modal', 'Hello from Page 1')}>Show modal</button>
+        <button on:click={() => showToast('Hello!')}>Show Toast</button>
 	</div>
-	<div class="rta-column titlebox null">
+	<div class="rta-column titlebox null" class:invisible={$readingMode}>
 		<img
 			class="jello-vertical"
 			src="/images/k-build.png"

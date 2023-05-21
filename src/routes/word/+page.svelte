@@ -2,6 +2,7 @@
 //@ts-nocheck
     import { onMount } from 'svelte'
     import { audioStore } from '$lib/stores/modalstores'
+    import { readingMode } from '$lib/stores/globalstores'
     import { allWritings } from '$lib/utils/supabase'
     let pens:any
     let audio:any
@@ -36,7 +37,7 @@
             {/each}
         {/if}
     </div>
-    <div class="rta-column titlebox null">
+    <div class="rta-column titlebox null" class:invisible={$readingMode}>
         <img class="jello-vertical" src="/images/k-writings.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake} />
         <h3 class="tt-u">word</h3>
         <p class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</p>

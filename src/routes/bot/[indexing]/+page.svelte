@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
+    import { readingMode } from '$lib/stores/globalstores'
     import GPTParser from '$lib/components/GPTParser.svelte'
     import Pagination from '$lib/components/Pagination.svelte'
     import Prism from 'prismjs';
@@ -42,7 +43,7 @@
             {/each}
         {/if}
     </div>
-    <div class="rta-column titlebox">
+    <div class="rta-column titlebox" class:invisible={$readingMode}>
         <a href="/bot" class="rta-row null ycenter">
             <small>Bot</small>
             <ChevRight/>

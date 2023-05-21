@@ -39,15 +39,31 @@ export const audioStore = writable(null);
 const initialToast = {
   isShown: false,
   title: '',
-  message: '',
+  component: null
 }
 
 export const toastStore = writable(initialToast);
 
-export function showToast(title:string, message:string) {
-  toastStore.update(state => ({...state, isShown: true, title, message}));
+export function showToast(title:string, component = null) {
+  toastStore.update(state => ({...state, isShown: true, title, component}));
 }
 
 export function hideToast() {
-  toastStore.update(state => ({...state, isShown: false, title: '', message: ''}));
+  toastStore.update(state => ({...state, isShown: false, title: '', component: null}));
+}
+
+const initialAlert = {
+  isShown: false,
+  title: '',
+  component: null
+}
+
+export const alertStore = writable(initialAlert);
+
+export function showAlert(title:string, component = null) {
+  alertStore.update(state => ({...state, isShown: true, title, component}));
+}
+
+export function hideAlert() {
+  alertStore.update(state => ({...state, isShown: false, title: '', component: null}));
 }

@@ -30,6 +30,6 @@
 		svg
 			transform: scale(1.2)
 			path
-				fill: var(--gret)
+				fill: var(--green)
 
 </style>

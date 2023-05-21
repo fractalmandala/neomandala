@@ -1,4 +1,5 @@
 import { writable, derived } from 'svelte/store';
+import { get, type Readable, type Writable } from "svelte/store"
 import { browser } from '$app/environment' 
 
 const initialWidth = browser ? window.innerWidth : 1024;
@@ -38,3 +39,24 @@ export const breakZeroOne = derived(
 	$windowWidth => $windowWidth <= 1023
 );
 
+export function writableToReadable<T>({ subscribe }: Writable<T>): Readable<T> {
+	return { subscribe: subscribe };
+}
+
+export function isReadable<T>(ref: T | Readable<T>): boolean {
+	if (ref === null) return false;
+
+	if (typeof ref === "object") {
+		return "subscribe" in ref;
+	}
+
+	return false;
+}
+
+export function unwrapReadable<T>(ref: T | Readable<T>) {
+	if (isReadable(ref)) {
+		return get(ref as Readable<T>);
+	}
+
+	return ref as T;
+}

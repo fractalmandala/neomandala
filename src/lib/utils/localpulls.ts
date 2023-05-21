@@ -18,6 +18,25 @@ export async function allWebdev(){
 	return eachfiled
 }
 
+export async function featuredWebdev(){
+	const allfiles = import.meta.glob('/src/routes/code/*.md')
+	const filed = Object.entries(allfiles)
+	const eachfiled = await Promise.all(
+		filed.map(async([path, resolver]) => {
+			// @ts-ignore
+			const { metadata } = await resolver()
+			const postPath = path.slice(11,-3)
+			return {
+				meta: metadata,
+				linkpath: postPath,
+			}
+		})
+	)
+	eachfiled.sort((a, b) => b.meta.id - a.meta.id);
+    const filteredFiled = eachfiled.filter((post) => post.meta.featured === true)
+	return filteredFiled
+}
+
 export async function thisWebdev(id:any){
 	const allfiles = import.meta.glob('/src/routes/code/*.md')
 	const filed = Object.entries(allfiles)

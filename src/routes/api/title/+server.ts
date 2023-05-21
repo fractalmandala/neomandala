@@ -21,7 +21,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		}
 
 		const reqMessages: ChatCompletionRequestMessage[] = requestData.messages
-        const prompt: string = requestData.prompt
+        const prompt: string = 'For the prompt you are given, create a title summarizing it in 10 words or less. Do nothing else.'
 
 		if (!reqMessages) {
 			throw new Error('no messages provided')

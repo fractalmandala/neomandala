@@ -66,8 +66,7 @@ export let data
             <a href="/">
                 <Motif/>
             </a>
-            <div class="rta-column rowgap100">
-            <p>AI</p>
+            <div class="rta-column rowgap200">
             <p><a class="hover" href="/bot">Bot</a></p>
             <p><a class="hover" href="/word">Word</a></p>
             <p><a class="hover" href="/code">Code</a></p>
@@ -75,7 +74,6 @@ export let data
             <p><a class="hover" href="/image">Image</a></p>
             <p><a href="/video" class="hover">Video</a></p>
             <p><a href="/build" class="hover">Build</a></p>
-            <p>{$themeMode}</p>
             </div>
         </div>
         <div class="row-column rowgap500">

@@ -18,10 +18,10 @@
 </script>
 
 <div class="boxofchat rta-column null {type === 'user' ? 'chat-end' : 'chat-start'}" in:fade={{ duration: 300, delay: 50, easing: elasticOut }} class:packaged={pressed}>
-	<small class="tt-u agent {type === 'user' ? 'user' : 'broGPT'}">
-		{type === 'user' ? 'user' : 'broGPT'}:
+	<small class="tt-u agent {type === 'user' ? 'user' : 'gptBoi'}">
+		{type === 'user' ? 'user' : 'gptBoi'}:
 	</small>
-	<pre class="commbody {type === 'user' ? 'user' : 'broGPT'}">
+	<pre class="commbody {type === 'user' ? 'user' : 'gptBoi'}">
 		{@html message}
 	</pre>
 </div>

@@ -9,9 +9,13 @@
 <style lang="sass">
 
 .rta-icon
+    cursor: pointer
     svg
         width: 24px
         height: 24px
         object-fit: contain
+    &:hover
+        svg path
+            fill: var(--green)
 
 </style>

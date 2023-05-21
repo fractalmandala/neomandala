@@ -15,7 +15,7 @@
     import { audioStore } from '$lib/stores/modalstores'
     import Refresh from '$lib/icons/Refresh.svelte'
     import Confirm from '$lib/icons/Confirm.svelte'
-    import GPTParser from '$lib/components/GPTParser.svelte'
+    import GPTParser from '$lib/agent/Parser.svelte'
     let pens:any
     let thisChat:any
     let audio:any
@@ -141,17 +141,16 @@
     </div>
     {/if}
     {#if $chatMode}
-    <div class="rta-column ybetween minH postgrid" transition:fly>
+    <div class="rta-column ybetween minH chatgrid" transition:fly>
         <div class="rta-column rowgap300 previouschats">
 	        <ChatMessages type="assistant" message="Namaste. How may I help you?" />
-            <p>{$promptStore}</p>
             {#each chats as chat}
                 <div class="userchat ta-r rta-column null bord-top m-top-16 p-top-32">
                     <small class="tt-u">user</small>
                     <p>{chat.userMessage}</p>
                 </div>
                 <div class="gptchat rta-column null">
-                    <small class="tt-u">gpt</small>
+                    <small class="tt-u">gptBoi</small>
                     <GPTParser response={chat.assistantMessage}/>
                 </div>
             {/each}
@@ -165,7 +164,7 @@
 	        	<ChatMessages type="assistant" message="Loading.." />
 	        {/if}
         </div>
-	    <div class="boxc ofform p-bot-32 m-top-32">
+	    <div class="boxc ofform m-top-32">
 	    	<form class="rta-row fullW between" on:submit|preventDefault>
 	    		<textarea bind:value={query}
 	    			on:keydown={fauxfake}
@@ -214,22 +213,12 @@
                     <button class="blank-button" type="submit"><Confirm/></button>
                 </form>
             </div>
-            <div class="rta-column oldchats">
-                {#each chats as chat}
-                    <small>{chat.userMessage.slice(0,10)} <br>
-                        {chat.assistantMessage.slice(0,40)}<br>
-                        {chat.chatId}
-                    </small>
-                {/each}
-            </div>
         {/if}
     </div>
 </div>
 
 <style lang="sass">
 
-.oldchats
-    width: 100%
 
 .botselect
     select
@@ -239,7 +228,21 @@
         border-radius: 4px
 
 .ofform
+    position: fixed
+    bottom: 48px
+    left: 208px
+    width: 800px
+    z-index: 500
+    height: 80px
+    background: white
+    display: flex
+    align-items: center
+    justify-content: center
+    background: var(--contraster)
+    border: 1px solid var(--onlyblack)
+    border-radius: 6px
     form
+        width: 640px
         textarea
             border-radius: 4px
             width: calc(100% - 120px)

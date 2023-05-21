@@ -8,7 +8,6 @@ class ChatDatabase extends Dexie {
         super("ChatDatabase");
         this.version(1).stores({
             chats: '++id, chatId, userMessage, assistantMessage, timestamp',
-            secrets: 'name,value'
         });
         this.chats = this.table("chats");
     }

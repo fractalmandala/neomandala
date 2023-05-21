@@ -9,17 +9,8 @@
 	import Prism from 'prismjs'
 	import '$lib/styles/prism.css'
 	export let response:any 
-	let fake = false
-	let fullText = false
 	let rawBlocks = response.split('```');
 
-	function toggleText(){
-		fullText = !fullText
-	}
-
-	function fauxfake(){
-		fake = !fake
-	}
 
 	let blocks:any = [];
 	for (let i = 0; i < rawBlocks.length; i++) {
@@ -48,7 +39,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </svelte:head>
 
-<div class="rta-column rowgap200 null" transition:slide
+<div class="rta-column null" transition:slide
 	class:dark={!$themeMode}
 	class:light={$themeMode}
 	class:levelzero={$breakZero}
@@ -58,12 +49,7 @@
 	{#each blocks as block}
 		{#if block.type === 'text'}
 		<div class="rta-column rowgap100 nocodeparent">
-            {#if fullText}
-                <pre transition:slide>{block.content}</pre>
-                <button class="mainbutton" on:click={toggleText}>Close</button>
-            {:else}
-			    <pre transition:slide>{block.content.slice(0,100)}...<span class="green" style="cursor: pointer" on:click={toggleText} on:keydown={fauxfake}>READ MORE</span></pre>
-            {/if}
+            <pre transition:slide>{block.content}</pre>
 		</div>
 		{:else}
 		<div class="rta-column codeparent">
@@ -89,10 +75,12 @@
 .codeparent
 	background: #272727
 	padding: 16px
+	border-radius: 6px
 
 .codeblock
 	background: #121212
 	word-wrap: break-all
+
 
 pre.codeblock
 	font-size: 18px

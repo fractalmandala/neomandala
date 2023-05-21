@@ -1,6 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { VITE_APP_KEY } from '$env/static/private';
 
+
 export const POST: RequestHandler = async ({ request }) => {
     try {
         const requestData = await request.json()

@@ -1,4 +1,5 @@
 import { VITE_OPENAI_API_KEY } from '$env/static/private'
+import { VITE_APP_KEY } from '$env/static/private'
 import type { CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai'
 import type { RequestHandler } from './$types'
 import { getTokens } from '$lib/utils/tokenizer'

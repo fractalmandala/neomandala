@@ -67,3 +67,5 @@ const storedChatMode = browser
 	: false;
 
 export const chatMode = writable(storedChatMode)
+
+export const appKey = writable('')

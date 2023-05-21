@@ -2,6 +2,8 @@
 
     import { onMount } from 'svelte'
     import { browser } from '$app/environment'
+	import { showModal, hideModal } from '$lib/stores/modalstores';
+    import ModalSub from '$lib/components/ModalSub.svelte'
     import { fly } from 'svelte/transition'
     import ChatMessages from '$lib/agent/ChatMessages.svelte'
     import { storeChat, getChats } from '$lib/agent/dexie'
@@ -191,13 +193,15 @@
         {#if !$chatMode}
         <p class="grey">he thinks, therefore he is?</p>
         {/if}
-        <button class="mainbutton" on:click={toggleChat} on:keydown={fauxfake}>
-            {#if !$chatMode}
+        {#if !$chatMode}
+        <button class="mainbutton" on:click={() => showModal('Key Input', 'Please input validation key.', ModalSub, {content: 'Try'})} on:keydown={fauxfake}>
             Switch to GPT
-            {:else}
-            Switch to Chats
-            {/if}
         </button>
+        {:else}
+        <button class="mainbutton" on:click={toggleChat} on:keydown={fauxfake}>
+            Back to Chats
+        </button>
+        {/if}
         {#if $chatMode}
             <div class="rta-column rowgap50 botselect">
                 <small><b>Select Bot:</b></small>

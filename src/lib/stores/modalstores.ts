@@ -1,20 +1,22 @@
 import { writable } from "svelte/store";
+import type { SvelteComponent } from 'svelte'
 
 const initialState = {
   isShown: false,
   title: '',
   message: '',
-  component: null
+  component: null,
+  props: {}
 }
 
 export const modalStore = writable(initialState);
 
-export function showModal(title:string, message:string, component = null) {
-  modalStore.update(state => ({...state, isShown: true, title, message, component}));
+export function showModal(title:string, message:string, component:any = null, props: object = {}) {
+  modalStore.update(state => ({...state, isShown: true, title, message, component, props}));
 }
 
 export function hideModal() {
-  modalStore.update(state => ({...state, isShown: false, title: '', message: '', component: null}));
+  modalStore.update(state => ({...state, isShown: false, title: '', message: '', component: null, props: {}}));
 }
 
 

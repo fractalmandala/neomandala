@@ -7,7 +7,8 @@ class ChatDatabase extends Dexie {
     constructor() {
         super("ChatDatabase");
         this.version(1).stores({
-            chats: '++id, chatId, userMessage, assistantMessage, timestamp'
+            chats: '++id, chatId, userMessage, assistantMessage, timestamp',
+            secrets: 'name,value'
         });
         this.chats = this.table("chats");
     }
@@ -20,6 +21,7 @@ interface IChat {
     assistantMessage: string;
     timestamp: number;
 }
+
 
 const db = new ChatDatabase();
 

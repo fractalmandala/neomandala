@@ -1,6 +1,7 @@
 <script lang="ts">
 
-	import { showModal, showToast, showAlert } from '$lib/stores/modalstores';
+	import { showModal, showToast } from '$lib/stores/modalstores';
+    import ModalSub from '$lib/components/ModalSub.svelte'
     import { readingMode } from '$lib/stores/globalstores'
 	import { SpeechSettings, SpeechStore } from 'talk2svelte';
 	import { audioStore } from '$lib/stores/modalstores';
@@ -13,7 +14,6 @@
 	function fauxfake() {
 		fake = !fake;
 	}
-
 
 	let inputValue = '';
 	let recording = false;
@@ -42,10 +42,12 @@
 
 </script>
 
-<div class="rta-grid grid2 right00 screen fullH cushion">
-	<div class="rta-image height-80 postgrid">
-		<img src="/images/psychedelic.webp" alt="psychedelic" />
-		<button on:click={() => showModal('Page 1 Modal', 'Hello from Page 1')}>Show modal</button>
+<div class="rta-grid grid2 right00 screen minH cushion">
+	<div class="rta-column rowgap200 postgrid">
+        <div class="rta-image height-60">
+		    <img src="/images/psychedelic.webp" alt="psychedelic" />
+        </div>
+		<button on:click={() => showModal('Password Check', 'Please enter password.', ModalSub, {content: 'Try'})}>Show modal</button>
         <button on:click={() => showToast('Hello!')}>Show Toast</button>
 	</div>
 	<div class="rta-column titlebox null" class:invisible={$readingMode}>

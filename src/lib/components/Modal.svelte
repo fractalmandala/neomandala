@@ -1,12 +1,15 @@
 <script lang="ts">
 
   import { modalStore, hideModal } from '$lib/stores/modalstores';
+  import Alert from '$lib/icons/Alert.svelte'
+  import Close from '$lib/icons/Close.svelte'
   import { onMount } from 'svelte';
 
-  let isShown:any, title:string, message:string, component:any;
+  let isShown:any, title:string, message:string, component:any, props:any;
+  let color = '#FE4a49'
 
   const unsubscribe = modalStore.subscribe(value => {
-    ({ isShown, title, message, component } = value);
+    ({ isShown, title, message, component, props } = value);
   });
 
   onMount(() => {
@@ -26,15 +29,22 @@
 
 {#if isShown}
   <div class="modal-overlay" on:click={handleOverlayClick} on:keydown={handleOverlayClick}>
-    <div class="modal">
-      <h2>{title}</h2>
-      <p>{message}</p>
+    <div class="modal null writing">
+        <div class="rta-row between ycenter null">
+            <div class="rta-row colgap100 ycenter null">
+                <Alert/>
+                <h5>{title}</h5>
+            </div>
+            <button class="blank-button" on:click={handleCloseClick}>
+                <Close color={color}/>
+            </button>
+        </div>
+      <small>{message}</small>
       {#if component}
         <div class="componentslot">
-          <svelte:component this={component} />
+          <svelte:component this={component} {...props}/>
         </div>
       {/if}
-      <button on:click={handleCloseClick}>Close</button>
     </div>
   </div>
 {/if}

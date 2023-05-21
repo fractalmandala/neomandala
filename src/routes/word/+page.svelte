@@ -20,11 +20,11 @@
 </script>
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion back">
+<div class="rta-grid grid2 right00 fullH cushion">
     <div class="rta-grid colgap300 rowgap100 postgrid">
         {#if pens && pens.length > 0}
             {#each pens as item}
-                <a class="rta-row colgap300 ybetween ticket" href="/word/{item.slug}">
+                <a class="rta-row colgap300 stay ybetween ticket" href="/word/{item.slug}">
                     <div class="rta-column rowgap100 null w64">
                         <p class="green">{item.type}</p>
                         <h4 class="tt-u">{item.id}-{item.title}</h4>

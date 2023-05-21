@@ -18,7 +18,7 @@
 
 
 
-<div class="rta-grid grid2 right00 screen fullH">
+<div class="rta-grid grid2 right00 fullH">
     <div class="rta-column writing">
         <img src={data.link} alt={data.id}/>
     </div>

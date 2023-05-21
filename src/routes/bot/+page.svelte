@@ -3,14 +3,16 @@
     import { onMount } from 'svelte'
     import { browser } from '$app/environment'
 	import { showModal, hideModal } from '$lib/stores/modalstores';
+    import { counterStore, increment } from '$lib/stores/counter'
     import ModalSub from '$lib/components/ModalSub.svelte'
     import { fly } from 'svelte/transition'
+    import supabase from '$lib/utils/supabase'
     import ChatMessages from '$lib/agent/ChatMessages.svelte'
     import { storeChat, getChats } from '$lib/agent/dexie'
     import { promptStore, botsList, botStore } from '$lib/stores/gptprompt'
     import type { ChatCompletionRequestMessage } from 'openai'
     import { SSE } from 'sse.js'
-    import { gptTitles } from '$lib/utils/supabase'
+    import { gptTitles, gptStream } from '$lib/utils/supabase'
     import { readingMode, chatMode } from '$lib/stores/globalstores'
     import { audioStore } from '$lib/stores/modalstores'
     import Refresh from '$lib/icons/Refresh.svelte'
@@ -22,17 +24,23 @@
     audioStore.subscribe(value => audio = value)
     let low = 0
     let top = 14
-
+    let stream:any
     let fake = false
     let isGPT = false
     let loading = false
     let query:any
+    let tags = 'gpt'
+    let submitQuery:any
     let userprompt:any
     let answer:any
+    let submitTitle:any
+    let submitAnswer:any
+    let submittance:any
     let chatMessages: ChatCompletionRequestMessage[] = []
     let chats:any = [];
     let userType = 'user'
     let asstType = 'assistant'
+
 
 	function toggleChat() {
 		if (browser) {
@@ -65,8 +73,11 @@
 
 	const handleSubmit = async () => {
 		loading = true
+        counterStore.update(value => value + 1);
 		chatMessages = [...chatMessages, { role: 'user', content: query }]
 		userprompt = query
+        submitQuery = query
+        submitTitle = submitQuery.slice(0,20)
 		const eventSource = new SSE('/api/chat', {
 			headers: {
 				'Content-Type': 'application/json'
@@ -83,8 +94,17 @@
 				loading = false
 				if (e.data === '[DONE]') {
 					chatMessages = [...chatMessages, { role: 'assistant', content: answer }]
-					console.log(answer)
-                    storeChat(userprompt, answer)
+                    submitAnswer = answer
+                    submittance = `
+                    user:
+
+                    ${submitQuery}
+
+                    gpt:
+
+                    ${submitAnswer}
+                    `;
+                    sendToSupabase();
 					answer = ''
 					return
 				}
@@ -112,20 +132,37 @@
     async function loadChats() {
         chats = await getChats();
     }
+
+    async function loadStream(){
+        stream = await gptStream()
+    }
     
     $: if ($chatMode === true) {
         loadChats()
     }
 
+    async function sendToSupabase(){
+        const { error } = await supabase
+        .from('amrit-notes')
+        .insert({title: submitTitle, content: submittance, supaid: $counterStore, tags: tags })
+        if (error) {
+            throw new Error(error.message)
+        } else {
+            console.log('done!')
+        }
+    }
+
+    
 
     onMount(async() => {
         pens = await gptTitles();
+        stream = await gptStream();
     })
 
 </script>
 
 
-<div class="rta-grid grid2 right00 screen back">
+<div class="rta-grid grid2 right00 back">
     {#if !$chatMode}
     <div class="rta-grid grid3 colgap300 rowgap100 postgrid" transition:fly>
         {#if pens && pens.length > 0}
@@ -171,7 +208,7 @@
 	    			/>
                 <div class="rta-row colgap100">
 	    		<button class="mainbutton" type="submit" on:click={() => handleSubmit()} on:keydown={fauxfake}> Send </button>
-                <button class="blank-button" on:click={() => loadChats()} on:keydown={fauxfake}>
+                <button class="blank-button" on:click={() => loadStream()} on:keydown={fauxfake}>
                     <Refresh/>
                 </button>
 	    	</form>
@@ -212,6 +249,17 @@
                     </select>
                     <button class="blank-button" type="submit"><Confirm/></button>
                 </form>
+            </div>
+            <div class="rta-column">
+                {#if stream && stream.length > 0}
+                    {#each stream as item}
+                        <p>
+                            <a href="/bot/supa/{item.id}">
+                                {item.supaid}-{item.title}
+                            </a>
+                        </p>
+                    {/each}
+                {/if}
             </div>
         {/if}
     </div>

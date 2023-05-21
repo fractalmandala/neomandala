@@ -32,7 +32,7 @@
 
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion">
+<div class="rta-grid grid2 right00 fullH cushion">
     <div class="rta-column writing postis codeis p-top-64">
         <svelte:component this={data.content}/>
     </div>

@@ -43,8 +43,8 @@
 
 </script>
 
-<div class="rta-grid grid2 right00 screen minH cushion">
-    <div class="rta-grid grid4 colgap100 rowgap100 postgrid">
+<div class="rta-grid grid2 right00 minH cushion">
+    <div class="rta-grid grid4 stay2 colgap100 rowgap100 postgrid">
         {#if images && images.length > 0}
             {#each images as item}
                 <a class="rta-image" href="/image/{item.slug}">

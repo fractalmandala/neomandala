@@ -29,21 +29,7 @@
 
 </script>
 
-<div class="transistor" in:fly={{ delay: 600, duration: 600, x: -100, easing: quadOut}} out:fly={{ delay: 0, duration: 550, opacity: 0, x: -100, easing: quadIn}} class:dark={!$themeMode} class:light={$themeMode} class:invisible={$readingMode}>
+<div class="transistor-side" in:fly={{ delay: 600, duration: 600, x: -100, easing: quadOut}} out:fly={{ delay: 0, duration: 550, opacity: 0, x: -100, easing: quadIn}} class:dark={!$themeMode} class:light={$themeMode} class:invisible={$readingMode}>
 	<slot></slot>
 </div>
 
-<style lang="sass">
-
-.transistor
-    height: 100vh
-    width: 96px
-    position: sticky
-    top: 0
-    left: 0
-
-.transistor.invisible
-    opacity: 0
-
-
-</style>

@@ -107,16 +107,4 @@
 .titlebox.invisible
     opacity: 0
 
-.progress-strip
-    width: 100%
-    height: 32px
-    background: var(--opposite)
-    position: sticky
-    top: 0
-    left: 0
-    z-index: 500
-    .inside
-        background: var(--green)
-        height: 6px
-
 </style>

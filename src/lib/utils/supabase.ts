@@ -92,3 +92,13 @@ export async function featuredWritings(){
     if (error) throw new Error(error.message)
     return data
 }
+
+export async function gptStream(){
+    const { data, error } = await supabase
+    .from('amrit-notes')
+    .select()
+    .eq('tags', 'gpt')
+    .order('id')
+    if ( error ) throw new Error(error.message)
+    return data
+}

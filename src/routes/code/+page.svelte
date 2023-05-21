@@ -25,7 +25,7 @@
 </script>
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion back">
+<div class="rta-grid grid2 right00 fullH cushion back">
     <div class="rta-grid grid3 colgap300 rowgap100 postgrid">
         {#if pens && pens.length > 0}
             {#each pens as item}

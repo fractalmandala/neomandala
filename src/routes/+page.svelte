@@ -22,7 +22,7 @@
 	});
 </script>
 
-<div class="back minH" />
+<div class="back fullscreen" />
 <div class="rta-column colgap600 ybetween screen cushion">
 	<div class="rta-column null">
 		<div class="rta-column null p-bot-32 p-top-32">
@@ -33,9 +33,9 @@
 				consciousness. My big projects:
 			</h4>
 		</div>
-		<div class="rta-grid grid3 colgap300 postis p-top-8 p-bot-32">
+		<div class="rta-grid grid3 colgap300 rowgap600 postis p-top-8 p-bot-32">
 			<div class="rta-column rowgap100">
-				<h6 class="tt-c"><a href="/build/brhatopenlibrary">Bṛhat Open Library</a></h6>
+				<h5><a href="/build/brhatopenlibrary">Bṛhat Open Library</a></h5>
                 <small>A digital library of Dhārmika Literature, but something more...</small>
 			</div>
 			<div class="rta-column rowgap100">
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<div class="rta-column rowgap400 p-top-32 p-bot-64">
-			<div class="rta-grid grid8 colgap100">
+			<div class="rta-grid grid8 by4 rowgap100 colgap100">
 				{#if images && images.length > 0}
 					{#each images as item}
 						<a class="rta-image" href="/image/{item.slug}">
@@ -63,7 +63,7 @@
             <div class="rta-grid grid2 colgap300 rowgap300">
                 {#if posts && posts.length > 0}
                     {#each posts as item}
-                        <a href="/word/{item.slug}" class="rta-row colgap200">
+                        <a href="/word/{item.slug}" class="rta-row stay colgap200">
                             <div class="rta-image w32 height-16">
                                 <img src={item.image} alt={item.id}/>
                             </div>
@@ -122,13 +122,6 @@
 
 .back
     background-image: url('https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/10mandala/realitywall.webp')
-    width: calc(100vw - 96px)
-    height: 100vh
-
-.screen
-    min-height: 100vh
-    padding: 64px
-    width: 1200px
 
 .last
     width: 60%

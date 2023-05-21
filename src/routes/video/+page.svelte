@@ -23,12 +23,12 @@
 </script>
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion">
+<div class="rta-grid grid2 right00 fullH cushion">
     {#if images && images.length > 0}
         <div class="rta-column rowgap500 postgrid">
             {#each images as item}
-                <div class="rta-row colgap300">
-                    <div class="w32">
+                <div class="rta-row stay colgap300">
+                    <div class="w32 height-30-2">
 						<Youtuber
 							youTubeId={item.meta.videoid}
 						/>

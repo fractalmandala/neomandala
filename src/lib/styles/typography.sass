@@ -59,7 +59,7 @@ p
     font-weight: 400
     font-family: 'Space Grotesk', sans-serif
 
-p.grey
+p.grey, small.grey
     color: var(--textone)
 
 p.green, pre.green
@@ -114,10 +114,23 @@ h3
     letter-spacing: -1.5px
 
 h4
-    font-size: 2em
-    letter-spacing: -1px
     line-height: 1.12
     font-family: 'Space Grotesk', sans-serif
+
+.levelzero
+    h4
+        font-size: 2em
+        letter-spacing: -1px
+
+.levelone
+    h4
+        font-size: 1.8em
+        letter-spacing: -1px
+
+.leveltwo
+    h4
+        font-size: 1.6em
+        letter-spacing: -0.5px
 
 small
     color: var(--textone)
@@ -148,9 +161,6 @@ h6
         font-weight: 400
         line-height: 1.4
 
-.levelzero
-    .writing
-        padding: 64px 0
 
 .writing.postis
     a
@@ -175,3 +185,6 @@ h6
         margin-top: 32px
     p, li, blockquote, pre, ol li, ul li
         line-height: 1.6
+    pre, pre code
+        word-break: break-word
+    

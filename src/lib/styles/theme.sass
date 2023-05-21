@@ -38,7 +38,7 @@ body, html
     --opposite: #FFFFFF
     --borderline: #d7d7d7
     --greyish: #878787
-    --contraster: #f7f7f7
+    --contraster: #e7e7e7
     --boxshadow: 4px 7px 12px #e1e1e1
     --onlyblack: #d7d7d7
 
@@ -110,6 +110,14 @@ $unit128: 128px
             width: 60%
         .in50
             width: 50%
+
+.rta-row.stay
+    @media screen and (max-width: 1023px)
+        flex-wrap: nowrap
+        .w32
+            width: 24%
+        .w64
+            width: 66%
 
 //spacing
 @media screen and (min-width: 1024px)
@@ -299,14 +307,38 @@ $unit128: 128px
         transition: 0.2s
 
 @media screen and (max-width: 1023px) and (min-width: 787px)
+    .grid8
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+        grid-template-areas: ". . . . . . . ."
     .grid6
         grid-template-columns: 1fr 1fr 1fr
         grid-template-areas: ". . ." ". . ."
+    .grid4
+        grid-template-columns: 1fr 1fr 1fr 1fr
+        grid-template-areas: ". . . ."
+    .grid3
+        grid-template-columns: 1fr 1fr 1fr
+        grid-template-areas: ". . ."
+    .grid2.right00
+        grid-template-columns: 1fr 240px
+        grid-template-areas: ". ."
 
 @media screen and (max-width: 786px)
+    .grid8.by4
+        grid-template-columns: 1fr 1fr 1fr 1fr
+        grid-template-areas: ". . . ." ". . . ."
     .grid6
         grid-template-columns: 1fr
         grid-template-areas: "." "." "." "." "." "."
+    .grid4.stay2
+        grid-template-columns: 1fr 1fr
+        grid-template-areas: ". ." ". ."
+    .grid3
+        grid-template-columns: 1fr
+        grid-template-areas: "." "." "."
+    .grid2
+        grid-template-columns: 1fr
+        grid-template-areas: "." "."
 
 @media screen and (max-width: 1023px)
     .grid5.stay2
@@ -397,14 +429,6 @@ $unit128: 128px
         font-family: 'Space Grotesk', sans-serif !important
         font-weight: 400
 
-.levelzero
-    .titlebox
-        width: 280px
-
-.levelzero
-    .rightbox
-        width: 240px
-
 .height-80
     @media screen and (min-width: 1024px)
         height: 90vh
@@ -469,23 +493,140 @@ $unit128: 128px
     @media screen and (min-width: 1024px)
         height: 16vh
     @media screen and (max-width: 1023px)
-        height: 8vh
+        height: 12vh
+
+.transistor-side.invisible
+    opacity: 0
 
 .levelzero
+    .titlebox
+        width: 280px
+    .rightbox
+        width: 240px
     .writing
-        width: 800px
+        width: 70%
         margin-left: 96px
+        padding: 64px 0
     .seven
         width: 900px
         margin-left: 64px
     .postgrid
-        width: 900px
+        width: 80%
         margin-left: 64px
         padding: 32px 0
     .chatgrid
         width: 700px
         margin-left: 160px
         padding: 32px 0 160px 0
+    .screen
+        min-height: 100vh
+        padding: 64px
+        width: 88vw
+        .last
+            width: 60%
+    .fullscreen
+        width: calc(100vw - 96px)
+        height: 100vh
+    .transistor
+        width: calc(100vw - 96px)
+        height: 100%
+    .transistor-side
+        height: 100vh
+        width: 96px
+        position: sticky
+        top: 0
+        left: 0
+    .progress-strip
+        height: 32px
+        background: var(--opposite)
+        position: sticky
+        top: 0
+        left: 0
+        z-index: 2
+        .inside
+            background: var(--green)
+            height: 6px
+
+.levelone
+    .screen
+        min-height: 100vh
+        padding: 48px
+        width: 88vw
+        .last
+            width: 70%   
+    .fullscreen
+        width: calc(100vw - 96px)
+        height: 100vh
+    .transistor
+        width: calc(100vw - 96px)
+        height: 100%
+    .transistor-side
+        height: 100vh
+        width: 96px
+        position: sticky
+        top: 0
+        left: 0
+    .postgrid
+        width: 70%
+        margin-left: 32px
+        padding: 32px 0
+    .writing
+        width: 70%
+        margin-left: 32px
+    .titlebox
+        max-width: 280px
+    .rightbox
+        width: calc(20% - 32px)
+        max-width: 240px
+    .progress-strip
+        height: 32px
+        background: var(--opposite)
+        position: sticky
+        top: 0
+        left: 0
+        z-index: 2
+        .inside
+            background: var(--green)
+            height: 6px
+
+.leveltwo
+    .fullscreen
+        width: 100vw
+        height: calc(56vh - 64px)
+    .transistor
+        width: 100vw
+        height: 100%   
+    .transistor-side
+        height: 64px
+        width: 100vw
+        position: sticky
+        top: 0
+        left: 0
+    .screen
+        min-height: 100vh
+        padding: 24px
+        width: 100%
+        .last
+            width: 70%
+    .postgrid
+        width: 100%
+        margin: 0
+        padding: 24px
+    .writing
+        width: 100%
+        margin: 0
+        padding: 24px
+    .titlebox, .rightbox
+        display: none
+    .progress-strip
+        height: 4px
+        background: var(--opposite)
+        position: sticky
+        top: 64px
+        left: 0
+        .inside
+            background: var(--green)
+            height: 4px
 
 
 .blank-button
@@ -579,13 +720,170 @@ $unit128: 128px
     font-size: 14px
     text-transform: uppercase
     font-weight: 500
-    line-height: 1.75
+    line-height: 1.5
     font-family: var(--coder)
     &:hover
         border: 2px solid var(--green)
         color: var(--gret)
         background: white
+        transform: scale(0.92)
+
+.outbutton
+    color: var(--green)
+    max-width: 160px
+    background: white
+    width: max-content
+    border: 2px solid var(--green)
+    padding: 2px 12px 0 12px
+    border-radius: 3px
+    transform-origin: center center
+    transition: 0.08s
+    letter-spacing: -0.12px
+    cursor: pointer
+    font-size: 14px
+    text-transform: uppercase
+    font-weight: 500
+    line-height: 1.5
+    font-family: var(--coder)
+    &:hover
+        border: 2px solid var(--green)
+        color: white
+        background: var(--green)
+        transform: scale(0.92)
+
+.outbutton.active
+    background: var(--green)
+    color: white
 
 
 .titlebox.invisible
     opacity: 0
+
+
+.app-shell
+    display: grid
+    grid-auto-flow: row
+    width: 100vw
+    z-index: 0
+    .menubar
+        grid-area: menubar
+        z-index: 1000
+        .menulinks
+            display: flex
+    .pagearea
+        grid-area: pagearea
+        transition: 0.43s
+        z-index: 0
+
+.app-shell.light
+    background: white
+
+.app-shell.dark
+    background: #121212
+
+
+.app-shell.levelzero
+    grid-template-columns: 96px 1fr
+    grid-template-areas: "menubar pagearea"
+    min-height: 100vh
+    .menubar
+        height: 100vh
+        width: 96px
+        padding-left: 24px
+        padding-top: 32px
+        padding-bottom: 32px
+        position: sticky
+        top: 0
+        left: 0
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        .menulinks
+            flex-direction: column
+            align-items: flex-start
+        .barlinks
+            p, p a
+                font-size: 16px
+    .pagearea
+        width: calc(100vw - 96px)
+
+.app-shell.levelone
+    grid-template-columns: 96px 1fr
+    grid-template-areas: "menubar pagearea"
+    min-height: 100vh
+    .menubar
+        height: 100vh
+        width: 96px
+        padding-left: 24px
+        padding-top: 32px
+        padding-bottom: 32px
+        position: sticky
+        top: 0
+        left: 0
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        .menulinks
+            flex-direction: column
+            align-items: flex-start
+        .barlinks
+            p, p a
+                font-size: 16px
+    .pagearea
+        width: calc(100vw - 96px)
+    
+.app-shell.leveltwo
+    grid-template-columns: 1fr
+    grid-template-areas: "menubar" "pagearea"
+    grid-template-rows: 64px auto
+    min-height: 100vh
+    z-index: 0
+    .transistor-side
+        grid-area: menubar
+        height: 64px
+        width: 100vw
+        position: sticky
+        top: 0
+        left: 0
+        z-index: 1000
+    .pagearea
+        grid-area: pagearea
+        width: 100vw
+    .menubar
+        height: 64px
+        width: 100vw
+        padding: 0 24px
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        z-index: 1000
+        .menulinks
+            flex-direction: row
+            height: 64px
+            align-items: center
+            justify-content: flex-end
+            width: 60%
+            column-gap: 20px
+        .barlinks
+            position: absolute
+            top: 64px
+            left: 0
+            width: 100vw
+            background: #171717
+            padding: 24px
+            p
+                font-size: 24px
+
+.menubar
+    p
+        color: white
+        text-transform: uppercase
+
+.light
+    .menubar
+        background: #171717
+
+.dark
+    .menubar
+        background: #171717

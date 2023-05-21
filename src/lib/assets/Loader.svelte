@@ -1,6 +1,6 @@
-<div class="loader">
-	<svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<g id="loader" clip-path="url(#clip0_21_51)">
+<div class="loader" style="overflow: visible">
+	<svg width="27" height="27" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible">
+		<g id="loader" clip-path="url(#clip0_21_51)" style="overflow: visible">
 		<path id="stem" fill-rule="evenodd" clip-rule="evenodd" d="M13.8655 6.40039C14.4546 6.40039 14.9321 6.87795 14.9321 7.46706V15.3845L21.8654 19.3875C22.3756 19.682 22.5504 20.3344 22.2558 20.8445C21.9613 21.3547 21.3089 21.5295 20.7987 21.235L13.8655 17.2321L6.93221 21.235C6.42203 21.5295 5.76967 21.3547 5.47511 20.8445C5.18056 20.3344 5.35536 19.682 5.86554 19.3875L12.7988 15.3845V7.46706C12.7988 6.87795 13.2764 6.40039 13.8655 6.40039Z" fill="#1C1B1E"/>
 		<g class="even" id="even">
 		<path d="M6.75556 10.3115C6.75556 11.8824 5.48203 13.1559 3.91111 13.1559C2.34017 13.1559 1.06667 11.8824 1.06667 10.3115C1.06667 8.74059 2.34017 7.46706 3.91111 7.46706C5.48203 7.46706 6.75556 8.74059 6.75556 10.3115Z" fill="#1C1B1E"/>
@@ -29,7 +29,7 @@
 		</g>
 		<defs>
 		<clipPath id="clip0_21_51">
-		<rect width="27.7333" height="32" fill="white"/>
+		<rect width="32" height="32" fill="white"/>
 		</clipPath>
 		</defs>
 		</svg>

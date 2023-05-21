@@ -15,7 +15,7 @@
       	smoothWheel: true,
       	wheelMultiplier: 0.7,
       	smoothTouch: false,
-      	touchMultiplier: 1,
+      	touchMultiplier: 0,
       	infinite: false,
       })
     
@@ -31,12 +31,3 @@
 <div class="transistor" in:fly={{ delay: 600, duration: 600, y: 700, easing: quadOut}} out:fly={{ delay: 0, duration: 550, opacity: 0, y: -700, easing: quadIn}} class:dark={!$themeMode} class:light={$themeMode}>
 	<slot></slot>
 </div>
-
-<style lang="sass">
-
-.transistor
-    height: 100%
-    width: calc(100vw - 96px)
-
-
-</style>

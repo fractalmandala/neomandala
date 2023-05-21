@@ -25,6 +25,11 @@
 		svg
 			transform: scale(1.2)
 
+.rta-icon
+	svg.whitened
+		height: 30px
+		margin-top: 2px
+
 
 
 

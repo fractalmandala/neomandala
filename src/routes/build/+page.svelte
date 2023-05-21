@@ -2,48 +2,53 @@
 
 	import { showModal, showToast } from '$lib/stores/modalstores';
     import ModalSub from '$lib/components/ModalSub.svelte'
+    import TextBox from '$lib/components/RichInput.svelte'
+    import { toastStore, hideToast } from '$lib/stores/modalstores'
+    import supabase from '$lib/utils/supabase'
     import { readingMode } from '$lib/stores/globalstores'
-	import { SpeechSettings, SpeechStore } from 'talk2svelte';
 	import { audioStore } from '$lib/stores/modalstores';
-	import { filter } from 'rxjs';
-	import { onMount } from 'svelte';
+    import '$lib/styles/design.sass'
 	let audio: any;
 	audioStore.subscribe((value) => (audio = value));
 	let fake = false;
+
+    let title:any
+    let content:any
+    let tags: any
+    let snip:any
+    let editor:any
+
+    let isTag = false
+    let isSnip = false
+    let isFull = false
+
 
 	function fauxfake() {
 		fake = !fake;
 	}
 
 	let inputValue = '';
-	let recording = false;
 
-	onMount(() => {
-		SpeechSettings.declareCommand('record');
-		SpeechSettings.declareCommand('stop');
-		const subscriptions = [
-			SpeechStore.currentCommand.pipe(filter((command) => command === 'record')).subscribe(() => {
-				inputValue = '';
-				recording = true;
-			}),
-			SpeechStore.currentCommand.pipe(filter((command) => command === 'stop')).subscribe(() => {
-				recording = false;
-			}),
-			SpeechStore.message
-				.pipe(filter(() => recording === true))
-				.subscribe((message) => (inputValue = message))
-		];
-		return () => {
-			SpeechSettings.removeCommand('record');
-			SpeechSettings.removeCommand('stop');
-			subscriptions.map((sub) => sub.unsubscribe());
-		};
-	});
+    export async function insertNote(){
+        const { error } = await supabase
+        .from ('amrit-notes')
+        .insert({ title: title, content: content})
+        if (error) {
+            throw new Error(error.message)
+        } else {
+            showToast('Success!')  
+        }
+        title = ''
+        content = ''
+    }
 
 </script>
 
-<div class="rta-grid grid2 right00 screen minH cushion">
+<div class="rta-grid grid2 right00 minH cushion">
 	<div class="rta-column rowgap200 postgrid">
+        <div class="rta-column minH">
+            <TextBox/>
+        </div>
         <div class="rta-image height-60">
 		    <img src="/images/psychedelic.webp" alt="psychedelic" />
         </div>

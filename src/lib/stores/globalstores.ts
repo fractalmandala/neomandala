@@ -60,3 +60,10 @@ export function unwrapReadable<T>(ref: T | Readable<T>) {
 
 	return ref as T;
 }
+
+
+const storedChatMode = browser
+	? JSON.parse(localStorage.getItem('chatMode') || 'false')
+	: false;
+
+export const chatMode = writable(storedChatMode)

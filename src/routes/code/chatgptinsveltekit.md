@@ -37,7 +37,7 @@ I'm assuming you are familiar with installing libraries in Sveltekit using NPM. 
 
 #### Other Installations
 
-For utility functions in communicating with OpenAI's library, we need to install a few more libraries. Install the GPT3 Tokenizer from <a href="https://www.npmjs.com/package/gpt3-tokenizer" target="_blank" rel="noreferrer">here</a>, and a helper for server-side events named SSE from <a href="https://www.npmjs.com/package/sse" target="_blank" rel="noreferrer">here.</a>
+For utility functions in communicating with OpenAI's library, we need to install a few more libraries. Install the GPT3 Tokenizer from <a href="https://www.npmjs.com/package/gpt3-tokenizer" target="_blank" rel="noreferrer">here</a>, and a helper for server-side events named SSE from <a href="https://www.npmjs.com/package/sse.js" target="_blank" rel="noreferrer">here.</a>
 
 Information on what these are, and what they do, can be found at OpenAI's documentation, but put simply the tokenizer helps you control the usage of tokens in chatGPT, and SSE helps stream the responses instead of receiving them as a single chunk.
 

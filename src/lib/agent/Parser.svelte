@@ -79,12 +79,14 @@
 
 pre.codeblock
 	font-size: 16px
+	overflow-y: hidden
 
 .nocodeparent
 	pre
 		font-size: 16px
 		margin: 0
 		line-height: 1.2
+		overflow-y: hidden
 
 .codeblock code
 	word-wrap: break-all

@@ -3,7 +3,8 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import AppShell from '$lib/design/AppShell.svelte';
-	import { showModal, hideModal, showChip, hideChip, chipStore } from '$lib/stores/modalstores';
+	import { showModal, hideModal, showChip, hideChip, chipStore, showBots } from '$lib/stores/modalstores';
+    import BotSelector from '$lib/agent/BotSelector.svelte'
 	import { counterStore, increment } from '$lib/stores/counter';
 	import ModalSub from '$lib/components/ModalSub.svelte';
 	import { fly } from 'svelte/transition';
@@ -181,6 +182,7 @@
 	});
 </script>
 
+ <BotSelector/>
 <AppShell>
 	<div slot="main">
 		{#if !$chatMode}
@@ -309,18 +311,8 @@
 				<div class="rta-column rowgap50">
 					<button class="outbutton" on:click={generateUUID}> Generate ID </button>
 					<small class="grey">Current ID: {$uuidStore}</small>
+                    <button on:click={() => showBots.set(true)}>Show</button>
 				</div>
-				{#if stream && stream.length > 0}
-					<div class="rta-column rowgap50">
-						{#each stream as item}
-							<p class="grey">
-								<a class="hover" href="/bot/supa/{item.uuid}">
-									{item.uuid.slice(0, 18)}
-								</a>
-							</p>
-						{/each}
-					</div>
-				{/if}
 			</div>
 		{/if}
 	</div>

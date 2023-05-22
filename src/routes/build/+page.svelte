@@ -4,6 +4,7 @@
     import ModalSub from '$lib/components/ModalSub.svelte'
     import TextBox from '$lib/components/RichInput.svelte'
     import { toastStore, hideToast } from '$lib/stores/modalstores'
+    import BotSelector from '$lib/agent/BotSelector.svelte'
     import supabase from '$lib/utils/supabase'
     import { readingMode } from '$lib/stores/globalstores'
 	import { audioStore } from '$lib/stores/modalstores';
@@ -47,7 +48,7 @@
 <div class="rta-grid grid2 right00 minH cushion">
 	<div class="rta-column rowgap200 postgrid">
         <div class="rta-column minH">
-            <TextBox/>
+            <BotSelector/>
         </div>
         <div class="rta-image height-60">
 		    <img src="/images/psychedelic.webp" alt="psychedelic" />

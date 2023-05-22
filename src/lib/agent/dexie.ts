@@ -37,7 +37,7 @@ async function storeChat(userMessage: string, assistantMessage: string) {
 }
 
 async function getChats() {
-    const chats = await db.chats.orderBy('timestamp').toArray();
+    const chats = await db.chats.orderBy('timestamp').reverse().toArray();
     return chats;
 }
 

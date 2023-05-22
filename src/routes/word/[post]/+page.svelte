@@ -64,7 +64,7 @@
                 {/each}
             {/if}
         </div>
-        <div class="thisispost">
+        <div class="thisispost" class:thisisback={$readingMode}>
             <svelte:component this={data.content}/>
         </div>
         <div class="rta-row bord-top m-bot-32 null ycenter colgap200 p-top-32">
@@ -76,7 +76,7 @@
             {/if}
         </div>
     </div>
-    <div slot="side" class="rta-column column-row xstretch fullW rowgap300 null">
+    <div slot="side" class="rta-column column-row xstretch fullW rowgap300 null" class:invisible={$readingMode}>
         <h5 class="tt-u p-left-32">{data.title}</h5>
         <small class="grey p-left-32 p-bot-32 bord-bot">{data.type}</small>
         <div class="p-bot-32 p-left-32">

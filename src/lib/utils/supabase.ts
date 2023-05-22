@@ -124,3 +124,12 @@ export async function thisUUID(uuidtext:any){
     return data    
 }
 
+export async function latestSession(){
+    const { data, error } = await supabase
+    .from('amrit-uuids')
+    .select()
+    .order('id', {ascending: false})
+    .limit(1)
+    if ( error ) throw new Error(error.message)
+    return data
+}

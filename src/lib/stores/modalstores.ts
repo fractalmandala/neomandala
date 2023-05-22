@@ -107,3 +107,5 @@ export function showTooltip(message:string){
 export function hideTooltip(){
     tooltipStore.update(state => ({...state, isShown: false, message: ''}))
 }
+
+export const showBots = writable(false)

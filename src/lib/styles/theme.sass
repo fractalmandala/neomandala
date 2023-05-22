@@ -47,7 +47,7 @@ body, html
     --background: #121212
     --textone: #373737
     --opposite: #FFFFFF
-    --borderline: #f1f1f1
+    --borderline: #f9f9f9
     --greyish: #878787
     --contraster: #e7e7e7
     --boxshadow: 4px 7px 12px #e1e1e1
@@ -148,6 +148,8 @@ $unit128: 128px
 @media screen and (min-width: 1024px)
     .rowgap50
         row-gap: 4px
+    .colgap50
+        column-gap: $unit4
     .colgap100
         column-gap: $unit8
     .rowgap100
@@ -590,11 +592,15 @@ $unit128: 128px
     .codeis
         width: 640px
     .pagepad
-        padding: 0 8vw 0 5vw
+        width: 54vw
+        padding-left: 6vw
     .cutthis
         width: 50vw
     .thisispost
         width: 50vw
+    .thisispost.thisisback
+        width: 50vw
+        margin-left: -8vw
 
 .levelone
     .p-right-48
@@ -646,7 +652,7 @@ $unit128: 128px
     .onetwo-bord-bot
         border-bottom: 1px solid var(--borderline)
         padding-bottom: 16px
-    .cutthis
+    .cutthis, .pagepad
         width: 50vw
     .thisispost
         width: 50vw
@@ -692,7 +698,7 @@ $unit128: 128px
     .onetwo-bord-bot
         border-bottom: 1px solid var(--borderline)
         padding-bottom: 16px
-    .cutthis
+    .cutthis, .pagepad
         width: 84vw
 
 
@@ -719,6 +725,9 @@ $unit128: 128px
 
 .p-top-8
     padding-top: 8px
+
+.p-bot-8
+    padding-bot: 8px
 
 .p-bot-16
     padding-bottom: 16px
@@ -993,3 +1002,6 @@ select
         &::after
             width: 100%
             margin-left: 0
+
+.invisible
+    opacity: 0

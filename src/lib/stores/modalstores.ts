@@ -19,6 +19,18 @@ export function hideModal() {
   modalStore.update(state => ({...state, isShown: false, title: '', message: '', component: null, props: {}}));
 }
 
+const initialNote = {
+    isShown: false,
+    title: '',
+}
+
+export const noteStore = writable(initialNote)
+export function showNote(title:string){
+    noteStore.update(state => ({...state, isShown: true, title}));
+}
+export function hideNote(){
+    noteStore.update(state => ({ ...state, isShown: false, title: ''}));
+}
 
 export const initialDrawer = {
     isShown: false,
@@ -54,6 +66,20 @@ export function hideToast() {
   toastStore.update(state => ({...state, isShown: false, title: '', component: null}));
 }
 
+const initialChip = {
+    isShown: false,
+    title: '',
+    component: null
+}
+
+export const chipStore = writable(initialChip);
+export function showChip(title:string, component = null){
+    chipStore.update(state => ({...state, isShown: true, title, component}));
+}
+export function hideChip() {
+    chipStore.update(state => ({...state, isShown: false, title: '', component: null}));
+}
+
 const initialAlert = {
   isShown: false,
   title: '',
@@ -68,4 +94,16 @@ export function showAlert(title:string, component = null) {
 
 export function hideAlert() {
   alertStore.update(state => ({...state, isShown: false, title: '', component: null}));
+}
+
+const initialTip = {
+    isShown: false,
+    message: ''
+}
+export const tooltipStore = writable(initialTip);
+export function showTooltip(message:string){
+    tooltipStore.update(state => ({...state, isShown: true, message}));
+}
+export function hideTooltip(){
+    tooltipStore.update(state => ({...state, isShown: false, message: ''}))
 }

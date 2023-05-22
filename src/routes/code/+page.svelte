@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
+	import AppShell from '$lib/design/AppShell.svelte';
     import { allWebdev } from '$lib/utils/localpulls'
     import { audioStore } from '$lib/stores/modalstores'
     import { readingMode } from '$lib/stores/globalstores'
@@ -24,30 +25,28 @@
 
 </script>
 
-
-<div class="rta-grid grid2 right00 fullH cushion back">
-    <div class="rta-grid grid3 colgap300 rowgap100 postgrid">
+<AppShell>
+    <div slot="main" class="rta-grid grid3 colgap500 rowgap500">
         {#if pens && pens.length > 0}
             {#each pens as item}
                 <a class="rta-column ybetween rowgap400 ticket" href="{item.linkpath}">
                     <div class="rta-column rowgap100 null">
-                        <h5 class="tt-u">{item.meta.id} - {item.meta.title}</h5>
+                        <h6 class="tt-c special">{item.meta.id} - {item.meta.title}</h6>
                         <small>{item.meta.type} | {item.meta.tags}</small>
                     </div>
                 </a>
             {/each}
         {/if}
     </div>
-    <div class="rta-column titlebox null" class:invisible={$readingMode}>
-        <img class="jello-vertical" src="/images/k-webdev.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-        <h3 class="tt-u">code</h3>
-        <p class="grey">Just enough HTML, CSS and JS to have put this site together. And a bit more...</p>
+    <div slot="side" class="rta-column xstretch fullW rowgap300 null">
+        <div class="rta-column column-row rowgap200">
+            <img class="jello-vertical w32" src="/images/k-webdev.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
+            <div class="rta-column rowgap50 bord-bot p-bot-32 p-left-32 w64">
+        <h6 class="tt-u">code</h6>
+        <small class="grey">Just enough HTML, CSS and JS to have put this site together. And a bit more...</small>
+            </div>
+        </div>
     </div>
-</div>
 
-<style lang="sass">
+</AppShell>
 
-.ticket
-    padding: 16px
-
-</style>

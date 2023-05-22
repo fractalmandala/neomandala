@@ -3,7 +3,6 @@
     import { browser } from '$app/environment'
     import { chatMode } from '$lib/stores/globalstores'
 	import { hideModal } from '$lib/stores/modalstores';
-    let VITE_APP_KEY = 'dubhugolam'
     let messageTrue = 'Success!'
     let messageFalse = 'Invalid!'
     let content:any = ''

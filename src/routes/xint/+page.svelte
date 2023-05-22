@@ -2,17 +2,21 @@
 
     import { onMount } from 'svelte'
     import Toast from '$lib/components/Toast.svelte'
+    import { readingMode } from '$lib/stores/globalstores'
     import { toastStore, showToast, hideToast } from '$lib/stores/modalstores'
-    import TextBox from '$lib/components/RichInput.svelte'
+	import { showNote, hideNote, noteStore } from '$lib/stores/modalstores';
+    import NewNote from '$lib/components/NewNote.svelte'
     import supabase from '$lib/utils/supabase'
     import AppShell from '$lib/design/AppShell.svelte'
     import '$lib/styles/design.sass'
+    import NoteAdd from '$lib/icons/NoteAdd.svelte'
 
     let title = ''
     let content = ''
     let tags = ''
     let snippet = ''
     let language = ''
+    let newNotedd = 32
     
     let isSnip = false
     let isTag = false
@@ -57,55 +61,15 @@
 
 <AppShell>
     <div slot="main">
-        <form class="rta-column null formA" on:submit|preventDefault={() => insertNote()}>
-            <h4 class="p-bot-16">✍️  New Note</h4>
-            <div class="rta-column rowgap50">
-                <input type="text" placeholder="title" bind:value={title}/>
-                <textarea placeholder="content" bind:value={content}/>
-                {#if isTag}
-                <input type="text" placeholder="tags" bind:value={tags}/>
-                {/if}
-                {#if isSnip}
-                <textarea placeholder="code" bind:value={snippet}/>
-                <select bind:value={language}>
-                    <option value="html">html</option>
-                    <option value="typescript">typescript</option>
-                    <option value="sass">sass</option>
-                    <option value="sql">sql</option>
-                    <option value="shell">shell</option>
-                </select>
-                {/if}
-            </div>
-            <div class="rta-column rowgap200">
-                <div class="rta-column rowgap50 optionals">
-                <small>Optionals:</small>
-                <div class="rta-row colgap100 ycenter">
-                <div class="rta-row input-label ycenter">
-                    <input type="checkbox" id="tag" on:click={toggleTag}>
-                    <label for="tag">Tag</label>
-                </div>
-                <div class="rta-row input-label ycenter">
-                    <input type="checkbox" id="snip" on:click={toggleSnip}>
-                    <label for="snip">Snip</label>
-                </div>
-                <div class="rta-row input-label ycenter">
-                    <input type="checkbox" id="bool" on:click={toggleFeat}>
-                    <label for="bool">
-                        {#if isFeat}
-                        TRUE
-                        {:else}
-                        Feat
-                        {/if}
-                    </label>
-                </div>
-                </div>
-                </div>
-                <button class="mainbutton" type="submit">Submit</button>
-            </div>
-        </form>
-    
+        <div class="notebook">
+            
+<button class="blank-button" on:click={() => showNote('New Note')}>
+    <NoteAdd dimension={newNotedd}/>
+</button>
+        </div>
+ 
     </div>
-    <div slot="side" class="rta-column null">
+    <div slot="side" class="rta-column null" class:invisible={$readingMode}>
         <h3>xint</h3>
         <small>nothing to see here...</small>
     </div>

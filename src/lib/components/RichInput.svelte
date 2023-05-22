@@ -1,32 +1,31 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte'
-  import { Editor } from '@tiptap/core'
-  import StarterKit from '@tiptap/starter-kit'
 
-  let element:any
-  let editor:any
+	import { onMount, onDestroy } from 'svelte';
+	import { Editor } from '@tiptap/core';
+	import StarterKit from '@tiptap/starter-kit';
 
-  onMount(() => {
-    editor = new Editor({
-      element: element,
-      extensions: [
-        StarterKit,
-      ],
-      content: '<p>✍️</p>',
-      onTransaction: () => {
-        // force re-render so `editor.isActive` works as expected
-        editor = editor
-      },
-    })
-  })
+	let element: any;
+	let editor: any;
+    let textual
 
-  onDestroy(() => {
-    if (editor) {
-      editor.destroy()
-    }
-  })
+	onMount(() => {
+		editor = new Editor({
+			element: element,
+			extensions: [StarterKit],
+			content: '<p>✍️</p>',
+			onTransaction: () => {
+				editor = editor;
+			}
+		});
+        textual = editor.content
+	});
+
+	onDestroy(() => {
+		if (editor) {
+			editor.destroy();
+		}
+	});
 </script>
-
 
 <!--
 {#if editor}
@@ -47,5 +46,6 @@
   </button>
 {/if}
 -->
+
 
 <div bind:this={element} />

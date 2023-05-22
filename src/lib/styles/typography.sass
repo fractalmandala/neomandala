@@ -15,23 +15,6 @@ pre
 .ta-r
     text-align: right
 
-.dark
-    --background: #FFFFFF
-    --textone: #a1a1a1
-    --opposite: #272727
-    --borderline: #272727
-    color: white
-    h4, h5
-        color: #373737
-
-
-.light
-    --background: #121212
-    --textone: #878787
-    --opposite: #FFFFFF
-    --borderline: #d7d7d7
-    color: #474747
-
 .breaker
     overflow-x: auto
     box-sizing: border-box
@@ -59,8 +42,8 @@ p
     font-weight: 400
     font-family: 'Space Grotesk', sans-serif
 
-p.grey, small.grey
-    color: var(--textone)
+p.grey, small.grey, cite.grey, pre.grey
+    color: #878787
 
 p.green, pre.green
     color: var(--green)
@@ -107,6 +90,13 @@ h5.white
 p, h6, small, blockquote, h5, h4, h3, h2, h1, pre, code
     margin: 12px 0 20px 0
 
+cite
+    margin: 0
+    font-size: 12px
+    letter-spacing: -0.5px
+    font-style: normal
+    font-family: 'Space Grotesk', sans-serif
+
 h3
     font-size: 2.8em
     font-family: 'Space Grotesk', sans-serif
@@ -135,17 +125,19 @@ h4
 small
     color: var(--textone)
     font-family: 'Space Grotesk', sans-serif
+    font-size: 12px
 
 h5
     font-size: 1.44em
     font-family: 'Space Grotesk', sans-serif
-    font-weight: 800
+    font-weight: 600
     letter-spacing: -0.25px
 
 h6
     font-family: 'Space Grotesk', sans-serif
     letter-spacing: -0.3px
     font-size: 20px
+    font-weight: 500
 
 .titlebox
     h4, h3
@@ -153,6 +145,8 @@ h6
     h4
         border-bottom: 1px solid var(--borderline)
         padding-bottom: 16px
+    p, small
+        color: var(--textone)
 
 .writing
     p, li, blockquote, pre, ol li, ul li
@@ -160,6 +154,23 @@ h6
         font-family: 'Space Grotesk', sans-serif
         font-weight: 400
         line-height: 1.4
+
+.thisispost
+    p, li
+        font-size: 19px
+        font-family: 'Space Grotesk', sans-serif
+        line-height: 1.5
+    h4
+        margin: 64px 0 24px 0
+    blockquote
+        font-style: italic
+        color: #676767
+        border-left: 2px solid var(--green)
+        margin-left: 16px
+        padding-left: 16px
+        margin: 32px 0
+        p
+            font-weight: 500
 
 
 .writing.postis

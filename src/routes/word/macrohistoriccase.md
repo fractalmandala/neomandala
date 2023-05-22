@@ -1,6 +1,5 @@
 ---
 title: The Macrohistoric Case for India's Civilizational Primacy
-image: https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/05dhiti/16.webp
 tags: history
 featured: false
 type: fractal maṇḍala

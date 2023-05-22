@@ -2,6 +2,8 @@ import { writable, derived } from 'svelte/store';
 import { get, type Readable, type Writable } from "svelte/store"
 import { browser } from '$app/environment' 
 
+export const loadingStore = writable(false)
+
 const initialWidth = browser ? window.innerWidth : 1024;
 export const windowWidth = writable(initialWidth);
 
@@ -69,3 +71,5 @@ const storedChatMode = browser
 export const chatMode = writable(storedChatMode)
 
 export const appKey = writable('')
+
+export const uuidStore = writable('')

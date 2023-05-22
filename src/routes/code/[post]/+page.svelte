@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
+	import AppShell from '$lib/design/AppShell.svelte';
     import { thisWebdev } from '$lib/utils/localpulls'
     import { readingMode } from '$lib/stores/globalstores'
 	import Copy from '$lib/icons/Copy.svelte'
@@ -31,17 +32,15 @@
 </script>
 
 
-
-<div class="rta-grid grid2 right00 fullH cushion">
-    <div class="rta-column writing postis codeis p-top-64">
-        <svelte:component this={data.content}/>
+<AppShell>
+    <div slot="main" class="rta-column rowgap200">
+        <div class="codecuts">
+            <svelte:component this={data.content}/>
+        </div>
     </div>
-    <div class="rta-column titlebox" class:invisible={$readingMode}>
-        <a href="/code" class="rta-row null ycenter">
-            <small>Code</small>
-            <ChevRight/>
-        </a>
-        <h4 class="tt-u">{data.title}</h4>
+    <div slot="side" class="rta-column xstretch fullW rowgap300 null">
+        <h5 class="tt-u p-left-32">{data.title}</h5>
+        <div class="p-bot-32 p-left-32">
         <Pagination>
             <div slot="prev">
                 {#if prevPost && prevPost.length > 0}
@@ -63,4 +62,5 @@
             </div>
         </Pagination>
     </div>
-</div>
+
+</AppShell>

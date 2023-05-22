@@ -10,7 +10,9 @@ import SideTrans from '$lib/components/SidebarTransition.svelte'
 import ArrowUp from '$lib/components/ArrowUp.svelte'
 import Read from '$lib/icons/Reading.svelte'
 import Modal from '$lib/components/Modal.svelte'
-import { showDrawer, hideDrawer, initialDrawer, drawerStore, audioStore, toastStore, alertStore } from '$lib/stores/modalstores'
+import Chip from '$lib/components/Chip.svelte'
+import NewNote from '$lib/components/NewNote.svelte'
+import { showDrawer, hideDrawer, chipStore, initialDrawer, drawerStore, audioStore, toastStore, alertStore, noteStore } from '$lib/stores/modalstores'
 import Drawer from '$lib/components/Drawer.svelte'
 import Toast from '$lib/components/Toast.svelte'
 import Alert from '$lib/components/Alert.svelte'
@@ -23,6 +25,11 @@ import Motif from '$lib/assets/Loader.svelte'
 let timeIs = false
 let audioElement:any
 let mobileMenu = false
+let fake = false
+
+function fauxfake(){
+    fake = !fake
+}
 
 function toggleMenu(){
     mobileMenu = !mobileMenu
@@ -87,7 +94,7 @@ export let data
                 <Motif/>
             </a>
             {#if $breakZero || $breakOne || mobileMenu}
-            <div class="rta-column rowgap200 barlinks" transition:slide>
+            <div class="rta-column rowgap200 barlinks" transition:slide on:click={toggleMenu} on:keydown={fauxfake}>
                 <p><a class="hover" href="/bot">Bot</a></p>
                 <p><a class="hover" href="/word">Word</a></p>
                 <p><a class="hover" href="/code">Code</a></p>
@@ -95,7 +102,6 @@ export let data
                 <p><a class="hover" href="/image">Image</a></p>
                 <p><a href="/video" class="hover">Video</a></p>
                 <p><a href="/build" class="hover">Build</a></p>
-                {$breakZero}<br>{$breakOne}<br>{$breakTwo}
             </div>
             {/if}
         </div>
@@ -122,23 +128,12 @@ export let data
             </TransitionPage>
         {/key}
     </section>
-    <div class="rta-row fixedicons colgap100">
-        <ArrowUp/>
-        <Read/>
-    </div>
+    <NewNote/>
     <Modal/>
     <Drawer/>
     <Toast/>
     <Alert/>
+    <Chip/>
     <audio src="/sounds/boing2.mp3"/>
 </div>
 
-<style lang="sass">
-
-.fixedicons
-    position: fixed
-    bottom: 32px
-    right: 24px
-
-
-</style>

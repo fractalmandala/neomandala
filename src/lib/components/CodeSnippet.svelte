@@ -46,13 +46,12 @@
 .codeparent
 	background: #272727
 	padding: 16px
+	border-radius: 6px
 
 .codeblock
 	background: #121212
-	word-wrap: break-all
 
 .codeblock code
-	word-wrap: break-all
 	font-size: 16px
 	white-space: pre-line
 

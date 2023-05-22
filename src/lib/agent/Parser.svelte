@@ -49,17 +49,17 @@
 	{#each blocks as block}
 		{#if block.type === 'text'}
 		<div class="rta-column rowgap100 nocodeparent">
-            <pre transition:slide>{block.content}</pre>
+            <pre class="grey" transition:slide>{block.content}</pre>
 		</div>
 		{:else}
 		<div class="rta-column codeparent">
 			<div class="rta-row ycenter between">
-				<small class="white">{block.language}</small>
+				<small style="text-transform: uppercase; font-weight: 800">{block.language}</small>
 				<button class="blank-button" use:clickToCopyAction={block.code} on:copy-done={() => showToast('Copied!')} on:copy-error={() => showAlert('Failed!')}>
                     <Copy/>
 				</button>
 			</div>
-			<pre class="codeblock"><code class={`language-${block.language}`}>{block.code}</code></pre>
+			<pre class="codeblock grey"><code class={`language-${block.language}`}>{block.code}</code></pre>
 		</div>
 		{/if}
 	{/each}
@@ -67,31 +67,30 @@
 
 <style lang="sass">
 
-.cutthis
-	margin-bottom: 0
-	margin-top: 0
-	padding: 0
-
 .codeparent
-	background: #272727
+	background: var(--contraster)
 	padding: 16px
 	border-radius: 6px
 
 .codeblock
-	background: #121212
+	background: var(--opposite)
 	word-wrap: break-all
 
 
 pre.codeblock
-	font-size: 18px
+	font-size: 16px
 
 .nocodeparent
 	pre
-		font-size: 18px
+		font-size: 16px
+		margin: 0
+		line-height: 1.2
 
 .codeblock code
 	word-wrap: break-all
 	font-size: 16px
+	font-weight: 500
+	color: var(--textone)
 
 
 </style>

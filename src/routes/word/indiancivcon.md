@@ -1,6 +1,5 @@
 ---
 title: Indian Civilizational Consciousness
-image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/batch1/434.webp
 tags: civilization
 featured: false
 type: fractal maṇḍala

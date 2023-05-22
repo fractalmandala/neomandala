@@ -1,6 +1,7 @@
 <script lang="ts">
 //@ts-nocheck
     import { onMount } from 'svelte'
+	import AppShell from '$lib/design/AppShell.svelte';
     import { audioStore } from '$lib/stores/modalstores'
     import { readingMode } from '$lib/stores/globalstores'
     import { allWritings } from '$lib/utils/supabase'
@@ -20,15 +21,17 @@
 </script>
 
 
-<div class="rta-grid grid2 right00 fullH cushion">
-    <div class="rta-grid colgap300 rowgap100 postgrid">
+
+<AppShell>
+    <div slot="main">
+        <div class="rta-grid grid2 colgap300 rowgap600">
         {#if pens && pens.length > 0}
             {#each pens as item}
                 <a class="rta-row colgap300 stay ybetween ticket" href="/word/{item.slug}">
                     <div class="rta-column rowgap100 null w64">
                         <p class="green">{item.type}</p>
-                        <h4 class="tt-u">{item.id}-{item.title}</h4>
-                        <small>{item.tags}</small>
+                        <h5 class="tt-c special">{item.id}-{item.title}</h5>
+                        <small class="grey">{item.tags}</small>
                     </div>
                     <div class="rta-image w32 height-24">
                         <img src={item.image} alt={item.title}/>
@@ -36,20 +39,14 @@
                 </a>
             {/each}
         {/if}
+        </div>
     </div>
-    <div class="rta-column titlebox null" class:invisible={$readingMode}>
+    <div slot="side" class="rta-column column-row xstretch fullW rowgap300 null">
         <img class="jello-vertical" src="/images/k-writings.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake} />
-        <h3 class="tt-u">word</h3>
-        <p class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</p>
+        <div class="rta-column rowgap200 bord-bot p-bot-32 p-left-32 w64">
+            <h6 class="tt-u">word</h6>
+            <small class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</small>
+        </div>
     </div>
-</div>
 
-<style lang="sass">
-
-
-.ticket
-    padding: 20px
-    border-radius: 4px
-
-
-</style>
+</AppShell>

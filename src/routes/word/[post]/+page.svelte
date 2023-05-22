@@ -1,6 +1,7 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
+	import AppShell from '$lib/design/AppShell.svelte';
     import { browser } from '$app/environment'
     import { page } from '$app/stores'
     import { thisWritings, pageWritings } from '$lib/utils/supabase' 
@@ -50,8 +51,9 @@
 
 <svelte:window bind:scrollY={y}/>
 
-<div class="rta-grid grid2 right00 screen fullH">
-    <div class="rta-column writing postis" bind:this={ref}>
+
+<AppShell>
+    <div slot="main" bind:this={ref}>
         <div class="progress-strip">
             <div class="inside" style="width: {perCent * 100}%"></div>
         </div>
@@ -62,23 +64,22 @@
                 {/each}
             {/if}
         </div>
-        <svelte:component this={data.content}/>
+        <div class="thisispost">
+            <svelte:component this={data.content}/>
+        </div>
         <div class="rta-row bord-top m-bot-32 null ycenter colgap200 p-top-32">
-            <h6>Prev:</h6>
+            <h6>Next:</h6>
             {#if prevPost && prevPost.length > 0}
             {#each prevPost as item}
-                <p><a href="/word/{item.slug}">{item.title}</a></p>
+                <p class="green"><a href="/word/{item.slug}">{item.title}</a></p>
             {/each}
             {/if}
         </div>
     </div>
-    <div class="rta-column titlebox" class:invisible={$readingMode}>
-        <p>{$readingMode}</p>
-        <a href="/word" class="rta-row null ycenter">
-            <small>Word</small>
-            <ChevRight/>
-        </a>
-        <h4 class="tt-u">{data.title}</h4>
+    <div slot="side" class="rta-column column-row xstretch fullW rowgap300 null">
+        <h5 class="tt-u p-left-32">{data.title}</h5>
+        <small class="grey p-left-32 p-bot-32 bord-bot">{data.type}</small>
+        <div class="p-bot-32 p-left-32">
         <Pagination>
             <div slot="prev">
             {#if prevPost && prevPost.length > 0}
@@ -99,12 +100,6 @@
             {/if}
             </div>
         </Pagination>
+        </div>
     </div>
-</div>
-
-<style lang="sass">
-
-.titlebox.invisible
-    opacity: 0
-
-</style>
+</AppShell>

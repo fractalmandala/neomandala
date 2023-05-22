@@ -2,10 +2,18 @@ body, html
     margin: 0
     box-sizing: border-box
 
+.gridimage
+    background-position: center center
+    background-size: cover
+    background-repeat: no-repeat
+    background-image: url('/images/gridder.png')
+
 :root
     box-sizing: border-box
     font-family: 'Space Mono', monospace
     --green: #0BC160
+    --creme: #719A79
+    --palio: #F6EDD9
 
 *
     box-sizing: border-box
@@ -30,17 +38,23 @@ body, html
     --greyish: #878787
     --contraster: #212121
     --onlyblack: #474747
+    color: white
+    h4, h5
+        color: #474747
 
 
 .light
     --background: #121212
     --textone: #373737
     --opposite: #FFFFFF
-    --borderline: #d7d7d7
+    --borderline: #f1f1f1
     --greyish: #878787
     --contraster: #e7e7e7
     --boxshadow: 4px 7px 12px #e1e1e1
     --onlyblack: #d7d7d7
+    color: #474747
+    h4, h5
+        color: #474747
 
 $unit4: 4px
 $unit8: 8px
@@ -67,10 +81,21 @@ $unit128: 128px
         justify-content: space-between
     &.xcenter
         align-items: center
+    &.xstretch
+        align-items: stretch
     &.xleft
         align-items: flex-start
     &.xright
         align-items: flex-end
+
+.rta-column.column-row
+    @media screen and (max-width: 786px)
+        flex-direction: row
+        column-gap: 24px
+        .w32
+            width: 32%
+        .w64
+            width: 60%
 
 .rta-row
     display: flex
@@ -197,9 +222,9 @@ $unit128: 128px
     .gap500
         gao: $unit32
     .colgap600
-        column-gap: $unit48
+        column-gap: $unit32
     .rowgap600
-        row-gap: $unit48
+        row-gap: $unit32
     .gap600
         gao: $unit48
 @media screen and (max-width: 767px)
@@ -253,6 +278,8 @@ $unit128: 128px
     grid-template-rows: auto
     width: 100%
     box-sizing: border-box
+
+
 
 
 @media screen and (min-width: 1024px)
@@ -441,6 +468,14 @@ $unit128: 128px
     @media screen and (max-width: 1023px)
         height: 20vh
 
+.height-40-40
+    @media screen and (min-width: 1024px)
+        height: 50vh
+    @media screen and (max-width: 1023px)
+        height: 40vh
+    @media screen and (max-width: 786px)
+        height: 30vh
+
 .height-40
     @media screen and (min-width: 1024px)
         height: 50vh
@@ -499,6 +534,12 @@ $unit128: 128px
     opacity: 0
 
 .levelzero
+    .p-right-48
+        padding-right: 48px
+    .p-left-32
+        padding-left: 32px
+    .p-left-48
+        padding-left: 48px
     .titlebox
         width: 280px
     .rightbox
@@ -546,8 +587,22 @@ $unit128: 128px
         .inside
             background: var(--green)
             height: 6px
+    .codeis
+        width: 640px
+    .pagepad
+        padding: 0 8vw 0 5vw
+    .cutthis
+        width: 50vw
+    .thisispost
+        width: 50vw
 
 .levelone
+    .p-right-48
+        padding-right: 48px
+    .p-left-32
+        padding-left: 3vw
+    .p-left-48
+        padding-left: 4vw
     .screen
         min-height: 100vh
         padding: 48px
@@ -588,6 +643,13 @@ $unit128: 128px
         .inside
             background: var(--green)
             height: 6px
+    .onetwo-bord-bot
+        border-bottom: 1px solid var(--borderline)
+        padding-bottom: 16px
+    .cutthis
+        width: 50vw
+    .thisispost
+        width: 50vw
 
 .leveltwo
     .fullscreen
@@ -627,6 +689,12 @@ $unit128: 128px
         .inside
             background: var(--green)
             height: 4px
+    .onetwo-bord-bot
+        border-bottom: 1px solid var(--borderline)
+        padding-bottom: 16px
+    .cutthis
+        width: 84vw
+
 
 
 .blank-button
@@ -711,20 +779,20 @@ $unit128: 128px
     background: var(--green)
     width: max-content
     border: 2px solid transparent
-    padding: 2px 12px 0 12px
+    padding: 3px 12px 2px 12px
     border-radius: 3px
     transform-origin: center center
     transition: 0.08s
     letter-spacing: -0.12px
     cursor: pointer
     font-size: 14px
-    text-transform: uppercase
+    text-transform: capitalize
     font-weight: 500
     line-height: 1.5
-    font-family: var(--coder)
+    font-family: 'Space Grotesk', sans-serif
     &:hover
         border: 2px solid var(--green)
-        color: var(--gret)
+        color: var(--green)
         background: white
         transform: scale(0.92)
 
@@ -741,10 +809,10 @@ $unit128: 128px
     letter-spacing: -0.12px
     cursor: pointer
     font-size: 14px
-    text-transform: uppercase
+    text-transform: capitalize
     font-weight: 500
     line-height: 1.5
-    font-family: var(--coder)
+    font-family: 'Space Grotesk', sans-serif
     &:hover
         border: 2px solid var(--green)
         color: white
@@ -887,3 +955,41 @@ $unit128: 128px
 .dark
     .menubar
         background: #171717
+
+select
+    border: 1px solid var(--borderline)
+    padding: 2px
+    border-radius: 4px
+
+
+.levelzero, .levelone
+    .rta-column.rowgap300.xstretch.fullW.null
+        img
+            object-fit: contain
+            width: 80%
+            margin-left: 32px
+
+.leveltwo
+    .rta-column.rowgap300.xstretch.fullW.null
+        img
+            object-fit: cover
+            height: 160px
+
+
+.special
+    position: relative
+    cursor: pointer
+    &::after
+        position: absolute
+        content: ''
+        bottom: 0
+        left: 0
+        width: 0%
+        height: 2px
+        background: var(--green)
+        margin-left: 50%
+        transition: 0.18s
+    &:hover
+        &::after
+            width: 100%
+            margin-left: 0

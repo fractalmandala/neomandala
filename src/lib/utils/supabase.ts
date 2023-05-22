@@ -95,10 +95,32 @@ export async function featuredWritings(){
 
 export async function gptStream(){
     const { data, error } = await supabase
-    .from('amrit-notes')
+    .from('amrit-uuids')
     .select()
-    .eq('tags', 'gpt')
-    .order('id')
+    .order('id', {ascending: false})
     if ( error ) throw new Error(error.message)
     return data
 }
+
+let theuuids:any = []
+
+export async function distinctuu(){
+    const { data, error } = await supabase
+    .rpc('distinctuuids')
+    if (error) {
+        console.log(error)
+    } else {
+        theuuids = data
+    }
+}
+
+export async function thisUUID(uuidtext:any){
+    const { data, error } = await supabase
+    .from('amrit-notes')
+    .select()
+    .eq('uuidtext',uuidtext)
+    .order('id')
+    if ( error ) throw new Error(error.message)
+    return data    
+}
+

@@ -1,3 +1,12 @@
+
+:root
+    box-sizing: border-box
+    font-family: 'Space Mono', monospace
+    --green: #0BC160
+    --creme: #719A79
+    --palio: #F6EDD9
+    --friend: #136F63
+
 .dark
     --background: #FFFFFF
     --textone: #a1a1a1
@@ -22,18 +31,6 @@
 
 .levelzero
     .formA
-        display: flex
-        flex-direction: column
-        row-gap: 20px
-        width: 360px
-        background: var(--contraster)
-        padding: 32px 24px
-        border-radius: 4px
-        .rest
-            grid-area: rest
-            width: 200px
-        .editor
-            grid-area: editor
         input
             padding: 4px
             border-radius: 4px
@@ -44,10 +41,16 @@
             border-radius: 4px
             border: 1px solid var(--borderline)
             font-family: 'Space Grotesk', sans-serif
+            height: 160px
         label
             font-size: 12px
             text-transform: uppercase
-            font-weight: 600
+            font-weight: 400
+        select
+            padding: 2px
+            border-radius: 4px
+            border: 1px solid var(--borderline)
+            font-family: 'Space Grotesk', sans-serif
         .optionals
             display: flex
             flex-direction: row

@@ -120,10 +120,7 @@
 
 
 .menubar
-    background-color: hsla(143,6%,4%,1)
-    background-image: radial-gradient(at 40% 20%, hsla(101,87%,5%,0.4) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(97,72%,9%,0.1) 0px, transparent 50%)
     p
-        color: white
         text-transform: uppercase
 
 </style>

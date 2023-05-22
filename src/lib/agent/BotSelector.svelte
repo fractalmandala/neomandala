@@ -1,6 +1,6 @@
 <script lang="ts">
 
-	import { botsList } from '$lib/stores/gptprompt';
+	import { botsList, promptStore } from '$lib/stores/gptprompt';
     import { showBots } from '$lib/stores/modalstores'
     import { scale } from 'svelte/transition'
     import Left from '$lib/icons/ChevFLeft.svelte'
@@ -9,6 +9,11 @@
 	let isCard = Array(6).fill(false);
     let currentIndex = 0
     let dimension = 27
+    
+    function handleSelection(selection:any){
+        promptStore.set(selection)
+        showBots.set(false)
+    }
     
     isCard[currentIndex] = true
     isCard[currentIndex + 1] = true
@@ -43,7 +48,9 @@ function togglePrevious() {
 							<em class="grey">{bot.about}</em>
 						</div>
                     </div>
-					<button class="outbutton rta-column"> Select </button>
+					<button class="outbutton rta-column"
+                        on:click={() => handleSelection(bot.prompt)}
+                        > Select </button>
 				</div>
 			{/if}
 		{/each}

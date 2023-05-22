@@ -1,29 +1,35 @@
 <script lang="ts">
 
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-	import {
-		showChip,
-		showBots,
-        audioStore
-	} from '$lib/stores/modalstores';
+	import { onMount, beforeUpdate, afterUpdate } from 'svelte';
+    import { themeMode, readingMode } from '$lib/stores/globalstores'
+	import { afterNavigate } from '$app/navigation';
+	import { showChip, showBots, audioStore } from '$lib/stores/modalstores';
 	import BotSelector from '$lib/agent/BotSelector.svelte';
 	import { counterStore } from '$lib/stores/counter';
 	import { fly } from 'svelte/transition';
 	import supabase from '$lib/utils/supabase';
-    import * as timeago from 'timeago.js'
+	import * as timeago from 'timeago.js';
 	import ChatMessages from '$lib/agent/ChatMessages.svelte';
+	import Chat from '$lib/icons/Chat.svelte';
+	import Search from '$lib/icons/Search.svelte';
 	import { storeChat, getChats } from '$lib/agent/dexie';
-	import { promptStore, nameStore, aboutStore, imageStore, botsList, botStore } from '$lib/stores/gptprompt';
+	import {
+		promptStore,
+		nameStore,
+		aboutStore,
+		imageStore,
+		botsList,
+		botStore,
+		greetStore
+	} from '$lib/stores/gptprompt';
 	import type { ChatCompletionRequestMessage } from 'openai';
 	import { SSE } from 'sse.js';
-	import { gptTitles, gptStream, latestSession } from '$lib/utils/supabase';
+	import { gptTitles, gptStream, latestSession, chatsCount } from '$lib/utils/supabase';
 	import { chatMode, uuidStore, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import Refresh from '$lib/icons/Refresh.svelte';
-    import Time from '$lib/icons/Time.svelte'
-	import Confirm from '$lib/icons/Confirm.svelte';
+	import Time from '$lib/icons/Time.svelte';
 	import GPTParser from '$lib/agent/Parser.svelte';
-    import Send from '$lib/icons/Send.svelte'
+	import Send from '$lib/icons/Send.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 	let pens: any;
 	let audio: any;
@@ -33,6 +39,7 @@
 	let loading = false;
 	let query: any;
 	let tags = 'gpt';
+	let searchColor = '#057402';
 	let submitQuery: any;
 	let userprompt: any;
 	let answer: any;
@@ -41,8 +48,27 @@
 	let submittance: any;
 	let chatMessages: ChatCompletionRequestMessage[] = [];
 	let chats: any = [];
-    let currentBot:any
-    let latestuuid:any
+	let currentBot: any;
+	let latestuuid: any;
+	let div: HTMLElement | null | undefined;
+	let autoscroll: boolean | null | undefined;
+	let isHistory = false;
+	let expandSize = 32;
+	let chatCount: any;
+	let searchInput: any;
+	let searchload = false;
+	let inputSearch: any;
+
+	export async function searchChats() {
+		searchload = true;
+		const { data, error } = await supabase
+			.from('amrit-notes')
+			.select()
+			.eq('tags', 'gpt')
+			.textSearch('content', inputSearch);
+		if (error) throw new Error(error.message);
+		return data;
+	}
 
 	function generateUUID() {
 		uuidStore.set(uuidv4());
@@ -53,31 +79,52 @@
 		fake = !fake;
 	}
 
-function formatTimeAgo(date: timeago.TDate) {
-    const timeAgoString = timeago.format(date);
+	async function loadLatestSession() {
+		latestuuid = await latestSession();
+	}
 
-    if (timeAgoString.includes('seconds')) return 'just now';
-    if (timeAgoString.includes('minute')) return timeAgoString.replace(' minutes ago', 'm');
-    if (timeAgoString.includes('hour')) return timeAgoString.replace(' hours ago', 'h');
-    if (timeAgoString.includes('day')) return timeAgoString.replace(' days ago', 'd');
-    if (timeAgoString.includes('week')) return timeAgoString.replace(' weeks ago', 'w');
-    if (timeAgoString.includes('month')) return timeAgoString.replace(' months ago', 'mo');
-    if (timeAgoString.includes('year')) return timeAgoString.replace(' years ago', 'y');
+	async function loadChatsCount(uuidtext: any) {
+		const data = await chatsCount(uuidtext);
+		return data;
+	}
 
-    // Return the original string if it doesn't match any of the above conditions
-    return timeAgoString;
-}
+	$: if (latestuuid && latestuuid.length > 0) {
+		const thisone = latestuuid[0].uuid;
+		loadChatsCount(thisone);
+	}
+
+	loadLatestSession();
+
+	function formatTimeAgo(date: timeago.TDate) {
+		const timeAgoString = timeago.format(date);
+
+		if (timeAgoString.includes('seconds')) return 'just now';
+		if (timeAgoString.includes('minute')) return timeAgoString.replace(' minutes ago', 'm');
+		if (timeAgoString.includes('hour')) return timeAgoString.replace(' hours ago', 'h');
+		if (timeAgoString.includes('day')) return timeAgoString.replace(' days ago', 'd');
+		if (timeAgoString.includes('week')) return timeAgoString.replace(' weeks ago', 'w');
+		if (timeAgoString.includes('month')) return timeAgoString.replace(' months ago', 'mo');
+		if (timeAgoString.includes('year')) return timeAgoString.replace(' years ago', 'y');
+
+		// Return the original string if it doesn't match any of the above conditions
+		return timeAgoString;
+	}
 
 
-	const handleSelectChange = (event: Event) => {
-		const selectedBot = botsList.find(
-			(bot) => bot.prompt === (event.target as HTMLSelectElement).value
-		);
-		if (selectedBot) {
-			currentBot = selectedBot.name;
-			botStore.set(currentBot);
-		}
-	};
+
+    $: if ( $promptStore ) {
+        currentBot = botsList.find(bot => bot.prompt === $promptStore);
+        let currentName = currentBot ? currentBot.name : undefined;
+        nameStore.set(currentName);
+        let currentImage = currentBot ? currentBot.image : undefined;
+        imageStore.set(currentImage);
+        let currentAbout = currentBot ? currentBot.about : undefined;
+        aboutStore.set(currentAbout);
+        let currentGreet = currentBot ? currentBot.greeting : undefined;
+        greetStore.set(currentGreet);
+        generateUUID();
+
+    }
 
 	const handleSubmit = async () => {
 		loading = true;
@@ -85,7 +132,7 @@ function formatTimeAgo(date: timeago.TDate) {
 		chatMessages = [...chatMessages, { role: 'user', content: query }];
 		userprompt = query;
 		submitQuery = query;
-		submitTitle = submitQuery.slice(0, 20);
+		submitTitle = submitQuery.slice(0, 60);
 		const eventSource = new SSE('/api/chat', {
 			headers: {
 				'Content-Type': 'application/json'
@@ -113,6 +160,7 @@ function formatTimeAgo(date: timeago.TDate) {
                     ${submitAnswer}
                     `;
 					sendToSupabase();
+					storeChat(userprompt, answer);
 					answer = '';
 					return;
 				}
@@ -150,17 +198,22 @@ function formatTimeAgo(date: timeago.TDate) {
 	}
 
 	async function sendToSupabase() {
-		const { error } = await supabase.from('amrit-notes').insert({
-			title: submitTitle,
-			content: submittance,
-			supaid: $counterStore,
-			tags: tags,
-			uuidtext: $uuidStore
-		});
-		if (error) {
-			throw new Error(error.message);
+		if ($uuidStore === '') {
+			generateUUID();
 		} else {
-			showChip('sent');
+			const { error } = await supabase.from('amrit-notes').insert({
+				title: submitTitle,
+				content: submittance,
+				supaid: $counterStore,
+				tags: tags,
+				uuidtext: $uuidStore,
+                language: $nameStore
+			});
+			if (error) {
+				throw new Error(error.message);
+			} else {
+				showChip('sent');
+			}
 		}
 	}
 
@@ -176,60 +229,86 @@ function formatTimeAgo(date: timeago.TDate) {
 	onMount(async () => {
 		pens = await gptTitles();
 		stream = await gptStream();
-        latestuuid = await latestSession();
+		latestuuid = await latestSession();
+
+		div = document.getElementById('page');
+	});
+
+	beforeUpdate(() => {
+		autoscroll = div && div.offsetHeight + div.scrollTop > div.scrollHeight - 20;
+	});
+
+	afterUpdate(() => {
+		if (autoscroll) div?.scrollTo({ top: div.scrollHeight, behavior: 'smooth' });
+	});
+
+	// autoscroll to bottom after navigation
+	afterNavigate(() => {
+		div?.scrollTo({ top: div.scrollHeight, behavior: 'smooth' });
 	});
 </script>
 
 <BotSelector />
-<div class="rta-grid grid2"
-    class:levelzero={$breakZero}
-    class:levelone={$breakOne}
-    class:leveltwo={$breakTwo}
-    >
+<div
+	class="rta-grid grid2"
+	class:levelzero={$breakZero}
+	class:levelone={$breakOne}
+	class:leveltwo={$breakTwo}
+    class:light={$themeMode}
+    class:dark={!$themeMode}
+>
 	<div class="rta-column rowgap300 null panel-left">
-
-        <div class="rta-row colgap200">
-            <div class="rta-image">
-                <img src={$imageStore} alt={$nameStore} />
-            </div>
-            <div class="rta-column rowgap100 w64">
-                <div class="rta-column">
-                    <p><strong>{$nameStore}</strong></p>
-                    <small class="grey">{$aboutStore}</small>
-                </div>
-                <button class="blank-button ta-l tt-u green" style="font-weight: 600; cursor: pointer" on:click={() => showBots.set(true)}>
-                    Change Bot
-                </button>
-            </div>    
-        </div>
-        <div class="rta-column bord-top rowgap50 p-top-32">
-            <h6 class="p-bot-8">Current Session: </h6>
-            {#if latestuuid && latestuuid.length > 0}
-                {#each latestuuid as item}
-                    <div class="rta-row between null ycenter">
-                        <small class="green">{item.uuid}</small>
-                        <div class="rta-row null ycenter colgap50">
-                            <small class="grey">{formatTimeAgo(item.created_at)}</small>
-                            <Time/>
-                        </div>
-                    </div>
-                {/each}
-            {/if}
-        </div>
-     
-		<div class="rta-column bord-top rowgap50 p-top-32">
-            <h6 class="p-bot-8">Latest Untitled:</h6>
-			{#if stream && stream.length > 0}
-					{#each stream as item}
-						<small class="grey">
-							<a class="hover" href="/bot/supa/{item.uuid}">
-								{item.uuid}
-							</a>
-						</small>
-					{/each}
+		<div class="rta-row colgap200">
+			<div class="rta-image">
+				<img src={$imageStore} alt={$nameStore} />
+			</div>
+			<div class="rta-column rowgap100 w64">
+				<div class="rta-column">
+					<p><strong>{$nameStore}</strong></p>
+					<small class="grey">{$aboutStore}</small>
+				</div>
+				<button
+					class="blank-button ta-l tt-u green"
+					style="font-weight: 600; cursor: pointer"
+					on:click={() => showBots.set(true)}
+				>
+					Change Bot
+				</button>
+			</div>
+		</div>
+		<form class="classic-input rta-row" on:submit|preventDefault={() => searchChats()}>
+			<input type="text" bind:value={inputSearch} />
+			<button type="submit" class="blank-button">
+				<Search color={searchColor} />
+			</button>
+		</form>
+		<div class="rta-column rowgap50">
+			<p class="p-bot-8"><b>Current Session:</b></p>
+			{#if latestuuid && latestuuid.length > 0}
+				{#each latestuuid as item}
+					<div class="rta-column between null ycenter">
+						<small class="green">{item.uuid}</small>
+						<div class="rta-row null ycenter colgap50">
+							<cite class="grey">{formatTimeAgo(item.created_at)}</cite>
+							<Time />
+						</div>
+					</div>
+				{/each}
 			{/if}
 		</div>
-        <!--
+		<div class="rta-column bord-top rowgap50 p-top-32">
+			<h6 class="p-bot-8">Latest Untitled:</h6>
+			{#if stream && stream.length > 0}
+				{#each stream as item}
+					<small class="grey">
+						<a class="hover" href="/bot/supa/{item.uuid}">
+							{item.uuid}
+						</a>
+					</small>
+				{/each}
+			{/if}
+		</div>
+		<!--
 		<div class="rta-column rowgap300 fullW p-top-16 bord-bot p-bot-32">
 			<div class="rta-column rowgap50">
 				<button class="outbutton" on:click={generateUUID}> Generate ID </button>
@@ -241,7 +320,19 @@ function formatTimeAgo(date: timeago.TDate) {
 	<div class="rta-column panel-chat">
 		<div class="rta-column ybetween pagepad" transition:fly>
 			<div class="rta-column rowgap300 previouschats" data-lenis-prevent>
-				<ChatMessages type="assistant" message="Namaste. How may I help you?" />
+                <div class="rta-row colgap200 null ycenter">
+                    <img class="avatar" src="/images/chatbot.png" alt="chatbot"/>
+                    <h5>{$greetStore}</h5>
+                </div>
+				{#each chatMessages as message}
+					<ChatMessages type={message.role} message={message.content} />
+				{/each}
+				{#if answer}
+					<ChatMessages type="assistant" message={answer} />
+				{/if}
+				{#if loading}
+					<ChatMessages type="assistant" message="Loading.." />
+				{/if}
 				{#each chats as chat}
 					<div class="userchat ta-r rta-column null bord-top m-top-16 p-top-32">
 						<small class="tt-u">user</small>
@@ -252,15 +343,6 @@ function formatTimeAgo(date: timeago.TDate) {
 						<GPTParser response={chat.assistantMessage} />
 					</div>
 				{/each}
-				{#each chatMessages as message}
-					<ChatMessages type={message.role} message={message.content} />
-				{/each}
-				{#if answer}
-					<ChatMessages type="assistant" message={answer} />
-				{/if}
-				{#if loading}
-					<ChatMessages type="assistant" message="Loading.." />
-				{/if}
 			</div>
 			<div class="boxc ofform m-top-16">
 				<form class="rta-row fullW between" on:submit|preventDefault>
@@ -272,7 +354,7 @@ function formatTimeAgo(date: timeago.TDate) {
 							on:click={() => handleSubmit()}
 							on:keydown={fauxfake}
 						>
-							<Send/>
+							<Send />
 						</button>
 						<button class="blank-button" on:click={() => loadStream()} on:keydown={fauxfake}>
 							<Refresh />
@@ -287,39 +369,39 @@ function formatTimeAgo(date: timeago.TDate) {
 <style lang="sass">
 
 .levelzero.grid2
-    grid-template-columns: 34% 1fr
+    grid-template-columns: 30% 1fr
+    grid-template-areas: "panel-left panel-chat"
     .panel-left
-        padding: 64px
-        border-right: 1px solid var(--borderline)
+        grid-area: panel-left
+        padding: 32px
         overflow-y: scroll
-        height: 100vh
+        height: calc(100vh - 64px)
         position: sticky
         background: white
         background-size: cover
         background-position: center
-        top: 0
+        border-radius: 8px
+        top: 32px
+        box-shadow: 8px 8px 12px #f1f1f1, -8px -6px 10px #f6f6f6
         .rta-image
             width: 88px
             height: 88px
             border-radius: 5px
     .panel-chat
-        background: white
-        padding-top: 48px
-        padding-bottom: 48px
+        grid-area: panel-chat
+        height: calc(100vh - 64px)
+        border-radius: 8px
+        .avatar
+            width: 64px
+            height: 64px
         .previouschats
-            background: rgba(255,255,255,1)
             border-radius: 8px
             height: 76vh
             overflow-y: scroll
             padding: 48px
-            border: 1px solid white
         .ofform
-            border: 1px solid #f1f1f1
-            background: rgba(0,0,0,0.8)
-            min-height: 64px
             border-radius: 8px
             padding: 16px
-            box-shadow: 4px 6px 12px #d7d7d7
             textarea
                 width: calc(100% - 80px)
                 border-radius: 4px

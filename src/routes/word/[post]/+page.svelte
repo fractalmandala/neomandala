@@ -2,10 +2,10 @@
 
     import { onMount } from 'svelte'
 	import AppShell from '$lib/design/AppShell.svelte';
+	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
     import { browser } from '$app/environment'
     import { page } from '$app/stores'
     import { thisWritings, pageWritings } from '$lib/utils/supabase' 
-    import { readingMode } from '$lib/stores/globalstores'
     import { elementSizeStore } from '$lib/utils/elementsize'
     import Pagination from '$lib/components/Pagination.svelte'
     import ChevFRight from '$lib/icons/ChevFRight.svelte'
@@ -51,9 +51,16 @@
 
 <svelte:window bind:scrollY={y}/>
 
+<div
+	class="appshell"
+	class:levelzero={$breakZero}
+	class:levelone={$breakOne}
+	class:leveltwo={$breakTwo}
+	class:light={$themeMode}
+	class:dark={!$themeMode}
+>
 
-<AppShell>
-    <div slot="main" bind:this={ref}>
+    <div class="shellmain" bind:this={ref}>
         <div class="progress-strip">
             <div class="inside" style="width: {perCent * 100}%"></div>
         </div>
@@ -76,10 +83,10 @@
             {/if}
         </div>
     </div>
-    <div slot="side" class="rta-column column-row xstretch fullW rowgap300 null" class:invisible={$readingMode}>
-        <h5 class="tt-u p-left-32">{data.title}</h5>
-        <small class="grey p-left-32 p-bot-32 bord-bot">{data.type}</small>
-        <div class="p-bot-32 p-left-32">
+    <div class="shellside rta-column column-row fullW rowgap300 null" class:invisible={$readingMode}>
+        <h4 class="tt-u">{data.title}</h4>
+        <small class="grey p-bot-32 bord-bot">{data.type}</small>
+        <div class="p-bot-32">
         <Pagination>
             <div slot="prev">
             {#if prevPost && prevPost.length > 0}
@@ -102,4 +109,5 @@
         </Pagination>
         </div>
     </div>
-</AppShell>
+
+</div>

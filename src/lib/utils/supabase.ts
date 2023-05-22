@@ -65,6 +65,37 @@ export async function allWritings(){
     return data
 }
 
+export async function historyWritings(){
+    const { data, error } = await supabase
+    .from('amrit-posts')
+    .select()
+    .eq('type', 'history')
+    .order('id', {ascending: false})
+    if (error) throw new Error(error.message)
+    return data
+}
+
+export async function archivalWritings(){
+    const { data, error } = await supabase
+    .from('amrit-posts')
+    .select()
+    .eq('type', 'archival')
+    .order('id', {ascending: false})
+    if (error) throw new Error(error.message)
+    return data
+}
+
+export async function mandalaWritings(){
+    const { data, error } = await supabase
+    .from('amrit-posts')
+    .select()
+    .eq('type', 'fractal maṇḍala')
+    .order('id', {ascending: false})
+    if (error) throw new Error(error.message)
+    return data
+}
+
+
 export async function thisWritings(slug:string){
     const { data, error } = await supabase
     .from('amrit-posts')
@@ -98,6 +129,7 @@ export async function gptStream(){
     .from('amrit-uuids')
     .select()
     .order('id', {ascending: false})
+    .limit(6)
     if ( error ) throw new Error(error.message)
     return data
 }
@@ -124,12 +156,32 @@ export async function thisUUID(uuidtext:any){
     return data    
 }
 
+export async function chatsCount(uuidtext:any){
+    const { data, error } = await supabase
+    .from('amrit-notes')
+    .select('*', { count: 'exact', head: true })
+    .eq('uuidtext', uuidtext)
+    if ( error ) throw new Error(error.message)
+    return data  
+}
+
 export async function latestSession(){
     const { data, error } = await supabase
     .from('amrit-uuids')
     .select()
     .order('id', {ascending: false})
     .limit(1)
+    if ( error ) throw new Error(error.message)
+    return data
+}
+
+
+export async function searchChats(inputSearch:any){
+    const { data, error } = await supabase
+    .from('amrit-notes')
+    .select()
+    .eq('tags','gpt')
+    .textSearch('content',inputSearch)
     if ( error ) throw new Error(error.message)
     return data
 }

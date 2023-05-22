@@ -20,19 +20,11 @@ import Read from '$lib/icons/Reading.svelte'
     <div class="rta-column side">
         <slot name="side"></slot>
     </div>
-    <div class="rta-row fixedicons colgap100">
-        <ArrowUp/>
-        <Read/>
-    </div>
 </div>
 
 
 <style lang="sass">
 
-.fixedicons
-    position: fixed
-    bottom: 32px
-    left: 128px
 
 .appshell
     display: grid
@@ -41,20 +33,20 @@ import Read from '$lib/icons/Reading.svelte'
 .appshell.levelzero
     grid-template-columns: 280px 1fr
     grid-template-areas: "side main"
-    position: relative
-    width: calc(100vw - 96px)
+    column-gap: 4vw
     .main
         grid-area: main
-        padding: 64px 4vw
     .side
         grid-area: side
         width: 280px
-        padding-top: 32px
         text-align: left
-        height: 100vh
+        height: calc(100vh - 64px)
+        border-radius: 6px
+        padding: 24px
         position: sticky
-        top: 0
+        top: 32px
         left: 0
+        box-shadow: 8px 8px 12px #f1f1f1, -8px -6px 10px #f6f6f6
 
 .appshell.levelone
     grid-template-columns: 240px 1fr

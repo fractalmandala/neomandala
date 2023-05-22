@@ -73,22 +73,8 @@ h5.white
         font-size: 14px
     h4
         font-family: 'Space Grotesk', sans-serif
-        position: relative
-        &::after
-            position: absolute
-            bottom: 0
-            left: 0
-            width: 0%
-            margin-left: 50%
-            height: 2px
-            content: ''
-            background: var(--green)
-            transition: 0.18s
-    &:hover
-        h4
-            &::after
-                width: 100%
-                margin-left: 0
+        &:hover
+            color: #057402
 
 
 .tt-u
@@ -103,9 +89,10 @@ p, h6, small, blockquote, h5, h4, h3, h2, h1, pre, code
 
 cite
     margin: 0
-    font-size: 12px
+    font-size: 10px
     letter-spacing: -0.5px
     font-style: normal
+    font-weight: bold
     font-family: 'Space Grotesk', sans-serif
 
 h3
@@ -148,7 +135,7 @@ h6
     font-family: 'Space Grotesk', sans-serif
     letter-spacing: -0.3px
     font-size: 20px
-    font-weight: 500
+    font-weight: bold
 
 .titlebox
     h4, h3
@@ -167,7 +154,7 @@ h6
         line-height: 1.4
 
 .thisispost
-    p, li
+    p, li, em
         font-size: 19px
         font-family: 'Space Grotesk', sans-serif
         line-height: 1.5

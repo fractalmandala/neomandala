@@ -22,8 +22,8 @@
 	});
 </script>
 
-<div class="back fullscreen" />
-<div class="rta-column colgap600 ybetween screen cushion">
+<div class="back" />
+<div class="rta-column colgap600 ybetween">
 	<div class="rta-column null">
 		<div class="rta-column null p-bot-32 p-top-32">
 			<h4>
@@ -96,7 +96,7 @@
 	</div>
 	<div class="rta-column bord-top p-top-64 last postis">
 		<small
-			>I'm Amrit, a writer and creator based in Gurgaon, India. I work as Director of Strategy at <a
+			class="grey">I'm Amrit, a writer and creator based in Gurgaon, India. I work as Director of Strategy at <a
 				href="https://www.brhat.in"
 				target="_blank"
 				rel="noreferrer">Bṛhat</a
@@ -105,6 +105,7 @@
 			<a href="https://www.brhateducation.in" target="_blank" rel="noreferrer">Bṛhat Education.</a
 			></small
 		>
+        <small><a href="https://www.flaticon.com/free-icons/chatbot" title="chatbot icons" target="_blank" rel="noreferrer">Chatbot icons created by Freepik - Flaticon</a> | <a href="https://www.flaticon.com/free-icons/hacker" target="_blank" rel="noreferrer" title="hacker icons">Hacker icons created by Freepik - Flaticon</a></small>
 		<div class="rta-row">
 			<Github />
 			<Twitter />
@@ -115,13 +116,12 @@
 <style lang="sass">
 
 .titular
-    border-left: 4px solid var(--green)
-    margin-left: -32px
-    padding-left: 32px
     text-transform: uppercase
 
 .back
     background-image: url('https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/10mandala/realitywall.webp')
+    height: calc(100vh - 64px)
+    border-radius: 6px
 
 .last
     width: 60%

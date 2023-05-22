@@ -60,7 +60,7 @@ export let data
 
 </script>
 
-<svelte:window bind:innerWidth={$windowWidth}/>
+<svelte:window bind:outerWidth={$windowWidth}/>
 
 <svelte:head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,7 +79,7 @@ export let data
 	</script>
 </svelte:head>
 
-<div class="app-shell"
+<div class="project-shell"
     class:levelzero={$breakZero}
     class:levelone={$breakOne}
     class:leveltwo={$breakTwo}
@@ -127,6 +127,7 @@ export let data
                 <slot/>
             </TransitionPage>
         {/key}
+    <audio src="/sounds/boing2.mp3"/>
     </section>
     <NewNote/>
     <Modal/>
@@ -134,6 +135,4 @@ export let data
     <Toast/>
     <Alert/>
     <Chip/>
-    <audio src="/sounds/boing2.mp3"/>
 </div>
-

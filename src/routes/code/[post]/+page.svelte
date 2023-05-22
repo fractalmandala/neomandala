@@ -3,7 +3,7 @@
     import { onMount } from 'svelte'
 	import AppShell from '$lib/design/AppShell.svelte';
     import { thisWebdev } from '$lib/utils/localpulls'
-    import { readingMode } from '$lib/stores/globalstores'
+    import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
 	import Copy from '$lib/icons/Copy.svelte'
     import Pagination from '$lib/components/Pagination.svelte'
     import ChevFRight from '$lib/icons/ChevFRight.svelte'
@@ -32,15 +32,21 @@
 </script>
 
 
-<AppShell>
-    <div slot="main" class="rta-column rowgap200">
-        <div class="codecuts">
+<div class="appshell"
+    class:levelzero={$breakZero}
+    class:levelone={$breakOne}
+    class:leveltwo={$breakTwo}
+    class:light={$themeMode}
+    class:dark={!$themeMode}
+    >
+    <div class="shellmain rta-column rowgap200">
+        <div class="cutthis">
             <svelte:component this={data.content}/>
         </div>
     </div>
-    <div slot="side" class="rta-column xstretch fullW rowgap300 null">
-        <h5 class="tt-u p-left-32">{data.title}</h5>
-        <div class="p-bot-32 p-left-32">
+    <div class="shellside rta-column fullW rowgap300 null">
+        <h4 class="tt-u">{data.title}</h4>
+        <div class="p-bot-32">
         <Pagination>
             <div slot="prev">
                 {#if prevPost && prevPost.length > 0}
@@ -61,6 +67,6 @@
                 {/if}
             </div>
         </Pagination>
+        </div>
     </div>
-
-</AppShell>
+</div>

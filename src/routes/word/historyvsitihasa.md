@@ -1,6 +1,5 @@
 ---
 title: History is Ontic but Itihāsa is Ontologic
-image: https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/05dhiti/01.webp
 tags: civilization
 featured: true
 type: fractal maṇḍala

@@ -29,7 +29,9 @@
 <style lang="sass">
 
 small
-    font-size: 12px
+    font-size: 10px
+    font-weight: bold
+    color: var(--greyish)
 
 pre
     white-space: pre-line

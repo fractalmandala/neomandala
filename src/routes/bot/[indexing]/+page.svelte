@@ -1,8 +1,8 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
+    import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
 	import AppShell from '$lib/design/AppShell.svelte';
-    import { readingMode } from '$lib/stores/globalstores'
     import GPTParser from '$lib/components/GPTParser.svelte'
     import Pagination from '$lib/components/Pagination.svelte'
     import Prism from 'prismjs';
@@ -34,8 +34,14 @@
 </script>
 
 
-<AppShell>
-    <div slot="main" class="rta-column rowgap200">
+<div class="appshell"
+    class:levelzero={$breakZero}
+    class:levelone={$breakOne}
+    class:leveltwo={$breakTwo}
+    class:light={$themeMode}
+    class:dark={!$themeMode}
+    >
+    <div class="shellmain rta-column rowgap200">
         {#if chatStream && chatStream.length > 0}
             {#each chatStream as item, i}
                 <pre class="rta-column breaker">
@@ -44,10 +50,10 @@
             {/each}
         {/if}
     </div>
-    <div slot="side" class="rta-column xstretch fullW rowgap300 null">
-        <h5 class="tt-u p-left-32">{data.indexing}-{data.title.replace('.','')}</h5>
-        <small class="grey p-left-32 p-bot-32 bord-bot">{data.theme}</small>
-        <div class="p-bot-32 p-left-32">
+    <div class="shellside rta-column xstretch fullW rowgap300 null">
+        <h4 class="tt-u">{data.indexing}-{data.title.replace('.','')}</h4>
+        <small class="grey p-bot-32 bord-bot">{data.theme}</small>
+        <div class="p-bot-32">
             <Pagination>
                 <a href="/bot/{data.previd}" slot="prev" class="blank-button">
                     <ChevFLeft/>
@@ -59,4 +65,4 @@
         </div>
     </div>
 
-</AppShell>
+</div>

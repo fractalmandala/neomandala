@@ -2,6 +2,11 @@ body, html
     margin: 0
     box-sizing: border-box
 
+img
+    object-fit: cover
+    height: 100%
+    width: 100%
+
 .gridimage
     background-position: center center
     background-size: cover
@@ -14,6 +19,14 @@ body, html
     --green: #057402
     --creme: #719A79
     --palio: #FAFAFA
+
+.gradienter
+    background: linear-gradient(124.58deg, #057402 11.33%, #078717 29.17%, #10D56C 72.28%)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-clip: text
+    text-fill-color: transparent
+
 
 .hover
     &:hover
@@ -46,7 +59,7 @@ body, html
     --onlyblack: #474747
     color: white
     h4, h5
-        color: #474747
+        color: #d7d7d7
 
 
 .light
@@ -54,14 +67,14 @@ body, html
     --background: #121212
     --textone: #373737
     --opposite: #FFFFFF
-    --borderline: #f9f9f9
+    --borderline: #474747
     --greyish: #878787
     --contraster: #e7e7e7
     --boxshadow: 4px 7px 12px #e1e1e1
     --onlyblack: #d7d7d7
     color: #474747
     h4, h5
-        color: #474747
+        color: #d7d7d7
 
 $unit4: 4px
 $unit8: 8px
@@ -287,8 +300,6 @@ $unit128: 128px
     grid-template-rows: auto
     width: 100%
     box-sizing: border-box
-
-
 
 
 @media screen and (min-width: 1024px)
@@ -543,6 +554,8 @@ $unit128: 128px
     opacity: 0
 
 .levelzero
+    .padding-l1
+        width: 70%
     .p-right-48
         padding-right: 48px
     .p-left-32
@@ -594,9 +607,9 @@ $unit128: 128px
         height: 100%
         margin-left: 4vw
         border-radius: 8px
-        background: var(--palio)
-        box-shadow: 4px 5px 6px #f1f1f1, -2px -5px 7px #f6f6f6
-        border: 8px solid white
+        background: rgba(255,255,255,0.1)
+        box-shadow: 4px 5px 6px #010101, -2px -5px 7px #111111
+        border: 2px solid rgba(255,255,255,0.34)
 
 .levelone
     .p-right-48
@@ -868,9 +881,20 @@ $unit128: 128px
     opacity: 0
 
 .menubar
-    background: rgb(4,34,3)
-    background: linear-gradient(13deg, rgba(4, 34, 3, 1) 0%, rgba(23,23,23,1) 100%)
+    background: rgba(255,255,255,0.1)
+    backdrop-filter: blur(2px)
+    position: relative
+    &::after
+        position: absolute
+        content: ''
+        bottom: 0
+        right: 0
+        height: 100%
+        width: 1px
+        background: linear-gradient(940deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 25%, rgba(17, 17, 17, 0))        
+        transition: 0.23s
 
+        
 
 .app-shell
     display: grid
@@ -1009,7 +1033,7 @@ $unit128: 128px
     p
         text-transform: uppercase
         font-weight: 400
-        color: #FFFFFF
+        color: var(--onlyblack)
 
 select
     border: 1px solid var(--borderline)
@@ -1118,15 +1142,24 @@ select
                     width: 50vw
             .shellside
                 grid-area: side
-                width: 280px
+                width: 240px
+                padding: 24px
                 text-align: left
                 height: calc(100vh - 64px)
-                border-radius: 6px
-                padding: 24px
                 position: sticky
                 top: 32px
                 left: 0
-                box-shadow: 8px 8px 12px #f1f1f1, -8px -6px 10px #f6f6f6
+                background: rgba(255,255,255,0.0)
+                border: 1px solid rgba(255, 255, 255, 0.0)
+                border-radius: 5px
+                &::after
+                    position: absolute
+                    top: 0
+                    right: 0
+                    content: ''
+                    width: 2px
+                    height: 100%
+                    background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 .project-shell.levelone
     grid-template-columns: 96px 1fr
@@ -1171,7 +1204,17 @@ select
                 position: sticky
                 top: 32px
                 left: 0
-                box-shadow: 8px 8px 12px #f1f1f1, -8px -6px 10px #f6f6f6
+                background: rgba(255,255,255,0.0)
+                border: 1px solid rgba(255, 255, 255, 0.0)
+                border-radius: 5px
+                &::after
+                    position: absolute
+                    top: 0
+                    right: 0
+                    content: ''
+                    width: 100%
+                    height: 2px
+                    background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 .project-shell.leveltwo
     grid-template-columns: 1fr
@@ -1211,3 +1254,18 @@ select
                 width: 100%
                 padding: 32px
                 text-align: left
+
+.glass-nosize
+    background: rgba(255,255,255,0.0)
+    border: 1px solid rgba(255, 255, 255, 0.0)
+    border-radius: 5px
+    padding: 24px
+    position: relative
+    &::after
+        position: absolute
+        bottom: 0
+        right: 0   
+        content: ''
+        width: 2px
+        height: 100%
+        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))

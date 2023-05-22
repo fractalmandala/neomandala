@@ -1,7 +1,7 @@
 <script lang="ts">
 
 import { onMount } from 'svelte'
-import { breakZero, breakOne, breakTwo, themeMode, readingMode, windowWidth } from '$lib/stores/globalstores'
+import { breakZero, breakOne, breakTwo, themeMode, readingMode, windowWidth, scrollY } from '$lib/stores/globalstores'
 import '$lib/styles/theme.sass'
 import '$lib/styles/typography.sass'
 import { slide } from 'svelte/transition'
@@ -60,7 +60,7 @@ export let data
 
 </script>
 
-<svelte:window bind:outerWidth={$windowWidth}/>
+<svelte:window bind:outerWidth={$windowWidth} bind:scrollY={$scrollY}/>
 
 <svelte:head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,3 +136,11 @@ export let data
     <Alert/>
     <Chip/>
 </div>
+
+<style lang="sass">
+
+.project-shell
+    background-color: hsla(0,0%,6%,1)
+    background-image: radial-gradient(at 40% 20%, hsla(25,1%,1%,1) 0px, transparent 50%), radial-gradient(at 96% 37%, hsla(120,91%,5%,0.6) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(348,2%,0%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(108,94%,6%,1) 0px, transparent 50%), radial-gradient(at 80% 100%, hsla(240,1%,2%,1) 0px, transparent 50%), radial-gradient(at 0% 0%, hsla(336,0%,4%,1) 0px, transparent 50%)
+
+</style>

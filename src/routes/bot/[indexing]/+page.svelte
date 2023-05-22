@@ -6,7 +6,6 @@
     import GPTParser from '$lib/components/GPTParser.svelte'
     import Pagination from '$lib/components/Pagination.svelte'
     import Prism from 'prismjs';
-    import '$lib/prismextras.js'
     import '$lib/styles/prismextras.css'
     import ChevFRight from '$lib/icons/ChevFRight.svelte'
     import ChevFLeft from '$lib/icons/ChevFLeft.svelte'

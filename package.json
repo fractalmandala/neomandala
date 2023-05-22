@@ -36,6 +36,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/apfel-grotezk": "^5.0.0",
+		"@fontsource/oxygen-mono": "^5.0.0",
 		"@milkdown/core": "^7.2.1",
 		"@milkdown/ctx": "^7.2.1",
 		"@milkdown/plugin-clipboard": "^7.2.1",

@@ -1,5 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap')
+@import '@fontsource/oxygen-mono'
+@import '@fontsource/apfel-grotezk'
+
+
 code
     font-family: 'Space Mono', monospace
+
+pre, em, p, cite, small, p, li, blockquote, h6
+    font-family: 'Apfel Grotezk', sans-serif
+
+p
+    color: #e7e7e7
+
+h5, h4, h3, h2, h1
+    font-family: 'Apfel Grotezk', sans-serif
 
 pre
     overflow-x: auto
@@ -10,36 +25,13 @@ pre
     white-space: -o-pre-wrap
     word-wrap: break-word
     word-break: break-word
-    font-family: 'Space Grotesk', sans-serif
 
 li
     word-wrap: break-word
 
 em
     font-style: normal
-    font-family: 'Space Grotesk', sans-serif
     font-size: 14px
-
-.ta-r
-    text-align: right
-
-.ta-l
-    text-align: left
-
-.breaker
-    overflow-x: auto
-    box-sizing: border-box
-    white-space: pre-wrap
-    white-space: -moz-pre-wrap
-    white-space: -pre-wrap
-    white-space: -o-pre-wrap
-    word-wrap: break-word
-    word-break: break-word
-
-.botcode
-    pre
-        margin: 0
-        font-family: 'Space Grotesk', sans-serif
 
 a
     text-decoration: none
@@ -51,7 +43,9 @@ a.hover
 
 p
     font-weight: 400
-    font-family: 'Space Grotesk', sans-serif
+
+
+//colors
 
 p.grey, small.grey, cite.grey, pre.grey, em.grey
     color: #878787
@@ -68,14 +62,13 @@ p.white, small.white, h6.white
 h5.white
     color: white
 
-.ticket
-    p, li
-        font-size: 14px
-    h4
-        font-family: 'Space Grotesk', sans-serif
-        &:hover
-            color: #057402
+//transforms
 
+.ta-r
+    text-align: right
+
+.ta-l
+    text-align: left
 
 .tt-u
     text-transform: uppercase
@@ -93,70 +86,68 @@ cite
     letter-spacing: -0.5px
     font-style: normal
     font-weight: bold
-    font-family: 'Space Grotesk', sans-serif
-
-h3
-    font-size: 2.8em
-    font-family: 'Space Grotesk', sans-serif
-    font-weight: 800
-    letter-spacing: -1.5px
-
-h4
-    line-height: 1.12
-    font-family: 'Space Grotesk', sans-serif
-
-.levelzero
-    h4
-        font-size: 2em
-        letter-spacing: -1px
-
-.levelone
-    h4
-        font-size: 1.8em
-        letter-spacing: -1px
-
-.leveltwo
-    h4
-        font-size: 1.6em
-        letter-spacing: -0.5px
 
 small
-    color: var(--textone)
-    font-family: 'Space Grotesk', sans-serif
+    color: white
     font-size: 12px
 
-h5
-    font-size: 1.44em
-    font-family: 'Space Grotesk', sans-serif
-    font-weight: 600
-    letter-spacing: -0.25px
-
 h6
-    font-family: 'Space Grotesk', sans-serif
     letter-spacing: -0.3px
     font-size: 20px
     font-weight: bold
 
-.titlebox
-    h4, h3
-        margin: 0
-    h4
-        border-bottom: 1px solid var(--borderline)
-        padding-bottom: 16px
-    p, small
-        color: var(--textone)
+h5
+    font-size: 28px
+    font-weight: 700
 
-.writing
-    p, li, blockquote, pre, ol li, ul li
-        font-size: 20px !important
-        font-family: 'Space Grotesk', sans-serif
-        font-weight: 400
-        line-height: 1.4
+h4
+    line-height: 1.12
+    font-weight: 700
+
+.levelzero
+    h4
+        font-size: 32px
+        letter-spacing: -0.4px
+
+.levelone
+    h4
+        font-size: 30px
+        letter-spacing: -0.4px
+
+.leveltwo
+    h4
+        font-size: 28px
+        letter-spacing: -0.4px
+
+h3
+    font-size: 40px
+    font-weight: 500
+    letter-spacing: -0.2px
+    color: #FFFFFF
+    line-height: 1.25
+
+h2
+    font-size: 56px
+    color: #ffffff
+    font-weight: 500
+
+h1
+    font-size: 80px
+    color: #ffffff
+    font-weight: 500
+
+//contained
+
+.ticket
+    p, li
+        font-size: 14px
+    h4
+        &:hover
+            color: #057402
 
 .thisispost
     p, li, em
         font-size: 19px
-        font-family: 'Space Grotesk', sans-serif
         line-height: 1.5
     h4
         margin: 64px 0 24px 0
@@ -168,8 +159,7 @@ h6
         padding-left: 16px
         margin: 32px 0
         p
-            font-weight: 500
-
+            font-weight: 400
 
 .writing.postis
     a
@@ -197,3 +187,8 @@ h6
     pre, pre code
         word-break: break-word
     
+.slateis
+    background: rgba(255, 255, 255, 0.1)
+    border: 1px solid rgba(255,255,255,0.62)
+    border-radius: 6px
+    padding: 32px

@@ -1,7 +1,6 @@
 <script lang="ts">
-
 	import { onMount, beforeUpdate, afterUpdate } from 'svelte';
-    import { themeMode, readingMode } from '$lib/stores/globalstores'
+	import { themeMode, readingMode } from '$lib/stores/globalstores';
 	import { afterNavigate } from '$app/navigation';
 	import { showChip, showBots, audioStore } from '$lib/stores/modalstores';
 	import BotSelector from '$lib/agent/BotSelector.svelte';
@@ -19,16 +18,17 @@
 		aboutStore,
 		imageStore,
 		botsList,
-		botStore,
-		greetStore
+		greetStore,
+		setGPTBoi
 	} from '$lib/stores/gptprompt';
 	import type { ChatCompletionRequestMessage } from 'openai';
 	import { SSE } from 'sse.js';
-	import { gptTitles, gptStream, latestSession, chatsCount } from '$lib/utils/supabase';
+	import { gptTitles, gptStream, latestSession, chatsCount, gptTwenty } from '$lib/utils/supabase';
 	import { chatMode, uuidStore, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import Refresh from '$lib/icons/Refresh.svelte';
 	import Time from '$lib/icons/Time.svelte';
 	import GPTParser from '$lib/agent/Parser.svelte';
+	import GPTParser1 from '$lib/agent/Parser.svelte';
 	import Send from '$lib/icons/Send.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 	let pens: any;
@@ -58,6 +58,7 @@
 	let searchInput: any;
 	let searchload = false;
 	let inputSearch: any;
+	let twenties: any;
 
 	export async function searchChats() {
 		searchload = true;
@@ -110,21 +111,18 @@
 		return timeAgoString;
 	}
 
-
-
-    $: if ( $promptStore ) {
-        currentBot = botsList.find(bot => bot.prompt === $promptStore);
-        let currentName = currentBot ? currentBot.name : undefined;
-        nameStore.set(currentName);
-        let currentImage = currentBot ? currentBot.image : undefined;
-        imageStore.set(currentImage);
-        let currentAbout = currentBot ? currentBot.about : undefined;
-        aboutStore.set(currentAbout);
-        let currentGreet = currentBot ? currentBot.greeting : undefined;
-        greetStore.set(currentGreet);
-        generateUUID();
-
-    }
+	$: if ($promptStore) {
+		currentBot = botsList.find((bot) => bot.prompt === $promptStore);
+		let currentName = currentBot ? currentBot.name : undefined;
+		nameStore.set(currentName);
+		let currentImage = currentBot ? currentBot.image : undefined;
+		imageStore.set(currentImage);
+		let currentAbout = currentBot ? currentBot.about : undefined;
+		aboutStore.set(currentAbout);
+		let currentGreet = currentBot ? currentBot.greeting : undefined;
+		greetStore.set(currentGreet);
+		generateUUID();
+	}
 
 	const handleSubmit = async () => {
 		loading = true;
@@ -207,7 +205,7 @@
 				supaid: $counterStore,
 				tags: tags,
 				uuidtext: $uuidStore,
-                language: $nameStore
+				language: $nameStore
 			});
 			if (error) {
 				throw new Error(error.message);
@@ -227,10 +225,11 @@
 	}
 
 	onMount(async () => {
+		setGPTBoi();
 		pens = await gptTitles();
 		stream = await gptStream();
 		latestuuid = await latestSession();
-
+		twenties = await gptTwenty();
 		div = document.getElementById('page');
 	});
 
@@ -254,8 +253,8 @@
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
-    class:light={$themeMode}
-    class:dark={!$themeMode}
+	class:light={$themeMode}
+	class:dark={!$themeMode}
 >
 	<div class="rta-column rowgap300 null panel-left">
 		<div class="rta-row colgap200">
@@ -320,10 +319,10 @@
 	<div class="rta-column panel-chat">
 		<div class="rta-column ybetween pagepad" transition:fly>
 			<div class="rta-column rowgap300 previouschats" data-lenis-prevent>
-                <div class="rta-row colgap200 null ycenter">
-                    <img class="avatar" src="/images/chatbot.png" alt="chatbot"/>
-                    <h5>{$greetStore}</h5>
-                </div>
+				<div class="rta-row colgap200 null ycenter">
+					<img class="avatar" src="/images/chatbot.png" alt="chatbot" />
+					<h5>{$greetStore}</h5>
+				</div>
 				{#each chatMessages as message}
 					<ChatMessages type={message.role} message={message.content} />
 				{/each}
@@ -333,16 +332,11 @@
 				{#if loading}
 					<ChatMessages type="assistant" message="Loading.." />
 				{/if}
-				{#each chats as chat}
-					<div class="userchat ta-r rta-column null bord-top m-top-16 p-top-32">
-						<small class="tt-u">user</small>
-						<p class="grey">{chat.userMessage}</p>
-					</div>
-					<div class="gptchat rta-column null">
-						<small class="tt-u">gptBoi</small>
-						<GPTParser response={chat.assistantMessage} />
-					</div>
-				{/each}
+				{#if twenties && twenties.length > 0}
+					{#each twenties as item}
+						<GPTParser1 response={item.content} />
+					{/each}
+				{/if}
 			</div>
 			<div class="boxc ofform m-top-16">
 				<form class="rta-row fullW between" on:submit|preventDefault>
@@ -377,12 +371,10 @@
         overflow-y: scroll
         height: calc(100vh - 64px)
         position: sticky
-        background: white
-        background-size: cover
-        background-position: center
+        background: rgba(255,255,255,0.1)
+        border: 1px solid rgba(255,255,255,0.41)
         border-radius: 8px
         top: 32px
-        box-shadow: 8px 8px 12px #f1f1f1, -8px -6px 10px #f6f6f6
         .rta-image
             width: 88px
             height: 88px
@@ -405,7 +397,7 @@
             textarea
                 width: calc(100% - 80px)
                 border-radius: 4px
-                border: none
+                border: 1px solid var(--greyish)
 
 .rta-image
     img

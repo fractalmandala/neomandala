@@ -10,7 +10,6 @@
     import ChevFLeft from '$lib/icons/ChevFLeft.svelte'
     import ChevRight from '$lib/icons/ChevRight.svelte'
     import Prism from 'prismjs';
-    import '$lib/prismextras.js'
     import '$lib/styles/prismextras.css'
     let theme:any
 

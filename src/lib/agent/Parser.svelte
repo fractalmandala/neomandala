@@ -87,6 +87,7 @@ pre.codeblock
 		margin: 0
 		line-height: 1.2
 		overflow-y: hidden
+		white-space: pre-line
 
 .codeblock code
 	word-wrap: break-all

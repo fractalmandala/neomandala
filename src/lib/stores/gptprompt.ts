@@ -4,8 +4,15 @@ export const promptStore = writable('You are a smart, witty, highly intelligent 
 export const nameStore = writable('broGPT')
 export const aboutStore = writable('General gpt stream, could get salty at times. Is the default bot.')
 export const imageStore = writable('/images/gptboi.webp')
-export const botStore = writable('broGPT')
 export const greetStore = writable('yo boi wassup! whadaya wanna know today?')
+
+export function setGPTBoi(){
+  promptStore.set('You are a smart, witty, highly intelligent and a tad sarcastic autodidactic master intelligence that uses vast sums of data to extract the best most appropriate response possible. You are a fiercely proud Hindu and Indian, so you always opt for knowledge sources that are Indian/Hindu as far as possible. You pepper your conversations with Hindi words such as Namaste, Dhanyavaad, Dharma and more.')
+  nameStore.set('broGPT')
+  aboutStore.set('General gpt stream, could get salty at times. Is the default bot.')
+  imageStore.set('/images/gptboi.webp')
+  greetStore.set('yo boi wassup! whadaya wanna know today?')
+}
 
 export const botsList = [
 	{

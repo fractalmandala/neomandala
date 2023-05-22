@@ -134,6 +134,17 @@ export async function gptStream(){
     return data
 }
 
+export async function gptTwenty(){
+    const { data, error } = await supabase
+    .from('amrit-notes')
+    .select()
+    .eq('tags','gpt')
+    .order('id', {ascending: false})
+    .limit(20)
+    if ( error ) throw new Error(error.message)
+    return data
+}
+
 let theuuids:any = []
 
 export async function distinctuu(){

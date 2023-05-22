@@ -1,9 +1,7 @@
-/* PrismJS 1.29.0
-https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+sass+scss+sql+typescript&plugins=line-highlight+line-numbers+show-language+remove-initial-line-feed+normalize-whitespace+toolbar+copy-to-clipboard */
-//@ts-nocheck
+
 /// <reference lib="WebWorker"/>
 
-var _self = (typeof window !== 'undefined')
+const _self = (typeof window !== 'undefined')
 	? window   // if in browser
 	: (
 		(typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)
@@ -19,17 +17,17 @@ var _self = (typeof window !== 'undefined')
  * @namespace
  * @public
  */
-var Prism = (function (_self) {
+const Prism = (function (_self) {
 
 	// Private helper vars
-	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
-	var uniqueId = 0;
+	const lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
+	const uniqueId = 0;
 
 	// The grammar object for plaintext
-	var plainTextGrammar = {};
+	const plainTextGrammar = {};
 
 
-	var _ = {
+	const _ = {
 		/**
 		 * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
 		 * current page after the page finished loading. This might be a problem if e.g. you wanted to asynchronously load

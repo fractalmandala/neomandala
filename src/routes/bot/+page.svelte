@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import GlassButton from '$lib/components/GlassButton.svelte'
     import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
 	import BotSelector from '$lib/agent/BotSelector.svelte';
 	import { getChats } from '$lib/agent/dexie';
@@ -64,6 +65,7 @@
 			<div class="rta-column rowgap50 bord-bot p-bot-32 w64">
 				<h6 class="tt-u">bot</h6>
 				<small class="grey">he thinks, therefore he is?</small>
+				<GlassButton/>
 			</div>
 		</div>
 	</div>

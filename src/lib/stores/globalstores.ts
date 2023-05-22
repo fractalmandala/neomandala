@@ -2,6 +2,8 @@ import { writable, derived } from 'svelte/store';
 import { get, type Readable, type Writable } from "svelte/store"
 import { browser } from '$app/environment' 
 
+export const scrollY = writable(0)
+
 export const loadingStore = writable(false)
 
 const initialWidth = browser ? window.innerWidth : 1024;

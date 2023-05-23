@@ -6,12 +6,12 @@
 	$: if ( iW <= 786 ) {
 		height = '100px'
 	}	 else {
-		height = '280px'
+		height = '160px'
 	}
 
 	export let soundcloudLink: string = ''
 	export let width: string = '100%'
-	export let height: string = '200px'
+	export let height: string = '120px'
 	export let showVisual: boolean = true
 	export let disable_observer: boolean = false
 	export let iframe_styles: string = ''

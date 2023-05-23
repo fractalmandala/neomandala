@@ -63,9 +63,9 @@ export let data
 <svelte:window bind:outerWidth={$windowWidth} bind:scrollY={$scrollY}/>
 
 <svelte:head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JFGGCTBC9"></script>
 	<script>
@@ -105,7 +105,7 @@ export let data
             </div>
             {/if}
         </div>
-        <div class="rowgap200 menulinks">
+        <div class="rowgap200 rta-column column-row menulinks">
             <button class="blank-button"
               on:click={toggleDrawer}
               >
@@ -139,8 +139,12 @@ export let data
 
 <style lang="sass">
 
-.project-shell
-    background-color: hsla(0,0%,6%,1)
-    background-image: radial-gradient(at 40% 20%, hsla(25,1%,1%,1) 0px, transparent 50%), radial-gradient(at 96% 37%, hsla(120,91%,5%,0.6) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(348,2%,0%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(108,94%,6%,1) 0px, transparent 50%), radial-gradient(at 80% 100%, hsla(240,1%,2%,1) 0px, transparent 50%), radial-gradient(at 0% 0%, hsla(336,0%,4%,1) 0px, transparent 50%)
+.project-shell.dark
+    background-color: hsla(0,0%,8%,1)
+    background-image: radial-gradient(at 57% 35%, hsla(108,80%,5%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(116,86%,5%,1) 0px, transparent 50%)
+
+.project-shell.light
+    background-color: hsla(0,0%,100%,1)
+    background-image: radial-gradient(at 87% 95%, hsla(130,100%,62%,0.75) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(99,83%,49%,1) 0px, transparent 0%)
 
 </style>

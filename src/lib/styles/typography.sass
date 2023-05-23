@@ -1,20 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap')
-@import '@fontsource/oxygen-mono'
-@import '@fontsource/apfel-grotezk'
 
+
+.dark
+    --palio: #FAFAFA
+    --background: #FFFFFF
+    --textone: #a1a1a1
+    --opposite: #272727
+    --borderline: #272727
+    --greyish: #878787
+    --contraster: #212121
+    --themer: #FFFFFF
+    --themerp: #676767
+    --onlyblack: #474747
+    color: white
+    h4, h5
+        color: #d7d7d7
+
+
+.light
+    --palio: #FAFAFA
+    --background: #121212
+    --textone: #373737
+    --opposite: #FFFFFF
+    --borderline: #474747
+    --greyish: #878787
+    --contraster: #e7e7e7
+    --themer: #474747
+    --boxshadow: 4px 7px 12px #e1e1e1
+    --onlyblack: #d7d7d7
+    --themerp: #878787
+    color: #474747
+    h4, h5
+        color: #676767
 
 code
     font-family: 'Space Mono', monospace
 
 pre, em, p, cite, small, p, li, blockquote, h6
-    font-family: 'Apfel Grotezk', sans-serif
+    font-family: 'Space Grotesk', sans-serif
 
 p
-    color: #e7e7e7
+    color: var(--themerp)
 
 h5, h4, h3, h2, h1
-    font-family: 'Apfel Grotezk', sans-serif
+    font-family: 'Space Grotesk', sans-serif
 
 pre
     overflow-x: auto
@@ -88,21 +118,21 @@ cite
     font-weight: bold
 
 small
-    color: white
+    color: var(--themer)
     font-size: 12px
 
 h6
     letter-spacing: -0.3px
     font-size: 20px
-    font-weight: bold
+    font-weight: 500
 
 h5
-    font-size: 28px
-    font-weight: 700
+    font-size: 24px
+    font-weight: 500
 
 h4
     line-height: 1.12
-    font-weight: 700
+    font-weight: 400
 
 .levelzero
     h4
@@ -123,17 +153,17 @@ h3
     font-size: 40px
     font-weight: 500
     letter-spacing: -0.2px
-    color: #FFFFFF
+    color: var(--themer)
     line-height: 1.25
 
 h2
     font-size: 56px
-    color: #ffffff
+    color: var(--themer)
     font-weight: 500
 
 h1
     font-size: 80px
-    color: #ffffff
+    color: var(--themer)
     font-weight: 500
 
 //contained
@@ -149,6 +179,7 @@ h1
     p, li, em
         font-size: 19px
         line-height: 1.5
+        color: var(--background)
     h4
         margin: 64px 0 24px 0
     blockquote
@@ -188,7 +219,7 @@ h1
         word-break: break-word
     
 .slateis
-    background: rgba(255, 255, 255, 0.1)
+    background: rgba(255, 255, 255, 0.01)
     border: 1px solid rgba(255,255,255,0.62)
     border-radius: 6px
     padding: 32px

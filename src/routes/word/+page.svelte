@@ -2,6 +2,9 @@
 	//@ts-nocheck
 	import { onMount } from 'svelte';
 	import AppShell from '$lib/design/AppShell.svelte';
+	import GlassButton from '$lib/components/GlassButton.svelte'
+	import GlassButton2 from '$lib/components/GlassButton.svelte'
+	import GlassButton3 from '$lib/components/GlassButton.svelte'
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
 	import { audioStore } from '$lib/stores/modalstores';
 	import {
@@ -116,25 +119,31 @@
 	</div>
 	<div class="shellside rta-column column-row fullW rowgap300 null">
 		<img
-			class="jello-vertical"
+			class="jello-vertical height-30 w32"
 			src="/images/k-writings.webp"
 			alt="writing"
 			on:mouseover={() => audio.play()}
 			on:focus={fauxfake}
 		/>
-		<div class="rta-column rowgap200 bord-bot p-bot-32 w64">
+		<div class="rta-column rowgap200 p-bot-32 w64">
 			<h6 class="tt-u">word</h6>
 			<small class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</small>
 		</div>
-		<div class="rta-column rowgap200 bord-bot p-bot-32 w64">
-			<button class="outbutton" on:click={() => toggleGen(1)} class:selected={gen[1]}>
-				Fractal Maṇḍala
+		<div class="rta-column rowgap200 p-bot-32 w64">
+			<button class="blank-button" on:click={() => toggleGen(1)} class:selected={gen[1]}>
+				<GlassButton>
+					Fractal Maṇḍala
+				</GlassButton>
 			</button>
-			<button class="outbutton" on:click={() => toggleGen(2)} class:selected={gen[2]}>
-				History and AIT
+			<button class="blank-button" on:click={() => toggleGen(1)} class:selected={gen[2]}>
+				<GlassButton>
+					History/AIT
+				</GlassButton>
 			</button>
-			<button class="outbutton" on:click={() => toggleGen(3)} class:selected={gen[3]}>
-				Archival
+			<button class="blank-button" on:click={() => toggleGen(1)} class:selected={gen[3]}>
+				<GlassButton>
+					Archival
+				</GlassButton>
 			</button>
 		</div>
 	</div>

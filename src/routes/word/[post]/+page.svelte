@@ -85,7 +85,7 @@
     </div>
     <div class="shellside rta-column column-row fullW rowgap300 null" class:invisible={$readingMode}>
         <h4 class="tt-u">{data.title}</h4>
-        <small class="grey p-bot-32 bord-bot">{data.type}</small>
+        <p class="gradienter p-bot-32 bord-bot">{data.type}</p>
         <div class="p-bot-32">
         <Pagination>
             <div slot="prev">

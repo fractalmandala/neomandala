@@ -5,7 +5,6 @@
     import TextBox from '$lib/components/RichInput.svelte'
     import { toastStore, hideToast } from '$lib/stores/modalstores'
     import BotSelector from '$lib/agent/BotSelector.svelte'
-    import Hor from '$lib/lenis/Horizontal.svelte'
     import supabase from '$lib/utils/supabase'
     import { readingMode } from '$lib/stores/globalstores'
 	import { audioStore } from '$lib/stores/modalstores';
@@ -49,11 +48,6 @@
 <div class="rta-grid grid2 right00 minH cushion">
 	<div class="rta-column rowgap200 postgrid">
         <div class="rta-column minH">
-            <Hor>
-        <div class="rta-image height-60">
-		    <img src="/images/psychedelic.webp" alt="psychedelic" />
-        </div>
-            </Hor>
         </div>
 		<button on:click={() => showModal('Password Check', 'Please enter password.', ModalSub, {content: 'Try'})}>Show modal</button>
         <button on:click={() => showToast('Hello!')}>Show Toast</button>

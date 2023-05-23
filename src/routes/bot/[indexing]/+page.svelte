@@ -51,7 +51,7 @@
     </div>
     <div class="shellside rta-column xstretch fullW rowgap300 null">
         <h4 class="tt-u">{data.indexing}-{data.title.replace('.','')}</h4>
-        <small class="grey p-bot-32 bord-bot">{data.theme}</small>
+        <p class="gradienter p-bot-32 bord-bot">{data.theme}</p>
         <div class="p-bot-32">
             <Pagination>
                 <a href="/bot/{data.previd}" slot="prev" class="blank-button">

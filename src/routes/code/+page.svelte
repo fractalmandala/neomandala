@@ -32,13 +32,13 @@
     class:light={$themeMode}
     class:dark={!$themeMode}
     >
-    <div class="shellmain rta-grid grid2 colgap500 rowgap500">
+    <div class="shellmain rta-grid colgap500 rowgap500">
         {#if pens && pens.length > 0}
             {#each pens as item}
-                <a class="rta-column ybetween rowgap400 ticket" href="{item.linkpath}">
+                <a class="rta-column ybetween rowgap100 null glass-left p-left-32 p-bot-16" href="{item.linkpath}">
                     <div class="rta-column rowgap100 null">
                         <h5 class="tt-c hover">{item.meta.id} - {item.meta.title}</h5>
-                        <small>{item.meta.type} | {item.meta.tags}</small>
+                        <p class="gradienter">{item.meta.type} | {item.meta.tags}</p>
                     </div>
                 </a>
             {/each}

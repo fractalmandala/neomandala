@@ -69,10 +69,12 @@
         {/if}
     </div>
     <div class="shellside rta-column column-row fullW rowgap300 null">
-        <img class="jello-vertical w32" src="/images/k-images.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-        <div class="rta-column rowgap200 bord-bot p-bot-32 w64">
-        <h5 class="tt-u">image</h5>
-        <small class="grey">I've been waiting for Midjourney since I was a kid! But let's not forget the earlier and delightful <a class="green" href="/image/wombo">Wombo.</a></small>
+        <div class="rta-column column-row rowgap200">
+            <img class="jello-vertical w32" src="/images/k-images.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
+            <div class="rta-column rowgap200 bord-bot p-bot-32 w64">
+                <h6 class="tt-u">image</h6>
+                <small class="grey">I've been waiting for Midjourney since I was a kid! But let's not forget the earlier and delightful <a class="green" href="/image/wombo">Wombo.</a></small>
+            </div>
         </div>
     <div class="p-bot-32">
         <Pagination>

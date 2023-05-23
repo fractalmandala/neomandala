@@ -1,7 +1,7 @@
 <script lang="ts">
 
 	import { breakTwo } from '$lib/stores/globalstores'
-    export let color = '#FFFFFF'
+  export let color = 'var(--themer)'
 
 </script>
 

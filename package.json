@@ -62,6 +62,7 @@
 		"sse.js": "^0.6.1",
 		"svelte-tiptap": "^0.7.0",
 		"talk2svelte": "^0.1.1",
+		"textify.js": "^2.4.3",
 		"timeago.js": "^4.0.2",
 		"uuid": "^9.0.0"
 	}

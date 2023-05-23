@@ -2,9 +2,9 @@
 
 	import { onMount } from 'svelte'
 	import AppShell from '$lib/design/AppShell.svelte';
+    import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
 	import { allVideos } from '$lib/utils/localpulls'
     import { audioStore } from '$lib/stores/modalstores'
-    import { readingMode } from '$lib/stores/globalstores'
 	import Youtuber from '$lib/components/Youtuber.svelte'
 
 	let images:any
@@ -24,10 +24,17 @@
 </script>
 
 
-<AppShell>
-    <div slot="main">
+<div class="appshell"
+    class:levelzero={$breakZero}
+    class:levelone={$breakOne}
+    class:leveltwo={$breakTwo}
+    class:light={$themeMode}
+    class:dark={!$themeMode}
+    >
+
+    <div class="shellmain rta-grid colgap500 rowgap100 null">
     {#if images && images.length > 0}
-        <div class="rta-column rowgap500">
+        <div class="rta-column rowgap100">
             {#each images as item}
                 <div class="rta-grid grid2 right2 stay2 colgap300">
                     <div class="w32 height-40-40">
@@ -43,12 +50,18 @@
         </div>
     {/if}
     </div>
-    <div slot="side" class="rta-column column-row xstretch fullW rowgap300 null">
-        <img class="jello-vertical w32" src="/images/k-videos.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-        <div class="rta-column rowgap200 w64 bord-bot p-left-32 p-bot-32">
-            <h6 class="tt-u">video</h6>
-            <small class="grey">Come bore yourself to my incessant dronings...</small>
+    <div class="shellside rta-column fullW rowgap300 null">
+        <div class="rta-column column-row rowgap200">
+			<img
+				class="jello-vertical w32 h30"
+				src="/images/k-gpt.webp"
+				alt="writing"
+                on:mouseover={() => audio.play()} on:focus={fauxfake}/>
+            <div class="rta-column rowgap200 w64 bord-bot p-bot-32">
+                <h6 class="tt-u">video</h6>
+                <small class="grey">Come bore yourself to my incessant dronings...</small>
+            </div>
         </div>
     </div>
 
-</AppShell>
+</div>

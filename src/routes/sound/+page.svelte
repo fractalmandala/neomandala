@@ -30,7 +30,7 @@
     >
 
 
-    <div class="shellmain rta-grid grid3 colgap100 rowgap300">
+    <div class="shellmain rta-grid colgap100 rowgap100">
         {#if images && images.length > 0}
 			{#each images as item, i}
 				<div class="rta-column p-all-16">
@@ -39,10 +39,10 @@
 			{/each}
         {/if}
     </div>
-    <div class="shellside  rta-column null" class:invisible={$readingMode}>
+    <div class="shellside rowgap300 rta-column null" class:invisible={$readingMode}>
         <img class="jello-vertical" src="/images/k-music.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
         <h3 class="tt-u">sound</h3>
-        <p class="grey">because electronic music takes us to a place we want to go to...</p>
+        <p class="gradienter">because electronic music takes us to a place we want to go to...</p>
     </div>
 
 </div>

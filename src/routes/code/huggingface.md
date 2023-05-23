@@ -1,7 +1,7 @@
 ---
 title: Hugging Face
 tags: ai
-featured: true
+featured: false
 type: other
 id: 7
 ---

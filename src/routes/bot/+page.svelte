@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import GlassButton from '$lib/components/GlassButton.svelte'
-    import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
+  import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
 	import BotSelector from '$lib/agent/BotSelector.svelte';
 	import { getChats } from '$lib/agent/dexie';
 	import { gptTitles, gptStream } from '$lib/utils/supabase';
@@ -40,13 +40,13 @@
     class:light={$themeMode}
     class:dark={!$themeMode}
     >
-	<div class="shellmain rta-grid grid2 colgap500 rowgap500">
+	<div class="shellmain rta-grid colgap500 rowgap100 null">
 			{#if pens && pens.length > 0}
 				{#each pens as item}
-					<a class="rta-column ybetween rowgap100" href="/bot/{item.indexing}">
-						<div class="rta-column rowgap100 null onetwo-bord-bot">
+					<a class="rta-column ybetween rowgap100 null glass-left p-left-32 p-bot-16" href="/bot/{item.indexing}">
+						<div class="rta-column rowgap100 null">
 							<h5 class="tt-c hover">{item.indexing} - {item.title}</h5>
-							<small class="grey">{item.theme}</small>
+							<p class="gradienter">{item.theme}</p>
 						</div>
 					</a>
 				{/each}
@@ -56,7 +56,7 @@
 	<div class="shellside rta-column fullW rowgap300 null">
 		<div class="rta-column column-row rowgap200">
 			<img
-				class="jello-vertical w32"
+				class="jello-vertical w32 h30"
 				src="/images/k-gpt.webp"
 				alt="writing"
 				on:mouseover={() => audio.play()}
@@ -65,7 +65,6 @@
 			<div class="rta-column rowgap50 bord-bot p-bot-32 w64">
 				<h6 class="tt-u">bot</h6>
 				<small class="grey">he thinks, therefore he is?</small>
-				<GlassButton/>
 			</div>
 		</div>
 	</div>

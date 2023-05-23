@@ -4,7 +4,6 @@
     import { readingMode } from '$lib/stores/globalstores'
     import ChevRight from '$lib/icons/ChevRight.svelte'
     import Prism from 'prismjs';
-    import '$lib/prismextras.js'
     import '$lib/styles/prismextras.css'
 
     export let data

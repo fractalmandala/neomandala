@@ -1,18 +1,17 @@
 <script lang="ts">
-//@ts-nocheck
-	import { onMount } from 'svelte'
-	import { slide } from 'svelte/transition'
-	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores'
-    import { clickToCopyAction } from '$lib/utils/clicktocopy'
+	//@ts-nocheck
+	import { onMount } from 'svelte';
+	import { slide } from 'svelte/transition';
+	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
+	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { showToast, showAlert } from '$lib/stores/modalstores';
-	import Copy from '$lib/icons/Copy.svelte'
-	import Prism from 'prismjs'
-	import '$lib/styles/prism.css'
-	export let response:any 
+	import Copy from '$lib/icons/Copy.svelte';
+	import Prism from 'prismjs';
+	import '$lib/styles/prism.css';
+	export let response: any;
 	let rawBlocks = response.split('```');
 
-
-	let blocks:any = [];
+let blocks:any = [];
 	for (let i = 0; i < rawBlocks.length; i++) {
 	  if (i % 2 === 0) {
 	    blocks.push({ type: 'text', content: rawBlocks[i] });
@@ -26,41 +25,51 @@
 	  }
 	}
 
-  onMount(() => {
-    Prism.highlightAll();
-  });		
-
-
+	onMount(() => {
+		Prism.highlightAll();
+	});
 </script>
 
 <svelte:head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonmyous">
-<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonmyous" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600;700;800&display=swap"
+		rel="stylesheet"
+	/>
 </svelte:head>
 
-<div class="rta-column null" transition:slide
+<div
+	class="rta-column null rowgap50 bigg"
+	transition:slide
 	class:dark={!$themeMode}
 	class:light={$themeMode}
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
-	>
+>
 	{#each blocks as block}
 		{#if block.type === 'text'}
-		<div class="rta-column rowgap100 nocodeparent">
-            <pre class="grey" transition:slide>{block.content}</pre>
-		</div>
-		{:else}
-		<div class="rta-column codeparent">
-			<div class="rta-row ycenter between">
-				<small style="text-transform: uppercase; font-weight: 800">{block.language}</small>
-				<button class="blank-button" use:clickToCopyAction={block.code} on:copy-done={() => showToast('Copied!')} on:copy-error={() => showAlert('Failed!')}>
-                    <Copy/>
-				</button>
+			<div class="rta-column rowgap100 nocodeparent null">
+				<pre>{block.content}</pre>
 			</div>
-			<pre class="codeblock grey"><code class={`language-${block.language}`}>{block.code}</code></pre>
-		</div>
+		{/if}
+		{#if block.type === 'code'}
+			<div class="rta-column codeparent null">
+				<div class="rta-row ycenter between">
+					<small style="text-transform: uppercase; font-weight: 800">{block.language}</small>
+					<button
+						class="blank-button"
+						use:clickToCopyAction={block.code}
+						on:copy-done={() => showToast('Copied!')}
+						on:copy-error={() => showAlert('Failed!')}
+					>
+						<Copy />
+					</button>
+				</div>
+				<pre class="codeblock grey"><code class={`language-${block.language}`}>{block.code}</code
+					></pre>
+			</div>
 		{/if}
 	{/each}
 </div>
@@ -80,10 +89,12 @@
 pre.codeblock
 	font-size: 16px
 	overflow-y: hidden
+	color: var(--themer)
 
 .nocodeparent
 	pre
 		font-size: 16px
+		color: var(--themer)
 		margin: 0
 		line-height: 1.2
 		overflow-y: hidden

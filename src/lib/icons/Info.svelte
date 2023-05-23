@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    export let color:string = '#0BC160'
+    export let color:string = ''
     export let dimension = 24
 
 </script>

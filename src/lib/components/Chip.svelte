@@ -6,7 +6,7 @@
     import { chipStore, hideChip } from '$lib/stores/modalstores';
     import Info from '$lib/icons/Info.svelte'
 
-    let isShown:any, title:string, component:any
+    let isShown:any, title:string, component:any, color:string
     let dimension = 32
 
     const unsubscribe = chipStore.subscribe(value => {
@@ -38,8 +38,8 @@
 
 {#if isShown}
 <div class="chip rta-column rowgap100 null" transition:fly={{ y: -160 }} use:clickOutsideAction on:clickOutside={handleCloseClick}>
-        <div class="rta-column rowgap50 actualchip ycenter">
-            <Info dimension={dimension}/>
+        <div class="rta-column rowgap50 xcenter actualchip ycenter">
+            <Info dimension={dimension} color={color}/>
             <small>{title}</small>
         </div>
 </div>
@@ -56,6 +56,7 @@
     background: transparent
     align-items: center
     justify-content: center
+    text-align: center
 
 
 

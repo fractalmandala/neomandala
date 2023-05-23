@@ -21,7 +21,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		}
 
 		const reqMessages: ChatCompletionRequestMessage[] = requestData.messages
-        const prompt: string = requestData.prompt
+    const prompt: string = requestData.prompt
 
 		if (!reqMessages) {
 			throw new Error('no messages provided')

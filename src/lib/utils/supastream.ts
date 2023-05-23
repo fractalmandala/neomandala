@@ -1,19 +1,17 @@
-import { createClient } from '@supabase/supabase-js'
+import { showChip } from '$lib/stores/modalstores'
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-)
+import supabase from '$lib/utils/supabase'
 
-const channel = supabase
-  .channel('schema-db-changes')
-  .on(
-    'postgres_changes',
-    {
-      event: 'INSERT',
-      schema: 'public',
-    },
-    (payload) => console.log(payload)
-  )
-  .subscribe()
-
+export async function signInWithEmail(email:any, password:any) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  })
+  if (error) {
+    console.log(error)
+    showChip('invalid!','#fe4a49')
+  } else {
+    showChip('LOGGED IN!','#10D56C')
+    console.log(data)
+  }
+}

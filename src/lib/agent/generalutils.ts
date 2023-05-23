@@ -1,37 +1,13 @@
-import supabase from '$lib/utils/supabase'
-import { latestSession, chatsCount } from '$lib/utils/supabase';
+
 import { uuidStore } from '$lib/stores/globalstores'
-import { showChip } from '$lib/stores/modalstores'
-	import { v4 as uuidv4 } from 'uuid';
-	import * as timeago from 'timeago.js';
+import { v4 as uuidv4 } from 'uuid';
+import * as timeago from 'timeago.js';
 
 
-let latestuuid;
 
-
-  export async function loadChatsCount(uuidtext:any) {
-    const data = await chatsCount(uuidtext);
-    return data
-  }
-
-
-  export async function loadLatestSession() {
-    latestuuid = await latestSession();
-  }
-
-	async function sendToSupatwo() {
-		const { error } = await supabase.from('amrit-uuids').insert({ uuid: uuidStore });
-		if (error) {
-			throw new Error(error.message);
-		} else {
-			showChip('sent');
-		}
-	}
-
-	export function generateUUID() {
-		uuidStore.set(uuidv4());
-		sendToSupatwo();
-	}
+export function generateUUID() {
+	uuidStore.set(uuidv4());
+}
 
 	export function formatTimeAgo(date: timeago.TDate) {
 		const timeAgoString = timeago.format(date);

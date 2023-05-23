@@ -17,7 +17,7 @@
 
 </script>
 
-<div class="boxofchat rta-column bord-top p-top-16 null {type === 'user' ? 'chat-end' : 'chat-start'}" in:fade={{ duration: 300, delay: 50, easing: elasticOut }} class:packaged={pressed}>
+<div class="boxofchat rta-column bord-top p-top-16 null {type === 'user' ? 'chat-end' : 'chat-start'}">
 	<small class="tt-u agent {type === 'user' ? 'user' : 'gptBoi'}">
 		{type === 'user' ? 'user' : 'gptBoi'}:
 	</small>

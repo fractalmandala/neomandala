@@ -69,15 +69,16 @@ export function hideToast() {
 const initialChip = {
     isShown: false,
     title: '',
+    color: '',
     component: null
 }
 
 export const chipStore = writable(initialChip);
-export function showChip(title:string, component = null){
-    chipStore.update(state => ({...state, isShown: true, title, component}));
+export function showChip(title:string, color:string, component = null){
+    chipStore.update(state => ({...state, isShown: true, title, color, component}));
 }
 export function hideChip() {
-    chipStore.update(state => ({...state, isShown: false, title: '', component: null}));
+    chipStore.update(state => ({...state, isShown: false, title: '', color: '', component: null}));
 }
 
 const initialAlert = {

@@ -1,72 +1,79 @@
 <script lang="ts">
 
-	import { botsList, promptStore } from '$lib/stores/gptprompt';
-    import { showBots } from '$lib/stores/modalstores'
-    import { scale } from 'svelte/transition'
-    import Left from '$lib/icons/ChevFLeft.svelte'
-    import Right from '$lib/icons/ChevFRight.svelte'
+	import {
+		promptStore,
+		nameStore,
+		aboutStore,
+		imageStore,
+		greetStore,
+		botsList,
+	} from '$lib/stores/gptprompt';
+    import { uuidStore } from '$lib/stores/globalstores';
+	import supabase from '$lib/utils/supabase';
+	import { showChip, showBots } from '$lib/stores/modalstores';
+	import Left from '$lib/icons/ChevFLeft.svelte';
+	import Right from '$lib/icons/ChevFRight.svelte';
 
 	let isCard = Array(6).fill(false);
-    let currentIndex = 0
-    let dimension = 27
-    
-    function handleSelection(selection:any){
-        promptStore.set(selection)
-        showBots.set(false)
-    }
-    
-    isCard[currentIndex] = true
-    isCard[currentIndex + 1] = true
-    isCard[currentIndex + 2] = true
+	let currentIndex = 0;
+	let dimension = 27;
 
-function toggleNext() {
-    isCard[currentIndex] = false; // remove visibility from current card
-    currentIndex = (currentIndex + 1) % isCard.length; // go to next card, loop back to 0 if at the end
-    isCard[(currentIndex + 2) % isCard.length] = true; // make card 3 places ahead visible (or first card if at the end)
-}
+	function handleSelection(selection: any) {
+		promptStore.set(selection);
+		showBots.set(false);
+	}
 
-function togglePrevious() {
-    isCard[(currentIndex + 2) % isCard.length] = false; // remove visibility from card 3 places ahead
-    currentIndex = (currentIndex - 1 + isCard.length) % isCard.length; // go to previous card, loop to end if at the start
-    isCard[currentIndex] = true; // make current card visible
-}
+	isCard[currentIndex] = true;
+	isCard[currentIndex + 1] = true;
+	isCard[currentIndex + 2] = true;
 
+	function toggleNext() {
+		isCard[currentIndex] = false; // remove visibility from current card
+		currentIndex = (currentIndex + 1) % isCard.length; // go to next card, loop back to 0 if at the end
+		isCard[(currentIndex + 2) % isCard.length] = true; // make card 3 places ahead visible (or first card if at the end)
+	}
+
+	function togglePrevious() {
+		isCard[(currentIndex + 2) % isCard.length] = false; // remove visibility from card 3 places ahead
+		currentIndex = (currentIndex - 1 + isCard.length) % isCard.length; // go to previous card, loop to end if at the start
+		isCard[currentIndex] = true; // make current card visible
+	}
 </script>
 
 {#if $showBots}
-<div class="botselector">
-	<div class="rta-grid grid3 colgap600">
-		{#each botsList as bot, i}
-			{#if isCard[i]}
-				<div class="rta-column ybetween rowgap200 thisbox" class:current={isCard[i]}>
-					<div class="rta-column rowgap400">
-						<div class="rta-image">
-							<img src={bot.image} alt={bot.name} />
+	<div class="botselector">
+		<div class="rta-grid grid3 colgap600">
+			{#each botsList as bot, i}
+				{#if isCard[i]}
+					<div class="rta-column ybetween rowgap200 thisbox" class:current={isCard[i]}>
+						<div class="rta-column rowgap400">
+							<div class="rta-image">
+								<img src={bot.image} alt={bot.name} />
+							</div>
+							<div class="rta-column null">
+								<h4 class="tt-u">{bot.name}</h4>
+								<em class="grey">{bot.about}</em>
+							</div>
 						</div>
-						<div class="rta-column null">
-							<h4 class="tt-u">{bot.name}</h4>
-							<em class="grey">{bot.about}</em>
-						</div>
-                    </div>
-					<button class="outbutton rta-column"
-                        on:click={() => handleSelection(bot.prompt)}
-                        > Select </button>
-				</div>
-			{/if}
-		{/each}
+						<button class="outbutton rta-column" on:click={() => handleSelection(bot.prompt)}>
+							Select
+						</button>
+					</div>
+				{/if}
+			{/each}
+		</div>
+		<div class="navnav rta-row ycenter between">
+			<button class="blank-button" on:click={togglePrevious}>
+				<Left {dimension} />
+			</button>
+			<button class="mainbutton" style="height: 54%" on:click={() => showBots.set(false)}>
+				Close
+			</button>
+			<button class="blank-button" on:click={toggleNext}>
+				<Right {dimension} />
+			</button>
+		</div>
 	</div>
-    <div class="navnav rta-row ycenter between">
-        <button class="blank-button" on:click={togglePrevious}>
-            <Left dimension={dimension}/>
-        </button>
-        <button class="mainbutton" style="height: 54%" on:click={() => showBots.set(false)}>
-            Close
-        </button>
-        <button class="blank-button" on:click={toggleNext}>
-            <Right dimension={dimension}/>
-        </button>
-    </div>
-</div>
 {/if}
 
 <style lang="sass">

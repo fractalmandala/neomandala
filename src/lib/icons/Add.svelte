@@ -1,6 +1,6 @@
 <script lang="ts">
 
-	export let color = ''
+	export let color = 'var(--background)'
 
 </script>
 
@@ -22,7 +22,7 @@
 		padding-bottom: 2px
 	&:hover
 		svg path
-			fill: var(--gret)
+			fill: var(--green)
 		svg
 			transform: scale(0.88)
 

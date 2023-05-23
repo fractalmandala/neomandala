@@ -5,7 +5,7 @@
     import ChevRight from '$lib/icons/ChevRight.svelte'
     import Prism from 'prismjs';
     import '$lib/styles/prismextras.css'
-
+    import '$lib/styles/prismtwo.css'
     export let data
 
     onMount(async() => {
@@ -16,16 +16,7 @@
 
 
 
-<div class="rta-grid grid2 right00 screen fullH cushion">
-    <div class="rta-column writing postis codeis p-top-64">
-        
+    <div class="rta-column padding-l0">
+        <h2 class="gradienter">{data.title}</h2>
         <svelte:component this={data.content}/>
     </div>
-    <div class="rta-column titlebox" class:invisible={$readingMode}>
-        <a href="/build" class="rta-row null ycenter">
-            <small>Build</small>
-            <ChevRight/>
-        </a>
-        <h4 class="tt-u">{data.title}</h4>
-    </div>
-</div>

@@ -7,7 +7,7 @@
 	import Prism from 'prismjs';
 	import '$lib/styles/prism.css';
 
-    export let language = ''
+    export let language = 'javascript'
     export let codeSnip:any
 
 	onMount(() => {
@@ -17,7 +17,7 @@
 </script>
 
 <div class="rta-column codeparent">
-	<div class="rta-row ycenter between">
+	<div class="rta-row ycenter between null">
 		<small class="white">
             {language}
         </small>
@@ -36,7 +36,6 @@
 </div>
 
 <style lang="sass">
-
 
 .cutthis
 	margin-bottom: 0

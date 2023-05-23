@@ -1,6 +1,8 @@
 <script lang="ts">
 
 import { onMount } from 'svelte'
+import { invalidate } from '$app/navigation';
+import type { LayoutData } from './$types';
 import { breakZero, breakOne, breakTwo, themeMode, readingMode, windowWidth, scrollY } from '$lib/stores/globalstores'
 import '$lib/styles/theme.sass'
 import '$lib/styles/typography.sass'
@@ -27,6 +29,8 @@ let audioElement:any
 let mobileMenu = false
 let fake = false
 
+$: ({ supabase, session } = data);
+
 function fauxfake(){
     fake = !fake
 }
@@ -50,13 +54,25 @@ function theShift(){
  showDrawer();
 }
 
+	function signout() {
+		supabase.auth.signOut();
+	}
+
 onMount(() => {
+		const {
+			data: { subscription }
+		} = supabase.auth.onAuthStateChange((event, _session) => {
+			if (_session?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth');
+			}
+		});
+return () => subscription.unsubscribe();
     audioElement = new Audio('/sounds/boing2.mp3')
     audioStore.set(audioElement)
 })
 
 
-export let data
+export let data: LayoutData;
 
 </script>
 
@@ -104,6 +120,9 @@ export let data
                 <p><a href="/build" class="hover">Build</a></p>
             </div>
             {/if}
+{#if session}
+	<button on:click={signout}>Sign out</button>
+{/if}
         </div>
         <div class="rowgap200 rta-column column-row menulinks">
             <button class="blank-button"

@@ -11,7 +11,9 @@
 	import { svelteTools, svelteLinks, svelteLearn } from '$lib/assets/sveltekittools';
 	let width = '100%';
 	let ref: HTMLElement | null = null;
+
 	$: ({ isVisible } = elementVisibilityStore(ref));
+
 
 	let posts: any;
 	let webs: any;
@@ -44,22 +46,22 @@
 				fiction worlds, dabble in psytrance production and write essays on Indian history and
 				civilizational consciousness. My big projects:
 			</p>
-			<div class="rta-grid grid3 colgap500 rowgap600 p-top-32 p-bot-32">
-				<div class="rta-column rowgap200 glass-top p-top-32">
+			<div class="rta-grid grid3 colgap500 rowgap600 p-top-32 p-bot-32" bind:this={ref}>
+				<div class="rta-column rowgap200 glass-top p-top-32" class:gleamer={$isVisible}>
 					<h5 class="gradienter"><a href="/build/brhatopenlibrary">Bṛhat Open Library</a></h5>
 					<p>A digital library of Dhārmika Literature, but something more...</p>
 				</div>
-				<div class="rta-column rowgap200 glass-top p-top-32">
+				<div class="rta-column rowgap200 glass-top p-top-32" class:gleamer={$isVisible}>
 					<h5>Synaptic Reconnection</h5>
 					<p>Building a modern ontology, epistemology and teleology drawing from Dhārmika cores.</p>
 				</div>
-				<div class="rta-column rowgap200 glass-top p-top-32">
+				<div class="rta-column rowgap200 glass-top p-top-32" class:gleamer={$isVisible}>
 					<h5 class="gradienter"><a href="/build/sveltekitui">Sveltekit UI</a></h5>
 					<p>A Sveltekit components library solving for plumbing and custom aesthetics.</p>
 				</div>
 			</div>
 		</div>
-			<div class="rta-grid grid4 by4 rowgap500 colgap500 minH p-top-64 p-bot-64 colgap100 padding-l0" bind:this={ref}>
+			<div class="rta-grid grid4 by4 rowgap500 colgap500 minH p-top-64 p-bot-64 colgap100 padding-l0">
 				{#if images && images.length > 0}
 					{#each images as item}
 						<a class="rta-image" href="/image/{item.slug}">
@@ -145,6 +147,7 @@
 </div>
 
 <style lang="sass">
+
 
 .titular
     text-transform: uppercase

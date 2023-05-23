@@ -1,5 +1,16 @@
 import Dexie from 'dexie';
-import { v4 as uuidv4 } from 'uuid';
+
+class StoreBot extends Dexie {
+    bots: Dexie.Table<IBot, number>;
+
+    constructor() {
+        super("BotsDB");
+        this.version(1).stores({
+            bots: '++id, name, prompt, about, image, greeting',
+        })
+        this.bots = this.table("bots");
+    }
+}
 
 class ChatDatabase extends Dexie {
     chats: Dexie.Table<IChat, number>; // number = type of the primary key
@@ -7,7 +18,7 @@ class ChatDatabase extends Dexie {
     constructor() {
         super("ChatDatabase");
         this.version(1).stores({
-            chats: '++id, chatId, userMessage, assistantMessage, timestamp',
+            chats: '++id, uuid, userMessage, assistantMessage, timestamp',
         });
         this.chats = this.table("chats");
     }
@@ -15,25 +26,54 @@ class ChatDatabase extends Dexie {
 
 interface IChat {
     id?: number;
-    chatId: string;
+    uuid: string;
     userMessage: string;
     assistantMessage: string;
     timestamp: number;
 }
 
+export interface IBot {
+    id?: number;
+    name: string;
+    prompt: string;
+    about: string;
+    image: string;
+    greeting: string;
+
+}
+
+const db2 = new StoreBot();
+
 
 const db = new ChatDatabase();
 
-async function storeChat(userMessage: string, assistantMessage: string) {
+
+async function storeChat(uuid: string, userMessage: string, assistantMessage: string) {
     const timestamp = Date.now();
-    const chatId = uuidv4();
 
     await db.chats.add({
-        chatId,
+        uuid,
         userMessage,
         assistantMessage,
         timestamp
     });
+}
+
+async function storeBots(name: string, prompt: string, about: string, image: string, greeting: string) {
+
+
+    await db2.bots.add({
+        name,
+        prompt,
+        about,
+        image,
+        greeting
+    })
+}
+
+async function getBots() {
+    const botsall = await db2.bots.toArray();
+    return botsall
 }
 
 //async function getChats() {
@@ -46,7 +86,6 @@ async function getChats() {
     return chats;
 }
 
-export default db;
-export { storeChat, getChats };
-
+export default { db, db2 };
+export { storeChat, getChats, storeBots, getBots };
 

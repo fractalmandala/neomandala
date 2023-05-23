@@ -145,54 +145,48 @@ export async function gptTwenty(){
     return data
 }
 
-let theuuids:any = []
 
-export async function distinctuu(){
-    const { data, error } = await supabase
-    .rpc('distinctuuids')
-    if (error) {
-        console.log(error)
-    } else {
-        theuuids = data
-    }
-}
-
-export async function thisUUID(uuidtext:any){
-    const { data, error } = await supabase
-    .from('amrit-notes')
-    .select()
-    .eq('uuidtext',uuidtext)
-    .order('id')
-    if ( error ) throw new Error(error.message)
-    return data    
-}
-
-export async function chatsCount(uuidtext:any){
-    const { data, error } = await supabase
-    .from('amrit-notes')
-    .select('*', { count: 'exact', head: true })
-    .eq('uuidtext', uuidtext)
-    if ( error ) throw new Error(error.message)
-    return data  
-}
 
 export async function latestSession(){
     const { data, error } = await supabase
     .from('amrit-uuids')
     .select()
     .order('id', {ascending: false})
-    .limit(1)
+    .limit(8)
     if ( error ) throw new Error(error.message)
     return data
 }
 
-
-export async function searchChats(inputSearch:any){
+export async function currentSession(uuid:string){
     const { data, error } = await supabase
-    .from('amrit-notes')
+    .from('gpt-sessions')
     .select()
-    .eq('tags','gpt')
-    .textSearch('content',inputSearch)
+    .eq('uuid',uuid)
+    .eq('type', 'chat')
+    .order('id', {ascending: false})
     if ( error ) throw new Error(error.message)
-    return data
+    return data    
+}
+
+export async function openSession(sessionid:string){
+    const { data, error } = await supabase
+    .from('gpt-sessions')
+    .select()
+    .eq('sessionid', sessionid)
+    .limit(1)
+    if ( error ) throw new Error(error.message)
+    return data  
+}
+
+
+export async function botInPlay(sessionid:string, userstore:string){
+    const { data, error } = await supabase
+    .from('gpt-sessions')
+    .select()
+    .eq('sessionid', sessionid)
+    .eq('userstore', userstore)
+    .order('id',{ascending: false})
+    .limit(1)
+    if ( error ) throw new Error(error.message)
+    return data 
 }

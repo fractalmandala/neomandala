@@ -1,0 +1,74 @@
+.levelzero
+	.rta-side
+		height: 100%
+		.in-side
+			.transistor-side
+				padding: 8px
+				.menubar
+					border-radius: 4px
+					padding: 32px 0 32px 8px
+	.rta-main
+		.in-main
+			.transistor
+				.appshell
+					grid-template-columns: 200px 1fr
+					grid-template-areas: shellside shellmain
+					.shellside
+						grid-area: shellside
+					.shellmain
+						grid-area: shellmain
+
+.levelone
+	.rta-main
+		.in-main
+			.transistor
+				.appshell
+					grid-template-columns: 300px 1fr
+
+
+.leveltwo
+	.rta-main
+		.in-main
+			.transistor
+				.appshell
+					grid-template-columns: 1fr
+
+
+.appshell
+	display: grid
+	grid-auto-flow: row
+	
+
+.menubar
+	display: flex
+
+.levelzero
+	.menubar
+		flex-direction: column
+		height: 100%
+		justify-content: space-between
+
+.levelone
+	.menubar
+		flex-direction: row
+
+.leveltwo
+	.menubar
+		flex-direction: row
+
+.dark
+	.menubar
+		background: rgba(255,255,255,0.1)
+		border: 1px solid rgba(255, 255, 255, 0.3)
+		backdrop-filter: blur(2px)
+		position: relative
+		height: 100%
+		&::after
+			position: absolute
+			content: ''
+			bottom: 0
+			right: 0
+			height: 100%
+			width: 1px
+			background: linear-gradient(940deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 25%, rgba(17, 17, 17, 0))				
+			transition: 0.23s

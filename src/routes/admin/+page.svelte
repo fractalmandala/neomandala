@@ -43,12 +43,23 @@
 	let answer: any;
 	let loading = false;
 	let submitTitle: string;
-	let recIs = Array(9).fill(false)
-	recIs[9] = true
+	let recIs = Array(6).fill(false)
 	let oldStream:any
 	let inPlay:any
 	let openCheck:any
 	let currentBot:any
+
+	function toggleRec(index:number) {
+		recIs[index] = !recIs[index] 
+		for ( let i = 0; i < recIs.length; i ++ ) {
+			if ( i !== index && recIs[i] === true ) {
+				recIs[i] = false
+			}
+		}
+	}
+
+	export let form: ActionData;
+	export let data: PageData;
 
 	export async function handleAdd() {
 		generateUUID();
@@ -96,13 +107,13 @@
 		}
 	}
 
-	async function sendToSupatwo() {
+	export async function sendToSupatwo() {
 		if (sessID === null) {
 			console.log(sessID)
 		} else {
 		const { error } = await supabase.from('gpt-sessions').insert({ sessionid: sessID, uuid: $uuidStore, type: 'init', bot: $nameStore, promptstore: $promptStore, aboutstore: $aboutStore, imagestore: $imageStore, greetstore: $greetStore, userstore: emID });
 			if (error) {
-			showChip('sign in required','#fe4a49')
+			showChip(error,'#fe4a49')
 			} else {
 			showChip('new chat', '#10D56C');
 		}
@@ -178,12 +189,6 @@
 		lastUUID = await gptTwenty();
 	});
 
-
-
-	export let form: ActionData;
-	export let data: PageData;
-
-
 	$: ({ testTable, user } = data);
 
 	$: if ($promptStore) {
@@ -197,9 +202,11 @@
 		let currentGreet = currentBot ? currentBot.greeting : undefined;
 		greetStore.set(currentGreet);
 		generateUUID();
-		sendToSupatwo();
 		loadChats();
 		updateBot();
+		if (data.in === true) {
+			sendToSupatwo();
+		}
 	}
 
 
@@ -216,6 +223,27 @@
 	class:dark={!$themeMode}
 >
 	<div class="shellmain rta-column ytop colgap300 rowgap200">
+		<div class="rta-column rowgap300">
+			<h5>Select Bot</h5>
+			<div class="rta-grid grid6 colgap200">
+				{#each botsList as bot, i}
+					<div class="rta-column" on:mouseenter={() => toggleRec(i)} on:mouseleave={() => toggleRec(i)}>
+						{#if recIs[i]}
+						<div class="rta-image">
+							<img src={bot.image} alt={bot.id}/>
+						</div>
+						<div class="rta-column">
+							<h5>{bot.name}</h5>
+						</div>
+						{/if}	
+				
+						<div class="rta-image">
+							<img src={bot.image} alt={bot.id}/>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
 		{#if openCheck && openCheck.length > 0}
 			{#each openCheck as item}
 				{#if item.agent === null}
@@ -269,6 +297,9 @@
 		{/if}
 	</div>
 	<div class="shellside rta-column column-row fullW rowgap300 glass null">
+
+		<!--add and delete buttons-->
+		{#if data.in === true}
 		<div class="rta-row stay ycenter colgap200 p-bot-32 glass-bottom">
 			<button class="blank-button" on:click={handleAdd}>
 				<Add />
@@ -278,6 +309,10 @@
 			</button>
 			<CondenseChat/>
 		</div>
+		{/if}
+		<!----->
+
+		<!--current bot-->
 		{#if inPlay && inPlay.length > 0}
 			{#each inPlay as item}
 				<div class="rta-row null colgap200 glass-bottom p-bot-32">
@@ -294,19 +329,24 @@
 				</div>
 			{/each}
 		{/if}
+		<!---->
+	
+		<!---login and signup-->
 		{#if data.in === false}
 			<div class="rta-column rowgap200 p-bot-32 w64">
-			<form method="POST" action="/admin?/login">
-				<label>
-					Email
-					<input name="email" type="email" />
-				</label>
-				<label>
-					Password
-					<input name="password" type="password" />
-				</label>
-				<button>Log in</button>
+			<form method="POST" action="/admin?/login" class="loginform">
+				<div class="rta-row colgap100">
+					<input name="email" type="email" placeholder="email"/>
+					<input name="password" type="password" placeholder="password" />
+				</div>
+				<div class="rta-row colgap100">
+					<button class="gradback">Log In</button>
+					<!--
+					<button class="glass">Sign Up</button>
+					-->
+				</div>
 			</form>
+			<!--
 			<form method="POST" action="/admin?/signup">
 				<div class="field">
 					<label for="email" class="label">Email</label>
@@ -341,12 +381,13 @@
 					</p>
 				</div>
 			</form>
+			-->
 			</div>
 		{/if}
+		<!---->
+
+		<!--recent chats-->
 		<div class="rta-column null rowgap100">
-			<button class="blank-button ta-l">
-				<p>Recent:</p>
-			</button>
 			{#if chatStream && chatStream.length > 0}
 				{#each chatStream as item, i}
 					{#if item.uuid !== undefined}
@@ -357,5 +398,31 @@
 				{/each}
 			{/if}
 		</div>
+		<!---->
+
 	</div>
 </div>
+
+<style lang="sass">
+
+.loginform
+	display: flex
+	flex-direction: column
+	row-gap: 8px
+	.rta-row
+		input
+			width: calc(50% - 12px)
+			border-radius: 4px
+			padding: 2px 6px
+			border: 1px solid rgba(255,255,255,0.3)
+			background: rgba(255,255,255,0.12)
+			color: white
+	button
+		width: 80px
+		border: 1px solid rgba(255,255,255,0.6)
+		border-radius: 4px
+		color: white
+		padding: 2px
+
+
+</style>

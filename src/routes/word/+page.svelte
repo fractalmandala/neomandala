@@ -117,19 +117,21 @@
 			{/if}
 		{/if}
 	</div>
-	<div class="shellside rta-column column-row fullW rowgap300 null">
-		<img
-			class="jello-vertical height-30 w32"
-			src="/images/k-writings.webp"
-			alt="writing"
-			on:mouseover={() => audio.play()}
-			on:focus={fauxfake}
-		/>
-		<div class="rta-column rowgap200 p-bot-32 w64">
-			<h6 class="tt-u">word</h6>
-			<small class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</small>
+	<div class="shellside rta-column fullW rowgap300 null">
+		<div class="rta-row stay colgap200">
+			<img
+				class="jello-vertical height-30-2 w32"
+				src="/images/k-writings.webp"
+				alt="writing"
+				on:mouseover={() => audio.play()}
+				on:focus={fauxfake}
+			/>
+			<div class="rta-column rowgap100 p-bot-32 w64">
+				<h3 class="tt-u">word</h3>
+				<small class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</small>
+			</div>
 		</div>
-		<div class="rta-column rowgap200 p-bot-32 w64">
+		<div class="rta-column column-row rowgap200 p-bot-32 w64">
 			<button class="blank-button" on:click={() => toggleGen(1)} class:selected={gen[1]}>
 				<GlassButton>
 					Fractal Maṇḍala

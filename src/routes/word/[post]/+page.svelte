@@ -1,7 +1,6 @@
 <script lang="ts">
 
     import { onMount } from 'svelte'
-	import AppShell from '$lib/design/AppShell.svelte';
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
     import { browser } from '$app/environment'
     import { page } from '$app/stores'
@@ -10,8 +9,6 @@
     import Pagination from '$lib/components/Pagination.svelte'
     import ChevFRight from '$lib/icons/ChevFRight.svelte'
     import ChevFLeft from '$lib/icons/ChevFLeft.svelte'
-    import ChevRight from '$lib/icons/ChevRight.svelte'
-    import Read from '$lib/icons/Reading.svelte'
     let theme:any
     let image:any
     let prevID:number
@@ -29,16 +26,6 @@
     $: size = elementSizeStore(ref);
 
     $: perCent = y / $size.height
-
-	function toggleReading() {
-		if (browser) {
-			readingMode.update((mode) => {
-				const newMode = !mode;
-				localStorage.setItem('readingMode', JSON.stringify(newMode));
-				return newMode;
-			});
-		}
-	}
 
     onMount(async() => {
         theme = $page.url.pathname.slice(6)
@@ -64,7 +51,7 @@
         <div class="progress-strip">
             <div class="inside" style="width: {perCent * 100}%"></div>
         </div>
-        <div class="rta-image height-40 m-bot-64">
+        <div class="rta-image height-40-40 m-bot-64">
             {#if image && image.length > 0}
                 {#each image as item}
                     <img src={item.image} alt={item.title}/>
@@ -83,30 +70,32 @@
             {/if}
         </div>
     </div>
-    <div class="shellside rta-column column-row fullW rowgap300 null" class:invisible={$readingMode}>
+    <div class="shellside rta-column column-rev fullW rowgap300 null" class:invisible={$readingMode}>
         <h4 class="tt-u">{data.title}</h4>
-        <p class="gradienter p-bot-32 bord-bot">{data.type}</p>
-        <div class="p-bot-32">
-        <Pagination>
-            <div slot="prev">
-            {#if prevPost && prevPost.length > 0}
+        <div class="rta-column column-row bord-bot">
+            <p class="gradienter p-bot-32">{data.type}</p>
+            <div class="p-bot-32">
+            <Pagination>
+                <div slot="prev">
+                {#if prevPost && prevPost.length > 0}
                 {#each prevPost as item}
                     <a href="/word/{item.slug}" class="blank-button">
                         <ChevFLeft/>
                     </a>
                 {/each}
-            {/if}
-            </div>
-            <div slot="next">
-            {#if nextPost && nextPost.length > 0}
+                {/if}
+                </div>
+                <div slot="next">
+                {#if nextPost && nextPost.length > 0}
                 {#each nextPost as item}
                     <a href="/word/{item.slug}" class="blank-button">
                         <ChevFRight/>
                     </a>
                 {/each}
-            {/if}
+                {/if}
+                </div>
+            </Pagination>
             </div>
-        </Pagination>
         </div>
     </div>
 

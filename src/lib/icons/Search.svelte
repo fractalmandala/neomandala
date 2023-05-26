@@ -15,6 +15,7 @@
 
 .rta-icon
 	cursor: pointer
+	padding-top: 4px
 	svg
 		object-fit: contain
 		transition: 0.13s

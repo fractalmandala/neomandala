@@ -12,12 +12,11 @@
 	position: relative
 	border: none
 	color: white
-	min-width: 160px
-	height: 48px
-	padding: 0 12px
+	height: 32px
+	padding: 0
 	background: rgba(255,255,255,0.05)	
 	border: 1px solid rgba(255,255,255,0.6)
-	font-size: 16px
+	font-size: 12px
 	border-radius: 6px
 	overflow: hidden
 	transform-origin: center center

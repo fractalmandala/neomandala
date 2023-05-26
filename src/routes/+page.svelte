@@ -61,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-			<div class="rta-grid grid4 by4 rowgap500 colgap500 minH p-top-64 p-bot-64 colgap100 padding-l0">
+			<div class="rta-grid grid4 stay2 rowgap500 colgap500 minH p-top-64 p-bot-64 colgap100 padding-l0">
 				{#if images && images.length > 0}
 					{#each images as item}
 						<a class="rta-image" href="/image/{item.slug}">

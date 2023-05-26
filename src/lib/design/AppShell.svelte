@@ -1,23 +1,22 @@
 <script lang="ts">
     
-    import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
-import ArrowUp from '$lib/components/ArrowUp.svelte'
-import Read from '$lib/icons/Reading.svelte'
+    import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores'
+    import '$lib/styles/shell.sass'
 
 </script>
 
 
-<div class="appshell"
+<div class="rta-shell"
     class:levelzero={$breakZero}
     class:levelone={$breakOne}
     class:leveltwo={$breakTwo}
     class:light={$themeMode}
     class:dark={!$themeMode}
     >
-    <div class="rta-column main">
+    <div class="rta-column rta-main">
         <slot name="main"></slot>
     </div>
-    <div class="rta-column side">
+    <div class="rta-column column-row rta-side">
         <slot name="side"></slot>
     </div>
 </div>
@@ -26,58 +25,61 @@ import Read from '$lib/icons/Reading.svelte'
 <style lang="sass">
 
 
-.appshell
+.rta-shell
     display: grid
     grid-auto-flow: row
 
-.appshell.levelzero
-    grid-template-columns: 280px 1fr
-    grid-template-areas: "side main"
-    column-gap: 4vw
-    .main
-        grid-area: main
-    .side
-        grid-area: side
-        width: 280px
-        text-align: left
-        height: calc(100vh - 64px)
-        border-radius: 6px
-        padding: 24px
-        position: sticky
-        top: 32px
-        left: 0
-        box-shadow: 8px 8px 12px #f1f1f1, -8px -6px 10px #f6f6f6
+.rta-shell.dark
+    background-color: hsla(0,0%,8%,1)
+    background-image: radial-gradient(at 57% 35%, hsla(108,80%,5%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(116,86%,5%,1) 0px, transparent 50%)
 
-.appshell.levelone
-    grid-template-columns: 240px 1fr
+.rta-shell.light
+    background-color: hsla(0,0%,100%,1)
+    background-image: radial-gradient(at 87% 95%, hsla(130,100%,62%,0.75) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(99,83%,49%,1) 0px, transparent 0%)
+
+.rta-shell.levelzero
+    grid-template-columns: 96px 1fr
     grid-template-areas: "side main"
-    width: calc(100vw - 96px)
-    .main
+    .rta-main
         grid-area: main
-        padding: 64px 32px
-    .side
+    .rta-side
         grid-area: side
-        width: 240px
-        padding-top: 32px
+        width: 96px
+        text-align: left
+        height: 100vh
+        position: sticky
+        top: 0
+        left: 0 
+
+.rta-shell.levelone
+    grid-template-columns: 96px 1fr
+    grid-template-areas: "side main"
+    .rta-main
+        grid-area: main
+    .rta-side
+        grid-area: side
+        width: 96px
+        padding: 24px
         text-align: left
         height: 100vh
         position: sticky
         top: 0
         left: 0
 
-.appshell.leveltwo
+.rta-shell.leveltwo
     grid-template-columns: 1fr
     grid-template-areas: "side" "main"
     grid-template-rows: auto auto
     width: 100vw
-    .main
+    .rta-main
         grid-area: main
-        padding: 32px
-    .side
+    .rta-side
         grid-area: side
         width: 100%
         padding: 32px
         text-align: left
+        display: flex
+        flex-direction: row
         
 
 </style>

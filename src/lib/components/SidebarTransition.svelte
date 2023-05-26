@@ -2,9 +2,22 @@
 	import { onMount } from 'svelte';
 	import { readingMode } from '$lib/stores/globalstores';
 	import Lenis from '@studio-freight/lenis';
-	import { themeMode } from '$lib/stores/globalstores';
+	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import { fly } from 'svelte/transition';
 	import { quadOut, quadIn } from 'svelte/easing';
+
+	let moveX:number
+	let moveY:number
+
+	$: if ( $breakZero === true || $breakOne === true ) {
+		moveX = -100,
+		moveY = 0
+	}
+
+	$: if ( $breakTwo === true ) {
+		moveX = 0,
+		moveY = -64
+	}
 
 	onMount(async () => {
 		const lenis = new Lenis({
@@ -29,11 +42,19 @@
 
 <div
 	class="transistor-side"
-	in:fly={{ delay: 600, duration: 600, x: -100, easing: quadOut }}
-	out:fly={{ delay: 0, duration: 550, opacity: 0, x: -100, easing: quadIn }}
+	in:fly={{ delay: 600, duration: 600, x: moveX, y: moveY, easing: quadOut }}
+	out:fly={{ delay: 0, duration: 550, opacity: 0, x: moveX, y: moveY, easing: quadIn }}
 	class:dark={!$themeMode}
 	class:light={$themeMode}
 	class:invisible={$readingMode}
 >
 	<slot />
 </div>
+
+<style lang="sass">
+
+.transistor-side
+	height: 100%
+
+
+</style>

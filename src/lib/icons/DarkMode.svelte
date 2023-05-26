@@ -8,6 +8,7 @@
 		fake = !fake;
 	}
 
+
 	function toggleVisibility() {
 		if (browser) {
 			themeMode.update((mode) => {
@@ -37,7 +38,7 @@
 .rta-icon
 	cursor: pointer
 	svg
-		height: 28px
+		height: 24px
 		object-fit: contain
 		transition: 0.13s
 		transform-origin: center center

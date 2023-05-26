@@ -6,14 +6,13 @@
 	import { fly } from 'svelte/transition'
 	import { quadOut, quadIn } from 'svelte/easing'
 
-    onMount(async() => {
+    onMount(() => {
     	const lenis = new Lenis({
-      	duration: 1.2,
+      	duration: 1.4,
       	orientation: 'vertical',
       	gestureOrientation: 'vertical',
-      	lerp: 0.6,
       	smoothWheel: true,
-      	wheelMultiplier: 0.7,
+      	wheelMultiplier: 0.5,
       	smoothTouch: false,
       	touchMultiplier: 0,
       	infinite: false,

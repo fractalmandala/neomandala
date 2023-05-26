@@ -2,12 +2,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
 
+@font-face
+    font-family: 'Playen Sans'
+    src: url('/fonts/playen-regular.woff2') format(woff2), url('/fonts/playen-regular.woff') format(woff)
+    font-style: normal
+    font-weight: normal
+
+@font-face
+    font-family: 'Playen Sans Bold'
+    src: url('/fonts/playen-bold.woff2') format(woff2), url('/fonts/playen-bold.woff') format(woff)
+    font-style: normal
+    font-weight: bold
+
+@font-face
+    font-family: 'Akshar'
+    src: url('/fonts/akshar.woff2') format(woff2), url('/fonts/akshar.woff') format(woff)
+    font-style: normal
+    font-weight: normal
+
+@font-face
+    font-family: 'Akshar'
+    src: url('/fonts/akshar.woff2') format(woff2), url('/fonts/akshar.woff') format(woff)
+    font-style: normal
+    font-weight: bold
+
+@font-face
+    font-family: 'Molend'
+    src: url('/fonts/Molend.woff2') format(woff2), url('/fonts/Molend.woff') format(woff)
+    font-style: normal
+    font-weight: 900
+    unicode-range: U+1E00-1EFF
+
+@font-face
+    font-family: 'MicroGrotesk'
+    src: url('/fonts/MicroGrotesk.woff2') format(woff2), url('/fonts/MicroGrotesk.woff') format(woff)
+    font-style: normal
+    font-weight: normal
+
+@font-face
+    font-family: 'MicroGrotesk'
+    src: url('/fonts/MicroGrotesk.woff2') format(woff2), url('/fonts/MicroGrotesk.woff') format(woff)
+    font-style: normal
+    font-weight: bold
+
+@font-face
+    font-family: 'Nohemi'
+    src: url('/fonts/Nohemi.woff2') format(woff2), url('/fonts/Nohemi.woff') format(woff)
+    font-style: normal
+    font-weight: normal
+
+@font-face
+    font-family: 'NohemiBold'
+    src: url('/fonts/Nohemi.woff2') format(woff2), url('/fonts/Nohemi.woff') format(woff)
+    font-style: normal
+    font-weight: 600
+
+@font-face
+    font-family: 'NohemiLight'
+    src: url('/fonts/Nohemi.woff2') format(woff2), url('/fonts/Nohemi.woff') format(woff)
+    font-style: normal
+    font-weight: 300
+
+.noh
+    font-family: 'NohemiBold', sans-serif
+    letter-spacing: 0.3px
+
 .dark
     --palio: #FAFAFA
     --background: #FFFFFF
     --textone: #a1a1a1
     --opposite: #272727
-    --borderline: #272727
     --greyish: #878787
     --contraster: #212121
     --themer: #FFFFFF
@@ -23,7 +87,6 @@
     --background: #121212
     --textone: #373737
     --opposite: #FFFFFF
-    --borderline: #474747
     --greyish: #878787
     --contraster: #e7e7e7
     --themer: #474747
@@ -32,7 +95,7 @@
     --themerp: #878787
     color: #474747
     h4, h5
-        color: #676767
+        color: #474747
 
 code
     font-family: 'Space Mono', monospace
@@ -92,10 +155,16 @@ p.white, small.white, h6.white
 h5.white
     color: white
 
+h4.white
+    color: white
+
 //transforms
 
 .ta-r
     text-align: right
+
+.ta-c
+    text-align: center
 
 .ta-l
     text-align: left
@@ -130,54 +199,59 @@ h6
     font-weight: 500
 
 h5
-    font-weight: 500
+    font-weight: 700
 
 h4
     line-height: 1.12
-    font-weight: 400
+    font-weight: 800
 
 .levelzero
     h5
         font-size: 24px
     h4
         font-size: 32px
-        letter-spacing: -0.4px
+        letter-spacing: 0px
     h3
         font-size: 40px
+    h2
+        font-size: 64px
 
 .levelone
     h5
         font-size: 20px
     h4
         font-size: 30px
-        letter-spacing: -0.4px
+        letter-spacing: 0px
     h3
         font-size: 36px
+    h2
+        font-size: 48px
 
 .leveltwo
     h5
         font-size: 18px
     h4
         font-size: 20px
-        letter-spacing: -0.4px
+        letter-spacing: 0px
     h3
         font-size: 32px
+    h2
+        font-size: 40px
 
 h3
-    font-weight: 500
-    letter-spacing: -0.2px
+    font-weight: 800
+    letter-spacing: 0px
     color: var(--themer)
     line-height: 1.25
 
 h2
-    font-size: 56px
     color: var(--themer)
-    font-weight: 500
+    font-weight: 700
 
 h1
     font-size: 80px
     color: var(--themer)
-    font-weight: 500
+    font-weight: 800
 
 //contained
 
@@ -190,11 +264,15 @@ h1
 
 .thisispost
     p, li, em
-        font-size: 19px
-        line-height: 1.5
+        font-size: 20px
+        letter-spacing: 0.5px
+        line-height: 1.8
         color: var(--background)
+        font-family: 'Space Grotesk', sans-serif
     h4
         margin: 64px 0 24px 0
+        font-family: 'NohemiBold', sans-serif
+        letter-spacing: 0
     blockquote
         font-style: italic
         color: #676767
@@ -207,6 +285,8 @@ h1
 
 .leveltwo
     .thisispost
+        h4
+            font-size: 32px
         h5
             font-size: 24px
             color: var(--background)
@@ -246,3 +326,14 @@ h1
     border: 1px solid rgba(255,255,255,0.62)
     border-radius: 6px
     padding: 32px
+
+.revealer
+    .typett
+        background: linear-gradient(124.58deg, #369610 11.33%, #078717 29.17%, #10D56C 72.28%)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        background-clip: text
+        text-fill-color: transparent
+    
+.mol
+    font-family: 'Molend', sans-serif

@@ -1,5 +1,5 @@
-<div class="loader" style="overflow: visible">
-	<svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="loader rta-row ycenter" style="overflow: visible">
+	<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g id="motif">
 			<g class="even" id="is7">
 				<path

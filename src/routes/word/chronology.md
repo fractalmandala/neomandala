@@ -3,7 +3,7 @@ title: A New Chronological Framework for Indian History
 tags: chronology
 featured: false
 type: history
-image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/25.webp
+image: /images/chronframework.webp
 id: 25
 ---
 

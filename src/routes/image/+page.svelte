@@ -16,7 +16,7 @@
     
     let images:any
     let low = 0
-    let top = 11
+    let top = 31
     let audio:any
     audioStore.subscribe(value => audio = value)
 
@@ -24,13 +24,13 @@
     let loading = false
 
     function nextEight(){
-        low += 12
-        top += 12
+        low += 32
+        top += 32
     }
 
     function prevEight(){
-        low -= 12
-        top -= 12
+        low -= 32
+        top -= 32
     }
 
     $: if ( low ) {
@@ -52,14 +52,14 @@
 </script>
 
 
-<div class="appshell"
+<div class="rta-column"
     class:levelzero={$breakZero}
     class:levelone={$breakOne}
     class:leveltwo={$breakTwo}
     class:light={$themeMode}
     class:dark={!$themeMode}
     >
-    <div class="shellmain rta-grid grid4 stay2 colgap300 rowgap300">
+    <div class="rta-grid grid8 stay2 colgap100 rowgap100">
         {#if images && images.length > 0}
             {#each images as item}
                 <a class="rta-image height-24" href="/image/{item.slug}">
@@ -68,15 +68,7 @@
             {/each}
         {/if}
     </div>
-    <div class="shellside rta-column column-row fullW rowgap300 null">
-        <div class="rta-column column-row rowgap200">
-            <img class="jello-vertical w32" src="/images/k-images.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-            <div class="rta-column rowgap200 bord-bot p-bot-32 w64">
-                <h6 class="tt-u">image</h6>
-                <small class="grey">I've been waiting for Midjourney since I was a kid! But let's not forget the earlier and delightful <a class="green" href="/image/wombo">Wombo.</a></small>
-            </div>
-        </div>
-    <div class="p-bot-32">
+    <div class="rta-row fullW xcenter-d xcenter-m p-top-8">
         <Pagination>
             <div slot="prev">
                 <button class="blank-button" on:click={prevEight}>
@@ -89,6 +81,5 @@
                 </button>
             </div>
         </Pagination>
-    </div>
     </div>
 </div>

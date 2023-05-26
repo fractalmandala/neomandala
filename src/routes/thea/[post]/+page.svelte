@@ -1,13 +1,39 @@
 <script lang="ts">
 
+	import { onMount, onDestroy } from 'svelte'
+  import { Editor } from '@tiptap/core'
+  import StarterKit from '@tiptap/starter-kit'
+
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
 	export let data
 	import { allThea } from '$lib/utils/localpulls'
 	let pens: any;
+  let element:any
+  let editor:any
 
 	$: (async() => {
 		pens = await allThea();
 	})();
+
+  onMount(() => {
+    editor = new Editor({
+      element: element,
+      extensions: [
+        StarterKit,
+      ],
+      content: data.content,
+      onTransaction: () => {
+        // force re-render so `editor.isActive` works as expected
+        editor = editor
+      },
+    })
+  })
+
+  onDestroy(() => {
+    if (editor) {
+      editor.destroy()
+    }
+  })
 
 </script>
 
@@ -20,6 +46,7 @@
 	class:dark={!$themeMode}
 >
 	<div class="shellmain thisispost">
+		<div bind:this={element} />
 		<svelte:component this={data.content}/>
 	</div>
 	<div class="shellside rta-column null">

@@ -1,12 +1,17 @@
 <script lang="ts">
 
+	import type { PageData } from './$types';
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
 	import { allThea } from '$lib/utils/localpulls'
 	let pens: any;
 
+	export let data: PageData;
+
 	$: (async() => {
 		pens = await allThea();
 	})();
+
+	$: ({ testTable, user } = data);
 
 </script>
 
@@ -20,6 +25,7 @@
 	class:dark={!$themeMode}
 >
 	<div class="shellmain rta-grid colgap300 rowgap600">
+		{#if data.in === true}
 			{#if pens && pens.length > 0}
 				{#each pens as item}
 					<h5>
@@ -29,6 +35,7 @@
 					</h5>
 				{/each}
 			{/if}
+		{/if}
 	</div>
 	<div class="shellside rta-column fullW rowgap300 null">
 		<h3 class="tt-u">thea</h3>

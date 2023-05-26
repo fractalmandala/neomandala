@@ -3,6 +3,7 @@
     import { onMount } from 'svelte'
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
     import { browser } from '$app/environment'
+	import Parallax from '$lib/components/Parallax.svelte'
     import { page } from '$app/stores'
     import { thisWritings, pageWritings } from '$lib/utils/supabase' 
     import { elementSizeStore } from '$lib/utils/elementsize'
@@ -39,26 +40,21 @@
 <svelte:window bind:scrollY={y}/>
 
 <div
-	class="appshell"
+	class="rta-column"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
+    <div class="x00">
+        <Parallax --parallax="url('{data.image}')"/>
+    </div>
 
-    <div class="shellmain" bind:this={ref}>
-        <div class="progress-strip">
-            <div class="inside" style="width: {perCent * 100}%"></div>
-        </div>
-        <div class="rta-image height-40-40 m-bot-64">
-            {#if image && image.length > 0}
-                {#each image as item}
-                    <img src={item.image} alt={item.title}/>
-                {/each}
-            {/if}
-        </div>
-        <div class="thisispost" class:thisisback={$readingMode}>
+    <div class="shellmain rta-column p-top-64" bind:this={ref}>
+        <h6 class="ta-c gradienter p-bot-32">{data.type}</h6>
+        <h2 class="noh ta-c tt-u bord-bot p-bot-32">{data.title}</h2>
+        <div class="thisispost p-top-64" class:thisisback={$readingMode}>
             <svelte:component this={data.content}/>
         </div>
         <div class="rta-row bord-top m-bot-32 null ycenter colgap200 p-top-32">
@@ -70,33 +66,16 @@
             {/if}
         </div>
     </div>
-    <div class="shellside rta-column column-rev fullW rowgap300 null" class:invisible={$readingMode}>
-        <h4 class="tt-u">{data.title}</h4>
-        <div class="rta-column column-row bord-bot">
-            <p class="gradienter p-bot-32">{data.type}</p>
-            <div class="p-bot-32">
-            <Pagination>
-                <div slot="prev">
-                {#if prevPost && prevPost.length > 0}
-                {#each prevPost as item}
-                    <a href="/word/{item.slug}" class="blank-button">
-                        <ChevFLeft/>
-                    </a>
-                {/each}
-                {/if}
-                </div>
-                <div slot="next">
-                {#if nextPost && nextPost.length > 0}
-                {#each nextPost as item}
-                    <a href="/word/{item.slug}" class="blank-button">
-                        <ChevFRight/>
-                    </a>
-                {/each}
-                {/if}
-                </div>
-            </Pagination>
-            </div>
-        </div>
-    </div>
+
 
 </div>
+
+
+<style lang="sass">
+
+
+.x00
+    height: 100vh
+    overflow: hidden
+
+</style>

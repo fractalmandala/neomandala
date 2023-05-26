@@ -46,107 +46,24 @@
 </script>
 
 <div
-	class="appshell"
+	class="rta-column pad32"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="shellmain rta-grid colgap300 rowgap600">
+	<div class="rta-grid grid4 colgap100 rowgap100">
 		{#if pens && pens.length > 0 && !isAnyGen}
 			{#each pens as item}
-				<a class="rta-row colgap300 stay ybetween ticket" href="/word/{item.slug}">
-					<div class="rta-column rowgap100 null w64">
-						<p class="green ta-r">{item.type}</p>
-						<h4 class="tt-c ta-r">{item.id}-{item.title}</h4>
-						<small class="grey ta-r">{item.tags}</small>
-					</div>
-					<div class="rta-image w32 height-24">
-						<img src={item.image} alt={item.title} />
+				<a class="rta-row colgap100 stay ybetween back height-40" href="/word/{item.slug}" style="background-image: url('{item.image}')">
+					<div class="rta-column rowgap100 null insider xcenter ycenter ta-c">
+						<p class="green">{item.type}</p>
+						<h4 class="white mol tt-c">{item.title}</h4>
+						<small>{item.tags}</small>
 					</div>
 				</a>
 			{/each}
 		{/if}
-		{#if gen[1]}
-			{#if mands && mands.length > 0}
-				{#each mands as item}
-					<a class="rta-row colgap300 stay ybetween ticket" href="/word/{item.slug}">
-						<div class="rta-column rowgap100 null w64">
-							<p class="green ta-r">{item.type}</p>
-							<h4 class="tt-c ta-r">{item.id}-{item.title}</h4>
-							<small class="grey ta-r">{item.tags}</small>
-						</div>
-						<div class="rta-image w32 height-24">
-							<img src={item.image} alt={item.title} />
-						</div>
-					</a>
-				{/each}
-			{/if}
-		{/if}
-		{#if gen[2]}
-			{#if hists && hists.length > 0}
-				{#each hists as item}
-					<a class="rta-row colgap300 stay ybetween ticket" href="/word/{item.slug}">
-						<div class="rta-column rowgap100 null w64">
-							<p class="green ta-r">{item.type}</p>
-							<h4 class="tt-c ta-r">{item.id}-{item.title}</h4>
-							<small class="grey ta-r">{item.tags}</small>
-						</div>
-						<div class="rta-image w32 height-24">
-							<img src={item.image} alt={item.title} />
-						</div>
-					</a>
-				{/each}
-			{/if}
-		{/if}
-		{#if gen[3]}
-			{#if archs && archs.length > 0}
-				{#each archs as item}
-					<a class="rta-row colgap300 stay ybetween ticket" href="/word/{item.slug}">
-						<div class="rta-column rowgap100 null w64">
-							<p class="green ta-r">{item.type}</p>
-							<h4 class="tt-c ta-r">{item.id}-{item.title}</h4>
-							<small class="grey ta-r">{item.tags}</small>
-						</div>
-						<div class="rta-image w32 height-24">
-							<img src={item.image} alt={item.title} />
-						</div>
-					</a>
-				{/each}
-			{/if}
-		{/if}
-	</div>
-	<div class="shellside rta-column fullW rowgap300 null">
-		<div class="rta-row stay colgap200">
-			<img
-				class="jello-vertical height-30-2 w32"
-				src="/images/k-writings.webp"
-				alt="writing"
-				on:mouseover={() => audio.play()}
-				on:focus={fauxfake}
-			/>
-			<div class="rta-column rowgap100 p-bot-32 w64">
-				<h3 class="tt-u">word</h3>
-				<small class="grey">I write on history, civilization and Dharma. Some of it isn't bad.</small>
-			</div>
-		</div>
-		<div class="rta-column column-row rowgap200 p-bot-32 w64">
-			<button class="blank-button" on:click={() => toggleGen(1)} class:selected={gen[1]}>
-				<GlassButton>
-					Fractal Maṇḍala
-				</GlassButton>
-			</button>
-			<button class="blank-button" on:click={() => toggleGen(1)} class:selected={gen[2]}>
-				<GlassButton>
-					History/AIT
-				</GlassButton>
-			</button>
-			<button class="blank-button" on:click={() => toggleGen(1)} class:selected={gen[3]}>
-				<GlassButton>
-					Archival
-				</GlassButton>
-			</button>
-		</div>
 	</div>
 </div>

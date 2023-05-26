@@ -18,7 +18,7 @@
 	@media screen and (min-width: 900px)
 		background-image: var(--parallax)
 	@media screen and (max-width: 899px)
-		background-image: var(--parallaxresp)
+		background-image: var(--parallax)
 	
 
 </style>

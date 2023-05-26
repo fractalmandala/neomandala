@@ -21,16 +21,14 @@
 
 </script>
 
-<div class="appshell"
+<div class="rta-column"
     class:levelzero={$breakZero}
     class:levelone={$breakOne}
     class:leveltwo={$breakTwo}
     class:light={$themeMode}
     class:dark={!$themeMode}
     >
-
-
-    <div class="shellmain rta-grid colgap100 rowgap100">
+    <div class="rta-column colgap100 rowgap100 shellmain">
         {#if images && images.length > 0}
 			{#each images as item, i}
 				<div class="rta-column p-all-16">
@@ -38,11 +36,6 @@
 				</div>
 			{/each}
         {/if}
-    </div>
-    <div class="shellside rowgap300 rta-column null" class:invisible={$readingMode}>
-        <img class="jello-vertical" src="/images/k-music.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-        <h3 class="tt-u">sound</h3>
-        <p class="gradienter">because electronic music takes us to a place we want to go to...</p>
     </div>
 
 </div>

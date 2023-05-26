@@ -41,7 +41,7 @@
 </script>
 
 <div
-	class="transistor-side"
+	class="transistor-side fullW"
 	in:fly={{ delay: 600, duration: 600, x: moveX, y: moveY, easing: quadOut }}
 	out:fly={{ delay: 0, duration: 550, opacity: 0, x: moveX, y: moveY, easing: quadIn }}
 	class:dark={!$themeMode}
@@ -55,6 +55,10 @@
 
 .transistor-side
 	height: 100%
+	display: flex
+	flex-direction: row
+	justify-content: space-between
+	min-width: 100vw !important
 
 
 </style>

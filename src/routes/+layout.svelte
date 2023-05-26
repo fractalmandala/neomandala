@@ -116,47 +116,47 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	{#key data.pathname}
-		<SideTrans>
-			<section class="menubar">
-				<div class="rta-column rowgap300 null">
-					<a href="/">
-						<Motif />
-					</a>
-					{#if $breakZero || $breakOne || mobileMenu}
-						<div
-							class="rta-column rowgap200 barlinks"
-							transition:slide
-							on:click={toggleMenu}
-							on:keydown={fauxfake}
-						>
-							<p><a class="hover" href="/bot">Bot</a></p>
-							<p><a class="hover" href="/word">Word</a></p>
-							<p><a class="hover" href="/code">Code</a></p>
-							<p><a href="/sound" class="hover">Sound</a></p>
-							<p><a class="hover" href="/image">Image</a></p>
-							<p><a href="/video" class="hover">Video</a></p>
-							<p><a href="/build" class="hover">Build</a></p>
-						</div>
-					{/if}
+	<section class="menubar rta-row stay between ycenter colgap200">
+
+		<div class="rta-row logobox">
+			<a href="/">
+				<Motif />
+			</a>
+		</div>
+
+		<div class="rta-row buttonsrow ycenter null">
+			{#if $breakZero || $breakOne || mobileMenu}
+				<div
+					class="rta-row colgap300 row-col barlinks"
+					transition:slide
+					on:click={toggleMenu}
+					on:keydown={fauxfake}
+					>
+					<p><a class="hover" href="/bot">Bot</a></p>
+					<p><a class="hover" href="/word">Word</a></p>
+					<p><a class="hover" href="/code">Code</a></p>
+					<p><a href="/sound" class="hover">Sound</a></p>
+					<p><a class="hover" href="/image">Image</a></p>
+					<p><a href="/video" class="hover">Video</a></p>
+					<p><a href="/build" class="hover">Build</a></p>
 				</div>
-				<div class="rowgap200 rta-column column-row menulinks">
-					<div on:click={toggleDrawer} on:keydown={fauxfake}>
-						<Search />
-					</div>
-					<Dark />
-					{#if $breakTwo}
-						<button class="blank-button" on:click={toggleMenu}>
-							<Menu />
-						</button>
-					{/if}
-					{#if session}
-						<button class="mainbutton" on:click={signout}>Sign out</button>
-					{/if}
-				</div>
-			</section>
-		</SideTrans>
-	{/key}
+			{/if}
+			<div on:click={toggleDrawer} on:keydown={fauxfake}>
+				<Search />
+			</div>
+			<Dark />
+			{#if $breakTwo}
+				<button class="blank-button" on:click={toggleMenu}>
+					<Menu />
+				</button>
+			{/if}
+			{#if session}
+				<button class="mainbutton" on:click={signout}>Sign out</button>
+			{/if}
+		</div>
+
+
+	</section>
 	<section class="pagearea">
 		{#key data.pathname}
 			<TransitionPage>
@@ -180,7 +180,9 @@
     background-image: radial-gradient(at 57% 35%, hsla(108,80%,5%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(116,86%,5%,1) 0px, transparent 50%)
 
 .project-shell.light
-    background-color: hsla(0,0%,100%,1)
-    background-image: radial-gradient(at 87% 95%, hsla(130,100%,62%,0.75) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(99,83%,49%,1) 0px, transparent 0%)
+    background: white
+
+p
+    font-weight: 500
 
 </style>

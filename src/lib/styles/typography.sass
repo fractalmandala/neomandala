@@ -3,14 +3,14 @@
 
 
 @font-face
-    font-family: 'Playen Sans'
-    src: url('/fonts/playen-regular.woff2') format(woff2), url('/fonts/playen-regular.woff') format(woff)
+    font-family: 'Monocode'
+    src: url('/fonts/monocode-regular.woff2') format(woff2), url('/fonts/monocode-regular.woff') format(woff)
     font-style: normal
     font-weight: normal
 
 @font-face
-    font-family: 'Playen Sans Bold'
-    src: url('/fonts/playen-bold.woff2') format(woff2), url('/fonts/playen-bold.woff') format(woff)
+    font-family: 'Monocode Bold'
+    src: url('/fonts/monocode-bold.woff2') format(woff2), url('/fonts/monocode-bold.woff') format(woff)
     font-style: normal
     font-weight: bold
 
@@ -97,6 +97,10 @@
     h4, h5
         color: #474747
 
+.monocode
+    pre, p, small, cite
+        font-family: 'Monocode', sans-serif
+
 code
     font-family: 'Space Mono', monospace
 
@@ -154,6 +158,9 @@ p.white, small.white, h6.white
 
 h5.white
     color: white
+
+h5.thin, h6.thin
+    font-weight: 400
 
 h4.white
     color: white

@@ -7,7 +7,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
 	background: none;
-	font-family: 'Space Mono', monospace;
+	font-family: 'Monocode', sans-serif;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;

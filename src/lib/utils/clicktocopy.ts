@@ -6,6 +6,7 @@ export class ClipboardManager {
 
 	private __proxyElement: HTMLInputElement | undefined;
 
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	private constructor() {}
 
 	static getInstance() {

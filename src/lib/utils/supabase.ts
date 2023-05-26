@@ -190,3 +190,13 @@ export async function botInPlay(sessionid:string, userstore:string){
     if ( error ) throw new Error(error.message)
     return data 
 }
+
+export async function snippets(){
+    const { data, error } = await supabase
+    .from('amrit-notes')
+    .select()
+    .eq('agent','snippet')
+    .order('id',{ascending: false})
+    if ( error ) throw new Error(error.message)
+    return data 
+}

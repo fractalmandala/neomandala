@@ -53,6 +53,8 @@
 		"@supabase/auth-helpers-sveltekit": "^0.9.4",
 		"@supabase/supabase-js": "^2.22.0",
 		"@tiptap/core": "^2.0.3",
+		"@tiptap/extension-bubble-menu": "^2.0.3",
+		"@tiptap/extension-history": "^2.0.3",
 		"@tiptap/pm": "^2.0.3",
 		"@tiptap/starter-kit": "^2.0.3",
 		"dexie": "^4.0.1-alpha.10",
@@ -67,6 +69,7 @@
 		"talk2svelte": "^0.1.1",
 		"textify.js": "^2.4.3",
 		"timeago.js": "^4.0.2",
+		"tiptap-markdown": "^0.7.2",
 		"uuid": "^9.0.0"
 	}
 }

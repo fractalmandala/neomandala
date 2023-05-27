@@ -54,7 +54,7 @@
     <div class="shellmain rta-column p-top-64" bind:this={ref}>
         <h6 class="ta-c gradienter p-bot-32">{data.type}</h6>
         <h2 class="noh ta-c tt-u bord-bot p-bot-32">{data.title}</h2>
-        <div class="thisispost p-top-64" class:thisisback={$readingMode}>
+        <div class="thisispost p-top-64">
             <svelte:component this={data.content}/>
         </div>
         <div class="rta-row bord-top m-bot-32 null ycenter colgap200 p-top-32">

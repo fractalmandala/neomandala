@@ -9,7 +9,7 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
 code[class*="language-"],
 pre[class*="language-"] {
 	background: none;
-    font-family: 'Space Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -31,7 +31,9 @@ pre[class*="language-"] {
 	margin: .5em 0;
 	overflow: auto;
 	border-radius: 0.3em;
+	background: #272727;
 }
+
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {

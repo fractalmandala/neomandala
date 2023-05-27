@@ -1,5 +1,6 @@
 ---
 title: Sveltekit UI Library
+image: /images/sveltoi.webp
 ---
 
 

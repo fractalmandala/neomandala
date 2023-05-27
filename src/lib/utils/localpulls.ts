@@ -37,7 +37,7 @@ export async function allThea(){
 
 
 export async function allWebdev(){
-	const allfiles = import.meta.glob('/src/routes/code/*.md')
+	const allfiles = import.meta.glob('/src/routes/web/*.md')
 	const filed = Object.entries(allfiles)
 	const eachfiled = await Promise.all(
 		filed.map(async([path, resolver]) => {
@@ -55,7 +55,7 @@ export async function allWebdev(){
 }
 
 export async function featuredWebdev(){
-	const allfiles = import.meta.glob('/src/routes/code/*.md')
+	const allfiles = import.meta.glob('/src/routes/web/*.md')
 	const filed = Object.entries(allfiles)
 	const eachfiled = await Promise.all(
 		filed.map(async([path, resolver]) => {
@@ -74,7 +74,7 @@ export async function featuredWebdev(){
 }
 
 export async function thisWebdev(id:any){
-	const allfiles = import.meta.glob('/src/routes/code/*.md')
+	const allfiles = import.meta.glob('/src/routes/web/*.md')
 	const filed = Object.entries(allfiles)
 	const eachfiled = await Promise.all(
 		filed.map(async([path, resolver]) => {

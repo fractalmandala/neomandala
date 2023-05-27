@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gsap-member">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/gsap-member.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

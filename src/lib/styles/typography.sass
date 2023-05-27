@@ -1,30 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap')
 
 
 @font-face
-    font-family: 'Monocode'
-    src: url('/fonts/monocode-regular.woff2') format(woff2), url('/fonts/monocode-regular.woff') format(woff)
+    font-family: 'AuthenticSans-60'
+    src: url('/fonts/AUTHENTICSans-60.woff2') format(woff2), url('/fonts/AUTHENTICSans-60.woff') format(woff)
+    font-style: normal
+    font-weight: light
+
+@font-face
+    font-family: 'AuthenticSans-90'
+    src: url('/fonts/AUTHENTICSans-90.woff2') format(woff2), url('/fonts/AUTHENTICSans-90.woff') format(woff)
     font-style: normal
     font-weight: normal
 
 @font-face
-    font-family: 'Monocode Bold'
-    src: url('/fonts/monocode-bold.woff2') format(woff2), url('/fonts/monocode-bold.woff') format(woff)
+    font-family: 'AuthenticSans-130'
+    src: url('/fonts/AUTHENTICSans-130.woff2') format(woff2), url('/fonts/AUTHENTICSans-130.woff') format(woff)
+    font-style: normal
+    font-weight: medium
+
+@font-face
+    font-family: 'AuthenticSans-150'
+    src: url('/fonts/AUTHENTICSans-150.woff2') format(woff2), url('/fonts/AUTHENTICSans-150.woff') format(woff)
     font-style: normal
     font-weight: bold
 
-@font-face
-    font-family: 'Akshar'
-    src: url('/fonts/akshar.woff2') format(woff2), url('/fonts/akshar.woff') format(woff)
-    font-style: normal
-    font-weight: normal
-
-@font-face
-    font-family: 'Akshar'
-    src: url('/fonts/akshar.woff2') format(woff2), url('/fonts/akshar.woff') format(woff)
-    font-style: normal
-    font-weight: bold
 
 @font-face
     font-family: 'Molend'
@@ -32,18 +34,6 @@
     font-style: normal
     font-weight: 900
     unicode-range: U+1E00-1EFF
-
-@font-face
-    font-family: 'MicroGrotesk'
-    src: url('/fonts/MicroGrotesk.woff2') format(woff2), url('/fonts/MicroGrotesk.woff') format(woff)
-    font-style: normal
-    font-weight: normal
-
-@font-face
-    font-family: 'MicroGrotesk'
-    src: url('/fonts/MicroGrotesk.woff2') format(woff2), url('/fonts/MicroGrotesk.woff') format(woff)
-    font-style: normal
-    font-weight: bold
 
 @font-face
     font-family: 'Nohemi'
@@ -65,7 +55,15 @@
 
 .noh
     font-family: 'NohemiBold', sans-serif
-    letter-spacing: 0.3px
+
+.nol
+    font-family: 'AuthenticSans-90', sans-serif
+    letter-spacing: 0.5px
+
+p.micro
+    font-family: 'AuthenticSans-90', sans-serif
+    font-size: 14px
+    margin: 0
 
 .dark
     --palio: #FAFAFA
@@ -97,21 +95,24 @@
     h4, h5
         color: #474747
 
-.monocode
-    pre, p, small, cite
-        font-family: 'Monocode', sans-serif
-
 code
-    font-family: 'Space Mono', monospace
+    font-family: 'JetBrains Mono', monospace
 
-pre, em, p, cite, small, p, li, blockquote, h6
-    font-family: 'Space Grotesk', sans-serif
+pre, em, p, cite, small, p, li, blockquote, h6, button, input, textarea, select, option, textarea
+    font-family: 'AuthenticSans-90', sans-serif
+
+label
+    font-size: 12px
 
 p
     color: var(--themerp)
 
+.borderia
+    p
+        color: var(--textone)
+
 h5, h4, h3, h2, h1
-    font-family: 'Space Grotesk', sans-serif
+    font-family: 'AuthenticSans-130', sans-serif
 
 pre
     overflow-x: auto
@@ -146,6 +147,9 @@ p
 
 p.grey, small.grey, cite.grey, pre.grey, em.grey
     color: #878787
+
+p.black
+    color: var(--textone)
 
 p.green, pre.green
     color: var(--green)
@@ -238,8 +242,8 @@ h4
     h5
         font-size: 18px
     h4
-        font-size: 20px
-        letter-spacing: 0px
+        font-size: 24px
+        letter-spacing: 0.5px
     h3
         font-size: 32px
     h2
@@ -271,14 +275,12 @@ h1
 
 .thisispost
     p, li, em
-        font-size: 20px
+        font-size: 18px
         letter-spacing: 0.5px
-        line-height: 1.8
+        line-height: 1.6
         color: var(--background)
-        font-family: 'Space Grotesk', sans-serif
     h4
         margin: 64px 0 24px 0
-        font-family: 'NohemiBold', sans-serif
         letter-spacing: 0
     blockquote
         font-style: italic
@@ -343,4 +345,4 @@ h1
         text-fill-color: transparent
     
 .mol
-    font-family: 'Molend', sans-serif
+    font-family: 'AuthenticSans-130', sans-serif

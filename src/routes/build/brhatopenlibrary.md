@@ -1,5 +1,6 @@
 ---
 title: Bṛhat Open Library
+image: /images/boloi.webp
 ---
 
 ##### I have a dream.

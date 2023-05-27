@@ -64,9 +64,9 @@ export function clickToCopyAction<T extends HTMLElement>(
 				await ClipboardManager.getInstance().copyToClipboard(
 					typeof text === "function" ? text() : text
 				);
-				node.dispatchEvent(new CustomEvent("copy-done"));
+				node.dispatchEvent(new CustomEvent('copy-done'));
 			} catch (error) {
-				node.dispatchEvent(new CustomEvent("copy-error", { detail: { error } }));
+				node.dispatchEvent(new CustomEvent('copy-error', { detail: { error } }));
 			}
 		}
 

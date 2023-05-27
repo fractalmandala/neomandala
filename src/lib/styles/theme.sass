@@ -23,7 +23,7 @@ img
 
 :root
     box-sizing: border-box
-    font-family: 'Space Mono', monospace
+    font-family: 'AuthenticSans-90', sans-serif
     --green: #0ca64c
     --creme: #719A79
     --palio: #FAFAFA
@@ -64,7 +64,7 @@ button.gradback
     background-repeat: no-repeat
 
 .minH
-    min-height: 100vh
+    min-height: calc(100vh - 64px)
 
 
 .dark
@@ -461,26 +461,6 @@ $unit128: 128px
         width: 100%
         height: 100%
 
-.titlebox
-    text-align: right
-    row-gap: 16px
-    height: 100vh
-    border-left: 1px solid var(--borderline)
-    position: fixed
-    align-items: flex-end
-    top: 0
-    right: 32px
-    padding-top: 32px
-    padding-left: 32px
-    img
-        object-fit: contain
-        width: 50%
-        border-radius: 50%
-    p.grey
-        font-size: 16px !important
-        font-family: 'Space Grotesk', sans-serif !important
-        font-weight: 400
-
 .rightbox
     text-align: right
     row-gap: 16px
@@ -496,7 +476,6 @@ $unit128: 128px
         border-radius: 50%
     p.grey
         font-size: 16px !important
-        font-family: 'Space Grotesk', sans-serif !important
         font-weight: 400
 
 .height-80
@@ -616,7 +595,7 @@ $unit128: 128px
             width: 60%
     .fullscreen
         width: 100vw
-        height: 100vh
+        min-height: calc(100vh - 64px)
     .progress-strip
         height: 32px
         background: transparent
@@ -652,10 +631,7 @@ $unit128: 128px
             width: 70%   
     .fullscreen
         width: calc(100vw - 96px)
-        height: 100vh
-    .transistor
-        width: calc(100vw - 96px)
-        height: 100%
+        min-height: calc(100vh - 64px)
     .postgrid
         width: 70%
         margin-left: 32px
@@ -688,9 +664,6 @@ $unit128: 128px
     .fullscreen
         width: 100vw
         height: calc(56vh - 64px)
-    .transistor
-        width: 100vw
-        height: 100%   
     .screen
         padding: 24px
         width: 100%
@@ -733,6 +706,10 @@ $unit128: 128px
     padding: 0
     background: none
     border: none
+    cursor: pointer
+    &:hover
+        svg path
+            fill: #0ca64c
 
 .bord-top
     border-top: 1px solid var(--borderline)
@@ -824,7 +801,7 @@ $unit128: 128px
     text-transform: capitalize
     font-weight: 500
     line-height: 1.5
-    font-family: 'Space Grotesk', sans-serif
+    font-family: 'AuthenticSans-90', sans-serif
     &:hover
         border: 2px solid var(--green)
         color: var(--green)
@@ -848,7 +825,7 @@ $unit128: 128px
     text-transform: capitalize
     font-weight: 500
     line-height: 1.5
-    font-family: 'Space Grotesk', sans-serif
+    font-family: 'AuthenticSans-90', sans-serif
     &:hover
         border: 2px solid var(--green)
         color: white
@@ -872,7 +849,7 @@ $unit128: 128px
     text-transform: capitalize
     font-weight: 500
     line-height: 1.5
-    font-family: 'Space Grotesk', sans-serif
+    font-family: 'AuthenticSans-90', sans-serif
     &:hover
         border: 2px solid var(--green)
         color: white
@@ -896,7 +873,7 @@ $unit128: 128px
     text-transform: capitalize
     font-weight: 500
     line-height: 1.5
-    font-family: 'Space Grotesk', sans-serif
+    font-family: 'AuthenticSans-90', sans-serif
     &:hover
         border: 2px solid var(--green)
         color: var(--green)
@@ -914,8 +891,8 @@ $unit128: 128px
 
 .dark
     .menubar
-        background: rgba(255,255,255,0.1)
-        border: 1px solid rgba(255, 255, 255, 0.3)
+        background: rgba(255,255,255,0.01)
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03)
         backdrop-filter: blur(2px)
         position: relative
         z-index: 1000
@@ -999,7 +976,6 @@ select
 
 
 .project-shell
-    width: 100%
     .menubar
         position: sticky
         top: 0
@@ -1013,7 +989,7 @@ select
         padding: 0 32px
         height: 56px
         .logobox
-            width: 48px
+            width: 280px
         .buttonsrow
             column-gap: 24px
             width: 50vw
@@ -1065,7 +1041,6 @@ select
             column-gap: 16px
     .pagearea
         grid-area: pagearea
-        padding: 32px 32px 0 32px
         .appshell
             grid-template-columns: 240px 1fr
             grid-template-areas: "side main"
@@ -1081,7 +1056,7 @@ select
                 width: 240px
                 padding: 24px
                 text-align: left
-                height: calc(100vh - 64px)
+                min-height: calc(100vh - 64px)
                 position: sticky
                 top: 32px
                 left: 0
@@ -1120,12 +1095,10 @@ select
                     font-size: 24px
     .pagearea
         grid-area: pagearea
-        width: 100vw
         .appshell
             grid-template-columns: 1fr
             grid-template-areas: "side" "main"
             grid-template-rows: auto auto
-            width: 100vw
             .shellmain
                 grid-area: main
                 padding: 32px
@@ -1279,7 +1252,7 @@ button.glass
     border-radius: 6px
     padding: 24px
     textarea
-        font-family: 'Space Grotesk', sans-serif
+        font-family: 'AuthenticSans-90', sans-serif
         color: #474747
         width: calc(100% - 80px)
         background: white
@@ -1312,3 +1285,23 @@ button.glass
         background: rgba(0,0,0,0)
         p, h4, small
             opacity: 0
+
+
+.ProseMirror
+    overflow-y: scroll
+
+
+.codeparent
+    background: #272727
+    border-radius: 5px
+    padding: 16px
+    .this
+        background: #171717
+        border: 1px solid #0ca64c
+
+.ProseMirror p
+    font-family: 'AuthenticSans-90'
+
+.bigpad
+    padding-left: 16px
+    min-height: 50vh

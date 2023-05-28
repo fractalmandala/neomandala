@@ -1,28 +1,49 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
+	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
+	import Prism from 'prismjs';
+	import '$lib/styles/prism.css';
 	import { slide } from 'svelte/transition';
+	import { showCode } from '$lib/dash/db';
+	import { PlusCircle } from 'lucide-svelte';
+	import { snippets } from '$lib/dash/db';
+	import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores';
 	import { showChip } from '$lib/stores/modalstores';
-	import supabase from '$lib/utils/supabase';
-	import Loader from '$lib/icons/Loader.svelte';
-	import NewNote from '$lib/components/DhitiInput.svelte';
-	import Excerpter from '$lib/agent/Excerpter.svelte';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import CodeInput from '$lib/dash/CodeInput.svelte';
+	import { clickToCopyAction } from '$lib/utils/clicktocopy';
+
 	export let data: PageData;
 
-	let notes: any;
-	let links: any;
-	let title = '';
-	let content = '';
-	let submitting = false;
-	let confirmationMessage = '';
-	let noteIn = Array(4).fill(false);
-	let test = false;
-	let latest: any;
-	let query = '';
+	let snips: any;
+	let noteIn = Array(40).fill(false);
+	noteIn[0] = true;
+	let expandCodes = false;
+	let fake = false;
+	let code: any;
+	let showID: number;
 
-	function setQuery(newQuery: string) {
-		query = newQuery;
+	function fauxfake() {
+		fake = !fake;
+	}
+
+	export async function setCode(newID: number) {
+		showID = newID;
+	}
+
+	$: if (showID) {
+		Prism.highlightAll();
+		(async () => {
+			code = await showCode(showID);
+		})();
+	}
+
+	async function refreshCode() {
+		code = await showCode(showID);
+	}
+
+	function toggleCodes() {
+		expandCodes = !expandCodes;
 	}
 
 	function toggleNote(index: number) {
@@ -36,200 +57,361 @@
 
 	$: anyNote = noteIn.some((item) => item);
 
-	async function recentNotes() {
-		const { data, error } = await supabase
-			.from('amrit-notes')
-			.select()
-			.neq('tags', 'gpt')
-			.order('id', { ascending: false })
-			.limit(5);
-		if (error) throw new Error(error.message);
-		return data;
-	}
+	$: ({ testTable, user } = data);
 
-	async function recentLinks() {
-		const { data, error } = await supabase
-			.from('amrit-notes')
-			.select()
-			.eq('agent', 'bookmark')
-			.order('id', { ascending: false })
-			.limit(10);
-		if (error) throw new Error(error.message);
-		return data;
-	}
+	onMount(() => {
+		Prism.highlightAll();
+		(async () => {
+			snips = await snippets();
+			code = await showCode(showID);
+		})();
+	});
 
-	async function insertBookmark() {
-		confirmationMessage = '';
-		submitting = true;
-		const { error } = await supabase
-			.from('amrit-notes')
-			.insert({ title: title, content: content, agent: 'bookmark' });
-		if (error) {
-			showChip('Error!', '#fe4a49');
-		} else {
-			submitting = false;
-			title = 'Done!';
-			content = '';
-			refreshNotes();
-		}
-	}
-
-	async function lastNote() {
-		const { data, error } = await supabase
-			.from('brhat-dhiti')
-			.select()
-			.order('id', { ascending: false })
-			.limit(1);
-		if (error) throw new Error(error.message);
-		return data;
-	}
-
-	let text = '';
-	let wordLimit = 300;
-
-	function truncateWords(text: string, wordLimit: number) {
-		const words = text.split(' ');
-		const truncatedWords = words.slice(0, wordLimit);
-		return truncatedWords.join(' ');
-	}
-
-	async function refreshNotes() {
-		notes = await recentNotes();
-		latest = await lastNote();
-	}
-
-	onMount(async () => {
-		notes = await recentNotes();
-		links = await recentLinks();
-		latest = await lastNote();
+	afterUpdate(() => {
+		Prism.highlightAll();
 	});
 </script>
 
 <div
-	class="rta-grid grid3 borderiar"
+	class="mynotepad"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	{#if data.in === true}
-		<div class="rta-column rowgap50 thinner1 null">
-			{#if anyNote}
-				<div class="rta-column p-top-16" transition:slide>
-					{#if noteIn[3]}
-						<form class="rta-row colgap100" on:submit|preventDefault={() => insertBookmark()}>
-							<input type="text" placeholder="title" bind:value={title} />
-							<input type="text" placeholder="url" bind:value={content} />
-							{#if submitting}
-								<Loader />
-							{:else}
-								<button class="mainbutton" type="submit">Submit</button>
-							{/if}
-						</form>
-					{/if}
-				</div>
-			{/if}
-			<p class="green noh p-top-16 p-bot-16"><strong>Recent Notes:</strong></p>
-			{#if notes && notes.length > 0}
-				<div class="rta-column recentnotes rowgap50 p-bot-16">
-					{#each notes as item}
-						<small class="grey">
-							<a href="/note/{item.id}" class="hover">
-								{item.title}
-							</a>
-						</small>
-					{/each}
-				</div>
-			{/if}
-			<div class="rta-column rowgap50 p-top-16 bord-top p-bot-16">
-				<div class="rta-icon">
+	<div class="rta-column null noteleft" data-lenis-prevent>
+		{#if data.in === true}
+			<div class="rta-column rowgap100 p-bot-16 null">
+				<div class="rta-row null ycenter colgap100">
 					<svg
-						width="24"
-						height="24"
-						viewBox="0 0 20 20"
+						width="12"
+						height="12"
+						viewBox="0 0 12 12"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
 					>
 						<path
-							d="M9.24624 14.4612H5.83411C4.59411 14.4612 3.5406 14.0278 2.67357 13.161C1.80655 12.2941 1.37305 11.2417 1.37305 10.0038C1.37305 8.76579 1.80655 7.71023 2.67357 6.83707C3.5406 5.96392 4.59411 5.52734 5.83411 5.52734H9.24624V7.18949H5.83915C5.05112 7.18949 4.38482 7.4608 3.84026 8.00343C3.2957 8.54605 3.02342 9.21 3.02342 9.99528C3.02342 10.7805 3.2957 11.4461 3.84026 11.992C4.38482 12.5379 5.05112 12.8109 5.83915 12.8109H9.24624V14.4612ZM6.57142 10.6958V9.30453H13.4301V10.6958H6.57142ZM10.7553 14.4612V12.8109H14.1624C14.9504 12.8109 15.6167 12.5396 16.1613 11.9969C16.7059 11.4543 16.9781 10.7904 16.9781 10.0051C16.9781 9.21981 16.7059 8.55423 16.1613 8.00832C15.6167 7.46243 14.9504 7.18949 14.1624 7.18949H10.7553V5.52734H14.1674C15.4049 5.52734 16.4598 5.96361 17.332 6.83616C18.2042 7.7087 18.6403 8.76395 18.6403 10.0019C18.6403 11.2399 18.2042 12.2926 17.332 13.1601C16.4598 14.0275 15.4049 14.4612 14.1674 14.4612H10.7553Z"
-							fill="#10D56C"
+							d="M6 12C9.31368 12 12 9.31368 12 6C12 2.68629 9.31368 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31368 2.68629 12 6 12Z"
+							fill="url(#paint0_linear_15_346)"
 						/>
+						<defs>
+							<linearGradient
+								id="paint0_linear_15_346"
+								x1="6"
+								y1="0"
+								x2="6"
+								y2="12"
+								gradientUnits="userSpaceOnUse"
+							>
+								<stop stop-color="#98DA1F" />
+								<stop offset="1" stop-color="#2B9348" />
+							</linearGradient>
+						</defs>
 					</svg>
+					<cite class="tt-u">Logged In</cite>
 				</div>
-				{#if links && links.length > 0}
-					{#each links as item}
-						<small class="grey"
-							><a class="hover" href={item.content} target="_blank" rel="noreferrer">{item.title}</a
-							></small
+				<!--<small class="grey">{user.session_id}</small>-->
+			</div>
+			<div class="rta-column rowgap100 bord-top p-top-16 p-bot-16">
+				<div class="biggie rta-row colgap100 null ycenter point">
+					<PlusCircle size={16} color="#0ca64c" />
+					<small>Add New Code</small>
+				</div>
+				<div class="biggie rta-row colgap100 null ycenter point">
+					<PlusCircle size={16} color="#0ca64c" />
+					<small>New Chat</small>
+				</div>
+			</div>
+			<div class="rta-column snips bord-top p-top-16">
+				<button class="blank-button rta-row ycenter null colgap100" on:click={toggleCodes}>
+					<div class="rta-column">
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
 						>
-					{/each}
+							<path
+								d="M18 16L22 12L18 8"
+								stroke="url(#paint0_linear_15_220)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<path
+								d="M6 8L2 12L6 16"
+								stroke="url(#paint1_linear_15_220)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<path
+								d="M14.5 4L9.5 20"
+								stroke="url(#paint2_linear_15_220)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<defs>
+								<linearGradient
+									id="paint0_linear_15_220"
+									x1="20"
+									y1="8"
+									x2="20"
+									y2="16"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+								<linearGradient
+									id="paint1_linear_15_220"
+									x1="4"
+									y1="8"
+									x2="4"
+									y2="16"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+								<linearGradient
+									id="paint2_linear_15_220"
+									x1="12"
+									y1="4"
+									x2="12"
+									y2="20"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+							</defs>
+						</svg>
+					</div>
+					<small>All Codesnips:</small>
+				</button>
+				{#if $breakZero || $breakOne || expandCodes}
+					{#if snips && snips.length > 0}
+						<div class="rta-column rowgap50 p-top-8" transition:slide>
+							{#each snips as item, i}
+								<button class="blank-button ta-l" on:click={() => setCode(item.id)}>
+									<small class="hover grey">{item.title}</small>
+								</button>
+							{/each}
+						</div>
+					{/if}
 				{/if}
 			</div>
-			<div class="rta-column rowgap100">
-				{#if latest && latest.length > 0}
-					{#each latest as item}
-						<button class="mainbutton" on:click={() => setQuery(truncateWords(item.fullbody, 400))}>
-							Generate Excerpt
-						</button>
-					{/each}
-				{/if}
-				<button class="mainbutton"> Generate Tweet</button>
-			</div>
-			<div class="rta-column p-top-16 bord-top">
-				<h6>Latest at Dhīti:</h6>
-				{#if latest && latest.length > 0}
-					{#each latest as item}
-						<p>{item.title}</p>
-					{/each}
-				{/if}
-			</div>
+		{/if}
+	</div>
+	<div class="rta-column notemid null ytop">
+		<div class="rta-column code">
+			{#if noteIn[0]}
+				<CodeInput />
+			{/if}
 		</div>
-		<div class="rta-column wider p-bot-64">
-			<NewNote />
-			<div class="results rta-column">
-				{#if latest && latest.length > 0}
-					{#each latest as item}
-						<p>{truncateWords(item.fullbody, 400)}</p>
-					{/each}
-				{/if}
-				<Excerpter {query} />
-			</div>
-		</div>
-	{/if}
+	</div>
+	<div class="rta-column rowgap200 noteright" data-lenis-prevent>
+		{#if code && code.length > 0}
+			{#each code as item}
+				<div class="disp-title">{item.title}</div>
+				<div class="rta-row colgap100">
+					<div class="disp-meta">{item.uuidtext}</div>
+					<div class="disp-sub">{item.tags}</div>
+				</div>
+				<div class="disp-code">
+					<button
+						class="blank-button grad-green rta-row ycenter xend ta-r"
+						use:clickToCopyAction={item.content}
+						on:copy-done={() => showChip('Copied!', '#10D56C')}
+						on:copy-error={() => showChip('Failed!', '#10D56C')}
+					>
+						<svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M20 8H10C8.89543 8 8 8.89543 8 10V20C8 21.1046 8.89543 22 10 22H20C21.1046 22 22 21.1046 22 20V10C22 8.89543 21.1046 8 20 8Z"
+								stroke="url(#paint0_linear_16_22)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<path
+								d="M4 16C2.9 16 2 15.1 2 14V4C2 2.9 2.9 2 4 2H14C15.1 2 16 2.9 16 4"
+								stroke="url(#paint1_linear_16_22)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<defs>
+								<linearGradient
+									id="paint0_linear_16_22"
+									x1="15"
+									y1="8"
+									x2="15"
+									y2="22"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+								<linearGradient
+									id="paint1_linear_16_22"
+									x1="9"
+									y1="2"
+									x2="9"
+									y2="16"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+							</defs>
+						</svg>
+					</button>
+					<pre class="bord-top language-{item.uuidtext}"><code class="language-{item.uuidtext}"
+							>{@html item.content}</code
+						></pre>
+				</div>
+			{/each}
+		{/if}
+	</div>
 </div>
 
 <style lang="sass">
 
+.disp-code
+	background: #171717
+	padding-top: 8px
+	padding-bottom: 8px
+	height: 88%
+	overflow-y: scroll
+	border: 1px solid rgba(255, 255, 255, 0.04)
+	pre
+		white-space: pre-line
+		padding: 16px
+		font-family: 'Space Mono', monospace
+		code
+				font-family: 'Space Mono', monospace
+				font-size: 14px
+				white-space: pre-line
+	.grad-green
+		padding-right: 16px
+		text-align: right
+		display: flex
+		flex-direction: row
+		justify-content: flex-end
+		width: 100%
+	&::-webkit-scrollbar
+		width: 1px
+	&::-webkit-scrollbar-thumb
+		background: #10D56C
+		border-bottom: 450px solid #171717
+
+.mynotepad
+	display: grid
+	grid-auto-flow: row
+	grid-template-rows: auto
+	position: sticky
+	top: 0
+	width: 100vw
+	overflow-x: hidden
 
 .levelzero
-	min-height: calc(100vh - 128px)
-	padding-top: 32px
-	grid-template-columns: 200px 1fr
-	grid-template-areas: "thinner1 wider"
+	grid-template-columns: 296px 1fr 1fr
+	grid-template-areas: "noteleft notemid noteright"
+	position: sticky
+	top: 0
+	height: 100vh
+	column-gap: 36px
+	padding-right: 2vw
+	.noteleft
+		width: 280px
+		height: 100vh
+		overflow-y: scroll
+		grid-area: noteleft
+		padding-left: 2vw
+		padding-top: 96px
+		padding-bottom: 32px
+	.noteleft::-webkit-scrollbar
+		width: 1px
+	.noteleft::-webkit-scrollbar-thumb
+		background: #10D56C
+		border-top: 50px solid #171717
+		border-bottom: 400px solid #171717
+	.notemid
+		grid-area: notemid
+		height: 100vh
+		padding-top: 88px
+		display: grid
+		grid-auto-flow: row
+		grid-template-rows: auto
+		grid-template-columns: 1fr 46%
+		grid-template-areas: "code block"
+		padding-bottom: 32px
+		.code
+			grid-area: code
+			background: rgba(255,255,255,0.03)
+			border-radius: 4px
+			backdrop-filter: blur(10px)
+			padding: 16px
+			border: 1px solid rgba(255,255,255,0.07)
+	.noteright
+		grid-area: noteright
+		height: calc(100vh - 120px)
+		margin-top: 88px
+		background: rgba(255, 255, 255, 0.001)
+		overflow-y: scroll
+		border: 1px solid rgba(255,255,255,0.07)
+		padding: 16px
+		border-radius: 6px
+
+
+.leveltwo
+	display: grid
+	grid-auto-flow: row
 	grid-template-rows: auto
-	max-width: 100vw
-	overflow-x: hidden
-	padding-left: 2vw
-	column-gap: 4vw
-	.wider
-		grid-area: wider
-		transition: 0.4s
-		width: 88%
-	.thinner1
-		grid-area: thinner1
-		width: 200px
-
-
-.rta-icon
-	cursor: pointer
-	&:hover
-		svg path
-			fill: var(--green)
-
-input[type=text]
-	border: 1px solid var(--borderline)
-	border-radius: 6px
-	padding: 2px 8px
+	grid-template-columns: 1fr
+	grid-template-areas: "noteleft" "notemid" "noteright"
+	min-height: 100vh
+	column-gap: 0
+	row-gap: 32px
+	padding-top: 80px
+	padding-left: 5vw
+	padding-right: 5vw
+	.noteleft
+		grid-area: noteleft
+		width: 100%
+		padding-top: 0
+		padding-left: 0
+	.notemid
+		grid-area: notemid
+		padding-top: 0
+		padding-left: 0
+		padding-right: 0
+		display: grid
+		grid-auto-flow: row
+		grid-template-areas: "code" "block"
+		grid-template-rows: auto
+		grid-template-columns: 1fr
+		.code
+			grid-area: code
+			background: rgba(255, 255, 255, 0.03)
+			border-radius: 4px
+			backdrop-filter: blur(10px)
+			padding: 16px
+			border: 1px solid rgba(255, 255, 255, 0.07)
+	.noteright
+		grid-area: noteright
+		width: 100%
+		padding-top: 0
+		padding-right: 0
 
 </style>

@@ -2,14 +2,12 @@
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { showToast, showChip, showAlert } from '$lib/stores/modalstores';
-	import GPTParser from '$lib/components/GPTParser.svelte';
 	import Copy from '$lib/icons/Copy.svelte';
 	import { onMount } from 'svelte';
 	import Prism from 'prismjs';
 	import '$lib/utils/prismsql';
 	import '$lib/styles/prism.css';
-	export let data
-
+	export let data;
 
 	onMount(() => {
 		Prism.highlightAll();

@@ -16,6 +16,7 @@
 		windowWidth,
 		scrollY
 	} from '$lib/stores/globalstores';
+	import { footerStore, showFooter } from '$lib/stores/modalstores';
 	import Logo from '$lib/assets/FMLogo.svelte';
 	import { svelteTools, svelteLinks, svelteLearn } from '$lib/assets/sveltekittools';
 	let width = '100%';
@@ -37,10 +38,12 @@
 		trY = 0;
 	}
 
-	onMount(async () => {
-		images = await supaImages(low, top);
-		posts = await featuredWritings();
-		webs = await featuredWebdev();
+	onMount(() => {
+		(async () => {
+			images = await supaImages(low, top);
+			posts = await featuredWritings();
+			webs = await featuredWebdev();
+		})();
 	});
 </script>
 
@@ -48,7 +51,7 @@
 
 <div class="x00">
 	<Parallax
-		--parallax="url('https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/10mandala/realitywall.webp')"
+		--parallax="url('https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/batch1/602.webp')"
 	/>
 </div>
 <div
@@ -61,10 +64,13 @@
 >
 	<div class="rta-column null">
 		<div class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0">
-			<img class="mandalaimage" src="/images/mands.webp" alt="mands" style="transform: rotate({scY/3}deg)"/>
-			<h1 class="noh gradienter tt-u" use:reveal={{ delay: 200 }}>
-				The Fractal Maṇḍala
-			</h1>
+			<img
+				class="mandalaimage"
+				src="/images/mands.webp"
+				alt="mands"
+				style="transform: rotate({scY / 3}deg)"
+			/>
+			<h1 class="noh gradienter tt-u" use:reveal={{ delay: 200 }}>The Fractal Maṇḍala</h1>
 			<h3>is a digital garden and buildstation.</h3>
 			<p class="padding-l1" use:reveal={{ delay: 500 }}>
 				Here I document what I learn, build and write. I develop web products, create historical
@@ -73,36 +79,40 @@
 			</p>
 		</div>
 		<div class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0">
-			<div class="glass-top p-top-32 p-bot-32">
-				<h3 class="noh tt-u grey ta-c" use:reveal>Big Builds</h3>
+			<div class="p-top-32 p-bot-32">
+				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Big Builds</h3>
 			</div>
 			<div class="rta-grid grid3 colgap500 rowgap600 p-top-32 p-bot-32">
 				<div class="rta-column rowgap200 glass-top p-top-32" use:reveal={{ delay: 200 }}>
 					<div class="rta-image height-30">
-						<img src="/images/boloi.webp" alt="bol"/>
+						<img src="/images/boloi.webp" alt="bol" />
 					</div>
 					<h4 class="gradienter"><a href="/build/brhatopenlibrary">Bṛhat Open Library</a></h4>
 					<p class="nol">A digital library of Dhārmika Literature, but something more...</p>
 				</div>
 				<div class="rta-column rowgap200 glass-top p-top-32" use:reveal={{ delay: 400 }}>
 					<div class="rta-image height-30">
-						<img src="/images/synap.webp" alt="synaptic"/>
+						<img src="/images/synap.webp" alt="synaptic" />
 					</div>
 					<h4 class="gradienter"><a href="/build/synaptic">Synaptic Reconnection</a></h4>
-					<p class="nol">Building a modern ontology, epistemology and teleology drawing from Dhārmika cores.</p>
+					<p class="nol">
+						Building a modern ontology, epistemology and teleology drawing from Dhārmika cores.
+					</p>
 				</div>
 				<div class="rta-column rowgap200 glass-top p-top-32" use:reveal={{ delay: 600 }}>
 					<div class="rta-image height-30">
-						<img src="/images/sveltoi.webp" alt="svelte"/>
+						<img src="/images/sveltoi.webp" alt="svelte" />
 					</div>
 					<h4 class="gradienter"><a href="/build/sveltekitui">Sveltekit UI</a></h4>
-					<p class="nol">A Sveltekit components library solving for plumbing and custom aesthetics.</p>
+					<p class="nol">
+						A Sveltekit components library solving for plumbing and custom aesthetics.
+					</p>
 				</div>
 			</div>
 		</div>
 		<div class="rta-column minH rowgap100 colgap100 padding-l0 x11 p-bot-64" bind:this={ref}>
-			<div class="glass-top p-top-32 p-bot-32">
-				<h3 class="noh tt-u grey ta-c" use:reveal>Midjourneys</h3>
+			<div class="p-top-32 p-bot-32">
+				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Midjourneys</h3>
 			</div>
 			<div class="movingparall rta-grid grid4 stay2 rowgap500 colgap500 p-bot-64">
 				{#if images && images.length > 0}
@@ -115,8 +125,8 @@
 			</div>
 		</div>
 		<div class="rta-column rowgap100 p-top-64 xcenter p-bot-64 padding-l0">
-			<div class="glass-top p-top-32">
-				<h3 class="noh tt-u grey ta-c" use:reveal>Featured Essays</h3>
+			<div class="p-top-32">
+				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Featured Essays</h3>
 			</div>
 			<div class="rta-grid grid2 colgap300 xcenter ta-c rowgap300">
 				{#if posts && posts.length > 0}
@@ -140,7 +150,7 @@
 		</div>
 		<div class="rta-column rowgap600 xcenter p-top-64 p-bot-64 minH padding-l0">
 			<div class="glass-y p-top-32">
-				<h3 class="noh tt-u grey ta-c" use:reveal>Webdev Posts</h3>
+				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Webdev Posts</h3>
 			</div>
 			<div class="rta-grid grid3 colgap400 rowgap400 xcenter">
 				{#if webs && webs.length > 0}
@@ -179,7 +189,7 @@ a
 .x00
     height: 100vh
     overflow: hidden
-    padding: 0px 32px
+    padding: 0
 
 .x11
     min-height: 100vh

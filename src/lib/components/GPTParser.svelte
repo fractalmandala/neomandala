@@ -1,75 +1,83 @@
 <script lang="ts">
-//@ts-nocheck
-	import { onMount } from 'svelte'
-	import { slide } from 'svelte/transition'
-	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores'
-    import { clickToCopyAction } from '$lib/utils/clicktocopy'
+	//@ts-nocheck
+	import { onMount } from 'svelte';
+	import { slide } from 'svelte/transition';
+	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
+	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { showToast, showAlert } from '$lib/stores/modalstores';
-	import Copy from '$lib/icons/Copy.svelte'
-	import Prism from 'prismjs'
-	import '$lib/styles/prism.css'
-	export let response:any 
-	let fake = false
-	let fullText = false
+	import Copy from '$lib/icons/Copy.svelte';
+	import Prism from 'prismjs';
+	import '$lib/styles/prism.css';
+	export let response: any;
+	let fake = false;
+	let fullText = false;
 	let rawBlocks = response.split('```');
 
-	function toggleText(){
-		fullText = !fullText
+	function toggleText() {
+		fullText = !fullText;
 	}
 
-	function fauxfake(){
-		fake = !fake
+	function fauxfake() {
+		fake = !fake;
 	}
 
-	let blocks:any = [];
+	let blocks: any = [];
 	for (let i = 0; i < rawBlocks.length; i++) {
-	  if (i % 2 === 0) {
-	    blocks.push({ type: 'text', content: rawBlocks[i] });
-	  } else {
-	    let [language, ...codeLines] = rawBlocks[i].split('\n');
-	    const code = codeLines.join('\n');
-	    if (!language || language.trim() === '') {
-	      language = 'javascript';
-	    }
-	    blocks.push({ type: 'code', language: language.trim(), code: code.trim() });
-	  }
+		if (i % 2 === 0) {
+			blocks.push({ type: 'text', content: rawBlocks[i] });
+		} else {
+			let [language, ...codeLines] = rawBlocks[i].split('\n');
+			const code = codeLines.join('\n');
+			if (!language || language.trim() === '') {
+				language = 'javascript';
+			}
+			blocks.push({ type: 'code', language: language.trim(), code: code.trim() });
+		}
 	}
 
-  onMount(() => {
-    Prism.highlightAll();
-  });		
-
-
+	onMount(() => {
+		Prism.highlightAll();
+	});
 </script>
 
 <svelte:head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonmyous">
-<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonmyous" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600;700;800&display=swap"
+		rel="stylesheet"
+	/>
 </svelte:head>
 
-<div class="rta-column rowgap200 null cutthis" transition:slide
+<div
+	class="rta-column rowgap200 null cutthis"
+	transition:slide
 	class:dark={!$themeMode}
 	class:light={$themeMode}
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
-	>
+>
 	{#each blocks as block}
 		{#if block.type === 'text'}
-		<div class="rta-column nocodeparent">
-            <pre class="grey" transition:slide>{block.content}</pre>
-		</div>
-		{:else}
-		<div class="rta-column codeparent">
-			<div class="rta-row ycenter between">
-				<small style="text-transform: uppercase; font-weight: 800">{block.language}</small>
-				<button class="blank-button" use:clickToCopyAction={block.code} on:copy-done={() => showToast('Copied!')} on:copy-error={() => showAlert('Failed!')}>
-                    <Copy/>
-				</button>
+			<div class="rta-column nocodeparent">
+				<pre class="grey" transition:slide>{block.content}</pre>
 			</div>
-			<pre class="codeblock"><code class={`language-${block.language}`}>{block.code}</code></pre>
-		</div>
+		{:else}
+			<div class="rta-column codeparent">
+				<div class="rta-row ycenter between">
+					<small style="text-transform: uppercase; font-weight: 800">{block.language}</small>
+					<button
+						class="blank-button"
+						use:clickToCopyAction={block.code}
+						on:copy-done={() => showToast('Copied!')}
+						on:copy-error={() => showAlert('Failed!')}
+					>
+						<Copy />
+					</button>
+				</div>
+				<pre class="codeblock"><code class={`language-${block.language}`}>{block.code}</code></pre>
+			</div>
 		{/if}
 	{/each}
 </div>

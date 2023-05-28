@@ -2,40 +2,27 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores';
 	import type { PageData } from './$types';
-  import { slide } from 'svelte/transition'
-	import { showChip, showNote, hideNote, noteStore } from '$lib/stores/modalstores';
-	import NewNote from '$lib/components/NewNote.svelte';
+	import { slide } from 'svelte/transition';
+	import { showChip } from '$lib/stores/modalstores';
 	import supabase from '$lib/utils/supabase';
 	import '$lib/styles/design.sass';
-	import NoteAdd from '$lib/icons/NoteAdd.svelte';
 
 	let element: any;
 	let editor: any;
 
 	let title = '';
-	let content = '';
 	let tags = '';
-	let snippet = '';
 	let language = '';
-	let newNotedd = 32;
-	let agent = 'snippet'
-	let prefill = ''
+	let agent = 'snippet';
+	let prefill = '';
 
 	let newNote = false;
 	let isTag = false;
 	let isFeat = false;
 	let fake = false;
 	let featured: boolean = false;
-
-	function toggleNote() {
-		newNote = !newNote;
-	}
-
-	function toggleTag() {
-		isTag = !isTag;
-	}
 
 	function toggleFeat() {
 		isFeat = !isFeat;
@@ -44,44 +31,34 @@
 		}
 	}
 
-	function fauxfake() {
-		fake = !fake;
-	}
-
 	async function insertNote() {
-
-		const { error } = await supabase.from('amrit-notes').insert({ title: title, content: html, tags: tags, agent: agent, uuidtext: language });
+		const { error } = await supabase
+			.from('amrit-notes')
+			.insert({ title: title, content: html, tags: tags, agent: agent, uuidtext: language });
 		if (error) {
 			throw new Error(error.message);
 		} else {
 			showChip('Success!', '#10D56C');
-			title = '',
-			html = '',
-			tags = ''
-
+			(title = ''), (html = ''), (tags = '');
 		}
-
 	}
 
-	export let data: PageData;
-	let html:any
-	
+	let html: any;
+
 	onMount(() => {
-		return editor=new Editor({
+		return (editor = new Editor({
 			element: element,
 			extensions: [StarterKit],
 			content: prefill,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
-				editor=editor;
+				editor = editor;
 			},
 			onUpdate: ({ editor }) => {
-				html = editor.getHTML()
+				html = editor.getHTML();
 			}
-		});
+		}));
 	});
-
-	
 
 	onDestroy(() => {
 		if (editor) {
@@ -100,7 +77,11 @@
 >
 	<div class="rta-grid grid2">
 		<div class="rta-column">
-			<form class="formA rta-grid grid2 colgap200" on:submit|preventDefault={insertNote} transition:slide>
+			<form
+				class="formA rta-grid grid2 colgap200"
+				on:submit|preventDefault={insertNote}
+				transition:slide
+			>
 				<div class="rta-column ybetween rowgap200">
 					<div class="rta-column rowgap100">
 						<input type="text" placeholder="title" bind:value={title} />

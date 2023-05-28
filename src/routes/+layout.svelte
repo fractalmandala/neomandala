@@ -5,6 +5,8 @@
 	import Github from '$lib/icons/Github.svelte';
 	import Twitter from '$lib/icons/Twitter.svelte';
 	import type { LayoutData } from './$types';
+	import FMLogo from '$lib/assets/FMLogo.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -15,21 +17,20 @@
 	} from '$lib/stores/globalstores';
 	import '$lib/styles/theme.sass';
 	import '$lib/styles/typography.sass';
+	import '$lib/styles/design.sass';
 	import { slide } from 'svelte/transition';
 	import TransitionPage from '$lib/components/TransitionPage.svelte';
-	import SideTrans from '$lib/components/SidebarTransition.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 	import Chip from '$lib/components/Chip.svelte';
-	import NewNote from '$lib/components/NewNote.svelte';
-	import { showDrawer, hideDrawer, audioStore } from '$lib/stores/modalstores';
+	import { showDrawer, hideDrawer, audioStore, footerStore } from '$lib/stores/modalstores';
 	import Drawer from '$lib/components/Drawer.svelte';
 	import Toast from '$lib/components/Toast.svelte';
 	import Alert from '$lib/components/Alert.svelte';
+	import GoodAlert from '$lib/components/GoodAlert.svelte';
 	import Search from '$lib/icons/Search.svelte';
 	import Dark from '$lib/icons/DarkMode.svelte';
 	import Menu from '$lib/icons/Menu.svelte';
 	import '$lib/styles/animate.css';
-	import Motif from '$lib/assets/Loader.svelte';
 
 	let timeIs = false;
 	let audioElement: any;
@@ -94,18 +95,6 @@
 		href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 		rel="stylesheet"
 	/>
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
-	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JFGGCTBC9"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
@@ -127,11 +116,9 @@
 	class:dark={!$themeMode}
 >
 	<section class="menubar rta-row stay between ycenter colgap200">
-		<div class="rta-row logobox">
-			<a href="/">
-				<Motif />
-			</a>
-		</div>
+		<a href="/" class="rta-row ycenter colgap100 p-top-8 logobox">
+			<FMLogo />
+		</a>
 
 		<div class="rta-row buttonsrow ycenter null">
 			{#if $breakZero || $breakOne || mobileMenu}
@@ -160,7 +147,75 @@
 				</button>
 			{/if}
 			{#if session}
-				<button class="mainbutton" on:click={signout}>Sign out</button>
+				<div class="rta-row colgap100 ycenter xright xend">
+					<button class="blank-button" on:click={signout}>Sign out</button>
+					<a href="/admin">
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M9 4V20"
+								stroke="url(#paint0_linear_17_19)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<path
+								d="M4 7C4 5.3 5.3 4 7 4H20"
+								stroke="url(#paint1_linear_17_19)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<path
+								d="M18 20C16.3 20 15 18.7 15 17V4"
+								stroke="url(#paint2_linear_17_19)"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<defs>
+								<linearGradient
+									id="paint0_linear_17_19"
+									x1="9.5"
+									y1="4"
+									x2="9.5"
+									y2="20"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+								<linearGradient
+									id="paint1_linear_17_19"
+									x1="12"
+									y1="4"
+									x2="12"
+									y2="7"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+								<linearGradient
+									id="paint2_linear_17_19"
+									x1="16.5"
+									y1="4"
+									x2="16.5"
+									y2="20"
+									gradientUnits="userSpaceOnUse"
+								>
+									<stop stop-color="#20E27B" />
+									<stop offset="1" stop-color="#04A932" />
+								</linearGradient>
+							</defs>
+						</svg>
+					</a>
+				</div>
 			{/if}
 		</div>
 	</section>
@@ -172,32 +227,35 @@
 		{/key}
 		<audio src="/sounds/boing2.mp3" />
 	</section>
-	<section class="footer">
-		<footer class="rta-column rowgap100 xcenter p-top-32 p-bot-32 null padding-l0">
-			<small class="ta-c">
-				<span class="gradienter">STACK</span> Frontend: Sveltekit | Database: Supabase | Design: Figma
-				| Scroll: Lenis | Utilities: Svelte Legos | Blogging: MDSVex
-			</small>
-			<small class="ta-c">
-				I'm Amrit, a writer and creator based in Gurgaon, India. I work as Director of Strategy at <a
-					href="https://www.brhat.in"
-					target="_blank"
-					rel="noreferrer">Bṛhat</a
-				>, a cultural content, research and learning organization. Apart from this site, I also
-				develop and maintain Bṛhat's website and the sister portal
-				<a href="https://www.brhateducation.in" target="_blank" rel="noreferrer">Bṛhat Education.</a
-				>
-			</small>
-			<div class="rta-row">
-				<Github />
-				<Twitter />
-			</div>
-		</footer>
-	</section>
+	<Footer />
+	<!--
+	{#if $footerMode}
+		<section class="footer glass-top">
+			<footer class="rta-column rowgap100 xcenter p-top-16 p-bot-8 null padding-l0">
+				<small class="ta-c grey">
+					I'm Amrit, a writer and creator based in Gurgaon, India. I work as Director of Strategy at <a
+						href="https://www.brhat.in"
+						target="_blank"
+						rel="noreferrer">Bṛhat</a
+					>, a cultural content, research and learning organization. Apart from this site, I also
+					develop and maintain Bṛhat's website and the sister portal
+					<a href="https://www.brhateducation.in" target="_blank" rel="noreferrer"
+						>Bṛhat Education.</a
+					>
+				</small>
+				<div class="rta-row grey">
+					<Github />
+					<Twitter />
+				</div>
+			</footer>
+		</section>
+	{/if}
+	-->
 	<Modal />
 	<Drawer />
 	<Toast />
 	<Alert />
+	<GoodAlert />
 	<Chip />
 </div>
 
@@ -216,9 +274,9 @@
 p
     font-weight: 400
 
-footer
-    background: #171217
-    a
-        color: #0ca64c
+//footer
+//    background: transparent
+//    a
+//        color: #0ca64c
 
 </style>

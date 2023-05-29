@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import AppShell from '$lib/design/AppShell.svelte';
+	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import { thisWebdev } from '$lib/utils/localpulls';
@@ -10,6 +11,7 @@
 	import ChevFRight from '$lib/icons/ChevFRight.svelte';
 	import ChevFLeft from '$lib/icons/ChevFLeft.svelte';
 	import ChevRight from '$lib/icons/ChevRight.svelte';
+	import GoodAlert from '$lib/components/GoodAlert.svelte';
 	import Prism from 'prismjs';
 	import '$lib/utils/prismsql';
 	import '$lib/styles/prismtwo.css';
@@ -26,6 +28,7 @@
 	});
 </script>
 
+<GoodAlert />
 <div
 	class="rta-column p-top-64"
 	class:levelzero={$breakZero}

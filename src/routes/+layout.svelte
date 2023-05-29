@@ -7,6 +7,7 @@
 	import type { LayoutData } from './$types';
 	import FMLogo from '$lib/assets/FMLogo.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import MenuDrop from '$lib/components/MenuDrop.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -122,22 +123,6 @@
 		</a>
 
 		<div class="rta-row buttonsrow ycenter null">
-			{#if $breakZero || $breakOne || mobileMenu}
-				<div
-					class="rta-row colgap300 row-col barlinks"
-					transition:slide
-					on:click={toggleMenu}
-					on:keydown={fauxfake}
-				>
-					<p class="micro"><a class="hover" href="/web">Web</a></p>
-					<p class="micro"><a class="hover" href="/word">Word</a></p>
-					<p class="micro"><a class="hover" href="/note">Note</a></p>
-					<p class="micro"><a href="/sound" class="hover">Sound</a></p>
-					<p class="micro"><a class="hover" href="/image">Image</a></p>
-					<p class="micro"><a href="/video" class="hover">Video</a></p>
-					<p class="micro"><a href="/build" class="hover">Build</a></p>
-				</div>
-			{/if}
 			<div on:click={toggleDrawer} on:keydown={fauxfake}>
 				<Search />
 			</div>
@@ -147,80 +132,9 @@
 					<Menu />
 				</button>
 			{/if}
-			{#if session}
-				<div class="rta-row colgap100 ycenter xright xend">
-					<a href="/pad">
-						<Pad dimension={27} />
-					</a>
-					<a href="/admin">
-						<svg
-							width="20"
-							height="20"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M9 4V20"
-								stroke="url(#paint0_linear_17_19)"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M4 7C4 5.3 5.3 4 7 4H20"
-								stroke="url(#paint1_linear_17_19)"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M18 20C16.3 20 15 18.7 15 17V4"
-								stroke="url(#paint2_linear_17_19)"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<defs>
-								<linearGradient
-									id="paint0_linear_17_19"
-									x1="9.5"
-									y1="4"
-									x2="9.5"
-									y2="20"
-									gradientUnits="userSpaceOnUse"
-								>
-									<stop stop-color="#20E27B" />
-									<stop offset="1" stop-color="#04A932" />
-								</linearGradient>
-								<linearGradient
-									id="paint1_linear_17_19"
-									x1="12"
-									y1="4"
-									x2="12"
-									y2="7"
-									gradientUnits="userSpaceOnUse"
-								>
-									<stop stop-color="#20E27B" />
-									<stop offset="1" stop-color="#04A932" />
-								</linearGradient>
-								<linearGradient
-									id="paint2_linear_17_19"
-									x1="16.5"
-									y1="4"
-									x2="16.5"
-									y2="20"
-									gradientUnits="userSpaceOnUse"
-								>
-									<stop stop-color="#20E27B" />
-									<stop offset="1" stop-color="#04A932" />
-								</linearGradient>
-							</defs>
-						</svg>
-					</a>
-					<button class="blank-button" on:click={signout}>Sign out</button>
-				</div>
-			{/if}
+			<MenuDrop>
+				<button slot="link1" class="blank-button menulinks" on:click={signout}> Log Out </button>
+			</MenuDrop>
 		</div>
 	</section>
 	<section class="pagearea">

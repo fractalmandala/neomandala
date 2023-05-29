@@ -57,6 +57,7 @@
 		"@tiptap/extension-code-block": "^2.0.3",
 		"@tiptap/extension-code-block-lowlight": "^2.0.3",
 		"@tiptap/extension-history": "^2.0.3",
+		"@tiptap/extension-image": "^2.0.3",
 		"@tiptap/pm": "^2.0.3",
 		"@tiptap/starter-kit": "^2.0.3",
 		"dexie": "^4.0.1-alpha.10",

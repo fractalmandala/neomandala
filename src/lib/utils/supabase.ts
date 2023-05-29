@@ -175,3 +175,13 @@ export async function botInPlay(sessionid: string, userstore: string) {
 	if (error) throw new Error(error.message);
 	return data;
 }
+
+export async function articleDrafts() {
+	const { data, error } = await supabase
+		.from('amrit-notes')
+		.select()
+		.eq('agent', 'article')
+		.order('id', { ascending: false });
+	if (error) throw new Error(error.message);
+	return data;
+}

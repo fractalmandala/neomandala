@@ -31,6 +31,7 @@
 	import Dark from '$lib/icons/DarkMode.svelte';
 	import Menu from '$lib/icons/Menu.svelte';
 	import '$lib/styles/animate.css';
+	import Pad from '$lib/icons/Pad.svelte';
 
 	let timeIs = false;
 	let audioElement: any;
@@ -148,7 +149,9 @@
 			{/if}
 			{#if session}
 				<div class="rta-row colgap100 ycenter xright xend">
-					<button class="blank-button" on:click={signout}>Sign out</button>
+					<a href="/pad">
+						<Pad dimension={27} />
+					</a>
 					<a href="/admin">
 						<svg
 							width="20"
@@ -215,6 +218,7 @@
 							</defs>
 						</svg>
 					</a>
+					<button class="blank-button" on:click={signout}>Sign out</button>
 				</div>
 			{/if}
 		</div>

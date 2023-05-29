@@ -6,4 +6,8 @@ export const load: PageLoad = async ({ parent }) => {
 	if (!session) {
 		throw redirect(303, '/');
 	}
+	return {
+		user: session.user,
+		sessionID: session
+	};
 };

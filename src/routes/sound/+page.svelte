@@ -1,41 +1,39 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { allMusic } from '$lib/utils/localpulls';
+	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import { audioStore } from '$lib/stores/modalstores';
+	import Soundclouder1 from '$lib/components/Soundclouder.svelte';
 
-    import { onMount } from 'svelte'
-	import { allMusic } from '$lib/utils/localpulls'
-    import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores'
-    import { audioStore } from '$lib/stores/modalstores'
-   	import Soundclouder1 from '$lib/components/Soundclouder.svelte' 
+	let images: any;
+	let audio: any;
+	audioStore.subscribe((value) => (audio = value));
+	let fake = false;
 
-    let images:any
-    let audio:any
-    audioStore.subscribe(value => audio = value)
-    let fake = false
+	function fauxfake() {
+		fake = !fake;
+	}
 
-    function fauxfake(){
-        fake = !fake
-    }
-
-    onMount(async() => {
-        images = await allMusic()
-    })
-
+	onMount(async () => {
+		images = await allMusic();
+	});
 </script>
 
-<div class="rta-column"
-    class:levelzero={$breakZero}
-    class:levelone={$breakOne}
-    class:leveltwo={$breakTwo}
-    class:light={$themeMode}
-    class:dark={!$themeMode}
-    >
-    <div class="rta-column colgap100 rowgap100 shellmain">
-        {#if images && images.length > 0}
+<div
+	class="rta-column p-top-64"
+	class:levelzero={$breakZero}
+	class:levelone={$breakOne}
+	class:leveltwo={$breakTwo}
+	class:light={$themeMode}
+	class:dark={!$themeMode}
+>
+	<div class="rta-column colgap100 rowgap100 shellmain">
+		{#if images && images.length > 0}
 			{#each images as item, i}
 				<div class="rta-column p-all-16">
-					<Soundclouder1 soundcloudLink={item.meta.soundcloudLink}/>
+					<Soundclouder1 soundcloudLink={item.meta.soundcloudLink} />
 				</div>
 			{/each}
-        {/if}
-    </div>
-
+		{/if}
+	</div>
 </div>

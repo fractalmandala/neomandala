@@ -55,7 +55,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		}
 
 		const prompt =
-			'For the body of text you are given, you must do only these two things: A) Summarize it in a maximum of 300 characters that can serve as an excerpt for the text, B) Draft a 2-tweet thread vividly describing the text. Do not use hashtags or marketing gimmicks, draft professional and sincere content. Return your responses each wrapped in separate div tags, A and B.';
+			'For the body of text you are given, create a suitable title NEVER EXCEEDING 15 words! Return title in plain text, no quotation marks!';
 		tokenCount += getTokens(prompt);
 
 		if (tokenCount >= 4000) {

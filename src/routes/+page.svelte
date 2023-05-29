@@ -148,7 +148,7 @@
 				{/if}
 			</div>
 		</div>
-		<div class="rta-column rowgap600 xcenter p-top-64 p-bot-64 minH padding-l0">
+		<div class="rta-column rowgap600 xcenter ycenter p-top-64 p-bot-64 minH padding-l0">
 			<div class="glass-y p-top-32">
 				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Webdev Posts</h3>
 			</div>

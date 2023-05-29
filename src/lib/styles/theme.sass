@@ -244,6 +244,8 @@ $unit128: 128px
         column-gap: $unit8
     .rowgap100
         row-gap: $unit8
+    .colgap50
+        column-gap: $unit4
     .gap100
         gap: $unit8
     .colgap200
@@ -285,6 +287,8 @@ $unit128: 128px
 @media screen and (max-width: 767px)
     .colgap100
         column-gap: $unit8
+    .colgap50
+        column-gap: $unit4
     .rowgap100
         row-gap: $unit8
     .gap100
@@ -529,7 +533,7 @@ $unit128: 128px
         height: 8vh
 
 .height-30-2
-    @media screen and (min-width: 1024px)
+    @media screen and (min-width: 1024px) 
         height: 30vh
     @media screen and (max-width: 1023px)
         height: 12vh
@@ -712,7 +716,15 @@ $unit128: 128px
     .p-left-32
         padding-left: 4vw
 
-
+.dead-button
+    padding: 0
+    background: none
+    border: none
+    cursor: pointer
+    opacity: 0.1
+    transition: 0.08s
+    &:hover
+        opacity: 1
 
 .blank-button
     padding: 0
@@ -823,6 +835,16 @@ $unit128: 128px
         color: var(--green)
         background: var(--opposite)
         transform: scale(0.92)
+
+.mainbutton.fl
+    display: flex
+    flex-direction: row
+
+.mainbutton.fl.cent
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
 
 .mainbutton.selected
     color: var(--green)
@@ -1342,11 +1364,13 @@ button.glass
     position: relative 
     display: inline-block 
     width: 44px 
-    height: 24px 
+    height: 24px
+    border-radius: 12px
     input 
         opacity: 0 
         width: 0 
-        height: 0 
+        height: 0
+        border-radius: 12px 
         &:checked 
             & + .slider 
                 box-shadow: 0 0 20px rgba(48, 208, 104, 0.8) 
@@ -1368,7 +1392,7 @@ button.glass
         width: 1.4em 
         left: 0.2em 
         bottom: 0.2em 
-        background-color: white 
+        background-color: var(--background)
         border-radius: inherit 
         transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 
 
@@ -1393,3 +1417,68 @@ button.glass
         border: 1px solid var(--green)
         text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
         box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
+
+.glowbuttons
+    padding: 8px 12px 6px 12px 
+    text-transform: uppercase 
+    border-radius: 4px 
+    font-size: 12px 
+    font-weight: 500 
+    color: #ffffff
+    text-shadow: none 
+    background: var(--greenc)
+    box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
+    border: 1px solid rgba(255, 255, 255, 0.5)
+    transition: 0.05s ease 
+    user-select: none 
+    width: max-content
+    max-width: 160px
+    &:hover, &:focus 
+        color: #ffffff 
+        background: var(--greenc)
+        border: 1px solid white
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
+
+.glowbox
+    text-transform: uppercase 
+    border-radius: 4px 
+    font-size: 12px 
+    font-weight: 500 
+    color: #ffffff
+    text-shadow: none 
+    background: var(--greenc)
+    box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
+    border: 1px solid rgba(255, 255, 255, 0.5)
+    transition: 0.05s ease 
+    user-select: none 
+    width: 32px
+    height: 32px
+    display: flex
+    align-items: center
+    justify-content: center
+    max-width: 160px
+    &:hover, &:focus 
+        color: #ffffff 
+        background: var(--greenc)
+        border: 1px solid white
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
+
+.glowred
+    padding: 8px 12px 6px 12px 
+    text-transform: uppercase 
+    border-radius: 4px 
+    font-size: 12px 
+    font-weight: 500 
+    color: #ffffff
+    text-shadow: none 
+    background: #fe4a49
+    box-shadow: 0 0 5px #fe4a49, 0 0 10px #fe4a49, 0 0 5px #fe4a49, 0 0 100px #fe4a49
+    border: 1px solid rgba(255, 255, 255, 0.5)
+    transition: 0.05s ease 
+    user-select: none 
+    width: max-content
+    max-width: 160px
+    &:hover, &:focus 
+        color: #ffffff 
+        background: #fe4a49
+        border: 1px solid white

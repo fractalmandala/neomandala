@@ -2,9 +2,9 @@
 	//@ts-nocheck
 	import { onMount } from 'svelte';
 	import AppShell from '$lib/design/AppShell.svelte';
-	import GlassButton from '$lib/components/GlassButton.svelte'
-	import GlassButton2 from '$lib/components/GlassButton.svelte'
-	import GlassButton3 from '$lib/components/GlassButton.svelte'
+	import GlassButton from '$lib/components/GlassButton.svelte';
+	import GlassButton2 from '$lib/components/GlassButton.svelte';
+	import GlassButton3 from '$lib/components/GlassButton.svelte';
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
 	import { audioStore } from '$lib/stores/modalstores';
 	import {
@@ -53,10 +53,14 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="rta-grid grid4 colgap100 rowgap100">
+	<div class="rta-grid grid4 colgap100 rowgap100 p-top-32">
 		{#if pens && pens.length > 0 && !isAnyGen}
 			{#each pens as item}
-				<a class="rta-row colgap100 stay ybetween back height-40" href="/word/{item.slug}" style="background-image: url('{item.image}')">
+				<a
+					class="rta-row colgap100 stay ybetween back height-40"
+					href="/word/{item.slug}"
+					style="background-image: url('{item.image}')"
+				>
 					<div class="rta-column rowgap100 null insider xcenter ycenter ta-c">
 						<p class="green">{item.type}</p>
 						<h4 class="white mol tt-c">{item.title}</h4>

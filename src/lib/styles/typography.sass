@@ -64,6 +64,15 @@
 	font-style: normal
 	font-weight: 300
 
+:root
+	--green: #0ca64c
+	--greyish: #878787
+
+.smalls
+	margin: 0
+	font-size: 12px
+	font-family: 'Nohemi', sans-serif
+	color: var(--greyish)
 
 .noh
 	font-family: 'NohemiBold', sans-serif
@@ -125,8 +134,11 @@ p
 		color: var(--textone)
 
 
-h3, h1, h4, h5, h2
+h3, h1, h2
 	font-family: 'NohemiBold', sans-serif
+
+h4, h5
+	font-family: 'NohemiSemi', sans-serif
 
 pre
 	overflow-x: auto
@@ -191,7 +203,7 @@ h5.white
 	color: white
 
 h5.thin, h6.thin
-	font-weight: 400
+	font-family: 'NohemiMed', sans-serif
 
 h4.white
 	color: white
@@ -323,6 +335,8 @@ h1
 		margin: 32px 0
 		p
 			font-weight: 400
+	a
+		color: var(--green)
 
 .leveltwo
 	.thisispost
@@ -404,15 +418,30 @@ h1
 
 .disp-listhead
 	font-size: 14px
+	font-family: 'NohemiMed', sans-serif
+	padding-top: 16px
+	padding-bottom: 12px
 
 .disp-list
 	font-size: 13px
 	cursor: pointer
+	padding-top: 2px
+	padding-bottom: 2px
+	&:hover
+		color: var(--green)
 
 .dark
 	.disp-list
 		color: #474747
+		&:hover
+			color: var(--green)
+	.disp-list.selected
+		color: white
 
 .light
 	.disp-list
 		color: #979797
+		&:hover
+			color: var(--green)
+	.disp-list.selected
+		color: #474747

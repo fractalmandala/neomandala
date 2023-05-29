@@ -1,6 +1,6 @@
 ---
 title: Using Global Stores in Sveltekit
-tag: utilities
+tags: utilities
 featured: true
 type: sveltekit
 id: 5
@@ -18,30 +18,24 @@ My project structure has a folder called 'lib' inside 'src' and within 'lib' I h
 
 ```javascript
 import { writable, derived } from 'svelte/store';
-import { browser } from '$app/environment' 
+import { browser } from '$app/environment';
 
 const initialWidth = browser ? window.innerWidth : 1024;
 export const windowWidth = writable(initialWidth);
 
 const storedThemeMode = browser
-  ? JSON.parse(localStorage.getItem('visibilityMode') || 'true')
-  : true;
+	? JSON.parse(localStorage.getItem('visibilityMode') || 'true')
+	: true;
 
 export const themeMode = writable(storedThemeMode);
 
-export const breakOne = derived(
-  windowWidth,
-  $windowWidth => $windowWidth <= 1023
-);
+export const breakOne = derived(windowWidth, ($windowWidth) => $windowWidth <= 1023);
 
-export const breakTwo = derived(
-  windowWidth,
-  $windowWidth => $windowWidth <= 768
-);
+export const breakTwo = derived(windowWidth, ($windowWidth) => $windowWidth <= 768);
 ```
 
 In the above, we create stores to hold the values of visibilityMode, breakOne and breakTwo. Now these values can be used on any page like so:
 
 ```javascript
-import { themeMode, breakOne, breakTwo } from '$lib/stores/globalstores'
+import { themeMode, breakOne, breakTwo } from '$lib/stores/globalstores';
 ```

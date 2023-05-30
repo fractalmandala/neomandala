@@ -1,5 +1,13 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
+	import { articleDrafts } from '$lib/utils/supabase';
+
+	let notes: any;
+
+	onMount(async () => {
+		notes = await articleDrafts();
+	});
 </script>
 
 <div
@@ -11,7 +19,20 @@
 	class:dark={!$themeMode}
 >
 	<div class="liner" />
-	<div class="theside">side</div>
+	<div class="theside null">
+		<h6>
+			<a href="/pad"> All Notes </a>
+		</h6>
+		{#if notes && notes.length > 0}
+			{#each notes as item}
+				<p>
+					<a class="hover" href="/pad/{item.uuidtext}">
+						{item.title}
+					</a>
+				</p>
+			{/each}
+		{/if}
+	</div>
 	<div class="notepad rta-column">
 		<slot />
 	</div>
@@ -48,6 +69,7 @@
 		height: 56px
 		width: 100%
 		position: sticky
+		z-index: 699
 		top: 0
 	.theside
 		grid-area: theside
@@ -60,6 +82,13 @@
 		overflow-y: scroll
 		padding-top: 88px
 		padding-left: 32px
+		h6
+			padding-bottom: 12px
+		p
+			font-size: 16px
+			padding-bottom: 6px
+			text-transform: capitalize
+			font-family: 'Nohemi', sans-serif
 	.notepad
 		grid-area: themain
 

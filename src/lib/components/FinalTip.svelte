@@ -5,29 +5,12 @@
 	import FloatingMenu from '@tiptap/extension-floating-menu';
 	import { Editor } from '@tiptap/core';
 	import { onMount, afterUpdate } from 'svelte';
-	import { articleDrafts } from '$lib/utils/supabase';
 	import Send from '$lib/icons/Send.svelte';
-	import supabase from '$lib/utils/supabase';
-	import { showChip } from '$lib/stores/modalstores';
 
 	let element: any;
 	let editor: any;
-	let articles: any;
-	let title = '';
 	let text = '';
-	let loading = false;
-	let placeholderTitle = 'New Document';
-
-	async function handleInput() {
-		const { error } = await supabase
-			.from('amrit-notes')
-			.insert({ title: title, content: text, agent: 'article' });
-		if (error) {
-			showChip('error!', '#fe4a49');
-		} else {
-			showChip('done!', '#10D56C');
-		}
-	}
+	export let bodyText = '';
 
 	const addImage = () => {
 		const url = window.prompt('URL');
@@ -36,34 +19,27 @@
 		}
 	};
 
-	function handleFocus() {
-		placeholderTitle = '';
-	}
-
 	onMount(() => {
-		(editor = new Editor({
+		editor = new Editor({
 			element: element,
 			extensions: [StarterKit, Image, FloatingMenu],
-			content: `
-					<p>Begin...</p>
-          `,
+			content: bodyText,
+			parseOptions: {
+				preserveWhitespace: 'full'
+			},
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
 			}
-		})),
-			(async () => {
-				articles = await articleDrafts();
-			})();
-	});
-
-	afterUpdate(() => {
-		text = editor.getText({ blockSeparator: '\n\n' });
-	});
+		});
+	}),
+		afterUpdate(() => {
+			text = editor.getText({ blockSeparator: '\n\n' });
+		});
 </script>
 
 <div
-	class="minH p-top-64 rta-column boundary"
+	class="rta-column lowerit"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -533,21 +509,21 @@
 				</button>
 				-->
 				</div>
-				<button class="blank-button fixedsend" on:click={handleInput}>
+				<button class="blank-button fixedsend">
 					<Send />
 				</button>
 			</div>
 		{/if}
 	</div>
 	<div class="docarea">
-		<div class="rta-column bord-bot">
-			<input type="text" placeholder={placeholderTitle} bind:value={title} on:focus={handleFocus} />
-		</div>
 		<div class="actualeditor null" bind:this={element} />
 	</div>
 </div>
 
 <style lang="sass">
+
+.lowerit
+	z-index: 0
 
 .docarea
 	input
@@ -575,22 +551,29 @@
 	grid-template-areas: "actualeditor rightstrip"
 	.docarea
 		grid-area: actualeditor
-		width: 680px
-		margin-left: 170px
-		padding: 56px 24px
+		width: 820px
+		margin-left: 88px
+		padding: 0 24px 56px 24px
 		.actualeditor
-			padding: 24px
+			padding: 48px
+			border: 1px solid var(--contraster)
+			border-radius: 8px
 	.rightstrip
 		grid-area: rightstrip
-		height: calc(100vh - 64px)
-		position: sticky
-		top: 64px
+		display: flex
+		flex-direction: column
 		.allbuttons
 			display: flex
 			flex-direction: column
+			height: calc(100vh - 112px)
+			position: fixed
+			top: 64px
 			width: 96px
+			right: 8px
 			align-items: flex-end
+			rowgap: 64px
 			padding-right: 32px
+			height: 100%
 			button
 				opacity: 1
 				&:hover
@@ -614,6 +597,9 @@
 		button
 			border: 1px solid #FFFFFF
 			color: #878787
+	.docarea
+		.actualeditor
+			background: white
 
 .dark
 	.allbuttons
@@ -621,6 +607,9 @@
 		button
 			border: none
 			color: #575757
+	.docarea
+		.actualeditor
+			background: #111111
 
 .allbuttons
 	button

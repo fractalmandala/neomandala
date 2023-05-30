@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Loader from '$lib/assets/Loader.svelte';
+	import { clickOutsideAction } from '$lib/utils/clickoutside';
 	import { slide } from 'svelte/transition';
 
 	let show = false;
@@ -13,7 +14,13 @@
 		<Loader />
 	</div>
 	{#if show}
-		<div class="rest rta-column ta-r" transition:slide on:mouseleave={toggleShow}>
+		<div
+			class="rest rta-column ta-r"
+			transition:slide
+			on:mouseleave={toggleShow}
+			use:clickOutsideAction
+			on:clickoutside={toggleShow}
+		>
 			<a class="menulinks" href="/web">Web</a>
 			<a class="menulinks" href="/word">Word</a>
 			<a class="menulinks" href="/sound">Sound</a>

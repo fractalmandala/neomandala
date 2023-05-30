@@ -74,9 +74,9 @@
 				alt="mands"
 				style="transform: rotate({scY / 3}deg)"
 			/>
-			<h1 class="noh gradienter tt-u" use:reveal={{ delay: 200 }}>The Fractal Maṇḍala</h1>
+			<h1 class="gradienter tt-u" use:reveal={{ delay: 200 }}>The Fractal Maṇḍala</h1>
 			<h3>is a digital garden and buildstation.</h3>
-			<p class="padding-l1" use:reveal={{ delay: 500 }}>
+			<p class="padding-l1 glass-bottom p-bot-64" use:reveal={{ delay: 500 }}>
 				Here I document what I learn, build and write. I develop web products, create historical
 				fiction worlds, dabble in psytrance production and write essays on Indian history and
 				civilizational consciousness.
@@ -84,7 +84,22 @@
 		</div>
 		<div class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0">
 			<div class="p-top-32 p-bot-32">
-				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Big Builds</h3>
+				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 350 }}>Midjourneys...</h3>
+			</div>
+			<div class="rta-row colgap400 height-40">
+				<img src="/images/midjourneys/panel01.webp" alt="one" />
+				<img src="/images/midjourneys/panel09.webp" alt="two" />
+			</div>
+			<div class="rta-column xcenter rowgap200 ta-l ycenter">
+				<h4 class="thin" use:reveal={{ delay: 600 }}>
+					An exploration of psychedelic realms with Midjourney...
+				</h4>
+				<a href="/image/midjourneys" class="glowbuttons"> Take Trip </a>
+			</div>
+		</div>
+		<div class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0">
+			<div class="p-top-32 p-bot-32">
+				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 500 }}>Big Builds</h3>
 			</div>
 			<div class="rta-grid grid3 colgap500 rowgap600 p-top-32 p-bot-32">
 				<div class="rta-column rowgap200 glass-top p-top-32" use:reveal={{ delay: 200 }}>

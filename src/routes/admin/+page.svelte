@@ -7,6 +7,7 @@
 	import { SSE } from 'sse.js';
 	import ChatBox from '$lib/gpt/ChatBox.svelte';
 	import Conversations from '$lib/gpt/Conversations.svelte';
+	import Parser from '$lib/agent/Parser.svelte';
 	import {
 		chatSessions,
 		getSessionById,
@@ -352,28 +353,32 @@
 
 .levelzero.gpt-box
 	flex-direction: row
-	height: 100vh
 	padding-left: 32px
 	.sidebar
 		width: 328px
 		padding-top: 32px
-		height: 100%
+		height: 100vh
 		margin-top: 56px
+		position: sticky
+		top: 0
 		.side-inside
 			padding-left: 20px
 			padding-top: 20px
 			padding-right: 20px
+			height: 84vh
+			position: sticky
+			top: 88px
+			display: flex
+			flex-direction: column
 	.mainbar
-		width: calc(100vw - 544px)
+		width: calc(100vw - 440px)
 		padding-top: 32px
 		height: calc(100% - 32px)
 		margin-top: 88px
 		margin-left: 32px
-		border: 1px solid rgba(255, 255, 255, 0.08)
 		border-radius: 5px
 		backdrop-filter: blur(4px)
 		transition: width 0.7s ease
-		background: rgba(0, 0, 0, 0.2)
 	.rightbar
 		width: 8px
 		margin-left: 0px
@@ -498,7 +503,6 @@
 				height: 24px
 
 .back
-	height: 100vh
 	padding-bottom: 88px 
 
 </style>

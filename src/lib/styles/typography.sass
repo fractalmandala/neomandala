@@ -67,12 +67,19 @@
 :root
 	--green: #0ca64c
 	--greyish: #878787
+	--greenb: #10D56C
 
 .smalls
 	margin: 0
 	font-size: 12px
 	font-family: 'Nohemi', sans-serif
 	color: var(--greyish)
+
+.codeparent
+	code
+		font-family: 'Space Mono', monospace
+	pre
+		font-family: 'Nohemi', sans-serif
 
 .noh
 	font-family: 'NohemiBold', sans-serif
@@ -118,13 +125,13 @@ p.micro
 
 
 em, cite, small, p, li, blockquote, h6, button, input, textarea, select, option, textarea
-	font-family: 'AuthenticSans-90', sans-serif
+	font-family: 'Nohemi', sans-serif
 
 label
 	font-size: 12px
 
 p
-	font-family: 'AuthenticSans-90', sans-serif
+	font-family: 'Nohemi', sans-serif
 
 p
 	color: var(--themerp)
@@ -134,11 +141,14 @@ p
 		color: var(--textone)
 
 
-h3, h1, h2
+h2
 	font-family: 'NohemiBold', sans-serif
 
-h4, h5
-	font-family: 'NohemiSemi', sans-serif
+h4, h5, h1, h3
+	font-family: 'NohemiMed', sans-serif
+
+h4.thin
+	font-family: 'Nohemi', sans-serif
 
 pre
 	overflow-x: auto
@@ -163,16 +173,16 @@ a
 
 a.hover
 	&:hover
-		color: var(--green)
+		color: #10D56C
 
 .hover
 	&:hover
-		color: var(--green)
+		color: #10D56C
 
 .hover.grey
 	color: var(--onlyblack)
 	&:hover
-		color: var(--green)
+		color: #10D56C
 
 
 p
@@ -222,6 +232,9 @@ h4.white
 .tt-u
 	text-transform: uppercase
 
+.tt-c
+	text-transform: capitalize
+
 .null
 	p, h1, h5, h6, h4, h3, h2, small, pre
 		margin: 0
@@ -249,15 +262,10 @@ small
 
 h6
 	letter-spacing: -0.3px
-	font-size: 20px
-	font-weight: 500
-
-h5
-	font-weight: 700
+	font-size: 18px
 
 h4
 	line-height: 1.12
-	font-weight: 800
 
 .levelzero
 	h5
@@ -313,9 +321,6 @@ h1
 .ticket
 	p, li
 		font-size: 14px
-	h4
-		&:hover
-			color: #057402
 
 .thisispost
 	p, li, em
@@ -366,7 +371,7 @@ h1
 
 .writing.postis.codeis
 	h6
-		font-size: 1.24em
+		font-size: 18px
 		border-top: 1px solid var(--green)
 		padding: 8px 0
 		text-transform: uppercase
@@ -463,6 +468,11 @@ h1
 .actualeditor
 	.ProseMirror
 		outline: none
+		white-space: pre-wrap
+		p, pre, li, i, b, blockquote, blockquote p, small
+			font-family: 'Nohemi', sans-serif
+			letter-spacing: 0.3px
+			font-size: 18px
 		h4
 			border-bottom: 1px solid var(--contraster)
 			padding-bottom: 16px
@@ -470,4 +480,5 @@ h1
 		p.smalls
 			font-size: 12px
 		p
-			font-size: 16px
+			color: var(--background)
+			line-height: 1.5

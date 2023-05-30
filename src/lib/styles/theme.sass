@@ -26,7 +26,7 @@ img
 
 :root
     box-sizing: border-box
-    font-family: 'AuthenticSans-90', sans-serif
+    font-family: 'Nohemi', sans-serif
     --green: #0ca64c
     --greenb: #10D56C
     --greenc: #369610
@@ -57,12 +57,6 @@ button.gradback
     &:hover
         transform: scale(0.95)
         background: linear-gradient(74.58deg, #369610 11.33%, #078717 29.17%, #10D56C 122.28%)
-
-
-.hover
-    &:hover
-        color: var(--green)
-        cursor: pointer
 
 *
     box-sizing: border-box
@@ -1341,9 +1335,6 @@ button.glass
         background: #171717
         border: 1px solid #0ca64c
 
-.ProseMirror p
-    font-family: 'AuthenticSans-90'
-
 .codeinput
     .ProseMirror
         min-height: 500px
@@ -1433,11 +1424,16 @@ button.glass
     user-select: none 
     width: max-content
     max-width: 160px
+    cursor: pointer
+    transform-origin: center center
+    transition: 0.12s
     &:hover, &:focus 
         color: #ffffff 
         background: var(--greenc)
         border: 1px solid white
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
+        text-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff
+    &:active
+        transform: scale(0.88)
 
 .glowbox
     text-transform: uppercase 
@@ -1486,3 +1482,34 @@ button.glass
 .actualeditor
     .ProseMirror
         min-height: 64vh
+
+.outlineglow
+    background-image: linear-gradient(163deg, rgba(20, 189, 87, 1) 0%, rgba(63, 227, 99, 1) 100%) 
+    background: none
+    border: none
+    width: 56px
+    height: 56px
+    transition: all .3s 
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    &:hover 
+        box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30)
+        background-image: linear-gradient(163deg, rgba(20, 189, 87, 1) 0%, rgba(63, 227, 99, 1) 100%) 
+
+.insideglow
+    background-color: #1a1a1a
+    background: none
+    flex-direction: column 
+    border: none
+    display: flex
+    width: 56px
+    height: 56px
+    transition: all .2s
+    border-radius: 5px
+    align-items: center
+    justify-content: center
+    &:hover 
+        transform: scale(0.98) 
+        border-radius: 4px 

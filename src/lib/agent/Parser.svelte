@@ -11,18 +11,18 @@
 	export let response: any;
 	let rawBlocks = response.split('```');
 
-let blocks:any = [];
+	let blocks: any = [];
 	for (let i = 0; i < rawBlocks.length; i++) {
-	  if (i % 2 === 0) {
-	    blocks.push({ type: 'text', content: rawBlocks[i] });
-	  } else {
-	    let [language, ...codeLines] = rawBlocks[i].split('\n');
-	    const code = codeLines.join('\n');
-	    if (!language || language.trim() === '') {
-	      language = 'javascript';
-	    }
-	    blocks.push({ type: 'code', language: language.trim(), code: code.trim() });
-	  }
+		if (i % 2 === 0) {
+			blocks.push({ type: 'text', content: rawBlocks[i] });
+		} else {
+			let [language, ...codeLines] = rawBlocks[i].split('\n');
+			const code = codeLines.join('\n');
+			if (!language || language.trim() === '') {
+				language = 'javascript';
+			}
+			blocks.push({ type: 'code', language: language.trim(), code: code.trim() });
+		}
 	}
 
 	onMount(() => {
@@ -30,17 +30,8 @@ let blocks:any = [];
 	});
 </script>
 
-<svelte:head>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonmyous" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600;700;800&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
-
 <div
-	class="rta-column null rowgap50 bigg"
+	class="rta-column null rowgap50"
 	transition:slide
 	class:dark={!$themeMode}
 	class:light={$themeMode}
@@ -76,20 +67,23 @@ let blocks:any = [];
 
 <style lang="sass">
 
+.levelzero
+	width: 60vw
+
 .codeparent
-	background: var(--contraster)
-	padding: 16px
 	border-radius: 6px
 
 .codeblock
 	background: var(--opposite)
 	word-wrap: break-all
+	white-space: pre-line
 
 
 pre.codeblock
 	font-size: 16px
 	overflow-y: hidden
 	color: var(--themer)
+	font-family: 'Nohemi', sans-serif
 
 .nocodeparent
 	pre
@@ -99,12 +93,14 @@ pre.codeblock
 		line-height: 1.2
 		overflow-y: hidden
 		white-space: pre-line
+		font-family: 'Nohemi', sans-serif
 
 .codeblock code
 	word-wrap: break-all
 	font-size: 16px
 	font-weight: 500
 	color: var(--textone)
+	font-family: 'Space Mono', monospace
 
 
 </style>

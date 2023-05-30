@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { chatSessions, deleteChatSession, showDelete } from '$lib/gpt/chatstore';
 	import type { ChatSession } from '$lib/gpt/chatstore';
+	import Parser from '$lib/agent/Parser.svelte';
 
 	let session: ChatSession | undefined;
 	$: if ($chatSessions.length > 0) {
@@ -24,8 +25,7 @@
 						<img src="/images/hacker.png" alt="useravatar" />
 					</div>
 					<div class="rta-row agentanswer">
-						<img src="/images/chatbot.png" alt="botavatar" />
-						<pre>{message.answer}</pre>
+						<Parser response={message.answer} />
 					</div>
 					<cite>Sent at {message.timestamp}</cite>
 				{/if}
@@ -37,7 +37,7 @@
 <style lang="sass">
 
 #chat-sessions
-	padding: 0 4vw
+	padding: 0
 	cite
 		margin-left: 56px
 		margin-top: 0
@@ -69,7 +69,6 @@
 		width: 32px
 		height: 32px
 	pre
-		width: calc(100% - 56px)
 		font-family: 'Nohemi', sans-serif
 		letter-spacing: 0.8px
 		line-height: 1.4

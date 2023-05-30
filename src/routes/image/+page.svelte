@@ -50,34 +50,58 @@
 </script>
 
 <div
-	class="rta-column p-top-64"
+	class="rta-row p-top-64"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="rta-grid grid8 stay2 colgap100 rowgap100">
-		{#if images && images.length > 0}
-			{#each images as item}
-				<a class="rta-image height-20" href="/image/{item.slug}">
-					<img src={item.link} alt={item.id} use:loadingAction={loading} transition:scale />
-				</a>
-			{/each}
-		{/if}
+	<div class="firstguy rta-column">
+		<div class="rta-grid grid8 stay2 colgap100 rowgap100">
+			{#if images && images.length > 0}
+				{#each images as item}
+					<a class="rta-image height-20" href="/image/{item.slug}">
+						<img src={item.link} alt={item.id} use:loadingAction={loading} transition:scale />
+					</a>
+				{/each}
+			{/if}
+		</div>
+		<div class="rta-row fullW xcenter-d ycenter xcenter-m p-top-16">
+			<Pagination>
+				<div slot="prev">
+					<button class="blank-button" on:click={prevEight}>
+						<ChevFLeft dimension={27} />
+					</button>
+				</div>
+				<div slot="next">
+					<button class="blank-button" on:click={nextEight}>
+						<ChevFRight dimension={27} />
+					</button>
+				</div>
+			</Pagination>
+		</div>
 	</div>
-	<div class="rta-row fullW xcenter-d ycenter xcenter-m p-top-16">
-		<Pagination>
-			<div slot="prev">
-				<button class="blank-button" on:click={prevEight}>
-					<ChevFLeft dimension={27} />
-				</button>
-			</div>
-			<div slot="next">
-				<button class="blank-button" on:click={nextEight}>
-					<ChevFRight dimension={27} />
-				</button>
-			</div>
-		</Pagination>
+	<div class="midjourney rta-column null">
+		<div class="rta-image rta-column xcenter">
+			<img src="/images/midjourneys/panel01.webp" alt="cover" />
+		</div>
+		<h3>Midjourneys...</h3>
+		<p class="p-bot-16">a foray in places known and unknown</p>
+		<a href="/image/midjourneys" class="glowbuttons">Take Journey</a>
 	</div>
 </div>
+
+<style lang="sass">
+
+.firstguy
+	width: 56vw
+
+.midjourney
+	width: 44vw
+	align-items: center
+	img
+		object-fit: contain
+		width: 80%
+
+</style>

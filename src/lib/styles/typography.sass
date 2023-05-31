@@ -1,95 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
-
-@font-face
-	font-family: 'AuthenticSans-60'
-	src: url('/fonts/AUTHENTICSans-60.woff2') format(woff2), url('/fonts/AUTHENTICSans-60.woff') format(woff)
-	font-style: normal
-	font-weight: light
-
-@font-face
-	font-family: 'AuthenticSans-90'
-	src: url('/fonts/AUTHENTICSans-90.woff2') format(woff2), url('/fonts/AUTHENTICSans-90.woff') format(woff)
-	font-style: normal
-	font-weight: normal
-
-@font-face
-	font-family: 'AuthenticSans-130'
-	src: url('/fonts/AUTHENTICSans-130.woff2') format(woff2), url('/fonts/AUTHENTICSans-130.woff') format(woff)
-	font-style: normal
-	font-weight: medium
-
-@font-face
-	font-family: 'AuthenticSans-150'
-	src: url('/fonts/AUTHENTICSans-150.woff2') format(woff2), url('/fonts/AUTHENTICSans-150.woff') format(woff)
-	font-style: normal
-	font-weight: bold
-
-
-@font-face
-	font-family: 'Molend'
-	src: url('/fonts/Molend.woff2') format(woff2), url('/fonts/Molend.woff') format(woff)
-	font-style: normal
-	font-weight: 900
-	unicode-range: U+1E00-1EFF
-
-@font-face
-	font-family: 'Nohemi'
-	src: url('/fonts/nohemi/Nohemi-Regular.woff2') format(woff2), url('/fonts/nohemi/Nohemi-Regular.woff') format(woff)
-	font-style: normal
-	font-weight: 400
-
-@font-face
-	font-family: 'NohemiMed'
-	src: url('/fonts/nohemi/Nohemi-Medium.woff2') format(woff2), url('/fonts/nohemi/Nohemi-Medium.woff') format(woff)
-	font-style: normal
-	font-weight: 500
-
-@font-face
-	font-family: 'NohemiSemi'
-	src: url('/fonts/nohemi/Nohemi-SemiBold.woff2') format(woff2), url('/fonts/nohemi/Nohemi-SemiBold.woff') format(woff)
-	font-style: normal
-	font-weight: 600
-
-@font-face
-	font-family: 'NohemiBold'
-	src: url('/fonts/nohemi/Nohemi-Bold.woff2') format(woff2), url('/fonts/nohemi/Nohemi-Bold.woff') format(woff)
-	font-style: normal
-	font-weight: 700
-
-@font-face
-	font-family: 'NohemiLight'
-	src: url('/fonts/nohemi/Nohemi-Light.woff2') format(woff2), url('/fonts/nohemi/Nohemi-Light.woff') format(woff)
-	font-style: normal
-	font-weight: 300
 
 :root
 	--green: #0ca64c
 	--greyish: #878787
 	--greenb: #10D56C
+	box-sizing: border-box
+	font-family: 'Authentic Sans', sans-serif
+	--newgreen: #14BB4D
 
 .smalls
 	margin: 0
 	font-size: 12px
-	font-family: 'Nohemi', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 	color: var(--greyish)
 
 .codeparent
 	code
 		font-family: 'Space Mono', monospace
 	pre
-		font-family: 'Nohemi', sans-serif
-
-.noh
-	font-family: 'NohemiBold', sans-serif
+		font-family: 'Authentic Sans', sans-serif
 
 .nol
-	font-family: 'AuthenticSans-90', sans-serif
-	letter-spacing: 0.5px
+	font-family: 'Authentic Sans', sans-serif
+
+p.grot, small.grot, h6.grot, h5.grot
+	font-family: 'Space Grotesk', sans-serif
 
 p.micro
-	font-family: 'Nohemi', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 	font-size: 12px
 	margin: 0
 
@@ -104,8 +41,8 @@ p.micro
 	--themerp: #676767
 	--onlyblack: #474747
 	color: white
-	h4, h5
-		color: #d7d7d7
+	.accordion-head
+		color: #474747
 
 
 .light
@@ -120,18 +57,18 @@ p.micro
 	--onlyblack: #d7d7d7
 	--themerp: #878787
 	color: #474747
-	h4, h5
-		color: #474747
+	.accordion-head
+		color: #a7a7a7
 
 
 em, cite, small, p, li, blockquote, h6, button, input, textarea, select, option, textarea
-	font-family: 'Nohemi', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 
 label
 	font-size: 12px
 
 p
-	font-family: 'Nohemi', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 
 p
 	color: var(--themerp)
@@ -142,13 +79,18 @@ p
 
 
 h2
-	font-family: 'NohemiBold', sans-serif
+	font-family: 'Authentic Sans', sans-serif
+	letter-spacing: -1px
 
 h4, h5, h1, h3
-	font-family: 'NohemiMed', sans-serif
+	font-family: 'Authentic Sans', sans-serif
+
+h4
+	font-weight: 600
 
 h4.thin
-	font-family: 'Nohemi', sans-serif
+	font-family: 'Authentic Sans', sans-serif
+	font-weight: normal
 
 pre
 	overflow-x: auto
@@ -184,11 +126,6 @@ a.hover
 	&:hover
 		color: #10D56C
 
-
-p
-	font-weight: 400
-
-
 //colors
 
 p.grey, small.grey, cite.grey, pre.grey, em.grey
@@ -201,7 +138,7 @@ p.green, pre.green
 	color: var(--green)
 
 .green
-	color: var(--green)
+	color: var(--greenb)
 
 p.white, small.white, h6.white
 	color: white
@@ -212,8 +149,12 @@ p.white, small.white, h6.white
 h5.white
 	color: white
 
+h5.grey
+	color: #878787
+
 h5.thin, h6.thin
-	font-family: 'NohemiMed', sans-serif
+	font-family: 'Authentic Sans', sans-serif
+	font-weight: normal
 
 h4.white
 	color: white
@@ -239,7 +180,7 @@ h4.white
 	p, h1, h5, h6, h4, h3, h2, small, pre
 		margin: 0
 
-p, small, blockquote, h5, h4, h3, h2, h1
+p, small, blockquote, h4, h3, h2, h1
 	margin: 12px 0 20px 0
 
 h6
@@ -261,8 +202,10 @@ small
 		font-size: 16px
 
 h6
-	letter-spacing: -0.3px
 	font-size: 18px
+
+h6.green
+	color: var(--newgreen)
 
 h4
 	line-height: 1.12
@@ -274,7 +217,7 @@ h4
 		font-size: 32px
 		letter-spacing: 0px
 	h3
-		font-size: 40px
+		font-size: 48px
 	h2
 		font-size: 64px
 
@@ -292,14 +235,15 @@ h4
 .leveltwo
 	h5
 		font-size: 24px
-		letter-spacing: 0.5px
 	h4
 		font-size: 27px
-		letter-spacing: 0.5px
 	h3
 		font-size: 32px
 	h2
 		font-size: 40px
+
+h4
+	color: var(--themer)
 
 h3
 	font-weight: 800
@@ -324,13 +268,14 @@ h1
 
 .thisispost
 	p, li, em
-		font-size: 18px
-		letter-spacing: 0.5px
-		line-height: 1.6
+		line-height: 1.48
 		color: var(--background)
 	h4
-		margin: 64px 0 24px 0
+		margin: 88px 0 48px 0
 		letter-spacing: 0
+		color: var(--themer)
+		border-top: 1px solid var(--contraster)
+		padding-top: 32px
 	blockquote
 		font-style: italic
 		color: #676767
@@ -342,20 +287,61 @@ h1
 			font-weight: 400
 	a
 		color: var(--green)
+	img
+		margin: 16px 0 32px
+	
+.adobepost
+	p, li, em, h5, h4, h2
+		font-family: 'Adobe Devanagari', serif
+
+.levelzero
+	.thisispost
+		p, li, em
+			font-size: 1.36vw
+		h5
+			font-size: 1.6vw
+			margin: 16px 0 16px 0
+		h4
+			font-size: 2vw
+			color: var(--themer)
+	.thisispost.adobepost
+		p, li, em
+			font-size: 1.6vw
+		h5
+			font-size: 2vw
+		h4
+			font-size: 2.8vw
+
+.levelone
+	.thisispost.adobepost
+		p, li, em
+			font-size: 2.4vw
+		h5
+			font-size: 3.2vw
+		h4
+			font-size: 4.2vw
 
 .leveltwo
 	.thisispost
 		h4
-			font-size: 32px
+			font-size: 6vw
+			color: var(--themer)
 		h5
-			font-size: 24px
+			font-size: 4.2vw
 			color: var(--background)
-			margin: 64px 0 64px 0
+			margin: 32px 0 32px 0
 		ul, ol
 			margin-left: 0
 			padding-left: 16px
 		p, li, em
-			font-size: 16px
+			font-size: 3.6vw
+	.thisispost.adobepost
+		p, li, em
+			font-size: 4.2vw
+		h5
+			font-size: 5.2vw
+		h4
+			font-size: 7.2vw
 
 .writing.postis
 	a
@@ -398,10 +384,10 @@ h1
 		text-fill-color: transparent
 	
 .mol
-	font-family: 'AuthenticSans-130', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 
 .disp-title
-	font-family: 'AuthenticSans-90', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 	text-transform: capitalize
 	margin: 0
 	font-size: 14px
@@ -423,7 +409,7 @@ h1
 
 .disp-listhead
 	font-size: 14px
-	font-family: 'NohemiMed', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 	padding-top: 16px
 	padding-bottom: 12px
 
@@ -453,7 +439,7 @@ h1
 
 .menudropper
 	.menulinks
-		font-family: 'Nohemi', sans-serif
+		font-family: 'Authentic Sans', sans-serif
 		font-size: 16px
 		padding: 4px
 		min-width: 120px
@@ -470,9 +456,9 @@ h1
 		outline: none
 		white-space: pre-wrap
 		p, pre, li, i, b, blockquote, blockquote p, small
-			font-family: 'Nohemi', sans-serif
-			letter-spacing: 0.3px
-			font-size: 18px
+			font-family: 'Authentic Sans', sans-serif
+			font-size: 14px
+			color: var(--contraster)
 		h4
 			border-bottom: 1px solid var(--contraster)
 			padding-bottom: 16px
@@ -482,3 +468,105 @@ h1
 		p
 			color: var(--background)
 			line-height: 1.5
+
+.snippetprose
+	.ProseMirror
+		height: 320px
+		background: #171717
+		border-radius: 4px
+		overflow-y: scroll
+		code
+			font-family: 'Space Mono', monospace
+			font-size: 12px
+			color: #676767
+		pre
+			border-radius: 4px
+			padding: 16px
+			margin: 0
+
+
+.serif
+	p, h5, h4
+		font-family: 'Adobe Devanagari', serif
+
+h1.serif
+	font-family: 'Adobe Devanagari', serif
+
+.non
+	p, h5, h4
+		font-family: 'Authentic Sans', sans-serif
+
+.articles
+	h1.serif
+		line-height: 1
+		font-weight: 900
+	a
+		color: #10D56C
+
+.levelzero
+	.articles
+		h1.serif
+			color: var(--background)
+			font-size: 88px
+			text-align: center
+			border-bottom: 1px solid var(--contraster)
+			padding-bottom: 16px
+		.serif
+			p
+				font-size: 23px
+				color: var(--background)
+			h5
+				font-size: 32px
+				margin: 32px 0 16px 0
+				color: var(--background)
+			h4
+				font-size: 48px
+				margin: 64px 0
+				border-left: 4px solid #10D56C
+				padding-left: 24px
+				color: var(--background)
+
+.levelone
+	.articles
+		h1.serif, .serif p, .serif h5, .serif h4
+			color: var(--background)
+		h1.serif
+			font-size: 72px
+			padding-top: 48px
+			border-bottom: 1px solid var(--contraster)
+			padding-bottom: 16px
+		.serif
+			p
+				font-size: 24px
+			h5
+				font-size: 32px
+				margin: 24px 0 
+			h4
+				font-size: 42px
+				margin: 40px 0
+				border-left: 4px solid #10D56C
+				padding-left: 16px
+
+.leveltwo
+	.articles
+		h1.serif
+			color: var(--background)
+			font-size: 56px
+			padding-top: 48px
+			padding-bottom: 16px
+			border-bottom: 1px solid var(--contraster)
+		.serif
+			p
+				color: var(--background)
+				font-size: 22px
+			h5
+				font-size: 28px
+				color: var(--background)
+				margin: 24px 0 24px 0
+			h4
+				font-size: 36px
+				color: var(--background)
+				border-left: 4px solid #10D56C
+				padding-left: 16px
+				line-height: 1
+				margin: 32px 0

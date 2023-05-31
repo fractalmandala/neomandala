@@ -1,13 +1,20 @@
 <script lang="ts">
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
-	import StarterKit from '@tiptap/starter-kit';
-	import Image from '@tiptap/extension-image';
-	import { Editor } from '@tiptap/core';
-	import { onMount } from 'svelte';
 	import { formatTimeAgo } from '$lib/agent/generalutils';
 	import FinalTip from '$lib/components/FinalTip.svelte';
-	import Draft from '$lib/icons/Draft.svelte';
 	import Time from '$lib/icons/Time.svelte';
+
+	let isEditable = false;
+	let fake = false;
+
+	function fauxfake() {
+		fake = !fake;
+	}
+
+	function toggleEditing() {
+		isEditable = !isEditable;
+	}
+
 	export let data;
 </script>
 
@@ -20,7 +27,7 @@
 	class:dark={!$themeMode}
 >
 	<div class="titler null rowgap100 m-top-16">
-		<h4 class="tt-c bord-bot p-bot-16">{data.title}</h4>
+		<h2 class="tt-c bord-bot p-bot-16">{data.title}</h2>
 		<div class="rta-row colgap300">
 			<div class="rta-column xcenter rowgap50 p-top-8">
 				<svg
@@ -43,28 +50,23 @@
 			</div>
 		</div>
 	</div>
-	<FinalTip bodyText={data.content} />
+	<div class="holdingtiptap">
+		{#if isEditable}
+			<FinalTip bodyText={data.content} />
+		{/if}
+		<svelte:component this={data.content} />
+	</div>
 </div>
 
 <style lang="sass">
 
-.light.boundary
-	background: #e1e1e1
+.levelzero
+	.holdingtiptap
+		width: 720px
+		margin-left: 160px
 	.titler
-		background: white
-
-.dark.boundary
-	background: #171717
-	.titler
-		background: #121212
-		box-shadow: 4px 3px 7px #080707
-
-.boundary
-	.titler
-		width: 772px
-		margin-left: 112px
-		border-radius: 6px
-		padding: 32px
+		padding-left: 160px
+		width: 800px
 
 
 </style>

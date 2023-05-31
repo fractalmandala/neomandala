@@ -1,15 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
-	import GPTParser from '$lib/components/GPTParser.svelte';
-	import { browser } from '$app/environment';
+	import Social from '$lib/components/SocialShare.svelte';
 	import Parallax from '$lib/components/Parallax.svelte';
 	import { page } from '$app/stores';
 	import { thisWritings, pageWritings } from '$lib/utils/supabase';
 	import { elementSizeStore } from '$lib/utils/elementsize';
-	import Pagination from '$lib/components/Pagination.svelte';
-	import ChevFRight from '$lib/icons/ChevFRight.svelte';
-	import ChevFLeft from '$lib/icons/ChevFLeft.svelte';
 	let theme: any;
 	let image: any;
 	let prevID: number;
@@ -25,8 +21,6 @@
 	nextID = data.id + 1;
 
 	$: size = elementSizeStore(ref);
-
-	$: perCent = y / $size.height;
 
 	onMount(async () => {
 		theme = $page.url.pathname.slice(6);
@@ -49,14 +43,18 @@
 	<div class="x00">
 		<Parallax --parallax="url('{data.image}')" />
 	</div>
-	<div class="rta-column p-top-64">
+	<div class="thisguy rta-column null p-top-64 adobepost">
 		<h6 class="ta-c gradienter p-bot-32">{data.type}</h6>
 		<h2 class="noh ta-c tt-u bord-bot p-bot-64">{data.title}</h2>
+		<Social />
 	</div>
 
 	<div class="shellmain rta-column p-top-64" bind:this={ref}>
-		<div class="thisispost p-top-64">
+		<div class="thisispost p-top-64 adobepost">
 			<svelte:component this={data.content} />
+		</div>
+		<div class="lowerone p-bot-32">
+			<Social />
 		</div>
 		<div class="rta-row bord-top m-bot-32 null ycenter colgap200 p-top-32">
 			<h6>Next:</h6>
@@ -71,9 +69,32 @@
 
 <style lang="sass">
 
+.levelzero, .levelone
+    .lowerone
+        display: none
 
-.x00
-    height: 100vh
-    overflow: hidden
+.levelzero
+    .thisguy
+        padding-left: 128px
+        padding-right: 128px
+    .x00
+        height: 100vh
+        overflow: hidden
+
+.levelone
+    .thisguy, .shellmain
+        padding-left: 32px
+        padding-right: 32px
+    .x00
+        height: 100vh
+        overflow: hidden
+
+.leveltwo
+    .thisguy
+        padding-left: 32px
+        padding-right: 32px
+    .x00
+        height: 50vh
+        overflow: hidden
 
 </style>

@@ -16,52 +16,52 @@
 
 <svelte:window bind:scrollY={scY} />
 
-<div class="rta-column oneframe xright">
+<div class="rta-column oneframe xright" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel01.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xleft">
+<div class="rta-column oneframe xleft" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel02.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xright">
+<div class="rta-column oneframe xright" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel03.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xleft">
+<div class="rta-column oneframe xleft" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel04.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xright">
+<div class="rta-column oneframe xright" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel05.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xleft">
+<div class="rta-column oneframe xleft" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel06.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xright">
+<div class="rta-column oneframe xright" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel07.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xleft">
+<div class="rta-column oneframe xleft" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel08.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xright">
+<div class="rta-column oneframe xright" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel09.webp" alt="panel" />
 	</div>
 </div>
-<div class="rta-column oneframe xleft">
+<div class="rta-column oneframe xleft" data-lenis-scroll-snap-align="start">
 	<div class="rta-image">
 		<img src="/images/midjourneys/panel10.webp" alt="panel" />
 	</div>

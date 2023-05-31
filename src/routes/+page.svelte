@@ -2,24 +2,11 @@
 	import { onMount } from 'svelte';
 	import { reveal } from 'svelte-reveal';
 	import Parallax from '$lib/components/Parallax.svelte';
+	import Parallax2 from '$lib/components/Parallax.svelte';
 	import { supaImages, featuredWritings } from '$lib/utils/supabase';
 	import { elementVisibilityStore } from '$lib/stores/elementvisibilitystore';
 	import { featuredWebdev } from '$lib/utils/localpulls';
-	import RevealHead from '$lib/anims/RevealHead.svelte';
-	import Animations from 'textify.js';
-	import {
-		breakZero,
-		breakOne,
-		breakTwo,
-		themeMode,
-		readingMode,
-		windowWidth,
-		scrollY
-	} from '$lib/stores/globalstores';
-	import { footerStore, showFooter } from '$lib/stores/modalstores';
-	import Logo from '$lib/assets/FMLogo.svelte';
-	import { svelteTools, svelteLinks, svelteLearn } from '$lib/assets/sveltekittools';
-	let width = '100%';
+	import { breakZero, breakOne, breakTwo, themeMode, scrollY } from '$lib/stores/globalstores';
 	let ref: HTMLElement | null = null;
 
 	$: ({ isVisible } = elementVisibilityStore(ref));
@@ -53,11 +40,10 @@
 
 <svelte:window bind:scrollY={scY} />
 
-<div class="x00">
-	<Parallax
-		--parallax="url('https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/batch1/602.webp')"
-	/>
+<div id="homeguy" class="x0">
+	<Parallax --parallax="url('/images/cheggit.webp')" />
 </div>
+
 <div
 	class="rta-column colgap600 ybetween"
 	class:levelzero={$breakZero}
@@ -67,14 +53,17 @@
 	class:dark={!$themeMode}
 >
 	<div class="rta-column null">
-		<div class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0">
+		<div
+			class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0"
+			data-lenis-scroll-snap-align="start"
+		>
 			<img
 				class="mandalaimage"
 				src="/images/mands.webp"
 				alt="mands"
 				style="transform: rotate({scY / 3}deg)"
 			/>
-			<h1 class="gradienter tt-u" use:reveal={{ delay: 200 }}>The Fractal Maṇḍala</h1>
+			<h1 class="gradienter tt-u">The Fractal Maṇḍala</h1>
 			<h3>is a digital garden and buildstation.</h3>
 			<p class="padding-l1 glass-bottom p-bot-64" use:reveal={{ delay: 500 }}>
 				Here I document what I learn, build and write. I develop web products, create historical
@@ -82,24 +71,31 @@
 				civilizational consciousness.
 			</p>
 		</div>
-		<div class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0">
+
+		<div
+			class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0"
+			data-lenis-scroll-snap-align="start"
+		>
 			<div class="p-top-32 p-bot-32">
-				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 350 }}>Midjourneys...</h3>
+				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 300 }}>Midjourneys...</h3>
+				<h5 class="thin grey" use:reveal={{ delay: 600 }}>
+					An exploration of psychedelic realms with Midjourney...
+				</h5>
 			</div>
 			<div class="rta-row colgap400 height-40">
 				<img src="/images/midjourneys/panel01.webp" alt="one" />
 				<img src="/images/midjourneys/panel09.webp" alt="two" />
 			</div>
 			<div class="rta-column xcenter rowgap200 ta-l ycenter">
-				<h4 class="thin" use:reveal={{ delay: 600 }}>
-					An exploration of psychedelic realms with Midjourney...
-				</h4>
 				<a href="/image/midjourneys" class="glowbuttons"> Take Trip </a>
 			</div>
 		</div>
-		<div class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0">
+		<div
+			class="rta-column xcenter ta-c rowgap300 ycenter minH null p-bot-32 p-top-32 padding-l0"
+			data-lenis-scroll-snap-align="start"
+		>
 			<div class="p-top-32 p-bot-32">
-				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 500 }}>Big Builds</h3>
+				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 300 }}>Big Builds</h3>
 			</div>
 			<div class="rta-grid grid3 colgap500 rowgap600 p-top-32 p-bot-32">
 				<div class="rta-column rowgap200 glass-top p-top-32" use:reveal={{ delay: 200 }}>
@@ -129,9 +125,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="rta-column minH rowgap100 colgap100 padding-l0 x11 p-bot-64" bind:this={ref}>
+		<div
+			class="rta-column minH rowgap100 colgap100 padding-l0 x11 p-bot-64"
+			bind:this={ref}
+			data-lenis-scroll-snap-align="start"
+		>
 			<div class="p-top-32 p-bot-32">
-				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Midjourneys</h3>
+				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 500 }}>Gallery</h3>
 			</div>
 			<div class="movingparall rta-grid grid4 stay2 rowgap500 colgap500 p-bot-64">
 				{#if images && images.length > 0}
@@ -143,9 +143,12 @@
 				{/if}
 			</div>
 		</div>
-		<div class="rta-column rowgap100 p-top-64 xcenter p-bot-64 padding-l0">
+		<div
+			class="rta-column rowgap100 p-top-64 xcenter p-bot-64 padding-l0"
+			data-lenis-scroll-snap-align="start"
+		>
 			<div class="p-top-32">
-				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Featured Essays</h3>
+				<h3 class="tt-u grey ta-c" use:reveal={{ delay: 500 }}>Featured Essays</h3>
 			</div>
 			<div class="rta-grid grid2 colgap300 xcenter ta-c rowgap300">
 				{#if posts && posts.length > 0}
@@ -167,7 +170,10 @@
 				{/if}
 			</div>
 		</div>
-		<div class="rta-column rowgap600 xcenter ycenter p-top-64 p-bot-64 minH padding-l0">
+		<div
+			class="rta-column rowgap600 xcenter ycenter p-top-64 p-bot-64 minH padding-l0"
+			data-lenis-scroll-snap-align="start"
+		>
 			<div class="glass-y p-top-32">
 				<h3 class="noh tt-u grey ta-c" use:reveal={{ delay: 500 }}>Webdev Posts</h3>
 			</div>
@@ -180,11 +186,14 @@
 							use:reveal={{ delay: i * 40 }}
 						>
 							<h5>{item.meta.title}</h5>
-							<p class="gradienter">{item.meta.type} | {item.meta.tags}</p>
+							<small class="gradienter">{item.meta.type} | {item.meta.tags}</small>
 						</a>
 					{/each}
 				{/if}
 			</div>
+		</div>
+		<div class="rta-column rowgap600 xcenter ycenter x01" data-lenis-scroll-snap-align="start">
+			<div class="back" />
 		</div>
 	</div>
 </div>
@@ -205,10 +214,19 @@ a
     h4, h5
         transition: 0.08s ease
 
-.x00
+.x0
     height: 100vh
     overflow: hidden
     padding: 0
+    background-size: cover
+
+.x01
+    height: 50vh
+    .back
+        background-image: url('https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/10mandala/ogmandala.webp')
+        height: 100%
+        width: 100%
+        background-size: 320px
 
 .x11
     min-height: 100vh

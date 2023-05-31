@@ -10,7 +10,13 @@
 	let element: any;
 	let editor: any;
 	let text = '';
+	let stat;
+	let setEdit = false;
 	export let bodyText = '';
+
+	function toggleEditing() {
+		setEdit = !setEdit;
+	}
 
 	const addImage = () => {
 		const url = window.prompt('URL');
@@ -24,6 +30,7 @@
 			element: element,
 			extensions: [StarterKit, Image, FloatingMenu],
 			content: bodyText,
+			editable: false,
 			parseOptions: {
 				preserveWhitespace: 'full'
 			},
@@ -525,19 +532,6 @@
 .lowerit
 	z-index: 0
 
-.docarea
-	input
-		background: none
-		border: none
-		outline: none
-		height: 48px
-		font-size: 32px
-		font-family: 'NohemiMed', sans-serif
-	::-webkit-input-placeholder
-		font-size: 32px
-		font-family: 'NohemiMed', sans-serif
-		color: var(--background)
-
 .fixedsend
 	position: fixed
 	bottom: 32px
@@ -551,13 +545,6 @@
 	grid-template-areas: "actualeditor rightstrip"
 	.docarea
 		grid-area: actualeditor
-		width: 820px
-		margin-left: 88px
-		padding: 0 24px 56px 24px
-		.actualeditor
-			padding: 48px
-			border: 1px solid var(--contraster)
-			border-radius: 8px
 	.rightstrip
 		grid-area: rightstrip
 		display: flex
@@ -568,11 +555,11 @@
 			height: calc(100vh - 112px)
 			position: fixed
 			top: 64px
-			width: 96px
+			width: 64px
 			right: 8px
 			align-items: flex-end
 			rowgap: 64px
-			padding-right: 32px
+			padding-right: 16px
 			height: 100%
 			button
 				opacity: 1
@@ -588,8 +575,6 @@
 		width: 100%
 		.rta-column
 			flex-direction: row
-	.actualeditor
-		margin-top: 64px
 
 .light
 	.allbuttons
@@ -616,7 +601,7 @@
 		padding: 4px
 		font-size: 10px
 		background: none
-		font-family: 'NohemiMed', sans-serif
+		font-family: 'Authentic Sans', sans-serif
 		border-radius: 2px
 		width: 24px
 		line-height: 1

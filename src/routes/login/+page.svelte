@@ -5,6 +5,15 @@
 
 	export let form: ActionData;
 	let loading = false;
+	let signupForm = false;
+
+	function toggleForm() {
+		signupForm = !signupForm;
+	}
+
+	function handleSignup() {
+		loading = true;
+	}
 
 	const handleSubmit: SubmitFunction = () => {
 		loading = true;
@@ -19,16 +28,15 @@
 	};
 </script>
 
-<section class="columns mt-6 pt-6">
-	<div class="column is-half is-offset-one-quarter">
-		<h1 class="title">Sign in</h1>
-		{#if form?.error}
-			<div class="block notification is-danger">{form.error}</div>
-		{/if}
-		<form method="post" use:enhance={handleSubmit}>
-			<div class="field">
-				<label for="email" class="label">Email</label>
-				<p class="control">
+<section class="columnsmt-6pt-6">
+	<div class="rta-column null rowgap200 thisgal">
+		{#if signupForm}
+			<h5 class="tt-u grot">you wan join?</h5>
+			{#if form?.error}
+				<div class="block notification is-danger">{form.error}</div>
+			{/if}
+			<form class="thisform" method="post" action="?/signup">
+				<div class="rta-column rowgap100 null">
 					<input
 						id="email"
 						name="email"
@@ -38,11 +46,7 @@
 						placeholder="Email"
 						required
 					/>
-				</p>
-			</div>
-			<div class="field">
-				<label for="password" class="label">Password</label>
-				<p class="control">
+
 					<input
 						id="password"
 						name="password"
@@ -51,19 +55,74 @@
 						placeholder="Password"
 						required
 					/>
-				</p>
-			</div>
-			<div class="field">
-				<p class="control">
-					<button disabled={loading} class="button is-fullwidth is-link">Sign in</button>
-				</p>
-			</div>
-		</form>
 
-		<div class="mt-6">
-			<p class="has-text-centered">
-				Don't have an account? <a href="/signup">Sign up</a>
-			</p>
-		</div>
+					<button disabled={loading} class="genbutton">Sign Up</button>
+				</div>
+			</form>
+			<div class="mt-6">
+				<small class="grot grey"> Have an account? </small>
+				<small class="green grot point" on:click={toggleForm} on:keydown={toggleForm}>Sign In</small
+				>
+			</div>
+		{:else}
+			<h5 class="tt-u grot">you wan come?</h5>
+			{#if form?.error}
+				<div class="block notification is-danger">{form.error}</div>
+			{/if}
+			<form class="thisform" method="post" action="?/login">
+				<div class="rta-column rowgap100 null">
+					<input
+						id="email"
+						name="email"
+						value={form?.values?.email ?? ''}
+						class="input"
+						type="email"
+						placeholder="Email"
+						required
+					/>
+
+					<input
+						id="password"
+						name="password"
+						class="input"
+						type="password"
+						placeholder="Password"
+						required
+					/>
+
+					<button disabled={loading} class="genbutton">Sign in</button>
+				</div>
+			</form>
+			<div class="mt-6">
+				<small class="grot grey"> Don't have an account? </small>
+				<small class="green grot point" on:click={toggleForm} on:keydown={toggleForm}>Sign Up</small
+				>
+			</div>
+		{/if}
 	</div>
 </section>
+
+<style lang="sass">
+
+.columnsmt-6pt-6
+	padding-left:  32px
+
+.thisform
+	width: 240px
+	input[type=email], input[type=password]
+		border: 1px solid var(--contraster)
+		padding: 4px 8px
+		font-size: 12px
+		border-radius: 4px
+
+small.grey, h5.grot
+	@media screen and (max-width: 786px)
+		color: white
+	
+.thisgal
+	@media screen and (max-width: 786px)
+		padding: 16px
+		background: rgba(0,0,0,0.7)
+	
+
+</style>

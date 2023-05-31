@@ -11,9 +11,33 @@ export const windowWidth = writable(initialWidth);
 
 export const siteName = 'Fractal Maṇḍala';
 
+const headerTop = browser ? JSON.parse(localStorage.getItem('headerMode') || 'true') : true;
+
+export const headerMode = writable(headerTop);
+
+export function headerBelow() {
+	if (browser) {
+		headerMode.update((mode) => {
+			const newMode = !mode;
+			localStorage.setItem('headerMode', JSON.stringify(newMode));
+			return newMode;
+		});
+	}
+}
+
 const storedThemeMode = browser ? JSON.parse(localStorage.getItem('themeMode') || 'true') : true;
 
 export const themeMode = writable(storedThemeMode);
+
+export function toggleVisibility() {
+	if (browser) {
+		themeMode.update((mode) => {
+			const newMode = !mode;
+			localStorage.setItem('themeMode', JSON.stringify(newMode));
+			return newMode;
+		});
+	}
+}
 
 const storedReadingMode = browser
 	? JSON.parse(localStorage.getItem('readingMode') || 'false')

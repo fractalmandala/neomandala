@@ -67,36 +67,40 @@
 
 <style lang="sass">
 
+.leveltwo
+	img
+		margin-top: 6px
+
 .rta-column
-    margin: 0
-    box-sizing: border-box
-    height: 100vh
-    position: relative
-    img
-        object-fit: cover
-        height: 100vh
-    .blank-button
-        position: absolute
-        background: rgba(0,0,0,0.4)
-        backdrop-filter: blur(7px)
-        background: rgba(0,0,0,0.4)
-        padding-top: 16px
-        padding-bottom: 16px
-        padding-top: 16px
-        z-index: 1000
-        &:hover
-            svg path
-                fill: #10D56c
-    .leftbutton
-        left: 0
-        padding-left: 32px
-        bottom: 32px
-        padding-right: 16px
-    .rightbutton
-        right: 0
-        bottom: 32px
-        padding-right: 32px
-        padding-left: 16px
+	margin: 0
+	box-sizing: border-box
+	height: 100vh
+	position: relative
+	padding: 0
+	img
+		object-fit: cover
+	.blank-button
+		position: absolute
+		background: rgba(0,0,0,0.4)
+		backdrop-filter: blur(7px)
+		background: rgba(0,0,0,0.4)
+		padding-top: 16px
+		padding-bottom: 16px
+		padding-top: 16px
+		z-index: 1000
+		&:hover
+			svg path
+				fill: #10D56c
+	.leftbutton
+		left: 0
+		padding-left: 32px
+		bottom: 32px
+		padding-right: 16px
+	.rightbutton
+		right: 0
+		bottom: 32px
+		padding-right: 32px
+		padding-left: 16px
 
 
 </style>

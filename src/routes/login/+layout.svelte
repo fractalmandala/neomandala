@@ -19,22 +19,37 @@
 </script>
 
 <svelte:head>
-	<title>Email and Password Demo - Supabase Auth Helpers</title>
+	<title>Login at Fractala da Maṇḍala</title>
 </svelte:head>
 
-<main class="container is-max-desktop">
-	<div class="navbar-menu my-4">
-		<div class="navbar-start">
-			<a class="my-2" href="/">Supabase Auth Helpers Demo</a>
-		</div>
-		<div class="navbar-end">
-			{#if $page.data.session}
-				<form action="/logout" method="post" use:enhance={handleLogout}>
-					<button disabled={loading} type="submit">Sign out</button>
-				</form>
-			{/if}
-		</div>
-	</div>
-
+<div
+	class="rta-column rowgap600 minH back"
+	style="background-image: url('/images/guardmonke.webp')"
+>
 	<slot />
-</main>
+	<div class="rta-column rowgap200 null bord-top p-top-32 thisguy">
+		{#if $page.data.session}
+			<h6 class="tt-u grot">you wan go?</h6>
+			<form action="/logout" method="post" use:enhance={handleLogout}>
+				<button class="genbutton" disabled={loading} type="submit">Sign out</button>
+			</form>
+		{/if}
+	</div>
+</div>
+
+<style lang="sass">
+
+
+.back
+	padding: 128px 32px
+	background-position: 200px center
+	@media screen and (max-width: 786px)
+		background-position: center center
+		justify-content: flex-end
+
+
+.thisguy
+	max-width: 320px
+	padding-left: 32px
+
+</style>

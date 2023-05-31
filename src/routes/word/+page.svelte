@@ -57,13 +57,13 @@
 		{#if pens && pens.length > 0 && !isAnyGen}
 			{#each pens as item}
 				<a
-					class="rta-row colgap100 stay ybetween back height-40"
+					class="rta-row colgap100 stay ybetween back height-40-40"
 					href="/word/{item.slug}"
 					style="background-image: url('{item.image}')"
 				>
 					<div class="rta-column rowgap100 null insider xcenter ycenter ta-c">
 						<p class="green">{item.type}</p>
-						<h4 class="white mol tt-c">{item.title}</h4>
+						<h4 class="white tt-c">{item.title}</h4>
 						<small>{item.tags}</small>
 					</div>
 				</a>
@@ -71,3 +71,11 @@
 		{/if}
 	</div>
 </div>
+
+<style lang="sass">
+
+.levelzero
+	.insider
+		padding: 16px
+
+</style>

@@ -1,101 +1,99 @@
 body, html
-    margin: 0
-    box-sizing: border-box
+	margin: 0
+	box-sizing: border-box
 
 body
-    background: #171717
+	background: #171717
 
 .pad32
-    padding: 32px
+	padding: 32px
 
 img
-    object-fit: cover
-    height: 100%
-    width: 100%
+	object-fit: cover
+	height: 100%
+	width: 100%
 
 .avatar
-    object-fit: cover
-    height: 32px
-    width: 32px
+	object-fit: cover
+	height: 32px
+	width: 32px
 
 .gridimage
-    background-position: center center
-    background-size: cover
-    background-repeat: no-repeat
-    background-image: url('/images/gridder.png')
+	background-position: center center
+	background-size: cover
+	background-repeat: no-repeat
+	background-image: url('/images/gridder.png')
 
 :root
-    box-sizing: border-box
-    font-family: 'Nohemi', sans-serif
-    --green: #0ca64c
-    --greenb: #10D56C
-    --greenc: #369610
-    --creme: #719A79
-    --palio: #FAFAFA
+	box-sizing: border-box
+	--green: #0ca64c
+	--greenb: #10D56C
+	--greenc: #369610
+	--creme: #719A79
+	--palio: #FAFAFA
+	--newgreen: #14BB4D
 
 
 .icon-green
-    background: linear-gradient(180deg, #20E27B 0%, #04A932 100%)
+	background: linear-gradient(180deg, #20E27B 0%, #04A932 100%)
 
 .icon-red
-    background: linear-gradient(180deg, #FC5453 0%, #A31312 100%)
+	background: linear-gradient(180deg, #FC5453 0%, #A31312 100%)
 
 .gradienter
-    background: linear-gradient(124.58deg, #369610 11.33%, #078717 29.17%, #10D56C 72.28%)
-    -webkit-background-clip: text
-    -webkit-text-fill-color: transparent
-    background-clip: text
-    text-fill-color: transparent
+	background: linear-gradient(124.58deg, #369610 11.33%, #078717 29.17%, #10D56C 72.28%)
+	-webkit-background-clip: text
+	-webkit-text-fill-color: transparent
+	background-clip: text
+	text-fill-color: transparent
 
 .gradback
-    background: linear-gradient(124.58deg, #369610 11.33%, #078717 29.17%, #10D56C 72.28%)
+	background: linear-gradient(124.58deg, #369610 11.33%, #078717 29.17%, #10D56C 72.28%)
 
 button.gradback
-    cursor: pointer
-    transition: 0.1s
-    transform-origin: center center
-    &:hover
-        transform: scale(0.95)
-        background: linear-gradient(74.58deg, #369610 11.33%, #078717 29.17%, #10D56C 122.28%)
+	cursor: pointer
+	transition: 0.1s
+	transform-origin: center center
+	&:hover
+		transform: scale(0.95)
+		background: linear-gradient(74.58deg, #369610 11.33%, #078717 29.17%, #10D56C 122.28%)
 
 *
-    box-sizing: border-box
+	box-sizing: border-box
 
 .bdr
-    border: 1px solid red
+	border: 1px solid red
 
 .back
-    background-position: center center
-    background-size: cover
-    background-repeat: no-repeat
+	background-position: center center
+	background-size: cover
+	background-repeat: no-repeat
 
 .minH
-    min-height: 100vh
+	min-height: 100vh
 
 
 .dark
-    --palio: #FAFAFA
-    --background: #FFFFFF
-    --textone: #a1a1a1
-    --opposite: #272727
-    --borderline: #272727
-    --greyish: #878787
-    --contraster: #212121
-    --themer: #FFFFFF
-    --onlyblack: #474747
+	--palio: #FAFAFA
+	--background: #FFFFFF
+	--textone: #a1a1a1
+	--opposite: #272727
+	--borderline: #272727
+	--greyish: #878787
+	--contraster: #212121
+	--onlyblack: #474747
 
 
 .light
-    --palio: #FAFAFA
-    --background: #121212
-    --textone: #373737
-    --opposite: #FFFFFF
-    --borderline: #d7d7d7
-    --greyish: #878787
-    --contraster: #e7e7e7
-    --themer: #575757
-    --boxshadow: 4px 7px 12px #e1e1e1
-    --onlyblack: #d7d7d7
+	--palio: #FAFAFA
+	--background: #121212
+	--textone: #373737
+	--opposite: #FFFFFF
+	--borderline: #d7d7d7
+	--greyish: #878787
+	--contraster: #e7e7e7
+	--boxshadow: 4px 7px 12px #e1e1e1
+	--onlyblack: #d7d7d7
 
 $unit4: 4px
 $unit8: 8px
@@ -109,1407 +107,1726 @@ $unit80: 80px
 $unit128: 128px
 
 .rta-column
-    display: flex
-    flex-direction: column
-    box-sizing: border-box
-    &.ycenter
-        justify-content: center
-    &.ytop
-        justify-content: flex-start
-    &.ybot
-        justify-content: flex-end
-    &.ybetween
-        justify-content: space-between
-    &.xcenter
-        align-items: center
-    &.xstretch
-        align-items: stretch
-    &.xleft
-        align-items: flex-start
-    &.xright
-        align-items: flex-end
+	display: flex
+	flex-direction: column
+	box-sizing: border-box
+	&.ycenter
+		justify-content: center
+	&.ytop
+		justify-content: flex-start
+	&.ybot
+		justify-content: flex-end
+	&.ybetween
+		justify-content: space-between
+	&.xcenter
+		align-items: center
+	&.xstretch
+		align-items: stretch
+	&.xleft
+		align-items: flex-start
+	&.xright
+		align-items: flex-end
 
 .rta-column.column-row
-    @media screen and (max-width: 786px)
-        flex-direction: row
-        column-gap: 24px
-        .w32
-            width: 32%
-        .w64
-            width: 60%
+	@media screen and (max-width: 786px)
+		flex-direction: row
+		column-gap: 24px
+		.w32
+			width: 32%
+		.w64
+			width: 60%
 
 .rta-column.column-rev
-    @media screen and (max-width: 786px)
-        flex-direction: column-reverse
+	@media screen and (max-width: 786px)
+		flex-direction: column-reverse
 
 .rta-row
-    display: flex
-    box-sizing: border-box
-    &.ycenter
-        align-items: center
-    &.xcenter-d
-        @media screen and (min-width: 1024px)
-            justify-content: center
-    &.xcenter-m
-        @media screen and (max-width: 1023px)
-            justify-content: center
-    &.xend
-        justify-content: flex-end
-    &:xstart
-        justify-content: flex-start
-    &.between
-        justify-content: space-between
-    &.xstretch
-        justify-content: stretch
-    &.ytop
-        align-items: flex-start
-    &.ybot
-        align-items: flex-end
-    @media screen and (min-width: 1024px)
-        flex-direction: row
-        .in50, .in50.w32, .in50.w64
-            width: calc(50% - 16px)
-        .w32
-            width: 32%
-        .w64
-            width: 60%
-    @media screen and (max-width: 1023px)
-        flex-direction: row
-        flex-wrap: wrap
-        .in50.w32
-            width: 32%
-        .in50.w64
-            width: 60%
-        .in50
-            width: 50%
+	display: flex
+	box-sizing: border-box
+	&.ycenter
+		align-items: center
+	&.xcenter-d
+		@media screen and (min-width: 1024px)
+			justify-content: center
+	&.xcenter-m
+		@media screen and (max-width: 1023px)
+			justify-content: center
+	&.xend
+		justify-content: flex-end
+	&:xstart
+		justify-content: flex-start
+	&.between
+		justify-content: space-between
+	&.xstretch
+		justify-content: stretch
+	&.ytop
+		align-items: flex-start
+	&.ybot
+		align-items: flex-end
+	@media screen and (min-width: 1024px)
+		flex-direction: row
+		.in50, .in50.w32, .in50.w64
+			width: calc(50% - 16px)
+		.w32
+			width: 32%
+		.w64
+			width: 60%
+	@media screen and (max-width: 1023px)
+		flex-direction: row
+		flex-wrap: wrap
+		.in50.w32
+			width: 32%
+		.in50.w64
+			width: 60%
+		.in50
+			width: 50%
 
 .rta-row.stay
-    @media screen and (max-width: 1023px)
-        flex-wrap: nowrap
-        .w32
-            width: 24%
-        .w64
-            width: 66%
+	@media screen and (max-width: 1023px)
+		flex-wrap: nowrap
+		.w32
+			width: 24%
+		.w64
+			width: 66%
 
 //spacing
 @media screen and (min-width: 1024px)
-    .rowgap50
-        row-gap: 4px
-    .colgap50
-        column-gap: $unit4
-    .colgap100
-        column-gap: $unit8
-    .rowgap100
-        row-gap: $unit8
-    .gap100
-        gap: $unit8
-    .colgap200
-        column-gap: $unit16
-    .rowgap200
-        row-gap: $unit16
-    .gap200
-        gap: $unit16
-    .colgap300
-        column-gap: $unit24
-    .rowgap300
-        row-gap: $unit24
-    .gap300
-        gap: $unit24
-    .colgap400
-        column-gap: $unit32
-    .rowgap400
-        row-gap: $unit32
-    .gap400
-        gap: $unit32
-    .colgap500
-        column-gap: $unit48
-    .rowgap500
-        row-gap: $unit48
-    .gap500
-        gao: $unit48
-    .colgap600
-        column-gap: $unit64
-    .rowgap600
-        row-gap: $unit64
-    .gap600
-        gao: $unit64
+	.rowgap50
+		row-gap: 4px
+	.colgap50
+		column-gap: $unit4
+	.colgap100
+		column-gap: $unit8
+	.rowgap100
+		row-gap: $unit8
+	.gap100
+		gap: $unit8
+	.colgap200
+		column-gap: $unit16
+	.rowgap200
+		row-gap: $unit16
+	.gap200
+		gap: $unit16
+	.colgap300
+		column-gap: $unit24
+	.rowgap300
+		row-gap: $unit24
+	.gap300
+		gap: $unit24
+	.colgap400
+		column-gap: $unit32
+	.rowgap400
+		row-gap: $unit32
+	.gap400
+		gap: $unit32
+	.colgap500
+		column-gap: $unit48
+	.rowgap500
+		row-gap: $unit48
+	.gap500
+		gao: $unit48
+	.colgap600
+		column-gap: $unit64
+	.rowgap600
+		row-gap: $unit64
+	.gap600
+		gao: $unit64
 @media screen and (max-width: 1023px) and (min-width: 768px)
-    .colgap100
-        column-gap: $unit8
-    .rowgap100
-        row-gap: $unit8
-    .colgap50
-        column-gap: $unit4
-    .gap100
-        gap: $unit8
-    .colgap200
-        column-gap: $unit16
-    .rowgap200
-        row-gap: $unit16
-    .gap200
-        gap: $unit16
-    .colgap300
-        column-gap: $unit24
-    .rowgap300
-        row-gap: $unit24
-    .gap300
-        gap: $unit24
-    .colgap400
-        column-gap: $unit24
-    .rowgap400
-        row-gap: $unit24
-    .gap400
-        gap: $unit24
-    .colgap400
-        column-gap: $unit32
-    .rowgap400
-        row-gap: $unit32
-    .gap400
-        gap: $unit32
-    .colgap500
-        column-gap: $unit32
-    .rowgap500
-        row-gap: $unit32
-    .gap500
-        gao: $unit32
-    .colgap600
-        column-gap: $unit32
-    .rowgap600
-        row-gap: $unit32
-    .gap600
-        gao: $unit48
+	.colgap100
+		column-gap: $unit8
+	.rowgap100
+		row-gap: $unit8
+	.colgap50
+		column-gap: $unit4
+	.gap100
+		gap: $unit8
+	.colgap200
+		column-gap: $unit16
+	.rowgap200
+		row-gap: $unit16
+	.gap200
+		gap: $unit16
+	.colgap300
+		column-gap: $unit24
+	.rowgap300
+		row-gap: $unit24
+	.gap300
+		gap: $unit24
+	.colgap400
+		column-gap: $unit24
+	.rowgap400
+		row-gap: $unit24
+	.gap400
+		gap: $unit24
+	.colgap400
+		column-gap: $unit32
+	.rowgap400
+		row-gap: $unit32
+	.gap400
+		gap: $unit32
+	.colgap500
+		column-gap: $unit32
+	.rowgap500
+		row-gap: $unit32
+	.gap500
+		gao: $unit32
+	.colgap600
+		column-gap: $unit32
+	.rowgap600
+		row-gap: $unit32
+	.gap600
+		gao: $unit48
 @media screen and (max-width: 767px)
-    .colgap100
-        column-gap: $unit8
-    .colgap50
-        column-gap: $unit4
-    .rowgap100
-        row-gap: $unit8
-    .gap100
-        gap: $unit8
-    .colgap200
-        column-gap: $unit16
-    .rowgap200
-        row-gap: $unit16
-    .gap200
-        gap: $unit16
-    .colgap300
-        column-gap: $unit20
-    .rowgap300
-        row-gap: $unit20
-    .gap300
-        gap: $unit20
-    .colgap400
-        column-gap: $unit24
-    .rowgap400
-        row-gap: $unit24
-    .gap400
-        gap: $unit24
-    .colgap400
-        column-gap: $unit32
-    .rowgap400
-        row-gap: $unit32
-    .gap400
-        gap: $unit32
-    .colgap500
-        column-gap: $unit32
-    .rowgap500
-        row-gap: $unit32
-    .gap500
-        gao: $unit32
-    .colgap600
-        column-gap: $unit32
-    .rowgap600
-        row-gap: $unit32
-    .gap600
-        gao: $unit32
+	.colgap100
+		column-gap: $unit8
+	.colgap50
+		column-gap: $unit4
+	.rowgap100
+		row-gap: $unit8
+	.gap100
+		gap: $unit8
+	.colgap200
+		column-gap: $unit16
+	.rowgap200
+		row-gap: $unit16
+	.gap200
+		gap: $unit16
+	.colgap300
+		column-gap: $unit20
+	.rowgap300
+		row-gap: $unit20
+	.gap300
+		gap: $unit20
+	.colgap400
+		column-gap: $unit24
+	.rowgap400
+		row-gap: $unit24
+	.gap400
+		gap: $unit24
+	.colgap400
+		column-gap: $unit32
+	.rowgap400
+		row-gap: $unit32
+	.gap400
+		gap: $unit32
+	.colgap500
+		column-gap: $unit32
+	.rowgap500
+		row-gap: $unit32
+	.gap500
+		gao: $unit32
+	.colgap600
+		column-gap: $unit32
+	.rowgap600
+		row-gap: $unit32
+	.gap600
+		gao: $unit32
 
 
 .rta-grid
-    display: grid
-    grid-auto-flow: row
-    grid-template-rows: auto
-    width: 100%
-    box-sizing: border-box
+	display: grid
+	grid-auto-flow: row
+	grid-template-rows: auto
+	width: 100%
+	box-sizing: border-box
 
 
 @media screen and (min-width: 1024px)
-    .grid8
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . . . . . ."
-    .grid6
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . . . ."
-    .grid5
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . . ."    
-    .grid4
-        grid-template-columns: 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . ."
-    .grid3
-        grid-template-columns: 1fr 1fr 1fr
-        grid-template-areas: ". . ."
-    .grid2
-        grid-template-columns: 1fr 1fr
-        grid-template-areas: ". ."
-        transition: 0.2s
-    .grid2.left0
-        grid-template-columns: 320px 1fr
-        grid-template-areas: ". ."
-    .grid2.right0
-        grid-template-columns: 1fr 24%
-        grid-template-areas: ". ."
-    .grid2.right00
-        grid-template-columns: 1fr 240px
-        grid-template-areas: ". ."
-    .grid2.left00
-        grid-template-columns: 200px 1fr
-        grid-template-areas: ". ."
-    .grid2.left
-        grid-template-columns: 32% 1fr
-        grid-template-areas: ". ."
-    .grid2.right
-        grid-template-columns: 1fr 32%
-        grid-template-areas: ". ."    
-    .grid2.left2
-        grid-template-columns: 40% 1fr
-        grid-template-areas: ". ."
-        transition: 0.2s
-    .grid2.right2
-        grid-template-columns: 1fr 40%
-        grid-template-areas: ". ."    
-        transition: 0.2s
-    .grid2.right3
-        grid-template-columns: 1fr 27%
-        grid-template-areas: ". ."    
-        transition: 0.2s
+	.grid8
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . . . . . ."
+	.grid6
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . . . ."
+	.grid5
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . . ."	
+	.grid4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ."
+	.grid3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.grid2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+		transition: 0.2s
+	.grid2.left0
+		grid-template-columns: 320px 1fr
+		grid-template-areas: ". ."
+	.grid2.right0
+		grid-template-columns: 1fr 24%
+		grid-template-areas: ". ."
+	.grid2.right00
+		grid-template-columns: 1fr 240px
+		grid-template-areas: ". ."
+	.grid2.left00
+		grid-template-columns: 200px 1fr
+		grid-template-areas: ". ."
+	.grid2.left
+		grid-template-columns: 32% 1fr
+		grid-template-areas: ". ."
+	.grid2.right
+		grid-template-columns: 1fr 32%
+		grid-template-areas: ". ."	
+	.grid2.left2
+		grid-template-columns: 40% 1fr
+		grid-template-areas: ". ."
+		transition: 0.2s
+	.grid2.right2
+		grid-template-columns: 1fr 40%
+		grid-template-areas: ". ."	
+		transition: 0.2s
+	.grid2.right3
+		grid-template-columns: 1fr 27%
+		grid-template-areas: ". ."	
+		transition: 0.2s
 
 @media screen and (max-width: 1023px) and (min-width: 787px)
-    .grid8
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . . . . . ."
-    .grid6
-        grid-template-columns: 1fr 1fr 1fr
-        grid-template-areas: ". . ." ". . ."
-    .grid4
-        grid-template-columns: 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . ."
-    .grid3
-        grid-template-columns: 1fr 1fr 1fr
-        grid-template-areas: ". . ."
-    .grid2.right00
-        grid-template-columns: 1fr 240px
-        grid-template-areas: ". ."
+	.grid8
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . . . . . ."
+	.grid6
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ." ". . ."
+	.grid4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ."
+	.grid3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.grid2.right00
+		grid-template-columns: 1fr 240px
+		grid-template-areas: ". ."
 
 @media screen and (max-width: 786px)
-    .grid8.by4
-        grid-template-columns: 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . ." ". . . ."
-    .grid6
-        grid-template-columns: 1fr
-        grid-template-areas: "." "." "." "." "." "."
-    .grid4.stay2
-        grid-template-columns: 1fr 1fr
-        grid-template-areas: ". ." ". ."
-    .grid3
-        grid-template-columns: 1fr
-        grid-template-areas: "." "." "."
-    .grid2
-        grid-template-columns: 1fr
-        grid-template-areas: "." "."
+	.grid8.by4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ." ". . . ."
+	.grid6
+		grid-template-columns: 1fr
+		grid-template-areas: "." "." "." "." "." "."
+	.grid4.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ." ". ."
+	.grid3
+		grid-template-columns: 1fr
+		grid-template-areas: "." "." "."
+	.grid2
+		grid-template-columns: 1fr
+		grid-template-areas: "." "."
 
 @media screen and (max-width: 1023px)
-    .grid5.stay2
-        grid-template-columns: 1fr 1fr
-        grid-template-areas: ". ."    
-    .grid4
-        grid-template-columns: 1fr
-        grid-template-areas: "." "." "." "."
-    .grid4.stay2
-        grid-template-columns: 1fr 1fr
-        grid-template-areas: ". ."
-    .grid4.stay3
-        grid-template-columns: 1fr 1fr 1fr
-        grid-template-areas: ". . ."
-    .grid3
-        grid-template-columns: 1fr
-        grid-template-areas: "." "." "."
-    .grid3.stay2
-        grid-template-columns: 1fr 1fr
-        grid-template-areas: "." "."
-    .grid2
-        grid-template-columns: 1fr
-        grid-template-areas: "up" "down"
-        .up
-            grid-area: up
-        .down
-            grid-area: down
-    .grid2.stay2
-        grid-template-columns: 1fr 1fr
-        grid-template-areas: ". ."
-    .grid2.become4
-        grid-template-columns: 1fr 1fr 1fr 1fr
-        grid-template-areas: ". . . ."
-    
+	.grid5.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."	
+	.grid4
+		grid-template-columns: 1fr
+		grid-template-areas: "." "." "." "."
+	.grid4.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+	.grid4.stay3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.grid3
+		grid-template-columns: 1fr
+		grid-template-areas: "." "." "."
+	.grid3.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: "." "."
+	.grid2
+		grid-template-columns: 1fr
+		grid-template-areas: "up" "down"
+		.up
+			grid-area: up
+		.down
+			grid-area: down
+	.grid2.stay2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+	.grid2.become4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ."
+	
 .dark
-    .screen
-        background: #121212
+	.screen
+		background: #121212
 
 .light
-    .screen
-        background: white
+	.screen
+		background: white
 
 .fullH
-    height: 100%
+	height: 100%
 
 .fullW
-    width: 100%
+	width: 100%
 
 .rta-image
-    img
-        object-fit: cover
-        width: 100%
-        height: 100%
+	img
+		object-fit: cover
+		width: 100%
+		height: 100%
 
 .rightbox
-    text-align: right
-    row-gap: 16px
-    height: 100%
-    border-left: 1px solid var(--borderline)
-    align-items: flex-end
-    padding-top: 32px
-    padding-left: 32px
-    padding-right: 32px
-    img
-        object-fit: contain
-        width: 50%
-        border-radius: 50%
-    p.grey
-        font-size: 16px !important
-        font-weight: 400
+	text-align: right
+	row-gap: 16px
+	height: 100%
+	border-left: 1px solid var(--borderline)
+	align-items: flex-end
+	padding-top: 32px
+	padding-left: 32px
+	padding-right: 32px
+	img
+		object-fit: contain
+		width: 50%
+		border-radius: 50%
+	p.grey
+		font-size: 16px !important
+		font-weight: 400
 
 .height-80
-    @media screen and (min-width: 1024px)
-        height: 90vh
-    @media screen and (max-width: 1023px)
-        height: 40vh
+	@media screen and (min-width: 1024px)
+		height: 90vh
+	@media screen and (max-width: 1023px)
+		height: 40vh
 
 .height-60
-    @media screen and (min-width: 1024px)
-        height: 60vh
-    @media screen and (max-width: 1023px)
-        height: 20vh
+	@media screen and (min-width: 1024px)
+		height: 60vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
 
 .height-40-40
-    @media screen and (min-width: 1024px)
-        height: 50vh
-    @media screen and (max-width: 1023px)
-        height: 40vh
-    @media screen and (max-width: 786px)
-        height: 30vh
+	@media screen and (min-width: 1024px)
+		height: 50vh
+	@media screen and (max-width: 1023px)
+		height: 40vh
+	@media screen and (max-width: 786px)
+		height: 30vh
 
 .height-40
-    @media screen and (min-width: 1024px)
-        height: 50vh
-    @media screen and (max-width: 1023px)
-        height: 20vh
+	@media screen and (min-width: 1024px)
+		height: 50vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
 
 .height-40-20
-    @media screen and (min-width: 1024px)
-        height: 20vh
-    @media screen and (max-width: 1023px)
-        height: 20vh
+	@media screen and (min-width: 1024px)
+		height: 20vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
 
 .height-30
-    @media screen and (min-width: 1024px)
-        height: 30vh
-    @media screen and (max-width: 1023px)
-        height: 8vh
+	@media screen and (min-width: 1024px)
+		height: 30vh
+	@media screen and (max-width: 1023px)
+		height: 8vh
 
 .height-30-2
-    @media screen and (min-width: 1024px) 
-        height: 30vh
-    @media screen and (max-width: 1023px)
-        height: 12vh
+	@media screen and (min-width: 1024px) 
+		height: 30vh
+	@media screen and (max-width: 1023px)
+		height: 12vh
 
 .height-30-3
-    @media screen and (min-width: 1024px)
-        height: 30vh
-    @media screen and (max-width: 1023px)
-        height: 20vh
+	@media screen and (min-width: 1024px)
+		height: 30vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
 
 .height-20
-    @media screen and (min-width: 1024px)
-        height: 20vh
-    @media screen and (max-width: 1023px)
-        height: 8vh
+	@media screen and (min-width: 1024px)
+		height: 20vh
+	@media screen and (max-width: 1023px)
+		height: 8vh
 
 .height-24
-    @media screen and (min-width: 1024px)
-        height: 24vh
-    @media screen and (max-width: 1023px)
-        height: 20vh
+	@media screen and (min-width: 1024px)
+		height: 24vh
+	@media screen and (max-width: 1023px)
+		height: 20vh
 
 .height-10
-    @media screen and (min-width: 1024px)
-        height: 10vh
-    @media screen and (max-width: 1023px)
-        height: 8vh
+	@media screen and (min-width: 1024px)
+		height: 10vh
+	@media screen and (max-width: 1023px)
+		height: 8vh
 
 .height-16
-    @media screen and (min-width: 1024px)
-        height: 16vh
-    @media screen and (max-width: 1023px)
-        height: 12vh
+	@media screen and (min-width: 1024px)
+		height: 16vh
+	@media screen and (max-width: 1023px)
+		height: 12vh
 
 .transistor-side.invisible
-    opacity: 0
+	opacity: 0
 
 .levelzero
-    .glassbutton
-        min-width: 160px
-    .padding-l1
-        width: 70%
-    .padding-l0
-        padding-left: 12vw
-        padding-right: 12vw
-    .p-right-48
-        padding-right: 48px
-    .p-left-32
-        padding-left: 32px
-    .p-left-48
-        padding-left: 48px
-    .titlebox
-        width: 280px
-    .rightbox
-        width: 240px
-    .writing
-        width: 70%
-        margin-left: 96px
-        padding: 64px 0
-    .seven
-        width: 900px
-        margin-left: 64px
-    .postgrid
-        width: 80%
-        margin-left: 64px
-        padding: 32px 0
-    .chatgrid
-        width: 700px
-        margin-left: 160px
-        padding: 32px 0 160px 0
-    .screen
-        padding: 64px
-        width: 88vw
-        .last
-            width: 60%
-    .fullscreen
-        width: 100vw
-        min-height: 100vh
-    .progress-strip
-        height: 32px
-        background: transparent
-        position: fixed
-        top: 0
-        left: 0
-        z-index: 2
-        .inside
-            background: var(--green)
-            height: 6px
-    .codeis
-        width: 640px
-    .pagepad
-        width: 55vw
-        height: 100%
-        margin-left: 4vw
-        border-radius: 8px
-        background: rgba(255,255,255,0.1)
-        box-shadow: 4px 5px 6px #010101, -2px -5px 7px #111111
-        border: 2px solid rgba(255,255,255,0.34)
+	.glassbutton
+		min-width: 160px
+	.padding-l1
+		width: 70%
+	.padding-l0
+		padding-left: 12vw
+		padding-right: 12vw
+	.p-right-48
+		padding-right: 48px
+	.p-left-32
+		padding-left: 32px
+	.p-left-48
+		padding-left: 48px
+	.titlebox
+		width: 280px
+	.rightbox
+		width: 240px
+	.writing
+		width: 70%
+		margin-left: 96px
+		padding: 64px 0
+	.seven
+		width: 900px
+		margin-left: 64px
+	.postgrid
+		width: 80%
+		margin-left: 64px
+		padding: 32px 0
+	.chatgrid
+		width: 700px
+		margin-left: 160px
+		padding: 32px 0 160px 0
+	.screen
+		padding: 64px
+		width: 88vw
+		.last
+			width: 60%
+	.fullscreen
+		width: 100vw
+		min-height: 100vh
+	.progress-strip
+		height: 32px
+		background: transparent
+		position: fixed
+		top: 0
+		left: 0
+		z-index: 2
+		.inside
+			background: var(--green)
+			height: 6px
+	.codeis
+		width: 640px
+	.pagepad
+		width: 55vw
+		height: 100%
+		margin-left: 4vw
+		border-radius: 8px
+		background: rgba(255,255,255,0.1)
+		box-shadow: 4px 5px 6px #010101, -2px -5px 7px #111111
+		border: 2px solid rgba(255,255,255,0.34)
 
 .levelone
-    .p-right-48
-        padding-right: 48px
-    .p-left-32
-        padding-left: 3vw
-    .p-left-48
-        padding-left: 4vw
-    .screen
-        padding: 48px
-        width: 88vw
-        .last
-            width: 70%   
-    .fullscreen
-        width: calc(100vw - 96px)
-        min-height: 100vh
-    .postgrid
-        width: 70%
-        margin-left: 32px
-        padding: 32px 0
-    .writing
-        width: 70%
-        margin-left: 32px
-    .titlebox
-        max-width: 280px
-    .rightbox
-        width: calc(20% - 32px)
-        max-width: 240px
-    .progress-strip
-        height: 32px
-        background: transparent
-        position: sticky
-        top: 0
-        left: 0
-        z-index: 2
-        .inside
-            background: var(--green)
-            height: 6px
-    .onetwo-bord-bot
-        border-bottom: 1px solid var(--borderline)
-        padding-bottom: 16px
-    .pagepad
-        width: 50vw
+	.p-right-48
+		padding-right: 48px
+	.p-left-32
+		padding-left: 3vw
+	.p-left-48
+		padding-left: 4vw
+	.screen
+		padding: 48px
+		width: 88vw
+		.last
+			width: 70%   
+	.fullscreen
+		width: calc(100vw - 96px)
+		min-height: 100vh
+	.postgrid
+		width: 70%
+		margin-left: 32px
+		padding: 32px 0
+	.writing
+		width: 70%
+		margin-left: 32px
+	.titlebox
+		max-width: 280px
+	.rightbox
+		width: calc(20% - 32px)
+		max-width: 240px
+	.progress-strip
+		height: 32px
+		background: transparent
+		position: sticky
+		top: 0
+		left: 0
+		z-index: 2
+		.inside
+			background: var(--green)
+			height: 6px
+	.onetwo-bord-bot
+		border-bottom: 1px solid var(--borderline)
+		padding-bottom: 16px
+	.pagepad
+		width: 50vw
 
 .leveltwo
-    .fullscreen
-        width: 100vw
-        height: 100vh
-    .screen
-        padding: 24px
-        width: 100%
-        .last
-            width: 70%
-    .postgrid
-        width: 100%
-        margin: 0
-        padding: 24px
-    .writing
-        width: 100%
-        margin: 0
-        padding: 24px
-    .titlebox, .rightbox
-        display: none
-    .progress-strip
-        height: 4px
-        background: transparent
-        position: sticky
-        top: 0px
-        left: 0
-        z-index: 1000
-        .inside
-            background: var(--green)
-            height: 4px
-    .onetwo-bord-bot
-        border-bottom: 1px solid var(--borderline)
-        padding-bottom: 16px
-    .pagepad
-        width: 84vw
-    .padding-l0
-        padding-left: 32px
-        padding-right: 32px
-    .p-left-32
-        padding-left: 4vw
+	.fullscreen
+		width: 100vw
+		height: 100vh
+	.screen
+		padding: 24px
+		width: 100%
+		.last
+			width: 70%
+	.postgrid
+		width: 100%
+		margin: 0
+		padding: 24px
+	.writing
+		width: 100%
+		margin: 0
+		padding: 24px
+	.titlebox, .rightbox
+		display: none
+	.progress-strip
+		height: 4px
+		background: transparent
+		position: sticky
+		top: 0px
+		left: 0
+		z-index: 1000
+		.inside
+			background: var(--green)
+			height: 4px
+	.onetwo-bord-bot
+		border-bottom: 1px solid var(--borderline)
+		padding-bottom: 16px
+	.pagepad
+		width: 84vw
+	.padding-l0
+		padding-left: 32px
+		padding-right: 32px
+	.p-left-32
+		padding-left: 4vw
 
 .dead-button
-    padding: 0
-    background: none
-    border: none
-    cursor: pointer
-    opacity: 0.1
-    transition: 0.08s
-    &:hover
-        opacity: 1
+	padding: 0
+	background: none
+	border: none
+	cursor: pointer
+	opacity: 0.1
+	transition: 0.08s
+	&:hover
+		opacity: 1
 
 .blank-button
-    padding: 0
-    background: none
-    border: none
-    cursor: pointer
-    &:hover
-        svg path
-            fill: #0ca64c
-
-.dark
-    .blank-button
-        color: #474747
+	padding: 0
+	background: none
+	border: none
+	cursor: pointer
 
 .bord-top
-    border-top: 1px solid var(--borderline)
+	border-top: 1px solid var(--borderline)
 
 .bord-bot
-    border-bottom: 1px solid var(--borderline)
+	border-bottom: 1px solid var(--borderline)
 
 .p-top-32
-    padding-top: 32px
+	padding-top: 32px
 
 .p-top-64
-    padding-top: 64px
+	padding-top: 64px
 
 .p-top-16
-    padding-top: 16px
+	padding-top: 16px
 
 .p-top-8
-    padding-top: 8px
+	padding-top: 8px
 
 .p-bot-8
-    padding-bot: 8px
+	padding-bot: 8px
 
 .p-bot-16
-    padding-bottom: 16px
+	padding-bottom: 16px
 
 .p-all-16
-    padding: 16px
+	padding: 16px
 
 .p-bot-32
-    padding-bottom: 32px
+	padding-bottom: 32px
 
 .p-bot-64
-    padding-bottom: 64px
+	padding-bottom: 64px
 
 .m-bot-64
-    margin-bottom: 64px
+	margin-bottom: 64px
 
 .m-bot-32
-    margin-bottom: 32px
+	margin-bottom: 32px
 
 .m-bot-16
-    margin-bottom: 16px
+	margin-bottom: 16px
 
 .m-top-16
-    margin-top: 16px
+	margin-top: 16px
 
 .m-top-32
-    margin-top: 32px
+	margin-top: 32px
 
 .whitebutton
-    border: 1px solid white
-    background: none
-    color: white
-    text-transform: capitalize
-    padding: 5px 16px
-    border-radius: 4px
-    cursor: pointer
-    transform-origin: center center
-    transition: 0.07s
-    &:hover
-        transform: scale(0.9)
+	border: 1px solid white
+	background: none
+	color: white
+	text-transform: capitalize
+	padding: 5px 16px
+	border-radius: 4px
+	cursor: pointer
+	transform-origin: center center
+	transition: 0.07s
+	&:hover
+		transform: scale(0.9)
 
 
 .point
-    cursor: pointer
+	cursor: pointer
 
 .go-green
-    transform-origin: center center
-    transition: 0.07s
-    cursor: pointer
-    &:hover
-        transform: scale(0.9)
-        svg path
-            fill: var(--green)
+	transform-origin: center center
+	transition: 0.07s
+	cursor: pointer
+	&:hover
+		transform: scale(0.9)
+		svg path
+			fill: var(--green)
 
 .mainbutton
-    color: white
-    max-width: 90px
-    background: linear-gradient(124.58deg, #216505 11.33%, #087817 29.17%, #11b75e 72.28%)
-    min-width: max-content
-    border: 1px solid transparent
-    padding: 3px 6px 2px 6px
-    border-radius: 3px
-    transform-origin: center center
-    transition: 0.08s
-    letter-spacing: -0.12px
-    cursor: pointer
-    font-size: 12px
-    text-transform: capitalize
-    font-weight: 500
-    line-height: 1.5
-    font-family: 'AuthenticSans-90', sans-serif
-    &:hover
-        border: 1px solid var(--green)
-        color: var(--green)
-        background: var(--opposite)
-        transform: scale(0.92)
+	color: white
+	max-width: 90px
+	background: linear-gradient(124.58deg, #216505 11.33%, #087817 29.17%, #11b75e 72.28%)
+	min-width: max-content
+	border: 1px solid transparent
+	padding: 3px 6px 2px 6px
+	border-radius: 3px
+	transform-origin: center center
+	transition: 0.08s
+	cursor: pointer
+	font-size: 12px
+	text-transform: capitalize
+	font-weight: 500
+	line-height: 1.5
+	font-family: 'Authentic Sans', sans-serif
+	&:hover
+		border: 1px solid var(--green)
+		color: var(--green)
+		background: var(--opposite)
+		transform: scale(0.92)
 
 .mainbutton.fl
-    display: flex
-    flex-direction: row
+	display: flex
+	flex-direction: row
 
 .mainbutton.fl.cent
-    display: flex
-    flex-direction: row
-    align-items: center
-    justify-content: center
+	display: flex
+	flex-direction: row
+	align-items: center
+	justify-content: center
 
 .mainbutton.selected
-    color: var(--green)
-    max-width: 160px
-    background: white
-    width: max-content
-    border: 2px solid var(--green)
-    padding: 2px 12px 2px 12px
-    border-radius: 5px
-    height: 32px
-    transform-origin: center center
-    transition: 0.08s
-    letter-spacing: -0.12px
-    cursor: pointer
-    font-size: 15px
-    text-transform: capitalize
-    font-weight: 500
-    line-height: 1.5
-    font-family: 'AuthenticSans-90', sans-serif
-    &:hover
-        border: 2px solid var(--green)
-        color: white
-        background: var(--green)
-        transform: scale(0.92)
+	color: var(--green)
+	max-width: 160px
+	background: white
+	width: max-content
+	border: 2px solid var(--green)
+	padding: 2px 12px 2px 12px
+	border-radius: 5px
+	height: 32px
+	transform-origin: center center
+	transition: 0.08s
+	cursor: pointer
+	font-size: 15px
+	text-transform: capitalize
+	font-weight: 500
+	line-height: 1.5
+	font-family: 'Authentic Sans', sans-serif
+	&:hover
+		border: 2px solid var(--green)
+		color: white
+		background: var(--green)
+		transform: scale(0.92)
 
 .outbutton
-    color: var(--green)
-    max-width: 160px
-    background: white
-    width: max-content
-    border: 2px solid var(--green)
-    padding: 2px 12px 2px 12px
-    border-radius: 5px
-    height: 32px
-    transform-origin: center center
-    transition: 0.08s
-    letter-spacing: -0.12px
-    cursor: pointer
-    font-size: 15px
-    text-transform: capitalize
-    font-weight: 500
-    line-height: 1.5
-    font-family: 'AuthenticSans-90', sans-serif
-    &:hover
-        border: 2px solid var(--green)
-        color: white
-        background: var(--green)
-        transform: scale(0.92)
+	color: var(--green)
+	max-width: 160px
+	background: white
+	width: max-content
+	border: 2px solid var(--green)
+	padding: 2px 12px 2px 12px
+	border-radius: 5px
+	height: 32px
+	transform-origin: center center
+	transition: 0.08s
+	cursor: pointer
+	font-size: 15px
+	text-transform: capitalize
+	font-weight: 500
+	line-height: 1.5
+	font-family: 'Authentic Sans', sans-serif
+	&:hover
+		border: 2px solid var(--green)
+		color: white
+		background: var(--green)
+		transform: scale(0.92)
 
 .outbutton.selected
-    color: white
-    max-width: 160px
-    background: var(--green)
-    width: max-content
-    border: 2px solid transparent
-    padding: 3px 12px 2px 12px
-    border-radius: 5px
-    height: 32px
-    transform-origin: center center
-    transition: 0.08s
-    letter-spacing: -0.12px
-    cursor: pointer
-    font-size: 15px
-    text-transform: capitalize
-    font-weight: 500
-    line-height: 1.5
-    font-family: 'AuthenticSans-90', sans-serif
-    &:hover
-        border: 2px solid var(--green)
-        color: var(--green)
-        background: white
-        transform: scale(0.92)
+	color: white
+	max-width: 160px
+	background: var(--green)
+	width: max-content
+	border: 2px solid transparent
+	padding: 3px 12px 2px 12px
+	border-radius: 5px
+	height: 32px
+	transform-origin: center center
+	transition: 0.08s
+	cursor: pointer
+	font-size: 15px
+	text-transform: capitalize
+	font-weight: 500
+	line-height: 1.5
+	font-family: 'Authentic Sans', sans-serif
+	&:hover
+		border: 2px solid var(--green)
+		color: var(--green)
+		background: white
+		transform: scale(0.92)
 
 .outbutton.active
-    background: var(--green)
-    color: white
+	background: var(--green)
+	color: white
 
 
 .titlebox.invisible
-    opacity: 0
+	opacity: 0
 
 
 .dark
-    .menubar
-        background: rgba(255,255,255,0.01)
-        border-bottom: 1px solid rgba(255, 255, 255, 0.01)
-        backdrop-filter: blur(5px)
-        position: relative
-        z-index: 1000
-        &::after
-            position: absolute
-            content: ''
-            bottom: 0
-            right: 0
-            height: 100%
-            width: 1px
-            background: linear-gradient(940deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 25%, rgba(17, 17, 17, 0))        
-            transition: 0.23s
+	.menubar
+		background: rgba(255,255,255,0.01)
+		border-bottom: 1px solid rgba(255, 255, 255, 0.01)
+		backdrop-filter: blur(5px)
+		position: relative
+		z-index: 1000
+		&::after
+			position: absolute
+			content: ''
+			bottom: 0
+			right: 0
+			height: 100%
+			width: 1px
+			background: linear-gradient(940deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 25%, rgba(17, 17, 17, 0))		
+			transition: 0.23s
 
 .light
-    .menubar
-        background: transparent
-        z-index: 1000
+	.menubar
+		background: transparent
+		z-index: 1000
 
 
 .menubar
-    p
-        text-transform: uppercase
-        font-weight: 400
-        color: var(--themer)
+	p
+		text-transform: uppercase
+		font-weight: 400
+		color: var(--themer)
 
 select
-    border: 1px solid var(--borderline)
-    padding: 2px
-    border-radius: 4px
+	border: 1px solid var(--borderline)
+	padding: 2px
+	border-radius: 4px
 
 
 .levelzero, .levelone
-    .rta-column.rowgap300.xstretch.fullW.null
-        img
-            object-fit: contain
-            width: 80%
-            margin-left: 32px
+	.rta-column.rowgap300.xstretch.fullW.null
+		img
+			object-fit: contain
+			width: 80%
+			margin-left: 32px
 
 .leveltwo
-    .rta-column.rowgap300.xstretch.fullW.null
-        img
-            object-fit: cover
-            height: 160px
+	.rta-column.rowgap300.xstretch.fullW.null
+		img
+			object-fit: cover
+			height: 160px
 
 
 .special
-    position: relative
-    cursor: pointer
-    &::after
-        position: absolute
-        content: ''
-        bottom: 0
-        left: 0
-        width: 0%
-        height: 2px
-        background: var(--green)
-        margin-left: 50%
-        transition: 0.18s
-    &:hover
-        &::after
-            width: 100%
-            margin-left: 0
+	position: relative
+	cursor: pointer
+	&::after
+		position: absolute
+		content: ''
+		bottom: 0
+		left: 0
+		width: 0%
+		height: 2px
+		background: var(--green)
+		margin-left: 50%
+		transition: 0.18s
+	&:hover
+		&::after
+			width: 100%
+			margin-left: 0
 
 .invisible
-    opacity: 0
+	opacity: 0
 
 .classic-input
-    border: 1px solid var(--textone)
-    border-radius: 8px
-    justify-content: space-between
-    padding: 2px 8px
-    width: 80%
-    input
-        border: none
-        width: calc(100% - 48px)
-        padding: 0
+	border: 1px solid var(--textone)
+	border-radius: 8px
+	justify-content: space-between
+	padding: 2px 8px
+	width: 80%
+	input
+		border: none
+		width: calc(100% - 48px)
+		padding: 0
 
 .appshell
-    display: grid
-    grid-auto-flow: row
+	display: grid
+	grid-auto-flow: row
 
 
 .project-shell
-    .menubar
-        position: sticky
-        top: 0
+	.menubar
+		position: sticky
+		top: 0
 
 .project-shell.levelzero
-    display: flex
-    flex-direction: column
-    .menubar
-        flex-direction: row
-        justify-content: space-between
-        padding: 0 32px
-        height: 56px
-        margin-bottom: -56px
-        .logobox
-            width: 280px
-        .buttonsrow
-            column-gap: 24px
-            width: 50vw
-            justify-content: flex-end
-    .pagearea
-        grid-area: pagearea
-        .appshell
-            grid-template-columns: 280px 1fr
-            grid-template-areas: "side main"
-            .shellmain
-                grid-area: main
-                padding: 64px
-                overflow-x: hidden
-                .thisispost
-                    max-width: 54vw
-                .thisispost.thisisback
-                    max-width: 50vw
-                    margin-left: -8vw
-                .cutthis
-                    max-width: 56vw
-            .shellside
-                grid-area: side
-                width: 280px
-                padding: 24px 32px 24px 0
-                text-align: left
-                position: sticky
-                top: 32px
-                left: 0
-                background: rgba(255,255,255,0.0)
-                border: 1px solid rgba(255, 255, 255, 0.0)
-                border-radius: 5px
-                &::after
-                    position: absolute
-                    top: 0
-                    right: 0
-                    content: ''
-                    width: 2px
-                    height: 100%
-                    background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+	display: flex
+	flex-direction: column
+	.menubar
+		flex-direction: row
+		justify-content: space-between
+		padding: 0 32px
+		height: 56px
+		margin-bottom: -56px
+		.logobox
+			width: 280px
+		.buttonsrow
+			column-gap: 24px
+			width: 50vw
+			justify-content: flex-end
+	.pagearea
+		grid-area: pagearea
+		.appshell
+			grid-template-columns: 280px 1fr
+			grid-template-areas: "side main"
+			.shellmain
+				grid-area: main
+				padding: 64px
+				overflow-x: hidden
+				.thisispost
+					max-width: 54vw
+				.thisispost.thisisback
+					max-width: 50vw
+					margin-left: -8vw
+				.cutthis
+					max-width: 56vw
+			.shellside
+				grid-area: side
+				width: 280px
+				padding: 24px 32px 24px 0
+				text-align: left
+				position: sticky
+				top: 32px
+				left: 0
+				background: rgba(255,255,255,0.0)
+				border: 1px solid rgba(255, 255, 255, 0.0)
+				border-radius: 5px
+				&::after
+					position: absolute
+					top: 0
+					right: 0
+					content: ''
+					width: 2px
+					height: 100%
+					background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 .project-shell.levelone
-    grid-template-columns: 96px 1fr
-    grid-template-areas: "menubar pagearea"
-    .menubar
-        flex-direction: row
-        justify-content: space-between
-        padding: 0 24px
-        .buttonsrow
-            column-gap: 16px
-    .pagearea
-        grid-area: pagearea
-        .appshell
-            grid-template-columns: 240px 1fr
-            grid-template-areas: "side main"
-            .shellmain
-                grid-area: main
-                padding: 64px
-                .thisispost
-                    width: 46vw
-                .cutthis
-                    width: 40vw
-            .shellside
-                grid-area: side
-                width: 240px
-                padding: 24px
-                text-align: left
-                min-height: 100vh
-                position: sticky
-                top: 32px
-                left: 0
-                background: rgba(255,255,255,0.0)
-                border: 1px solid rgba(255, 255, 255, 0.0)
-                border-radius: 5px
-                &::after
-                    position: absolute
-                    top: 0
-                    right: 0
-                    content: ''
-                    width: 100%
-                    height: 2px
-                    background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+	grid-template-columns: 96px 1fr
+	grid-template-areas: "menubar pagearea"
+	.menubar
+		flex-direction: row
+		justify-content: space-between
+		padding: 0 24px
+		.buttonsrow
+			column-gap: 16px
+	.pagearea
+		grid-area: pagearea
+		.appshell
+			grid-template-columns: 240px 1fr
+			grid-template-areas: "side main"
+			.shellmain
+				grid-area: main
+				padding: 64px
+				.thisispost
+					width: 46vw
+				.cutthis
+					width: 40vw
+			.shellside
+				grid-area: side
+				width: 240px
+				padding: 24px
+				text-align: left
+				min-height: 100vh
+				position: sticky
+				top: 32px
+				left: 0
+				background: rgba(255,255,255,0.0)
+				border: 1px solid rgba(255, 255, 255, 0.0)
+				border-radius: 5px
+				&::after
+					position: absolute
+					top: 0
+					right: 0
+					content: ''
+					width: 100%
+					height: 2px
+					background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 .project-shell.leveltwo
-    grid-template-columns: 1fr
-    grid-template-areas: "menubar" "pagearea"
-    .menubar
-        flex-direction: row
-        padding: 0 16px
-        margin-bottom: -56px
-        .buttonsrow
-            column-gap: 16px
-            .barlinks
-                position: fixed
-                display: flex
-                flex-direction: column
-                top: 48px
-                left: 0
-                height: calc(100vh - 48px)
-                width: 100vw
-                background: rgba(0,0,0,0.7)
-                padding: 32px
-                p
-                    color: white
-                    font-size: 24px
-    .pagearea
-        grid-area: pagearea
-        .appshell
-            grid-template-columns: 1fr
-            grid-template-areas: "side" "main"
-            grid-template-rows: auto auto
-            .shellmain
-                grid-area: main
-                padding: 32px
-                .cutthis
-                    width: 84vw
-            .shellside
-                grid-area: side
-                width: 100%
-                padding: 32px
-                text-align: left
+	grid-template-columns: 1fr
+	grid-template-areas: "menubar" "pagearea"
+	.menubar
+		flex-direction: row
+		padding: 0 16px
+		margin-bottom: -56px
+		.buttonsrow
+			column-gap: 16px
+			.barlinks
+				position: fixed
+				display: flex
+				flex-direction: column
+				top: 48px
+				left: 0
+				height: calc(100vh - 48px)
+				width: 100vw
+				background: rgba(0,0,0,0.7)
+				padding: 32px
+				p
+					color: white
+					font-size: 24px
+	.pagearea
+		grid-area: pagearea
+		.appshell
+			grid-template-columns: 1fr
+			grid-template-areas: "side" "main"
+			grid-template-rows: auto auto
+			.shellmain
+				grid-area: main
+				padding: 32px
+				.cutthis
+					width: 84vw
+			.shellside
+				grid-area: side
+				width: 100%
+				padding: 32px
+				text-align: left
+
 
 .glass-nosize
-    background: rgba(255,255,255,0.0)
-    border: 1px solid rgba(255, 255, 255, 0.0)
-    border-radius: 5px
-    padding: 24px
-    position: relative
-    z-index: 0
-    &::after
-        position: absolute
-        bottom: 0
-        right: 0   
-        content: ''
-        width: 2px
-        height: 100%
-        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+	background: rgba(255,255,255,0.0)
+	border: 1px solid rgba(255, 255, 255, 0.0)
+	border-radius: 5px
+	padding: 24px
+	position: relative
+	z-index: 0
+	&::after
+		position: absolute
+		bottom: 0
+		right: 0   
+		content: ''
+		width: 2px
+		height: 100%
+		background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 
 .levelzero
-    .p1
-        padding: 32px 24px 0 24px
-    .p0
-        padding: 16px
+	.p1
+		padding: 32px 24px 0 24px
+	.p0
+		padding: 16px
 
 .leveltwo
-    .p0
-        padding: 16px
+	.p0
+		padding: 16px
 
 .glass-top
-    background: rgba(255, 255, 255, 0.0)
-    border-radius: 5px
-    position: relative
-    overflow: hidden
-    z-index: 0
-    &::after
-        position: absolute
-        top: 0
-        left: 0
-        content: ''
-        width: 0
-        height: 1px
-        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 0) 50%, rgba(17, 17, 17, 0))
+	background: rgba(255, 255, 255, 0.0)
+	border-radius: 5px
+	position: relative
+	overflow: hidden
+	z-index: 0
+	&::after
+		position: absolute
+		top: 0
+		left: 0
+		content: ''
+		width: 0
+		height: 1px
+		background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 0) 50%, rgba(17, 17, 17, 0))
 
 .glass-top.gleamer
-    &::after
-        animation: ofbacky 2s ease forwards
+	&::after
+		animation: ofbacky 2s ease forwards
 
 @keyframes ofbacky
-    0%
-        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 0) 50%, rgba(17, 17, 17, 0))
-        width: 0
-        margin-left: 50%
-    100%
-        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 1) 50%, rgba(17, 17, 17, 0))
-        width: 100%
-        margin-left: 0
+	0%
+		background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 0) 50%, rgba(17, 17, 17, 0))
+		width: 0
+		margin-left: 50%
+	100%
+		background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 1) 50%, rgba(17, 17, 17, 0))
+		width: 100%
+		margin-left: 0
 
 .glass-bottom
-    background: rgba(255, 255, 255, 0.0)
-    border: 1px solid rgba(255, 255, 255, 0)
-    border-radius: 5px
-    position: relative
-    z-index: 0
-    &::after
-        position: absolute
-        bottom: -2px
-        left: 0
-        content: ''
-        width: 100%
-        height: 2px
-        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+	background: rgba(255, 255, 255, 0.0)
+	border: 1px solid rgba(255, 255, 255, 0)
+	border-radius: 5px
+	position: relative
+	z-index: 0
+	&::after
+		position: absolute
+		bottom: -2px
+		left: 0
+		content: ''
+		width: 100%
+		height: 2px
+		background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 .dark
-    .glass-left
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0) 50%, rgba(0, 0, 0, 0))
-        border: 1px solid rgba(255, 255, 255, 0)
-        border-radius: 5px
-        position: relative
-        z-index: 0
-        &::after
-            position: absolute
-            top: 0
-            left: 0
-            content: ''
-            width: 2px
-            height: 100%
-            background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
-    .glass-top
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01) 50%, rgba(0, 0, 0, 0.01))
-        border: 1px solid rgba(255, 255, 255, 0.09)
-        border-radius: 5px
-        padding-bottom: 16px
-        padding-left: 8px
-        padding-right: 8px
-        position: relative
-        z-index: 0
-        &::after
-            position: absolute
-            top: 0
-            left: 0
-            content: ''
-            width: 100%
-            height: 1px
-            background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 1) 50%, rgba(17, 17, 17, 0))
+	.glass-left
+		background: linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0) 50%, rgba(0, 0, 0, 0))
+		border: 1px solid rgba(255, 255, 255, 0)
+		border-radius: 5px
+		position: relative
+		z-index: 0
+		&::after
+			position: absolute
+			top: 0
+			left: 0
+			content: ''
+			width: 2px
+			height: 100%
+			background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+	.glass-top
+		background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01) 50%, rgba(0, 0, 0, 0.01))
+		border: 1px solid rgba(255, 255, 255, 0.09)
+		border-radius: 5px
+		padding-bottom: 16px
+		padding-left: 8px
+		padding-right: 8px
+		position: relative
+		z-index: 0
+		&::after
+			position: absolute
+			top: 0
+			left: 0
+			content: ''
+			width: 100%
+			height: 1px
+			background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(255, 255, 255, 1) 50%, rgba(17, 17, 17, 0))
 
 .light
-    .glass-left
-        background: rgba(255, 255, 255, 0.0)
-        border: 1px solid rgba(255, 255, 255, 0.05)
-        border-radius: 5px
-        position: relative
-        z-index: 0
-        &::after
-            position: absolute
-            top: 0
-            left: 0
-            content: ''
-            width: 2px
-            height: 100%
-            background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+	.glass-left
+		background: rgba(255, 255, 255, 0.0)
+		border: 1px solid rgba(255, 255, 255, 0.05)
+		border-radius: 5px
+		position: relative
+		z-index: 0
+		&::after
+			position: absolute
+			top: 0
+			left: 0
+			content: ''
+			width: 2px
+			height: 100%
+			background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 .glass
-    background: rgba(255,255,255,0.04)
-    border: 1px solid rgba(255, 255, 255, 0.6)
-    border-radius: 5px
-    z-index: 0
+	background: rgba(255,255,255,0.04)
+	border: 1px solid rgba(255, 255, 255, 0.6)
+	border-radius: 5px
+	z-index: 0
 
 button.glass
-    position: relative
-    &::after
-        position: absolute
-        bottom: -2px
-        left: 0
-        content: ''
-        width: 100%
-        height: 2px
-        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+	position: relative
+	&::after
+		position: absolute
+		bottom: -2px
+		left: 0
+		content: ''
+		width: 100%
+		height: 2px
+		background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
 
 
 .ofform
-    background: rgba(255,255,255,0.1)
-    border: 1px solid rgba(255,255,255,0.2)
-    border-radius: 6px
-    padding: 24px
-    textarea
-        font-family: 'AuthenticSans-90', sans-serif
-        color: #474747
-        width: calc(100% - 80px)
-        background: white
-        min-height: 100%
-        border-radius: 4px
-        border: none
+	background: rgba(255,255,255,0.1)
+	border: 1px solid rgba(255,255,255,0.2)
+	border-radius: 6px
+	padding: 24px
+	textarea
+		font-family: 'Authentic Sans', sans-serif
+		color: #474747
+		width: calc(100% - 80px)
+		background: white
+		min-height: 100%
+		border-radius: 4px
+		border: none
 
 
 .levelzero
-    .shellmain
-        width: 720px
-        align-self: center
-        h1
-            text-align: center
+	.shellmain
+		width: 680px
+		align-self: center
+		h1
+			text-align: center
 
 .leveltwo
-    .shellmain
-        padding: 32px
+	.shellmain
+		padding: 32px
 
 
 .insider
-    height: 100%
-    width: 100%
-    background: rgba(0,0,0,0.64)
-    color: white
-    transition: 0.2s
-    p, h4, small
-        color: white
-    &:hover
-        background: rgba(0,0,0,0)
-        p, h4, small
-            opacity: 0
+	height: 100%
+	width: 100%
+	background: rgba(0,0,0,0.64)
+	color: white
+	transition: 0.4s
+	p, h4, small
+		color: white
+	&:hover
+		background: rgba(0,0,0,0)
+		p, h4, small
+			opacity: 0
 
 
 .ProseMirror
-    overflow-y: scroll
+	overflow-y: scroll
 
 
 .codeparent
-    background: #272727
-    border-radius: 5px
-    padding: 16px
-    .this
-        background: #171717
-        border: 1px solid #0ca64c
+	background: #272727
+	border-radius: 5px
+	padding: 16px
+	.this
+		background: #171717
+		border: 1px solid #0ca64c
 
 .codeinput
-    .ProseMirror
-        min-height: 500px
-        border: 1px solid rgba(255, 255, 255, 0.18)
-        border-radius: 6px
-        padding: 16px
+	.ProseMirror
+		min-height: 500px
+		border: 1px solid rgba(255, 255, 255, 0.18)
+		border-radius: 6px
+		padding: 16px
 
 .bigpad
-    padding-left: 16px
-    min-height: 50vh
+	padding-left: 16px
+	min-height: 50vh
 
 .edits2
-    border: 1px solid red
-    color: white
+	border: 1px solid red
+	color: white
 
 .switch 
-    font-size: 12px 
-    position: relative 
-    display: inline-block 
-    width: 44px 
-    height: 24px
-    border-radius: 12px
-    input 
-        opacity: 0 
-        width: 0 
-        height: 0
-        border-radius: 12px 
-        &:checked 
-            & + .slider 
-                box-shadow: 0 0 20px rgba(48, 208, 104, 0.8) 
-                border: 2px solid #11a64f 
-                &:before 
-                    transform: translateX(1.5em) 
+	font-size: 12px 
+	position: relative 
+	display: inline-block 
+	width: 44px 
+	height: 24px
+	border-radius: 12px
+	input 
+		opacity: 0 
+		width: 0 
+		height: 0
+		border-radius: 12px 
+		&:checked 
+			& + .slider 
+				box-shadow: 0 0 20px rgba(48, 208, 104, 0.8) 
+				border: 2px solid #11a64f 
+				&:before 
+					transform: translateX(1.5em) 
 
 .slider 
-    position: absolute 
-    cursor: pointer 
-    inset: 0 
-    border: 2px solid #414141 
-    border-radius: 50px 
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 
-    &:before 
-        position: absolute 
-        content: '' 
-        height: 1.4em 
-        width: 1.4em 
-        left: 0.2em 
-        bottom: 0.2em 
-        background-color: var(--background)
-        border-radius: inherit 
-        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 
+	position: absolute 
+	cursor: pointer 
+	inset: 0 
+	border: 2px solid #414141 
+	border-radius: 50px 
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 
+	&:before 
+		position: absolute 
+		content: '' 
+		height: 1.4em 
+		width: 1.4em 
+		left: 0.2em 
+		bottom: 0.2em 
+		background-color: var(--background)
+		border-radius: inherit 
+		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 
 
 
 .glowbutton
-    padding: 4px 12px 2px 12px 
-    text-transform: uppercase 
-    border-radius: 8px 
-    font-size: 12px 
-    font-weight: 500 
-    color: #ffffff80 
-    text-shadow: none 
-    background: transparent 
-    box-shadow: transparent 
-    border: 1px solid #ffffff80 
-    transition: 0.5s ease 
-    user-select: none 
-    max-width: 120px
-    &:hover, &:focus 
-        color: #ffffff 
-        background: var(--greenc)
-        border: 1px solid var(--green)
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
-        box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
+	padding: 4px 12px 2px 12px 
+	text-transform: uppercase 
+	border-radius: 8px 
+	font-size: 12px 
+	font-weight: 500 
+	color: #ffffff80 
+	text-shadow: none 
+	background: transparent 
+	box-shadow: transparent 
+	border: 1px solid #ffffff80 
+	transition: 0.5s ease 
+	user-select: none 
+	max-width: 120px
+	&:hover, &:focus 
+		color: #ffffff 
+		background: var(--greenc)
+		border: 1px solid var(--green)
+		text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
+		box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
 
-.glowbuttons
-    padding: 8px 12px 6px 12px 
-    text-transform: uppercase 
-    border-radius: 4px 
-    font-size: 12px 
-    font-weight: 500 
-    color: #ffffff
-    text-shadow: none 
-    background: var(--greenc)
-    box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
-    border: 1px solid rgba(255, 255, 255, 0.5)
-    transition: 0.05s ease 
-    user-select: none 
-    width: max-content
-    max-width: 160px
-    cursor: pointer
-    transform-origin: center center
-    transition: 0.12s
-    &:hover, &:focus 
-        color: #ffffff 
-        background: var(--greenc)
-        border: 1px solid white
-        text-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff
-    &:active
-        transform: scale(0.88)
+.light
+	.glowbuttons
+		padding: 8px 12px 6px 12px 
+		text-transform: uppercase 
+		border-radius: 4px 
+		font-size: 12px 
+		font-weight: 500 
+		color: #ffffff
+		text-shadow: none 
+		background: var(--greenc)
+		box-shadow: 0 0 2px var(--green), 0 0 1px var(--green), 0 0 2px var(--green), 0 0 0px var(--green)
+		border: 1px solid rgba(255, 255, 255, 0.5)
+		transition: 0.05s ease 
+		user-select: none 
+		width: max-content
+		max-width: 160px
+		cursor: pointer
+		transform-origin: center center
+		transition: 0.12s
+		&:hover, &:focus 
+			color: #ffffff 
+			background: var(--greenc)
+			border: 1px solid white
+			text-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff
+		&:active
+			transform: scale(0.88)
+
+.dark
+	.glowbuttons
+		padding: 8px 12px 6px 12px 
+		text-transform: uppercase 
+		border-radius: 4px 
+		font-size: 12px 
+		font-weight: 500 
+		color: #ffffff
+		text-shadow: none 
+		background: var(--greenc)
+		box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
+		border: 1px solid rgba(255, 255, 255, 0.5)
+		transition: 0.05s ease 
+		user-select: none 
+		width: max-content
+		max-width: 160px
+		cursor: pointer
+		transform-origin: center center
+		transition: 0.12s
+		&:hover, &:focus 
+			color: #ffffff 
+			background: var(--greenc)
+			border: 1px solid white
+			text-shadow: 0 0 1px #ffffff, 0 0 1px #ffffff
+		&:active
+			transform: scale(0.88)
 
 .glowbox
-    text-transform: uppercase 
-    border-radius: 4px 
-    font-size: 12px 
-    font-weight: 500 
-    color: #ffffff
-    text-shadow: none 
-    background: var(--greenc)
-    box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
-    border: 1px solid rgba(255, 255, 255, 0.5)
-    transition: 0.05s ease 
-    user-select: none 
-    width: 32px
-    height: 32px
-    display: flex
-    align-items: center
-    justify-content: center
-    max-width: 160px
-    &:hover, &:focus 
-        color: #ffffff 
-        background: var(--greenc)
-        border: 1px solid white
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
+	text-transform: uppercase 
+	border-radius: 4px 
+	font-size: 12px 
+	font-weight: 500 
+	color: #ffffff
+	text-shadow: none 
+	background: var(--greenc)
+	box-shadow: 0 0 5px var(--green), 0 0 10px var(--green), 0 0 5px var(--green), 0 0 100px var(--green)
+	border: 1px solid rgba(255, 255, 255, 0.5)
+	transition: 0.05s ease 
+	user-select: none 
+	width: 32px
+	height: 32px
+	display: flex
+	align-items: center
+	justify-content: center
+	max-width: 160px
+	&:hover, &:focus 
+		color: #ffffff 
+		background: var(--greenc)
+		border: 1px solid white
+		text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff 
 
 .glowred
-    padding: 8px 12px 6px 12px 
-    text-transform: uppercase 
-    border-radius: 4px 
-    font-size: 12px 
-    font-weight: 500 
-    color: #ffffff
-    text-shadow: none 
-    background: #fe4a49
-    box-shadow: 0 0 5px #fe4a49, 0 0 10px #fe4a49, 0 0 5px #fe4a49, 0 0 100px #fe4a49
-    border: 1px solid rgba(255, 255, 255, 0.5)
-    transition: 0.05s ease 
-    user-select: none 
-    width: max-content
-    max-width: 160px
-    &:hover, &:focus 
-        color: #ffffff 
-        background: #fe4a49
-        border: 1px solid white
+	padding: 8px 12px 6px 12px 
+	text-transform: uppercase 
+	border-radius: 4px 
+	font-size: 12px 
+	font-weight: 500 
+	color: #ffffff
+	text-shadow: none 
+	background: #fe4a49
+	box-shadow: 0 0 5px #fe4a49, 0 0 10px #fe4a49, 0 0 5px #fe4a49, 0 0 100px #fe4a49
+	border: 1px solid rgba(255, 255, 255, 0.5)
+	transition: 0.05s ease 
+	user-select: none 
+	width: max-content
+	max-width: 160px
+	&:hover, &:focus 
+		color: #ffffff 
+		background: #fe4a49
+		border: 1px solid white
 
 .actualeditor
-    .ProseMirror
-        min-height: 64vh
+	.ProseMirror
+		min-height: 64vh
 
 .outlineglow
-    background-image: linear-gradient(163deg, rgba(20, 189, 87, 1) 0%, rgba(63, 227, 99, 1) 100%) 
-    background: none
-    border: none
-    width: 56px
-    height: 56px
-    transition: all .3s 
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    &:hover 
-        box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30)
-        background-image: linear-gradient(163deg, rgba(20, 189, 87, 1) 0%, rgba(63, 227, 99, 1) 100%) 
+	background-image: linear-gradient(163deg, rgba(20, 189, 87, 1) 0%, rgba(63, 227, 99, 1) 100%) 
+	background: none
+	border: none
+	width: 56px
+	height: 56px
+	transition: all .3s 
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	&:hover 
+		box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30)
+		background-image: linear-gradient(163deg, rgba(20, 189, 87, 1) 0%, rgba(63, 227, 99, 1) 100%) 
 
 .insideglow
-    background-color: #1a1a1a
-    background: none
-    flex-direction: column 
-    border: none
-    display: flex
-    width: 56px
-    height: 56px
-    transition: all .2s
-    border-radius: 5px
-    align-items: center
-    justify-content: center
-    &:hover 
-        transform: scale(0.98) 
-        border-radius: 4px 
+	background-color: #1a1a1a
+	background: none
+	flex-direction: column 
+	border: none
+	display: flex
+	width: 56px
+	height: 56px
+	transition: all .2s
+	border-radius: 5px
+	align-items: center
+	justify-content: center
+	&:hover 
+		transform: scale(0.98) 
+		border-radius: 4px 
+
+#homeguy
+	.back
+		background-size: cover
+
+.fullfixing
+	position: fixed
+	z-index: 1300
+	top: 16
+	right: 50%
+	display: flex
+	justify-content: center
+	align-items: center
+
+.rta-sitebox
+	min-height: 100vh
+	box-sizing: border-box
+	.appmenu
+		z-index: 1000
+
+
+.rta-sitebox.levelzero
+	display: grid
+	grid-auto-flow: row
+	grid-template-columns: 48px 1fr
+	grid-template-areas: "side page"
+	transition: 0.35s
+	.moving-page
+		grid-area: page
+		display: grid
+		grid-template-areas: "mainauth" "pagepage"
+		grid-template-rows: 48px auto
+		grid-template-columns: 1fr
+		.authheader
+			grid-area: mainauth
+			height: 48px
+			padding-right: 32px
+			padding-left: 32px
+			transition: 0.35s
+		.pagearea
+			grid-area: pagepage
+			display: grid
+			grid-auto-flow: row
+			grid-template-rows: auto
+			grid-template-areas: "inpage rightbar"
+			grid-template-columns: 1fr 312px
+			.inpage-page
+				grid-area: inpage
+				.actualsection
+					.inctualsection
+						transition: margin 0.35s ease
+						margin-left: 264px
+						padding: 32px
+						.docarea, .rightstrip, .titleinputter
+							width: 80%
+							margin-left: 10%
+						.docarea
+							padding-top: 32px
+					.inctualsection.articles
+							.poster
+								width: 680px
+								margin-left: 40px
+			.the-rightbar
+				grid-area: rightbar
+				height: calc(100vh - 48px)
+				border-left: 1px solid var(--contraster)
+				position: sticky
+				top: 48px
+				right: 0
+	.moving-side
+		grid-area: side
+		display: grid
+		grid-auto-flow: row
+		grid-template-columns: 1fr
+		grid-template-areas: "app"
+		.appmenu
+			grid-area: app
+			width: 48px
+			display: flex
+			flex-direction: column
+			height: 100vh
+			position: sticky
+			top: 0
+			left: 0
+			padding-top: 64px
+			row-gap: 24px
+			transition: 0.2s
+			&::after
+				position: absolute
+				top: 0
+				right: 0
+				width: 1px
+				height: 100%
+				content: ''
+		.openmenu
+			width: 264px
+			transition: 0.35s
+			padding-left: 24px
+			padding-right: 24px
+			padding-top: 64px
+			height: 100vh
+			overflow-y: scroll
+			position: sticky
+			top: 0
+			left: 48px
+			border-right: 1px solid var(--contraster)
+		.openmenu::-webkit-scrollbar
+			width: 1px
+		.openmenu::-webkit-scrollbar-thumb
+			background: #10D56C
+			border-bottom: 500px solid transparent
+
+.rta-sitebox.levelzero.calib
+	grid-template-columns: 312px 1fr
+	.moving-side
+		grid-template-columns: 48px 264px
+		grid-template-areas: "app open"
+		.appmenu
+			grid-area: app
+		.openmenu
+			grid-area: open
+	.moving-page
+		.pagearea
+			.inpage-page
+				padding-left: 0px
+				.actualsection
+					.inctualsection
+						margin-left: 0px
+
+.rta-sitebox.leveltwo, .rta-sitebox.levelone
+	grid-template-columns: 1fr
+	grid-template-rows: 56px auto
+	grid-template-areas: "side" "page"
+	.moving-side
+		height: 56px
+		position: relative
+		.appmenu
+			flex-direction: row
+			display: flex
+			column-gap: 16px
+			align-items: center
+			padding-left: 16px
+			padding-right: 16px
+			width: 100%
+			height: 56px
+		.openmenu
+			position: absolute
+			top: 56px
+			left: 0
+			width: 100vw
+			background: #202020
+			padding: 16px 16px 32px 16px
+			border-right: none
+	.moving-page
+		grid-template-columns: 1fr
+		grid-template-rows: auto
+		grid-template-areas: "pagepage"
+		.authheader
+			display: none
+		.pagearea
+			grid-template-areas: "inpage"
+			grid-template-columns: 1fr
+			grid-template-rows: auto
+			.inpage-page
+				grid-area: inpage
+				.actualsection
+					.inctualsection.articles
+						padding: 24px
+			.the-rightbar
+				display: none
+
+.rta-sitebox.lightmode
+	.appmenu
+		background: #202020
+	.openmenu
+		border-right: 1px solid #e7e7e7
+	.pagearea
+		.inctualsection
+			.rightstrip
+				background: white
+	.login-box
+		input[type=password], input[type=email]
+			border: 1px solid #e7e7e7
+			font-family: 'AuthenticSans-90', sans-serif
+			padding: 4px 8px
+			font-size: 12px
+			border-radius: 4px
+		button
+			border: 1px solid #14BB4D
+			background: #14BB4D
+			padding: 4px 16px
+			border-radius: 4px
+			font-size: 12px
+			max-width: 160px
+			width: max-content
+			cursor: pointer
+			transform-origin: center center
+			transition: 0.05s
+			color: white
+			font-family: 'AuthenticSans-90', sans-serif
+			&:hover
+				transform: scale(0.96)
+			&:active
+				background: #09A23D
+
+.rta-sitebox.darkmode
+	background-color: #171717
+	background-image: radial-gradient(at 91% 89%, hsla(128,54%,13%,0.01) 0px, transparent 50%), radial-gradient(at 95% 91%, hsla(115,91%,4%,1) 0px, transparent 50%)
+	.appmenu
+		background: rgba(255,255,255,0)
+		&::after
+			background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 47%, rgba(255,255,255,0) 100%)
+	.openmenu
+		background: #121212
+		border-right: 1px solid #272727
+	.inctualsection
+		.rightstrip
+			background: #121212
+
+
+.levelzero
+	.inputformer
+		h6
+			padding-bottom: 12px
+		.rta-row
+			#titleform
+				width: 320px
+			#tagsform
+				width: 240px	
+		select.allselect
+			width: 120px
+		#textareamain
+			width: 440px
+			min-height: 134px
+
+
+.inputformer
+	input[type=text]
+		border: 1px solid var(--onlyblack)
+		border-radius: 4px
+		padding: 4px 8px
+		color: var(--greyish)
+		font-size: 14px
+	select
+		border: 1px solid var(--onlyblack)
+		border-radius: 4px
+		padding: 4px
+		color: #878787
+		font-size: 12px
+		&:focus
+			color: #878787
+		option
+			color: var(--greyish) !important
+			&:first-child
+				color: #878787
+		option[selected=true]
+			color: #878787
+	textarea
+		border: 1px solid var(--onlyblack)
+		color: var(--textone)
+		padding: 8px
+		border-radius: 4px
+	textarea.code-textarea
+		font-family: 'Space Mono', monospace
+		font-size: 12px
+		color: #878787
+	button
+		border: 1px solid #14BB4D
+		background: #14BB4D
+		padding: 4px 16px
+		border-radius: 4px
+		font-size: 12px
+		max-width: 160px
+		width: max-content
+		cursor: pointer
+		transform-origin: center center
+		transition: 0.05s
+		color: white
+		font-family: 'AuthenticSans-90', sans-serif
+		&:hover
+			transform: scale(0.96)
+		&:active
+			background: #09A23D
+
+.genbutton
+	border: 1px solid #14BB4D
+	background: #14BB4D
+	padding: 4px 16px
+	border-radius: 4px
+	font-size: 12px
+	max-width: 160px
+	width: max-content
+	cursor: pointer
+	transform-origin: center center
+	transition: 0.05s
+	color: white
+	font-family: 'AuthenticSans-90', sans-serif
+	&:hover
+		transform: scale(0.96)
+	&:active
+		background: #09A23D

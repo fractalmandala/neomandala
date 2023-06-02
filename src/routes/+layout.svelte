@@ -4,6 +4,9 @@
 	import type { LayoutData } from './$types';
 	import Footer from '$lib/components/Footer.svelte';
 	import MenuDrop from '$lib/components/MenuDrop.svelte';
+	import FMFM from '$lib/assets/FMLogo.svelte'
+	import { mouseStore } from '$lib/stores/mousestore'
+import { spring } from 'svelte/motion';
 	import {
 		breakZero,
 		breakOne,
@@ -13,7 +16,6 @@
 		scrollY
 	} from '$lib/stores/globalstores';
 	import '$lib/styles/theme.sass';
-	import '$lib/styles/typography.sass';
 	import '$lib/styles/fonts.sass';
 	import TransitionPage from '$lib/components/TransitionPage.svelte';
 	import Modal from '$lib/components/Modal.svelte';
@@ -36,6 +38,13 @@
 	let fake = false;
 	let hideHeader = false;
 	let okayCol = false;
+const position = mouseStore();
+
+	let coords = spring({ x: 50, y: 50 }, {
+		stiffness: 0.1,
+		damping: 0.25
+	});
+
 
 	$: ({ supabase, session } = data);
 
@@ -124,41 +133,19 @@
 </svelte:head>
 
 <div
-	class="project-shell minH"
+	class="minH"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	{#if !hideHeader}
-		<section class="menubar rta-row stay between ycenter colgap200" class:okaycolor={okayCol}>
-			<a href="/" class="rta-row gradienter ycenter logobox"> FRACTALMAṆḌALA </a>
 
-			<div class="rta-row buttonsrow ycenter null">
-				<div on:click={toggleDrawer} on:keydown={fauxfake}>
-					<Search />
-				</div>
-				<Dark />
-				{#if $breakTwo}
-					<button class="blank-button" on:click={toggleMenu}>
-						<Menu />
-					</button>
-				{/if}
-				<MenuDrop>
-					<button slot="link1" class="blank-button menulinks" on:click={signout}> Log Out </button>
-				</MenuDrop>
-			</div>
-		</section>
-	{/if}
-	<section class="pagearea">
-		{#key data.pathname}
-			<TransitionPage>
-				<slot />
-			</TransitionPage>
-		{/key}
-		<audio src="/sounds/boing2.mp3" />
-	</section>
+	
+
+			<slot />
+
+
 	<Footer />
 	<!--
 	{#if $footerMode}
@@ -198,16 +185,31 @@
 .menubar
 	z-index: 1000
 
+.col6
+	display: flex
+	flex-direction: column
+	place-self: center
+	align-self: center
+	justify-self: center
+
+.projects-shell
+	display: grid
+	grid-auto-flow: row
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+	grid-template-areas: ". . . . . . . . . . ."
+	grid-template-rows: auto
+	width: 100vw
+	
+
 .project-shell
 	max-width: 100vw
 
 .project-shell.dark
-	background-color: hsla(0,0%,8%,1)
-	background-image: radial-gradient(at 57% 35%, hsla(108,80%,5%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(116,86%,5%,1) 0px, transparent 50%)
+	background-color: #171717
 	.okaycolor
-		background-color: hsla(0,0%,8%,1)
+		background: rgba(0,0,0,0)
 
-.project-shell.light
+.minH.light
 	background: white
 	.okaycolor
 		background: white
@@ -215,8 +217,7 @@
 .logobox
 	justify-content: flex-start
 	font-weight: bold
-	font-family: 'Authentic Sans', sans-serif
-	letter-spacing: -0.5px
+	font-family: 'Space Grotesk', sans-serif
 	font-size: 20px
 //footer
 //	background: transparent

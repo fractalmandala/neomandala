@@ -55,7 +55,7 @@ export async function allThea() {
 }
 
 export async function allWebdev() {
-	const allfiles = import.meta.glob('/src/routes/web/*.md');
+	const allfiles = import.meta.glob('/src/routes/(protected)/web/*.md');
 	const filed = Object.entries(allfiles);
 	const eachfiled = await Promise.all(
 		filed.map(async ([path, resolver]) => {

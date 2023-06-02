@@ -31,8 +31,7 @@
 </script>
 
 <div
-	class="rta-column null rowgap50"
-	transition:slide
+	class="rta-column null parserbound"
 	class:dark={!$themeMode}
 	class:light={$themeMode}
 	class:levelzero={$breakZero}
@@ -46,9 +45,11 @@
 			</div>
 		{/if}
 		{#if block.type === 'code'}
-			<div class="rta-column codeparent null">
-				<div class="rta-row ycenter between">
-					<small style="text-transform: uppercase; font-weight: 800">{block.language}</small>
+			<div class="rta-column rowgap100 codeparent null">
+				<div class="rta-row ycenter between p-bot-16 thisguy">
+					<small style="text-transform: uppercase; font-weight: 800; color: white"
+						>{block.language}</small
+					>
 					<button
 						class="blank-button"
 						use:clickToCopyAction={block.code}
@@ -58,7 +59,8 @@
 						<Copy />
 					</button>
 				</div>
-				<pre class="codeblock grey"><code class={`language-${block.language}`}>{block.code}</code
+				<pre class="codeblock grey" data-lenis-prevent><code class={`language-${block.language}`}
+						>{block.code}</code
 					></pre>
 			</div>
 		{/if}
@@ -67,40 +69,42 @@
 
 <style lang="sass">
 
-.levelzero
-	width: 60vw
+.leveltwo.parserbound
+	width: 90vw
+
+.thisguy
+	border-bottom: 1px solid var(--themer)
 
 .codeparent
 	border-radius: 6px
 
 .codeblock
-	background: var(--opposite)
 	word-wrap: break-all
 	white-space: pre-line
+	max-height: 320px
+	overflow-y: scroll
 
 
 pre.codeblock
-	font-size: 16px
-	overflow-y: hidden
-	color: var(--themer)
-	font-family: 'Nohemi', sans-serif
+	overflow-y: scroll
+	overflow-x: scroll
+	font-family: 'Authentic Sans', sans-serif
+
 
 .nocodeparent
 	pre
-		font-size: 16px
-		color: var(--themer)
 		margin: 0
-		line-height: 1.2
-		overflow-y: hidden
+		line-height: 1.6
+		overflow-y: scroll
 		white-space: pre-line
-		font-family: 'Nohemi', sans-serif
+		font-family: 'Authentic Sans', sans-serif
+
 
 .codeblock code
 	word-wrap: break-all
-	font-size: 16px
-	font-weight: 500
 	color: var(--textone)
 	font-family: 'Space Mono', monospace
+	font-sizw: 12px
 
 
 </style>

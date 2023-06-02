@@ -2,6 +2,7 @@ import { defaultWindow } from '$lib/utils/shared'
 import type { ConfigurableWindow, Position } from '$lib/types/WindowScreens'
 import { readable, type Readable } from "svelte/store";
 import { listen } from "svelte/internal";
+import { spring } from 'svelte/motion'
 
 export interface UseMouseOptions extends ConfigurableWindow {
 	/**
@@ -10,6 +11,11 @@ export interface UseMouseOptions extends ConfigurableWindow {
 	initialValue?: Position;
 }
 
+const coords= spring({x: 50, y: 50}, {
+		stiffness: 0.1,
+		damping: 1
+	})
+
 const initialValue = {
 	x: 0,
 	y: 0,
@@ -17,6 +23,8 @@ const initialValue = {
 
 function getCurrentMousePosition(e?: MouseEvent): Position {
 	if (!e) return initialValue;
+
+	coords.set({ x: e.pageX, y: e.pageY })
 
 	return {
 		x: e.pageX,

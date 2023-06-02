@@ -4,29 +4,31 @@
 	--greyish: #878787
 	--greenb: #10D56C
 	box-sizing: border-box
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	--newgreen: #14BB4D
 
 .smalls
 	margin: 0
 	font-size: 12px
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	color: var(--greyish)
 
 .codeparent
 	code
 		font-family: 'Space Mono', monospace
-	pre
-		font-family: 'Authentic Sans', sans-serif
 
 .nol
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 
-p.grot, small.grot, h6.grot, h5.grot
+p.grot, small.grot, h6.grot, h5.grot, cite.grot, h1.grot, h4.grot
 	font-family: 'Space Grotesk', sans-serif
 
+h1.grot
+	font-family: 'Mona Sans', sans-serif
+	font-weight: 300
+
 p.micro
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	font-size: 12px
 	margin: 0
 
@@ -48,7 +50,8 @@ p.micro
 .light
 	--palio: #FAFAFA
 	--background: #121212
-	--textone: #373737
+	--textone: #272727
+	--texttwo: #414141
 	--opposite: #FFFFFF
 	--greyish: #878787
 	--contraster: #e7e7e7
@@ -62,13 +65,13 @@ p.micro
 
 
 em, cite, small, p, li, blockquote, h6, button, input, textarea, select, option, textarea
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 
 label
 	font-size: 12px
 
 p
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 
 p
 	color: var(--themerp)
@@ -79,17 +82,17 @@ p
 
 
 h2
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	letter-spacing: -1px
 
 h4, h5, h1, h3
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 
 h4
 	font-weight: 600
 
 h4.thin
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	font-weight: normal
 
 pre
@@ -153,7 +156,7 @@ h5.grey
 	color: #878787
 
 h5.thin, h6.thin
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	font-weight: normal
 
 h4.white
@@ -256,10 +259,8 @@ h2
 	font-weight: 700
 
 h1
-	font-size: 80px
-	color: var(--themer)
-	font-weight: 800
-
+	font-size: 88px
+	color: #272727
 //contained
 
 .ticket
@@ -384,10 +385,10 @@ h1
 		text-fill-color: transparent
 	
 .mol
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 
 .disp-title
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	text-transform: capitalize
 	margin: 0
 	font-size: 14px
@@ -409,7 +410,7 @@ h1
 
 .disp-listhead
 	font-size: 14px
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	padding-top: 16px
 	padding-bottom: 12px
 
@@ -439,7 +440,7 @@ h1
 
 .menudropper
 	.menulinks
-		font-family: 'Authentic Sans', sans-serif
+		font-family: 'Mona Sans', sans-serif
 		font-size: 16px
 		padding: 4px
 		min-width: 120px
@@ -456,7 +457,7 @@ h1
 		outline: none
 		white-space: pre-wrap
 		p, pre, li, i, b, blockquote, blockquote p, small
-			font-family: 'Authentic Sans', sans-serif
+			font-family: 'Mona Sans', sans-serif
 			font-size: 14px
 			color: var(--contraster)
 		h4
@@ -468,6 +469,9 @@ h1
 		p
 			color: var(--background)
 			line-height: 1.5
+		ul, ol, li
+			margin-left: 0
+			padding-left: 0
 
 .snippetprose
 	.ProseMirror
@@ -494,7 +498,7 @@ h1.serif
 
 .non
 	p, h5, h4
-		font-family: 'Authentic Sans', sans-serif
+		font-family: 'Mona Sans', sans-serif
 
 .articles
 	h1.serif
@@ -525,6 +529,16 @@ h1.serif
 				border-left: 4px solid #10D56C
 				padding-left: 24px
 				color: var(--background)
+	.note-item
+		p
+			font-size: 12px
+			font-weight: 600
+			color: var(--background)
+		small
+			color: var(--background)
+			line-height: 1
+		cite
+			color: #878787
 
 .levelone
 	.articles
@@ -570,3 +584,9 @@ h1.serif
 				padding-left: 16px
 				line-height: 1
 				margin: 32px 0
+
+
+.agentanswer pre
+	code
+		font-family: 'Space Mono', monospace
+		font-size: 14px

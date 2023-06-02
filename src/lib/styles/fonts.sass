@@ -23,34 +23,10 @@
 	srcl: url('/fonts/authentic/AUTHENTICSans-150.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-150.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-150.otf') format('otf')
 	
 @font-face
-	font-family: 'NohemiMed'
+	font-family: 'Nohemi'
 	src: url('/fonts/nohemi/Nohemi-Medium.woff2') format('woff2'), url('/fonts/nohemi/Nohemi-Medium.woff') format('woff')
 	font-style: normal
 	font-weight: 500
-
-@font-face
-	font-family: 'NohemiSemi'
-	src: url('/fonts/nohemi/Nohemi-SemiBold.woff2') format('woff2'), url('/fonts/nohemi/Nohemi-SemiBold.woff') format('woff')
-	font-style: normal
-	font-weight: 600
-
-@font-face
-	font-family: 'NohemiBold'
-	src: url('/fonts/nohemi/Nohemi-Bold.woff2') format('woff2'), url('/fonts/nohemi/Nohemi-Bold.woff') format('woff')
-	font-style: normal
-	font-weight: 700
-
-@font-face
-	font-family: 'NohemiLight'
-	src: url('/fonts/nohemi/Nohemi-Light.woff2') format('woff2'), url('/fonts/nohemi/Nohemi-Light.woff') format('woff')
-	font-style: normal
-	font-weight: 300
-
-@font-face
-	font-family: 'Nohemi'
-	src: url('/fonts/nohemi/Nohemi-Regular.woff2') format('woff2'), url('/fonts/nohemi/Nohemi-Regular.woff') format('woff')
-	font-style: normal
-	font-weight: 400
 
 @font-face
 	font-family: 'Adobe Devanagari', serif
@@ -75,3 +51,363 @@
 	src: url('/fonts/adobedevanagari/AdobeDevanagari-BoldItalic.woff2') format('woff2'), url('/fonts/adobedevanagari/AdobeDevanagari-BoldItalic.woff') format('woff')
 	font-style: italic
 	font-weight: bold
+
+@font-face
+	font-family: 'Sudo', sans-serif
+	src: url('/fonts/sudo/SudoVariable.woff2') format('woff2')
+	font-style: normal
+
+@font-face
+	font-family: 'Sudo', sans-serif
+	src: url('/fonts/sudo/Sudo-Light.woff2') format('woff2'), url('/fonts/sudo/Sudo-Light.woff') format('woff')
+	font-style: normal
+	font-weight: 300
+
+@font-face
+	font-family: 'Sudo', sans-serif
+	src: url('/fonts/sudo/Sudo-Regular.woff2') format('woff2'), url('/fonts/sudo/Sudo-Regular.woff') format('woff')
+	font-style: normal
+	font-weight: 400
+
+@font-face
+	font-family: 'Sudo', sans-serif
+	src: url('/fonts/sudo/Sudo-Medium.woff2') format('woff2'), url('/fonts/sudo/Sudo-Medium.woff') format('woff')
+	font-style: normal
+	font-weight: 500
+
+@font-face
+	font-family: 'Sudo', sans-serif
+	src: url('/fonts/sudo/Sudo-Bold.woff2') format('woff2'), url('/fonts/sudo/Sudo-Bold.woff') format('woff')
+	font-style: normal
+	font-weight: 700
+
+@font-face
+	font-family: 'Mona Sans', sans-serif
+	src: url('/images/monasans/Mona-Sans-Light.woff') format('woff')
+	font-style: normal
+	font-weight: 300
+
+@font-face
+	font-family: 'Mona Sans', sans-serif
+	src: url('/images/monasans/Mona-Sans-Regular.woff') format('woff')
+	font-style: normal
+	font-weight: 400
+
+@font-face
+	font-family: 'Mona Sans', sans-serif
+	src: url('/images/monasans/Mona-Sans-Medium.woff') format('woff')
+	font-style: normal
+	font-weight: 500
+
+@font-face
+	font-family: 'Mona Sans', sans-serif
+	src: url('/images/monasans/Mona-Sans-SemiBold.woff') format('woff')
+	font-style: normal
+	font-weight: 600
+
+@font-face
+	font-family: 'Mona Sans', sans-serif
+	src: url('/images/monasans/Mona-Sans-Bold.woff') format('woff')
+	font-style: normal
+	font-weight: 700
+
+:root
+	font-family: 'Space Grotesk', sans-serif
+	font-size: 12px
+	font-weight: 400
+
+.tt-u
+	text-transform: uppercase
+
+.ta-c
+	text-align: center
+
+p, h6, h5, h4, h3, h2, h1
+	margin: 0
+
+a
+	text-decoration: none
+	color: inherit
+
+p
+	a
+		color: #10D56C
+		&:hover
+			text-decoration: underline
+
+$std: 16px
+$stdsm: 28px
+$exp: 1.414
+
+.adobe
+	font-family: 'Adobe Devanagari', serif
+	@media screen and (min-width: 1024px)
+		p
+			font-size: $std * 1.25
+		h6
+			font-size: $std * 1.25
+		h5
+			font-size: $std * $exp * 1.25
+		h4
+			font-size: $std * $exp * $exp * 1.25
+		h3
+			font-size: $std *$exp * $exp * $exp * 1.25
+		h2
+			font-size: $std * $exp * $exp * $exp * $exp * 1.25
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp * $exp * 1.25
+	@media screen and (min-width: 769px) and (max-width: 1023px)
+		p
+			font-size: $std * 1.25
+		h6
+			font-size: $std * 1.25
+		h5
+			font-size: $std * 1.2 * 1.25
+		h4
+			font-size: $std * $exp * 1.25
+		h3
+			font-size: $std *$exp * $exp * 1.25
+		h2
+			font-size: $std * $exp * $exp * $exp * 1.25
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp * 1.25
+	@media screen and (max-width: 768px)
+		p
+			font-size: $std * 1.25
+		h6
+			font-size: $std * 1.25
+		h5
+			font-size: $std * $exp * 1.25
+		h4
+			font-size: $std * $exp * $exp * 1.25
+		h3
+			font-size: $std *$exp * $exp * 1.2 * 1.25
+		h2
+			font-size: $std * $exp * $exp * $exp * 1.25
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp * 1.25
+
+.font
+	font-family: 'Mona Sans', sans-serif
+	.space
+		font-family: 'Space Grotesk', sans-serif
+	@media screen and (min-width: 1024px)
+		p
+			font-size: $std
+		h6
+			font-size: $std	
+		h5
+			font-size: $std * $exp
+		h4
+			font-size: $std * $exp * $exp
+		h3
+			font-size: $std *$exp * $exp * $exp
+		h2
+			font-size: $std * $exp * $exp * $exp * $exp	
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp * $exp
+	@media screen and (min-width: 769px) and (max-width: 1023px)
+		p
+			font-size: $std
+		h6
+			font-size: $std	
+		h5
+			font-size: $std * 1.2
+		h4
+			font-size: $std * $exp
+		h3
+			font-size: $std *$exp * $exp
+		h2
+			font-size: $std * $exp * $exp * $exp
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp
+	@media screen and (max-width: 768px)
+		p
+			font-size: $std
+		h6
+			font-size: $std
+		h5
+			font-size: $std * $exp
+		h4
+			font-size: $std * $exp * $exp
+		h3
+			font-size: $std *$exp * $exp * 1.2
+		h2
+			font-size: $std * $exp * $exp * $exp
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp
+
+.light
+	color: #272727
+
+.dark
+	color: #a7a7a7
+
+.appcontainer
+	min-height: 100vh
+	box-sizing: border-box
+	margin: 0
+	display: grid
+	grid-auto-flow: row
+	gap: 16px
+	padding: 0 40px
+	.appsidebar
+		grid-area: sidebar
+	.appmainpage
+		grid-area: mainpage
+
+.appsidebar
+	display: grid
+	grid-auto-flow: row
+	grid-template-columns: 1fr
+	gap: 16px
+
+.appmainpage
+	gap: 16px
+	display: flex
+	flex-direction: column
+
+.rta-grid
+	gap: 10px
+	display: grid
+	&.xcenter
+		justify-content: center
+	&.xleft
+		justify-content: left
+	&.ycenter
+		align-content: center
+
+.colof6
+	display: flex
+	flex-direction: column
+	align-self: center
+	justify-self: center
+	place-self: center
+	gap: 16px
+	&.xcenter
+		align-items: center
+
+.grid12box
+	display: grid
+	gap: 16px
+	padding-left: 40px
+	padding-right: 40px
+
+.padded6
+	padding-left: 244px
+	padding-right: 244px
+
+.paddedleft
+	padding-left: 244px
+
+.gs1
+	grid-column-start: 1
+
+.gs2
+	grid-column-start: 2
+
+.gs3
+	grid-column-start: 3
+
+.span1
+	grid-column-end: 2
+
+.span3
+	grid-column-end: 3
+
+@media screen and (min-width: 1024px)
+	.appcontainer
+		grid-template-columns: 228px 1fr
+		grid-template-areas: "sidebar mainpage"
+	.appsidebar
+		width: 228px
+		grid-template-areas: "." "." "." "." "." "." "." "."
+		padding-top: 64px
+		padding-bottom: 64px
+	.appmainpage
+		padding-top: 64px
+		padding-bottom: 64px
+	.rta-grid.grid12
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . . . . . . . . . ."
+	.rta-grid.grid8
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: "." "." "." "." "." "." "." "."
+	.rta-grid.grid6
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+		grid-template-areas: "." "." "." "." "." "."
+		grid-template-areas: ". . . ."
+	.rta-grid.grid4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ."
+	.rta-grid.grid3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.rta-grid.grid2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+	.colof6
+		grid-column: span 6
+
+@media screen and (min-width: 769px) and (max-width: 1023px)
+	.appcontainer
+		grid-template-columns: 228px 1fr
+		grid-template-areas: "sidebar mainpage"
+	.appsidebar
+		width: 228px
+		grid-template-areas: "." "." "." "." "." "." "." "."
+		padding-top: 64px
+		padding-bottom: 64px
+	.appmainpage
+		padding-top: 64px
+		padding-bottom: 64px
+	.rta-grid.grid6, .rta-grid.grid12
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.rta-grid.grid8
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ."
+	.rta-grid.grid4
+		grid-template-columns: 1fr 1fr 1fr 1fr
+		grid-template-areas: ". . . ."
+	.rta-grid.grid3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+	.rta-grid.grid2
+		grid-template-columns: 1fr 1fr
+		grid-template-areas: ". ."
+
+@media screen and (min-width: 481px) and (max-width: 768px)
+	.appcontainer
+		grid-template-columns: 1fr
+		grid-template-areas: "mainpage"
+	.appsidebar
+		display: none
+	.appmainpage
+		padding-top: 64px
+		padding-bottom: 64px
+	.rta-grid.grid12, .rta-grid.grid8, .rta-grid.grid6, .rta-grid.grid4, .rta-grid.grid2
+		grid-template-columns: 1fr
+		grid-template-areas: "."
+		&.stay2
+			grid-template-columns: 1fr 1fr
+			grid-template-areas: ". ."
+	.rta-grid.grid3
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-areas: ". . ."
+
+@media screen and (max-width: 480px)
+	.appcontainer
+		grid-template-columns: 1fr
+		grid-template-areas: "mainpage"
+	.appsidebar
+		display: none
+	.appmainpage
+		padding-top: 64px
+		padding-bottom: 64px
+	.rta-grid.grid12, .rta-grid.grid8, .rta-grid.grid6, .rta-grid.grid4, .rta-grid.grid3, .rta-grid.grid2
+		grid-template-columns: 1fr
+		grid-template-areas: "."
+		&.stay2
+			grid-template-columns: 1fr 1fr
+			grid-template-areas: ". ."

@@ -8,12 +8,9 @@
 	import type { ChatStream, ChatMessage } from '$lib/gpt/gpttypes';
 	import type { Message } from '$lib/gpt/chatstore';
 	import { showAlert, showGood } from '$lib/stores/modalstores';
-	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
 	import { createLocalStorageStore, chatSessions, type ChatSession } from '$lib/gpt/chatstore';
 	import { v4 as uuidv4 } from 'uuid';
 	import ChatLatest from '$lib/gpt/ChatLatest.svelte';
-	import Bot from '$lib/icons/Bot.svelte';
-	import User from '$lib/icons/User.svelte';
 	import { botsList } from '$lib/gpt/botslist';
 
 	let fake = false;
@@ -21,7 +18,7 @@
 	let bots: any;
 	let onBot: any;
 	let current: any;
-	let query = '';
+	export let query = '';
 	let answer = '';
 	let loading = false;
 	let prompts = '';
@@ -174,140 +171,13 @@
 </script>
 
 <div
-	class="chatbox null rta-column rowgap100"
+	class="null rta-column rowgap100"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="selectlabel rta-row ycenter padded p-bot-16">
-		<div class="rta-column formholds">
-			{#if session}
-				<form class="rta-row thisform">
-					<textarea bind:value={query} use:textareaAutosizeAction />
-					<div
-						class="outlineglow"
-						type="submit"
-						on:click={() => submitInput(session.id)}
-						on:keydown={fauxfake}
-					>
-						<div class="insideglow">
-							<svg
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M22 2L11 13"
-									stroke="white"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								/>
-								<path
-									d="M22 2L15 22L11 13L2 9L22 2Z"
-									stroke="white"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								/>
-							</svg>
-						</div>
-					</div>
-				</form>
-			{/if}
-		</div>
-		<div class="rta-column rowgap50 theselector">
-			{#if session}
-				<cite class="grey ta-r">Current Bot - {session.sessionbot}</cite>
-			{:else}
-				<cite class="grey ta-r">Select Bot</cite>
-			{/if}
-			<div class="rta-row topstrip colgap100">
-				<div class="rta-row botsfilter">
-					<button class="blank-button">
-						<svg
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M10 6H21"
-								stroke="#878787"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M10 12H21"
-								stroke="#878787"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M10 18H21"
-								stroke="#878787"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M3 6L4 7L6 5"
-								stroke="#878787"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M3 12L4 13L6 11"
-								stroke="#878787"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M3 18L4 19L6 17"
-								stroke="#878787"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
-					</button>
-					{#if bots && bots.length > 0}
-						<select bind:value={prompts}>
-							{#each bots as item}
-								<option value={item.prompt}>{item.name}</option>
-							{/each}
-						</select>
-					{/if}
-				</div>
-				{#if prompts !== ''}
-					<button class="glowbox" on:click={startNewChat}>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="24"
-							height="24"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="lucide lucide-plus"
-							><line x1="12" x2="12" y1="5" y2="19" /><line x1="5" x2="19" y1="12" y2="12" /></svg
-						>
-					</button>
-				{/if}
-			</div>
-		</div>
-	</div>
 	<div class="displayarea">
 		{#each chatMessages as message}
 			<div class="rta-column bord-bot p-bot-16">
@@ -315,83 +185,20 @@
 				<p>{message.content}</p>
 			</div>
 		{/each}
-		{#if answer}
-			<div class="rta-column">
-				<p>{answer}</p>
-			</div>
-		{/if}
+
 		{#if loading}
 			<div class="rta-column">
 				<p>Loading...</p>
 			</div>
 		{/if}
-		<ChatLatest />
 	</div>
 </div>
 
 <style lang="sass">
 
-.levelzero
-	.theselector
-		width: 160px
-		align-items: flex-end
-	.formholds
-		width: calc(100% - 192px)
-
 .displayarea
-	padding-left: 24px
-	padding-right: 24px
-
-.padded
-	padding-left: 24px
-
-.selectlabel
-	height: 32px
-
-.botsfilter
-	position: relative
-	.blank-button
-		position: relative
-		left: 32px
-		top: 2px
-	select
-		font-size: 12px
-		width: 128px
-		outline: none
-		appearance: none
-		background: rgba(255, 255, 255, 0.06)
-		padding: 4px 12px 4px 0
-		height: 32px
-		color: #878787
-		cursor: pointer
-		border: 1px solid rgba(255, 255, 255, 0.09)
-		box-shadow: 2px 2px 4px rgba(0,0,0,0.2)
-		transition: 0.09s ease
-		&:hover
-			color: #FFFFFF
-			border: 1px solid rgba(255, 255, 255, 0.7)
-	option
-		text-align: right
-		font-size: 12px
-
-.formholds
-	padding-left: 24px
-	.mainbutton
-		height: 32px
-		width: 32px
-		border-radius: 6px
-	textarea
-		min-height: 56px
-	.glowbuttons
-		height: 56px
-		width: 56px
-	.thisform
-		width: 100%
-		column-gap: 16px
-		textarea
-			width: calc(100% - 72px)
-			background: rgba(255, 255, 255, 0.95)
-			border-radius: 6px
+	p
+		font-size: 18px
 
 
 </style>

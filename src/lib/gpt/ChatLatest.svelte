@@ -1,6 +1,13 @@
 <script lang="ts">
+	import { onMount, afterUpdate } from 'svelte';
 	import { chatSessions, deleteChatSession, showDelete } from '$lib/gpt/chatstore';
+	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
+	import { marked } from 'marked';
 	import type { ChatSession } from '$lib/gpt/chatstore';
+	import Prism from 'prismjs';
+	import '$lib/styles/prism.css';
+	import IconUser from '$lib/design/iconset/iconuser.svelte';
+	import IconBot from '$lib/design/iconset/iconbot.svelte';
 	import Parser from '$lib/agent/Parser.svelte';
 
 	let session: ChatSession | undefined;
@@ -11,23 +18,38 @@
 			return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(); // normal comparison
 		})[0];
 	}
+
+	onMount(() => {
+		Prism.highlightAll();
+	});
+
+	afterUpdate(() => {
+		Prism.highlightAll();
+	});
 </script>
 
-<div id="chat-sessions">
+<div
+	id="currentsession"
+	class:lightmode={$themeMode}
+	class:darkmode={!$themeMode}
+	class:levelzero={$breakZero}
+	class:levelone={$breakOne}
+	class:leveltwo={$breakTwo}
+>
 	{#if session}
-		<div class="messages rta-column rowgap400">
+		<div class="messages rta-column">
 			{#each session.messages as message (message.timestamp)}
 				{#if message.query === 'init'}
 					<div class="blanker" />
 				{:else}
-					<div class="rta-row userquery">
+					<div class="rta-row userquery null">
 						<p>{message.query}</p>
-						<img src="/images/hacker.png" alt="useravatar" />
+						<img src="/images/iconuser.png" alt="user" />
 					</div>
-					<div class="rta-row agentanswer">
+					<div class="rta-row agentanswer null">
+						<img src="/images/iconbot.png" alt="bot" />
 						<Parser response={message.answer} />
 					</div>
-					<cite>Sent at {message.timestamp}</cite>
 				{/if}
 			{/each}
 		</div>
@@ -36,42 +58,47 @@
 
 <style lang="sass">
 
-#chat-sessions
-	padding: 0
-	cite
-		margin-left: 56px
-		margin-top: 0
-		margin-bottom: 0
-		color: var(--onlyblack)
+.lightmode
+	.agentanswer
+		background: #fafafa
+
+.userquery, .agentanswer
+	img
+		object-fit: contain
+		width: 20px
+		height: 20px
+
+.lightmode
+	.userquery
+		border-top: 1px solid #e1e1e1
+		border-bottom: 1px solid #e1e1e1
+
+.levelzero, .levelone, .leveltwo
+	.userquery
+		padding-top: 48px
+		padding-bottom: 48px
+		padding-right: 24px
+		padding-left: 24px
+	.agentanswer
+		padding-top: 64px
+		padding-bottom: 64px
+		padding-left: 24px
+		padding-right: 24px
+
+
+
+.userquery p
+	font-family: 'Authentic Sans', sans-serif
+	font-size: 16px
+	line-height: 1.6
 	
 .userquery
 	text-align: right
 	justify-content: flex-end
 	column-gap: 24px
-	img
-		object-fit: contain
-		height: 32px
-		width: 32px
-	p
-		width: calc(100% - 56px)
-		color: var(--greyish)
-		font-family: 'NohemiMed', sans-serif
-		letter-spacing: 0.5px
-		border-top: 1px solid var(--themerp)
-		padding-top: 16px
-		font-size: 18px
 
-.agentanswer
-	justify-content: flex-start
-	column-gap: 24px
-	img
-		object-fit: contain
-		width: 32px
-		height: 32px
-	pre
-		font-family: 'Nohemi', sans-serif
-		letter-spacing: 0.8px
-		line-height: 1.4
-		font-size: 16px
+#currentsession.levelzero
+	width: 56.75vw
+
 
 </style>

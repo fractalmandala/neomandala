@@ -30,75 +30,38 @@
 
 <section class="columnsmt-6pt-6">
 	<div class="rta-column null rowgap200 thisgal">
-		{#if signupForm}
-			<h5 class="tt-u grot">you wan join?</h5>
-			{#if form?.error}
-				<div class="block notification is-danger">{form.error}</div>
-			{/if}
-			<form class="thisform" method="post" action="?/signup">
-				<div class="rta-column rowgap100 null">
-					<input
-						id="email"
-						name="email"
-						value={form?.values?.email ?? ''}
-						class="input"
-						type="email"
-						placeholder="Email"
-						required
-					/>
-
-					<input
-						id="password"
-						name="password"
-						class="input"
-						type="password"
-						placeholder="Password"
-						required
-					/>
-
-					<button disabled={loading} class="genbutton">Sign Up</button>
-				</div>
-			</form>
-			<div class="mt-6">
-				<small class="grot grey"> Have an account? </small>
-				<small class="green grot point" on:click={toggleForm} on:keydown={toggleForm}>Sign In</small
-				>
-			</div>
-		{:else}
-			<h5 class="tt-u grot">you wan come?</h5>
-			{#if form?.error}
-				<div class="block notification is-danger">{form.error}</div>
-			{/if}
-			<form class="thisform" method="post" action="?/login">
-				<div class="rta-column rowgap100 null">
-					<input
-						id="email"
-						name="email"
-						value={form?.values?.email ?? ''}
-						class="input"
-						type="email"
-						placeholder="Email"
-						required
-					/>
-
-					<input
-						id="password"
-						name="password"
-						class="input"
-						type="password"
-						placeholder="Password"
-						required
-					/>
-
-					<button disabled={loading} class="genbutton">Sign in</button>
-				</div>
-			</form>
-			<div class="mt-6">
-				<small class="grot grey"> Don't have an account? </small>
-				<small class="green grot point" on:click={toggleForm} on:keydown={toggleForm}>Sign Up</small
-				>
-			</div>
+		<h5 class="tt-u grot">you wan come?</h5>
+		{#if form?.error}
+			<div class="block notification is-danger">{form.error}</div>
 		{/if}
+		<form class="thisform" method="post" action="?/login">
+			<div class="rta-column rowgap100 null">
+				<input
+					id="email"
+					name="email"
+					value={form?.values?.email ?? ''}
+					class="input"
+					type="email"
+					placeholder="Email"
+					required
+				/>
+
+				<input
+					id="password"
+					name="password"
+					class="input"
+					type="password"
+					placeholder="Password"
+					required
+				/>
+
+				<button disabled={loading} class="genbutton">Sign in</button>
+			</div>
+		</form>
+		<div class="mt-6">
+			<small class="grot grey"> Don't have an account? </small>
+			<small class="green grot point" on:click={toggleForm} on:keydown={toggleForm}>Sign Up</small>
+		</div>
 	</div>
 </section>
 

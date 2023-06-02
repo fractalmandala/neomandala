@@ -1,144 +1,142 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import { Editor } from '@tiptap/core';
-	import StarterKit from '@tiptap/starter-kit';
-	import supabase from '$lib/utils/supabase';
-	import CodeBlock from '@tiptap/extension-code-block';
+	import { onMount, afterUpdate } from 'svelte';
+	import { showNote } from '$lib/dash/alerts';
 	import { slide } from 'svelte/transition';
-	import { alertStore, goodAlert, showGood, showAlert, hideAlert } from '$lib/stores/modalstores';
-	import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores';
+	import StarterKit from '@tiptap/starter-kit';
+	import { addCode } from '$lib/dash/fileuploader';
+	import { Editor } from '@tiptap/core';
+	import Code from '$lib/design/iconset/code.svelte';
 
 	let element: any;
 	let editor: any;
-	let title = '';
-	let tags = '';
-	let language = '';
-	let agent = 'snippet';
-	let inputOn = false;
-	let showBack = false;
-	let html: any;
-	let text: any;
+	let title = 'title';
+	let tags = 'tags';
+	let content = '';
+	let language = 'language';
+	let showLang = false;
+	let validator: boolean;
 
-	CodeBlock.configure({
-		languageClassPrefix: `language-${language}`
-	});
-
-	export async function inputCode() {
-		const { error } = await supabase
-			.from('amrit-notes')
-			.insert({ title: title, content: text, tags: tags, uuidtext: language, agent: agent });
-		if (error) {
-			showAlert('Error!');
+	async function handleSubmit() {
+		if (validator === true) {
+			showNote('no!', true);
+		} else {
+			addCode(title, tags, content, language);
 		}
-		showGood('Submitted.');
-		title = '';
-		tags = '';
 	}
 
-	function toggleCodeBlock() {
-		inputOn = !inputOn;
+	function handleTitleFocus() {
+		title = '';
+	}
+
+	function handleTagsFocus() {
+		tags = '';
 	}
 
 	onMount(() => {
 		editor = new Editor({
 			element: element,
-			extensions: [StarterKit, CodeBlock],
+			extensions: [StarterKit],
 			content: '',
+			parseOptions: {
+				preserveWhitespace: 'full'
+			},
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
-			},
-			onFocus: () => {
-				showBack = true;
-			},
-			onBlur: () => {
-				showBack = false;
-			},
-			onUpdate: ({ editor }) => {
-				html = editor.getHTML();
-				text = editor.getText();
 			}
 		});
 	});
-
-	onDestroy(() => {
-		if (editor) {
-			editor.destroy();
-		}
+	afterUpdate(() => {
+		content = editor.getText({ blockSeparator: '\n\n' });
 	});
 </script>
 
-<div
-	class="rta-column xleft rowgap200 codeinputter"
-	class:levelzero={$breakZero}
-	class:levelone={$breakOne}
-	class:leveltwo={$breakTwo}
->
-	{#if editor}
-		<form class="rta-column rowgap200">
-			<div class="rta-row colgap200 rowgap100 ycenter">
-				<label class="switch">
-					<input type="checkbox" on:click={toggleCodeBlock} />
-					<span class="slider" />
-				</label>
-				<input type="text" placeholder="title" bind:value={title} />
-				<select bind:value={language}>
-					<option value="html">HTML</option>
-					<option value="javascript">JS</option>
-					<option value="sass">SASS</option>
-					<option value="sql">SQL</option>
-					<option value="css">CSS</option>
-				</select>
-				<input type="text" placeholder="tags" bind:value={tags} />
-			</div>
-		</form>
-	{/if}
-	<div class="codeinput fullW" bind:this={element} class:blackened={showBack} />
-	<button class="glowbutton" on:click={inputCode}>Submit</button>
-</div>
+<form class="note-form null rta-column rowgap200 inputformer" transition:slide={{ axis: 'y' }}>
+	<div class="rta-row ycenter">
+		<button class="blank-button" on:click={handleSubmit}>
+			<Code color={'#10D56C'} scaler={true} />
+		</button>
+		<input
+			id="titleform"
+			autocomplete="off"
+			type="text"
+			placeholder={title}
+			bind:value={title}
+			on:focus={handleTitleFocus}
+		/>
+		<input
+			id="tagsform"
+			type="text"
+			placeholder={tags}
+			bind:value={tags}
+			on:focus={handleTagsFocus}
+		/>
+	</div>
+	<div class="tiptapcoder">
+		<div class="rta-row between ycenter null">
+			<select bind:value={language}>
+				<option value="html">html</option>
+				<option value="html">js</option>
+				<option value="html">sql</option>
+				<option value="html">css</option>
+				<option value="html">sass</option>
+				<option value="html">shell</option>
+			</select>
+		</div>
+		<div class="null" bind:this={element} />
+	</div>
+</form>
 
 <style lang="sass">
 
+.note-form
+	padding-top: 0
+	.rta-row
+		column-gap: 1.6vw
+		select
+			padding: 0
+			background: none
+			color: var(--default)
+			border: 1px solid var(--default)
+			border-radius: 2px
+			width: 64px
+			outline: none
+			font-family: 'Space Grotesk', sans-serif
+			font-size: 10px
+			font-weight: bold
+			text-transform: uppercase
+	@media screen and (min-width: 769px)
+		width: 548px
+		padding: 16px 1.6vw 16px 0
 
-.codeinput
-	padding: 8px
-	height: max-content
-	min-height: 200px
-	color: var(--textone)
+.tiptapcoder
+	border: 1px solid var(--contraster)
+	padding-left: 16px
+	padding-right: 16px
+	.rta-row
+		height: 32px
+		border-bottom: 1px solid var(--contraster)
 
-.codeinput.blackened
-	background: #171717
+.inputformer
+	padding-top: 0
+	.rta-row
+		#titleform
+			width: 320px
+		#tagsform
+			width: 240px	
 
-.codeinputter.levelzero
-	input
-		padding: 2px 8px
-		font-size: 12px
-	select
-		padding: 2px 8px
-		font-size: 12px
 
-.codeinputter
-	input
+
+.inputformer
+	input[type=text]
+		border-bottom: 1px solid var(--contraster)
+		border-top: none
+		border-left: none
+		border-right: none
 		background: none
-		border: 1px solid rgba(255,255,255,0.09)
-		border-radius: 12px
-		color: white
-	select
-		background: none
-		border: 1px solid rgba(255,255,255,0.09)
-		color: white
-		border-radius: 12px
-		color: var(--textone)
-
-.codeinputter.leveltwo
-	input, select
-		padding: 8px
-		font-size: 14px
-		width: calc(50% - 50px)
-	form
-		>.rta-row
-			justify-content: space-between
-
-
+		padding: 4px 8px
+		color: var(--greyish)
+		font-size: 12px
+		font-family: 'Space Grotesk', sans-serif
 
 </style>

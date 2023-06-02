@@ -1,6 +1,8 @@
 import type { Writable } from 'svelte/store';
 import { writable, get } from 'svelte/store';
 import { browser } from '$app/environment';
+import { v4 as uuidv4 } from 'uuid';
+import { showNote } from '$lib/dash/alerts';
 
 export interface NoteItem {
 	title: string;
@@ -8,6 +10,7 @@ export interface NoteItem {
 	timestamp: string;
 	id: string;
 }
+
 
 export interface NotesDiary {
 	title: string;
@@ -45,10 +48,13 @@ export function createNewNote(title: string, content: string, timestamp: string,
 	return thisNote;
 }
 
-export function addNewNote(title: string, content: string, timestamp: string, id: string) {
+export function addNewNote(title: string, content: string) {
+	const id = uuidv4()
+	const timestamp = new Date().toISOString();
 	const newNote: NoteItem = createNewNote(title, content, timestamp, id);
 	get(notesDiary).push(newNote);
 	notesDiary.set(get(notesDiary));
+	showNote('done!', false);
 }
 
 export function updateExistingNote(title: string, content: string, timestamp: string, id: string) {
@@ -59,4 +65,13 @@ export function updateExistingNote(title: string, content: string, timestamp: st
 		noteArray[foundIndex] = createNewNote(title, content, timestamp, id);
 		notesDiary.set(noteArray);
 	}
+}
+
+export function getNoteById(id: string): NotesDiary | undefined {
+	const notes = get(notesDiary); // get the current value of the chatSessions store
+	return notes.find((note) => note.id === id); // find and return the session with the given id
+}
+
+export function deleteNoteItem(id: string) {
+	notesDiary.update((note) => note.filter((note) => note.id !== id));
 }

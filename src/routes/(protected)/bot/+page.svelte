@@ -1,29 +1,28 @@
 <script lang="ts">
-	import Circle from '$lib/design/iconset/circle.svelte';
-	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
-	import ChatBox from '$lib/gpt/ChatBox.svelte';
+	//@ts-nocheck
 	import { SSE } from 'sse.js';
-	import { createLocalStorageStore, chatSessions, type ChatSession } from '$lib/gpt/chatstore';
+	import { createLocalStorageStore, chatSessions } from '$lib/gpt/chatstore';
+	import { browser } from '$app/environment';
+	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
 	import type { Message } from '$lib/gpt/chatstore';
 	import type { ChatCompletionRequestMessage } from 'openai';
-	import type { ChatCompletionRequestMessageRoleEnum } from 'openai';
 	import Latest from '$lib/gpt/ChatLatest.svelte';
 	import Send from '$lib/design/iconset/send.svelte';
-	import IconUser from '$lib/design/iconset/iconuser.svelte';
 	let session: ChatSession | undefined;
-
+	let scrollContainer: HTMLElement;
 	let chatMessages: ChatCompletionRequestMessage[] = [];
-	let prompt = 'Once upon a time in a magical land called';
-	let generatedText = '';
 	let prompts = '';
 	let answer = '';
 	let query = '';
 	let loading = false;
 	let fake = false;
 
-	function fauxfake() {
-		fake = !fake;
+	$: if (browser) {
+		if (scrollContainer) {
+			// scroll to the bottom
+			scrollContainer.scrollTop = scrollContainer.scrollHeight;
+		}
 	}
 
 	$: if ($chatSessions.length > 0) {
@@ -105,96 +104,106 @@
 	}
 </script>
 
-<div
-	class="rta-column actualsection"
-	class:lightmode={$themeMode}
-	class:darkmode={!$themeMode}
-	class:levelzero={$breakZero}
-	class:levelone={$breakOne}
-	class:leveltwo={$breakTwo}
->
-	<div class="inctualsection">
-		<div class="colgap300 rta-row ycenter between null">
-			{#if session}
-				<cite class="green grot ta-r tt-u">Current Bot - {session.sessionbot}</cite>
-			{/if}
-		</div>
-		<div class="chatbody null">
-			<Latest />
-			{#each chatMessages as message}
-				<div class="rta-column bord-bot null p-bot-16">
-					{#if message.role === 'user'}
-						<div class="rta-row">
-							<small>user</small>
-							<p>{message.content}</p>
-						</div>
-					{/if}
-				</div>
-			{/each}
-			{#if answer}
-				<div class="rta-column null answerarea">
-					<p>{answer}</p>
-				</div>
-			{/if}
-			{#if loading}
-				<div class="rta-column null">
-					<p>Loading...</p>
-				</div>
-			{/if}
-		</div>
-		{#if session}
-			<form class="rta-row thisforminput">
-				<textarea bind:value={query} use:textareaAutosizeAction />
-
-				<button class="blank-button" on:click={() => submitInput(session.id)} on:keydown={fauxfake}>
-					<Send color={'#FFFFFF'} dimension={14} />
-				</button>
-			</form>
+<div class="rta-column areaofchat">
+	<div class="grot scrollbox" bind:this={scrollContainer}>
+		<Latest />
+		{#each chatMessages as message}
+			<div class="rta-column null">
+				{#if message.role === 'user'}
+					<div class="rta-row userquery null">
+						<p>{message.content}</p>
+						<img src="/images/av-user.png" alt="user" />
+					</div>
+				{:else}
+					<div class="rta-row agentanswer null">
+						<img src="/images/av-bot.png" alt="bot" />
+						<p>{message.content}</p>
+					</div>
+				{/if}
+			</div>
+		{/each}
+		{#if answer}
+			<div class="rta-row null agentanswer">
+				<img src="/images/iconbot.png" alt="bot" />
+				<p>{answer}</p>
+			</div>
+		{/if}
+		{#if loading}
+			<div class="rta-column null">
+				<p>Loading...</p>
+			</div>
 		{/if}
 	</div>
+	<form class="rta-row thisforminput">
+		<textarea bind:value={query} use:textareaAutosizeAction />
+		{#if session !== undefined}
+			<button class="blank-button" on:click={() => submitInput(session.id)}>
+				<Send color={'#10D56C'} dimension={18} />
+			</button>
+		{/if}
+	</form>
 </div>
 
 <style lang="sass">
 
-.levelzero.actualsection
-	padding: 0
-	.inctualsection
-		padding: 0 !important
-	.chatbody
-		margin-bottom: 128px
+.userquery, .agentanswer
+	img
+		object-fit: contain
+		width: 16px
+		height: 16px
 
 
-.thisforminput
-	position: fixed
-	bottom: 32px
-	width: 720px
-	margin-left: 48px
-	column-gap: 16px
-	border-radius: 8px
-	align-items: flex-end
-	padding: 8px
-	z-index: 900
-	background: white
-	.blank-button
-		height: 26px
-		display: flex
-		align-items: center
-		justify-content: center
-		border-radius: 4px
-		width: 26px
-		transform-origin: center center
-		background: #10D56C
-		&:hover
-			transform: scale(0.9)
-	textarea
-		width: calc(100% - 52px)
-		min-height: 48px
-		border-radius: 6px
-		border: 1px solid var(--opposite)
-		padding: 12px
-
-.lightmode
+.areaofchat
+	position: relative
 	.thisforminput
-		box-shadow: 4px 8px 15px #e1e1e1, -6px -6px 16px #f1f1f1
+		position: absolute
+		opacity: 1
+		border: 1px solid var(--contraster)
+	.scrollbox
+		position: absolute
+	@media screen and (min-width: 769px)
+		height: 100%
+		justify-content: space-between
+		.scrollbox
+			bottom: 64px
+			left: 0
+			height: 64vh
+			overflow-y: scroll
+			&::-webkit-scrollbar
+				width: 1px
+			.userquery
+				width: 100%
+				column-gap: 16px
+				padding-top: 32px
+				padding-bottom: 32px
+				p
+					width: calc(100% - 36px)
+					text-align: right
+			.agentanswer
+				width: 100%
+				column-gap: 16px
+				padding-top: 32px
+				padding-bottom: 32px
+				p
+					width: calc(100% - 36px)
+					text-align: left
+		.thisforminput
+			bottom: 0
+			left: 0
+			height: 56px
+			width: 100%
+			padding: 8px
+			align-items: center
+			background: white
+			border-radius: 8px
+			.blank-button
+				height: 24px
+				width: 32px
+			textarea
+				width: calc(100% - 32px)
+				min-height: 40px
+				border: none
+				font-family: 'Space Grotesk', sans-serif
+
 
 </style>

@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { showChip } from '$lib/stores/modalstores';
+import { showNote } from '$lib/dash/alerts';
 
 const supabase = createClient(
 	import.meta.env.VITE_SUPABASE_URL,
@@ -8,15 +8,25 @@ const supabase = createClient(
 
 export default supabase;
 
-export async function recentNotes() {
+export async function allNotes() {
 	const { data, error } = await supabase
 		.from('amrit-notes')
 		.select()
-		.neq('tags', 'gpt')
+		.eq('agent', 'article')
 		.order('id', { ascending: false })
-		.limit(5);
 	if (error) throw new Error(error.message);
 	return data;
+}
+
+export async function deleteNote(id:number) {
+	const { error } = await supabase
+		.from('amrit-notes')
+		.delete()
+		.eq('id', id)
+		if (error) {
+			showNote('error!', false)
+		} else
+		showNote('deleted!', true)
 }
 
 export async function recentLinks() {
@@ -52,7 +62,7 @@ export async function insertBookmark(
 		.from('amrit-notes')
 		.insert({ title: title, content: content, agent: 'bookmark' });
 	if (error) {
-		showChip('Error!', '#fe4a49');
+		showNote('Error!', false);
 	} else {
 		submitting = false;
 		title = 'Done!';

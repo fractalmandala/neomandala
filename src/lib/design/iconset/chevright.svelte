@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let dimension = 24;
-	export let color = '#FFFFFF';
+	export let dimension = 16;
+	export let color = 'var(--default)';
 	export let rotated = false;
 </script>
 
@@ -9,9 +9,9 @@
 	width={dimension}
 	height={dimension}
 	viewBox="0 0 24 24"
-	fill={color}
 	stroke={color}
-	stroke-width="1"
+	stroke-width="4"
+	fill="none"
 	stroke-linecap="round"
 	stroke-linejoin="round"
 	class="feather feather-chevron-right"
@@ -26,7 +26,6 @@ svg
 	
 svg.isrotated
 	transform: rotate(90deg)
-	fill: #10D56C
 	stroke: #10D56C
 
 </style>

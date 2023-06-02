@@ -78,22 +78,28 @@ button.gradback
 	--background: #FFFFFF
 	--textone: #a1a1a1
 	--opposite: #272727
-	--borderline: #272727
+	--contraster: #272727
 	--greyish: #878787
 	--contraster: #212121
 	--onlyblack: #474747
+	--default: #575757
+	--this: #171717
+
+//hsl009, rgb232323
 
 
 .light
 	--palio: #FAFAFA
-	--background: #121212
+	--this: #FFFFFF
+	--background: #171717
 	--textone: #272727
 	--opposite: #FFFFFF
-	--borderline: #d7d7d7
+	--contraster: #d7d7d7
 	--greyish: #878787
-	--contraster: #e7e7e7
+	--contraster: #f1f1f1
 	--boxshadow: 4px 7px 12px #e1e1e1
-	--onlyblack: #d7d7d7
+	--onlyblack: #b7b7b7
+	--default: #272727
 
 $unit4: 4px
 $unit8: 8px
@@ -329,6 +335,13 @@ $unit128: 128px
 	grid-template-rows: auto
 	width: 100%
 	box-sizing: border-box
+
+.rta-gridcol
+	display: grid
+	grid-auto-flow: column
+	grid-template-rows: auto
+	width: 100%
+	box-sizing: border-box
 	
 .dark
 	.screen
@@ -354,7 +367,7 @@ $unit128: 128px
 	text-align: right
 	row-gap: 16px
 	height: 100%
-	border-left: 1px solid var(--borderline)
+	border-left: 1px solid var(--contraster)
 	align-items: flex-end
 	padding-top: 32px
 	padding-left: 32px
@@ -544,7 +557,7 @@ $unit128: 128px
 			background: var(--green)
 			height: 6px
 	.onetwo-bord-bot
-		border-bottom: 1px solid var(--borderline)
+		border-bottom: 1px solid var(--contraster)
 		padding-bottom: 16px
 	.pagepad
 		width: 50vw
@@ -579,7 +592,7 @@ $unit128: 128px
 			background: var(--green)
 			height: 4px
 	.onetwo-bord-bot
-		border-bottom: 1px solid var(--borderline)
+		border-bottom: 1px solid var(--contraster)
 		padding-bottom: 16px
 	.pagepad
 		width: 84vw
@@ -606,10 +619,10 @@ $unit128: 128px
 	cursor: pointer
 
 .bord-top
-	border-top: 1px solid var(--borderline)
+	border-top: 1px solid var(--contraster)
 
 .bord-bot
-	border-bottom: 1px solid var(--borderline)
+	border-bottom: 1px solid var(--contraster)
 
 .p-top-32
 	padding-top: 32px
@@ -820,11 +833,6 @@ $unit128: 128px
 		text-transform: uppercase
 		font-weight: 400
 		color: var(--themer)
-
-select
-	border: 1px solid var(--borderline)
-	padding: 2px
-	border-radius: 4px
 
 
 .levelzero, .levelone
@@ -1633,71 +1641,6 @@ button.glass
 		.rightstrip
 			background: #121212
 
-
-.levelzero
-	.inputformer
-		h6
-			padding-bottom: 12px
-		.rta-row
-			#titleform
-				width: 320px
-			#tagsform
-				width: 240px	
-		select.allselect
-			width: 120px
-		#textareamain
-			width: 440px
-			min-height: 134px
-
-
-.inputformer
-	input[type=text]
-		border: 1px solid var(--onlyblack)
-		border-radius: 4px
-		padding: 4px 8px
-		color: var(--greyish)
-		font-size: 14px
-	select
-		border: 1px solid var(--onlyblack)
-		border-radius: 4px
-		padding: 4px
-		color: #878787
-		font-size: 12px
-		&:focus
-			color: #878787
-		option
-			color: var(--greyish) !important
-			&:first-child
-				color: #878787
-		option[selected=true]
-			color: #878787
-	textarea
-		border: 1px solid var(--onlyblack)
-		color: var(--textone)
-		padding: 8px
-		border-radius: 4px
-	textarea.code-textarea
-		font-family: 'Space Mono', monospace
-		font-size: 12px
-		color: #878787
-	button
-		border: 1px solid #14BB4D
-		background: #14BB4D
-		padding: 4px 16px
-		border-radius: 4px
-		font-size: 12px
-		max-width: 160px
-		width: max-content
-		cursor: pointer
-		transform-origin: center center
-		transition: 0.05s
-		color: white
-		font-family: 'AuthenticSans-90', sans-serif
-		&:hover
-			transform: scale(0.96)
-		&:active
-			background: #09A23D
-
 .genbutton
 	border: 1px solid #14BB4D
 	background: #14BB4D
@@ -1715,6 +1658,24 @@ button.glass
 		transform: scale(0.96)
 	&:active
 		background: #09A23D
+
+.genbutton.red
+	border: 1px solid #fe4a49
+	background: #fe4a49
+	padding: 4px 16px
+	border-radius: 4px
+	font-size: 12px
+	max-width: 160px
+	width: max-content
+	cursor: pointer
+	transform-origin: center center
+	transition: 0.05s
+	color: white
+	font-family: 'AuthenticSans-90', sans-serif
+	&:hover
+		transform: scale(0.96)
+	&:active
+		background: #fe4a49
 
 
 .the-rightbar
@@ -1750,3 +1711,28 @@ button.glass
 	.parserbound
 		width: 680px
 		padding-left: 64px
+
+.tiptap
+	.ProseMirror
+		min-height: 80px
+		padding: 8px
+		font-size: 12px
+		ul, ol
+			padding-left: 12px
+
+.tiptapcoder
+	.ProseMirror
+		min-height: 160px
+		padding: 8px
+		font-size: 12px
+		ul, ol
+			padding-left: 12px
+
+.mainbar
+	@media screen and (min-width: 1024px)
+		.intern
+			width: 56vw
+	@media screen and (max-width: 1023px) and (min-width: 769px)
+		.intern
+			width: 56vw
+			

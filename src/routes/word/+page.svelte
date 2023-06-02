@@ -63,8 +63,10 @@
 				>
 					<div class="rta-column rowgap100 null insider xcenter ycenter ta-c">
 						<p class="green">{item.type}</p>
-						<h4 class="white tt-c">{item.title}</h4>
-						<small>{item.tags}</small>
+						<div class="font">
+							<h5 class="white tt-c">{item.title}</h5>
+						</div>
+						<small class="green">{item.tags}</small>
 					</div>
 				</a>
 			{/each}

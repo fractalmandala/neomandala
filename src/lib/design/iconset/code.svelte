@@ -1,6 +1,7 @@
 <script lang="ts">
-	export let dimension = 24;
+	export let dimension = 16;
 	export let color = 'var(--default)';
+	export let scaler = false;
 </script>
 
 <svg
@@ -8,20 +9,24 @@
 	width={dimension}
 	height={dimension}
 	viewBox="0 0 24 24"
-	fill={color}
+	fill="none"
+	class:scaling={scaler}
 	stroke={color}
 	stroke-width="2"
 	stroke-linecap="round"
 	stroke-linejoin="round"
-	class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg
+	class="feather feather-code"
+	><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg
 >
 
 <style lang="sass">
 
 svg
+	transform-origin: center center
+
+.scaling
 	&:hover
-		stroke: #10D56C
-		fill: #10D56C
+		transform: scale(1.2)
 
 
 </style>

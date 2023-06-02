@@ -2,19 +2,19 @@
 	import { slide } from 'svelte/transition';
 	import ChevRight from '$lib/design/iconset/chevright.svelte';
 	export let rotated = false;
+
+	function handleClick() {
+		rotated = !rotated;
+	}
 </script>
 
 <div class="rta-column">
-	<div class="rta-row colgap50 ycenter">
-		<!--
-		<ChevRight {rotated} color={'#676767'} />
-		-->
-		<div class="accordion-head" class:rotated>
-			<slot />
-		</div>
-	</div>
+	<button class="blank-button accordion-head" class:rotated on:click={handleClick}>
+		<slot />
+	</button>
+
 	{#if rotated}
-		<div class="accordion-body ta-l" transition:slide={{ duration: 200 }}>
+		<div class="accordion-body ta-l" transition:slide={{ duration: 400 }}>
 			<slot name="body" />
 		</div>
 	{/if}
@@ -22,21 +22,30 @@
 
 <style lang="sass">
 
+.blank-button
+	padding: 0
+	text-align: left
+
 .accordion-head
 	font-size: 14px
-	padding-bottom: 8px
 	font-family: 'Space Grotesk', sans-serif
 	text-transform: uppercase
 	font-weight: 500
+	cursor: pointer
+	color: var(--greyish)
+	&:hover
+		color: var(--background)
 
 .accordion-head.rotated
 	color: #10D56C
 
 .accordion-body
 	font-size: 12px
-	line-height: 1.28
+	line-height: 1.6
 	letter-spacing: 0.2px
-	font-family: 'Space Grotesk', sans-serif
+	font-family: 'Mona Sans', sans-serif
 	text-transform: capitalize
+	color: var(--greyish)
+	padding: 8px 0
 
 </style>

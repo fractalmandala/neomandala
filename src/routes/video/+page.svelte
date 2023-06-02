@@ -21,7 +21,7 @@
 </script>
 
 <div
-	class="rta-column pad32"
+	class="rta-column minH"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -40,3 +40,13 @@
 		{/if}
 	</div>
 </div>
+
+<style lang="sass">
+
+.rta-column.minH
+	@media screen and (min-width: 769px)
+		padding: 56px 3.2vw
+	@media screen and (max-width: 769px)
+		padding: 56px 24px
+
+</style>

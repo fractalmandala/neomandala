@@ -1,28 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { clickOutsideAction } from '$lib/utils/clickoutside';
-	import { noteStore, hideNote } from '$lib/dash/alerts';
 	import Info from '$lib/icons/Info.svelte';
+	import { showNote, noteStore } from '$lib/dash/alerts';
 
-	let isShown: any, title: string, color: boolean;
+	let isShown: any, title: string, status: boolean;
 	let dimension = 20;
 	let green = '#10D56C';
 	let red = '#fe4a49';
 
 	const unsubscribe = noteStore.subscribe((value) => {
-		({ isShown, title, color } = value);
+		({ isShown, title, status } = value);
 	});
-
-	function handleCloseClick() {
-		hideNote();
-	}
-
-	function handleOverlayClick(e: any) {
-		if (e.target === e.currentTarget) {
-			hideNote();
-		}
-	}
 
 	$: if (isShown === true) {
 		setTimeout(() => {
@@ -36,18 +25,13 @@
 </script>
 
 {#if isShown}
-	<div
-		class="chipper rta-column rowgap100 null"
-		transition:fly={{ x: 160 }}
-		use:clickOutsideAction
-		on:clickOutside={handleCloseClick}
-	>
+	<div class="chipper rta-column rowgap100 null" transition:fly={{ x: 160 }}>
 		<div class="rta-row colgap100 xcenter actualchip ycenter">
-			{#if color === true}
+			{#if status === false}
 				<Info {dimension} color={green} />
 				<p class="grot tt-u good">{title}</p>
 			{/if}
-			{#if color === false}
+			{#if status === true}
 				<Info {dimension} color={red} />
 				<p class="grot tt-u bad">{title}</p>
 			{/if}
@@ -67,20 +51,19 @@
     align-items: center
     justify-content: center
     text-align: center
+    z-index: 1000
 	
 p.good
-    background: #10D56C
     padding: 2px 4px
     font-size: 10px
     border-radius: 2px
-    color: white
+    color: var(--default)
 
 p.bad
-    background: #fe4a49
     padding: 2px 4px
     font-size: 10px
     border-radius: 2px
-    color: white
+    color: var(--default)
 
 
 </style>

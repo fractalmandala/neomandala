@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let dimension = 24;
-	export let color = '#FFFFFFF';
+	export let dimension = 20;
+	export let color = 'var(--default)';
 </script>
 
 <svg

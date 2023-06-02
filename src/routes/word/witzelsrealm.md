@@ -1,7 +1,7 @@
 ---
 title: Witzel’s Realm – On Reputationist Concerns Over India’s Reclamation of its History
 tags: OIT
-featured: true
+featured: false
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/11.webp
 id: 11

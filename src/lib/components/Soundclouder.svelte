@@ -1,23 +1,22 @@
 <script lang="ts">
+	import GeneralObserver from '$lib/components/GeneralObserver.svelte';
+	let iW: number;
 
-	import GeneralObserver from '$lib/components/GeneralObserver.svelte'
-	let iW: number
-
-	$: if ( iW <= 786 ) {
-		height = '100px'
-	}	 else {
-		height = '160px'
+	$: if (iW <= 786) {
+		height = '100px';
+	} else {
+		height = '320px';
 	}
 
-	export let soundcloudLink: string = ''
-	export let width: string = '100%'
-	export let height: string = '120px'
-	export let showVisual: boolean = true
-	export let disable_observer: boolean = false
-	export let iframe_styles: string = ''
+	export let soundcloudLink: string = '';
+	export let width: string = '100%';
+	export let height: string = '320px';
+	export let showVisual: boolean = true;
+	export let disable_observer: boolean = false;
+	export let iframe_styles: string = '';
 </script>
 
-<svelte:window bind:innerWidth={iW}/>
+<svelte:window bind:innerWidth={iW} />
 
 <GeneralObserver {disable_observer}>
 	<iframe

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap')
+
+
 @font-face
 	font-family: 'Authentic Sans', sans-serif
 	font-style: normal
@@ -113,21 +116,49 @@
 
 :root
 	font-family: 'Space Grotesk', sans-serif
-	font-size: 12px
+	font-size: 14px
 	font-weight: 400
+
+.pp64
+	padding-top: 64px
+	padding-bottom: 64px
 
 .tt-u
 	text-transform: uppercase
 
+.tt-c
+	text-transform: capitalize
+
 .ta-c
 	text-align: center
 
-p, h6, h5, h4, h3, h2, h1
+p, h6, h5, h4, h3, h2, h1, cite
 	margin: 0
+
+h6
+	color: var(--greyish)
+
+.font
+	font-family: 'Mona Sans', sans-serif
+	pre
+		font-family: 'Mona Sans', sans-serif
+
+.grot
+	font-family: 'Space Grotesk', sans-serif
+	pre
+		font-family: 'Space Grotesk', sans-serif
+
+.green, p.green, small.green
+	color: #10D56C
 
 a
 	text-decoration: none
 	color: inherit
+
+cite
+	line-height: 0.5
+	padding: 0
+	margin: 0
 
 p
 	a
@@ -141,15 +172,25 @@ $exp: 1.414
 
 .adobe
 	font-family: 'Adobe Devanagari', serif
+	blockquote
+		font-style: italic
+		border-left: 3px solid #10D56c
+		padding-left: 16px
+	h5
+		font-family: 'Space Grotesk', sans-serif
 	@media screen and (min-width: 1024px)
-		p
-			font-size: $std * 1.25
+		p, ul
+			font-size: $std * 1.6
 		h6
 			font-size: $std * 1.25
 		h5
 			font-size: $std * $exp * 1.25
+			padding: 40px 0
+			border-top: 1px solid var(--contraster)
+			border-bottom: 1px solid var(--contraster)
 		h4
-			font-size: $std * $exp * $exp * 1.25
+			font-size: $std * $exp * $exp * 1.5
+			padding-top: 80px
 		h3
 			font-size: $std *$exp * $exp * $exp * 1.25
 		h2
@@ -157,14 +198,19 @@ $exp: 1.414
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp * $exp * 1.25
 	@media screen and (min-width: 769px) and (max-width: 1023px)
-		p
-			font-size: $std * 1.25
+		p, ul
+			font-size: $std * 1.25 * 1.25
 		h6
 			font-size: $std * 1.25
 		h5
-			font-size: $std * 1.2 * 1.25
+			font-size: $std * 1.2 * 1.25 * 1.25
+			padding: 64px 0
+			border-top: 1px solid var(--contraster)
+			border-bottom: 1px solid var(--contraster)
 		h4
-			font-size: $std * $exp * 1.25
+			font-size: $std * $exp * 1.25 * 1.25 * 1.25
+			line-height: 1.2
+			padding: 80px 0 32px 0
 		h3
 			font-size: $std *$exp * $exp * 1.25
 		h2
@@ -172,14 +218,19 @@ $exp: 1.414
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp * 1.25
 	@media screen and (max-width: 768px)
-		p
-			font-size: $std * 1.25
+		p, ul
+			font-size: $std * 1.25 * 1.25
 		h6
 			font-size: $std * 1.25
 		h5
 			font-size: $std * $exp * 1.25
+			padding: 64px 0
+			border-top: 1px solid var(--contraster)
+			border-bottom: 1px solid var(--contraster)
 		h4
 			font-size: $std * $exp * $exp * 1.25
+			line-height: 1.2
+			padding: 80px 0 32px 0
 		h3
 			font-size: $std *$exp * $exp * 1.2 * 1.25
 		h2
@@ -187,10 +238,13 @@ $exp: 1.414
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp * 1.25
 
-.font
-	font-family: 'Mona Sans', sans-serif
-	.space
-		font-family: 'Space Grotesk', sans-serif
+.font, .grot
+	cite
+		font-size: 8px
+		text-transform: uppercase
+		font-style: normal
+		font-weight: 600
+		color: var(--onlyblack)
 	@media screen and (min-width: 1024px)
 		p
 			font-size: $std
@@ -233,15 +287,18 @@ $exp: 1.414
 		h3
 			font-size: $std *$exp * $exp * 1.2
 		h2
-			font-size: $std * $exp * $exp * $exp
+			font-size: $std * $exp * $exp * 1.1
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp
 
+
 .light
-	color: #272727
+	color: var(--default)
+	.space
+		color: var(--greyish)
 
 .dark
-	color: #a7a7a7
+	color: var(--default)
 
 .appcontainer
 	min-height: 100vh
@@ -268,14 +325,27 @@ $exp: 1.414
 	flex-direction: column
 
 .rta-grid
-	gap: 10px
+	row-gap: 16px
+	column-gap: 1.6vw
 	display: grid
+	grid-auto-flow: row
+	grid-template-rows: auto
+	width: 100%
+	box-sizing: border-box
 	&.xcenter
 		justify-content: center
 	&.xleft
 		justify-content: left
 	&.ycenter
 		align-content: center
+
+.rta-gridcol
+	display: grid
+	grid-auto-flow: column
+	grid-template-rows: auto
+	width: 100%
+	box-sizing: border-box
+	gap: 16px
 
 .colof6
 	display: flex
@@ -294,11 +364,15 @@ $exp: 1.414
 	padding-right: 40px
 
 .padded6
-	padding-left: 244px
-	padding-right: 244px
+	@media screen and (min-width: 900px)
+		padding-left: 122px
+		padding-right: 122px
+	@media screen and (max-width: 899px)
+		padding-left: 24px
+		padding-right: 24px	
 
 .paddedleft
-	padding-left: 244px
+	padding-left: 122px
 
 .gs1
 	grid-column-start: 1
@@ -336,7 +410,9 @@ $exp: 1.414
 	.rta-grid.grid6
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
 		grid-template-areas: "." "." "." "." "." "."
-		grid-template-areas: ". . . ."
+	.rta-grid.grid5
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+		grid-teomplate-areas: ". . . . ."
 	.rta-grid.grid4
 		grid-template-columns: 1fr 1fr 1fr 1fr
 		grid-template-areas: ". . . ."
@@ -411,3 +487,21 @@ $exp: 1.414
 		&.stay2
 			grid-template-columns: 1fr 1fr
 			grid-template-areas: ". ."
+
+
+.agentanswer pre
+	code
+		font-family: 'Space Mono', monospace
+		font-size: 14px
+
+.grot
+	.userquery, .agentanswer
+		p
+			font-size: 16px
+		pre
+			font-size: 16px
+
+.blogposter
+	display: flex
+	flex-direction: column
+	row-gap: 20px

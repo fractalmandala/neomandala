@@ -21,8 +21,7 @@ const initialState = {
 	isShown: false,
 	title: '',
 	message: '',
-	component: null,
-	props: {}
+	component: 0,
 };
 
 export const modalStore = writable(initialState);
@@ -30,10 +29,9 @@ export const modalStore = writable(initialState);
 export function showModal(
 	title: string,
 	message: string,
-	component: any = null,
-	props: object = {}
+	component: number,
 ) {
-	modalStore.update((state) => ({ ...state, isShown: true, title, message, component, props }));
+	modalStore.update((state) => ({ ...state, isShown: true, title, message, component }));
 }
 
 export function hideModal() {
@@ -42,8 +40,7 @@ export function hideModal() {
 		isShown: false,
 		title: '',
 		message: '',
-		component: null,
-		props: {}
+		component: 0,
 	}));
 }
 

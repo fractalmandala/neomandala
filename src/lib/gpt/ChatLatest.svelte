@@ -11,6 +11,7 @@
 	import Parser from '$lib/agent/Parser.svelte';
 
 	let session: ChatSession | undefined;
+
 	$: if ($chatSessions.length > 0) {
 		session = $chatSessions.sort((a, b) => {
 			if (!b.createdAt) return -1; // b is undefined, a comes first
@@ -44,11 +45,11 @@
 				{:else}
 					<div class="rta-row userquery null">
 						<p>{message.query}</p>
-						<img src="/images/iconuser.png" alt="user" />
+						<img src="/images/av-user.png" alt="user" />
 					</div>
 					<div class="rta-row agentanswer null">
-						<img src="/images/iconbot.png" alt="bot" />
-						<Parser response={message.answer} />
+						<img src="/images/av-bot.png" alt="bot" />
+						{@html marked.parse(message.answer)}
 					</div>
 				{/if}
 			{/each}
@@ -58,47 +59,38 @@
 
 <style lang="sass">
 
-.lightmode
-	.agentanswer
-		background: #fafafa
-
 .userquery, .agentanswer
 	img
 		object-fit: contain
-		width: 20px
-		height: 20px
+		width: 16px
+		height: 16px
 
-.lightmode
-	.userquery
-		border-top: 1px solid #e1e1e1
-		border-bottom: 1px solid #e1e1e1
+
+.userquery
+	border-top: 1px solid var(--contraster)
+	border-bottom: 1px solid var(--contraster)
 
 .levelzero, .levelone, .leveltwo
 	.userquery
-		padding-top: 48px
-		padding-bottom: 48px
-		padding-right: 24px
-		padding-left: 24px
+		padding-top: 32px
+		padding-bottom: 32px
 	.agentanswer
-		padding-top: 64px
-		padding-bottom: 64px
-		padding-left: 24px
-		padding-right: 24px
-
-
+		padding-top: 32px
+		padding-bottom: 32px
 
 .userquery p
-	font-family: 'Authentic Sans', sans-serif
-	font-size: 16px
-	line-height: 1.6
+	font-family: 'Space Grotesk', sans-serif
+	color: var(--greyish)
 	
 .userquery
 	text-align: right
 	justify-content: flex-end
-	column-gap: 24px
+	column-gap: 16px
 
-#currentsession.levelzero
-	width: 56.75vw
+.agentanswer
+	text-align: left
+	justify-content: flex-start
+	column-gap: 16px
 
 
 </style>

@@ -47,8 +47,8 @@ export async function addCode(title: string, tags: string, content: string, lang
 		agent: 'snippet'
 	});
 	if (error) {
-		showNote('error', false);
+		showNote('error', true);
 	} else {
-		showNote('Sent!', true);
+		showNote('Sent!', false);
 	}
 }

@@ -31,7 +31,7 @@
 </script>
 
 <div
-	class="rta-column null parserbound"
+	class="rta-column null"
 	class:dark={!$themeMode}
 	class:light={$themeMode}
 	class:levelzero={$breakZero}
@@ -69,9 +69,6 @@
 
 <style lang="sass">
 
-.leveltwo.parserbound
-	width: 90vw
-
 .thisguy
 	border-bottom: 1px solid var(--themer)
 
@@ -88,7 +85,7 @@
 pre.codeblock
 	overflow-y: scroll
 	overflow-x: scroll
-	font-family: 'Authentic Sans', sans-serif
+	font-family: 'Space Grotesk', sans-serif
 
 
 .nocodeparent
@@ -97,14 +94,14 @@ pre.codeblock
 		line-height: 1.6
 		overflow-y: scroll
 		white-space: pre-line
-		font-family: 'Authentic Sans', sans-serif
+		font-family: 'Space Grotesk', sans-serif
 
 
 .codeblock code
 	word-wrap: break-all
 	color: var(--textone)
 	font-family: 'Space Mono', monospace
-	font-sizw: 12px
+	font-size: 12px
 
 
 </style>

@@ -1,9 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { allNotes } from '$lib/dash/db';
+	import { chatSessions } from '$lib/gpt/chatstore';
+	import BotUtil from '$lib/dash/BotUtil.svelte';
+	import Gridder from '$lib/components/Gridder.svelte';
 	import { allBuild, allWebdev } from '$lib/utils/localpulls';
+	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { slide } from 'svelte/transition';
 	import { snippets } from '$lib/dash/db';
+	import Acco from '$lib/design/MandAccordionItem.svelte';
+	import Acco2 from '$lib/design/MandAccordionItem.svelte';
+	import Acco3 from '$lib/design/MandAccordionItem.svelte';
+	import Acco4 from '$lib/design/MandAccordionItem.svelte';
+	import Add from '$lib/design/iconset/add.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -11,26 +21,30 @@
 		themeMode,
 		toggleVisibility
 	} from '$lib/stores/globalstores';
+	import { notesDiary } from '$lib/dash/notesutil';
 	import Loader from '$lib/assets/Loader.svelte';
 	import Pinned from '$lib/dash/PinnedNotes.svelte';
 	import Auth from '$lib/dash/AuthHeader.svelte';
-	import Menu from '$lib/design/iconset/menu.svelte';
-	import Moon from '$lib/design/iconset/moon.svelte';
-	import Sun from '$lib/design/iconset/sun.svelte';
-	import ArrowLeft from '$lib/design/iconset/arrowleft.svelte';
-	import Acco1 from '$lib/design/MandAccordionItem.svelte';
-	import Acco2 from '$lib/design/MandAccordionItem.svelte';
-	import Acco3 from '$lib/design/MandAccordionItem.svelte';
-	import Acco4 from '$lib/design/MandAccordionItem.svelte';
+	let session: ChatSession | undefined;
 	let openB = true;
 	let fake = false;
 	let builds: any;
 	let webs: any;
 	let snips: any;
+	let notes: any;
 	let openAcco = Array(4).fill(false);
 	let buildOpen = Array(10).fill(false);
 	let axis: 'x' | 'y' | undefined;
 	let dimension: number;
+	let currentPage: string;
+
+	$: if ($chatSessions.length > 0) {
+		session = $chatSessions.sort((a, b) => {
+			if (!b.createdAt) return -1; // b is undefined, a comes first
+			if (!a.createdAt) return 1; // a is undefined, b comes first
+			return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(); // normal comparison
+		})[0];
+	}
 
 	function toggleOpenAcco(index: number) {
 		openAcco[index] = !openAcco[index];
@@ -70,17 +84,20 @@
 		dimension = 20;
 	}
 
+	$: currentPage = $page.url.pathname.slice(0, 4);
+
 	onMount(() => {
 		(async () => {
 			builds = await allBuild();
 			webs = await allWebdev();
 			snips = await snippets();
+			notes = await allNotes();
 		})();
 	});
 </script>
 
 <div
-	class="rta-sitebox"
+	class="with-sidebar"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -88,106 +105,143 @@
 	class:darkmode={!$themeMode}
 	class:calib={openB}
 >
-	<div class="moving-side">
-		<div class="appmenu">
-			<a href="/" class="rta-row xcenter-d ycenter">
-				<Loader color={'#10D56C'} {dimension} />
-			</a>
-			<button class="blank-button" on:click={toggleBar}>
-				{#if openB}
-					<ArrowLeft color={'#FFFFFF'} {dimension} />
-				{:else}
-					<Menu color={'#FFFFFF'} {dimension} />
+	<section class="sidebar pp64">
+		<div class="forheight">
+			<div class="grot null">
+				{#if session}
+					<cite class="green tt-u">Current Bot - {session.sessionbot}</cite>
 				{/if}
-			</button>
-			<button class="blank-button" on:click={handleModeChange}>
-				{#if $themeMode}
-					<Moon color={'#FFFFFF'} {dimension} />
-				{:else}
-					<Sun color={'#FFFFFF'} {dimension} />
+			</div>
+			<div class="rta-row ycenter buttonschoice bord-bot p-bot-16">
+				<a class="blank-button" href="/doc">
+					<Add dimension={20} />
+				</a>
+				{#if currentPage === '/bot'}
+					<BotUtil />
 				{/if}
-			</button>
+			</div>
+			<Acco4>
+				Articles
+				<div slot="body" class="rta-column">
+					{#if notes && notes.length > 0}
+						{#each notes as item}
+							<a href="/doc/{item.id}">
+								{item.title}
+							</a>
+						{/each}
+					{/if}
+				</div>
+			</Acco4>
+			<Acco
+				>Draft Notes
+				<div slot="body">
+					{#if $notesDiary && $notesDiary.length > 0}
+						{#each $notesDiary as note}
+							<p>{note.title}</p>
+						{/each}
+					{/if}
+				</div>
+			</Acco>
+			<Acco2>
+				Code Snips
+				<div slot="body" class="rta-column">
+					{#if snips && snips.length > 0}
+						{#each snips as item}
+							<a class="hover" href="/code/{item.id}">
+								{item.title}
+							</a>
+						{/each}
+					{/if}
+				</div>
+			</Acco2>
+			<Acco3>
+				GPT Chats
+				<div slot="body">
+					{#if $chatSessions && $chatSessions.length > 0}
+						{#each $chatSessions as chat}
+							<a href="/bot/{chat.id}">
+								{chat.id}
+							</a>
+						{/each}
+					{/if}
+				</div>
+			</Acco3>
 		</div>
-		{#if openB}
-			<div class="openmenu null" data-lenis-prevent in:slide={{ axis: axis }}>
-				{#if $page.data.session}
-					<div class="authorizedbox rta-column">
-						<button class="blank-button rta-column" on:click={() => toggleOpenAcco(1)}>
-							<Acco1 rotated={openAcco[1]}
-								>Rough Drafts
-								<div class="rta-column rowgap50 bord-bot p-bot-16" slot="body">
-									{#if builds && builds.length > 0}
-										{#each builds as item, i}
-											<p class="grot">
-												<a href={item.linkpath} class="hover">
-													{item.meta.title}
-												</a>
-											</p>
-										{/each}
-									{/if}
-								</div>
-							</Acco1>
-						</button>
-						<button class="blank-button rta-column p-top-16" on:click={() => toggleOpenAcco(2)}>
-							<Acco2 rotated={openAcco[2]}
-								>Web Dev Posts
-								<div class="rta-column rowgap50 bord-bot p-bot-16" slot="body">
-									{#if webs && webs.length > 0}
-										{#each webs as item, i}
-											<p class="grot">
-												<a href={item.linkpath} class="hover">
-													{item.meta.title}
-												</a>
-											</p>
-										{/each}
-									{/if}
-								</div>
-							</Acco2>
-						</button>
-						<button class="blank-button rta-column p-top-16" on:click={() => toggleOpenAcco(3)}>
-							<Acco3 rotated={openAcco[3]}>
-								Code Snippets
-								<div class="rta-column rowgap50 bord-bot p-bot-16" slot="body">
-									{#if snips && snips.length > 0}
-										{#each snips as item}
-											<p class="grot">
-												<a href="/code/{item.id}" class="hover">
-													{item.title}
-												</a>
-											</p>
-										{/each}
-									{/if}
-								</div>
-							</Acco3>
-						</button>
-					</div>
-				{:else}
-					<div class="login-box">
-						<form class="rta-column rowgap50">
-							<input type="email" placeholder="email" />
-							<input type="password" placeholder="password" />
-							<button type="submit">Login</button>
-						</form>
-					</div>
-				{/if}
-			</div>
-		{/if}
-	</div>
-	<div class="moving-page">
-		<Auth>
-			<div slot="signout">
-				<button class="blank-button">
-					<small class="green tt-u grot">Log out</small>
-				</button>
-			</div>
-		</Auth>
-		<div class="pagearea">
-			<div class="inpage-page">
-				<slot />
-			</div>
-			<div class="the-rightbar">
-				<Pinned />
-			</div>
-		</div>
-	</div>
+	</section>
+	<section class="mainbar pp64">
+		<slot />
+	</section>
 </div>
+
+<style lang="sass">
+
+a
+	&:hover
+		color: #10D56C
+
+.with-sidebar
+	width: 100vw
+	@media screen and (min-width: 900px)
+		grid-template-columns: 256px 1fr
+		padding: 56px 3.2vw 0 3.2vw
+		grid-template-areas: "sidebar mainbar"
+		.sidebar
+			height: calc(100vh - 56px)
+			position: sticky
+			top: 56px
+			border-right: 1px solid var(--contraster)
+			.forheight
+				height: calc(100vh - 112px)
+				overflow-y: scroll
+				display: flex
+				flex-direction: column
+				row-gap: 20px
+				&::-webkit-scrollbar
+					width: 1px
+			.rta-row
+				column-gap: 16px
+		.mainbar
+			padding-left: 4.4vw
+			padding-right: 16vw
+	@media screen and (min-width: 769px) and (max-width: 899px)
+		grid-template-columns: 200px 1fr
+		grid-template-areas: "sidebar mainbar"
+		padding: 56px 2.4vw 0 2.4vw
+		.sidebar
+			height: calc(100vh - 120px)
+			position: sticky
+			top: 56px
+			overflow-y: scroll
+			border-right: 1px solid var(--contraster)
+			&::-webkit-scrollbar
+				width: 1px
+		.mainbar
+			padding-left: 3.2vw
+			padding-right: 3.2vw
+	@media screen and (max-width: 768px)
+		grid-template-columns: 1fr
+		grid-template-areas: "mainbar"
+		padding: 56px 24px
+		.sidebar
+			display: none
+		.mainbar
+			padding-left: 0
+			padding-right: 0
+			width: 90vw
+
+.with-sidebar.leveltwo
+	.sidebar
+		display: none
+
+.with-sidebar
+	display: grid
+	.sidebar
+		grid-area: sidebar
+		display: flex
+		flex-direction: column
+		gap: 16px
+		padding-right: 16px
+	.mainbar
+		grid-area: mainbar
+
+</style>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let dimension = 24;
-	export let color = '#FFFFFF';
+	export let color = 'var(--default)';
 </script>
 
 <svg
@@ -31,3 +31,13 @@
 		y2="18.36"
 	/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg
 >
+
+<style lang="sass">
+
+svg
+	&:hover
+		stroke: #10D56C
+		fill: #10D56C
+
+
+</style>

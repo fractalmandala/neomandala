@@ -58,10 +58,10 @@
 	<div class="rta-grid ycenter grid4 minH">
 		{#if posts && posts.length > 0}
 			{#each posts as item}
-				<div class="cell grot rta-column rowgap100 null xcenter ycenter ta-c p-all-16">
+				<div class="cellsx grot rta-column rowgap100 null xcenter ycenter ta-c p-all-16">
 					<p class="green">{item.type}</p>
 					<a class="grot" href="/word/{item.slug}">
-						<h5 class="white tt-c">{item.title}</h5>
+						<h5 class="tt-c">{item.title}</h5>
 					</a>
 					<small class="green">{item.tags}</small>
 				</div>
@@ -78,6 +78,16 @@
 </div>
 
 <style lang="sass">
+
+.cellsx
+	background: rgba(25, 25, 25 ,0.44)
+	border-radius: 5px
+	box-shadow: 4px 4px 12px rgba(0, 0 , 2, 0.1)
+	transition: 0.1s
+	&:hover
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0)
+	h5
+		color: white
 
 .light
 	background-color: hsla(0,0%,100%,1)

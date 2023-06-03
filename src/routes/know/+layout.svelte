@@ -11,16 +11,18 @@
 </script>
 
 <div class="sidebarandpage minH">
-	<div class="grot sidebar tt-u">
-		{#if indexer && indexer.length > 0}
-			{#each indexer as item}
-				<p>
-					<a href="/know/{item.slug}">
-						{item.name}
-					</a>
-				</p>
-			{/each}
-		{/if}
+	<div class="grot sidebar tt-c">
+		<div class="inside">
+			{#if indexer && indexer.length > 0}
+				{#each indexer as item}
+					<p>
+						<a href="/know/{item.slug}">
+							{item.name}
+						</a>
+					</p>
+				{/each}
+			{/if}
+		</div>
 	</div>
 	<div class="mainarea">
 		<slot />
@@ -54,6 +56,24 @@
 		grid-template-areas: "sidebar mainarea"
 		.sidebar
 			height: 100vh
+			width: 256px
+			top: 0
+			left: 0
+			padding-top: 128px
+			padding-left: 40px
+			border-right: 1px solid var(--onlyblack)
+			.inside
+				position: sticky
+				top: 128px
+		.mainarea
+			margin-top: 56px
+			padding-left: 1.6vw
+			padding-right: 40px
+	@media screen and (min-width: 769px) and (max-width: 899px)
+		grid-template-columns: 256px 1fr
+		grid-template-areas: "sidebar mainarea"
+		.sidebar
+			height: 100vh
 			position: sticky
 			width: 256px
 			top: 0
@@ -61,13 +81,18 @@
 			overflow-y: scroll
 			padding-top: 128px
 			padding-left: 40px
+			border-right: 1px solid var(--onlyblack)
 		.mainarea
-			padding-top: 80px
-			padding-left: 1.6vw
-			width: 77%
-	@media screen and (max-width: 768px)
+			margin-top: 56px
+			padding-left: 1.6vw		
+			padding-right: 40px
+	@media screen and (max-width: 768px) 
+		grid-template-columns: 1fr
+		grid-template-areas: "mainarea"
 		.sidebar
 			display: none
+		.mainarea
+			padding: 56px 24px
 		
 
 </style>

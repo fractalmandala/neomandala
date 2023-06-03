@@ -32,9 +32,10 @@
 	align-items: center
 	justify-content: center
 	height: 56px
-	background: var(--this)
-	border-top: 2px solid var(--liner)
+	background-color: hsla(0,0%,0%,1)
+	background-image: radial-gradient(at 0% 100%, hsla(116,85%,11%,1) 0px, transparent 50%), radial-gradient(at 100% 100%, hsla(74,56%,9%,0.82) 0px, transparent 50%), radial-gradient(at 91% 14%, hsla(147,67%,5%,0.74) 0px, transparent 50%)
 	.rta-row small
+		color: #676767
 		margin: 0
 	@media screen and (min-width: 769px)
 		padding: 0 3.2vw

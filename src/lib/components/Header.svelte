@@ -124,6 +124,10 @@
 					<a href="/video">{link6}</a>
 				</div>
 			</div>
+			<button class="blank-button" on:click={showPinned}>
+				<Pin />
+			</button>
+			<slot name="logger" />
 		{/if}
 		<button class="blank-button" on:click={handleSwitch}>
 			{#if $themeMode}
@@ -132,15 +136,11 @@
 				<Sun {dimension} />
 			{/if}
 		</button>
-		<button class="blank-button" on:click={toggleMenuNav}>
-			{#if $breakTwo}
+		{#if $breakTwo}
+			<button class="blank-button" on:click={toggleMenuNav}>
 				<Menu />
-			{/if}
-		</button>
-		<button class="blank-button" on:click={showPinned}>
-			<Pin />
-		</button>
-		<slot name="logger" />
+			</button>
+		{/if}
 	</div>
 </div>
 
@@ -224,8 +224,8 @@
 		column-gap: 16px
 
 .fm-header
-	border-bottom: 2px solid var(--liner)
 	background: var(--this)
+	border-bottom: 1px solid var(--onlyblack)
 
 .fm-header.levelzero, .fm-header.levelone
 	padding-left: 40px

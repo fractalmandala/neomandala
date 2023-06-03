@@ -46,42 +46,45 @@
 	});
 </script>
 
-<div class="rta-grid">
-	<div class="grot rta-row xend colgap300 null ycenter">
-		<div class="rta-column rowgap200">
-			<div class="rta-row">
+<div class="rta-grid grid2 p-top-64">
+	<div class="toptips">
+		<div class="editor" bind:this={element} />
+	</div>
+	<div class="grot rta-column xright rowgap400 null">
+		<div class="rta-column xright rowgap400">
+			<div class="rta-row colgap200">
+				<h3 class="bord-bot">{data.name}</h3>
 				<p><strong>{data.id}</strong></p>
-				<h1 class="bord-bot">{data.name}</h1>
+				<button class="blank-button" on:click={saveContent}>
+					<Save />
+				</button>
 			</div>
-			<button class="blank-button" on:click={saveContent}>
-				<Save />
-			</button>
 		</div>
 		<div class="rta-image">
 			<img src={imagelink} alt={data.name} />
 		</div>
 	</div>
-	<div class="toptips">
-		<div class="editor" bind:this={element} />
-	</div>
-	{content}
 </div>
 
 <style lang="sass">
 
-@media screen and (min-width: 900px)
-	.rta-image
-		height: 200px
-		width: 200px
-		border-radius: 100px
-		img
-			border-radius: 100px
-			object-fit: cover
-			height: 200px
-			width: 200px
+.toptips
+	padding: 0
 	.editor
-		width: 80%
-		margin-left: 5%
+		width: 100%
+
+.rta-image
+	height: 80px
+	width: 80px
+	border-radius: 100px
+	img
+		border-radius: 100px
+		object-fit: cover
+		height: 80px
+		width: 80px
+
+@media screen and (min-width: 900px)
+	.editor
 		position: relative
 		&::before
 			position: absolute
@@ -91,5 +94,46 @@
 			width: 3px
 			background: #10D56C
 			content: ''
+	.grot.xright.null
+		place-self: flex-end
+		position: sticky
+		top: 128px
+	.rta-grid.grid2
+		grid-template-columns: 1fr 240px
+		grid-template-areas: "center right"
+		align-content: start
+		align-items: start
+		.grot.rta-column
+			grid-area: right
+			justify-content: flex-start
+			align-self: start
+		.toptips
+			grid-area: center	
+
+
+@media screen and (max-width: 899px) and (min-width: 769px)
+	.rta-grid.grid2
+		grid-template-columns: 1fr 180px
+		grid-template-areas: "center right"
+		.grot.rta-column
+			grid-area: right
+			justify-content: flex-start
+			align-self: start
+		.toptips
+			grid-area: center
+	
+@media screen and (max-width: 768px)
+	.rta-grid.grid2
+		grid-template-columns: 1fr
+		grid-template-areas: "right" "center"
+		.grot.rta-column
+			grid-area: right
+		.toptips
+			grid-area: center
+
+
+.grot.rta-column
+	align-self: start
+
 
 </style>

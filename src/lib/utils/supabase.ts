@@ -205,3 +205,12 @@ export async function articleDrafts() {
 	if (error) throw new Error(error.message);
 	return data;
 }
+
+export async function mandalapedia(){
+	const { data, error } = await supabase
+		.from('mandalapedia')
+		.select()
+		.order('name');
+	if (error) throw new Error(error.message);
+	return data;
+}

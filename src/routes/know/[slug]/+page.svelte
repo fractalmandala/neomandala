@@ -1,11 +1,6 @@
 <script lang="ts">
-
-	export let data
-
+	export let data;
 </script>
 
-<small>{data.tags}</small>
-<h4>{data.title}</h4>
-<div class="knowcontainer">
-	<svelte:component this={data.content}/>
-</div>
+<small>{data.id}</small>
+<h4>{data.name}</h4>

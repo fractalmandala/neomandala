@@ -205,8 +205,12 @@
 			margin-left: 0
 			width: 100%
 
+.link
+	padding: 0 4px
+
 .link.isgreen
-	color: #10D56C
+	background-color: #10D56C
+	color: white
 
 .fm-header
 	display: flex

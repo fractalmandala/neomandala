@@ -81,17 +81,9 @@
 		{/each}
 	</select>
 </div>
-<button class="blank-button" on:click={showCurrent}>
-	<div class="circo" />
-</button>
 
 <style lang="sass">
 
-.circo
-	height: 12px
-	width: 12px
-	background: #fe4a49
-	border-radius: 50%
 
 select
 	border: 1px solid var(--contraster)

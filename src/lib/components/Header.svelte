@@ -6,6 +6,8 @@
 	import Moon from '$lib/design/iconset/moon.svelte';
 	import Sun from '$lib/design/iconset/sun.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
+	import Pin from '$lib/design/iconset/pin.svelte';
+	import { showPinned, hidePinned } from '$lib/dash/modalstores';
 
 	let dimension = 16;
 	let menuNav = false;
@@ -19,6 +21,7 @@
 	let link5 = 'sou';
 	let link6 = 'vid';
 	let link7 = 'bot';
+	let link8 = 'kno';
 
 	let greener1 = false;
 	let greener2 = false;
@@ -27,6 +30,7 @@
 	let greener5 = false;
 	let greener6 = false;
 	let greener7 = false;
+	let greener8 = false;
 
 	$: if (pageTitle === link1) {
 		greener1 = true;
@@ -55,6 +59,10 @@
 	$: if (pageTitle === link7) {
 		greener7 = true;
 	} else greener7 = false;
+
+	$: if (pageTitle === link8) {
+		greener8 = true;
+	} else greener8 = false;
 
 	function toggleMenuNav() {
 		menuNav = !menuNav;
@@ -89,6 +97,9 @@
 	<div class="rta-row ycenter xend outrow">
 		{#if menuNav || $breakZero || $breakOne}
 			<div class="rowinside rta-row ycenter" transition:fly>
+				<div class="link" class:isgreen={greener8}>
+					<a href="/know">{link8}W</a>
+				</div>
 				{#if logged}
 					<div class="link" class:isgreen={greener7}>
 						<a href="/bot">{link7}</a>
@@ -126,7 +137,9 @@
 				<Menu />
 			{/if}
 		</button>
-
+		<button class="blank-button" on:click={showPinned}>
+			<Pin />
+		</button>
 		<slot name="logger" />
 	</div>
 </div>

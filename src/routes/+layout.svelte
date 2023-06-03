@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { invalidate } from '$app/navigation';
-	import Lenis from '@studio-freight/lenis';
+	import Pinned from '$lib/dash/PinnedNotes.svelte';
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 	import Header from '$lib/components/Header.svelte';
-	import { mouseStore } from '$lib/stores/mousestore';
+	import Footer from '$lib/components/Footer.svelte';
 	import { spring } from 'svelte/motion';
 	import Logout from '$lib/design/iconset/logout.svelte';
 	import Login from '$lib/design/iconset/login.svelte';
@@ -19,27 +19,20 @@
 	} from '$lib/stores/globalstores';
 	import '$lib/styles/theme.sass';
 	import '$lib/styles/fonts.sass';
-	import TransitionPage from '$lib/components/TransitionPage.svelte';
 	import Modal from '$lib/components/Modal.svelte';
 	import Chip from '$lib/components/Chip.svelte';
 	import AlertNew from '$lib/dash/Alert.svelte';
-	import { showDrawer, hideDrawer } from '$lib/stores/modalstores';
 	import GlobalNote from '$lib/dash/globals/GlobalNote.svelte';
 	import Drawer from '$lib/components/Drawer.svelte';
 	import Toast from '$lib/components/Toast.svelte';
 	import Alert from '$lib/components/Alert.svelte';
 	import GoodAlert from '$lib/components/GoodAlert.svelte';
+	import Transition from '$lib/components/TransitionPage.svelte';
 	import '$lib/styles/animate.css';
 
 	let pageTitle = '';
 
-	let timeIs = false;
-	let audioElement: any;
-	let mobileMenu = false;
-	let fake = false;
-	let hideHeader = false;
 	let okayCol = false;
-	const position = mouseStore();
 	let logged: boolean;
 
 	let coords = spring(
@@ -117,11 +110,6 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	{#if $themeMode}
-		<div class="backs whiteback" />
-	{:else}
-		<div class="backs blackback" />
-	{/if}
 	<header>
 		<Header {logged} {pageTitle}>
 			<div slot="logger">
@@ -138,8 +126,15 @@
 		</Header>
 	</header>
 	<main class="low">
-		<slot />
+		{#key data.pathname}
+			<Transition>
+				<slot />
+			</Transition>
+		{/key}
 	</main>
+	<footer>
+		<Footer />
+	</footer>
 </div>
 <AlertNew />
 <Modal />
@@ -149,18 +144,10 @@
 <GoodAlert />
 <Chip />
 <GlobalNote />
+<Pinned />
 
 <style lang="sass">
 
-.minH
-	position: relative
-	.backs
-		position: absolute
-		top: 0
-		right: 0
-		width: 100%
-		height: 100%
-		transform-origin: top
 
 header
 	z-index: 1000

@@ -1,14 +1,11 @@
 <script lang="ts">
-	import { codesBase } from '$lib/dash/sniputils';
-	import { get } from 'svelte/store';
-	import { slide } from 'svelte/transition';
-	import NotesForm from '$lib/dash/NotesForm.svelte';
 	import CodeInput from '$lib/dash/CodeInput.svelte';
 </script>
 
-<div class="rta-column xleft">
-	<CodeInput />
-
+<div class="rta-column biggie">
+	<div class="rta-row colgap200">
+		<CodeInput />
+	</div>
 	<!--
 	<div class="editorbuttons">
 		{#if editor}
@@ -496,3 +493,22 @@
 	</div>
 	-->
 </div>
+
+<style lang="sass">
+
+.biggie
+	@media screen and (min-width: 900px)
+		width: 86%
+		padding-top: 64px
+	@media screen and (max-width: 899px) and (min-width: 769px)
+		width: 88%
+		padding-top: 64px
+	@media screen and (max-width: 768px)
+		width: 100%
+		padding-top: 64px
+
+.rta-row
+	column-gap: 1.6vw
+
+
+</style>

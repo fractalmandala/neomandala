@@ -46,6 +46,7 @@
 
 <div
 	class="rta-column"
+	bind:this={ref}
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -64,10 +65,10 @@
 		<Social />
 	</div>
 
-	<div class="rta-column p-top-64">
+	<div class="rta-column x101">
 		<div class="measure" style="width: {(y / $size.height) * 100}%" />
 
-		<div class="blogposter adobe p-top-64" bind:this={ref}>
+		<div class="grot blogger p-top-64">
 			<svelte:component this={data.content} />
 		</div>
 		<div class="lowerone p-bot-32">
@@ -85,18 +86,21 @@
 
 <style lang="sass">
 
+.x101
+	background: var(--this)
+
 .levelzero
-	.blogposter
+	.blogger
 		padding-left: 25vw
 		padding-right: 25vw
 
 .levelone
-	.blogposter
+	.blogger
 		padding-left: 64px
 		padding-right: 64px
 
 .leveltwo
-	.blogposter
+	.blogger
 		padding-left: 32px
 		padding-right: 32px
 

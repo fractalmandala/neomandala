@@ -13,26 +13,15 @@
 	});
 </script>
 
-{#if isShown}
-	<footer class="footermain">
-		<div class="rta-row colgap100 ycenter null">
-			<small>
-				I'm Amrit, a writer and creator based in Gurgaon, India. I work as Director of Strategy at <a
-					href="https://www.brhat.in"
-					target="_blank"
-					rel="noreferrer">Bṛhat</a
-				>, a cultural content, research and learning organization. Apart from this site, I also
-				develop and maintain Bṛhat's website and the sister portal
-				<a href="https://www.brhateducation.in" target="_blank" rel="noreferrer">Bṛhat Education.</a
-				>
-			</small>
-		</div>
+<footer class="footermain">
+	<div class="rta-row grot colgap100 ycenter null">
+		<small> 2023 | Amritanshu Pandey </small>
 		<div class="rta-row grey">
 			<Github />
 			<Twitter />
 		</div>
-	</footer>
-{/if}
+	</div>
+</footer>
 
 <style lang="sass">
 
@@ -42,7 +31,14 @@
 	row-gap: 12px
 	align-items: center
 	justify-content: center
+	height: 56px
+	background: var(--this)
+	border-top: 2px solid var(--liner)
 	.rta-row small
 		margin: 0
+	@media screen and (min-width: 769px)
+		padding: 0 3.2vw
+	@media screen and (max-width: 768px)
+		padding: 0 16px
 
 </style>

@@ -26,6 +26,17 @@ export async function supaImages(low: number, top: number) {
 	return data;
 }
 
+export async function filteredImages(genre:string) {
+	const { data, error } = await supabase
+		.from('amrit-gallery')
+		.select()
+		.eq('genre', genre)
+		.order('id', { ascending: false })
+	if (error) throw new Error(error.message);
+	return data;
+}
+
+
 export async function womboImages() {
 	const { data, error } = await supabase
 		.from('amrit-wombo')

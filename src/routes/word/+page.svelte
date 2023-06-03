@@ -1,11 +1,7 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { onMount } from 'svelte';
-	import AppShell from '$lib/design/AppShell.svelte';
-	import GlassButton from '$lib/components/GlassButton.svelte';
-	import GlassButton2 from '$lib/components/GlassButton.svelte';
-	import GlassButton3 from '$lib/components/GlassButton.svelte';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores';
 	import { audioStore } from '$lib/stores/modalstores';
 	import {
 		allWritings,
@@ -14,29 +10,10 @@
 		archivalWritings
 	} from '$lib/utils/supabase';
 	let pens: any;
-	let audio: any;
-	let fake = false;
 	let hists: any;
 	let archs: any;
 	let mands: any;
-	let gen = Array(3).fill(false);
 
-	$: isAnyGen = gen.some((item) => item);
-
-	function toggleGen(index: number) {
-		gen[index] = !gen[index];
-		for (let i = 0; i < gen.length; i++) {
-			if (i !== index && gen[i] === true) {
-				gen[i] = false;
-			}
-		}
-	}
-
-	function fauxfake() {
-		fake = !fake;
-	}
-
-	audioStore.subscribe((value) => (audio = value));
 	onMount(async () => {
 		pens = await allWritings();
 		hists = await historyWritings();
@@ -54,7 +31,7 @@
 	class:dark={!$themeMode}
 >
 	<div class="rta-grid grid4 colgap100 rowgap100 p-top-32">
-		{#if pens && pens.length > 0 && !isAnyGen}
+		{#if pens && pens.length > 0}
 			{#each pens as item}
 				<a
 					class="rta-row colgap100 stay ybetween back height-40-40"

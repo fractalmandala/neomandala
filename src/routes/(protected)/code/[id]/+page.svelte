@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { onMount, tick } from 'svelte';
+	import Prism from 'prismjs';
+	import '$lib/styles/prism.css';
 	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { showModal } from '$lib/stores/modalstores';
 	export let data;
@@ -6,6 +9,11 @@
 	function handleClick() {
 		showModal('CAUTION!', 'mes', data.id);
 	}
+
+	onMount(async () => {
+		await tick();
+		Prism.highlightAll();
+	});
 </script>
 
 <svelte:head>
@@ -19,8 +27,8 @@
 </svelte:head>
 
 <div class="grot rta-grid p-top-64">
-	<div class="grot null">
-		<h3>{data.title}</h3>
+	<div class="grot null p-top-64">
+		<h4>{data.title}</h4>
 	</div>
 	<div class="rta-row between bord-bot p-bot-32">
 		<div class="rta-row colgap100">

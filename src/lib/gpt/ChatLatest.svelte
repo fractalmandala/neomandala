@@ -29,31 +29,22 @@
 	});
 </script>
 
-<div
-	id="currentsession"
-	class:lightmode={$themeMode}
-	class:darkmode={!$themeMode}
-	class:levelzero={$breakZero}
-	class:levelone={$breakOne}
-	class:leveltwo={$breakTwo}
->
-	{#if session}
-		<div class="messages rta-column">
-			{#each session.messages as message (message.timestamp)}
-				{#if message.query === 'init'}
-					<div class="blanker" />
-				{:else}
-					<div class="rta-column userquery null">
-						<p>{message.query}</p>
-					</div>
-					<div class="rta-column rowgap300 agentanswer null">
-						{@html marked.parse(message.answer)}
-					</div>
-				{/if}
-			{/each}
-		</div>
-	{/if}
-</div>
+{#if session}
+	<div class="messages rta-column">
+		{#each session.messages as message (message.timestamp)}
+			{#if message.query === 'init'}
+				<div class="blanker" />
+			{:else}
+				<div class="rta-column userquery null">
+					<p>{message.query}</p>
+				</div>
+				<div class="rta-column rowgap300 agentanswer null">
+					{@html marked.parse(message.answer)}
+				</div>
+			{/if}
+		{/each}
+	</div>
+{/if}
 
 <style lang="sass">
 
@@ -62,17 +53,22 @@
 	border-top: 1px solid var(--contraster)
 	border-bottom: 1px solid var(--contraster)
 
-.levelzero, .levelone, .leveltwo
-	.userquery
-		padding-top: 32px
-		padding-bottom: 32px
-	.agentanswer
-		padding-top: 32px
-		padding-bottom: 32px
+.userquery
+	padding-top: 45px
+	padding-bottom: 45px
+.agentanswer
+	padding-top: 45px
+	padding-bottom: 45px
 
 .userquery p
 	font-family: 'Space Grotesk', sans-serif
 	color: var(--greyish)
+
+.agentanswer
+	font-family: 'Space Grotesk', sans-serif
+	code
+		font-family: 'Space Mono', monospace
+		font-size: 14px
 	
 .userquery
 	text-align: right
@@ -85,6 +81,13 @@
 	justify-content: flex-start
 	column-gap: 16px
 	line-height: 1.25
+
+.messages
+	overflow-y: scroll
+	height: 72vh
+	margin-top: 56px
+	@media screen and (min-width: 1024px)
+		width: 46vw
 
 
 </style>

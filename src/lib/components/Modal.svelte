@@ -1,12 +1,21 @@
 <script lang="ts">
 	import { modalStore, hideModal } from '$lib/stores/modalstores';
 	import { deleteNote } from '$lib/dash/db';
+	import supabase from '$lib/utils/supabase';
 	import Alert from '$lib/icons/Alert.svelte';
 	import Close from '$lib/icons/Close.svelte';
+	import { showNote } from '$lib/dash/alerts';
 	import { onMount } from 'svelte';
 
 	let isShown: any, title: string, message: string, component: number;
 	let color = '#FE4a49';
+
+	async function deleteImage() {
+		const { error } = await supabase.from('amrit-gallery').delete().eq('id', component);
+		if (error) {
+			showNote('no!', false);
+		} else showNote('yes', true);
+	}
 
 	function handleDeleteClick() {
 		deleteNote(component);
@@ -44,14 +53,18 @@
 					<Close {color} />
 				</button>
 			</div>
-			{#if component >= 1}
+			{#if component >= 1 && title !== 'image'}
 				<p>This will delete the note number {component}! Are you sure?</p>
 				<button class="genbutton red" on:click={handleDeleteClick}> DELETE </button>
 			{/if}
-			{#if component === 0}
+			{#if component === 0 && title !== 'image'}
 				<div>
 					<p>{title}</p>
 				</div>
+			{/if}
+			{#if title === 'image'}
+				<p>This will delete the image number {component}! Are you sure?</p>
+				<button class="genbutton red" on:click={deleteImage}> DELETE </button>
 			{/if}
 		</div>
 	</div>

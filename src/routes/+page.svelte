@@ -43,23 +43,22 @@
 
 <svelte:window bind:scrollY={scY} />
 
-<div class="font">
+<div class="font" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="rta-column ybot minH">
-		<div class="cell grot">
+		<div class="grot">
 			<img
 				class="mandalaimage"
 				src="/images/mands.webp"
 				alt="mands"
 				style="transform: rotate({scY / 3}deg)"
 			/>
-			<h4>FRACTAL MAṆḌALA</h4>
 			<p>a digital garden and buildstation</p>
 		</div>
 	</div>
 	<div class="rta-grid ycenter grid4 minH">
 		{#if posts && posts.length > 0}
 			{#each posts as item}
-				<div class="grot rta-column rowgap100 null xcenter ycenter ta-c">
+				<div class="cell grot rta-column rowgap100 null xcenter ycenter ta-c p-all-16">
 					<p class="green">{item.type}</p>
 					<a class="grot" href="/word/{item.slug}">
 						<h5 class="white tt-c">{item.title}</h5>
@@ -80,30 +79,30 @@
 
 <style lang="sass">
 
+.light
+	background-color: hsla(0,0%,100%,1)
+	background-image: radial-gradient(at 40% 20%, hsla(210,88%,66%,1) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(47,100%,56%,1) 0px, transparent 50%), radial-gradient(at 24% 48%, hsla(81,66%,49%,1) 0px, transparent 50%), radial-gradient(at 80% 50%, hsla(282,0%,100%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(304,0%,100%,1) 0px, transparent 50%), radial-gradient(at 80% 100%, hsla(186,100%,70%,1) 0px, transparent 50%), radial-gradient(at 0% 0%, hsla(304,0%,100%,1) 0px, transparent 50%)
+	.cell
+		background: white
+		border-radius: 4px
+
 .minH
 	padding: 56px 3.2vw
 
-.rta-column
-	.cell
-		width: 25%
-
 .cell
 	height: calc(33vh - 37.33px)
-	border: 2px solid var(--liner)
 	border-radius: 2px
-	@media screen and (min-width: 769px)
-		padding: 16px
+	img
+		transition: 0.3s
+	&:hover
+		img
+			transform: scale(0.9)
 
 .font
 	display: flex
 	flex-direction: column
 	row-gap: 16px
 
-.rta-grid.grid5
-	img
-		object-fit: cover
-		width: 100%
-		height: 40vh
 
 .mandalaimage
 	width: 100px

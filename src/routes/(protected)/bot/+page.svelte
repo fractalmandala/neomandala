@@ -139,7 +139,6 @@
 
 <style lang="sass">
 
-
 .areaofchat
 	position: relative
 	.thisforminput
@@ -192,6 +191,18 @@
 				min-height: 40px
 				border: none
 				font-family: 'Space Grotesk', sans-serif
+
+.agentanswer
+	pre
+		overflow-x: auto
+		box-sizing: border-box
+		white-space: pre-line
+		white-space: -moz-pre-line
+		white-space: -pre-line
+		white-space: -o-pre-line
+		word-wrap: break-word
+		word-break: break-word
+		color: inherit
 
 
 </style>

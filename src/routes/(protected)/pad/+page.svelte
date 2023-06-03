@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { notesDiary, deleteNoteItem } from '$lib/dash/notesutil';
-	import { slide } from 'svelte/transition';
 	import NotesForm from '$lib/dash/NotesForm.svelte';
 	import Trash from '$lib/design/iconset/trash.svelte';
 	import EditingForm from '$lib/dash/EditingForm.svelte';

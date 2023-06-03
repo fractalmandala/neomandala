@@ -116,8 +116,8 @@
 	class:darkmode={!$themeMode}
 	class:calib={openB}
 >
-	<section class="sidebar pp64">
-		<div class="forheight">
+	<section class="sidebar">
+		<div class="forheight p-top-32">
 			<div class="grot null">
 				{#if session}
 					<cite class="green tt-u">Current Bot - {session.sessionbot}</cite>
@@ -189,6 +189,11 @@
 
 <style lang="sass">
 
+.lightmode
+	.forheight
+		backdrop-filter: blur(5px)
+		background: rgba(255, 255, 255, 1)
+
 a
 	&:hover
 		color: #10D56C
@@ -197,18 +202,20 @@ a
 	width: 100vw
 	@media screen and (min-width: 900px)
 		grid-template-columns: 256px 1fr
-		padding: 56px 3.2vw 0 3.2vw
+		padding: 0 40px
 		grid-template-areas: "sidebar mainbar"
 		.sidebar
 			height: calc(100vh - 56px)
 			position: sticky
 			top: 56px
-			border-right: 1px solid var(--contraster)
+			padding-top: 56px
 			.forheight
 				height: calc(100vh - 112px)
 				overflow-y: scroll
 				display: flex
 				flex-direction: column
+				border-radius: 5px
+				padding: 16px
 				row-gap: 20px
 				&::-webkit-scrollbar
 					width: 1px
@@ -217,6 +224,7 @@ a
 		.mainbar
 			padding-left: 6vw
 			padding-right: 16vw
+			margin-top: 56px
 	@media screen and (min-width: 769px) and (max-width: 899px)
 		grid-template-columns: 200px 1fr
 		grid-template-areas: "sidebar mainbar"

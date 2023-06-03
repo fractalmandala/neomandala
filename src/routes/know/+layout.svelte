@@ -65,6 +65,9 @@
 			padding-top: 80px
 			padding-left: 1.6vw
 			width: 77%
+	@media screen and (max-width: 768px)
+		.sidebar
+			display: none
 		
 
 </style>

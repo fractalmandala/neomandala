@@ -4,7 +4,6 @@
 	import Box from '$lib/design/iconset/box.svelte';
 	import StarterKit from '@tiptap/starter-kit';
 	import { Editor } from '@tiptap/core';
-
 	let element: any;
 	let editor: any;
 	let name = 'name';
@@ -37,13 +36,14 @@
 			}
 		});
 	});
+
 	afterUpdate(() => {
 		content = editor.getText({ blockSeparator: '\n\n' });
 	});
 </script>
 
-<div class="rta-column p-top-32">
-	<div class="rta-row grot ycenter colgap200">
+<div class="rta-column p-top-32 oooo">
+	<div class="rta-row rowgap300 grot ycenter colgap200">
 		<Box dimension={20} />
 		<input type="text" bind:value={name} id="titler" on:focus={handleTitleFocus} />
 		<input
@@ -54,7 +54,7 @@
 			placeholder={tags}
 		/>
 	</div>
-	<div class="rta-row grot ycenter colgap200">
+	<div class="rta-row grot rowgap300 ycenter colgap200">
 		<input type="text" bind:value={slug} id="slugger" placeholder={slug} />
 		<input type="text" bind:value={image} id="imager" placeholder={image} />
 		<select bind:value={synapse} id="optioner">
@@ -77,23 +77,34 @@
 
 <style lang="sass">
 
+.oooo
+	@media screen and (max-width: 768px)
+		padding-left: 24px
+		padding-right: 24px
+
 #titler
 	@media screen and (min-width: 1024px)
 		width: 400px
 	@media screen and (max-width: 1023px) and (min-width: 769px)
 		width: 320px
+	@media screen and (max-width: 768px)
+		width: 100%
 
 #tagger
 	@media screen and (min-width: 1024px)
 		width: 280px
 	@media screen and (max-width: 1023px) and (min-width: 769px)
 		width: 200px
+	@media screen and (max-width: 768px)
+		width: 100%
 
 #slugger, #imager
 	@media screen and (min-width: 1024px)
 		width: 280px
 	@media screen and (max-width: 1023px) and (min-width: 769px)
 		width: 240px
+	@media screen and (max-width: 768px)
+		width: 100%
 
 #optioner
 	font-size: 12px

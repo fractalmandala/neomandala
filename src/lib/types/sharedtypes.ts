@@ -1,5 +1,7 @@
 import type { Readable } from "svelte/store";
 
+
+
 export type Fn = (...args: any) => void;
 
 export interface ConfigurableWindow {

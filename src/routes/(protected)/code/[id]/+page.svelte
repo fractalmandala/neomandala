@@ -26,8 +26,8 @@
 	/>
 </svelte:head>
 
-<div class="grot rta-grid p-top-64">
-	<div class="grot null p-top-64">
+<div class="grot rta-grid p-top-64 p-bot-64">
+	<div class="grot null">
 		<h4>{data.title}</h4>
 	</div>
 	<div class="rta-row between bord-bot p-bot-32">

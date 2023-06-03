@@ -114,6 +114,17 @@
 	font-style: normal
 	font-weight: 700
 
+pre
+	overflow-x: auto
+	box-sizing: border-box
+	white-space: pre-line
+	white-space: -moz-pre-line
+	white-space: -pre-line
+	white-space: -o-pre-line
+	word-wrap: break-word
+	word-break: break-word
+	color: inherit
+
 :root
 	font-family: 'Space Grotesk', sans-serif
 	font-size: 14px
@@ -142,11 +153,16 @@ h6
 	font-family: 'Mona Sans', sans-serif
 	pre
 		font-family: 'Mona Sans', sans-serif
+	pre.mono
+		font-family: 'Space Mono', monospace
 
 .grot
 	font-family: 'Space Grotesk', sans-serif
 	pre
 		font-family: 'Space Grotesk', sans-serif
+	pre.mono
+		font-family: 'Space Mono', monospace
+
 
 .green, p.green, small.green
 	color: #10D56C
@@ -492,7 +508,7 @@ $exp: 1.414
 .agentanswer pre
 	code
 		font-family: 'Space Mono', monospace
-		font-size: 14px
+		font-size: 16px
 
 .grot
 	.userquery, .agentanswer

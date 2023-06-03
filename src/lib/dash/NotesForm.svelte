@@ -95,27 +95,48 @@
 <style lang="sass">
 
 .note-form
-	.rta-row
-		column-gap: 1.6vw
-	@media screen and (min-width: 769px)
-		width: 548px
-		padding: 16px 1.6vw 16px 0
+	@media screen and (min-width: 1024px)
+		.rta-row
+			column-gap: 1.6vw
+			width: 100%
+			#titleform
+				width: 320px
+			#tagsform
+				width: 280px
+	@media screen and (max-width: 1023px) and (min-width: 900px)
+		.rta-row
+			column-gap: 1.6vw
+			flex-wrap: nowrap
+			#titleform
+				width: 300px
+			#tagsform
+				width: 240px
+	@media screen and (max-width: 899px) and (min-width: 769px)
+		.rta-row
+			column-gap: 1.6vw
+			flex-wrap: nowrap
+			#titleform
+				width: 300px
+			#tagsform
+				width: 240px
+	@media screen and (max-width: 768px)
+		align-items: stretch
+		.rta-row
+			column-gap: 1.6vw
+			flex-wrap: nowrap
+			#titleform
+				width: 320px
+			#tagsform
+				width: 280px	
+	
 
 .tiptap
-	border: 1px solid var(--contraster)
-
-.inputformer
-	.rta-row
-		#titleform
-			width: 320px
-		#tagsform
-			width: 240px	
-
+	border: 2px solid var(--background)
 
 
 .inputformer
 	input[type=text]
-		border-bottom: 1px solid var(--contraster)
+		border-bottom: 2px solid var(--background)
 		border-top: none
 		border-left: none
 		border-right: none

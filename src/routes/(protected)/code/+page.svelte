@@ -9,7 +9,6 @@
 <div class="rta-column xleft">
 	<CodeInput />
 
-	<div class="rta-row colgap200 p-top-32" />
 	<!--
 	<div class="editorbuttons">
 		{#if editor}

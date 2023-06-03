@@ -14,6 +14,8 @@
 	import Acco3 from '$lib/design/MandAccordionItem.svelte';
 	import Acco4 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
+	import Refresh from '$lib/design/iconset/refresh.svelte';
+	import { showModal } from '$lib/stores/modalstores';
 	import {
 		breakZero,
 		breakOne,
@@ -86,6 +88,15 @@
 
 	$: currentPage = $page.url.pathname.slice(0, 4);
 
+	function handleRefresh() {
+		(async () => {
+			builds = await allBuild();
+			webs = await allWebdev();
+			snips = await snippets();
+			notes = await allNotes();
+		})();
+	}
+
 	onMount(() => {
 		(async () => {
 			builds = await allBuild();
@@ -113,6 +124,9 @@
 				{/if}
 			</div>
 			<div class="rta-row ycenter buttonschoice bord-bot p-bot-16">
+				<button class="blank-button" on:click={handleRefresh}>
+					<Refresh dimension={18} />
+				</button>
 				<a class="blank-button" href="/doc">
 					<Add dimension={20} />
 				</a>
@@ -168,7 +182,7 @@
 			</Acco3>
 		</div>
 	</section>
-	<section class="mainbar pp64">
+	<section class="mainbar">
 		<slot />
 	</section>
 </div>
@@ -201,7 +215,7 @@ a
 			.rta-row
 				column-gap: 16px
 		.mainbar
-			padding-left: 4.4vw
+			padding-left: 6vw
 			padding-right: 16vw
 	@media screen and (min-width: 769px) and (max-width: 899px)
 		grid-template-columns: 200px 1fr
@@ -227,7 +241,6 @@ a
 		.mainbar
 			padding-left: 0
 			padding-right: 0
-			width: 90vw
 
 .with-sidebar.leveltwo
 	.sidebar

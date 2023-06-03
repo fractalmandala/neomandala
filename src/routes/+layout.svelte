@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { invalidate } from '$app/navigation';
+	import Lenis from '@studio-freight/lenis';
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
 	import Header from '$lib/components/Header.svelte';
-	import MenuDrop from '$lib/components/MenuDrop.svelte';
-	import FMFM from '$lib/assets/FMLogo.svelte';
 	import { mouseStore } from '$lib/stores/mousestore';
 	import { spring } from 'svelte/motion';
 	import Logout from '$lib/design/iconset/logout.svelte';
+	import Login from '$lib/design/iconset/login.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -29,8 +29,6 @@
 	import Toast from '$lib/components/Toast.svelte';
 	import Alert from '$lib/components/Alert.svelte';
 	import GoodAlert from '$lib/components/GoodAlert.svelte';
-	import Search from '$lib/icons/Search.svelte';
-	import Dark from '$lib/icons/DarkMode.svelte';
 	import '$lib/styles/animate.css';
 
 	let pageTitle = '';
@@ -58,24 +56,6 @@
 		logged = true;
 	} else {
 		logged = false;
-	}
-
-	function fauxfake() {
-		fake = !fake;
-	}
-
-	function toggleMenu() {
-		mobileMenu = !mobileMenu;
-	}
-
-	function toggleDrawer() {
-		if (timeIs === false) {
-			showDrawer();
-			timeIs = !timeIs;
-		} else {
-			hideDrawer();
-			timeIs = !timeIs;
-		}
 	}
 
 	function signout() {
@@ -137,11 +117,24 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
+	{#if $themeMode}
+		<div class="backs whiteback" />
+	{:else}
+		<div class="backs blackback" />
+	{/if}
 	<header>
 		<Header {logged} {pageTitle}>
-			<button class="blank-button" slot="logger" on:click={signout}>
-				<Logout />
-			</button>
+			<div slot="logger">
+				{#if session}
+					<button class="blank-button" on:click={signout}>
+						<Logout />
+					</button>
+				{:else}
+					<a class="blank-button" href="/login">
+						<Login />
+					</a>
+				{/if}
+			</div>
 		</Header>
 	</header>
 	<main class="low">
@@ -158,6 +151,16 @@
 <GlobalNote />
 
 <style lang="sass">
+
+.minH
+	position: relative
+	.backs
+		position: absolute
+		top: 0
+		right: 0
+		width: 100%
+		height: 100%
+		transform-origin: top
 
 header
 	z-index: 1000

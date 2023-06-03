@@ -22,53 +22,8 @@
 	}
 </script>
 
-<div class="rta-column">
-	<div class="stickies rta-grid grid4 bord-bot p-bot-32">
-		{#if $notesDiary && $notesDiary.length > 0}
-			{#each $notesDiary as note, i}
-				<div>
-					<button class="grot null blank-button ta-l" on:click={() => openNote(i)}>
-						<h6>{note.title}</h6>
-					</button>
-					<div class="font null">
-						<cite>{note.id}</cite>
-					</div>
-				</div>
-			{/each}
-		{/if}
-	</div>
-	{#if $notesDiary && $notesDiary.length > 0}
-		{#each $notesDiary as note, i}
-			{#if isNote[i]}
-				<div class="opened p-top-32 bord-bot p-bot-64 p-all-16" transition:slide>
-					<div class="rta-row null p-top-32 ycenter">
-						<div class="thecirc" />
-						<div class="grot null">
-							<h5 class="tt-c">{note.title}</h5>
-							<cite>{note.timestamp}</cite>
-						</div>
-					</div>
-					<div class="font">
-						{#if toEdit}
-							<EditingForm content={note.content} />
-						{:else}
-							<pre>{note.content}</pre>
-						{/if}
-						<div class="rta-row">
-							<button class="blank-button" on:click={() => deleteNoteItem(note.id)}>
-								<cite style="color: #fe4a49">DELETE</cite>
-							</button>
-							<button class="blank-button" on:click={toggleEdit}>
-								<cite>EDIT</cite>
-							</button>
-						</div>
-					</div>
-				</div>
-			{/if}
-		{/each}
-	{/if}
-
-	<div class="rta-row colgap200 p-top-32">
+<div class="rta-column biggie">
+	<div class="rta-row colgap200">
 		<NotesForm />
 	</div>
 	<!--
@@ -561,29 +516,19 @@
 
 <style lang="sass">
 
-
-
-.font
-	pre
-		overflow-x: auto
-		box-sizing: border-box
-		white-space: pre-wrap
-		white-space: -moz-pre-wrap
-		white-space: -pre-wrap
-		white-space: -o-pre-wrap
-		word-wrap: break-word
-		word-break: break-word
-
-.opened
-	.font
-		padding-left: 2.4vw
+.biggie
+	@media screen and (min-width: 900px)
+		width: 86%
+		padding-top: 64px
+	@media screen and (max-width: 899px) and (min-width: 769px)
+		width: 88%
+		padding-top: 64px
+	@media screen and (max-width: 768px)
+		width: 100%
+		padding-top: 64px
 
 .rta-row
 	column-gap: 1.6vw
-	.thecirc
-		height: 12px
-		width: 12px
-		border-radius: 50%
-		background: #10D56C
+
 
 </style>

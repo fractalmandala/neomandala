@@ -44,49 +44,55 @@
 <svelte:window bind:scrollY={scY} />
 
 <div class="font">
-	<div class="rta-column xcenter minH ycenter padded6 font">
-		<img
-			class="mandalaimage"
-			src="/images/mands.webp"
-			alt="mands"
-			style="transform: rotate({scY / 3}deg)"
-		/>
-		<h2 class="gradienter tt-u">Fractal Maṇḍala</h2>
-		<div class="grot p-bot-32 ta-c glass-bottom" use:reveal={{ delay: 500 }}>
-			Here I document what I learn, build and write. <br />I develop web products, create historical
-			fiction worlds, dabble in psytrance production<br /> and write essays on Indian history and civilizational
-			consciousness.
+	<div class="rta-column ybot minH">
+		<div class="cell grot">
+			<img
+				class="mandalaimage"
+				src="/images/mands.webp"
+				alt="mands"
+				style="transform: rotate({scY / 3}deg)"
+			/>
+			<h4>FRACTAL MAṆḌALA</h4>
+			<p>a digital garden and buildstation</p>
 		</div>
 	</div>
-	<div class="rta-grid grid4 padded6">
+	<div class="rta-grid ycenter grid4 minH">
 		{#if posts && posts.length > 0}
 			{#each posts as item}
-				<a
-					class="rta-row colgap100 stay ybetween back height-40-40"
-					href="/word/{item.slug}"
-					style="background-image: url('{item.image}')"
-				>
-					<div class="rta-column rowgap100 null insider xcenter ycenter ta-c">
-						<p class="green">{item.type}</p>
-						<div class="font">
-							<h5 class="white tt-c">{item.title}</h5>
-						</div>
-						<small class="green">{item.tags}</small>
-					</div>
-				</a>
+				<div class="grot rta-column rowgap100 null xcenter ycenter ta-c">
+					<p class="green">{item.type}</p>
+					<a class="grot" href="/word/{item.slug}">
+						<h5 class="white tt-c">{item.title}</h5>
+					</a>
+					<small class="green">{item.tags}</small>
+				</div>
 			{/each}
 		{/if}
-	</div>
-	<div class="rta-grid grid5 padded6">
 		{#if images && images.length > 0}
 			{#each images as item}
-				<img src={item.link} alt={item.id} />
+				<div class="cell">
+					<img src={item.link} alt={item.id} />
+				</div>
 			{/each}
 		{/if}
 	</div>
 </div>
 
 <style lang="sass">
+
+.minH
+	padding: 56px 3.2vw
+
+.rta-column
+	.cell
+		width: 25%
+
+.cell
+	height: calc(33vh - 37.33px)
+	border: 2px solid var(--liner)
+	border-radius: 2px
+	@media screen and (min-width: 769px)
+		padding: 16px
 
 .font
 	display: flex

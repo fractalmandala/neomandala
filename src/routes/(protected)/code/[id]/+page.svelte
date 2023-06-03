@@ -1,55 +1,92 @@
 <script lang="ts">
-	import { onMount, afterUpdate } from 'svelte';
-	import Prism from 'prismjs';
-	import '$lib/styles/prism.css';
+	import { clickToCopyAction } from '$lib/utils/clicktocopy';
+	import { showModal } from '$lib/stores/modalstores';
 	export let data;
 
-	let dyna: string;
-
-	$: dyna = data.content;
-
-	onMount(() => {
-		Prism.highlightAll();
-	});
-
-	afterUpdate(() => {
-		Prism.highlightAll();
-	});
+	function handleClick() {
+		showModal('CAUTION!', 'mes', data.id);
+	}
 </script>
 
-<div class="grot rta-grid">
-	<cite><a href="/code">Code</a> | {data.tags} </cite>
-	<h5>{data.title}</h5>
-	<div class="blockforcode">
-		<pre class="language-{data.uuidtext}">
-		<code>
-			{@html dyna}
-		</code>
-	</pre>
+<svelte:head>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-dark.min.css"
+		integrity="sha512-y6rcKLYkttB9ZUBaz0IsncWFo1VoqISrcMY6J1i6Nb9WB9jRrpll8zjt5e1/naZHyXFoR/1VlH72+2VJ1Uzh7A=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	/>
+</svelte:head>
+
+<div class="grot rta-grid p-top-64">
+	<div class="grot null">
+		<h3>{data.title}</h3>
 	</div>
-	<button class="genbutton">EXPAND</button>
+	<div class="rta-row between bord-bot p-bot-32">
+		<div class="rta-row colgap100">
+			<div class="labeller lab3"><a href="/code">CODE - {data.id}</a></div>
+			<div class="labeller lab1">{data.uuidtext}</div>
+			<div class="labeller lab2">{data.tags}</div>
+			<button class="blank-button labeller lab4" on:click={handleClick}>DELETE</button>
+		</div>
+		<button class="blank-button lab5" use:clickToCopyAction={data.content}>COPY</button>
+	</div>
+	<div class="holdspre">
+		<pre>{data.content}</pre>
+	</div>
 </div>
 
 <style lang="sass">
+
+.rta-grid.grot
+	@media screen and (min-width: 769px)
+		width: 86%
 
 a
 	&:hover
 		color: #10D56C
 
-.blockforcode
-	background: #212121
-	border-radius: 5px
-	max-width: 88%
-	height: 480px
-	overflow-y: scroll
-	pre
-		overflow-x: auto
-		box-sizing: border-box
-		white-space: pre-line
-		white-space: -moz-pre-line
-		white-space: -pre-line
-		white-space: -o-pre-line
-		word-wrap: break-word
-		word-break: break-word
+.holdspre
+	background: var(--contraster)
+	border-radius: 8px
+	padding: 24px
+
+
+.labeller
+	text-transform: uppercase
+	font-size: 12px
+	padding: 2px 6px
+
+.lab1
+	background: var(--onlyblack)
+	color: white
+
+.lab2
+	background: var(--greyish)
+	color: white
+
+.lab3
+	color: #10D56C
+	border: 1px solid #10D56C
+	&:hover
+		background: #10D56C
+		color: white
+		a
+			color: white
+
+.lab4
+	color: var(--greyish)
+	border: 1px solid var(--greyish)
+	&:hover
+		background: #fe4a49
+		color: white
+
+.lab5
+	background: #FFD600
+	color: white
+	text-transform: uppercase
+	font-size: 12px
+	padding: 2px 6px
+
 
 </style>

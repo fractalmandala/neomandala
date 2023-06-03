@@ -2,8 +2,6 @@
 	import { onMount } from 'svelte';
 	import { getSessionById } from '$lib/gpt/chatstore';
 	import Gridder from '$lib/components/Gridder.svelte';
-	import Prism from 'prismjs';
-	import '$lib/styles/prism.css';
 	import { get } from 'svelte/store';
 	import { chatSessions } from '$lib/gpt/chatstore';
 	import type { ChatSession } from '$lib/gpt/chatstore';
@@ -11,6 +9,12 @@
 	import { formatTimeAgo } from '$lib/agent/generalutils';
 	import { marked } from 'marked';
 	import Clock from '$lib/design/iconset/clock.svelte';
+
+	let init = false;
+
+	function toggleInit() {
+		init = !init;
+	}
 
 	export let data: ChatSession = {
 		id: '',
@@ -23,14 +27,12 @@
 	let time: string;
 	//@ts-ignore
 	time = formatTimeAgo(data.createdAt);
-
-	onMount(() => {
-		Prism.highlightAll();
-	});
 </script>
 
-<div class="rta-column grot intern">
-	<h5>{data.id}</h5>
+<div class="rta-column grot p-top-64 intern">
+	<div class="grot null">
+		<h4>{data.id}</h4>
+	</div>
 	<div class="rta-row colgap400 p-bot-32">
 		<div class="rta-row colgap100">
 			<Clock />
@@ -40,14 +42,18 @@
 	</div>
 	<div class="rta-column grot chatcont">
 		{#each data?.messages as item (item.timestamp)}
+			{#if item.query === 'init'}
+				<button class="genbutton m-bot-16" on:click={toggleInit}> Prompt </button>
+				{#if init}
+					<small>{item.answer}</small>
+				{/if}
+			{/if}
 			{#if item.query !== 'init'}
-				<div class="userquery rta-row null">
+				<div class="userquery rta-column null">
 					<p>{item.query}</p>
-					<img src="/images/av-user.png" alt="user" />
 				</div>
-				<div class="agentanswer rta-row null">
-					<img src="/images/av-bot.png" alt="bot" />
-					<pre>{@html marked.parse(item.answer)}</pre>
+				<div class="agentanswer rta-column null">
+					<pre>{item.answer}</pre>
 				</div>
 			{/if}
 		{/each}
@@ -56,16 +62,16 @@
 
 <style lang="sass">
 
+.grot.intern
+	@media screen and (min-width: 769px)
+		width: 86%
+
 .chatcont
 	@media screen and (min-width: 769px)
 		height: 64vh
 		overflow-y: scroll
 
 .userquery, .agentanswer
-	img
-		object-fit: contain
-		width: 16px
-		height: 16px
 	padding-top: 16px
 	padding-bottom: 16px
 
@@ -86,9 +92,7 @@
 	pre
 		text-align: left
 		overflow-x: scroll
-		background: #171717
 		padding: 16px
-		color: white
 		border-radius: 5px
 		width: 100%
 

@@ -43,12 +43,10 @@
 				{#if message.query === 'init'}
 					<div class="blanker" />
 				{:else}
-					<div class="rta-row userquery null">
+					<div class="rta-column userquery null">
 						<p>{message.query}</p>
-						<img src="/images/av-user.png" alt="user" />
 					</div>
-					<div class="rta-row agentanswer null">
-						<img src="/images/av-bot.png" alt="bot" />
+					<div class="rta-column rowgap300 agentanswer null">
 						{@html marked.parse(message.answer)}
 					</div>
 				{/if}
@@ -58,12 +56,6 @@
 </div>
 
 <style lang="sass">
-
-.userquery, .agentanswer
-	img
-		object-fit: contain
-		width: 16px
-		height: 16px
 
 
 .userquery
@@ -86,11 +78,13 @@
 	text-align: right
 	justify-content: flex-end
 	column-gap: 16px
+	line-height: 1.25
 
 .agentanswer
 	text-align: left
 	justify-content: flex-start
 	column-gap: 16px
+	line-height: 1.25
 
 
 </style>

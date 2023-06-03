@@ -109,23 +109,16 @@
 		<Latest />
 		{#each chatMessages as message}
 			<div class="rta-column null">
-				{#if message.role === 'user'}
-					<div class="rta-row userquery null">
-						<p>{message.content}</p>
-						<img src="/images/av-user.png" alt="user" />
-					</div>
-				{:else}
-					<div class="rta-row agentanswer null">
-						<img src="/images/av-bot.png" alt="bot" />
-						<p>{message.content}</p>
-					</div>
-				{/if}
+				<div class="rta-column userquery null">
+					<p><b>{message.role} - </b>{message.content}</p>
+				</div>
 			</div>
 		{/each}
 		{#if answer}
-			<div class="rta-row null agentanswer">
-				<img src="/images/iconbot.png" alt="bot" />
-				<p>{answer}</p>
+			<div class="rta-column null agentanswer">
+				<div>
+					<pre>{answer}</pre>
+				</div>
 			</div>
 		{/if}
 		{#if loading}
@@ -146,12 +139,6 @@
 
 <style lang="sass">
 
-.userquery, .agentanswer
-	img
-		object-fit: contain
-		width: 16px
-		height: 16px
-
 
 .areaofchat
 	position: relative
@@ -164,10 +151,11 @@
 	@media screen and (min-width: 769px)
 		height: 100%
 		justify-content: space-between
+		width: 86%
 		.scrollbox
-			bottom: 64px
+			bottom: 112px
 			left: 0
-			height: 64vh
+			height: 80vh
 			overflow-y: scroll
 			&::-webkit-scrollbar
 				width: 1px
@@ -184,11 +172,11 @@
 				column-gap: 16px
 				padding-top: 32px
 				padding-bottom: 32px
-				p
+				pre
 					width: calc(100% - 36px)
 					text-align: left
 		.thisforminput
-			bottom: 0
+			bottom: 56px
 			left: 0
 			height: 56px
 			width: 100%

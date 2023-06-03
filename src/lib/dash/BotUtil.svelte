@@ -2,6 +2,7 @@
 	import { botsList } from '$lib/gpt/botslist';
 	import { chatSessions } from '$lib/gpt/chatstore';
 	import { showNote } from '$lib/dash/alerts';
+	import { showModal } from '$lib/stores/modalstores';
 	import AddBot from '$lib/design/iconset/message.svelte';
 	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { v4 as uuidv4 } from 'uuid';
@@ -30,6 +31,10 @@
 			if (!a.createdAt) return 1; // a is undefined, b comes first
 			return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(); // normal comparison
 		})[0];
+	}
+
+	function showCurrent() {
+		showModal(`${currentName} with ${sessionPrompt}`, 'no', 0);
 	}
 
 	function startNewChat() {
@@ -76,9 +81,17 @@
 		{/each}
 	</select>
 </div>
+<button class="blank-button" on:click={showCurrent}>
+	<div class="circo" />
+</button>
 
 <style lang="sass">
 
+.circo
+	height: 12px
+	width: 12px
+	background: #fe4a49
+	border-radius: 50%
 
 select
 	border: 1px solid var(--contraster)

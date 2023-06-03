@@ -48,6 +48,11 @@
 				<p>This will delete the note number {component}! Are you sure?</p>
 				<button class="genbutton red" on:click={handleDeleteClick}> DELETE </button>
 			{/if}
+			{#if component === 0}
+				<div>
+					<p>{title}</p>
+				</div>
+			{/if}
 		</div>
 	</div>
 {/if}

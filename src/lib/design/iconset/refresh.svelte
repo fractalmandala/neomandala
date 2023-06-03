@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let dimension = 16;
+	export let dimension = 12;
 	export let color = 'var(--default)';
 </script>
 
@@ -10,15 +10,12 @@
 	viewBox="0 0 24 24"
 	fill="none"
 	stroke={color}
-	stroke-width="3.5"
+	stroke-width="2"
 	stroke-linecap="round"
 	stroke-linejoin="round"
-	class="feather feather-log-out"
-	><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line
-		x1="21"
-		y1="12"
-		x2="9"
-		y2="12"
+	class="feather feather-refresh-ccw"
+	><polyline points="1 4 1 10 7 10" /><polyline points="23 20 23 14 17 14" /><path
+		d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"
 	/></svg
 >
 
@@ -27,6 +24,6 @@
 
 svg
 	&:hover
-		stroke: #10D56C
+		stroke: #10D56c
 
 </style>

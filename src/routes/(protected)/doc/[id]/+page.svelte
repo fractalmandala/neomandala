@@ -11,7 +11,7 @@
 	}
 </script>
 
-<div class="rta-grid">
+<div class="rta-grid p-top-64">
 	<div class="grot null">
 		<h3>{data.title}</h3>
 	</div>

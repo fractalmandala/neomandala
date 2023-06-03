@@ -58,10 +58,6 @@
 				<button disabled={loading} class="genbutton">Sign in</button>
 			</div>
 		</form>
-		<div class="mt-6">
-			<small class="grot grey"> Don't have an account? </small>
-			<small class="green grot point" on:click={toggleForm} on:keydown={toggleForm}>Sign Up</small>
-		</div>
 	</div>
 </section>
 
@@ -78,7 +74,7 @@
 		font-size: 12px
 		border-radius: 4px
 
-small.grey, h5.grot
+h5.grot
 	@media screen and (max-width: 786px)
 		color: white
 	

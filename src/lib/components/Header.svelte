@@ -86,7 +86,7 @@
 			<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
 		{/each}
 	</a>
-	<div class="rta-row ycenter outrow">
+	<div class="rta-row ycenter xend outrow">
 		{#if menuNav || $breakZero || $breakOne}
 			<div class="rowinside rta-row ycenter" transition:fly>
 				{#if logged}
@@ -97,17 +97,17 @@
 						<a href="/pad">{link1}</a>
 					</div>
 					<div class="link" class:isgreen={greener2}>
-						<a href="/code">{link2}</a>
+						<a href="/code">{link2}E</a>
 					</div>
 				{/if}
 				<div class="link" class:isgreen={greener3}>
-					<a href="/word">{link3}</a>
+					<a href="/word">{link3}D</a>
 				</div>
 				<div class="link" class:isgreen={greener4}>
-					<a href="/image">{link4}</a>
+					<a href="/image">{link4}GE</a>
 				</div>
 				<div class="link" class:isgreen={greener5}>
-					<a href="/sound">{link5}</a>
+					<a href="/sound">{link5}ND</a>
 				</div>
 				<div class="link" class:isgreen={greener6}>
 					<a href="/video">{link6}</a>
@@ -126,6 +126,7 @@
 				<Menu />
 			{/if}
 		</button>
+
 		<slot name="logger" />
 	</div>
 </div>
@@ -153,7 +154,7 @@
 		text-align: right
 		background: rgba(0,0,0,0.75)
 		color: white
-		row-gap: 20px
+		row-gap: 0px
 		.link
 			font-size: 27px
 
@@ -203,10 +204,10 @@
 	align-items: center
 	z-index: 1000
 	.rta-row
-		column-gap: 20px
+		column-gap: 16px
 
 .fm-header
-	border-bottom: 1px solid var(--contraster)
+	border-bottom: 2px solid var(--liner)
 	background: var(--this)
 
 .fm-header.levelzero, .fm-header.levelone

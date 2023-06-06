@@ -11,7 +11,6 @@ export interface NoteItem {
 	id: string;
 }
 
-
 export interface NotesDiary {
 	title: string;
 	content: string;

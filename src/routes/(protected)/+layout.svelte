@@ -7,6 +7,7 @@
 	import Shell from '$lib/design/AppShell.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { allBuild, allWebdev } from '$lib/utils/localpulls';
+	import { notesDiary } from '$lib/dash/notesutil';
 	import { janapada } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { slide } from 'svelte/transition';
@@ -16,6 +17,7 @@
 	import Acco3 from '$lib/design/MandAccordionItem.svelte';
 	import Acco4 from '$lib/design/MandAccordionItem.svelte';
 	import Acco5 from '$lib/design/MandAccordionItem.svelte';
+	import Acco6 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
 	import Refresh from '$lib/design/iconset/refresh.svelte';
 	import { showModal } from '$lib/stores/modalstores';
@@ -26,7 +28,6 @@
 		themeMode,
 		toggleVisibility
 	} from '$lib/stores/globalstores';
-	import { notesDiary } from '$lib/dash/notesutil';
 	import Loader from '$lib/assets/Loader.svelte';
 	import Pinned from '$lib/dash/PinnedNotes.svelte';
 	import Auth from '$lib/dash/AuthHeader.svelte';
@@ -115,7 +116,7 @@
 </script>
 
 <Shell>
-	<div slot="left" class="rta-column">
+	<div slot="left" class="rta-column onleft">
 		<div class="forheight rta-column rowgap100">
 			<div class="grot null">
 				{#if session}
@@ -126,13 +127,23 @@
 				<button class="blank-button" on:click={handleRefresh}>
 					<Refresh dimension={18} />
 				</button>
-				<a class="blank-button" href="/doc">
+				<a class="blank-button" href="/pad">
 					<Add dimension={20} />
 				</a>
 				{#if currentPage === '/bot'}
 					<BotUtil />
 				{/if}
 			</div>
+			{#if $notesDiary && $notesDiary.length > 0}
+				<Acco6
+					>Local Notes
+					<div slot="body" class="rta-column">
+						{#each $notesDiary as item}
+							<p><a href="/pad/{item.id}">{item.title}</a></p>
+						{/each}
+					</div>
+				</Acco6>
+			{/if}
 			<Acco5>
 				Janapada
 				<div slot="body" class="rta-column">
@@ -158,16 +169,6 @@
 					{/if}
 				</div>
 			</Acco4>
-			<Acco
-				>Draft Notes
-				<div slot="body">
-					{#if $notesDiary && $notesDiary.length > 0}
-						{#each $notesDiary as note}
-							<p>{note.title}</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco>
 			<Acco2>
 				Code Snips
 				<div slot="body" class="rta-column">
@@ -199,3 +200,19 @@
 	</div>
 	<div class="rta-column" slot="right" />
 </Shell>
+
+<style lang="sass">
+
+.onleft
+	@media screen and (max-width: 1023px)
+		padding: 16px
+		z-index: 1000
+		background: var(--this)
+		border-bottom: 1px solid var(--background)
+
+p a
+	color: var(--default)
+	&:hover
+		color: #10D56C
+
+</style>

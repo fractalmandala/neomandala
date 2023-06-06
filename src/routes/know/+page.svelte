@@ -111,4 +111,8 @@
 .rta-column
 	width: 100%
 
+.mainpage
+	h5
+		padding: 48px 0 16px 0
+
 </style>

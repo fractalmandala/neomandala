@@ -1,24 +1,10 @@
 <script lang="ts">
-	import { themeMode, breakZero, breakOne } from '$lib/stores/globalstores';
-	import Menu from '$lib/design/iconset/menu.svelte';
-
-	let toggleOpen = false;
-
-	function toggleDrop() {
-		toggleOpen = !toggleOpen;
-	}
+	import { themeMode } from '$lib/stores/globalstores';
 </script>
 
 <div class="rta-thecontain" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="leftside grot">
-		<div class="strip">
-			<button class="blank-button" on:click={toggleDrop}>
-				<Menu dimension={24} />
-			</button>
-		</div>
-		{#if $breakZero || $breakOne || toggleOpen}
-			<slot name="left" />
-		{/if}
+		<slot name="left" />
 	</div>
 	<div class="mainpage">
 		<slot name="main" />
@@ -29,15 +15,6 @@
 </div>
 
 <style lang="sass">
-
-.strip
-	display: flex
-	flex-direction: row
-	@media screen and (min-width: 1024px)
-		display: none
-	@media screen and (max-width: 1023px)
-		padding: 8px 16px
-		height: 48px
 
 .light
 	background: #FFFFFF
@@ -57,7 +34,7 @@
 	.mainpage
 		grid-area: mainpage
 	@media screen and (min-width: 1024px)
-		grid-template-columns: 240px 1fr 22vw
+		grid-template-columns: 240px 1fr 360px
 		grid-template-areas: "leftside mainpage rightside"
 		column-gap: 64px
 		.leftside
@@ -68,7 +45,7 @@
 			top: 0
 			overflow-y: scroll
 		.rightside
-			width: 22vw
+			width: 360px
 			text-align: right
 			padding-right: 40px
 			height: calc(100vh - 56px)
@@ -88,22 +65,21 @@
 		.leftside
 			width: 100%
 			height: 100%
-			top: 56px
+			top: 0px
 			position: sticky
-			height: 48px
-			background: var(--this)
+			background: var(--background)
 		.rightside
 			width: 100%
 			padding-left: 16px
 			padding-right: 16px
-			padding-top: 64px
+			padding-top: 32px
 			padding-bottom: 32px
 			border-bottom: 1px solid var(--onlyblack)
 		.mainpage
 			width: 100%
 			padding-left: 16px
 			padding-right: 16px
-			padding-bottom: 32px
+			padding-bottom: 88px
 			padding-top: 32px
 
 </style>

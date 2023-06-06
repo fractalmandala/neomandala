@@ -43,7 +43,7 @@
 	font-size: 14px
 	line-height: 1.6
 	letter-spacing: 0.2px
-	font-family: 'Mona Sans', sans-serif
+	font-family: 'Space Grotesk', sans-serif
 	text-transform: capitalize
 	color: var(--greyish)
 	padding: 8px 0

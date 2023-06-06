@@ -47,7 +47,7 @@
 
 <div class="grot" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="rta-column ybot xright">
-		<cite class="p-bot-16" style="color: #10D56C">knowledge index</cite>
+		<small class="p-bot-16" style="color: #10D56C">knowledge index</small>
 		{#if indices && indices.length > 0}
 			{#each indices as item}
 				<h6 class="tt-c">
@@ -55,7 +55,7 @@
 				</h6>
 			{/each}
 		{/if}
-		<cite class="p-bot-16 p-top-32" style="color: #10D56C">written words</cite>
+		<small class="p-bot-16 p-top-32" style="color: #10D56C">written words</small>
 		{#if posts && posts.length > 0}
 			{#each posts as item}
 				<h6 class="tt-c">
@@ -95,7 +95,7 @@ h6
 		height: calc(100vh - 56px)
 		padding: 88px 40px 64px 40px
 	@media screen and (max-width: 1023px)
-		min-height: 100vh
+		height: calc(100vh - 56px)
 		padding: 88px 16px 64px 16px
 		.rta-column
 			align-items: flex-end

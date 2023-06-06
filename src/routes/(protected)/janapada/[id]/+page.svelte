@@ -5,9 +5,9 @@
 </script>
 
 <div class="rta-column">
-	<div class="grot bord-bot p-bot-32">
+	<div class="grot bord-bot null p-bot-32">
 		<cite><a href="/janapada/editing/{data.id}">Edit</a></cite>
-		<h3>{data.title}</h3>
+		<h3 style="margin: 0">{data.title}</h3>
 	</div>
 	<pre class="rta-column textarea p-top-32">
 		{@html marked(data.content)}

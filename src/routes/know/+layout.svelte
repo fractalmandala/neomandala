@@ -1,8 +1,10 @@
 <script lang="ts">
+	//@ts-nocheck
 	import { onMount } from 'svelte';
 	import { breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import { indexName, indexCategory, indexTags, indexLinks } from '$lib/stores/globalstores';
 	import { mandalapedia } from '$lib/utils/supabase';
+	import Shell from '$lib/design/AppShell.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { allIndex } from '$lib/utils/localpulls';
 	import Menu from '$lib/design/iconset/menu.svelte';
@@ -25,13 +27,8 @@
 	});
 </script>
 
-<div
-	class="rta-thecontain"
-	class:levelzero={$breakZero}
-	class:levelone={$breakOne}
-	class:leveltwo={$breakTwo}
->
-	<div class="grot leftside tt-c p-top-64">
+<Shell>
+	<div slot="left" class="rta-column">
 		{#if $breakTwo}
 			<div class="holdsbutton rta-column xleft">
 				<button class="blank-button" on:click={toggleSide}>
@@ -53,10 +50,10 @@
 			</div>
 		{/if}
 	</div>
-	<div class="mainpage">
+	<div slot="main" class="rta-column">
 		<slot />
 	</div>
-	<div class="rightside grot">
+	<div class="rta-column" slot="right">
 		<h4 class="tt-u">{$indexName}</h4>
 		<div class="islabel {$indexCategory}">
 			{$indexCategory}
@@ -70,111 +67,20 @@
 			{/if}
 		</div>
 	</div>
-</div>
+</Shell>
 
 <style lang="sass">
 
 .inside
+	row-gap: 8px
 	display: flex
 	flex-direction: column
-	row-gap: 5px
 
-.grot
-	p
-		font-weight: 400
-		a
-			color: inherit
-			&:hover
-				color: #10D56C   
+p a
+	color: var(--default)
+	text-transform: capitalize
+	&:hover
+		color: #10D56C
 
-
-.rta-thecontain
-	display: grid
-	grid-template-rows: auto
-	.leftside
-		grid-area: leftside
-	.rightside
-		grid-area: rightside
-		display: flex
-		flex-direction: column
-	.mainpage
-		grid-area: mainpage
-	@media screen and (min-width: 1024px)
-		grid-template-columns: 320px 1fr 440px
-		grid-template-areas: "leftside mainpage rightside"
-		.leftside
-			width: 320px
-			padding-left: 40px
-			height: calc(100vh - 56px)
-			position: sticky
-			top: 0
-		.rightside
-			width: 440px
-			text-align: right
-			padding-right: 40px
-			height: calc(100vh - 56px)
-			position: sticky
-			top: 0
-			align-items: flex-end
-			row-gap: 8px
-		.mainpage, .leftside, .rightside
-			padding-top: 128px
-		.mainpage
-			padding-bottom: 128px
-	@media screen and (max-width: 1023px) and (min-width: 769px)
-		grid-template-columns: 200px 1fr 240px
-		grid-template-areas: "leftside mainpage rightside"
-		.leftside
-			width: 200px
-			padding-left: 40px
-			height: calc(100vh - 56px)
-			position: sticky
-			top: 0
-		.rightside
-			width: 240px
-			padding-right: 40px
-			text-align: right
-			height: calc(100vh - 56px)
-			position: sticky
-			top: 0
-			align-items: flex-end
-			row-gap: 8px
-		.mainpage, .leftside, .rightside
-			padding-top: 128px
-		.mainpage
-			padding-bottom: 128px
-	@media screen and (max-width: 768px)
-		grid-template-columns: 1fr
-		grid-template-areas: "leftside" "rightside" "mainpage"
-		padding-top: 0
-		margin-top: 0
-		.leftside
-			width: 100%
-			height: 100%
-			top: 0px
-			position: sticky
-			background: var(--background)
-			.holdsbutton
-				height: 32px
-				padding-left: 16px
-				padding-right: 16px
-			.inside
-				padding: 16px
-				p
-					color: white
-		.rightside
-			width: 100%
-			padding-left: 16px
-			padding-right: 16px
-			padding-top: 32px
-			padding-bottom: 32px
-			border-bottom: 1px solid var(--onlyblack)
-		.mainpage
-			width: 100%
-			padding-left: 16px
-			padding-right: 16px
-			padding-bottom: 88px
-			padding-top: 32px
-		
 
 </style>

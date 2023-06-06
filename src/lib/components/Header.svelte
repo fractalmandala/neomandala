@@ -123,31 +123,33 @@
 					use:clickOutsideAction
 					on:clickOutside={toggleDrop}
 					transition:slide={{ duration: 200 }}
+					on:click={toggleDrop}
+					on:keydown={fauxfake}
 				>
-					<p on:click={toggleDrop} on:keydown={fauxfake}>
+					<p>
 						<a href="/know">KNOW</a>
 					</p>
 					{#if logged}
-						<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<p>
 							<a href="/bot">BOT</a>
 						</p>
-						<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<p>
 							<a href="/pad">PAD</a>
 						</p>
-						<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<p>
 							<a href="/code">CODE</a>
 						</p>
-						<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<p>
 							<a href="/word">WORD</a>
 						</p>
 					{/if}
-					<p on:click={toggleDrop} on:keydown={fauxfake}>
+					<p>
 						<a href="/image">IMAGE</a>
 					</p>
-					<p on:click={toggleDrop} on:keydown={fauxfake}>
+					<p>
 						<a href="/sound">SOUND</a>
 					</p>
-					<p on:click={toggleDrop} on:keydown={fauxfake}>
+					<p>
 						<a href="/video">VIDEO</a>
 					</p>
 				</div>

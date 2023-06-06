@@ -122,12 +122,9 @@ label
 	border-radius: 0 0 4px 4px
 
 .inputtiptap
-	background: var(--darker)
 	padding: 8px
 	border-radius: 4px 4px 0 0
-	border-top: 1px solid var(--onlyblack)
-	border-left: 1px solid var(--onlyblack)
-	border-right: 1px solid var(--onlyblack)
+	border: 1px solid var(--contraster)
 	input, select
 		border: 1px solid var(--this)
 		color: var(--background)

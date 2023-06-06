@@ -3,6 +3,7 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import { Markdown } from 'tiptap-markdown';
+	import { addNewNote } from '$lib/dash/notesutil';
 	import { showChip } from '$lib/stores/modalstores';
 	import supabase from '$lib/utils/supabase';
 
@@ -14,6 +15,10 @@
 	let markdownOutput: any;
 
 	let validator = false;
+
+	function handleSubmit() {
+		addNewNote(title, markdownOutput);
+	}
 
 	$: if (markdownOutput === '' || title === '') {
 		validator = false;
@@ -56,7 +61,7 @@
 	});
 </script>
 
-<div class="rta-column biggie">
+<div class="rta-column">
 	{#if editor}
 		<div class="inputtiptap rta-row between colgap100">
 			<input type="text" bind:value={title} />
@@ -98,7 +103,7 @@
 					</svg>
 				</button>
 				{#if validator}
-					<button class="genbutton">Submit</button>
+					<button class="genbutton" on:click={handleSubmit}>Submit</button>
 				{/if}
 			</div>
 		</div>
@@ -108,17 +113,6 @@
 
 <style lang="sass">
 
-.biggie
-	@media screen and (min-width: 900px)
-		width: 86%
-		padding-top: 64px
-	@media screen and (max-width: 899px) and (min-width: 769px)
-		width: 88%
-		padding-top: 64px
-	@media screen and (max-width: 768px)
-		width: 100%
-		padding-top: 64px
-
 .rta-row
 	column-gap: 1.6vw
 
@@ -126,13 +120,16 @@
 	border: 1px solid var(--onlyblack)
 	padding: 8px
 	border-radius: 0 0 4px 4px
+	min-height: 400px
 
 .inputtiptap
-	background: var(--default)
 	padding: 8px
 	border-radius: 4px 4px 0 0
 	input
-		border: 1px solid #474747
+		border-bottom: 1px solid var(--onlyblack)
+		border-top: none
+		border-left: none
+		border-right: none
 		color: white
 		padding: 2px 4px
 		border-radius: 4px

@@ -4,7 +4,7 @@
 	import Parallax from '$lib/components/Parallax.svelte';
 	import Parallax2 from '$lib/components/Parallax.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
-	import { psyImages, featuredWritings } from '$lib/utils/supabase';
+	import { psyImages, featuredWritings, mandalapedia } from '$lib/utils/supabase';
 	import { elementVisibilityStore } from '$lib/stores/elementvisibilitystore';
 	import Reveal from '$lib/anims/RevealHead.svelte';
 	import RevealText from '$lib/anims/RevealText.svelte';
@@ -21,6 +21,7 @@
 	let top = 7;
 	let scY: number;
 	let trY: number;
+	let indices: any;
 
 	$: if ($isVisible) {
 		trY = scY;
@@ -33,6 +34,7 @@
 			images = await psyImages();
 			posts = await featuredWritings();
 			webs = await featuredWebdev();
+			indices = await mandalapedia();
 		})();
 	});
 </script>
@@ -44,34 +46,23 @@
 <svelte:window bind:scrollY={scY} />
 
 <div class="font" class:light={$themeMode} class:dark={!$themeMode}>
-	<div class="rta-column ybot minH">
-		<div class="grot">
-			<img
-				class="mandalaimage"
-				src="/images/mands.webp"
-				alt="mands"
-				style="transform: rotate({scY / 3}deg)"
-			/>
-			<p>a digital garden and buildstation</p>
-		</div>
-	</div>
-	<div class="rta-grid ycenter grid4 minH">
-		{#if posts && posts.length > 0}
-			{#each posts as item}
-				<div class="cellsx grot rta-column rowgap100 null xcenter ycenter ta-c p-all-16">
-					<p class="green">{item.type}</p>
-					<a class="grot" href="/word/{item.slug}">
-						<h5 class="tt-c">{item.title}</h5>
-					</a>
-					<small class="green">{item.tags}</small>
-				</div>
+	<div class="rta-column ybot grot xright">
+		<p class="p-bot-16">knowledge index</p>
+		{#if indices && indices.length > 0}
+			{#each indices as item}
+				<h5 class="tt-u">
+					<a href="/know/{item.slug}">{item.name}</a>
+				</h5>
 			{/each}
 		{/if}
-		{#if images && images.length > 0}
-			{#each images as item}
-				<div class="cell">
-					<img src={item.link} alt={item.id} />
-				</div>
+		<p class="p-bot-16 p-top-32">written words</p>
+		{#if posts && posts.length > 0}
+			{#each posts as item}
+				<h5 class="tt-u">
+					<a href="/word/{item.slug}">
+						{item.title}
+					</a>
+				</h5>
 			{/each}
 		{/if}
 	</div>
@@ -79,50 +70,27 @@
 
 <style lang="sass">
 
-.cellsx
-	background: rgba(25, 25, 25 ,0.44)
-	border-radius: 5px
-	box-shadow: 4px 4px 12px rgba(0, 0 , 2, 0.1)
-	transition: 0.1s
-	&:hover
-		box-shadow: 0 0 0 rgba(0, 0, 0, 0)
-	h5
-		color: white
 
 .light
-	background-color: hsla(0,0%,100%,1)
-	background-image: radial-gradient(at 40% 20%, hsla(210,88%,66%,1) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(47,100%,56%,1) 0px, transparent 50%), radial-gradient(at 24% 48%, hsla(81,66%,49%,1) 0px, transparent 50%), radial-gradient(at 80% 50%, hsla(282,0%,100%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(304,0%,100%,1) 0px, transparent 50%), radial-gradient(at 80% 100%, hsla(186,100%,70%,1) 0px, transparent 50%), radial-gradient(at 0% 0%, hsla(304,0%,100%,1) 0px, transparent 50%)
-	.cell
-		background: white
-		border-radius: 4px
+	background: white
 
-.minH
-	padding: 56px 3.2vw
-
-.cell
-	height: calc(33vh - 37.33px)
-	border-radius: 2px
-	img
-		transition: 0.3s
+a
 	&:hover
-		img
-			transform: scale(0.9)
+		color: #10D56C
 
 .font
 	display: flex
 	flex-direction: column
 	row-gap: 16px
+	@media screen and (min-width: 1024px)
+		height: calc(100vh - 56px)
+		padding: 88px 40px 64px 40px
+	@media screen and (max-width: 1023px)
+		min-height: 100vh
+		padding: 88px 16px 64px 16px
+		.rta-column
+			align-items: flex-end
+			text-align: right
 
-
-.mandalaimage
-	width: 100px
-	height: 100px
-	transform-origin: center center
-	margin-left: auto
-	margin-right: auto
-
-@media screen and (max-width: 768px)
-	.rta-grid
-		margin-left: 0
 
 </style>

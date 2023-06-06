@@ -16,8 +16,8 @@
 
 <footer class="footermain" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="rta-row grot colgap100 ycenter null">
-		<small> 2023 | Amritanshu Pandey </small><small><slot name="logger" /></small>
-		<div class="rta-row grey">
+		<small> 2023 | Amritanshu Pandey</small>
+		<div class="rta-row ycenter" style="padding-top: 4px">
 			<Github />
 			<Twitter />
 		</div>

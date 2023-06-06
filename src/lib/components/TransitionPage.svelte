@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 	import type { SvelteComponent } from 'svelte';
 	import type { FadeParams } from 'svelte/transition';
 
@@ -35,6 +36,6 @@
 	};
 </script>
 
-<div in:inTransition out:outTransition>
+<div in:fly={{ delay: 300, duration: 300 }} out:fly={{ delay: 0, duration: 200 }}>
 	<slot />
 </div>

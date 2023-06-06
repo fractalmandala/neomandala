@@ -120,15 +120,7 @@
 		{/key}
 	</main>
 	<footer>
-		<Footer>
-			<div slot="logger">
-				{#if data.session}
-					<button class="blank-button" on:click={signout}> <small>Logout</small> </button>
-				{:else}
-					<a href="/login">Login</a>
-				{/if}
-			</div>
-		</Footer>
+		<Footer />
 	</footer>
 </div>
 <AlertNew />

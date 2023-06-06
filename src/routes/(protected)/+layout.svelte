@@ -116,13 +116,13 @@
 
 <Shell>
 	<div slot="left" class="rta-column">
-		<div class="forheight p-top-32">
+		<div class="forheight rta-column rowgap100">
 			<div class="grot null">
 				{#if session}
-					<cite class="green tt-u">Current Bot - {session.sessionbot}</cite>
+					<cite class="tt-u" style="color: #10D56C">Current Bot - {session.sessionbot}</cite>
 				{/if}
 			</div>
-			<div class="rta-row ycenter buttonschoice bord-bot p-bot-16">
+			<div class="rta-row ycenter colgap100 buttonschoice bord-bot p-bot-16">
 				<button class="blank-button" on:click={handleRefresh}>
 					<Refresh dimension={18} />
 				</button>

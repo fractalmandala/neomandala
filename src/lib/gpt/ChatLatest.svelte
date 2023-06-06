@@ -30,7 +30,7 @@
 </script>
 
 {#if session}
-	<div class="messages rta-column">
+	<div class="messages bdr rta-column">
 		{#each session.messages as message (message.timestamp)}
 			{#if message.query === 'init'}
 				<div class="blanker" />
@@ -48,17 +48,12 @@
 
 <style lang="sass">
 
-
 .userquery
-	border-top: 1px solid var(--contraster)
-	border-bottom: 1px solid var(--contraster)
-
-.userquery
-	padding-top: 45px
-	padding-bottom: 45px
+	padding-top: 32px
+	padding-bottom: 32px
 .agentanswer
-	padding-top: 45px
-	padding-bottom: 45px
+	padding-top: 32px
+	padding-bottom: 32px
 
 .userquery p
 	font-family: 'Space Grotesk', sans-serif
@@ -81,13 +76,10 @@
 	justify-content: flex-start
 	column-gap: 16px
 	line-height: 1.25
+	word-break: break-all
 
 .messages
 	overflow-y: scroll
-	height: 72vh
-	margin-top: 56px
-	@media screen and (min-width: 1024px)
-		width: 46vw
 
 
 </style>

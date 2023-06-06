@@ -36,12 +36,14 @@
 	@media screen and (min-width: 1024px)
 		grid-template-columns: 320px 1fr 440px
 		grid-template-areas: "leftside mainpage rightside"
+		column-gap: 64px
 		.leftside
 			width: 320px
 			padding-left: 40px
 			height: calc(100vh - 56px)
 			position: sticky
 			top: 0
+			overflow-y: scroll
 		.rightside
 			width: 440px
 			text-align: right
@@ -54,7 +56,7 @@
 		.mainpage, .leftside, .rightside
 			padding-top: 128px
 		.mainpage
-			padding-bottom: 128px
+			padding-bottom: 64px
 	@media screen and (max-width: 1023px) and (min-width: 769px)
 		grid-template-columns: 200px 1fr 240px
 		grid-template-areas: "leftside mainpage rightside"

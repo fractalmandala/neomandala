@@ -47,22 +47,22 @@
 
 <div class="grot" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="rta-column ybot xright">
-		<p class="p-bot-16">knowledge index</p>
+		<cite class="p-bot-16" style="color: #10D56C">knowledge index</cite>
 		{#if indices && indices.length > 0}
 			{#each indices as item}
-				<h5 class="tt-u">
+				<h6 class="tt-c">
 					<a href="/know/{item.slug}">{item.name}</a>
-				</h5>
+				</h6>
 			{/each}
 		{/if}
-		<p class="p-bot-16 p-top-32">written words</p>
+		<cite class="p-bot-16 p-top-32" style="color: #10D56C">written words</cite>
 		{#if posts && posts.length > 0}
 			{#each posts as item}
-				<h5 class="tt-u">
+				<h6 class="tt-c">
 					<a href="/word/{item.slug}">
 						{item.title}
 					</a>
-				</h5>
+				</h6>
 			{/each}
 		{/if}
 	</div>
@@ -70,6 +70,8 @@
 
 <style lang="sass">
 
+.rta-column
+	height: 100%
 
 .light
 	background: white
@@ -78,9 +80,10 @@ a
 	&:hover
 		color: #10D56C
 
-h5
-	font-weight: 500
+h6
+	font-weight: 400
 	padding-bottom: 4px
+	color: var(--default)
 	@media screen and (max-width: 1023px)
 		padding-bottom: 8px
 

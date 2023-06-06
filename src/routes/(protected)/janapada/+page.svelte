@@ -132,6 +132,7 @@
 		font-family: 'Space Grotesk', sans-serif
 		border-radius: 4px
 		color: #878787
+		background: var(--this)
 		width: calc(100% - 0px)
 	.buttons
 		width: 160px
@@ -140,7 +141,7 @@
 	border-radius: 6px
 	border: 1px solid var(--onlyblack)
 	min-height: 60vh
-	background: white
+	background: var(--this)
 	padding: 16px
 	overflow-y: scroll
 

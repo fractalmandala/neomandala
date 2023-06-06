@@ -106,7 +106,6 @@
 
 <div class="rta-column areaofchat">
 	<div class="grot scrollbox" bind:this={scrollContainer}>
-		<Latest />
 		{#each chatMessages as message}
 			<div class="rta-column null">
 				<div class="rta-column userquery null">
@@ -128,7 +127,7 @@
 		{/if}
 	</div>
 	<form class="rta-row thisforminput">
-		<textarea bind:value={query} use:textareaAutosizeAction />
+		<textarea bind:value={query} use:textareaAutosizeAction data-lenis-prevent />
 		{#if session !== undefined}
 			<button class="blank-button" on:click={() => submitInput(session.id)}>
 				<Send color={'#10D56C'} dimension={18} />
@@ -141,20 +140,21 @@
 
 .areaofchat
 	position: relative
+	min-height: 100%
+	overflow: hidden
 	.thisforminput
 		position: absolute
+		bottom: 0
 		opacity: 1
-		border: 1px solid var(--contraster)
 	.scrollbox
 		position: absolute
 	@media screen and (min-width: 769px)
-		height: 100%
+		min-height: 68vh
 		justify-content: space-between
-		width: 86%
 		.scrollbox
-			bottom: 112px
+			bottom: 32px
 			left: 0
-			height: 80vh
+			height: 68vh
 			overflow-y: scroll
 			&::-webkit-scrollbar
 				width: 1px
@@ -164,7 +164,6 @@
 				padding-top: 32px
 				padding-bottom: 32px
 				p
-					width: calc(100% - 36px)
 					text-align: right
 			.agentanswer
 				width: 100%
@@ -172,10 +171,9 @@
 				padding-top: 32px
 				padding-bottom: 32px
 				pre
-					width: calc(100% - 36px)
 					text-align: left
 		.thisforminput
-			bottom: 56px
+			bottom: 0
 			left: 0
 			height: 56px
 			width: 100%
@@ -191,6 +189,7 @@
 				min-height: 40px
 				border: none
 				font-family: 'Space Grotesk', sans-serif
+				overflow-y: scroll
 
 .agentanswer
 	pre

@@ -79,6 +79,12 @@
 		fake = !fake;
 	}
 
+	function closeHelper() {
+		if (dropped === true) {
+			dropped = false;
+		}
+	}
+
 	function handleSwitch() {
 		if (browser) {
 			themeMode.update((mode) => {
@@ -99,6 +105,7 @@
 	class:leveltwo={$breakTwo}
 	class:lightmode={$themeMode}
 	class:darkmode={!$themeMode}
+	on:mouseleave={closeHelper}
 >
 	<a href="/" class="logo">
 		{#each text.split('') as char, i}
@@ -115,7 +122,7 @@
 					class="rta-column dropped"
 					use:clickOutsideAction
 					on:clickOutside={toggleDrop}
-					transition:slide
+					transition:slide={{ duration: 200 }}
 				>
 					<p on:click={toggleDrop} on:keydown={fauxfake}>
 						<a href="/know">KNOW</a>
@@ -169,7 +176,7 @@
 	row-gap: 4px	
 	p a
 		font-size: 18px
-		color: #272727
+		color: var(--default)
 		&:hover
 			color: #10D56C
 	@media screen and (max-width: 768px)
@@ -187,6 +194,12 @@
 .lightmode
 	.dropped
 		box-shadow: 5px 4px 12px #e1e1e1
+		width: 120px
+
+
+.darkmode
+	.dropped
+		box-shadow: 5px 4px 12px #070707
 		width: 120px
 
 .logo

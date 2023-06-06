@@ -19,6 +19,23 @@ export async function allBuild() {
 	return eachfiled;
 }
 
+export async function allIndex() {
+	const allfiles = import.meta.glob('/src/routes/know/*.md');
+	const filed = Object.entries(allfiles);
+	const eachfiled = await Promise.all(
+		filed.map(async ([path, resolver]) => {
+			// @ts-ignore
+			const { metadata } = await resolver();
+			const postPath = path.slice(11, -3);
+			return {
+				meta: metadata,
+				linkpath: postPath
+			};
+		})
+	);
+	return eachfiled;
+}
+
 export async function allNotes() {
 	const allfiles = import.meta.glob('/src/routes/pad/notes/*.md');
 	const filed = Object.entries(allfiles);

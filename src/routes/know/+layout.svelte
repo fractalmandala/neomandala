@@ -2,11 +2,12 @@
 	import { onMount } from 'svelte';
 	import { mandalapedia } from '$lib/utils/supabase';
 	import Gridder from '$lib/components/Gridder.svelte';
+	import { allIndex } from '$lib/utils/localpulls';
 
 	let indexer: any;
 
 	onMount(async () => {
-		indexer = await mandalapedia();
+		indexer = await allIndex();
 	});
 </script>
 
@@ -16,8 +17,8 @@
 			{#if indexer && indexer.length > 0}
 				{#each indexer as item}
 					<p>
-						<a href="/know/{item.slug}">
-							{item.name}
+						<a href={item.linkpath}>
+							{item.meta.title}
 						</a>
 					</p>
 				{/each}
@@ -51,12 +52,13 @@
 		grid-area: sidebar
 	.mainarea
 		grid-area: mainarea
-	@media screen and (min-width: 900px)
+	@media screen and (min-width: 1024px)
 		grid-template-columns: 256px 1fr
 		grid-template-areas: "sidebar mainarea"
 		.sidebar
 			height: 100vh
 			width: 256px
+			position: sticky
 			top: 0
 			left: 0
 			padding-top: 128px
@@ -69,24 +71,8 @@
 			margin-top: 56px
 			padding-left: 1.6vw
 			padding-right: 40px
-	@media screen and (min-width: 769px) and (max-width: 899px)
-		grid-template-columns: 256px 1fr
-		grid-template-areas: "sidebar mainarea"
-		.sidebar
-			height: 100vh
-			position: sticky
-			width: 256px
-			top: 0
-			left: 0
-			overflow-y: scroll
-			padding-top: 128px
-			padding-left: 40px
-			border-right: 1px solid var(--onlyblack)
-		.mainarea
-			margin-top: 56px
-			padding-left: 1.6vw		
-			padding-right: 40px
-	@media screen and (max-width: 768px) 
+			padding-bottom: 64px
+	@media screen and (max-width: 1023px) 
 		grid-template-columns: 1fr
 		grid-template-areas: "mainarea"
 		.sidebar

@@ -1,6 +1,9 @@
 ---
 title: camus
+image: 
+links:
 tags: people
+synapse: bhṛt
 ---
 
 Many people, most perhaps, find Albert Camus’ philosophy bleak.

@@ -553,3 +553,65 @@ $exp: 1.414
 	.ProseMirror
 		min-height: 50vh
 		padding: 12px
+
+.mainpage
+	font-family: 'Mona Sans', sans-serif
+	cite
+		font-size: 8px
+		text-transform: uppercase
+		font-style: normal
+		font-weight: 600
+		color: var(--onlyblack)
+	ul, li
+		padding-left: 0px
+		list-style-type: none
+		margin: 0
+		font-size: 12px
+		font-weight: 600
+		color: var(--greyish)
+	@media screen and (min-width: 1024px)
+		p
+			font-size: $std * 1.12
+			line-height: 1.4
+		h6
+			font-size: $std	
+		h5
+			font-size: $std * $exp
+		h4
+			font-size: $std * $exp * $exp
+		h3
+			font-size: $std *$exp * $exp * $exp
+		h2
+			font-size: $std * $exp * $exp * $exp * $exp	
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp * $exp
+	@media screen and (min-width: 769px) and (max-width: 1023px)
+		p
+			font-size: $std
+		h6
+			font-size: $std	
+		h5
+			font-size: $std * 1.2
+		h4
+			font-size: $std * $exp
+		h3
+			font-size: $std *$exp * $exp
+		h2
+			font-size: $std * $exp * $exp * $exp
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp
+	@media screen and (max-width: 768px)
+		p
+			font-size: $std
+		h6
+			font-size: $std
+		h5
+			font-size: $std * $exp
+		h4
+			font-size: $std * $exp * $exp
+		h3
+			font-size: $std *$exp * $exp * 1.2
+		h2
+			font-size: $std * $exp * $exp * 1.1
+		h1
+			font-size: $std * $exp * $exp * $exp * $exp

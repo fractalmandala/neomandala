@@ -9,10 +9,12 @@
 	};
 </script>
 
-<div class="grot null">
-	<small>{data.id}</small>
-	<h4>{data.title}</h4>
-	<div class="content">
-		{@html marked(data.content)}
+<div class="grot null rta-column rowgap500">
+	<div class="rta-column rowgap100">
+		<small>{data.id}</small>
+		<h3 style="margin: 0">{data.title}</h3>
 	</div>
+	<pre class="content rta-column rowgap300">
+		{@html marked(data.content)}
+	</pre>
 </div>

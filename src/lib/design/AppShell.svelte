@@ -16,7 +16,7 @@
 				<Menu dimension={24} />
 			</button>
 		</div>
-		{#if $breakZero || $breakOne || toggleOpen}
+		{#if $breakZero || toggleOpen}
 			<slot name="left" />
 		{/if}
 	</div>
@@ -92,6 +92,7 @@
 			position: sticky
 			height: 48px
 			background: var(--this)
+			z-index: 1000
 		.rightside
 			width: 100%
 			padding-left: 16px

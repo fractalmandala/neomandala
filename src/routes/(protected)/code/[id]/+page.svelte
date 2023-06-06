@@ -5,6 +5,11 @@
 	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { showModal } from '$lib/stores/modalstores';
 	export let data;
+	let fullHeight = false;
+
+	function toggleHeight() {
+		fullHeight = !fullHeight;
+	}
 
 	function handleClick() {
 		showModal('CAUTION!', 'mes', data.id);
@@ -16,20 +21,8 @@
 	});
 </script>
 
-<svelte:head>
-	<link
-		rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-dark.min.css"
-		integrity="sha512-y6rcKLYkttB9ZUBaz0IsncWFo1VoqISrcMY6J1i6Nb9WB9jRrpll8zjt5e1/naZHyXFoR/1VlH72+2VJ1Uzh7A=="
-		crossorigin="anonymous"
-		referrerpolicy="no-referrer"
-	/>
-</svelte:head>
-
-<div class="grot rta-grid p-top-64 p-bot-64">
-	<div class="grot null">
-		<h4>{data.title}</h4>
-	</div>
+<div class="grot">
+	<h4>{data.title}</h4>
 	<div class="rta-row between bord-bot p-bot-32">
 		<div class="rta-row colgap100">
 			<div class="labeller lab3"><a href="/code">CODE - {data.id}</a></div>
@@ -39,26 +32,38 @@
 		</div>
 		<button class="blank-button lab5" use:clickToCopyAction={data.content}>COPY</button>
 	</div>
-	<div class="holdspre">
-		<pre>{data.content}</pre>
-	</div>
+	<pre class="language-{data.uuidtext}" class:fully={fullHeight}>
+		<code>
+			{data.content}
+		</code>
+	</pre>
+	<button class="genbutton" on:click={toggleHeight}>
+		{#if fullHeight}
+			Contract
+		{:else}
+			Expand
+		{/if}
+	</button>
 </div>
 
 <style lang="sass">
 
-.rta-grid.grot
-	@media screen and (min-width: 769px)
-		width: 86%
+h4
+	margin: 0	
 
 a
 	&:hover
 		color: #10D56C
 
-.holdspre
-	background: var(--contraster)
-	border-radius: 8px
-	padding: 24px
+pre
+	white-space: pre-line
+	max-width: 50vw
+	height: 240px
+	@media screen and (max-width: 1023px)
+		max-width: 90vw
 
+pre.fully
+	height: 100%
 
 .labeller
 	text-transform: uppercase

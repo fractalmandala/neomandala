@@ -11,7 +11,7 @@
 	}
 </script>
 
-<div class="rta-grid p-top-64">
+<div class="rta-grid">
 	<div class="grot null">
 		<h3>{data.title}</h3>
 	</div>
@@ -21,12 +21,15 @@
 		<div class="labeller lab2">{data.tags}</div>
 		<button class="blank-button labeller lab4" on:click={handleClick}>DELETE</button>
 	</div>
-	<div class="fetchedtext grot">
+	<pre class="fetchedtext grot">
 		{@html marked.parse(data.content)}
-	</div>
+	</pre>
 </div>
 
 <style lang="sass">
+
+h3
+	margin: 0
 
 
 .fetchedtext

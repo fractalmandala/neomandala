@@ -494,22 +494,3 @@
 	</div>
 	-->
 </div>
-
-<style lang="sass">
-
-.biggie
-	@media screen and (min-width: 900px)
-		width: 86%
-		padding-top: 64px
-	@media screen and (max-width: 899px) and (min-width: 769px)
-		width: 88%
-		padding-top: 64px
-	@media screen and (max-width: 768px)
-		width: 100%
-		padding-top: 64px
-
-.rta-row
-	column-gap: 1.6vw
-
-
-</style>

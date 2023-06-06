@@ -62,8 +62,8 @@
 			{$indexCategory}
 		</div>
 		<div class="sectionrest rta-column p-top-32">
-			<h6 class="p-bot-8">Links</h6>
 			{#if $indexLinks && Object.keys($indexLinks).length > 0}
+				<h6 class="p-bot-8">Links</h6>
 				{#each Object.entries($indexLinks) as [key, value] (key)}
 					<p><a href={value} target="_blank" rel="noreferrer">{key}</a></p>
 				{/each}

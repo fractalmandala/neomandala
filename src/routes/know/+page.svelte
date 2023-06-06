@@ -5,6 +5,7 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import { Editor } from '@tiptap/core';
 	import NewIndex from '$lib/dash/NewIndex.svelte';
+	import { indexName, indexCategory, indexLinks, indexTags } from '$lib/stores/globalstores';
 
 	export let data;
 	let element: any;
@@ -16,6 +17,10 @@
 	let tags = 'tags';
 	let synapse = '';
 	let slug = 'slug';
+
+	$indexName = '';
+	$indexCategory = '';
+	$indexLinks = {};
 
 	function handleTitleFocus() {
 		name = '';
@@ -45,13 +50,13 @@
 	});
 </script>
 
-<div class="rta-column p-top-64">
+<div class="rta-column">
 	{#if data.in === true}
-		<div class="newindex">
+		<div class="newindex bord-bot p-bot-32">
 			<NewIndex />
 		</div>
 	{/if}
-	<div class="rta-column grot rowgap200">
+	<div class="rta-column mainpage grot rowgap200 p-top-32">
 		<p>
 			This is the main page for my digital garden. The sidebar on the left (top on mobile) lists all
 			entries in it in alphabetical order. In time, I anticipate folders and sub-folders to emerge.

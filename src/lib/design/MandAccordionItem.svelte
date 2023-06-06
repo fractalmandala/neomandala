@@ -10,7 +10,7 @@
 
 <div class="rta-column">
 	<button class="blank-button accordion-head" class:rotated on:click={handleClick}>
-		<slot />
+		<p><slot /></p>
 	</button>
 
 	{#if rotated}
@@ -27,20 +27,20 @@
 	text-align: left
 
 .accordion-head
-	font-size: 14px
 	font-family: 'Space Grotesk', sans-serif
-	text-transform: uppercase
-	font-weight: 500
+	text-transform: capitalize
 	cursor: pointer
 	color: var(--greyish)
 	&:hover
 		color: var(--background)
+	p
+		font-size: 16px
 
 .accordion-head.rotated
 	color: #10D56C
 
 .accordion-body
-	font-size: 12px
+	font-size: 14px
 	line-height: 1.6
 	letter-spacing: 0.2px
 	font-family: 'Mona Sans', sans-serif

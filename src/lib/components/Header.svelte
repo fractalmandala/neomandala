@@ -2,16 +2,18 @@
 	import { browser } from '$app/environment';
 	import Menu from '$lib/design/iconset/menu.svelte';
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
-	import { fly } from 'svelte/transition';
+	import { clickOutsideAction } from '$lib/utils/clickoutside';
+	import { slide } from 'svelte/transition';
 	import Moon from '$lib/design/iconset/moon.svelte';
 	import Sun from '$lib/design/iconset/sun.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
-	import Pin from '$lib/design/iconset/pin.svelte';
+	import Pin from '$lib/design/iconset/chevrondown.svelte';
 	import { showPinned, hidePinned } from '$lib/dash/modalstores';
 
 	let dimension = 16;
 	let menuNav = false;
 	let fake = false;
+	let dropped = false;
 	export let pageTitle = '';
 	export let logged: boolean;
 
@@ -65,6 +67,10 @@
 		greener8 = true;
 	} else greener8 = false;
 
+	function toggleDrop() {
+		dropped = !dropped;
+	}
+
 	function toggleMenuNav() {
 		menuNav = !menuNav;
 	}
@@ -99,41 +105,48 @@
 			<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
 		{/each}
 	</a>
-	<div class="rta-row ycenter xend outrow">
-		{#if menuNav || $breakZero || $breakOne}
-			<div class="rowinside rta-row ycenter" transition:fly>
-				<div class="link" class:isgreen={greener8} on:click={toggleMenuNav} on:keydown={fauxfake}>
-					<a href="/know">{link8}W</a>
-				</div>
-				{#if logged}
-					<div class="link" class:isgreen={greener7} on:click={toggleMenuNav} on:keydown={fauxfake}>
-						<a href="/bot">{link7}</a>
-					</div>
-					<div class="link" class:isgreen={greener1} on:click={toggleMenuNav} on:keydown={fauxfake}>
-						<a href="/pad">{link1}</a>
-					</div>
-					<div class="link" class:isgreen={greener2} on:click={toggleMenuNav} on:keydown={fauxfake}>
-						<a href="/code">{link2}E</a>
-					</div>
-				{/if}
-				<div class="link" class:isgreen={greener3} on:click={toggleMenuNav} on:keydown={fauxfake}>
-					<a href="/word">{link3}D</a>
-				</div>
-				<div class="link" class:isgreen={greener4} on:click={toggleMenuNav} on:keydown={fauxfake}>
-					<a href="/image">{link4}GE</a>
-				</div>
-				<div class="link" class:isgreen={greener5} on:click={toggleMenuNav} on:keydown={fauxfake}>
-					<a href="/sound">{link5}ND</a>
-				</div>
-				<div class="link" class:isgreen={greener6} on:click={toggleMenuNav} on:keydown={fauxfake}>
-					<a href="/video">{link6}</a>
-				</div>
-			</div>
-			<button class="blank-button" on:click={showPinned}>
+	<div class="rta-row colgap400 ycenter xend outrow">
+		<div class="rta-column">
+			<button class="blank-button" style="z-index: 1200" on:click={toggleDrop}>
 				<Pin />
 			</button>
-			<slot name="logger" />
-		{/if}
+			{#if dropped}
+				<div
+					class="rta-column dropped"
+					use:clickOutsideAction
+					on:clickOutside={toggleDrop}
+					transition:slide
+				>
+					<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<a href="/know">KNOW</a>
+					</p>
+					{#if logged}
+						<p on:click={toggleDrop} on:keydown={fauxfake}>
+							<a href="/bot">BOT</a>
+						</p>
+						<p on:click={toggleDrop} on:keydown={fauxfake}>
+							<a href="/pad">PAD</a>
+						</p>
+						<p on:click={toggleDrop} on:keydown={fauxfake}>
+							<a href="/code">CODE</a>
+						</p>
+						<p on:click={toggleDrop} on:keydown={fauxfake}>
+							<a href="/word">WORD</a>
+						</p>
+					{/if}
+					<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<a href="/image">IMAGE</a>
+					</p>
+					<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<a href="/sound">SOUND</a>
+					</p>
+					<p on:click={toggleDrop} on:keydown={fauxfake}>
+						<a href="/video">VIDEO</a>
+					</p>
+				</div>
+			{/if}
+		</div>
+
 		<button class="blank-button" on:click={handleSwitch}>
 			{#if $themeMode}
 				<Moon {dimension} />
@@ -141,40 +154,46 @@
 				<Sun {dimension} />
 			{/if}
 		</button>
-		{#if $breakTwo}
-			<button class="blank-button" on:click={toggleMenuNav}>
-				<Menu />
-			</button>
-		{/if}
 	</div>
 </div>
 
 <style lang="sass">
+
+.dropped
+	position: absolute
+	background: var(--this)
+	top: 56px
+	right: 64px
+	text-align: right
+	padding: 16px
+	row-gap: 4px	
+	p a
+		font-size: 18px
+		color: #272727
+		&:hover
+			color: #10D56C
+	@media screen and (max-width: 768px)
+		right: 0
+		left: 0
+		min-width: 100vw
+		height: calc(100vh - 56px)
+		top: 56px
+		background: rgba(0,0,0,0.8)
+		p a
+			color: white
+			font-size: 24px
+			
+
+.lightmode
+	.dropped
+		box-shadow: 5px 4px 12px #e1e1e1
+		width: 120px
 
 .logo
 	cursor: pointer
 	&:hover
 		.text-animation
 			animation: colorchange 0.5s forwards
-
-.leveltwo
-	.rowinside
-		position: absolute
-		padding: 24px
-		z-index: 1000
-		top: 56px
-		right: 0
-		width: 100vw
-		height: calc(100vh - 56px)
-		display: flex
-		flex-direction: column
-		align-items: flex-end
-		text-align: right
-		background: rgba(0,0,0,0.75)
-		color: white
-		row-gap: 0px
-		.link
-			font-size: 27px
 
 @keyframes colorchange
 	0%
@@ -187,36 +206,6 @@
 .rta-row
 	z-index: 1000
 
-.link
-	font-size: 14px
-	font-family: 'Space Grotesk', sans-serif
-	font-weight: 500
-	z-index: 1000
-	position: relative
-	text-transform: uppercase
-	&::after
-		background: #10D56C
-		content: ''
-		bottom: 0
-		position: absolute
-		left: 0
-		height: 2px
-		width: 100%
-		margin-left: 50%
-		width: 0%
-		transition: 0.1s
-	&:hover
-		&::after
-			margin-left: 0
-			width: 100%
-
-.link
-	padding: 0 4px
-
-.link.isgreen
-	background-color: #10D56C
-	color: white
-
 .fm-header
 	display: flex
 	flex-direction: row
@@ -226,7 +215,7 @@
 	align-items: center
 	z-index: 1000
 	.rta-row
-		column-gap: 16px
+		column-gap: 24px
 
 .fm-header
 	background: var(--this)

@@ -1,85 +1,105 @@
 <script lang="ts">
-    
-    import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores'
-    import '$lib/styles/shell.sass'
-
+	import { themeMode } from '$lib/stores/globalstores';
 </script>
 
-
-<div class="rta-shell"
-    class:levelzero={$breakZero}
-    class:levelone={$breakOne}
-    class:leveltwo={$breakTwo}
-    class:light={$themeMode}
-    class:dark={!$themeMode}
-    >
-    <div class="rta-column rta-main">
-        <slot name="main"></slot>
-    </div>
-    <div class="rta-column column-row rta-side">
-        <slot name="side"></slot>
-    </div>
+<div class="rta-thecontain" class:light={$themeMode} class:dark={!$themeMode}>
+	<div class="leftside">
+		<slot name="left" />
+	</div>
+	<div class="mainpage">
+		<slot name="main" />
+	</div>
+	<div class="rightside">
+		<slot name="right" />
+	</div>
 </div>
-
 
 <style lang="sass">
 
+.light
+	background: #FFFFFF
 
-.rta-shell
-    display: grid
-    grid-auto-flow: row
+.dark
+	background: #171717
 
-.rta-shell.dark
-    background-color: hsla(0,0%,8%,1)
-    background-image: radial-gradient(at 57% 35%, hsla(108,80%,5%,1) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(116,86%,5%,1) 0px, transparent 50%)
-
-.rta-shell.light
-    background-color: hsla(0,0%,100%,1)
-    background-image: radial-gradient(at 87% 95%, hsla(130,100%,62%,0.75) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(99,83%,49%,1) 0px, transparent 0%)
-
-.rta-shell.levelzero
-    grid-template-columns: 96px 1fr
-    grid-template-areas: "side main"
-    .rta-main
-        grid-area: main
-    .rta-side
-        grid-area: side
-        width: 96px
-        text-align: left
-        height: 100vh
-        position: sticky
-        top: 0
-        left: 0 
-
-.rta-shell.levelone
-    grid-template-columns: 96px 1fr
-    grid-template-areas: "side main"
-    .rta-main
-        grid-area: main
-    .rta-side
-        grid-area: side
-        width: 96px
-        padding: 24px
-        text-align: left
-        height: 100vh
-        position: sticky
-        top: 0
-        left: 0
-
-.rta-shell.leveltwo
-    grid-template-columns: 1fr
-    grid-template-areas: "side" "main"
-    grid-template-rows: auto auto
-    width: 100vw
-    .rta-main
-        grid-area: main
-    .rta-side
-        grid-area: side
-        width: 100%
-        padding: 32px
-        text-align: left
-        display: flex
-        flex-direction: row
-        
+.rta-thecontain
+	display: grid
+	grid-template-rows: auto
+	.leftside
+		grid-area: leftside
+	.rightside
+		grid-area: rightside
+		display: flex
+		flex-direction: column
+	.mainpage
+		grid-area: mainpage
+	@media screen and (min-width: 1024px)
+		grid-template-columns: 320px 1fr 440px
+		grid-template-areas: "leftside mainpage rightside"
+		.leftside
+			width: 320px
+			padding-left: 40px
+			height: calc(100vh - 56px)
+			position: sticky
+			top: 0
+		.rightside
+			width: 440px
+			text-align: right
+			padding-right: 40px
+			height: calc(100vh - 56px)
+			position: sticky
+			top: 0
+			align-items: flex-end
+			row-gap: 8px
+		.mainpage, .leftside, .rightside
+			padding-top: 128px
+		.mainpage
+			padding-bottom: 128px
+	@media screen and (max-width: 1023px) and (min-width: 769px)
+		grid-template-columns: 200px 1fr 240px
+		grid-template-areas: "leftside mainpage rightside"
+		.leftside
+			width: 200px
+			padding-left: 40px
+			height: calc(100vh - 56px)
+			position: sticky
+			top: 0
+		.rightside
+			width: 240px
+			padding-right: 40px
+			text-align: right
+			height: calc(100vh - 56px)
+			position: sticky
+			top: 0
+			align-items: flex-end
+			row-gap: 8px
+		.mainpage, .leftside, .rightside
+			padding-top: 128px
+		.mainpage
+			padding-bottom: 128px
+	@media screen and (max-width: 768px)
+		grid-template-columns: 1fr
+		grid-template-areas: "leftside" "rightside" "mainpage"
+		padding-top: 0
+		margin-top: 0
+		.leftside
+			width: 100%
+			height: 100%
+			top: 0px
+			position: sticky
+			background: var(--background)
+		.rightside
+			width: 100%
+			padding-left: 16px
+			padding-right: 16px
+			padding-top: 32px
+			padding-bottom: 32px
+			border-bottom: 1px solid var(--onlyblack)
+		.mainpage
+			width: 100%
+			padding-left: 16px
+			padding-right: 16px
+			padding-bottom: 88px
+			padding-top: 32px
 
 </style>

@@ -110,19 +110,7 @@
 	class:dark={!$themeMode}
 >
 	<header>
-		<Header {logged} {pageTitle}>
-			<div slot="logger">
-				{#if data.session}
-					<button class="blank-button" on:click={signout}>
-						<Logout />
-					</button>
-				{:else}
-					<a class="blank-button" href="/login">
-						<Login />
-					</a>
-				{/if}
-			</div>
-		</Header>
+		<Header {logged} {pageTitle} />
 	</header>
 	<main class="low minH">
 		{#key data.pathname}
@@ -132,7 +120,15 @@
 		{/key}
 	</main>
 	<footer>
-		<Footer />
+		<Footer>
+			<div slot="logger">
+				{#if data.session}
+					<button class="blank-button" on:click={signout}> <small>Logout</small> </button>
+				{:else}
+					<a href="/login">Login</a>
+				{/if}
+			</div>
+		</Footer>
 	</footer>
 </div>
 <AlertNew />

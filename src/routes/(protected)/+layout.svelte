@@ -4,6 +4,7 @@
 	import { allNotes } from '$lib/dash/db';
 	import { chatSessions } from '$lib/gpt/chatstore';
 	import BotUtil from '$lib/dash/BotUtil.svelte';
+	import Shell from '$lib/design/AppShell.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { allBuild, allWebdev } from '$lib/utils/localpulls';
 	import { janapada } from '$lib/utils/supabase';
@@ -113,16 +114,8 @@
 	});
 </script>
 
-<div
-	class="with-sidebar"
-	class:levelzero={$breakZero}
-	class:levelone={$breakOne}
-	class:leveltwo={$breakTwo}
-	class:lightmode={$themeMode}
-	class:darkmode={!$themeMode}
-	class:calib={openB}
->
-	<section class="sidebar">
+<Shell>
+	<div slot="left" class="rta-column">
 		<div class="forheight p-top-32">
 			<div class="grot null">
 				{#if session}
@@ -200,88 +193,9 @@
 				</div>
 			</Acco3>
 		</div>
-	</section>
-	<section class="mainbar">
+	</div>
+	<div slot="main" class="rta-column">
 		<slot />
-	</section>
-</div>
-
-<style lang="sass">
-
-.lightmode
-	.forheight
-		backdrop-filter: blur(5px)
-		background: rgba(255, 255, 255, 1)
-
-a
-	&:hover
-		color: #10D56C
-
-.with-sidebar
-	width: 100vw
-	@media screen and (min-width: 900px)
-		grid-template-columns: 256px 1fr
-		padding: 0 40px
-		grid-template-areas: "sidebar mainbar"
-		.sidebar
-			height: calc(100vh - 56px)
-			position: sticky
-			top: 56px
-			padding-top: 56px
-			.forheight
-				height: calc(100vh - 112px)
-				overflow-y: scroll
-				display: flex
-				flex-direction: column
-				border-radius: 5px
-				padding: 16px
-				row-gap: 20px
-				&::-webkit-scrollbar
-					width: 1px
-			.rta-row
-				column-gap: 16px
-		.mainbar
-			padding-left: 6vw
-			padding-right: 16vw
-			margin-top: 56px
-	@media screen and (min-width: 769px) and (max-width: 899px)
-		grid-template-columns: 200px 1fr
-		grid-template-areas: "sidebar mainbar"
-		padding: 56px 2.4vw 0 2.4vw
-		.sidebar
-			height: calc(100vh - 120px)
-			position: sticky
-			top: 56px
-			overflow-y: scroll
-			border-right: 1px solid var(--contraster)
-			&::-webkit-scrollbar
-				width: 1px
-		.mainbar
-			padding-left: 3.2vw
-			padding-right: 3.2vw
-	@media screen and (max-width: 768px)
-		grid-template-columns: 1fr
-		grid-template-areas: "mainbar"
-		padding: 56px 24px
-		.sidebar
-			display: none
-		.mainbar
-			padding-left: 0
-			padding-right: 0
-
-.with-sidebar.leveltwo
-	.sidebar
-		display: none
-
-.with-sidebar
-	display: grid
-	.sidebar
-		grid-area: sidebar
-		display: flex
-		flex-direction: column
-		gap: 16px
-		padding-right: 16px
-	.mainbar
-		grid-area: mainbar
-
-</style>
+	</div>
+	<div class="rta-column" slot="right" />
+</Shell>

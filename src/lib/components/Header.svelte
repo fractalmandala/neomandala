@@ -11,6 +11,7 @@
 
 	let dimension = 16;
 	let menuNav = false;
+	let fake = false;
 	export let pageTitle = '';
 	export let logged: boolean;
 
@@ -68,6 +69,10 @@
 		menuNav = !menuNav;
 	}
 
+	function fauxfake() {
+		fake = !fake;
+	}
+
 	function handleSwitch() {
 		if (browser) {
 			themeMode.update((mode) => {
@@ -97,30 +102,30 @@
 	<div class="rta-row ycenter xend outrow">
 		{#if menuNav || $breakZero || $breakOne}
 			<div class="rowinside rta-row ycenter" transition:fly>
-				<div class="link" class:isgreen={greener8}>
+				<div class="link" class:isgreen={greener8} on:click={toggleMenuNav} on:keydown={fauxfake}>
 					<a href="/know">{link8}W</a>
 				</div>
 				{#if logged}
-					<div class="link" class:isgreen={greener7}>
+					<div class="link" class:isgreen={greener7} on:click={toggleMenuNav} on:keydown={fauxfake}>
 						<a href="/bot">{link7}</a>
 					</div>
-					<div class="link" class:isgreen={greener1}>
+					<div class="link" class:isgreen={greener1} on:click={toggleMenuNav} on:keydown={fauxfake}>
 						<a href="/pad">{link1}</a>
 					</div>
-					<div class="link" class:isgreen={greener2}>
+					<div class="link" class:isgreen={greener2} on:click={toggleMenuNav} on:keydown={fauxfake}>
 						<a href="/code">{link2}E</a>
 					</div>
 				{/if}
-				<div class="link" class:isgreen={greener3}>
+				<div class="link" class:isgreen={greener3} on:click={toggleMenuNav} on:keydown={fauxfake}>
 					<a href="/word">{link3}D</a>
 				</div>
-				<div class="link" class:isgreen={greener4}>
+				<div class="link" class:isgreen={greener4} on:click={toggleMenuNav} on:keydown={fauxfake}>
 					<a href="/image">{link4}GE</a>
 				</div>
-				<div class="link" class:isgreen={greener5}>
+				<div class="link" class:isgreen={greener5} on:click={toggleMenuNav} on:keydown={fauxfake}>
 					<a href="/sound">{link5}ND</a>
 				</div>
-				<div class="link" class:isgreen={greener6}>
+				<div class="link" class:isgreen={greener6} on:click={toggleMenuNav} on:keydown={fauxfake}>
 					<a href="/video">{link6}</a>
 				</div>
 			</div>

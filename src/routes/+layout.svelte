@@ -103,7 +103,6 @@
 </svelte:head>
 
 <div
-	class="minH"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -125,7 +124,7 @@
 			</div>
 		</Header>
 	</header>
-	<main class="low">
+	<main class="low minH">
 		{#key data.pathname}
 			<Transition>
 				<slot />
@@ -159,10 +158,10 @@ header
 .low
 	z-index: 0
 
-.minH.light
+.light
 	background: #FFFFFF
 
-.minH.dark
+.dark
 	background: #171717
 
 //footer

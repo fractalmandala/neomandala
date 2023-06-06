@@ -24,12 +24,6 @@
 	font-style: normal
 	font-weight: 700
 	srcl: url('/fonts/authentic/AUTHENTICSans-150.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-150.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-150.otf') format('otf')
-	
-@font-face
-	font-family: 'Nohemi'
-	src: url('/fonts/nohemi/Nohemi-Medium.woff2') format('woff2'), url('/fonts/nohemi/Nohemi-Medium.woff') format('woff')
-	font-style: normal
-	font-weight: 500
 
 @font-face
 	font-family: 'Adobe Devanagari', serif
@@ -54,65 +48,6 @@
 	src: url('/fonts/adobedevanagari/AdobeDevanagari-BoldItalic.woff2') format('woff2'), url('/fonts/adobedevanagari/AdobeDevanagari-BoldItalic.woff') format('woff')
 	font-style: italic
 	font-weight: bold
-
-@font-face
-	font-family: 'Sudo', sans-serif
-	src: url('/fonts/sudo/SudoVariable.woff2') format('woff2')
-	font-style: normal
-
-@font-face
-	font-family: 'Sudo', sans-serif
-	src: url('/fonts/sudo/Sudo-Light.woff2') format('woff2'), url('/fonts/sudo/Sudo-Light.woff') format('woff')
-	font-style: normal
-	font-weight: 300
-
-@font-face
-	font-family: 'Sudo', sans-serif
-	src: url('/fonts/sudo/Sudo-Regular.woff2') format('woff2'), url('/fonts/sudo/Sudo-Regular.woff') format('woff')
-	font-style: normal
-	font-weight: 400
-
-@font-face
-	font-family: 'Sudo', sans-serif
-	src: url('/fonts/sudo/Sudo-Medium.woff2') format('woff2'), url('/fonts/sudo/Sudo-Medium.woff') format('woff')
-	font-style: normal
-	font-weight: 500
-
-@font-face
-	font-family: 'Sudo', sans-serif
-	src: url('/fonts/sudo/Sudo-Bold.woff2') format('woff2'), url('/fonts/sudo/Sudo-Bold.woff') format('woff')
-	font-style: normal
-	font-weight: 700
-
-@font-face
-	font-family: 'Mona Sans', sans-serif
-	src: url('/images/monasans/Mona-Sans-Light.woff') format('woff')
-	font-style: normal
-	font-weight: 300
-
-@font-face
-	font-family: 'Mona Sans', sans-serif
-	src: url('/images/monasans/Mona-Sans-Regular.woff') format('woff')
-	font-style: normal
-	font-weight: 400
-
-@font-face
-	font-family: 'Mona Sans', sans-serif
-	src: url('/images/monasans/Mona-Sans-Medium.woff') format('woff')
-	font-style: normal
-	font-weight: 500
-
-@font-face
-	font-family: 'Mona Sans', sans-serif
-	src: url('/images/monasans/Mona-Sans-SemiBold.woff') format('woff')
-	font-style: normal
-	font-weight: 600
-
-@font-face
-	font-family: 'Mona Sans', sans-serif
-	src: url('/images/monasans/Mona-Sans-Bold.woff') format('woff')
-	font-style: normal
-	font-weight: 700
 
 pre
 	overflow-x: auto
@@ -150,9 +85,9 @@ h6
 	color: var(--greyish)
 
 .font
-	font-family: 'Mona Sans', sans-serif
+	font-family: 'Authentic Sans', sans-serif
 	pre
-		font-family: 'Mona Sans', sans-serif
+		font-family: 'Authentic Sans', sans-serif
 	pre.mono
 		font-family: 'Space Mono', monospace
 
@@ -165,7 +100,7 @@ h6
 
 
 .green, p.green, small.green
-	color: #10D56C
+	color: #0ca64c
 
 a
 	text-decoration: none
@@ -178,9 +113,16 @@ cite
 
 p
 	a
-		color: #10D56C
+		color: #0ca64c
 		&:hover
 			text-decoration: underline
+
+
+li, ul, ol, ul li, ol li
+	font-weight: inherit
+	font-size: inherit
+	color: inherit
+	font-family: inherit
 
 $std: 16px
 $stdsm: 28px
@@ -190,7 +132,7 @@ $exp: 1.414
 	font-family: 'Adobe Devanagari', serif
 	blockquote
 		font-style: italic
-		border-left: 3px solid #10D56c
+		border-left: 3px solid #0ca64c
 		padding-left: 16px
 	h5
 		font-family: 'Space Grotesk', sans-serif
@@ -262,7 +204,7 @@ $exp: 1.414
 		font-weight: 600
 		color: var(--texttwo)
 	@media screen and (min-width: 1024px)
-		p
+		p, li
 			font-size: $std
 		h6
 			font-size: $std	
@@ -277,7 +219,7 @@ $exp: 1.414
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp * $exp
 	@media screen and (min-width: 769px) and (max-width: 1023px)
-		p
+		p, li
 			font-size: $std
 		h6
 			font-size: $std	
@@ -292,7 +234,7 @@ $exp: 1.414
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp
 	@media screen and (max-width: 768px)
-		p
+		p, li
 			font-size: $std
 		h6
 			font-size: $std
@@ -578,13 +520,13 @@ $exp: 1.414
 	h3
 		margin: 64px 0 24px 0
 		padding-top: 32px
-		border-top: 1px solid var(--liner)
+		border-top: 1px solid var(--texttwo)
 	h4
 		margin: 48px 0 0px 0
 	@media screen and (min-width: 1024px)
 		p
-			font-size: $std * 1.12
-			line-height: 1.4
+			font-size: $std * 1.125
+			line-height: 1.5
 		h6
 			font-size: $std	
 		h5
@@ -616,7 +558,8 @@ $exp: 1.414
 			width: 90vw
 	@media screen and (max-width: 768px)
 		p
-			font-size: $std
+			font-size: $std * 1.125
+			line-height: 1.5
 		h6
 			font-size: $std
 		h5

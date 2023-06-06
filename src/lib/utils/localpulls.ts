@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import supabase from '$lib/utils/supabase';
 
+
 export async function allBuild() {
 	const allfiles = import.meta.glob('/src/routes/build/*.md');
 	const filed = Object.entries(allfiles);

@@ -7,6 +7,15 @@ const supabase = createClient(
 
 export default supabase;
 
+export async function janapada(){
+	const { data, error} = await supabase
+	.from('db-janapada')
+	.select()
+	.order('id')
+	if (error) throw new Error(error.message);
+	return data;
+}
+
 export async function psyImages() {
 	const { data, error } = await supabase
 		.from('amrit-psygall')

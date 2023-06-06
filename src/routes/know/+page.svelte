@@ -4,6 +4,9 @@
 	import Box from '$lib/design/iconset/box.svelte';
 	import StarterKit from '@tiptap/starter-kit';
 	import { Editor } from '@tiptap/core';
+	import NewIndex from '$lib/dash/NewIndex.svelte';
+
+	export let data;
 	let element: any;
 	let editor: any;
 	let name = 'name';
@@ -42,92 +45,17 @@
 	});
 </script>
 
-<div class="rta-column p-top-32 oooo">
-	<div class="rta-row rowgap300 grot ycenter colgap200">
-		<Box dimension={20} />
-		<input type="text" bind:value={name} id="titler" on:focus={handleTitleFocus} />
-		<input
-			type="text"
-			bind:value={tags}
-			id="tagger"
-			on:focus={handleTagsFocus}
-			placeholder={tags}
-		/>
-	</div>
-	<div class="rta-row grot rowgap300 ycenter colgap200">
-		<input type="text" bind:value={slug} id="slugger" placeholder={slug} />
-		<input type="text" bind:value={image} id="imager" placeholder={image} />
-		<select bind:value={synapse} id="optioner">
-			<option value="ṛt">ṛt</option>
-			<option value="kṛt">kṛt</option>
-			<option value="dhṛt">dhṛt</option>
-			<option value="ghṛt">ghṛt</option>
-			<option value="bhṛt">bhṛt</option>
-			<option value="nṛt">nṛt</option>
-			<option value="smṛt">smṛt</option>
-			<option value="mṛt">mṛt</option>
-			<option value="vṛt">vṛt</option>
-		</select>
-	</div>
-	<div class="rta-column indexingnote">
-		<div class="null" bind:this={element} />
-	</div>
-	<button class="genbutton"> Send </button>
+<div class="rta-column">
+	{#if data.in === true}
+		<div class="newindex">
+			<NewIndex />
+		</div>
+	{/if}
 </div>
 
 <style lang="sass">
 
-.oooo
-	@media screen and (max-width: 768px)
-		padding-left: 24px
-		padding-right: 24px
-
-#titler
-	@media screen and (min-width: 1024px)
-		width: 400px
-	@media screen and (max-width: 1023px) and (min-width: 769px)
-		width: 320px
-	@media screen and (max-width: 768px)
-		width: 100%
-
-#tagger
-	@media screen and (min-width: 1024px)
-		width: 280px
-	@media screen and (max-width: 1023px) and (min-width: 769px)
-		width: 200px
-	@media screen and (max-width: 768px)
-		width: 100%
-
-#slugger, #imager
-	@media screen and (min-width: 1024px)
-		width: 280px
-	@media screen and (max-width: 1023px) and (min-width: 769px)
-		width: 240px
-	@media screen and (max-width: 768px)
-		width: 100%
-
-#optioner
-	font-size: 12px
-	font-family: 'Space Grotesk', sans-serif
-	background: #10D56C
-	border: none
-	padding: 2px 6px
-	border-radius: 2px
-	color: white
-	width: 80px
-
 .rta-column
-	row-gap: 16px
-
-input[type=text]
-	border-bottom: 2px solid var(--background)
-	border-top: none
-	border-left: none
-	border-right: none
-	background: none
-	padding: 4px 8px
-	color: var(--greyish)
-	font-size: 12px
-	font-family: 'Space Grotesk', sans-serif
+	width: 100%
 
 </style>

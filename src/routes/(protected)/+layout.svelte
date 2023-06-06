@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
 	import { page } from '$app/stores';
 	import { allNotes } from '$lib/dash/db';
 	import { chatSessions } from '$lib/gpt/chatstore';
 	import BotUtil from '$lib/dash/BotUtil.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { allBuild, allWebdev } from '$lib/utils/localpulls';
+	import { janapada } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { slide } from 'svelte/transition';
 	import { snippets } from '$lib/dash/db';
@@ -13,6 +14,7 @@
 	import Acco2 from '$lib/design/MandAccordionItem.svelte';
 	import Acco3 from '$lib/design/MandAccordionItem.svelte';
 	import Acco4 from '$lib/design/MandAccordionItem.svelte';
+	import Acco5 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
 	import Refresh from '$lib/design/iconset/refresh.svelte';
 	import { showModal } from '$lib/stores/modalstores';
@@ -34,6 +36,7 @@
 	let webs: any;
 	let snips: any;
 	let notes: any;
+	let chaps: any;
 	let openAcco = Array(4).fill(false);
 	let buildOpen = Array(10).fill(false);
 	let axis: 'x' | 'y' | undefined;
@@ -97,13 +100,16 @@
 		})();
 	}
 
-	onMount(() => {
-		(async () => {
-			builds = await allBuild();
-			webs = await allWebdev();
-			snips = await snippets();
-			notes = await allNotes();
-		})();
+	onMount(async () => {
+		builds = await allBuild();
+		webs = await allWebdev();
+		snips = await snippets();
+		notes = await allNotes();
+		chaps = await janapada();
+	});
+
+	afterUpdate(async () => {
+		chaps = await janapada();
 	});
 </script>
 
@@ -134,6 +140,19 @@
 					<BotUtil />
 				{/if}
 			</div>
+			<Acco5>
+				Janapada
+				<div slot="body" class="rta-column">
+					<a href="/janapada">Main</a>
+					{#if chaps && chaps.length > 0}
+						{#each chaps as item}
+							<a href="/janapada/{item.id}">
+								{item.title}
+							</a>
+						{/each}
+					{/if}
+				</div>
+			</Acco5>
 			<Acco4>
 				Articles
 				<div slot="body" class="rta-column">

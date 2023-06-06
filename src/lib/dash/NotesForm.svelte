@@ -68,6 +68,7 @@
 
 <form class="note-form null rta-column rowgap200 inputformer" transition:slide={{ axis: 'y' }}>
 	<div class="rta-row ycenter">
+		<button on:click={editor.commands.setEditable(false)}> test </button>
 		<button class="blank-button" on:click={handleSubmit}>
 			<Zap />
 		</button>

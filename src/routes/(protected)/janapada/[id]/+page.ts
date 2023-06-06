@@ -1,10 +1,10 @@
 import supabase from '$lib/utils/supabase'
 
-export async function load({params}:{params: { slug:string }}){
+export async function load({params}:{params: { id:number }}){
 	const { data, error } = await supabase
-	.from('mandalapedia')
+	.from('db-janapada')
 	.select()
-	.eq('slug',`${params.slug}`)
+	.eq('id',`${params.id}`)
 	.single()
 	if (error) throw new Error(error.message)
 	return data	

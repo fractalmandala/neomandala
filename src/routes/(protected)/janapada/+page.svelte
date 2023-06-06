@@ -4,45 +4,34 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import { Markdown } from 'tiptap-markdown';
 	import BubbleMenu from '@tiptap/extension-bubble-menu';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
 	import { showChip } from '$lib/stores/modalstores';
 	import supabase from '$lib/utils/supabase';
 
 	let element: any;
 	let editor: any;
 	let title = '';
-	let tags = '';
-	let category = '';
-	let agent = 'article';
-	let isFeat = false;
-	let words = '';
-	let html = '';
-	let prefill = '# title';
+	let html: any;
+	let prefill = '';
 	let markdownOutput: any;
-	let author2 = '';
-	let author = '';
-	let image = '';
-	let excerpt = 'pliss to fill excerpt fill pliss.';
 
-	function toggleFeat() {
-		isFeat = !isFeat;
+	let validator = false;
+
+	$: if (markdownOutput === '' || title === '') {
+		validator = false;
+	} else {
+		validator = true;
 	}
 
-	export async function insertNote() {
-		const { error } = await supabase.from('brhat-dhiti').insert({
-			title: title,
-			tags: tags,
-			image: image,
-			author: author,
-			author2: author2,
-			fullbody: html,
-			category: category
-		});
+	async function submitText() {
+		const { error } = await supabase
+			.from('db-janapada')
+			.insert({ title: title, content: markdownOutput });
 		if (error) {
-			throw new Error(error.message);
+			showChip('error', '#fe4a49');
 		} else {
-			showChip('Success!', '#10D56C');
-			(title = ''), (html = ''), (tags = '');
+			showChip('done', '#10D56C');
+			prefill = '';
+			title = '';
 		}
 	}
 
@@ -82,15 +71,8 @@
 	});
 </script>
 
-<div
-	class="notepad rta-column rowgap100"
-	class:levelzero={$breakZero}
-	class:levelone={$breakOne}
-	class:leveltwo={$breakTwo}
-	class:light={$themeMode}
-	class:dark={!$themeMode}
->
-	<div class="rta-column ybetween rowgap200">
+<div class="rta-column rowgap100 thepage">
+	<div class="janapada">
 		{#if editor}
 			<div class="styling rta-row between colgap100">
 				<input type="text" bind:value={title} />
@@ -131,14 +113,13 @@
 							/>
 						</svg>
 					</button>
-					<button class="genbutton">Submit</button>
+					{#if validator}
+						<button class="genbutton" on:click={submitText}>Submit</button>
+					{/if}
 				</div>
 			</div>
 		{/if}
 		<div class="edits" bind:this={element} data-lenis-prevent />
-	</div>
-	<div>
-		{markdownOutput}
 	</div>
 </div>
 
@@ -173,5 +154,9 @@
 			svg path
 				fill: var(--green)
 
+.janapada
+	display: flex
+	flex-direction: column
+	row-gap: 24px
 
 </style>

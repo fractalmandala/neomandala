@@ -555,13 +555,19 @@ $exp: 1.414
 		padding: 12px
 
 .mainpage
-	font-family: 'Mona Sans', sans-serif
+	p, ul, li, ol, blockquote, blockquote p, i, p i, em
+		font-family: 'Space Grotesk', sans-serif
+	h6, h5, h4, h3, h2, h1
+		font-family: 'Space Grotesk', sans-serif
+		text-transform: capitalize
+	pre
+		white-space: pre-line
 	cite
 		font-size: 8px
 		text-transform: uppercase
 		font-style: normal
 		font-weight: 600
-		color: var(--onlyblack)
+		color: var(--texttwo)
 	ul, li
 		padding-left: 0px
 		list-style-type: none
@@ -569,6 +575,12 @@ $exp: 1.414
 		font-size: 12px
 		font-weight: 600
 		color: var(--greyish)
+	h3
+		margin: 64px 0 24px 0
+		padding-top: 32px
+		border-top: 1px solid var(--liner)
+	h4
+		margin: 48px 0 0px 0
 	@media screen and (min-width: 1024px)
 		p
 			font-size: $std * 1.12
@@ -600,6 +612,8 @@ $exp: 1.414
 			font-size: $std * $exp * $exp * $exp
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp
+		pre
+			width: 90vw
 	@media screen and (max-width: 768px)
 		p
 			font-size: $std
@@ -615,3 +629,5 @@ $exp: 1.414
 			font-size: $std * $exp * $exp * 1.1
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp
+		pre
+			width: 90vw

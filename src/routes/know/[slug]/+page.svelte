@@ -1,16 +1,26 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { marked } from 'marked';
+	import '$lib/styles/prism.css';
+	import Prism from 'prismjs';
 	export let data;
+
+	onMount(() => {
+		Prism.highlightAll();
+	});
 </script>
 
 <div class="rta-grid grid2">
-	<div class="rta-column font mainpage p-top-64" style="row-gap: 20px">
-		<svelte:component this={data.content} />
+	<div class="rta-column mainpage p-top-64" style="row-gap: 20px">
+		{@html marked.parse(data.content)}
 	</div>
 	<div class="sidebar p-top-64 rta-column xright grot" style="row-gap: 20px">
-		<div class="rta-image">
-			<img src={data.image} alt={data.title} />
-		</div>
-		<h4 class="tt-u">{data.title}</h4>
+		{#if data.image}
+			<div class="rta-image">
+				<img src={data.image} alt={data.name} />
+			</div>
+		{/if}
+		<h4 class="tt-u">{data.name}</h4>
 	</div>
 </div>
 

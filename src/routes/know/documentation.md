@@ -15,7 +15,7 @@ All stores are recorded in '$lib/stores'. Stores that need to persist across web
 
 #### globalstores
 
-```typescript
+```javascript
 import { writable, derived } from 'svelte/store'; //the derived import will help derive breakpoints from a single store of window width.
 import { browser } from '$app/environment'; //brower import is needed to calculate window width
 const storedThemeMode = browser ? JSON.parse(localStorage.getItem('themeMode') || 'false') : false; //local storage only maintains string, not number or boolean. this converts a boolean to string using json parse
@@ -38,7 +38,7 @@ I store functions for global modals and alerts in the same globalstores file. On
 
 #### alert store
 
-```typescript
+```javascript
 import { writable } from 'svelte/store';
 const initialAlert = {
 	isShown: false,
@@ -100,7 +100,7 @@ Styling in the above will have to be done separately. This component should be l
 
 To use it, imagine a general form submit function, where there could be error state, or success state:
 
-```typescript
+```javascript
 function handleSubmit(){
 	//function here
 	if (error) {
@@ -116,7 +116,7 @@ This principle can be used for all kinds of modals, popups, toasts and others.An
 #### other global stores
 
 ##### window width
-```typescript
+```javascript
 import { browser } from '$app/environment';
 import { writable, derived } from 'svelte/store';
 const initialWidth = browser ? window.innerWidth : 1024;

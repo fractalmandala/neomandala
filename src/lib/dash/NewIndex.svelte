@@ -80,16 +80,25 @@
 <div class="rta-column biggie">
 	{#if editor}
 		<div class="inputtiptap rta-row colgap100">
-			<input type="text" bind:value={name} />
-			<input type="text" bind:value={slug} />
-			<select bind:value={synapse}>
-				<option value="kṛt">kṛt</option>
-				<option value="bhṛt">bhṛt</option>
-				<option value="dhṛt">dhṛt</option>
-				<option value="ghṛt">ghṛt</option>
-				<option value="ṛt">ṛt</option>
-				<option value="anṛt">anṛt</option>
-			</select>
+			<div class="rta-column">
+				<label for="name">Name</label>
+				<input id="name" type="text" bind:value={name} />
+			</div>
+			<div class="rta-column">
+				<label for="slug">Slug</label>
+				<input id="slug" type="text" bind:value={slug} />
+			</div>
+			<div class="rta-column">
+				<label for="type">Type</label>
+				<select id="type" bind:value={synapse}>
+					<option value="kṛt">kṛt</option>
+					<option value="bhṛt">bhṛt</option>
+					<option value="dhṛt">dhṛt</option>
+					<option value="ghṛt">ghṛt</option>
+					<option value="ṛt">ṛt</option>
+					<option value="anṛt">anṛt</option>
+				</select>
+			</div>
 			<div class="rta-row colgap100 buttons">
 				{#if validator}
 					<button class="genbutton" on:click={handleSubmit}>Submit</button>
@@ -101,6 +110,9 @@
 </div>
 
 <style lang="sass">
+
+label
+	font-size: 12px
 
 .biggie
 	@media screen and (min-width: 900px)
@@ -123,18 +135,22 @@
 	border-radius: 0 0 4px 4px
 
 .inputtiptap
-	background: var(--default)
+	background: var(--darker)
 	padding: 8px
 	border-radius: 4px 4px 0 0
+	border-top: 1px solid var(--onlyblack)
+	border-left: 1px solid var(--onlyblack)
+	border-right: 1px solid var(--onlyblack)
 	input, select
-		border: 1px solid #474747
-		color: white
+		border: 1px solid var(--this)
+		color: var(--background)
 		padding: 2px 4px
 		border-radius: 4px
 		background: none
 		outline: none
-		width: 200px
 		font-family: 'Space Grotesk', sans-serif
+	.rta-column
+		row-gap: 4px
 
 
 </style>

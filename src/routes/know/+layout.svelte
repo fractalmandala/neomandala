@@ -11,7 +11,7 @@
 	});
 </script>
 
-<div class="sidebarandpage minH">
+<div class="sidebarandpage">
 	<div class="grot sidebar tt-c">
 		<div class="inside">
 			{#if indexer && indexer.length > 0}
@@ -32,9 +32,14 @@
 
 <style lang="sass">
 
+.inside
+	display: flex
+	flex-direction: column
+	row-gap: 5px
+
 .grot
 	p
-		font-weight: 500
+		font-weight: 400
 		a
 			color: inherit
 			&:hover
@@ -56,7 +61,7 @@
 		grid-template-columns: 256px 1fr
 		grid-template-areas: "sidebar mainarea"
 		.sidebar
-			height: 100vh
+			height: calc(100vh - 56px)
 			width: 256px
 			position: sticky
 			top: 0

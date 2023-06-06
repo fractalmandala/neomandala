@@ -1,9 +1,32 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { marked } from 'marked';
+	import supabase from '$lib/utils/supabase';
 	import '$lib/styles/prism.css';
+	import { showChip } from '$lib/stores/modalstores';
 	import Prism from 'prismjs';
 	export let data;
+
+	let imagelink = '';
+	let imtoggle = false;
+
+	function toggleImage() {
+		imtoggle = !imtoggle;
+	}
+
+	async function updateImage() {
+		const { error } = await supabase
+			.from('mandalapedia')
+			.update({ image: imagelink })
+			.eq('id', data.id);
+		if (error) {
+			showChip('error', '#fe4a49');
+		} else {
+			showChip('done', '#10D56c');
+			imagelink = '';
+			imtoggle = false;
+		}
+	}
 
 	onMount(() => {
 		Prism.highlightAll();
@@ -25,17 +48,30 @@
 		{/if}
 		<h4 class="tt-u">{data.name}</h4>
 		<div class="rta-row colgap200">
-			<button class="blank-button">
+			<button class="blank-button" on:click={toggleImage}>
 				<cite>Add Image</cite>
 			</button>
 			<button class="blank-button">
 				<cite>Add Type</cite>
 			</button>
 		</div>
+		{#if imtoggle}
+			<div class="inputarea rta-column">
+				<div class="rta-row colgap200">
+					<input type="text" bind:value={imagelink} />
+					<button class="genbutton" on:click={updateImage}>Submit</button>
+				</div>
+			</div>
+		{/if}
 	</div>
 </div>
 
 <style lang="sass">
+
+.blank-button
+	&:hover
+		cite
+			color: #10D56C
 
 .rta-image
 	height: 80px

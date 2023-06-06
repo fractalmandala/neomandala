@@ -78,6 +78,10 @@ a
 	&:hover
 		color: #10D56C
 
+h5
+	font-weight: 500
+	padding-bottom: 4px
+
 .font
 	display: flex
 	flex-direction: column

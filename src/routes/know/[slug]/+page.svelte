@@ -1,4 +1,5 @@
 <script lang="ts">
+	//@ts-nocheck
 	import { onMount } from 'svelte';
 	import { marked } from 'marked';
 	import supabase from '$lib/utils/supabase';
@@ -38,11 +39,6 @@
 		{@html marked.parse(data.content)}
 	</div>
 	<div class="sidebar p-top-64 rta-column xright grot" style="row-gap: 20px">
-		{#if data.image}
-			<div class="rta-image">
-				<img src={data.image} alt={data.name} />
-			</div>
-		{/if}
 		{#if data.synapse}
 			<small>{data.synapse}</small>
 		{/if}
@@ -63,6 +59,12 @@
 				</div>
 			</div>
 		{/if}
+		<div class="grot bord-top p-top-16 rta-column xright">
+			<h6 class="p-bot-16">Links</h6>
+			{#each Object.entries(data.links) as [key, value]}
+				<p><a href={value} target="_blank" rel="noreferrer">{key}</a></p>
+			{/each}
+		</div>
 	</div>
 </div>
 
@@ -72,16 +74,6 @@
 	&:hover
 		cite
 			color: #10D56C
-
-.rta-image
-	height: 80px
-	width: 80px
-	border-radius: 100px
-	img
-		border-radius: 100px
-		object-fit: cover
-		height: 80px
-		width: 80px
 
 @media screen and (min-width: 1024px)
 	.rta-grid.grid2

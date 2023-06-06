@@ -113,7 +113,7 @@
 	<header>
 		<Header {logged} {pageTitle}>
 			<div slot="logger">
-				{#if session}
+				{#if data.session}
 					<button class="blank-button" on:click={signout}>
 						<Logout />
 					</button>

@@ -45,8 +45,8 @@
 
 <svelte:window bind:scrollY={scY} />
 
-<div class="font" class:light={$themeMode} class:dark={!$themeMode}>
-	<div class="rta-column ybot grot xright">
+<div class="grot" class:light={$themeMode} class:dark={!$themeMode}>
+	<div class="rta-column ybot xright">
 		<p class="p-bot-16">knowledge index</p>
 		{#if indices && indices.length > 0}
 			{#each indices as item}
@@ -81,8 +81,10 @@ a
 h5
 	font-weight: 500
 	padding-bottom: 4px
+	@media screen and (max-width: 1023px)
+		padding-bottom: 8px
 
-.font
+.grot
 	display: flex
 	flex-direction: column
 	row-gap: 16px

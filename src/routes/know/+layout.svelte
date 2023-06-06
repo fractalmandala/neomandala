@@ -7,7 +7,7 @@
 	let indexer: any;
 
 	onMount(async () => {
-		indexer = await allIndex();
+		indexer = await mandalapedia();
 	});
 </script>
 
@@ -17,8 +17,8 @@
 			{#if indexer && indexer.length > 0}
 				{#each indexer as item}
 					<p>
-						<a href={item.linkpath}>
-							{item.meta.title}
+						<a href="/know/{item.slug}">
+							{item.name}
 						</a>
 					</p>
 				{/each}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { footerStore, hideFooter } from '$lib/stores/modalstores';
+	import { themeMode } from '$lib/stores/globalstores';
 	import Alert from '$lib/icons/Alert.svelte';
 	import Close from '$lib/icons/Close.svelte';
 	import Github from '$lib/icons/Github.svelte';
@@ -13,7 +14,7 @@
 	});
 </script>
 
-<footer class="footermain">
+<footer class="footermain" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="rta-row grot colgap100 ycenter null">
 		<small> 2023 | Amritanshu Pandey </small>
 		<div class="rta-row grey">
@@ -28,12 +29,11 @@
 .footermain
 	display: flex
 	flex-direction: column
+	border-top: 1px solid var(--onlyblack)
 	row-gap: 12px
 	align-items: center
 	justify-content: center
 	height: 56px
-	background-color: hsla(0,0%,0%,1)
-	background-image: radial-gradient(at 0% 100%, hsla(116,85%,11%,1) 0px, transparent 50%), radial-gradient(at 100% 100%, hsla(74,56%,9%,0.82) 0px, transparent 50%), radial-gradient(at 91% 14%, hsla(147,67%,5%,0.74) 0px, transparent 50%)
 	.rta-row small
 		color: #676767
 		margin: 0
@@ -41,5 +41,11 @@
 		padding: 0 3.2vw
 	@media screen and (max-width: 768px)
 		padding: 0 16px
+
+.footermain.light
+	background: white
+
+.footermain.dark
+	background: #171717
 
 </style>

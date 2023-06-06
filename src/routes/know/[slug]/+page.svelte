@@ -20,7 +20,18 @@
 				<img src={data.image} alt={data.name} />
 			</div>
 		{/if}
+		{#if data.synapse}
+			<small>{data.synapse}</small>
+		{/if}
 		<h4 class="tt-u">{data.name}</h4>
+		<div class="rta-row colgap200">
+			<button class="blank-button">
+				<cite>Add Image</cite>
+			</button>
+			<button class="blank-button">
+				<cite>Add Type</cite>
+			</button>
+		</div>
 	</div>
 </div>
 

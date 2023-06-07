@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { psyImages, featuredWritings, mandalapedia, sixteenImages } from '$lib/utils/supabase';
 	import { elementVisibilityStore } from '$lib/stores/elementvisibilitystore';
@@ -15,7 +17,7 @@
 
 	let temp = 0;
 	let tomp = 0;
-
+	let rafId: any;
 	$: size = elementSizeStore(ref);
 
 	function handlePath(event: MouseEvent) {
@@ -33,6 +35,16 @@
 			// Update the circle's position:
 			gridElement.style.clipPath = `circle(10% at ${x}px ${y}px)`;
 		}
+	}
+
+	$: {
+		cancelAnimationFrame(rafId);
+		rafId = requestAnimationFrame(() => {
+			const gridElement = document.querySelector('.grid4');
+			if (gridElement instanceof HTMLElement) {
+				gridElement.style.clipPath = `circle(10% at ${$position.x - 50}px ${$position.y - 50}px)`;
+			}
+		});
 	}
 
 	$: ({ isVisible } = elementVisibilityStore(ref));
@@ -117,8 +129,6 @@
 			margin-top: 56px
 			padding-top: 32px
 			clip-path: circle(10%)
-			.rta-image
-				height: 100%
 		.half
 			height: calc(100vh - 112px)
 	@media screen and (max-width: 1023px)

@@ -111,11 +111,6 @@
 
 <style lang="sass">
 
-.rta-image
-	img
-		object-fit: contain
-		height: 100%
-
 
 .rta-grid.grid2
 	@media screen and (min-width: 769px)
@@ -137,8 +132,5 @@
 			height: 45vh
 		.movethis
 			font-size: 21px
-			
-h4
-	font-weight: 400
 
 </style>

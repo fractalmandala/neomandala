@@ -65,7 +65,7 @@ export async function gptTitles() {
 	const { data, error } = await supabase
 		.from('amrit-gpttitles')
 		.select()
-		.order('nextid', { ascending: false });
+		.order('title');
 	if (error) throw new Error(error.message);
 	return data;
 }

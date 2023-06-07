@@ -16,7 +16,7 @@
 	});
 </script>
 
-<div class="spanning p-top-64 p-bot-64">
+<div class="spanning p-bot-64">
 	<div class="rta-row selector grot m-bot-16">
 		<select bind:value={initialFilter} on:change={handleChange}>
 			<option value="sci-fi">SciFi</option>
@@ -58,8 +58,8 @@
 		border: 1px solid #10D56C
 		border-radius: 3px
 
-.spanning
-	@media screen and (min-width: 900px)
-		padding-right: 8vw
+.grid4
+	@media screen and (max-width: 1023px)
+		grid-template-columns: 1fr 1fr 1fr 
 
 </style>

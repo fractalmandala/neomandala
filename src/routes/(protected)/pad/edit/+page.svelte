@@ -16,8 +16,6 @@
 			}
 		}
 	}
-
-	onMount(async () => {});
 </script>
 
 <div class="rta-column pagesection">

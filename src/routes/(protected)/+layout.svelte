@@ -6,7 +6,7 @@
 	import BotUtil from '$lib/dash/BotUtil.svelte';
 	import Shell from '$lib/design/AppShell.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
-	import { allBuild, allWebdev, featuredWebdev } from '$lib/utils/localpulls';
+	import { janaPada, allWebdev, featuredWebdev } from '$lib/utils/localpulls';
 	import { notesDiary } from '$lib/dash/notesutil';
 	import { toDo, gptTitles } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
@@ -18,6 +18,7 @@
 	import Acco4 from '$lib/design/MandAccordionItem.svelte';
 	import Acco5 from '$lib/design/MandAccordionItem.svelte';
 	import Acco6 from '$lib/design/MandAccordionItem.svelte';
+	import Acco7 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
 	import Refresh from '$lib/design/iconset/refresh.svelte';
 	import NotesForm from '$lib/dash/NotesForm.svelte';
@@ -98,7 +99,6 @@
 
 	function handleRefresh() {
 		(async () => {
-			builds = await allBuild();
 			webs = await allWebdev();
 			snips = await snippets();
 			notes = await allNotes();
@@ -106,7 +106,7 @@
 	}
 
 	onMount(async () => {
-		builds = await allBuild();
+		builds = await janaPada();
 		webs = await allWebdev();
 		snips = await snippets();
 		notes = await allNotes();
@@ -217,6 +217,20 @@
 					{/if}
 				</div>
 			</Acco>
+			<Acco7>
+				Janapada
+				<div slot="body">
+					{#if builds && builds.length > 0}
+						{#each builds as item}
+							<p>
+								<a href={item.linkpath}>
+									{item.meta.title}
+								</a>
+							</p>
+						{/each}
+					{/if}
+				</div>
+			</Acco7>
 		</div>
 	</div>
 	<div slot="main" class="rta-column">

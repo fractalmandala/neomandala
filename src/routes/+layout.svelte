@@ -166,6 +166,8 @@ header
 
 .low
 	z-index: 0
+	margin-top: 56px
+
 
 .light
 	background: #FFFFFF

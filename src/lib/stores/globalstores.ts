@@ -7,6 +7,8 @@ export const indexLinks = writable({})
 export const indexCategory = writable('')
 export const indexImage = writable('')
 export const indexTags = writable({})
+export const pageTitle = writable('')
+export const pageDescription = writable('')
 
 export const scrollY = writable(0);
 

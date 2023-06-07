@@ -139,10 +139,10 @@
 						<p>
 							<a href="/code">CODE</a>
 						</p>
-						<p>
-							<a href="/word">WORD</a>
-						</p>
 					{/if}
+					<p>
+						<a href="/word">WORD</a>
+					</p>
 					<p>
 						<a href="/image">IMAGE</a>
 					</p>
@@ -208,7 +208,7 @@
 	cursor: pointer
 	&:hover
 		.text-animation
-			animation: colorchange 0.5s forwards
+			animation: colorchange 1s forwards
 
 @keyframes colorchange
 	0%
@@ -230,7 +230,7 @@
 	90%
 		color: #10D56C
 	100%
-		color: #474747
+		color: var(--background)
 
 .rta-row
 	z-index: 1000

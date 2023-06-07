@@ -23,14 +23,14 @@
 </script>
 
 <div
-	class="rta-column pad32"
+	class="rta-column p40"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="rta-grid grid4 colgap100 rowgap100 p-top-32">
+	<div class="rta-grid grid4 colgap100 rowgap100">
 		{#if pens && pens.length > 0}
 			{#each pens as item}
 				<a
@@ -56,5 +56,14 @@
 .levelzero
 	.insider
 		padding: 16px
+
+.levelzero.p40
+	padding: 56px 40px
+
+.levelone.p40
+	padding: 32px
+
+.leveltwo.p40
+	padding: 16px
 
 </style>

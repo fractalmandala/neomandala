@@ -11,6 +11,7 @@
 	$indexName = 'ontology';
 	$indexCategory = '';
 	$indexLinks = '';
+	$indexTags = '';
 
 	function toggleOn(index: number) {
 		isOn[index] = !isOn[index];
@@ -45,7 +46,7 @@
 		{/each}
 	{/if}
 </div>
-<div class="rta-column rowgap400 p-top-32">
+<div class="rta-column rowgap400 p-top-16">
 	{#if galls && galls.length > 0}
 		{#each galls as item, i}
 			{#if isOn[i]}

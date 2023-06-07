@@ -64,6 +64,8 @@ pre
 	font-family: 'Space Grotesk', sans-serif
 	font-size: 14px
 	font-weight: 400
+	--mainfont: 'Space Grotesk', sans-serif
+	--altfont: 'Authentic Sans', sans-serif
 
 .pp64
 	padding-top: 64px
@@ -81,22 +83,22 @@ pre
 p, h6, h5, h4, h3, h2, h1, cite
 	margin: 0
 	padding: 0
-	font-family: 'Space Grotesk', sans-serif
+	font-family: var(--mainfont)
 
 h6
 	color: var(--greyish)
 
 .font
-	font-family: 'Authentic Sans', sans-serif
+	font-family: var(--altfont)
 	pre
-		font-family: 'Authentic Sans', sans-serif
+		font-family: var(--altfont)
 	pre.mono
 		font-family: 'Space Mono', monospace
 
 .grot
-	font-family: 'Space Grotesk', sans-serif
+	font-family: var(--mainfont)
 	pre
-		font-family: 'Space Grotesk', sans-serif
+		font-family: var(--mainfont)
 	pre.mono
 		font-family: 'Space Mono', monospace
 
@@ -219,7 +221,7 @@ $exp: 1.414
 		h2
 			font-size: $std * $exp * $exp * $exp * $exp	
 		h1
-			font-size: $std * $exp * $exp * $exp * $exp * $exp
+			font-size: $std * $exp * $exp * $exp * $exp
 	@media screen and (min-width: 769px) and (max-width: 1023px)
 		p, li
 			font-size: $std
@@ -234,7 +236,7 @@ $exp: 1.414
 		h2
 			font-size: $std * $exp * $exp * $exp
 		h1
-			font-size: $std * $exp * $exp * $exp * $exp
+			font-size: $std * $exp * $exp * $exp
 	@media screen and (max-width: 768px)
 		p, li
 			font-size: $std
@@ -249,7 +251,8 @@ $exp: 1.414
 		h2
 			font-size: $std * $exp * $exp * 1.1
 		h1
-			font-size: $std * $exp * $exp * $exp * $exp
+			font-size: $std * $exp * $exp * $exp
+			font-weight: 900
 
 .light
 	.blogger
@@ -266,6 +269,18 @@ $exp: 1.414
 	row-gap: 20px
 	color: white
 	line-height: 1.6
+	blockquote
+		margin: 0
+		padding: 16px
+		font-style: italic
+		border-top: 1px solid #10D56C
+		border-bottom: 1px solid #10D56C
+		p
+			line-height: 1.12
+	cite
+		font-size: 12px
+		font-style: normal
+		color: var(--greyish)
 	@media screen and (min-width: 769px)
 		p, li, blockquote
 			font-size: 17px

@@ -3,8 +3,8 @@
 import supabase from '$lib/utils/supabase';
 
 
-export async function allBuild() {
-	const allfiles = import.meta.glob('/src/routes/build/*.md');
+export async function janaPada(){
+		const allfiles = import.meta.glob('/src/routes/janapada/*.md');
 	const filed = Object.entries(allfiles);
 	const eachfiled = await Promise.all(
 		filed.map(async ([path, resolver]) => {
@@ -19,6 +19,8 @@ export async function allBuild() {
 	);
 	return eachfiled;
 }
+
+
 
 export async function allIndex() {
 	const allfiles = import.meta.glob('/src/routes/know/*.md');

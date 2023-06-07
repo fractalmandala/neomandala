@@ -23,7 +23,7 @@
 	}
 
 	onMount(async () => {
-		indexer = await mandalapedia();
+		indexer = await allIndex();
 	});
 </script>
 
@@ -39,8 +39,8 @@
 			{#if indexer && indexer.length > 0}
 				{#each indexer as item}
 					<p on:click={toggleSide} on:keydown={fauxfake}>
-						<a href="/know/{item.slug}">
-							{item.name}
+						<a href={item.linkpath}>
+							{item.meta.title}
 						</a>
 					</p>
 				{/each}
@@ -52,8 +52,11 @@
 	</div>
 	<div class="rta-column xright rowgap100" slot="right">
 		<h4 class="tt-u" style="color: var(--background)">{$indexName}</h4>
-		<div class="islabel {$indexCategory}">
-			{$indexCategory}
+		<div class="rta-row colgap200">
+			<small>{$indexTags}</small>
+			<div class="islabel {$indexCategory}">
+				{$indexCategory}
+			</div>
 		</div>
 		<div class="sectionrest rta-column p-top-32">
 			{#if $indexLinks && Object.keys($indexLinks).length > 0}

@@ -34,8 +34,16 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<h4 class="bord-bot p-bot-16" style="margin: 0">{data.title}</h4>
-	<div class="grot p-top-32 especial">
+	<h3 class="bord-bot p-bot-16" style="margin: 0">{data.title}</h3>
+	<div class="grot p-top-32 especial rta-column rowgap200">
 		<svelte:component this={data.content} />
 	</div>
 </div>
+
+<style lang="sass">
+
+
+h3
+	color: var(--background)
+
+</style>

@@ -1,11 +1,13 @@
-import supabase from '$lib/utils/supabase'
-
-export async function load({params}:{params: { slug:string }}){
-	const { data, error } = await supabase
-	.from('mandalapedia')
-	.select()
-	.eq('slug',`${params.slug}`)
-	.single()
-	if (error) throw new Error(error.message)
-	return data	
+export async function load({ params }: { params: { slug: string } }){
+	const post = await import(`../${params.slug}.md`)
+	const { title, image, links, tags, synapse } = post.metadata
+	const content = post.default
+	return {
+		content,
+		title,
+		image,
+		links,
+		tags,
+		synapse
+	}
 }

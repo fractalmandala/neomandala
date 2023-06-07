@@ -3,7 +3,7 @@ title: camus
 image: 
 links:
 tags: people
-synapse: bhṛt
+synapse: ghṛt
 ---
 
 Many people, most perhaps, find Albert Camus’ philosophy bleak.
@@ -48,7 +48,7 @@ Sure, he has his way. Provocatively he delivers this message. Go die, it almost 
 
 Camus is no Krishna, but neither am I the Partha. Let Camus talk to me, it’s okay, since the message is the same. Inaction, indecisiveness, doubt- these they both disclaim.
 
-And you, the ponderer of this absurd position, Camus says, bearing the burden of being rational creatures in an irrational world, must accept this absurdity **and continue to love, laugh, live anyway. Rebel, flip off the universe. Show a middle finger to God.** Camus din’t care, neither do I. If you’re offended, you shouldnt have read thus far to begin with. Camus’ krishna-esque positive engagement doesn’t stop there. He reminds us of that children’s soccer game- the ones they play each evening. Cricket here, hockey there. The names don’t matter, that’s semantics again. The children play, some days one set wins. Another day the other. Win, loss, it doesn’t matter. The children play, for the sake of play itself. Leela. Krishna kahe to Bhagavad Gita. Camus kahe toh message pheeka. Fair enough. Others like that juice.
+And you, the ponderer of this absurd position, Camus says, bearing the burden of being rational creatures in an irrational world, must accept this absurdity *and continue to love, laugh, live anyway. Rebel, flip off the universe. Show a middle finger to God.* Camus din’t care, neither do I. If you’re offended, you shouldnt have read thus far to begin with. Camus’ krishna-esque positive engagement doesn’t stop there. He reminds us of that children’s soccer game- the ones they play each evening. Cricket here, hockey there. The names don’t matter, that’s semantics again. The children play, some days one set wins. Another day the other. Win, loss, it doesn’t matter. The children play, for the sake of play itself. Leela. Krishna kahe to Bhagavad Gita. Camus kahe toh message pheeka. Fair enough. Others like that juice.
 
 Now, no doubt concessions are due. There’s no divinity in Camus’ world. you might be tempted to bracket him with Neeche, who declared God dead. Fair, but I see clear nuance. There are people agnostic on the matter of god. There are others, like me, agnostic to her salience. We don’t care, we gotta do our own ting down hea anyway. Ours is a cultivated apathy to god. 
 

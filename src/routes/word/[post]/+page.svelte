@@ -59,13 +59,12 @@
 		class:stickystop={nonSticky}
 	/>
 	<div class="twohundred" />
-	<div class="thisguy rta-column xcenter ycenter minH null p-top-64 rowgap100 grot">
-		<div class="greenlabel">{data.type}</div>
-		<h2 class="noh ta-c tt-u bord-bot p-bot-64">{data.title}</h2>
+	<div class="thisguy rta-column xcenter ycenter null p-top-64 rowgap100 grot">
+		<h1 class="ta-c tt-u bord-bot p-bot-32">{data.title}</h1>
 		<Social />
 	</div>
 
-	<div class="rta-column x101">
+	<div class="rta-column x101 p-top-32">
 		<div class="blogger p-bot-32">
 			<svelte:component this={data.content} />
 		</div>
@@ -87,21 +86,20 @@
 <style lang="sass">
 
 .x101
-	background: var(--this)
 	align-items: center
 
-.levelzero
-	.blogger
-		width: 580px
-
-.levelone
-	.blogger
-		width: 580px
 
 .leveltwo
 	.blogger
 		padding-left: 32px
 		padding-right: 32px
+
+.blogger
+	@media screen and (min-width: 769px)
+		width: 720px
+		padding-left: 40px
+		padding-right: 40px
+		padding-top: 64px
 
 
 .twohundred
@@ -112,22 +110,12 @@
 
 .sticky
 	position: sticky
-	top: 0
+	top: 56px
 	overflow: hidden
 	transition: position 0.3s ease-in-out
 
 .sticky.stickystop
 	position: static
-
-.greenlabel
-	border: 1px solid #10D56C
-	color: var(--default)
-	text-transform: uppercase
-	font-size: 13px
-	padding: 2px 6px
-	text-align: center
-	width: max-content
-	max-content: 200px
 
 .measure
 	height: 4px
@@ -142,8 +130,8 @@
 
 .levelzero
 	.thisguy
-		padding-left: 128px
-		padding-right: 128px
+		padding-left: 40px
+		padding-right: 40px
 	.x00
 		height: 100vh
 		overflow: hidden

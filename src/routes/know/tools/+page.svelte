@@ -21,7 +21,9 @@
 		<li>
 			IDE- <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer"
 				>Visual Studio Code</a
-			>
+			> But I'm kind of bored with it. And for some reason every few weeks it totally resets my config,
+			code styling and such (probably because of something I'm missing.) I like Zed except for a few
+			irritations that prohibit full migration.
 		</li>
 		<li>
 			Graphic Design- <a href="https://www.figma.com/" target="_blank" rel="noreferrer">Figma</a>
@@ -53,5 +55,8 @@ a
 	color: #10D56C
 	&:hover
 		text-decoration: underline
+
+.grot
+	padding: 0
 
 </style>

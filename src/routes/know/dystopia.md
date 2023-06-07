@@ -6,7 +6,6 @@ tags: future
 synapse: anṛt
 ---
 
-
 When we think of the word “dystopia,” most of us are likely to think of George Orwell’s *1984.* It animates our idea of a dystopia- totaliarianism, mass surveillance, oppressive regimentation and authoritarianism that all amount to an outright and explicit end of human rights and individual sovereignty. 
 
 We wouldn’t be in blame to picture Orwell’s 1984 as the epitome of a dystopia. But it is only 1 pole of the spectrum of dystopic realities. We ignore the other pole at our own risk- Huxley’s *Brave New World*.

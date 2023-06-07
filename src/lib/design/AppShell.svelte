@@ -85,7 +85,7 @@
 		.mainpage, .leftside, .rightside
 			padding-top: 128px
 		.mainpage
-			padding-bottom: 64px
+			padding-bottom: 32px
 			padding-left: 4vw
 			padding-right: 4vw
 	@media screen and (max-width: 1023px)

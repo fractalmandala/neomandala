@@ -12,7 +12,7 @@ This is an example of how to integrate Supabase with Sveltekit. Some caveats to 
 2. These secret values should never be used such that they are passed out publicly, as it creates a major security vulnerability.
 3. In Sveltekit, this means that 'private environment variables' are only used in server-side code, and never in client-side code.
 
-###### Simply put, server-side code runs on the web-server (uses host-side resources/applications) while client-side code runs on the user's end. This is why private keys should not pass to client-side codes.
+##### Simply put, server-side code runs on the web-server (uses host-side resources/applications) while client-side code runs on the user's end. This is why private keys should not pass to client-side codes.
 
 #### Install Supabase
 

@@ -95,6 +95,7 @@ pre.codeblock
 	pre
 		margin: 0
 		line-height: 1.6
+		font-size: 18px
 		overflow-y: scroll
 		white-space: pre-line
 		font-family: 'Space Grotesk', sans-serif

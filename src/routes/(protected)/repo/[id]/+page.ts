@@ -1,8 +1,8 @@
 import supabase from '$lib/utils/supabase'
 
-export async function load({params}:{params: { id:number }}){
+export async function load({params}:{params: { id:string }}){
 	const { data, error } = await supabase
-	.from('db-janapada')
+	.from('amrit-gpttitles')
 	.select()
 	.eq('id',`${params.id}`)
 	.single()

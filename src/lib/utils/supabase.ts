@@ -70,6 +70,16 @@ export async function gptTitles() {
 	return data;
 }
 
+export async function singleTitle(title:string){
+	const { data, error } = await supabase
+	.from('amrit-gpt')
+	.select()
+	.eq('title', title)
+	.order('id')
+	if (error) throw new Error(error.message);
+	return data;	
+}
+
 export async function thisChat(indexing: string) {
 	const { data, error } = await supabase
 		.from('amrit-gpt')

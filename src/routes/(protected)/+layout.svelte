@@ -212,7 +212,7 @@
 					{#if titles && titles.length > 0}
 						{#each titles as item}
 							<p>
-								<a href="/repo/{item.indexing}">
+								<a href="/repo/{item.id}">
 									{item.title}
 								</a>
 							</p>

@@ -1,4 +1,5 @@
 {
   "strictLineBreaks": true,
-  "showFrontmatter": true
+  "showFrontmatter": true,
+  "useMarkdownLinks": true
 }

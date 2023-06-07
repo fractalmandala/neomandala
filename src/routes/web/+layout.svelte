@@ -6,7 +6,7 @@
 	import BotUtil from '$lib/dash/BotUtil.svelte';
 	import Shell from '$lib/design/AppShell.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
-	import { allBuild, allWebdev, featuredWebdev } from '$lib/utils/localpulls';
+	import { allWebdev, featuredWebdev } from '$lib/utils/localpulls';
 	import { notesDiary } from '$lib/dash/notesutil';
 	import { toDo, gptTitles } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
@@ -99,7 +99,6 @@
 
 	function handleRefresh() {
 		(async () => {
-			builds = await allBuild();
 			webs = await allWebdev();
 			snips = await snippets();
 			notes = await allNotes();
@@ -107,7 +106,6 @@
 	}
 
 	onMount(async () => {
-		builds = await allBuild();
 		webs = await allWebdev();
 		snips = await snippets();
 		notes = await allNotes();

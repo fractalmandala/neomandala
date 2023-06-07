@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "8ffbdb5465855300",
+    "id": "7277b25923aac7e8",
     "type": "split",
     "children": [
       {
-        "id": "cbe2be41f77e068e",
+        "id": "ed93716e651fa90e",
         "type": "tabs",
         "children": [
           {
-            "id": "6043895f64b2cccd",
+            "id": "fc35d89f1896e90c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "documentation.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f23b204a995a324d",
+    "id": "fcb80eb650615584",
     "type": "split",
     "children": [
       {
-        "id": "8b63dbcc3068a0dd",
+        "id": "8f8f36f2a2f61ce3",
         "type": "tabs",
         "children": [
           {
-            "id": "a871972bbd964e23",
+            "id": "35cb7e316696bd71",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +39,7 @@
             }
           },
           {
-            "id": "7ebe1329cb418163",
+            "id": "10b8b7ebb8a4b2da",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +54,7 @@
             }
           },
           {
-            "id": "15c97205aab72185",
+            "id": "428619e4eb41f4e3",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -69,24 +65,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "f332079a1117275b",
+    "id": "f130469b7b85968b",
     "type": "split",
     "children": [
       {
-        "id": "60c6f9840e1764c8",
+        "id": "a5897e6976834567",
         "type": "tabs",
         "children": [
           {
-            "id": "a34fd483dbb73a13",
+            "id": "03d8e02ed8684274",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documentation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,19 +92,18 @@
             }
           },
           {
-            "id": "61f9f4483547e62b",
+            "id": "5996c0ee126a7604",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documentation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "6d43e252c501dc0a",
+            "id": "c2fe46479d43a6b4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -121,13 +114,11 @@
             }
           },
           {
-            "id": "1e72a03a3aea2993",
+            "id": "7d5dc9e05ff704eb",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "documentation.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -144,12 +135,9 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false
+      "command-palette:Open command palette": false
     }
   },
-  "active": "6043895f64b2cccd",
-  "lastOpenFiles": [
-    "camus.md"
-  ]
+  "active": "fc35d89f1896e90c",
+  "lastOpenFiles": []
 }

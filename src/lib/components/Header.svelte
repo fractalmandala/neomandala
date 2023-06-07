@@ -213,7 +213,21 @@
 @keyframes colorchange
 	0%
 		color: #474747
+	20%
+		color: #CF2C2C
+	30%
+		color: #C22DCF
+	40%
+		color: #3A93E5
 	50%
+		color: #10D56C
+	60%
+		color: #71C331
+	70%
+		color: #F0F418
+	80%
+		color: #BEC118
+	90%
 		color: #10D56C
 	100%
 		color: #474747

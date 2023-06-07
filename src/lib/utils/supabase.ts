@@ -253,3 +253,21 @@ export async function sixteenImages(){
 	if (error) throw new Error(error.message);
 	return data;
 }
+
+export async function nasLines(){
+	const { data, error } = await supabase
+	.from('soa-nasadiya')
+	.select()
+	.order('id')
+	if (error) throw new Error(error.message);
+	return data;
+}
+
+export async function nasImages(){
+	const { data, error} = await supabase
+	.from('soa-nasadiyaimages')
+	.select()
+	.order('id')	
+	if (error) throw new Error(error.message);
+	return data;
+}

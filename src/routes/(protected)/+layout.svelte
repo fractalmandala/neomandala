@@ -116,7 +116,7 @@
 </script>
 
 <Shell>
-	<div slot="left" class="rta-column onleft">
+	<div slot="left" class="rta-column onleft" data-lenis-prevent>
 		<div class="forheight rta-column rowgap100">
 			<div class="grot null">
 				{#if session}

@@ -20,6 +20,7 @@
 	import Acco6 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
 	import Refresh from '$lib/design/iconset/refresh.svelte';
+	import '$lib/styles/tiptap.sass';
 	import NotesForm from '$lib/dash/NotesForm.svelte';
 	import { showModal } from '$lib/stores/modalstores';
 	import {

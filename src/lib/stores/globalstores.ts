@@ -2,10 +2,10 @@ import { writable, derived } from 'svelte/store';
 import { get, type Readable, type Writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-export const indexName = writable('FM')
+export const indexName = writable('')
 export const indexLinks = writable({})
-export const indexCategory = writable('https://www.fractalmandala.in')
-export const indexImage = writable('webpage')
+export const indexCategory = writable('')
+export const indexImage = writable('')
 export const indexTags = writable({})
 
 export const scrollY = writable(0);

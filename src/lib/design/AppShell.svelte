@@ -65,7 +65,7 @@
 	@media screen and (min-width: 1024px)
 		grid-template-columns: 280px 1fr 22vw
 		grid-template-areas: "leftside mainpage rightside"
-		column-gap: 64px
+		column-gap: 48px
 		.leftside
 			width: 280px
 			padding-left: 40px

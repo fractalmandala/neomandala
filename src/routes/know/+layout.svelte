@@ -29,26 +29,20 @@
 
 <Shell>
 	<div slot="left" class="rta-column">
-		{#if $breakTwo}
-			<div class="holdsbutton rta-column xleft">
-				<button class="blank-button" on:click={toggleSide}>
-					<Menu color={'#FFFFFF'} />
-				</button>
-			</div>
-		{/if}
-		{#if showSide || $breakZero || $breakOne}
-			<div class="inside">
-				{#if indexer && indexer.length > 0}
-					{#each indexer as item}
-						<p on:click={toggleSide} on:keydown={fauxfake}>
-							<a href="/know/{item.slug}">
-								{item.name}
-							</a>
-						</p>
-					{/each}
-				{/if}
-			</div>
-		{/if}
+		<div class="inside">
+			<p>
+				<a href="/know/ontology" style="color: var(--background)">ONTOLOGY</a>
+			</p>
+			{#if indexer && indexer.length > 0}
+				{#each indexer as item}
+					<p on:click={toggleSide} on:keydown={fauxfake}>
+						<a href="/know/{item.slug}">
+							{item.name}
+						</a>
+					</p>
+				{/each}
+			{/if}
+		</div>
 	</div>
 	<div slot="main" class="rta-column">
 		<slot />
@@ -75,6 +69,11 @@
 	row-gap: 8px
 	display: flex
 	flex-direction: column
+	@media screen and (max-width: 1023px)
+		z-index: 1000
+		background: var(--this)
+		padding: 16px
+		border-bottom: 1px solid var(--textone)
 
 p a
 	color: var(--default)

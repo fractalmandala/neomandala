@@ -10,7 +10,7 @@
 </script>
 
 <div
-	class="rta-grid grid4 minH colgap400 rowgap400 x00"
+	class="rta-grid grid4 colgap400 rowgap400 x00"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}

@@ -73,7 +73,7 @@ export async function allThea() {
 }
 
 export async function allWebdev() {
-	const allfiles = import.meta.glob('/src/routes/(protected)/web/*.md');
+	const allfiles = import.meta.glob('/src/routes/web/*.md');
 	const filed = Object.entries(allfiles);
 	const eachfiled = await Promise.all(
 		filed.map(async ([path, resolver]) => {
@@ -105,8 +105,7 @@ export async function featuredWebdev() {
 		})
 	);
 	eachfiled.sort((a, b) => b.meta.id - a.meta.id);
-	const filteredFiled = eachfiled.filter((post) => post.meta.featured === true);
-	return filteredFiled;
+	return eachfiled
 }
 
 export async function thisWebdev(id: any) {

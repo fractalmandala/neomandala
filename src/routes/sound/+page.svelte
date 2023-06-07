@@ -4,6 +4,10 @@
 	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
 	import { audioStore } from '$lib/stores/modalstores';
 	import Soundclouder1 from '$lib/components/Soundclouder.svelte';
+	import Youtube from '$lib/design/iconset/youtube.svelte';
+	import Amazon from '$lib/design/iconset/amazon.svelte';
+	import Sound from '$lib/design/iconset/soundcloud.svelte';
+	import Spotify from '$lib/design/iconset/spotify.svelte';
 
 	let images: any;
 	let audio: any;
@@ -20,20 +24,53 @@
 </script>
 
 <div
-	class="rta-grid grid2 minH"
+	class="rta-grid grid2 minH left"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	{#if images && images.length > 0}
-		{#each images as item, i}
-			<div class="rta-column height-40 p-all-16">
+	<div class="grot p-top-64 texter p-bot-32">
+		<p>
+			Since ~2005 I've dabbled in psytrance production, off and on. Early on, I liked the name
+			Scrolls of Aryavarta. But in recent years I've produced under the name Tripsurfer. I am the
+			not-so-proud innovator of the subgenre of absolutely-amateurish psytrance. Sample some...
+		</p>
+		<div class="rta-row colgap200">
+			<a href="https://soundcloud.com/tripsurfer" target="_blank" rel="noreferrer">
+				<Sound />
+			</a>
+			<a
+				href="https://open.spotify.com/artist/7kyfFEEMs2Jg6FLF5gpC7O?si=aCqdOL_eRsO1D_OEfuyc0Q"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<Spotify />
+			</a>
+			<a
+				href="https://music.youtube.com/channel/UCZpvB_tpsx6Pj3g78uc0rtg?feature=share"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<Youtube />
+			</a>
+			<a
+				href="https://music.amazon.in/artists/B072QC9LNP/tripsurfer?marketplaceId=A3K6Y4MI8GDYMT&musicTerritory=IN&ref=dm_sh_F2bx9ttSP58fxxuqAUyQO05W1"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<Amazon />
+			</a>
+		</div>
+	</div>
+	<div class="rta-column rowgap200">
+		{#if images && images.length > 0}
+			{#each images as item, i}
 				<Soundclouder1 soundcloudLink={item.meta.soundcloudLink} />
-			</div>
-		{/each}
-	{/if}
+			{/each}
+		{/if}
+	</div>
 </div>
 
 <style lang="sass">
@@ -43,5 +80,14 @@
 		padding: 56px 3.2vw
 	@media screen and (max-width: 769px)
 		padding: 56px 24px
+
+.texter
+	display: flex
+	flex-direction: column
+	row-gap: 16px
+	@media screen and (min-width: 1024px)
+		height: 200px
+		position: sticky
+		top: 128px
 
 </style>

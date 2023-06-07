@@ -43,7 +43,7 @@
 </script>
 
 <svelte:window bind:scrollY={y} />
-
+<div class="measure" style="width: {(y / $size.height) * 100}%" />
 <div
 	class="rta-column"
 	bind:this={ref}
@@ -59,22 +59,22 @@
 		class:stickystop={nonSticky}
 	/>
 	<div class="twohundred" />
-	<div class="thisguy rta-column xcenter ycenter minH null p-top-64 grot">
+	<div class="thisguy rta-column xcenter ycenter minH null p-top-64 rowgap100 grot">
 		<div class="greenlabel">{data.type}</div>
-		<h1 class="noh ta-c tt-u bord-bot p-bot-64">{data.title}</h1>
+		<h2 class="noh ta-c tt-u bord-bot p-bot-64">{data.title}</h2>
 		<Social />
 	</div>
 
 	<div class="rta-column x101">
-		<div class="measure" style="width: {(y / $size.height) * 100}%" />
-
-		<div class="grot blogger p-top-64">
+		<div class="blogger p-bot-32">
 			<svelte:component this={data.content} />
 		</div>
-		<div class="lowerone p-bot-32">
+		<div class="lowerone p-bot-32 bord-top p-top-32">
 			<Social />
 		</div>
-		<div class="rta-row grot m-bot-32 null xcenter-d ta-c ycenter colgap200 p-top-64 p-bot-64">
+		<div
+			class="rta-row grot m-bot-32 null xcenter-d xcenter-m ta-c ycenter colgap200 p-top-16 p-bot-64"
+		>
 			{#if prevPost && prevPost.length > 0}
 				{#each prevPost as item}
 					<p>Next: <span class="green"><a href="/word/{item.slug}">{item.title}</a></span></p>
@@ -88,16 +88,15 @@
 
 .x101
 	background: var(--this)
+	align-items: center
 
 .levelzero
 	.blogger
-		padding-left: 25vw
-		padding-right: 25vw
+		width: 580px
 
 .levelone
 	.blogger
-		padding-left: 64px
-		padding-right: 64px
+		width: 580px
 
 .leveltwo
 	.blogger
@@ -121,8 +120,8 @@
 	position: static
 
 .greenlabel
-	background: #10D56C
-	color: white
+	border: 1px solid #10D56C
+	color: var(--default)
 	text-transform: uppercase
 	font-size: 13px
 	padding: 2px 6px
@@ -156,10 +155,10 @@
 
 .leveltwo
 	.thisguy
-		padding-left: 32px
-		padding-right: 32px
+		padding-left: 16px
+		padding-right: 16px
 	.x00
-		height: 50vh
+		height: 100vh
 		overflow: hidden
 
 </style>

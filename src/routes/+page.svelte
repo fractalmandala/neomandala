@@ -1,16 +1,39 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { reveal } from 'svelte-reveal';
-	import Parallax from '$lib/components/Parallax.svelte';
-	import Parallax2 from '$lib/components/Parallax.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
-	import { psyImages, featuredWritings, mandalapedia } from '$lib/utils/supabase';
+	import { psyImages, featuredWritings, mandalapedia, sixteenImages } from '$lib/utils/supabase';
 	import { elementVisibilityStore } from '$lib/stores/elementvisibilitystore';
-	import Reveal from '$lib/anims/RevealHead.svelte';
-	import RevealText from '$lib/anims/RevealText.svelte';
 	import { featuredWebdev } from '$lib/utils/localpulls';
-	import { breakZero, breakOne, breakTwo, themeMode, scrollY } from '$lib/stores/globalstores';
+	import { themeMode } from '$lib/stores/globalstores';
+	import { mouseStore } from '$lib/stores/mousestore';
+	import { elementSizeStore } from '$lib/utils/elementsize';
 	let ref: HTMLElement | null = null;
+
+	const position = mouseStore();
+	let x = 0;
+	let y = 0;
+
+	let temp = 0;
+	let tomp = 0;
+
+	$: size = elementSizeStore(ref);
+
+	function handlePath(event: MouseEvent) {
+		const gridElement = document.querySelector('.grid4');
+
+		if (gridElement instanceof HTMLElement) {
+			// Get the element's position:
+			const rect = gridElement.getBoundingClientRect();
+			temp = rect.left;
+			tomp = rect.top;
+			// Adjust mouse positions to be relative to the element:
+			x = $position.x - rect.left;
+			y = $position.y - rect.top;
+
+			// Update the circle's position:
+			gridElement.style.clipPath = `circle(10% at ${x}px ${y}px)`;
+		}
+	}
 
 	$: ({ isVisible } = elementVisibilityStore(ref));
 
@@ -31,7 +54,7 @@
 
 	onMount(() => {
 		(async () => {
-			images = await psyImages();
+			images = await sixteenImages();
 			posts = await featuredWritings();
 			webs = await featuredWebdev();
 			indices = await mandalapedia();
@@ -45,8 +68,17 @@
 
 <svelte:window bind:scrollY={scY} />
 
-<div class="grot" class:light={$themeMode} class:dark={!$themeMode}>
-	<div class="rta-column ybot xright">
+<div class="grot rta-grid grid2" class:light={$themeMode} class:dark={!$themeMode}>
+	<div class="rta-grid grid4 half" on:mousemove={handlePath} bind:this={ref}>
+		{#if images && images.length > 0}
+			{#each images as item}
+				<div class="rta-image">
+					<img src={item.link} alt={item.id} />
+				</div>
+			{/each}
+		{/if}
+	</div>
+	<div class="rta-column ybot xright half">
 		<small class="p-bot-16" style="color: #10D56C">knowledge index</small>
 		{#if indices && indices.length > 0}
 			{#each indices as item}
@@ -70,6 +102,22 @@
 
 <style lang="sass">
 
+.grot.rta-grid.grid2
+	@media screen and (min-width: 1024px)
+		padding: 0 40px
+		.grid4
+			margin-top: 56px
+			padding-top: 32px
+			clip-path: circle(10%)
+			.rta-image
+				height: 100%
+	@media screen and (max-width: 1023px)
+		.grid4
+			display: none
+		.half
+			padding: 64px 16px
+			text-align: right
+
 .rta-column
 	height: 100%
 
@@ -86,20 +134,6 @@ h6
 	color: var(--default)
 	@media screen and (max-width: 1023px)
 		padding-bottom: 8px
-
-.grot
-	display: flex
-	flex-direction: column
-	row-gap: 16px
-	@media screen and (min-width: 1024px)
-		height: calc(100vh - 56px)
-		padding: 88px 40px 64px 40px
-	@media screen and (max-width: 1023px)
-		height: calc(100vh - 56px)
-		padding: 88px 16px 64px 16px
-		.rta-column
-			align-items: flex-end
-			text-align: right
 
 
 </style>

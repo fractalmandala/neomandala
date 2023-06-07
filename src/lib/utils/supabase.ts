@@ -243,3 +243,13 @@ export async function toDo(){
 	if (error) throw new Error(error.message);
 	return data;
 }
+
+
+export async function sixteenImages(){
+	const { data, error } = await supabase
+	.from('amrit-galleries')
+	.select()
+	.limit(16)
+	if (error) throw new Error(error.message);
+	return data;
+}

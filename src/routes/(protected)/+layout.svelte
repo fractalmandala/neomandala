@@ -149,21 +149,6 @@
 					</div>
 				</Acco6>
 			{/if}
-			<Acco5>
-				Janapada
-				<div slot="body" class="rta-column">
-					<a href="/janapada">Main</a>
-					{#if chaps && chaps.length > 0}
-						{#each chaps as item}
-							<p>
-								<a href="/janapada/{item.id}">
-									{item.title}
-								</a>
-							</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco5>
 			<Acco4>
 				Articles
 				<div slot="body" class="rta-column">

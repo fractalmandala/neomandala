@@ -5,12 +5,12 @@
 	$: if (iW <= 786) {
 		height = '100px';
 	} else {
-		height = '320px';
+		height = '200px';
 	}
 
 	export let soundcloudLink: string = '';
 	export let width: string = '100%';
-	export let height: string = '320px';
+	export let height: string = '200px';
 	export let showVisual: boolean = true;
 	export let disable_observer: boolean = false;
 	export let iframe_styles: string = '';

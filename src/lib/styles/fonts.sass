@@ -265,6 +265,44 @@ $exp: 1.414
 	row-gap: 20px
 	color: white
 	line-height: 1.6
+	@media screen and (min-width: 769px)
+		p, li, blockquote
+			font-size: 17px
+			line-height: 1.8
+		blockquote
+			font-style: italic
+		h6
+			font-weight: 500
+			font-size: 21px
+			color: var(--background)
+		h5
+			font-size: 21px
+			padding: 32px 0
+			border-top: 1px solid var(--contraster)
+			border-bottom: 1px solid var(--contraster)
+			margin: 32px 0
+		h4
+			font-size: 32px
+			margin-top: 64px
+	@media screen and (max-width: 768px)
+		p, li, blockquote
+			font-size: 18px
+			line-height: 1.8
+		blockquote
+			margin-right: 0
+		h6
+			font-weight: 500
+			font-size: 21px
+			color: var(--background)
+		h5
+			font-size: 21px
+			padding: 32px 0
+			border-top: 1px solid var(--contraster)
+			border-bottom: 1px solid var(--contraster)
+			margin: 32px 0
+		h4
+			font-size: 32px
+			margin-top: 64px
 
 .light
 	color: var(--default)
@@ -396,8 +434,15 @@ $exp: 1.414
 	.rta-grid.grid2
 		grid-template-columns: 1fr 1fr
 		grid-template-areas: ". ."
+	.rta-grid.grid2.left
+		grid-template-columns: 32% 1fr
 	.colof6
 		grid-column: span 6
+	
+@media screen and (max-width: 1023px)
+	.rta-grid.grid2.left
+		grid-template-columns: 1fr
+		grid-template-areas: "." "."
 
 @media screen and (min-width: 769px) and (max-width: 1023px)
 	.appcontainer

@@ -87,9 +87,7 @@
 			{#each images as item}
 				<SplideSlide>
 					<div class="rta-grid grid2">
-						<div class="rta-grid grid4 back" style="background-image: url('{item.background}')">
-							<p>p</p>
-						</div>
+						<div class="rta-grid grid4 back" style="background-image: url('{item.background}')" />
 						<div class="grot rta-column rowgap300">
 							<small>{item.id}</small>
 							<div class="adobe">
@@ -99,7 +97,9 @@
 									{item.devanagari}
 								</pre>
 							</div>
-							<h5 style="color: var(--background); font-weight: 400">{item.iast}</h5>
+							<pre
+								class="english"
+								style="color: var(--background); font-weight: 400">{item.iast}</pre>
 							<p>{item.basham}</p>
 						</div>
 					</div>
@@ -128,11 +128,15 @@
 			padding-right: 40px
 		.movethis
 			font-size: 40px
+		.english
+			font-size: 18px
 	@media screen and (max-width: 768px)
-		padding: 16px
-		height: calc(100vh - 128px)
-		h4
-			font-size: 20px
+		padding: 0px 16px 16px 16px
+		min-height: calc(100vh - 128px)
+		.back
+			height: 45vh
+		.movethis
+			font-size: 21px
 			
 h4
 	font-weight: 400

@@ -69,15 +69,12 @@
 <svelte:window bind:scrollY={scY} />
 
 <div class="grot rta-grid grid2" class:light={$themeMode} class:dark={!$themeMode}>
-	<div class="rta-grid grid4 half" on:mousemove={handlePath} bind:this={ref}>
-		{#if images && images.length > 0}
-			{#each images as item}
-				<div class="rta-image">
-					<img src={item.link} alt={item.id} />
-				</div>
-			{/each}
-		{/if}
-	</div>
+	<div
+		class="rta-grid grid4 half back"
+		on:mousemove={handlePath}
+		bind:this={ref}
+		style="background-image: url('/images/psychedelic.webp')"
+	/>
 	<div class="rta-column ybot xright half">
 		<small class="p-bot-16" style="color: #10D56C">
 			<a href="/know">knowledge index</a>
@@ -122,6 +119,8 @@
 			clip-path: circle(10%)
 			.rta-image
 				height: 100%
+		.half
+			height: calc(100vh - 112px)
 	@media screen and (max-width: 1023px)
 		.grid4
 			display: none

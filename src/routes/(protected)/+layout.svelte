@@ -8,7 +8,7 @@
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { allBuild, allWebdev } from '$lib/utils/localpulls';
 	import { notesDiary } from '$lib/dash/notesutil';
-	import { janapada, toDo, gptTitles } from '$lib/utils/supabase';
+	import { toDo, gptTitles } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { slide } from 'svelte/transition';
 	import { snippets } from '$lib/dash/db';
@@ -110,13 +110,8 @@
 		webs = await allWebdev();
 		snips = await snippets();
 		notes = await allNotes();
-		chaps = await janapada();
 		items = await toDo();
 		titles = await gptTitles();
-	});
-
-	afterUpdate(async () => {
-		chaps = await janapada();
 	});
 </script>
 

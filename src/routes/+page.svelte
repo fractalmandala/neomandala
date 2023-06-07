@@ -79,7 +79,9 @@
 		{/if}
 	</div>
 	<div class="rta-column ybot xright half">
-		<small class="p-bot-16" style="color: #10D56C">knowledge index</small>
+		<small class="p-bot-16" style="color: #10D56C">
+			<a href="/know">knowledge index</a>
+		</small>
 		{#if indices && indices.length > 0}
 			{#each indices as item}
 				<h6 class="tt-c">
@@ -87,7 +89,9 @@
 				</h6>
 			{/each}
 		{/if}
-		<small class="p-bot-16 p-top-32" style="color: #10D56C">written words</small>
+		<small class="p-bot-16 p-top-32" style="color: #10D56C">
+			<a href="/word">written words</a>
+		</small>
 		{#if posts && posts.length > 0}
 			{#each posts as item}
 				<h6 class="tt-c">
@@ -97,6 +101,10 @@
 				</h6>
 			{/each}
 		{/if}
+		<small class="p-bot-16 p-top-32" style="color: #10D56C"> visual tales </small>
+		<h6 class="tt-c">
+			<a href="/image/midjourneys"> the realm psychedelic </a>
+		</h6>
 	</div>
 </div>
 

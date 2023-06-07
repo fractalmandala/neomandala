@@ -86,6 +86,8 @@
 			padding-top: 128px
 		.mainpage
 			padding-bottom: 64px
+			padding-left: 4vw
+			padding-right: 4vw
 	@media screen and (max-width: 1023px)
 		grid-template-columns: 1fr
 		grid-template-areas: "leftside" "rightside" "mainpage"

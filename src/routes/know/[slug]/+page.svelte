@@ -2,6 +2,7 @@
 	//@ts-nocheck
 	import { onMount } from 'svelte';
 	import { marked } from 'marked';
+	import { themeMode } from '$lib/stores/globalstores';
 	import supabase from '$lib/utils/supabase';
 	import '$lib/styles/prism.css';
 	import { showChip } from '$lib/stores/modalstores';
@@ -40,7 +41,7 @@
 	});
 </script>
 
-<div class="contentbox">
+<div class="contentbox" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="content">
 		{@html marked.parse(data.content)}
 	</div>

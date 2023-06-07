@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { invalidate } from '$app/navigation';
+	import Lenis from '@studio-freight/lenis';
 	import Pinned from '$lib/dash/PinnedNotes.svelte';
 	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
@@ -56,6 +57,26 @@
 	}
 
 	onMount(() => {
+		const lenis = new Lenis({
+			duration: 1.2,
+			orientation: 'vertical',
+			gestureOrientation: 'vertical',
+			easing: (t: number): number => {
+				return 1 - Math.pow(1 - t, 5);
+			},
+			smoothWheel: true,
+			wheelMultiplier: 0.5,
+			smoothTouch: false,
+			touchMultiplier: 0,
+			infinite: false
+		});
+
+		function raf(time: any) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+		requestAnimationFrame(raf);
+
 		const {
 			data: { subscription }
 		} = supabase.auth.onAuthStateChange((event, _session) => {
@@ -63,11 +84,11 @@
 				invalidate('supabase:auth');
 			}
 		});
-
 		return () => {
 			subscription.unsubscribe();
 		};
 	});
+
 	let linku = '';
 	export let data: LayoutData;
 

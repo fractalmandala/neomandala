@@ -1,51 +1,118 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { psyImages } from '$lib/utils/supabase';
+	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
+	import { EventInterface } from '@splidejs/splide';
+	import '@splidejs/splide/css/core';
 
 	let images: any;
+
+	export function MyTransition(Splide: any, Components: any) {
+		const { bind } = EventInterface(Splide);
+		const { Move } = Components;
+		const { list } = Components.Elements;
+
+		let endCallback: any;
+
+		function mount() {
+			bind(list, 'transitionend', (e) => {
+				if (e.target === list && endCallback) {
+					// Removes the transition property
+					cancel();
+
+					// Calls the `done` callback
+					endCallback();
+				}
+			});
+		}
+
+		function start(index: any, done: any) {
+			// Converts the index to the position
+			const destination = Move.toPosition(index, true);
+
+			// Applies the CSS transition
+			list.style.transition = 'transform 800ms cubic-bezier(.44,.65,.07,1.01)';
+
+			// Moves the carousel to the destination.
+			Move.translate(destination);
+
+			// Keeps the callback to invoke later.
+			endCallback = done;
+		}
+
+		function cancel() {
+			list.style.transition = '';
+		}
+
+		return {
+			mount,
+			start,
+			cancel
+		};
+	}
 
 	onMount(async () => {
 		images = await psyImages();
 	});
 </script>
 
-{#if images && images.length > 0}
-	{#each images as item}
-		<div class="rta-grid grid2 minH">
-			{#if item.id === 1 || item.id === 3 || item.id === 5 || item.id === 7 || item.id === 9}
-				<div class="rta-image">
-					<img src={item.link} alt={item.id} />
-				</div>
-				<div class="grot">
-					<h4>{item.quote}</h4>
-					<p>{item.source}</p>
-				</div>
-			{:else}
-				<div class="grot">
-					<h4>{item.quote}</h4>
-					<p>{item.source}</p>
-				</div>
-				<div class="rta-image">
-					<img src={item.link} alt={item.id} />
-				</div>
-			{/if}
-		</div>
-	{/each}
-{/if}
+<Splide
+	aria-label="midjourneys"
+	hasTrack={false}
+	options={{
+		drag: true,
+		keyboard: 'global',
+		waitForTransition: true,
+		wheel: true,
+		type: 'slide',
+		wheelMinThreshold: 1.1,
+		speed: 900,
+		direction: 'ltr'
+	}}
+>
+	<SplideTrack>
+		{#if images && images.length > 0}
+			{#each images as item}
+				<SplideSlide>
+					<div class="rta-grid grid2">
+						<div class="rta-image">
+							<img src={item.link} alt={item.id} />
+						</div>
+						<div class="grot">
+							<small>{item.id}</small>
+							<h4 style="color: var(--background)">{item.quote}</h4>
+							<p>{item.source}</p>
+						</div>
+					</div>
+				</SplideSlide>
+			{/each}
+		{/if}
+	</SplideTrack>
+</Splide>
 
 <style lang="sass">
+
+.rta-image
+	img
+		object-fit: contain
+		height: 100%
 
 
 .rta-grid.grid2
 	@media screen and (min-width: 769px)
-		padding: 56px 3.2vw
+		padding: 0 3.2vw
+		height: calc(100vh - 128px)
 		.grot
 			display: flex
 			flex-direction: column
 			justify-content: center
 	@media screen and (max-width: 768px)
-		padding: 56px 24px
+		padding: 16px
+		height: calc(100vh - 128px)
+		h4
+			font-size: 20px
 			
-
+h4
+	font-weight: 400
 
 </style>

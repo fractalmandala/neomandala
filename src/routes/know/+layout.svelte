@@ -33,6 +33,9 @@
 			<p>
 				<a href="/know/ontology" style="color: var(--background)">ONTOLOGY</a>
 			</p>
+			<p>
+				<a href="/know/tools" style="color: var(--background)">TOOLS</a>
+			</p>
 			{#if indexer && indexer.length > 0}
 				{#each indexer as item}
 					<p on:click={toggleSide} on:keydown={fauxfake}>
@@ -47,8 +50,8 @@
 	<div slot="main" class="rta-column">
 		<slot />
 	</div>
-	<div class="rta-column" slot="right">
-		<h4 class="tt-u">{$indexName}</h4>
+	<div class="rta-column xright rowgap100" slot="right">
+		<h4 class="tt-u" style="color: var(--background)">{$indexName}</h4>
 		<div class="islabel {$indexCategory}">
 			{$indexCategory}
 		</div>

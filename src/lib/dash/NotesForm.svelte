@@ -1,150 +1,103 @@
 <script lang="ts">
-	import { onMount, afterUpdate } from 'svelte';
-	import { addNote } from '$lib/dash/fileuploader';
-	import { showNote, noteStore } from '$lib/dash/alerts';
-	import { slide } from 'svelte/transition';
-	import StarterKit from '@tiptap/starter-kit';
-	import { addNewNote } from '$lib/dash/notesutil';
-	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
+	import { onMount, onDestroy } from 'svelte';
 	import { Editor } from '@tiptap/core';
-	import Zap from '$lib/design/iconset/zap.svelte';
+	import StarterKit from '@tiptap/starter-kit';
+	import { Markdown } from 'tiptap-markdown';
+	import supabase from '$lib/utils/supabase';
+	import { showNote } from '$lib/dash/alerts';
+	import '$lib/styles/tiptap.sass';
 
 	let element: any;
 	let editor: any;
-	let title = 'title';
-	let tags = 'tags';
-	let content = '';
-	let language = 'language';
-	let type = 'type';
-	let showLang = false;
-	let validator: boolean;
+	let title = '';
+	let html: any;
+	let prefill = '';
+	let markdownOutput: any;
+	let agent = '';
 
 	async function handleSubmit() {
-		if (validator === true) {
-			showNote('no!', true);
+		const { error } = await supabase
+			.from('amrit-notes')
+			.insert({ title: title, content: markdownOutput, agent: agent });
+		if (error) {
+			showNote('error', true);
 		} else {
-			addNewNote(title, content);
+			showNote('done', false);
+			title = '';
+			prefill = '';
 		}
 	}
 
-	function handleTitleFocus() {
-		title = '';
-	}
-
-	function handleTagsFocus() {
-		tags = '';
-	}
-
-	$: if (type === 'snippet') {
-		showLang = true;
-	} else {
-		showLang = false;
-	}
-
-	$: if (content === '' || title === '') {
-		validator = true;
-	} else {
-		validator = false;
-	}
-
 	onMount(() => {
-		editor = new Editor({
+		return (editor = new Editor({
 			element: element,
-			extensions: [StarterKit],
-			content: '',
-			parseOptions: {
-				preserveWhitespace: 'full'
-			},
+			extensions: [
+				StarterKit,
+				Markdown.configure({
+					html: true,
+					tightLists: true,
+					bulletListMarker: '-'
+				})
+			],
+			content: prefill,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
+			},
+			onUpdate: ({ editor }) => {
+				html = editor.getHTML();
+				markdownOutput = editor.storage.markdown.getMarkdown();
 			}
-		});
+		}));
 	});
-	afterUpdate(() => {
-		content = editor.getText({ blockSeparator: '\n\n' });
+
+	onDestroy(() => {
+		if (editor) {
+			editor.destroy();
+		}
 	});
 </script>
 
-<form class="note-form null rta-column rowgap200 inputformer" transition:slide={{ axis: 'y' }}>
-	<div class="rta-row ycenter">
-		<button on:click={editor.commands.setEditable(false)}> test </button>
-		<button class="blank-button" on:click={handleSubmit}>
-			<Zap />
-		</button>
-		<input
-			id="titleform"
-			autocomplete="off"
-			type="text"
-			placeholder={title}
-			bind:value={title}
-			on:focus={handleTitleFocus}
-		/>
-		<input
-			id="tagsform"
-			type="text"
-			placeholder={tags}
-			bind:value={tags}
-			on:focus={handleTagsFocus}
-		/>
-	</div>
-	<div class="tiptap">
-		<div class="null" bind:this={element} />
+<form class="rta-column rowgap200">
+	<input type="text" bind:value={title} />
+	<div class="quick" bind:this={element} />
+	<div class="rta-row colgap200">
+		<select class="fullW" bind:value={agent}>
+			<option value="short">quickie</option>
+			<option value="list">item</option>
+		</select>
+		<button class="genbutton" on:click={handleSubmit}> Submit </button>
 	</div>
 </form>
 
 <style lang="sass">
 
-.note-form
-	@media screen and (min-width: 1024px)
-		.rta-row
-			column-gap: 1.6vw
-			width: 100%
-			#titleform
-				width: 320px
-			#tagsform
-				width: 280px
-	@media screen and (max-width: 1023px) and (min-width: 900px)
-		.rta-row
-			column-gap: 1.6vw
-			flex-wrap: nowrap
-			#titleform
-				width: 300px
-			#tagsform
-				width: 240px
-	@media screen and (max-width: 899px) and (min-width: 769px)
-		.rta-row
-			column-gap: 1.6vw
-			flex-wrap: nowrap
-			#titleform
-				width: 300px
-			#tagsform
-				width: 240px
-	@media screen and (max-width: 768px)
-		align-items: stretch
-		.rta-row
-			column-gap: 1.6vw
-			flex-wrap: nowrap
-			#titleform
-				width: 320px
-			#tagsform
-				width: 280px	
-	
+.rta-row
+	flex-wrap: nowrap
 
-.tiptap
-	border: 2px solid var(--background)
+.quick
+	border: 1px solid var(--texttwo)
+	border-radius: 5px
+	text-align: left
+	width: 100%
 
+input[type=text]
+	border-top: none
+	border-left: none
+	border-right: none
+	border-bottom: 1px solid var(--texttwo)
+	background: none
+	padding: 4px 8px
+	color: var(--background)
+	font-size: 12px
+	font-family: 'Space Grotesk', sans-serif
 
-.inputformer
-	input[type=text]
-		border-bottom: 2px solid var(--background)
-		border-top: none
-		border-left: none
-		border-right: none
-		background: none
-		padding: 4px 8px
-		color: var(--greyish)
-		font-size: 12px
-		font-family: 'Space Grotesk', sans-serif
+select
+	background: none
+	border: 1px solid var(--texttwo)
+	border-radius: 4px
+	color: var(--background)
+	font-family: 'Space Grotesk', sans-serif
+	font-size: 12px
 
 </style>

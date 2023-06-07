@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { modalStore, hideModal } from '$lib/stores/modalstores';
+	import { deleteChatSession } from '$lib/gpt/chatstore';
 	import { deleteNote } from '$lib/dash/db';
 	import supabase from '$lib/utils/supabase';
 	import Alert from '$lib/icons/Alert.svelte';
@@ -15,6 +16,11 @@
 		if (error) {
 			showNote('no!', false);
 		} else showNote('yes', true);
+	}
+
+	async function deleteLocalChat() {
+		deleteChatSession(message);
+		hideModal();
 	}
 
 	function handleDeleteClick() {
@@ -53,7 +59,7 @@
 					<Close {color} />
 				</button>
 			</div>
-			{#if component >= 1 && title !== 'image'}
+			{#if component >= 1 && title !== 'image' && title !== 'snip'}
 				<p>This will delete the note number {component}! Are you sure?</p>
 				<button class="genbutton red" on:click={handleDeleteClick}> DELETE </button>
 			{/if}
@@ -65,6 +71,10 @@
 			{#if title === 'image'}
 				<p>This will delete the image number {component}! Are you sure?</p>
 				<button class="genbutton red" on:click={deleteImage}> DELETE </button>
+			{/if}
+			{#if title === 'snip'}
+				<p>Delete this chat?</p>
+				<button class="genbutton red" on:click={deleteLocalChat}>Delete</button>
 			{/if}
 		</div>
 	</div>

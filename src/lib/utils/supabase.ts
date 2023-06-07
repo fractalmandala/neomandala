@@ -223,3 +223,13 @@ export async function mandalapedia(){
 	if (error) throw new Error(error.message);
 	return data;
 }
+
+export async function toDo(){
+	const { data, error} = await supabase
+	.from('amrit-notes')
+	.select()
+	.eq('agent','list')
+	.order('id', {ascending: false})
+	if (error) throw new Error(error.message);
+	return data;
+}

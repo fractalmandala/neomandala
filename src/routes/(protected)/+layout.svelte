@@ -8,7 +8,7 @@
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { allBuild, allWebdev } from '$lib/utils/localpulls';
 	import { notesDiary } from '$lib/dash/notesutil';
-	import { janapada } from '$lib/utils/supabase';
+	import { janapada, toDo } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { slide } from 'svelte/transition';
 	import { snippets } from '$lib/dash/db';
@@ -20,6 +20,7 @@
 	import Acco6 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
 	import Refresh from '$lib/design/iconset/refresh.svelte';
+	import NotesForm from '$lib/dash/NotesForm.svelte';
 	import { showModal } from '$lib/stores/modalstores';
 	import {
 		breakZero,
@@ -39,6 +40,7 @@
 	let snips: any;
 	let notes: any;
 	let chaps: any;
+	let items: any;
 	let openAcco = Array(4).fill(false);
 	let buildOpen = Array(10).fill(false);
 	let axis: 'x' | 'y' | undefined;
@@ -108,6 +110,7 @@
 		snips = await snippets();
 		notes = await allNotes();
 		chaps = await janapada();
+		items = await toDo();
 	});
 
 	afterUpdate(async () => {
@@ -150,9 +153,11 @@
 					<a href="/janapada">Main</a>
 					{#if chaps && chaps.length > 0}
 						{#each chaps as item}
-							<a href="/janapada/{item.id}">
-								{item.title}
-							</a>
+							<p>
+								<a href="/janapada/{item.id}">
+									{item.title}
+								</a>
+							</p>
 						{/each}
 					{/if}
 				</div>
@@ -162,9 +167,11 @@
 				<div slot="body" class="rta-column">
 					{#if notes && notes.length > 0}
 						{#each notes as item}
-							<a href="/doc/{item.id}">
-								{item.title}
-							</a>
+							<p>
+								<a href="/doc/{item.id}">
+									{item.title}
+								</a>
+							</p>
 						{/each}
 					{/if}
 				</div>
@@ -174,21 +181,25 @@
 				<div slot="body" class="rta-column">
 					{#if snips && snips.length > 0}
 						{#each snips as item}
-							<a class="hover" href="/code/{item.id}">
-								{item.title}
-							</a>
+							<p>
+								<a class="hover" href="/code/{item.id}">
+									{item.title}
+								</a>
+							</p>
 						{/each}
 					{/if}
 				</div>
 			</Acco2>
 			<Acco3>
-				GPT Chats
+				Local Chats
 				<div slot="body">
 					{#if $chatSessions && $chatSessions.length > 0}
 						{#each $chatSessions as chat}
-							<a href="/bot/{chat.id}">
-								{chat.id}
-							</a>
+							<p>
+								<a href="/bot/{chat.id}">
+									{chat.id.slice(0, 17)}
+								</a>
+							</p>
 						{/each}
 					{/if}
 				</div>
@@ -198,7 +209,19 @@
 	<div slot="main" class="rta-column">
 		<slot />
 	</div>
-	<div class="rta-column" slot="right" />
+	<div class="rta-column rowgap200 fullW" slot="right">
+		<NotesForm />
+		<div class="rta-column listitems bord-top p-top-16 xleft">
+			{#if items && items.length > 0}
+				{#each items as item}
+					<label>
+						<input type="checkbox" />
+						{item.title}
+					</label>
+				{/each}
+			{/if}
+		</div>
+	</div>
 </Shell>
 
 <style lang="sass">
@@ -214,5 +237,8 @@ p a
 	color: var(--default)
 	&:hover
 		color: #10D56C
+
+.forheight p
+	font-size: 14px
 
 </style>

@@ -45,6 +45,12 @@
 .dark
 	background: #171717
 
+.leftside::-webkit-scrollbar
+	width: 1px
+
+.leftside::-webkit-scrollbar-thumb
+	background: #10D56C
+
 .rta-thecontain
 	display: grid
 	grid-template-rows: auto
@@ -57,11 +63,11 @@
 	.mainpage
 		grid-area: mainpage
 	@media screen and (min-width: 1024px)
-		grid-template-columns: 240px 1fr 22vw
+		grid-template-columns: 280px 1fr 22vw
 		grid-template-areas: "leftside mainpage rightside"
 		column-gap: 64px
 		.leftside
-			width: 240px
+			width: 280px
 			padding-left: 40px
 			height: calc(100vh - 56px)
 			position: sticky

@@ -5,7 +5,7 @@
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { showToast, showAlert } from '$lib/stores/modalstores';
-	import Copy from '$lib/icons/Copy.svelte';
+	import Copy from '$lib/design/iconset/copy.svelte';
 	import Prism from 'prismjs';
 	import '$lib/styles/prism.css';
 	export let response: any;
@@ -46,22 +46,21 @@
 		{/if}
 		{#if block.type === 'code'}
 			<div class="rta-column rowgap100 codeparent null">
-				<div class="rta-row ycenter between p-bot-16 thisguy">
-					<small style="text-transform: uppercase; font-weight: 800; color: white"
-						>{block.language}</small
-					>
+				<pre class="codeblock grey" data-lenis-prevent>
+				<div class="rta-row ycenter strip between p-bot-8">
+					<small style="text-transform: uppercase;">{block.language}</small>
 					<button
-						class="blank-button"
-						use:clickToCopyAction={block.code}
-						on:copy-done={() => showToast('Copied!')}
-						on:copy-error={() => showAlert('Failed!')}
-					>
+							class="blank-button"
+							use:clickToCopyAction={block.code}
+							on:copy-done={() => showToast('Copied!')}
+							on:copy-error={() => showAlert('Failed!')}>
 						<Copy />
 					</button>
 				</div>
-				<pre class="codeblock grey" data-lenis-prevent><code class={`language-${block.language}`}
-						>{block.code}</code
-					></pre>
+					<code class={`language-${block.language}`}>
+						{block.code}
+					</code>
+				</pre>
 			</div>
 		{/if}
 	{/each}
@@ -69,17 +68,21 @@
 
 <style lang="sass">
 
-.thisguy
-	border-bottom: 1px solid var(--themer)
-
-.codeparent
-	border-radius: 6px
+.strip
+	height: 32px
+	position: sticky
+	align-items: center
+	top: 0
+	small
+		font-size: 10px
+		padding-top: 14px
 
 .codeblock
 	word-wrap: break-all
 	white-space: pre-line
 	max-height: 320px
 	overflow-y: scroll
+	padding-top: 0
 
 
 pre.codeblock
@@ -103,5 +106,17 @@ pre.codeblock
 	font-family: 'Space Mono', monospace
 	font-size: 12px
 
+
+.dark
+	.codeblock, .strip
+		background: #292C33
+	.strip
+		border-bottom: 1px solid #575757
+
+.light
+	.codeblock, .strip
+		background: #EFEFEF
+	.strip
+		border-bottom: 1px solid #d7d7d7
 
 </style>

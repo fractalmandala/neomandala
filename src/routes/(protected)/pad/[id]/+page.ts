@@ -1,4 +1,4 @@
-import { getNoteById, notesDiary } from '$lib/dash/notesutil'
+import { notesDiary } from '$lib/dash/notesutil'
 import { get } from 'svelte/store'
 
 export async function load({params}:{params: { id:string }}){

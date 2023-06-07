@@ -8,7 +8,7 @@
 	import Gridder from '$lib/components/Gridder.svelte';
 	import { allBuild, allWebdev } from '$lib/utils/localpulls';
 	import { notesDiary } from '$lib/dash/notesutil';
-	import { janapada, toDo } from '$lib/utils/supabase';
+	import { janapada, toDo, gptTitles } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
 	import { slide } from 'svelte/transition';
 	import { snippets } from '$lib/dash/db';
@@ -41,6 +41,7 @@
 	let notes: any;
 	let chaps: any;
 	let items: any;
+	let titles: any;
 	let openAcco = Array(4).fill(false);
 	let buildOpen = Array(10).fill(false);
 	let axis: 'x' | 'y' | undefined;
@@ -111,6 +112,7 @@
 		notes = await allNotes();
 		chaps = await janapada();
 		items = await toDo();
+		titles = await gptTitles();
 	});
 
 	afterUpdate(async () => {
@@ -204,6 +206,20 @@
 					{/if}
 				</div>
 			</Acco3>
+			<Acco>
+				GPT Repo
+				<div slot="body">
+					{#if titles && titles.length > 0}
+						{#each titles as item}
+							<p>
+								<a href="/repo/{item.indexing}">
+									{item.title}
+								</a>
+							</p>
+						{/each}
+					{/if}
+				</div>
+			</Acco>
 		</div>
 	</div>
 	<div slot="main" class="rta-column">

@@ -1,20 +1,24 @@
 export const svelteTools = [
 	{
+		"index": "sveltekit",
 		"name": "Sveltekit Embed",
 		"url": "https://github.com/spences10/sveltekit-embed",
 		"about": "A library to embed Youtube, Soundcloud and other media links."
 	},
 	{
+		"index": "sveltekit",
 		"name": "Svelte Legos",
 		"url": "https://sveltelegos.com/",
 		"about": "Wonderfully useful library hosting a variety of utilities."
 	},
 	{
+		"index": "sveltekit",
 		"name": "MDSvex",
 		"url": "https://mdsvex.pngwn.io/",
 		"about": "Render markdown inside Sveltekit."
 	},
 	{
+		"index": "sveltekit",
 		"name": "Svelte Lenis",
 		"url": "https://github.com/sytanta/svelte-lenis",
 		"about": "A complete porting of the Lenis scroll library to Sveltekit."

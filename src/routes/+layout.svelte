@@ -21,7 +21,6 @@
 	import Modal from '$lib/components/Modal.svelte';
 	import Chip from '$lib/components/Chip.svelte';
 	import AlertNew from '$lib/dash/Alert.svelte';
-	import GlobalNote from '$lib/dash/globals/GlobalNote.svelte';
 	import Toast from '$lib/components/Toast.svelte';
 	import Alert from '$lib/components/Alert.svelte';
 	import GoodAlert from '$lib/components/GoodAlert.svelte';
@@ -147,7 +146,6 @@
 <Alert />
 <GoodAlert />
 <Chip />
-<GlobalNote />
 <Pinned />
 
 <style lang="sass">

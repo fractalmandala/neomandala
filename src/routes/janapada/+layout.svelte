@@ -1,16 +1,14 @@
 <script lang="ts">
-	import { onMount, afterUpdate } from 'svelte';
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { allNotes } from '$lib/dash/db';
 	import { chatSessions } from '$lib/gpt/chatstore';
 	import BotUtil from '$lib/dash/BotUtil.svelte';
 	import Shell from '$lib/design/AppShell.svelte';
-	import Gridder from '$lib/components/Gridder.svelte';
-	import { janaPada, allWebdev, featuredWebdev } from '$lib/utils/localpulls';
+	import { janaPada, allWebdev } from '$lib/utils/localpulls';
 	import { notesDiary } from '$lib/dash/notesutil';
 	import { toDo, gptTitles } from '$lib/utils/supabase';
 	import type { ChatSession } from '$lib/gpt/chatstore';
-	import { slide } from 'svelte/transition';
 	import { snippets } from '$lib/dash/db';
 	import Acco from '$lib/design/MandAccordionItem.svelte';
 	import Acco2 from '$lib/design/MandAccordionItem.svelte';
@@ -22,30 +20,15 @@
 	import Add from '$lib/design/iconset/add.svelte';
 	import Refresh from '$lib/design/iconset/refresh.svelte';
 	import NotesForm from '$lib/dash/NotesForm.svelte';
-	import { showModal } from '$lib/stores/modalstores';
 	import '$lib/styles/tiptap.sass';
-	import {
-		breakZero,
-		breakOne,
-		breakTwo,
-		themeMode,
-		toggleVisibility
-	} from '$lib/stores/globalstores';
-	import Loader from '$lib/assets/Loader.svelte';
-	import Pinned from '$lib/dash/PinnedNotes.svelte';
-	import Auth from '$lib/dash/AuthHeader.svelte';
+	import { breakTwo } from '$lib/stores/globalstores';
 	let session: ChatSession | undefined;
-	let openB = true;
-	let fake = false;
 	let builds: any;
 	let webs: any;
 	let snips: any;
 	let notes: any;
-	let chaps: any;
 	let items: any;
 	let titles: any;
-	let openAcco = Array(4).fill(false);
-	let buildOpen = Array(10).fill(false);
 	let axis: 'x' | 'y' | undefined;
 	let dimension: number;
 	let currentPage: string;
@@ -56,36 +39,6 @@
 			if (!a.createdAt) return 1; // a is undefined, b comes first
 			return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(); // normal comparison
 		})[0];
-	}
-
-	function toggleOpenAcco(index: number) {
-		openAcco[index] = !openAcco[index];
-		for (let i = 0; i < openAcco.length; i++) {
-			if (i !== index && openAcco[i] === true) {
-				openAcco[i] = false;
-			}
-		}
-	}
-
-	function toggleBuildOpen(index: number) {
-		buildOpen[index] = !buildOpen[index];
-		for (let i = 0; i < buildOpen.length; i++) {
-			if (i !== index && buildOpen[i] === true) {
-				buildOpen[i] = false;
-			}
-		}
-	}
-
-	function fauxfake() {
-		fake = !fake;
-	}
-
-	function toggleBar() {
-		openB = !openB;
-	}
-
-	function handleModeChange() {
-		toggleVisibility();
 	}
 
 	$: if ($breakTwo) {

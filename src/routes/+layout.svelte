@@ -8,8 +8,6 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { spring } from 'svelte/motion';
-	import Logout from '$lib/design/iconset/logout.svelte';
-	import Login from '$lib/design/iconset/login.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -24,7 +22,6 @@
 	import Chip from '$lib/components/Chip.svelte';
 	import AlertNew from '$lib/dash/Alert.svelte';
 	import GlobalNote from '$lib/dash/globals/GlobalNote.svelte';
-	import Drawer from '$lib/components/Drawer.svelte';
 	import Toast from '$lib/components/Toast.svelte';
 	import Alert from '$lib/components/Alert.svelte';
 	import GoodAlert from '$lib/components/GoodAlert.svelte';
@@ -146,7 +143,6 @@
 </div>
 <AlertNew />
 <Modal />
-<Drawer />
 <Toast />
 <Alert />
 <GoodAlert />

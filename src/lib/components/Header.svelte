@@ -211,7 +211,7 @@
 	cursor: pointer
 	&:hover
 		.text-animation
-			animation: colorchange 1s forwards
+			animation: colorchange 1s infinite forwards
 
 @keyframes colorchange
 	0%

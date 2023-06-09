@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let color = 'var(--themer)';
+	export let color = '#10D56C';
 	export let dimension = 24;
 </script>
 
@@ -147,12 +147,12 @@
 
 .odd
     path
-        animation: gestalts 3s ease infinite
+        animation: gestalt 3s ease infinite
         transform-origin: center center
 
 .even
     path
-        animation: gestalts 7s ease infinite
+        animation: gestalt 7s ease infinite
         transform-origin: center center
 
 @keyframes stemro

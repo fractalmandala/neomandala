@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "809f00dc0b9eb923",
+        "id": "c612c15804dbc433",
         "type": "tabs",
         "children": [
           {
-            "id": "481a23c5f1215cac",
+            "id": "1b6b4a2f84a2282a",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -81,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "know/ontic bloom.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "know/ontic bloom.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "know/ontic bloom.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -143,10 +139,15 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "957fb63e86e2bac0",
+  "active": "1b6b4a2f84a2282a",
   "lastOpenFiles": [
-    "web/chatgptinsveltekitv2.md",
+    "know/library/+page.svelte",
+    "know/library",
+    "know/operating system redux.md",
+    "know/sanskrit.md",
+    "know/documentation.md",
     "know/ontic bloom.md",
+    "web/chatgptinsveltekitv2.md",
     "know/camus.md",
     "web/chatgptinsveltekit.md",
     "api/embed/+server.ts",

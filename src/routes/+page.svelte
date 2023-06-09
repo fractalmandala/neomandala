@@ -69,7 +69,7 @@
 
 <svelte:window bind:scrollY={scY} />
 
-<div class="grot pagetwogrid" class:light={$themeMode} class:dark={!$themeMode}>
+<div class="grot pagetwogrid back" class:light={$themeMode} class:dark={!$themeMode}>
 	<div
 		class="rta-column back this"
 		on:mousemove={handlePath}

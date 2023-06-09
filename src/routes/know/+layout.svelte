@@ -36,6 +36,9 @@
 			<p>
 				<a href="/know/tools" style="color: var(--background)">TOOLS</a>
 			</p>
+			<p>
+				<a href="/know/library" style="color: var(--background)">LIBRARY</a>
+			</p>
 			{#if indexer && indexer.length > 0}
 				{#each indexer as item}
 					<p on:click={toggleSide} on:keydown={fauxfake}>

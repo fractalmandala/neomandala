@@ -4,6 +4,7 @@
 	$indexName = 'tools';
 	$indexCategory = '';
 	$indexLinks = '';
+	$indexTags = '';
 </script>
 
 <div class="rta-column grot rowgap200">
@@ -40,7 +41,9 @@
 				rel="noreferrer"
 			>
 				Notion.</a
-			> These days though I've taken to markdown, and am still probing.
+			> These days though I've taken to markdown, and currently am testing a solution where I've set
+			my Sveltekit project folder as a vault on Obsidian. This allows me to write on markdown files using
+			Obsidian, and as they're saved I can push the changes to Github to make it all live on the website.
 		</li>
 	</ul>
 	<p>
@@ -50,6 +53,9 @@
 </div>
 
 <style lang="sass">
+
+p, li
+	font-size: 16px
 
 a
 	color: #10D56C

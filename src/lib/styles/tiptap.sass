@@ -107,6 +107,15 @@ form
 		padding: 4px
 		font-family: 'Space Grotesk', sans-serif
 		font-size: 12px
+	@media screen and (max-width: 768px)
+		form
+			min-width: 400px !important
+			max-width: 400px
+
+.rta-row.wrapper
+	@media screen and (max-width: 768px)
+		flex-direction: column
+		row-gap: 16px
 
 .accordion-body
 	p, p a

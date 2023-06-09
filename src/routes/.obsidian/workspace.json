@@ -141,6 +141,8 @@
   },
   "active": "1b6b4a2f84a2282a",
   "lastOpenFiles": [
+    "api/translate/+server.ts",
+    "api/translate",
     "know/library/+page.svelte",
     "know/library",
     "know/operating system redux.md",

@@ -11,6 +11,8 @@
 	let inputWord = '';
 	let inputDhatu = '';
 	let inputPurana = '';
+	let inputVeda = '';
+	let showVedas = false;
 	let showPuranas = false;
 	let showResults = false;
 	let showDhatus = false;
@@ -19,6 +21,30 @@
 
 	function clearResults() {
 		results = '';
+		inputWord = '';
+		inputDhatu = '';
+		inputPurana = '';
+		inputVeda = '';
+		showResults = false;
+		showPuranas = false;
+		showDhatus = false;
+		showVedas = false;
+	}
+
+	async function searchVedas() {
+		loading = true;
+		const { data, error } = await supabase
+			.from('vedicconcordance2')
+			.select()
+			.textSearch('concatext', inputVeda);
+		if (error) {
+			loading = false;
+			showNote('error', false);
+		} else {
+			loading = false;
+			showVedas = true;
+			results = data;
+		}
 	}
 
 	async function searchDictionary() {
@@ -77,7 +103,7 @@
 <p class="p-bot-32">A set of search tools in Sanskrit.</p>
 
 <div class="rta-column rowgap100 dictionary">
-	<div class="rta-row colgap200">
+	<div class="rta-row wrapper colgap200">
 		<form>
 			<input type="text" placeholder="dictionary" bind:value={inputWord} />
 			<button class="genbutton" on:click={searchDictionary}>Search</button>
@@ -141,6 +167,11 @@ pre
 	font-family: 'Space Grotesk', sans-serif
 	margin-bottom: 16px
 	white-space: pre-line
+
+.wrapper
+	form input
+		@media screen and (min-width: 1024px)
+			width: 100px
 
 
 </style>

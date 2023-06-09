@@ -14,21 +14,8 @@
               "type": "empty",
               "state": {}
             }
-          },
-          {
-            "id": "1193ee8ee010176d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "delete files.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "delete files.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "delete files.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "delete files.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -156,8 +139,9 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "1193ee8ee010176d",
+  "active": "197141aa9dbaea85",
   "lastOpenFiles": [
+    "web/[post]/+layout.svelte",
     "delete files.md",
     "know/fractal maṇḍala.md",
     "know/42.md",

@@ -30,7 +30,7 @@
 	font-family: 'Space Grotesk', sans-serif
 	text-transform: capitalize
 	cursor: pointer
-	color: var(--greyish)
+	color: var(--texttwo)
 	&:hover
 		color: var(--background)
 	p

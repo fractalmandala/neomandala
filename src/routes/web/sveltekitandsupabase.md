@@ -6,6 +6,7 @@ type: sveltekit
 id: 17
 ---
 
+
 This is an example of how to integrate Supabase with Sveltekit. Some caveats to keep in mind:
 
 1. Using utilities like Supabase with Sveltekit involves the use of secret keys, such as a Supabase project's API key. 
@@ -17,6 +18,7 @@ This is an example of how to integrate Supabase with Sveltekit. Some caveats to 
 #### Install Supabase
 
 I'm going to assume instances of Sveltekit and Supabase projects already set up and running. To begin on this with Supabase, first:
+
 
 ```
 npm install @supabase/supabase-js

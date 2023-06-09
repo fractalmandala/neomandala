@@ -37,11 +37,14 @@
 	class:dark={!$themeMode}
 >
 	<div class="thisguy rta-column xcenter ycenter null p-top-64 rowgap100 grot">
-		<h1 class="ta-c tt-u bord-bot p-bot-32">{data.title}</h1>
+		<h3 class="ta-c tt-u bord-bot p-bot-32">{data.title}</h3>
+		<div class="rta-row">
+			<small><span style="color: #10D56C">{data.type}</span> | {data.tags}</small>
+		</div>
 		<Social />
 	</div>
 	<div class="rta-column x101 p-top-32">
-		<div class="blogger p-bot-32">
+		<div class="blogger">
 			<svelte:component this={data.content} />
 		</div>
 	</div>
@@ -65,6 +68,8 @@
 		padding-left: 40px
 		padding-right: 40px
 		padding-top: 64px
+	@media screen and (max-width: 768px)
+		width: calc(100vw - 16px)
 
 
 .thisguy

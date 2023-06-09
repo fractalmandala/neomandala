@@ -68,18 +68,20 @@
 	}
 </script>
 
-<button class="blank-button" on:click={startNewChat}>
-	<AddBot dimension={18} />
-</button>
-<div class="rta-column">
-	<select bind:value={newBot}>
-		{#if session}
-			<option value={sessionPrompt}>{session.sessionbot}</option>
-		{/if}
-		{#each botsList as bot}
-			<option value={bot.prompt}>{bot.name}</option>
-		{/each}
-	</select>
+<div class="rta-row colgap100">
+	<button class="blank-button" on:click={startNewChat}>
+		<AddBot dimension={18} />
+	</button>
+	<div class="rta-column">
+		<select bind:value={newBot}>
+			{#if session}
+				<option value={sessionPrompt}>{session.sessionbot}</option>
+			{/if}
+			{#each botsList as bot}
+				<option value={bot.prompt}>{bot.name}</option>
+			{/each}
+		</select>
+	</div>
 </div>
 
 <style lang="sass">

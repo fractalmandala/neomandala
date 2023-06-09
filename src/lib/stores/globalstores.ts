@@ -9,6 +9,7 @@ export const indexImage = writable('')
 export const indexTags = writable({})
 export const pageTitle = writable('')
 export const pageDescription = writable('')
+export const pageImage = writable('/images/cheggit.webp')
 
 export const scrollY = writable(0);
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
+	import { cubicOut, circInOut, quintOut, quadIn } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
-	import type { SvelteComponent } from 'svelte';
+	import { themeMode } from '$lib/stores/globalstores';
 	import type { FadeParams } from 'svelte/transition';
 
 	// Define the clip-path transition function
@@ -36,6 +36,21 @@
 	};
 </script>
 
-<div in:fly={{ delay: 450, duration: 400, y: 900 }} out:fly={{ delay: 0, duration: 400, y: 900 }}>
+<div
+	in:fly={{ delay: 450, duration: 400, y: -900, easing: quintOut }}
+	out:fly={{ delay: 0, duration: 400, y: 900, easing: quadIn }}
+	class:light={$themeMode}
+	class:dark={!$themeMode}
+>
 	<slot />
 </div>
+
+<style lang="sass">
+
+.light
+	background: #FFFFFF
+
+.dark
+	background: #171717
+
+</style>

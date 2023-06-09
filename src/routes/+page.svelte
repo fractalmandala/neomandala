@@ -170,6 +170,8 @@
 			width: 4px
 		.half::-webkit-scrollbar-thumb
 			background: #10D56C
+		.this
+			padding: 40px
 
 
 
@@ -180,7 +182,7 @@ a
 h6
 	font-weight: 400
 	padding-bottom: 4px
-	color: var(--default)
+	color: var(--texttwo)
 	@media screen and (max-width: 1023px)
 		padding-bottom: 8px
 

@@ -7,7 +7,6 @@
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
 	import type { Message } from '$lib/gpt/chatstore';
 	import type { ChatCompletionRequestMessage } from 'openai';
-	import Latest from '$lib/gpt/ChatLatest.svelte';
 	import Send from '$lib/design/iconset/send.svelte';
 	let session: ChatSession | undefined;
 	let scrollContainer: HTMLElement;
@@ -104,27 +103,29 @@
 	}
 </script>
 
-<div class="rta-column areaofchat">
-	<div class="grot scrollbox" bind:this={scrollContainer}>
-		{#each chatMessages as message}
-			<div class="rta-column null">
-				<div class="rta-column userquery null">
-					<p><b>{message.role} - </b>{message.content}</p>
+<div class="thisguy" data-lenis-prevent>
+	<div class="rta-column areaofchat">
+		<div class="grot scrollbox" bind:this={scrollContainer}>
+			{#each chatMessages as message}
+				<div class="rta-column null">
+					<div class="rta-column userquery null">
+						<pre><b>{message.role} - </b>{message.content}</pre>
+					</div>
 				</div>
-			</div>
-		{/each}
-		{#if answer}
-			<div class="rta-column null agentanswer">
-				<div>
-					<pre>{answer}</pre>
+			{/each}
+			{#if answer}
+				<div class="rta-column null agentanswer">
+					<div>
+						<pre>{answer}</pre>
+					</div>
 				</div>
-			</div>
-		{/if}
-		{#if loading}
-			<div class="rta-column null">
-				<p>Loading...</p>
-			</div>
-		{/if}
+			{/if}
+			{#if loading}
+				<div class="rta-column null">
+					<p>Loading...</p>
+				</div>
+			{/if}
+		</div>
 	</div>
 	<form class="rta-row thisforminput">
 		<textarea bind:value={query} use:textareaAutosizeAction data-lenis-prevent />
@@ -138,58 +139,28 @@
 
 <style lang="sass">
 
-.areaofchat
+.thisguy
 	position: relative
-	min-height: 100%
-	overflow: hidden
-	.thisforminput
-		position: absolute
-		bottom: 0
-		opacity: 1
-	.scrollbox
-		position: absolute
-	@media screen and (min-width: 769px)
-		min-height: 68vh
-		justify-content: space-between
-		.scrollbox
-			bottom: 32px
-			left: 0
-			height: 68vh
-			overflow-y: scroll
-			&::-webkit-scrollbar
-				width: 1px
-			.userquery
-				width: 100%
-				column-gap: 16px
-				padding-top: 32px
-				padding-bottom: 32px
-				p
-					text-align: right
-			.agentanswer
-				width: 100%
-				column-gap: 16px
-				padding-top: 32px
-				padding-bottom: 32px
-				pre
-					text-align: left
-		.thisforminput
-			bottom: 0
-			left: 0
-			height: 56px
-			width: 100%
-			padding: 8px
-			align-items: center
-			background: white
-			border-radius: 8px
-			.blank-button
-				height: 24px
-				width: 32px
-			textarea
-				width: calc(100% - 32px)
-				min-height: 40px
-				border: none
-				font-family: 'Space Grotesk', sans-serif
-				overflow-y: scroll
+	@media screen and (min-width: 1024px)
+		height: calc(100vh - 240px)
+		overflow-y: scroll
+
+.areaofchat
+	@media screen and (min-width: 1024px)
+		width: 620px
+		height: calc(100% - 64px)
+		overflow-y: scroll
+
+.thisforminput
+	position: absolute
+	bottom: 0
+	left: 0
+	width: 620px !important
+	min-width: 620px
+	column-gap: 8px
+	textarea
+		width: 588px
+		min-height: 48px
 
 .agentanswer
 	pre

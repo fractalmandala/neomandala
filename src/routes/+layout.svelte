@@ -14,7 +14,8 @@
 		breakTwo,
 		themeMode,
 		windowWidth,
-		scrollY
+		scrollY,
+		pageImage
 	} from '$lib/stores/globalstores';
 	import '$lib/styles/theme.sass';
 	import '$lib/styles/fonts.sass';
@@ -120,11 +121,13 @@
 </svelte:head>
 
 <div
+	class="cover"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
+	style="background-image: url('{$pageImage}')"
 >
 	<header>
 		<Header {logged} {pageTitle} />
@@ -173,5 +176,10 @@ header
 //	background: transparent
 //	a
 //		color: #0ca64c
+
+.cover
+	background-position: top left
+	background-repeat: no-repeat
+	background-size: 100vw 100vh
 
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import Menu from '$lib/design/iconset/menu.svelte';
+	import Motif from '$lib/assets/Motif.svelte';
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import { clickOutsideAction } from '$lib/utils/clickoutside';
 	import { slide } from 'svelte/transition';
@@ -107,11 +107,14 @@
 	class:darkmode={!$themeMode}
 	on:mouseleave={closeHelper}
 >
-	<a href="/" class="logo">
-		{#each text.split('') as char, i}
-			<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
-		{/each}
-	</a>
+	<div class="rta-row">
+		<Motif />
+		<a href="/" class="logo">
+			{#each text.split('') as char, i}
+				<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
+			{/each}
+		</a>
+	</div>
 	<div class="rta-row colgap400 ycenter xend outrow">
 		<div class="rta-column">
 			<button class="blank-button" style="z-index: 1200" on:click={toggleDrop}>

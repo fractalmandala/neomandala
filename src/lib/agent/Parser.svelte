@@ -39,7 +39,7 @@
 >
 	{#each blocks as block}
 		{#if block.type === 'text'}
-			<div class="rta-column rowgap100 nocodeparent null">
+			<div class="rta-column rowgap100 nocodeparent null m-bot-16">
 				<pre>{block.content}</pre>
 			</div>
 		{/if}
@@ -94,7 +94,7 @@ pre.codeblock
 	pre
 		margin: 0
 		line-height: 1.6
-		font-size: 18px
+		font-size: 14px
 		overflow-y: scroll
 		white-space: pre-line
 		font-family: 'Space Grotesk', sans-serif

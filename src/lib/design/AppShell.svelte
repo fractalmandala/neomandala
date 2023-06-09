@@ -65,7 +65,7 @@
 	.mainpage
 		grid-area: mainpage
 	@media screen and (min-width: 1024px)
-		grid-template-columns: 16vw 60vw 24vw
+		grid-template-columns: 20vw 56vw 24vw
 		grid-template-areas: "leftside mainpage rightside"
 		width: 100vw
 		.leftside
@@ -94,7 +94,7 @@
 			flex-direction: column
 			align-items: center
 			.pagemin
-				width: 640px
+				max-width: 620px
 	@media screen and (max-width: 1023px)
 		grid-template-columns: 1fr
 		grid-template-areas: "leftside" "rightside" "mainpage"

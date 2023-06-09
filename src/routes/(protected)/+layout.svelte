@@ -17,6 +17,7 @@
 	import Acco5 from '$lib/design/MandAccordionItem.svelte';
 	import Acco6 from '$lib/design/MandAccordionItem.svelte';
 	import Acco7 from '$lib/design/MandAccordionItem.svelte';
+	import Acco8 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
 	import Refresh from '$lib/design/iconset/refresh.svelte';
 	import NotesForm from '$lib/dash/NotesForm.svelte';
@@ -71,15 +72,7 @@
 <Shell>
 	<div slot="left" class="rta-column onleft" data-lenis-prevent>
 		<div class="forheight rta-column rowgap100">
-			<div class="grot null">
-				{#if session}
-					<cite class="tt-u" style="color: #10D56C">Current Bot - {session.sessionbot}</cite>
-				{/if}
-			</div>
 			<div class="rta-row ycenter colgap100 buttonschoice bord-bot p-bot-16">
-				<button class="blank-button" on:click={handleRefresh}>
-					<Refresh dimension={18} />
-				</button>
 				<a class="blank-button" href="/pad">
 					<Add dimension={20} />
 				</a>
@@ -87,7 +80,9 @@
 					<BotUtil />
 				{/if}
 			</div>
-
+			<Acco8>
+				<a href="/bot">Bot</a>
+			</Acco8>
 			<Acco5>
 				Guides
 
@@ -220,5 +215,8 @@ p a
 
 .forheight p
 	font-size: 14px
+
+label
+	color: var(--texttwo)
 
 </style>

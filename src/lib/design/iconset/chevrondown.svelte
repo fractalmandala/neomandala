@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let dimension = 20;
-	export let color = 'var(--background)';
+	export let color = 'var(--texttwo)';
 </script>
 
 <svg

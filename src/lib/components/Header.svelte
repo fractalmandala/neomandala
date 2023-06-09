@@ -184,7 +184,7 @@
 	row-gap: 4px	
 	p a
 		font-size: 18px
-		color: var(--default)
+		color: var(--texttwo)
 		&:hover
 			color: #10D56C
 	@media screen and (max-width: 768px)
@@ -195,7 +195,7 @@
 		top: 56px
 		background: rgba(0,0,0,0.8)
 		p a
-			color: white
+			color: var(--texttwo)
 			font-size: 24px
 			
 
@@ -218,7 +218,7 @@
 
 @keyframes colorchange
 	0%
-		color: #474747
+		color: var(--texttwo)
 	20%
 		color: #CF2C2C
 	30%
@@ -236,7 +236,7 @@
 	90%
 		color: #10D56C
 	100%
-		color: var(--background)
+		color: var(--texttwo)
 
 .rta-row
 	z-index: 1000
@@ -269,5 +269,6 @@
 	font-size: 18px
 	font-weight: 500
 	z-index: 1000
+	color: var(--texttwo)
 
 </style>

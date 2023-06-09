@@ -54,7 +54,7 @@
 	});
 </script>
 
-<div class="grot rta-column rowgap300" class:light={$themeMode} class:dark={!$themeMode}>
+<div class="grot rta-column intern rowgap300" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="rta-row ycenter colgap100">
 		{#if data.bool === true}
 			<button class="blank-button" on:click={unpinItem}>
@@ -98,6 +98,10 @@
 
 <style lang="sass">
 
+.intern
+	@media screen and (min-width: 1024px)
+		width: 620px
+
 .lowstrip
 	z-index: 1000
 	position: sticky
@@ -123,7 +127,6 @@ h4
 
 pre
 	white-space: pre-line
-	max-width: 50vw
 	height: 400px
 	padding-top: 0
 	padding-bottom: 0

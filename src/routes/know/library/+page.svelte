@@ -116,6 +116,10 @@
 			<input type="text" placeholder="purāṇa" bind:value={inputPurana} />
 			<button class="genbutton" on:click={searchPurana}>Search</button>
 		</form>
+		<form>
+			<input type="text" placeholder="vedas" bind:value={inputVeda} />
+			<button class="genbutton" on:click={searchVedas}>Search</button>
+		</form>
 	</div>
 	{#if results !== ''}
 		<div class="rta-column xleft p-top-16 p-bot-16">
@@ -155,6 +159,16 @@
 				<div class="rta-column p-top-16 p-bot-16 bord-bot">
 					<p style="margin: 0; color: var(--background)">{item.hindi} | {item.iast}</p>
 					<pre>{addLineBreaks(item.about)}</pre>
+				</div>
+			{/each}
+		</div>
+	{/if}
+	{#if showVedas}
+		<div class="rta-column results p-top-16">
+			{#each results as item}
+				<div class="rta-column p-top-16 p-bot-16 bord-bot">
+					<p style="margin: 0; color: var(--background)">{item.word} | {item.hindi}</p>
+					<small class="tt-u">{item.reference}</small>
 				</div>
 			{/each}
 		</div>

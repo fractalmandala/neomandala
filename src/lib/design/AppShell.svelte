@@ -78,7 +78,7 @@
 		.rightside
 			text-align: right
 			padding-right: 40px
-			padding-left: 16px	
+			padding-left: 40px	
 			height: calc(100vh - 112px)
 			position: sticky
 			top: 64px
@@ -89,7 +89,7 @@
 		.mainpage, .leftside, .rightside
 			padding-top: 64px
 		.mainpage
-			padding-bottom: 32px	
+			padding-bottom: 64px	
 			display: flex
 			flex-direction: column
 			align-items: center

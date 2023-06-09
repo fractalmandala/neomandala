@@ -2,6 +2,8 @@
 title: tiptap
 image: 
 links:
+- { url: 'https://tiptap.dev/', name: 'Tiptap'}
+- { url: 'https://tiptap.dev/installation/svelte', name: 'Tiptap for Sveltekit'}
 tags: product development
 synapse: kṛt
 ---

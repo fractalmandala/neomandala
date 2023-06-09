@@ -4,18 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "c612c15804dbc433",
+        "id": "1802210b0d821817",
         "type": "tabs",
         "children": [
           {
-            "id": "1b6b4a2f84a2282a",
+            "id": "197141aa9dbaea85",
             "type": "leaf",
             "state": {
               "type": "empty",
               "state": {}
             }
+          },
+          {
+            "id": "1193ee8ee010176d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "delete files.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "delete files.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "delete files.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +133,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "delete files.md"
+              }
             }
           }
         ]
@@ -139,8 +156,13 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "1b6b4a2f84a2282a",
+  "active": "1193ee8ee010176d",
   "lastOpenFiles": [
+    "delete files.md",
+    "know/fractal maṇḍala.md",
+    "know/42.md",
+    "know/dharma.md",
+    "Untitled",
     "api/translate/+server.ts",
     "api/translate",
     "know/library/+page.svelte",

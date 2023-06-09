@@ -83,7 +83,7 @@
 		</h5>
 		<h4 style="color: white">Here's Tom with the weather...</h4>
 	</div>
-	<div class="rta-column half">
+	<div class="rta-column half" data-lenis-prevent>
 		<small class="p-bot-16" style="color: #10D56C">
 			<a href="/know">knowledge index</a>
 		</small>
@@ -112,6 +112,9 @@
 		</h6>
 		<h6 class="tt-c">
 			<a href="/image/nasadiya">Nasadīya Across Space and Time</a>
+		</h6>
+		<h6 class="tt-c">
+			<a href="/image/wombo">It Began at Wombo</a>
 		</h6>
 		<small class="p-bot-16 p-top-32 bord-top m-top-32" style="color: #10D56C">web dev guides</small>
 		{#if webs && webs.length > 0}
@@ -158,7 +161,15 @@
 		padding: 0 40px 0 0
 		.half
 			text-align: right
-			padding: 32px 0
+			padding: 32px 8px 32px 0
+		.half, .this
+			height: calc(100vh - 112px)
+		.half
+			overflow-y: scroll
+		.half::-webkit-scrollbar
+			width: 4px
+		.half::-webkit-scrollbar-thumb
+			background: #10D56C
 
 
 

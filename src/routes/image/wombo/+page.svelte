@@ -1,43 +1,108 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { womboImages } from '$lib/utils/supabase';
+	import ChevRight from '$lib/icons/ChevRight.svelte';
+	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
+	import { EventInterface } from '@splidejs/splide';
+	import '@splidejs/splide/css/core';
 
-    import { onMount } from 'svelte'
-    import { womboImages } from '$lib/utils/supabase' 
-    import { audioStore } from '$lib/stores/modalstores'
-    import { readingMode } from '$lib/stores/globalstores'
-    import ChevRight from '$lib/icons/ChevRight.svelte'
-    
-    let images:any
-    let audio:any
-    audioStore.subscribe(value => audio = value)
+	let images: any;
+	let audio: any;
 
-    let fake = false
+	let fake = false;
 
-    function fauxfake(){
-        fake = !fake
-    }
+	function fauxfake() {
+		fake = !fake;
+	}
 
-    onMount(async() => {
-        images = await womboImages()
-    })
+	export function MyTransition(Splide: any, Components: any) {
+		const { bind } = EventInterface(Splide);
+		const { Move } = Components;
+		const { list } = Components.Elements;
 
+		let endCallback: any;
+
+		function mount() {
+			bind(list, 'transitionend', (e) => {
+				if (e.target === list && endCallback) {
+					// Removes the transition property
+					cancel();
+
+					// Calls the `done` callback
+					endCallback();
+				}
+			});
+		}
+
+		function start(index: any, done: any) {
+			// Converts the index to the position
+			const destination = Move.toPosition(index, true);
+
+			// Applies the CSS transition
+			list.style.transition = 'transform 800ms cubic-bezier(.44,.65,.07,1.01)';
+
+			// Moves the carousel to the destination.
+			Move.translate(destination);
+
+			// Keeps the callback to invoke later.
+			endCallback = done;
+		}
+
+		function cancel() {
+			list.style.transition = '';
+		}
+
+		return {
+			mount,
+			start,
+			cancel
+		};
+	}
+
+	onMount(async () => {
+		images = await womboImages();
+	});
 </script>
 
-<div class="rta-grid grid2 right00 screen fullH cushion">
-    <div class="rta-grid grid4 colgap100 rowgap100 postgrid">
-        {#if images && images.length > 0}
-            {#each images as item}
-                <a href="/image/wombo/{item.id}" class="rta-image">
-                    <img src={item.link} alt={item.id}/>
-                </a>
-            {/each}
-        {/if}
-    </div>
-    <div class="rta-column titlebox null postis" class:invisible={$readingMode}>
-        <a href="/image" class="rta-row null ycenter">
-            <small>Image</small>
-            <ChevRight/>
-        </a>
-        <img class="jello-vertical" src="/images/k-images.webp" alt="writing" on:mouseover={() => audio.play()} on:focus={fauxfake}/>
-        <h3 class="tt-u">wombo</h3>
-    </div>
-</div>
+<Splide
+	aria-label="midjourneys"
+	hasTrack={false}
+	options={{
+		drag: true,
+		keyboard: 'global',
+		waitForTransition: true,
+		wheel: true,
+		type: 'loop',
+		wheelMinThreshold: 1.1,
+		speed: 900,
+		direction: 'ltr',
+		height: 'calc(100vh - 112px)',
+		easing: 'cubic-bezier(0.530, 0.315, 0.215, 0.970)',
+		pagination: false,
+		arrows: false,
+		perPage: 6,
+		gap: '8px'
+	}}
+>
+	<SplideTrack>
+		{#if images && images.length > 0}
+			{#each images as item}
+				<SplideSlide>
+					<div class="rta-image">
+						<img src={item.link} alt={item.id} />
+					</div>
+				</SplideSlide>
+			{/each}
+		{/if}
+	</SplideTrack>
+</Splide>
+
+<style lang="sass">
+
+.rta-image
+	height: calc(100vh - 112px)
+	img
+		object-fit: contain
+
+
+</style>

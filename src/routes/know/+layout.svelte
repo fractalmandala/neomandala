@@ -64,11 +64,13 @@
 					{$indexCategory}
 				</div>
 			</div>
-			<div class="sectionrest rta-column p-top-32">
-				{#if $indexLinks && Object.keys($indexLinks).length > 0}
-					<h6 class="p-bot-8">Links</h6>
-					{#each Object.entries($indexLinks) as [key, value] (key)}
-						<p><a href={value} target="_blank" rel="noreferrer">{key}</a></p>
+			<div class="sectionrest rta-column p-top-32 p-bot-32">
+				{#if $indexLinks && $indexLinks.length > 0}
+					<h6 class="p-bot-8" style="color: #10D56C">Links</h6>
+					{#each $indexLinks as item}
+						<p>
+							<a href={item.url} target="_blank" rel="noreferrer">{item.name}</a>
+						</p>
 					{/each}
 				{/if}
 			</div>
@@ -88,11 +90,11 @@
 		padding: 16px
 		border-bottom: 1px solid var(--textone)
 
-p a
-	color: var(--default)
-	text-transform: capitalize
-	&:hover
-		color: #10D56C
-
+.inside, .sectionrest
+	p a
+		color: var(--texttwo)
+		text-transform: capitalize
+		&:hover
+			color: var(--greenb)
 
 </style>

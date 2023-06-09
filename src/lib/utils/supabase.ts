@@ -20,10 +20,22 @@ export async function psyImages() {
 	const { data, error } = await supabase
 		.from('amrit-psygall')
 		.select()
+		.eq('chapter',1)
 		.order('id')
 	if (error) throw new Error(error.message);
 	return data;
 }
+
+export async function psyImages2() {
+	const { data, error } = await supabase
+		.from('amrit-psygall')
+		.select()
+		.eq('chapter',2)
+		.order('id')
+	if (error) throw new Error(error.message);
+	return data;
+}
+
 
 export async function supaImages(low: number, top: number) {
 	const { data, error } = await supabase

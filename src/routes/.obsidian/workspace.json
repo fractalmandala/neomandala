@@ -4,15 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "1802210b0d821817",
+        "id": "29ac38b62f00e48e",
         "type": "tabs",
         "children": [
           {
-            "id": "197141aa9dbaea85",
+            "id": "483a29deb448066e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "canvas",
+              "state": {
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": 130.2,
+                  "y": 87.41999999999972,
+                  "zoom": 0
+                }
+              }
             }
           }
         ]
@@ -81,6 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Untitled.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Untitled.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +127,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Untitled.canvas"
+              }
             }
           }
         ]
@@ -139,10 +150,28 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "197141aa9dbaea85",
+  "active": "483a29deb448066e",
   "lastOpenFiles": [
+    "image/realitywall/+page.svelte",
+    "image/realitywall",
+    "image/bijatobrahman/+page.svelte",
+    "image/bijatobrahman",
+    "image/deepgreen/+page.svelte",
+    "image/deepgreen",
+    "tsurfer_a_psychedelic_trip_where_mind_is_wrapped_inside_of_mind_6ff6d0a5-2681-49be-bf08-c97753262e73.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_f2f94ddc-7b4b-404b-9003-44e924e36c6c.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_ef67f7e6-578b-43b5-bd20-de4a57edb843.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_ef4b86d5-4d26-4837-bc3c-9f08d9b1986d.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_e8d3ffdc-6c92-425a-b021-5c34fb35a8ca.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_d75841c7-cc03-4814-99ac-c821314e5009.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_d9558c0b-63c1-47d2-bbbf-1a484e85800b.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_d7a1e287-2ad8-468a-8b4c-742ea67f1538.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_ca9b8083-9580-4de5-bc7a-f21ad7f848ee.webp",
+    "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_bc5524a6-ce35-4a60-a7d2-32ff7fa52739.webp",
+    "Untitled.canvas",
+    "2023-06-09.md",
+    "notepad.md",
     "web/[post]/+layout.svelte",
-    "delete files.md",
     "know/fractal maṇḍala.md",
     "know/42.md",
     "know/dharma.md",
@@ -150,7 +179,6 @@
     "api/translate/+server.ts",
     "api/translate",
     "know/library/+page.svelte",
-    "know/library",
     "know/operating system redux.md",
     "know/sanskrit.md",
     "know/documentation.md",
@@ -158,8 +186,6 @@
     "web/chatgptinsveltekitv2.md",
     "know/camus.md",
     "web/chatgptinsveltekit.md",
-    "api/embed/+server.ts",
-    "api/embed",
     "web/modaltool.md"
   ]
 }

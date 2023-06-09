@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { nasLines, nasImages } from '$lib/utils/supabase';
+	import { psyImages2 } from '$lib/utils/supabase';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import { EventInterface } from '@splidejs/splide';
 	import '@splidejs/splide/css/core';
 
 	let images: any;
-	let id1: any;
 
 	export function MyTransition(Splide: any, Components: any) {
 		const { bind } = EventInterface(Splide);
@@ -53,8 +52,7 @@
 	}
 
 	onMount(async () => {
-		images = await nasLines();
-		id1 = await nasImages();
+		images = await psyImages2();
 	});
 </script>
 
@@ -69,7 +67,7 @@
 		type: 'loop',
 		wheelMinThreshold: 1.1,
 		speed: 900,
-		direction: 'ttb',
+		direction: 'ltr',
 		height: 'calc(100vh - 112px)',
 		easing: 'cubic-bezier(0.900, 0.005, 0.225, 1.035)',
 		pagination: false,
@@ -80,22 +78,8 @@
 		{#if images && images.length > 0}
 			{#each images as item}
 				<SplideSlide>
-					<div class="rta-grid grid2">
-						<div class="rta-grid grid4 back" style="background-image: url('{item.background}')" />
-						<div class="grot rta-column rowgap300">
-							<small>{item.id}</small>
-							<div class="adobe">
-								<pre
-									class="movethis"
-									style="font-family: 'Adobe Devanagari', serif; color: var(--background); font-weight: 400; line-height: 1.1">
-									{item.devanagari}
-								</pre>
-							</div>
-							<pre
-								class="english"
-								style="color: var(--background); font-weight: 400">{item.iast}</pre>
-							<p>{item.basham}</p>
-						</div>
+					<div class="rta-image">
+						<img src={item.link} alt={item.name} />
 					</div>
 				</SplideSlide>
 			{/each}
@@ -105,26 +89,11 @@
 
 <style lang="sass">
 
-
-.rta-grid.grid2
-	@media screen and (min-width: 769px)
-		padding: 0
-		height: calc(100vh - 112px)
-		.grot
-			display: flex
-			flex-direction: column
-			justify-content: center
-			padding-right: 40px
-		.movethis
-			font-size: 40px
-		.english
-			font-size: 18px
-	@media screen and (max-width: 768px)
-		padding: 0px 16px 16px 16px
-		min-height: calc(100vh - 128px)
-		.back
-			height: 45vh
-		.movethis
-			font-size: 21px
+.rta-image
+	height: calc(100vh - 112px)
+	img
+		object-fit: cover
+		height: 100%
+		width: 100%
 
 </style>

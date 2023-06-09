@@ -1,7 +1,6 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { onMount } from 'svelte';
-	import { slide } from 'svelte/transition';
 	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
 	import { clickToCopyAction } from '$lib/utils/clicktocopy';
 	import { showToast, showAlert } from '$lib/stores/modalstores';

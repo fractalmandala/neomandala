@@ -1,22 +1,18 @@
 {
   "main": {
-    "id": "8ffbdb5465855300",
+    "id": "3da7879c9c2a2712",
     "type": "split",
     "children": [
       {
-        "id": "cbe2be41f77e068e",
+        "id": "809f00dc0b9eb923",
         "type": "tabs",
         "children": [
           {
-            "id": "6043895f64b2cccd",
+            "id": "481a23c5f1215cac",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "documentation.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -25,15 +21,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f23b204a995a324d",
+    "id": "b4ca5077049b4a9b",
     "type": "split",
     "children": [
       {
-        "id": "8b63dbcc3068a0dd",
+        "id": "21df44b537ba7fc4",
         "type": "tabs",
         "children": [
           {
-            "id": "a871972bbd964e23",
+            "id": "957fb63e86e2bac0",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,7 +39,7 @@
             }
           },
           {
-            "id": "7ebe1329cb418163",
+            "id": "e73fe92237a7d4bc",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -58,7 +54,7 @@
             }
           },
           {
-            "id": "15c97205aab72185",
+            "id": "661a55bdaa592dde",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -72,20 +68,20 @@
     "width": 300
   },
   "right": {
-    "id": "f332079a1117275b",
+    "id": "f10a36961ced41e2",
     "type": "split",
     "children": [
       {
-        "id": "60c6f9840e1764c8",
+        "id": "c932345fa5d81e4b",
         "type": "tabs",
         "children": [
           {
-            "id": "a34fd483dbb73a13",
+            "id": "9b07336b0e31558a",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "documentation.md",
+                "file": "know/ontic bloom.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +93,19 @@
             }
           },
           {
-            "id": "61f9f4483547e62b",
+            "id": "f9db46f01883a9e8",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "documentation.md",
+                "file": "know/ontic bloom.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "6d43e252c501dc0a",
+            "id": "76bfa6c43a99c296",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,12 +116,12 @@
             }
           },
           {
-            "id": "1e72a03a3aea2993",
+            "id": "15aa1f42c8c3f3f5",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "documentation.md"
+                "file": "know/ontic bloom.md"
               }
             }
           }
@@ -147,8 +143,14 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "6043895f64b2cccd",
+  "active": "957fb63e86e2bac0",
   "lastOpenFiles": [
-    "camus.md"
+    "web/chatgptinsveltekitv2.md",
+    "know/ontic bloom.md",
+    "know/camus.md",
+    "web/chatgptinsveltekit.md",
+    "api/embed/+server.ts",
+    "api/embed",
+    "web/modaltool.md"
   ]
 }

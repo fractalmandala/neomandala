@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { featuredWritings, mandalapedia } from '$lib/utils/supabase';
-	import { allIndex } from '$lib/utils/localpulls';
+	import { allIndex, allWebdev } from '$lib/utils/localpulls';
 	import { elementVisibilityStore } from '$lib/stores/elementvisibilitystore';
 	import { themeMode } from '$lib/stores/globalstores';
 	import { mouseStore } from '$lib/stores/mousestore';
@@ -14,6 +14,11 @@
 	let temp = 0;
 	let tomp = 0;
 	let rafId: any;
+	let posts: any;
+	let scY: number;
+	let trY: number;
+	let indices: any;
+	let webs: any;
 
 	function handlePath(event: MouseEvent) {
 		const gridElement = document.querySelector('.this');
@@ -43,11 +48,6 @@
 
 	$: ({ isVisible } = elementVisibilityStore(ref));
 
-	let posts: any;
-	let scY: number;
-	let trY: number;
-	let indices: any;
-
 	$: if ($isVisible) {
 		trY = scY;
 	} else {
@@ -58,6 +58,7 @@
 		(async () => {
 			posts = await featuredWritings();
 			indices = await allIndex();
+			webs = await allWebdev();
 		})();
 	});
 </script>
@@ -112,6 +113,16 @@
 		<h6 class="tt-c">
 			<a href="/image/nasadiya">Nasadīya Across Space and Time</a>
 		</h6>
+		<small class="p-bot-16 p-top-32 bord-top m-top-32" style="color: #10D56C">web dev guides</small>
+		{#if webs && webs.length > 0}
+			{#each webs as item}
+				<h6 class="tt-c">
+					<a href={item.linkpath}>
+						{item.meta.title}
+					</a>
+				</h6>
+			{/each}
+		{/if}
 	</div>
 </div>
 

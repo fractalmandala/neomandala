@@ -245,7 +245,7 @@ $exp: 1.414
 		h5
 			font-size: $std * $exp
 		h4
-			font-size: $std * $exp * $exp
+			font-size: $std * $exp * $exp * 1.2
 		h3
 			font-size: $std *$exp * $exp * 1.2
 		h2
@@ -574,7 +574,6 @@ $exp: 1.414
 		color: var(--texttwo)
 	ul, li
 		padding-left: 0px
-		list-style-type: none
 		margin: 0
 	h3
 		margin: 64px 0 24px 0
@@ -599,7 +598,7 @@ $exp: 1.414
 		h1
 			font-size: $std * $exp * $exp * $exp * $exp * $exp
 	@media screen and (min-width: 769px) and (max-width: 1023px)
-		p
+		p, li
 			font-size: $std
 		h6
 			font-size: $std	
@@ -616,7 +615,7 @@ $exp: 1.414
 		pre
 			width: 90vw
 	@media screen and (max-width: 768px)
-		p
+		p, li
 			font-size: $std * 1.125
 			line-height: 1.5
 		h6

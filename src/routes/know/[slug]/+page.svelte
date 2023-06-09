@@ -17,7 +17,7 @@
 	});
 </script>
 
-<div class="contentbox" class:light={$themeMode} class:dark={!$themeMode}>
+<div class="contentbox pagemin" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="content">
 		<svelte:component this={data.content} />
 	</div>

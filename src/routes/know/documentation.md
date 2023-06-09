@@ -8,7 +8,7 @@ synapse: kṛt
 
 I see documentation as an essential part of design. For design is an iterative process- every cycle being predicated upon an introspective analysis of the previous iteration. This analysis is not possible without some record of what was done, how it was done, why it was done so, in the previous cycle(s). In other words, documentation is how we may converse with the previous versions of our design. This is when I speak of documentation only as a personal dialogue. There is much more to it, when working in teams, across space and/or time. Here I record essential documentation for the three websites I currently manage and maintain.
 
-### Stores
+#### Stores
 Sveltekit's stores feature is a wonderful utility, very simple to use but extensive in its functionality. For example, it can be used to store theme visibility- light and dark, across the website, which persists across user sessions.
 
 All stores are recorded in '$lib/stores'. Stores that need to persist across website and are global in scope are kept in 'globalstores.ts'

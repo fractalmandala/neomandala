@@ -237,7 +237,7 @@
 	<div slot="main" class="rta-column">
 		<slot />
 	</div>
-	<div class="rta-column rowgap200 fullW" slot="right">
+	<div class="rta-column rowgap200 onright fullW" slot="right">
 		<NotesForm />
 		<div class="rta-column listitems bord-top p-top-16 xleft">
 			{#if items && items.length > 0}
@@ -268,5 +268,9 @@ p a
 
 .forheight p
 	font-size: 14px
+
+.onright
+	@media screen and (max-width: 1023px)
+		padding-bottom: 16px
 
 </style>

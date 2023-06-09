@@ -144,6 +144,9 @@
 						<a href="/word">WORD</a>
 					</p>
 					<p>
+						<a href="/web">WEB</a>
+					</p>
+					<p>
 						<a href="/image">IMAGE</a>
 					</p>
 					<p>

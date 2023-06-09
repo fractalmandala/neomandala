@@ -65,6 +65,7 @@
 		<select class="fullW" bind:value={agent}>
 			<option value="short">quickie</option>
 			<option value="list">item</option>
+			<option value="bookmark">bookmark</option>
 		</select>
 		<button class="genbutton" on:click={handleSubmit}> Submit </button>
 	</div>

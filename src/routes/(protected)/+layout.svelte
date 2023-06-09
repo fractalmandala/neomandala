@@ -238,7 +238,7 @@
 	</div>
 	<div class="rta-column rowgap200 fullW" slot="right">
 		<NotesForm />
-		<div class="rta-column listitems bord-top p-top-16 xleft">
+		<div class="rta-column listitems bord-top p-top-16 p-bot-16 xleft">
 			{#if items && items.length > 0}
 				{#each items as item}
 					<label>

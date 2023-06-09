@@ -21,7 +21,9 @@
 		{/if}
 	</div>
 	<div class="mainpage">
-		<slot name="main" />
+		<div class="pagemin">
+			<slot name="main" />
+		</div>
 	</div>
 	<div class="rightside grot">
 		<slot name="right" />
@@ -63,31 +65,36 @@
 	.mainpage
 		grid-area: mainpage
 	@media screen and (min-width: 1024px)
-		grid-template-columns: 280px 1fr 22vw
+		grid-template-columns: 16vw 60vw 24vw
 		grid-template-areas: "leftside mainpage rightside"
-		column-gap: 48px
+		width: 100vw
 		.leftside
-			width: 280px
 			padding-left: 40px
-			height: calc(100vh - 56px)
+			height: calc(100vh - 112px)
 			position: sticky
-			top: 0
+			top: 64px
 			overflow-y: scroll
+			border-right: 1px solid var(--contraster)
 		.rightside
-			width: 22vw
 			text-align: right
 			padding-right: 40px
-			height: calc(100vh - 56px)
+			padding-left: 16px	
+			height: calc(100vh - 112px)
 			position: sticky
-			top: 0
+			top: 64px
 			align-items: flex-end
 			row-gap: 8px
+			border-left: 1px solid var(--contraster)
+			text-align: right
 		.mainpage, .leftside, .rightside
-			padding-top: 128px
+			padding-top: 64px
 		.mainpage
-			padding-bottom: 32px
-			padding-left: 4vw
-			padding-right: 4vw
+			padding-bottom: 32px	
+			display: flex
+			flex-direction: column
+			align-items: center
+			.pagemin
+				width: 640px
 	@media screen and (max-width: 1023px)
 		grid-template-columns: 1fr
 		grid-template-areas: "leftside" "rightside" "mainpage"
@@ -101,12 +108,12 @@
 			height: 48px
 			background: var(--this)
 			z-index: 1000
+			border-bottom: 1px solid var(--contraster)
 		.rightside
 			width: 100%
 			padding-left: 16px
 			padding-right: 16px
-			padding-top: 64px
-			padding-bottom: 32px
+			padding-top: 16px
 			border-bottom: 1px solid var(--onlyblack)
 		.mainpage
 			width: 100%

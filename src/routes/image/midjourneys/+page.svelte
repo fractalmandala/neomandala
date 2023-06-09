@@ -67,7 +67,10 @@
 		type: 'slide',
 		wheelMinThreshold: 1.1,
 		speed: 900,
-		direction: 'ltr'
+		direction: 'ltr',
+		pagination: false,
+		arrows: false,
+		height: 'calc(100vh - 160px)'
 	}}
 >
 	<SplideTrack>
@@ -101,7 +104,7 @@
 .rta-grid.grid2
 	@media screen and (min-width: 769px)
 		padding: 0 3.2vw
-		height: calc(100vh - 128px)
+		height: calc(100vh - 160px)
 		.grot
 			display: flex
 			flex-direction: column

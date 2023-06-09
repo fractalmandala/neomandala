@@ -37,6 +37,9 @@
 .bhṛt
 	background: var(--bhrt)
 
+.dhṛt
+	background: var(--dhrt)
+
 .islabel
 	padding: 1px 8px
 	text-transform: uppercase
@@ -48,18 +51,14 @@
 	font-size: 12px
 
 .content
-	@media screen and (min-width: 769px)
-		pre
-			max-width: calc(100vw - 800px)
-			width: 100%
-
-.content
 	h5
 		color: var(--background)
 		padding: 48px 0
+	h4
+		color: var(--background)
 
 .dark
-	.especial, .content
+	.blogger, .content
 		pre
 			background: #292C33
 
@@ -68,7 +67,7 @@
 		pre
 			background: #EFEFEF
 
-.especial
+.blogger
 	pre
 		margin: 24px 0
 
@@ -90,3 +89,25 @@
 		margin-left: 0
 		padding-left: 16px
 		color: var(--background)
+
+
+.rightcol
+	@media screen and (min-width: 1024px)
+		align-items: flex-end
+		
+
+form
+	display: flex
+	flex-direction: column
+	max-width: 320px
+	row-gap: 8px
+	input, textarea
+		border: 1px solid var(--contraster)
+		border-radius: 4px
+		padding: 4px
+		font-family: 'Space Grotesk', sans-serif
+		font-size: 12px
+
+.accordion-body
+	p, p a
+		font-size: 12px

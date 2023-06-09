@@ -50,22 +50,26 @@
 	<div slot="main" class="rta-column">
 		<slot />
 	</div>
-	<div class="rta-column xright rowgap100" slot="right">
-		<h4 class="tt-u" style="color: var(--background)">{$indexName}</h4>
-		<div class="rta-row colgap200">
-			<small>{$indexTags}</small>
-			<div class="islabel {$indexCategory}">
-				{$indexCategory}
+	<div class="rta-column rightcol rowgap100" slot="right">
+		{#if $indexName}
+			<h4 class="tt-u" style="color: var(--background)">{$indexName}</h4>
+			<div class="rta-row colgap200">
+				{#if $indexTags}
+					<small>{$indexTags}</small>
+				{/if}
+				<div class="islabel {$indexCategory}">
+					{$indexCategory}
+				</div>
 			</div>
-		</div>
-		<div class="sectionrest rta-column p-top-32">
-			{#if $indexLinks && Object.keys($indexLinks).length > 0}
-				<h6 class="p-bot-8">Links</h6>
-				{#each Object.entries($indexLinks) as [key, value] (key)}
-					<p><a href={value} target="_blank" rel="noreferrer">{key}</a></p>
-				{/each}
-			{/if}
-		</div>
+			<div class="sectionrest rta-column p-top-32">
+				{#if $indexLinks && Object.keys($indexLinks).length > 0}
+					<h6 class="p-bot-8">Links</h6>
+					{#each Object.entries($indexLinks) as [key, value] (key)}
+						<p><a href={value} target="_blank" rel="noreferrer">{key}</a></p>
+					{/each}
+				{/if}
+			</div>
+		{/if}
 	</div>
 </Shell>
 

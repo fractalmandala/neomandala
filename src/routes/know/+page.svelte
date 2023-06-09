@@ -18,9 +18,9 @@
 	let synapse = '';
 	let slug = 'slug';
 
-	$indexName = '';
 	$indexCategory = '';
 	$indexLinks = {};
+	$indexTags = '';
 
 	function handleTitleFocus() {
 		name = '';
@@ -50,7 +50,7 @@
 	});
 </script>
 
-<div class="rta-column rowgap300">
+<div class="rta-column rowgap300 pagemin">
 	<div class="rta-column mainpage grot rowgap200">
 		<p>
 			This is the main page for my digital garden. The sidebar on the left (top on mobile) lists all
@@ -72,11 +72,3 @@
 		</div>
 	{/if}
 </div>
-
-<style lang="sass">
-
-.rta-column
-	width: 100%
-
-
-</style>

@@ -118,11 +118,11 @@
 	position: static
 
 .measure
-	height: 4px
+	height: 2px
 	background: #10D56C
-	position: sticky
+	position: fixed
 	top: 0
-	z-index: 1200
+	z-index: 20000
 
 .levelzero, .levelone
 	.lowerone

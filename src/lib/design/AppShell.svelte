@@ -92,7 +92,8 @@
 			padding-bottom: 64px	
 			display: flex
 			flex-direction: column
-			align-items: center
+			align-items: stretch
+			padding-left: 6vw
 			.pagemin
 				max-width: 620px
 	@media screen and (max-width: 1023px)

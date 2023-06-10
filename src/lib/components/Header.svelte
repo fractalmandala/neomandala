@@ -142,6 +142,9 @@
 						<p>
 							<a href="/code">CODE</a>
 						</p>
+						<p>
+							<a href="/dashboard">DASH</a>
+						</p>
 					{/if}
 					<p>
 						<a href="/word">WORD</a>

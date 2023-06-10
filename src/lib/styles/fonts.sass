@@ -1,29 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap')
 
+@font-face
+	font-family: 'Hanken Grotesk', sans-serif
+	font-style: normal
+	font-weight: normal
+	src: url('/fonts/hanken/hankengrotesk.woff2') format('woff2'), url('/fonts/hanken/hankengrotesk.woff') format('woff')
 
 @font-face
 	font-family: 'Authentic Sans', sans-serif
 	font-style: normal
 	font-weight: 400
-	srcl: url('/fonts/authentic/AUTHENTICSans-60.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-60.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-60.otf') format('otf')
+	src: url('/fonts/authentic/AUTHENTICSans-60.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-60.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-60.otf') format('otf')
 
 @font-face
 	font-family: 'Authentic Sans', sans-serif
 	font-style: normal
 	font-weight: 500
-	srcl: url('/fonts/authentic/AUTHENTICSans-90.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-90.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-90.otf') format('otf')
+	src: url('/fonts/authentic/AUTHENTICSans-90.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-90.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-90.otf') format('otf')
 
 @font-face
 	font-family: 'Authentic Sans', sans-serif
 	font-style: normal
 	font-weight: 600
-	srcl: url('/fonts/authentic/AUTHENTICSans-130.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-130.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-130.otf') format('otf')
+	src: url('/fonts/authentic/AUTHENTICSans-130.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-130.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-130.otf') format('otf')
 
 @font-face
 	font-family: 'Authentic Sans', sans-serif
 	font-style: normal
 	font-weight: 700
-	srcl: url('/fonts/authentic/AUTHENTICSans-150.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-150.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-150.otf') format('otf')
+	src: url('/fonts/authentic/AUTHENTICSans-150.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-150.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-150.otf') format('otf')
 
 @font-face
 	font-family: 'Adobe Devanagari', serif
@@ -59,6 +64,13 @@ pre
 	word-wrap: break-word
 	word-break: break-word
 	color: inherit
+
+.null
+	margin: 0
+
+.null
+	p, h1, h5, h6, h4, h3, h2, small, pre
+		margin: 0
 
 :root
 	font-family: 'Space Grotesk', sans-serif
@@ -635,3 +647,18 @@ $exp: 1.414
 			font-size: $std * $exp * $exp * $exp * $exp
 		pre
 			width: 90vw
+
+
+.rta-page, .rta-monobox
+	display: flex
+	flex-direction: column
+	row-gap: 16px
+
+@media screen and (min-width: 1024px)
+	.rta-page
+		padding: 40px
+		align-items: center
+	.rta-monobox
+		width: 720px
+
+		

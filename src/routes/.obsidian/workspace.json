@@ -4,21 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "29ac38b62f00e48e",
+        "id": "71b95d478ff98d16",
         "type": "tabs",
         "children": [
           {
-            "id": "483a29deb448066e",
+            "id": "5ba5e5b5f9ecacc9",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Untitled.canvas",
-                "viewState": {
-                  "x": 130.2,
-                  "y": 87.41999999999972,
-                  "zoom": 0
-                }
+                "file": "notepad.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -72,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "f10a36961ced41e2",
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "notepad.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.canvas",
+                "file": "notepad.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.canvas"
+                "file": "notepad.md"
               }
             }
           }
@@ -150,8 +147,13 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "483a29deb448066e",
+  "active": "5ba5e5b5f9ecacc9",
   "lastOpenFiles": [
+    "image/sutaandsuda/+page.svelte",
+    "image/sutaandsuda",
+    "mycanv.canvas",
+    "2023-06-09.md",
+    "(protected)/pad/aiarticle.md",
     "image/realitywall/+page.svelte",
     "image/realitywall",
     "image/bijatobrahman/+page.svelte",
@@ -168,8 +170,6 @@
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_d7a1e287-2ad8-468a-8b4c-742ea67f1538.webp",
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_ca9b8083-9580-4de5-bc7a-f21ad7f848ee.webp",
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_bc5524a6-ce35-4a60-a7d2-32ff7fa52739.webp",
-    "Untitled.canvas",
-    "2023-06-09.md",
     "notepad.md",
     "web/[post]/+layout.svelte",
     "know/fractal maṇḍala.md",
@@ -177,8 +177,6 @@
     "know/dharma.md",
     "Untitled",
     "api/translate/+server.ts",
-    "api/translate",
-    "know/library/+page.svelte",
     "know/operating system redux.md",
     "know/sanskrit.md",
     "know/documentation.md",

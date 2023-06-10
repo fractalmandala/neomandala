@@ -41,6 +41,7 @@
 	out:fly={{ delay: 0, duration: 400, y: 900, easing: quadIn }}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
+	class="minH"
 >
 	<slot />
 </div>

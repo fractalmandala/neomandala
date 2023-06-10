@@ -4,5 +4,6 @@
   "cssTheme": "Minimal",
   "interfaceFontFamily": "Space Grotesk",
   "textFontFamily": "Space Grotesk",
-  "monospaceFontFamily": "JetBrains Mono"
+  "monospaceFontFamily": "JetBrains Mono",
+  "baseFontSize": 10
 }

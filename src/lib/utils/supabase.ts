@@ -283,3 +283,12 @@ export async function nasImages(){
 	if (error) throw new Error(error.message);
 	return data;
 }
+
+export async function soaCh2(){
+	const { data, error } = await supabase
+	.from('soaChapter2')
+	.select()
+	.order('order')
+	if (error) throw new Error(error.message);
+	return data;
+}

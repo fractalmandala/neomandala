@@ -5,6 +5,7 @@ originallydated: Oct, 2018
 featured: false
 type: psychedelia
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/7.webp
+description: An indulgent inquiry into the ascending states of psychedelia.
 id: 7
 ---
 

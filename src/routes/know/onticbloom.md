@@ -1,6 +1,6 @@
 ---
 title: ontic bloom
-image: 
+itemimage: 
 links:
 tags: thesis
 synapse: kṛt

@@ -1,6 +1,6 @@
 ---
 title: operating system redux
-image:
+itemimage: 
 links:
 tags: creation
 synapse: kṛt

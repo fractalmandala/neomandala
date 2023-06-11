@@ -4,6 +4,7 @@ tags: civilization
 featured: true
 type: fractal maṇḍala
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/21.webp
+description: Examples and detailing to demonstrate that Itihasa is Ontological, not Ontical.
 id: 21
 ---
 

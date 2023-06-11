@@ -4,6 +4,7 @@ tags: history
 featured: true
 type: fractal maṇḍala
 image: https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/10mandala/1130-m3-1.webp
+description: Civilization isn't material artefacts, monumental architecture, economics or anything like that. It's something else altogether.
 id: 28
 ---
 

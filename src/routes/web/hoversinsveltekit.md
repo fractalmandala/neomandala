@@ -3,6 +3,8 @@ title: Simple Hovers in Sveltekit
 tags: animations
 featured: true
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: Toggle and hover functions are quite simple in Sveltekit.
 id: 6
 ---
 

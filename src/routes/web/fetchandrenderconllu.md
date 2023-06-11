@@ -3,6 +3,8 @@ title: Parse and Render Data from Conllu Files
 tags: utilities
 featured: true
 type: other
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: How to display data from .conllu files
 id: 2
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: dharma
-image: 
+itemimage: 
 links:
 tags:
 synapse: dhṛt

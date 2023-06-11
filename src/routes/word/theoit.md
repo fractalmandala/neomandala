@@ -4,6 +4,7 @@ tags: OIT
 featured: true
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/13.webp
+description: Do not be fooled. The Out-of-India theory is well detailed and substantiated. Don't believe me? Read on...
 id: 13
 ---
 

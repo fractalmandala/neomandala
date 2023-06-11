@@ -1,6 +1,6 @@
 ---
 title: design
-image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/index/design.webp
+itemimage: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/index/design.webp
 links:
 tags: things
 synapse: kṛt

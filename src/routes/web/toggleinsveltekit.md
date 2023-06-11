@@ -3,6 +3,8 @@ title: Toggles in Sveltekit
 tags: svelte functions
 featured: false
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: the basics of toggling categories in Sveltekit.
 id: 18
 ---
 

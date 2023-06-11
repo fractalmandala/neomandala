@@ -1,6 +1,6 @@
 ---
 title: sanskrit
-image:
+itemimage: 
 links:
 tags: language
 synapse: ghṛt

@@ -3,6 +3,8 @@ title: Creating Modals in Sveltekit
 tags: utilities
 featured: true
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: Simple way to have a modal in Sveltekit.
 id: 21
 ---
 

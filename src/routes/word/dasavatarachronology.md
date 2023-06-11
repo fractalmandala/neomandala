@@ -4,6 +4,7 @@ tags: chronology
 featured: false
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/23.webp
+description: Hint- no, the ten avataras of Vishnu do not mirror the stages of evolution by natural selection.
 id: 23
 ---
 

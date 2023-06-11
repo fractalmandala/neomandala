@@ -3,9 +3,9 @@ import type { PageLoad } from './$types';
 
 export const load = (({ params }) => {
 		return {
-			title: 'Web Dev Guides at Fractal Maṇḍala',
-			description: 'A collections of quick guides on web development on Sveltekit.',
-			url: 'https://www.fractalmandala.in/web',
+			title: 'Sūta and Sudā at Fractal Maṇḍala',
+			description: 'A visual story.',
+			url: 'https://www.fractalmandala.in/image/sutaandsuda',
 			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/fmcover.png'			
 		};
 	}) satisfies PageLoad;

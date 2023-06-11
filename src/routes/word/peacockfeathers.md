@@ -5,6 +5,7 @@ originallydated: Jul, 2018
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/17.webp
+description: A self-reflecting opinion-piece I wrote after the death of my grandmother.
 id: 17
 ---
 

@@ -5,7 +5,7 @@ export async function load({ params }: { params: { slug: string } }){
 	return {
 		content,
 		title,
-        id,
+    id,
 
 	}
 }

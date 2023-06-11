@@ -4,6 +4,7 @@ tags: civilization
 featured: false
 type: fractal maṇḍala
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/20.webp
+description: A definition of Indian civilizational consciousness, from its own POV.
 id: 20
 ---
 

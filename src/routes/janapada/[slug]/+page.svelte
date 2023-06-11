@@ -1,27 +1,8 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { Editor } from '@tiptap/core';
-	import StarterKit from '@tiptap/starter-kit';
-	import { Markdown } from 'tiptap-markdown';
-	import MarkdownIt from 'markdown-it';
-	import { marked } from 'marked';
+	import Tip from '$lib/components/Tip.svelte';
 	export let data;
-	let element: any;
-	let editor: any;
-	let title = '';
-	let html: any;
-	let prefill = '';
-	let markdownOutput: any;
-	let htmlContent: any;
-	let md = new MarkdownIt({
-		html: true
-	});
-
-	$: htmlContent = data.content;
-
-	onMount(async () => {
-		htmlContent = md.render(data.content);
-	});
+	let mdtext: any;
 </script>
 
 <div class="rta-column rowgap300">

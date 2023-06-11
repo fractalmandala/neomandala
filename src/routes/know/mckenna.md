@@ -1,6 +1,6 @@
 ---
 title: mckenna
-image: 
+itemimage: 
 links:
 tags: people
 synapse: ghṛt

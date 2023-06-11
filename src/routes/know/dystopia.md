@@ -1,6 +1,6 @@
 ---
 title: dystopia
-image: 
+itemimage: 
 links:
 tags: future
 synapse: anṛt

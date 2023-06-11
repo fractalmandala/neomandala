@@ -1,6 +1,6 @@
 ---
 title: realizations
-image: 
+itemimage:  
 links:
 tags: musings
 synapse: smṛt

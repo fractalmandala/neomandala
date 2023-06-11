@@ -4,6 +4,7 @@ tags: chronology
 featured: false
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/14.webp
+description: Yes, the Vedas are apaurusheya and anadi. Also yes- the drashtas that perceived them were human. Erego- time and place. Deal with it.
 id: 14
 ---
 

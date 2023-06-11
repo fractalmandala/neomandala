@@ -5,6 +5,7 @@ originallydated: Aug, 2018
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/5.webp
+description: a short ode to not surrendering to the isms.
 id: 5
 ---
 

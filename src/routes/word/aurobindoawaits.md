@@ -5,6 +5,7 @@ originallydated: Oct, 2022
 featured: true
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/27.webp
+description: I woke up one morning with a thought fully formed in my head. This is that thought...
 id: 27
 ---
 

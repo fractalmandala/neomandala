@@ -72,119 +72,15 @@
 <Shell>
 	<div slot="left" class="rta-column onleft" data-lenis-prevent>
 		<div class="forheight rta-column rowgap100">
-			<div class="grot null">
-				{#if session}
-					<cite class="tt-u" style="color: #10D56C">Current Bot - {session.sessionbot}</cite>
-				{/if}
-			</div>
-			<div class="rta-row ycenter colgap100 buttonschoice bord-bot p-bot-16">
-				<button class="blank-button" on:click={handleRefresh}>
-					<Refresh dimension={18} />
-				</button>
-				<a class="blank-button" href="/pad">
-					<Add dimension={20} />
-				</a>
-				{#if currentPage === '/bot'}
-					<BotUtil />
-				{/if}
-			</div>
-
-			<Acco5>
-				Guides
-
-				<div slot="body" class="rta-column">
-					{#if webs && webs.length > 0}
-						{#each webs as item}
-							<p>
-								<a href={item.linkpath}>
-									{item.meta.title}
-								</a>
-							</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco5>
-
-			{#if $notesDiary && $notesDiary.length > 0}
-				<Acco6
-					>Local Notes
-					<div slot="body" class="rta-column">
-						{#each $notesDiary as item}
-							<p><a href="/pad/{item.id}">{item.title}</a></p>
-						{/each}
-					</div>
-				</Acco6>
+			{#if builds && builds.length > 0}
+				{#each builds as item}
+					<p>
+						<a href={item.linkpath}>
+							{item.meta.title}
+						</a>
+					</p>
+				{/each}
 			{/if}
-			<Acco4>
-				Articles
-				<div slot="body" class="rta-column">
-					{#if notes && notes.length > 0}
-						{#each notes as item}
-							<p>
-								<a href="/doc/{item.id}">
-									{item.title}
-								</a>
-							</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco4>
-			<Acco2>
-				Code Snips
-				<div slot="body" class="rta-column">
-					{#if snips && snips.length > 0}
-						{#each snips as item}
-							<p>
-								<a class="hover" href="/code/{item.id}">
-									{item.title}
-								</a>
-							</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco2>
-			<Acco3>
-				Local Chats
-				<div slot="body">
-					{#if $chatSessions && $chatSessions.length > 0}
-						{#each $chatSessions as chat}
-							<p>
-								<a href="/bot/{chat.id}">
-									{chat.id.slice(0, 17)}
-								</a>
-							</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco3>
-			<Acco>
-				GPT Repo
-				<div slot="body">
-					{#if titles && titles.length > 0}
-						{#each titles as item}
-							<p>
-								<a href="/repo/{item.id}">
-									{item.title}
-								</a>
-							</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco>
-			<Acco7>
-				Janapada
-				<div slot="body">
-					{#if builds && builds.length > 0}
-						{#each builds as item}
-							<p>
-								<a href={item.linkpath}>
-									{item.meta.title}
-								</a>
-							</p>
-						{/each}
-					{/if}
-				</div>
-			</Acco7>
 		</div>
 	</div>
 	<div slot="main" class="rta-column">

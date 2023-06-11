@@ -3,6 +3,8 @@ title: Web Interface Guidelines
 tags: design
 featured: true
 type: ui
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: sheer paste of content from interfaces.rauno.me
 id: 22
 ---
 

@@ -4,6 +4,7 @@ tags: dharma
 featured: false
 type: fractal maṇḍala
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/16.webp
+description: a core fractal maṇḍala essay detailing the adhyatmika layer of the Ramayana.
 id: 16
 ---
 

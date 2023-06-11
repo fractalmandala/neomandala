@@ -1,6 +1,6 @@
 ---
 title: tiptap
-image: 
+itemimage: 
 links:
 - { url: 'https://tiptap.dev/', name: 'Tiptap'}
 - { url: 'https://tiptap.dev/installation/svelte', name: 'Tiptap for Sveltekit'}

@@ -5,6 +5,7 @@ originallydated: May, 2021
 featured: false
 type: psychedelia
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/2.webp
+description: Warning, touchy people are likely to get offended here. Stay away.
 id: 2
 ---
 

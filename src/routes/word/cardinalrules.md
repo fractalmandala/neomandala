@@ -5,6 +5,7 @@ originallydated: Oct, 2018
 featured: false
 type: psychedelia
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/26.webp
+description: Psychedelics is serious business. These are the cardinal rules to follow when conducting said business.
 id: 26
 ---
 

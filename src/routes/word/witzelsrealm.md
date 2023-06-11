@@ -4,6 +4,7 @@ tags: OIT
 featured: false
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/11.webp
+description: Oi, Witzel, padh innu.
 id: 11
 ---
 

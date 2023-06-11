@@ -4,6 +4,7 @@ tags: chronology
 featured: false
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/9.webp
+description: Yes, astronomy is hard science. No, astronomical dating is not legit. Read why.
 id: 9
 ---
 

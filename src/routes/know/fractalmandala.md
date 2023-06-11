@@ -1,6 +1,6 @@
 ---
 title: fractal maṇḍala
-image: 
+itemimage: 
 links:
 - { url: '/word/historyvsitihasa', name: 'History vs. Itihāsa'}
 - { url: '/word/macrohistoriccase', name: 'Macrohistoric Case'}

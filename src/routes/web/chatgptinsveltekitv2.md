@@ -3,6 +3,8 @@ title: ChatGPT in Sveltekit v2
 tags: ai, chatgpt
 featured: true
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: Incomplete article.
 id: 24
 ---
 

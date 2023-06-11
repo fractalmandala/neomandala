@@ -3,6 +3,8 @@ title: ChatGPT in Sveltekit
 tags: ai, chatgpt
 featured: false
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: Integrate ChatGPT in Sveltekit project.
 id: 1
 ---
 

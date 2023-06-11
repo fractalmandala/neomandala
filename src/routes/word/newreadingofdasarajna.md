@@ -4,6 +4,7 @@ tags: OIT
 featured: true
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/18.webp
+description: A detailed research paper that shows how, with the right premise, the Rigveda's battle of ten kings can give a vastly different account than the mainstream.
 id: 18
 ---
 

@@ -4,6 +4,7 @@ tags: civilization
 featured: true
 type: fractal maṇḍala
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/15.webp
+description: A core fractal maṇḍala essay that shows to deep detail, what is meant by a fractal in the mandala.
 id: 15
 ---
 

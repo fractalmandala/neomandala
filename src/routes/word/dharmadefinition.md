@@ -5,6 +5,7 @@ originallydated: May, 2021
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/22.webp
+description: Dharma, the endeavour to conduct life and society in harmony with rta.
 id: 22
 ---
 

@@ -5,6 +5,7 @@ originallydated: Oct, 2018
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/6.webp
+description: That the idea of disruption has become something desirable and positive is prime hint we are thick within dystopia.
 id: 6
 ---
 

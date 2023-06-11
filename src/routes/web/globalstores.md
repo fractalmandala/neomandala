@@ -3,6 +3,8 @@ title: Using Global Stores in Sveltekit
 tags: utilities
 featured: true
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: A common use case for a website is the need for global states of theme and breakpoints.
 id: 5
 ---
 

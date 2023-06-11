@@ -5,6 +5,7 @@ originallydated: Nov, 2017
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/3.webp
+description: Cryptocurrencies- the basics. Simple.
 id: 3
 ---
 

@@ -4,6 +4,7 @@ tags: chronology
 featured: false
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/4.webp
+description: some notes on the matter of ancient Indian chronology.
 id: 4
 ---
 

@@ -5,6 +5,7 @@ originallydated: Aug, 2020
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/10.webp
+description: Oi, Mander, padh innu.
 id: 10
 ---
 

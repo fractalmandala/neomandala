@@ -3,6 +3,8 @@ title: Tiptap WYSIWYG Editor
 tags: utilities
 featured: true
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: This is an example of how to integrate Tiptap WYSIWYG editor in Sveltekit.
 id: 23
 ---
 

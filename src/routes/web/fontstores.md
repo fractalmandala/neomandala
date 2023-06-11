@@ -3,6 +3,8 @@ title: Store of Fonts
 tags: typography
 type: ui
 featured: false
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: Personal repo of good fonts.
 id: 4
 ---
 

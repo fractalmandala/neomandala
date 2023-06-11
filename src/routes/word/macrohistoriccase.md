@@ -4,6 +4,7 @@ tags: history
 featured: false
 type: fractal maṇḍala
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/19.webp
+description: A long read positioning India's civilizational primacy by tethering our ancient history to its proper roots and lore.
 id: 19
 ---
 

@@ -4,6 +4,7 @@ tags: chronology
 featured: false
 type: history
 image: /images/chronframework.webp
+description: A detailed research paper first presented at Indica's conference on Puranas and Puranic knowledge.
 id: 25
 ---
 

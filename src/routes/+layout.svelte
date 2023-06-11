@@ -102,6 +102,30 @@
 <svelte:window bind:outerWidth={$windowWidth} bind:scrollY={$scrollY} />
 
 <svelte:head>
+	<title>{$page.data.title}</title>
+	<meta name="description" content={$page.data.description} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="og:title" content={$page.data.title} />
+	<meta name="twitter:description" content={$page.data.description} />
+	{#if $page.data.url}
+		<meta name="twitter:url" content={$page.data.url} />
+		<meta property="og:url" content={$page.data.url} />
+	{/if}
+	{#if $page.url}
+		<meta name="twitter:url" content={$page.url} />
+		<meta property="og:url" content={$page.url} />
+	{/if}
+	<meta name="twitter:image" content={$page.data.image} />
+	<meta name="twitter:image:alt" content={$page.data.description} />
+	<meta name="twitter:creator" content="@saamaanyafreaky" />
+	<meta name="twitter:site" content="@saamaanyafreaky" />
+	<meta property="og:site_name" content="Fractal Maṇḍala" />
+	<meta property="og:title" content={$page.data.title} />
+	<meta property="og:description" content={$page.data.description} />
+	<meta
+		name="robots"
+		content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+	/>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link

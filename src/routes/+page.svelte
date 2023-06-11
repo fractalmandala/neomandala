@@ -63,10 +63,6 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Fractal Maṇḍala | digital garden and buildstation</title>
-</svelte:head>
-
 <svelte:window bind:scrollY={scY} />
 
 <div class="grot pagetwogrid back" class:light={$themeMode} class:dark={!$themeMode}>

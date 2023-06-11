@@ -4,6 +4,7 @@ tags: archaeology
 featured: false
 type: history
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/1.webp
+description: Some coverage on the great elephant in the archaeological record.
 id: 1
 ---
 

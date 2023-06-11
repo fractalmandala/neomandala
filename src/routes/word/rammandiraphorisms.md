@@ -5,6 +5,7 @@ originallydated: Aug, 2020
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/8.webp
+description: Essential truths to take as given and established, on the matter of Ayodhya's Ram mandir.
 id: 8
 ---
 

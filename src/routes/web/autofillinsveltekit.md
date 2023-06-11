@@ -3,6 +3,8 @@ title: Autofill in Sveltekit
 tags: utilities
 featured: true
 type: sveltekit
+image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp
+description: Simple method for having auto-fill inputs fields, which is useful for search forms.
 id: 20
 ---
 

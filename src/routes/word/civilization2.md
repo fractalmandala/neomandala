@@ -5,6 +5,7 @@ originallydated: Nov, 2017
 featured: false
 type: archival
 image: https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/blog/24.webp
+description: A freethinking piece that leans on speculation to imagine plausible futures.
 id: 24
 ---
 

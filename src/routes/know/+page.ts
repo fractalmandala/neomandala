@@ -9,7 +9,7 @@ export const load: PageLoad = async ({ parent }) => {
 			title: 'Knowledge Index at Fractal Maṇḍala',
 			description: 'An index of entries in the digital garden.',
 			url: 'https://www.fractalmandala.in/know',
-			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/fmcover.png'			
+			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp'			
 		}
 	}
 
@@ -23,6 +23,6 @@ export const load: PageLoad = async ({ parent }) => {
 		title: 'Knowledge Index at Fractal Maṇḍala',
 		description: 'An index of entries in the digital garden.',
 		url: 'https://www.fractalmandala.in/know',
-		image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/fmcover.png'		
+		image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp'		
 	};
 };

@@ -6,6 +6,6 @@ export const load = (({ params }) => {
 			title: 'Music at Fractal Maṇḍala',
 			description: 'Sample the best absolutely amateurish, poorly mastered psytrance in the world.',
 			url: 'https://www.fractalmandala.in/sound',
-			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/fmcover.png'			
+			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp'			
 		};
 	}) satisfies PageLoad;

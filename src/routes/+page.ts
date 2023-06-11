@@ -8,7 +8,7 @@ export const load: PageLoad = async ({ parent }) => {
 			title: 'Fractal Maṇḍala',
 			description: 'A digital garden and buildstation',
 			url: 'https://www.fractalmandala.in/',
-			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/fmcover.png'
+			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp'
 			}
 	}
 
@@ -22,6 +22,6 @@ export const load: PageLoad = async ({ parent }) => {
 		title: 'Fractal Maṇḍala',
 		description: 'A digital garden and buildstation',
 		url: 'https://www.fractalmandala.in/',
-		image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/fmcover.png'
+		image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp'
 	};
 };

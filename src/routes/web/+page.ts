@@ -6,6 +6,6 @@ export const load = (({ params }) => {
 			title: 'Web Dev Guides at Fractal Maṇḍala',
 			description: 'A collections of quick guides on web development on Sveltekit.',
 			url: 'https://www.fractalmandala.in/web',
-			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/fmcover.png'			
+			image: 'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp'			
 		};
 	}) satisfies PageLoad;

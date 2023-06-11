@@ -56,48 +56,44 @@
 	});
 </script>
 
-<div class="rta-page">
-	<Splide
-		aria-label="midjourneys"
-		hasTrack={false}
-		options={{
-			drag: true,
-			keyboard: 'global',
-			waitForTransition: true,
-			wheel: true,
-			type: 'loop',
-			wheelMinThreshold: 1.1,
-			speed: 900,
-			direction: 'ltr',
-			height: 'calc(100vh - 192px)',
-			easing: 'cubic-bezier(0.900, 0.005, 0.225, 1.035)',
-			pagination: false,
-			arrows: false
-		}}
-	>
-		<SplideTrack>
-			{#if panels && panels.length > 0}
+<div class="rta-column">
+	{#if panels && panels.length > 0}
+		<Splide
+			aria-label="midjourneys"
+			hasTrack={false}
+			options={{
+				drag: true,
+				keyboard: 'global',
+				waitForTransition: true,
+				wheel: true,
+				type: 'loop',
+				wheelMinThreshold: 1.1,
+				speed: 900,
+				direction: 'ttb',
+				height: 'calc(100vh - 112px)',
+				easing: 'cubic-bezier(0.900, 0.005, 0.225, 1.035)',
+				pagination: false,
+				arrows: false
+			}}
+		>
+			<SplideTrack>
 				{#each panels as item}
 					<SplideSlide>
-						<div class="rta-grid grid2">
-							<div class="rta-image">
-								<img src={item.image} alt={item.order} />
-							</div>
-							<div class="rta-column grot">
-								<p>{item.order}</p>
-								<pre>{item.text}</pre>
-							</div>
-						</div>
+						<div class="rta-image" style="background-image: url('{item.image}')" />
 					</SplideSlide>
 				{/each}
-			{/if}
-		</SplideTrack>
-	</Splide>
+			</SplideTrack>
+		</Splide>
+	{/if}
 </div>
 
 <style lang="sass">
 
-.rta-grid
-	height: calc(100vh - 192px)
+.rta-image
+	height: calc(100vh - 112px)
+	width: 100vw
+	background-position: center center
+	background-size: contain
+	background-repeat: no-repeat
 
 </style>

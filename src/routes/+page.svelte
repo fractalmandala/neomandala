@@ -104,6 +104,9 @@
 		{/if}
 		<small class="p-bot-16 p-top-32 bord-top m-top-32" style="color: #10D56C"> visual tales </small>
 		<h6 class="tt-c">
+			<a href="/image/sutaandsuda">Sūta and Sudā</a>
+		</h6>
+		<h6 class="tt-c">
 			<a href="/image/midjourneys"> the realm psychedelic </a>
 		</h6>
 		<h6 class="tt-c">

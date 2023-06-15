@@ -15,7 +15,11 @@
 		themeMode,
 		windowWidth,
 		scrollY,
-		pageImage
+		pageImage,
+		pageTitle,
+		pageDescription,
+		pageUrl,
+		shareImage
 	} from '$lib/stores/globalstores';
 	import '$lib/styles/theme.sass';
 	import '$lib/styles/fonts.sass';
@@ -27,8 +31,6 @@
 	import GoodAlert from '$lib/components/GoodAlert.svelte';
 	import Transition from '$lib/components/TransitionPage.svelte';
 	import '$lib/styles/animate.css';
-
-	let pageTitle = '';
 
 	let okayCol = false;
 	let logged: boolean;
@@ -90,7 +92,6 @@
 	export let data: LayoutData;
 
 	$: linku = data.pathname.slice(0, 4);
-	$: pageTitle = $page.url.pathname.slice(1, 4);
 
 	$: if ($scrollY > 1200) {
 		okayCol = true;
@@ -102,26 +103,22 @@
 <svelte:window bind:outerWidth={$windowWidth} bind:scrollY={$scrollY} />
 
 <svelte:head>
-	<title>{$page.data.title}</title>
-	<meta name="description" content={$page.data.description} />
+	<title>{$pageTitle}</title>
+	<meta name="description" content={$pageDescription} />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="og:title" content={$page.data.title} />
-	<meta name="twitter:description" content={$page.data.description} />
-	{#if $page.data.url}
-		<meta name="twitter:url" content={$page.data.url} />
-		<meta property="og:url" content={$page.data.url} />
+	<meta name="og:title" content={$pageTitle} />
+	<meta name="twitter:description" content={$pageDescription} />
+	{#if $pageUrl}
+		<meta name="twitter:url" content={$pageUrl} />
+		<meta property="og:url" content={$pageUrl} />
 	{/if}
-	{#if $page.url}
-		<meta name="twitter:url" content={$page.url} />
-		<meta property="og:url" content={$page.url} />
-	{/if}
-	<meta name="twitter:image" content={$page.data.image} />
-	<meta name="twitter:image:alt" content={$page.data.description} />
+	<meta name="twitter:image" content={$shareImage} />
+	<meta name="twitter:image:alt" content={$pageDescription} />
 	<meta name="twitter:creator" content="@saamaanyafreaky" />
 	<meta name="twitter:site" content="@saamaanyafreaky" />
 	<meta property="og:site_name" content="Fractal Maṇḍala" />
-	<meta property="og:title" content={$page.data.title} />
-	<meta property="og:description" content={$page.data.description} />
+	<meta property="og:title" content={$pageTitle} />
+	<meta property="og:description" content={$pageDescription} />
 	<meta
 		name="robots"
 		content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
@@ -154,7 +151,7 @@
 	style="background-image: url('{$pageImage}')"
 >
 	<header>
-		<Header {logged} {pageTitle} />
+		<Header {logged} />
 	</header>
 	<main class="low minH">
 		{#key data.pathname}

@@ -5,7 +5,16 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import { Editor } from '@tiptap/core';
 	import NewIndex from '$lib/dash/NewIndex.svelte';
-	import { indexName, indexCategory, indexLinks, indexTags } from '$lib/stores/globalstores';
+	import {
+		indexName,
+		indexCategory,
+		indexLinks,
+		indexTags,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 
 	export let data;
 	let element: any;
@@ -21,6 +30,11 @@
 	$indexCategory = '';
 	$indexLinks = {};
 	$indexTags = '';
+	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
+	$pageDescription = 'The digital garden as a WIP and in indexed form...';
+	$pageUrl = 'https://www.fractalmandala.in/know';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function handleTitleFocus() {
 		name = '';

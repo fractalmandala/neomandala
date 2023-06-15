@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { womboImages } from '$lib/utils/supabase';
 	import ChevRight from '$lib/icons/ChevRight.svelte';
+	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import { EventInterface } from '@splidejs/splide';
 	import '@splidejs/splide/css/core';
@@ -10,6 +11,12 @@
 	let audio: any;
 
 	let fake = false;
+
+	$pageTitle = 'Wombo, a Visual Story at Fractal Maṇḍala';
+	$pageDescription = 'Experiments in generative image tech, narrative and written supplements...';
+	$pageUrl = 'https://www.fractalmandala.in/image/wombo';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function fauxfake() {
 		fake = !fake;
@@ -64,28 +71,28 @@
 	});
 </script>
 
-<Splide
-	aria-label="midjourneys"
-	hasTrack={false}
-	options={{
-		drag: true,
-		keyboard: 'global',
-		waitForTransition: true,
-		wheel: true,
-		type: 'loop',
-		wheelMinThreshold: 1.1,
-		speed: 900,
-		direction: 'ltr',
-		height: 'calc(100vh - 112px)',
-		easing: 'cubic-bezier(0.530, 0.315, 0.215, 0.970)',
-		pagination: false,
-		arrows: false,
-		perPage: 6,
-		gap: '8px'
-	}}
->
-	<SplideTrack>
-		{#if images && images.length > 0}
+{#if images && images.length > 0}
+	<Splide
+		aria-label="midjourneys"
+		hasTrack={false}
+		options={{
+			drag: true,
+			keyboard: 'global',
+			waitForTransition: true,
+			wheel: true,
+			type: 'loop',
+			wheelMinThreshold: 1.1,
+			speed: 900,
+			direction: 'ltr',
+			height: 'calc(100vh - 112px)',
+			easing: 'cubic-bezier(0.530, 0.315, 0.215, 0.970)',
+			pagination: false,
+			arrows: false,
+			perPage: 6,
+			gap: '8px'
+		}}
+	>
+		<SplideTrack>
 			{#each images as item}
 				<SplideSlide>
 					<div class="rta-image">
@@ -93,9 +100,9 @@
 					</div>
 				</SplideSlide>
 			{/each}
-		{/if}
-	</SplideTrack>
-</Splide>
+		</SplideTrack>
+	</Splide>
+{/if}
 
 <style lang="sass">
 

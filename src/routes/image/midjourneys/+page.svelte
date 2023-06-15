@@ -1,11 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { psyImages } from '$lib/utils/supabase';
+	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import { EventInterface } from '@splidejs/splide';
 	import '@splidejs/splide/css/core';
 
 	let images: any;
+
+	$pageTitle = 'Midjourneys, a Visual Story at Fractal Maṇḍala';
+	$pageDescription = 'Experiments in generative image tech, narrative and written supplements...';
+	$pageUrl = 'https://www.fractalmandala.in/image/midjourneys';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/midjourneys/panel01.webp';
 
 	export function MyTransition(Splide: any, Components: any) {
 		const { bind } = EventInterface(Splide);

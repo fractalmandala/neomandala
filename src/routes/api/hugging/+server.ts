@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { HfInference } from '@huggingface/inference';
 import { HuggingFaceStream, StreamingTextResponse } from 'ai';
+ 
+// Create a new Hugging Face Inference instance
 const Hf = new HfInference(process.env.HF_ACCESS_TOKEN);
-import type { RequestHandler } from './$types'
+
 
 export const config = {
 	runtime: 'edge'
@@ -27,9 +29,9 @@ function buildOpenAssistantPrompt(
   );
 }
  
-export const POST = (async ({ request }) => {
+export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
-  const { messages } = await request.json();
+  const { messages } = await req.json();
  
   const response = Hf.textGenerationStream({
     model: 'OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5',
@@ -49,4 +51,4 @@ export const POST = (async ({ request }) => {
  
   // Respond with the stream
   return new StreamingTextResponse(stream);
-}) satisfies RequestHandler
+}

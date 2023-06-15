@@ -1,5 +1,14 @@
 <script lang="ts">
-	import { indexName, indexCategory, indexLinks, indexTags } from '$lib/stores/globalstores';
+	import {
+		indexName,
+		indexCategory,
+		indexLinks,
+		indexTags,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 	import { showNote } from '$lib/dash/alerts';
 	import supabase from '$lib/utils/supabase';
 	import Loader from '$lib/assets/Loader.svelte';
@@ -8,6 +17,11 @@
 	$indexCategory = '';
 	$indexLinks = '';
 	$indexTags = '';
+	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
+	$pageDescription = 'The digital garden as a WIP and in indexed form...';
+	$pageUrl = 'https://www.fractalmandala.in/know';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 	let inputWord = '';
 	let inputDhatu = '';
 	let inputPurana = '';

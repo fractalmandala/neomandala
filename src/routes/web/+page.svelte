@@ -1,9 +1,24 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { allWebdev } from '$lib/utils/localpulls';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		themeMode,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 
 	let pens: any;
+
+	$pageTitle = 'WebDev at Fractal Maṇḍala';
+	$pageDescription = 'Mostly Sveltekit dev guides and snippets';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$pageUrl = 'https://www.fractalmandala.in/web';
 
 	onMount(async () => {
 		pens = await allWebdev();

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import Motif from '$lib/assets/Motif.svelte';
-	import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
+	import { themeMode, breakZero, breakOne, breakTwo, pageTitle } from '$lib/stores/globalstores';
 	import { clickOutsideAction } from '$lib/utils/clickoutside';
 	import { slide } from 'svelte/transition';
 	import Moon from '$lib/design/iconset/moon.svelte';
@@ -14,7 +14,6 @@
 	let menuNav = false;
 	let fake = false;
 	let dropped = false;
-	export let pageTitle = '';
 	export let logged: boolean;
 
 	let link1 = 'pad';
@@ -35,35 +34,35 @@
 	let greener7 = false;
 	let greener8 = false;
 
-	$: if (pageTitle === link1) {
+	$: if ($pageTitle === link1) {
 		greener1 = true;
 	} else greener1 = false;
 
-	$: if (pageTitle === link2) {
+	$: if ($pageTitle === link2) {
 		greener2 = true;
 	} else greener2 = false;
 
-	$: if (pageTitle === link3) {
+	$: if ($pageTitle === link3) {
 		greener3 = true;
 	} else greener3 = false;
 
-	$: if (pageTitle === link4) {
+	$: if ($pageTitle === link4) {
 		greener4 = true;
 	} else greener4 = false;
 
-	$: if (pageTitle === link5) {
+	$: if ($pageTitle === link5) {
 		greener5 = true;
 	} else greener5 = false;
 
-	$: if (pageTitle === link6) {
+	$: if ($pageTitle === link6) {
 		greener6 = true;
 	} else greener6 = false;
 
-	$: if (pageTitle === link7) {
+	$: if ($pageTitle === link7) {
 		greener7 = true;
 	} else greener7 = false;
 
-	$: if (pageTitle === link8) {
+	$: if ($pageTitle === link8) {
 		greener8 = true;
 	} else greener8 = false;
 
@@ -144,6 +143,9 @@
 						</p>
 						<p>
 							<a href="/dashboard">DASH</a>
+						</p>
+						<p>
+							<a href="/jp">JP</a>
 						</p>
 					{/if}
 					<p>

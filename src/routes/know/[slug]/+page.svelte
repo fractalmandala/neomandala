@@ -2,8 +2,18 @@
 	//@ts-nocheck
 	import { onMount } from 'svelte';
 	import { themeMode } from '$lib/stores/globalstores';
+	import { page } from '$app/stores';
 	import '$lib/styles/prism.css';
-	import { indexName, indexCategory, indexLinks, indexTags } from '$lib/stores/globalstores';
+	import {
+		indexName,
+		indexCategory,
+		indexLinks,
+		indexTags,
+		pageTitle,
+		pageDescription,
+		pageUrl,
+		shareImage
+	} from '$lib/stores/globalstores';
 	import Prism from 'prismjs';
 	export let data;
 
@@ -11,6 +21,11 @@
 	$indexCategory = data.synapse;
 	$indexLinks = data.links;
 	$indexTags = data.tags;
+	$pageTitle = 'Entry for ' + data.title;
+	$pageDescription = 'An entry in the knowledge index.';
+	$pageUrl = 'https://www.fractalmandala.in' + $page.url.pathname;
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	onMount(() => {
 		Prism.highlightAll();

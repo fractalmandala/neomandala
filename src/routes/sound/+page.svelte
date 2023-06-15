@@ -1,7 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { allMusic } from '$lib/utils/localpulls';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		themeMode,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 	import { audioStore } from '$lib/stores/modalstores';
 	import Soundclouder1 from '$lib/components/Soundclouder.svelte';
 	import Youtube from '$lib/design/iconset/youtube.svelte';
@@ -13,6 +22,12 @@
 	let audio: any;
 	audioStore.subscribe((value) => (audio = value));
 	let fake = false;
+
+	$pageTitle = 'Music at Fractal Maṇḍala';
+	$pageDescription = 'Forays in amateur psytrance production over the years...';
+	$pageUrl = 'https://www.fractalmandala.in/sound';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function fauxfake() {
 		fake = !fake;

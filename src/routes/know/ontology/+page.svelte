@@ -2,7 +2,16 @@
 	import { onMount } from 'svelte';
 	import supabase from '$lib/utils/supabase';
 	import { slide } from 'svelte/transition';
-	import { indexName, indexCategory, indexLinks, indexTags } from '$lib/stores/globalstores';
+	import {
+		indexName,
+		indexCategory,
+		indexLinks,
+		indexTags,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 
 	let galls: any;
 	let isOn = Array(15).fill(false);
@@ -12,6 +21,11 @@
 	$indexCategory = '';
 	$indexLinks = '';
 	$indexTags = '';
+	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
+	$pageDescription = 'The digital garden as a WIP and in indexed form...';
+	$pageUrl = 'https://www.fractalmandala.in/know';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function toggleOn(index: number) {
 		isOn[index] = !isOn[index];

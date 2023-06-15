@@ -5,15 +5,27 @@
 	.edits, .ProseMirror
 		font-family: 'Space Grotesk', sans-serif
 
+.janapadainput
+	.ProseMirror
+		min-height: calc(100vh - 280px)
+		padding: 8px	
+
 .inputtiptapeditor
 	.ProseMirror
 		padding: 12px !important
 		font-family: 'Space Grotesk', sans-serif
 		min-height: 400px
 
+.editingonpage
+	.ProseMirror
+		p
+			font-size: 20px
+			line-height: 1.64
+			margin-bottom: 24px
+
 .notepad
 	.ProseMirror
-		min-height: 496px
+		min-height: 360px
 		font-family: 'Authentic Sans', sans-serif
 
 .quick
@@ -57,10 +69,13 @@
 
 .content
 	h5
-		color: var(--background)
-		padding: 48px 0
+		color: #10D56C
+		padding: 0 0 32px 0
 	h4, h3
 		color: var(--background)
+	h4
+		margin: 8px 0 0px 0
+		padding: 0
 
 .dark
 	.blogger, .content
@@ -125,3 +140,8 @@ form
 .accordion-body
 	p, p a
 		font-size: 12px
+
+.janapadashell
+	@media screen and (min-width: 1024px)
+		.janapadapage
+			width: 780px

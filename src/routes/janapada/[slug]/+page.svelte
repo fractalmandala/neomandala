@@ -2,7 +2,6 @@
 	import { onMount, onDestroy } from 'svelte';
 	import Tip from '$lib/components/Tip.svelte';
 	export let data;
-	let mdtext: any;
 </script>
 
 <div class="rta-column rowgap300">

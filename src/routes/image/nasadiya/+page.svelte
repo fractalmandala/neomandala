@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
 	import { nasLines, nasImages } from '$lib/utils/supabase';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import { EventInterface } from '@splidejs/splide';
@@ -7,6 +8,12 @@
 
 	let images: any;
 	let id1: any;
+
+	$pageTitle = 'Nasadīya Across Space and Time, a Visual Story at Fractal Maṇḍala';
+	$pageDescription = 'Experiments in generative image tech, narrative and written supplements...';
+	$pageUrl = 'https://www.fractalmandala.in/image/nasadiya';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/nasadiya/1-2.webp';
 
 	export function MyTransition(Splide: any, Components: any) {
 		const { bind } = EventInterface(Splide);

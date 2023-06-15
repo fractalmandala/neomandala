@@ -1,7 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import AppShell from '$lib/design/AppShell.svelte';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		themeMode,
+		pageTitle,
+		pageDescription,
+		pageUrl,
+		shareImage
+	} from '$lib/stores/globalstores';
 	import { allVideos } from '$lib/utils/localpulls';
 	import { audioStore } from '$lib/stores/modalstores';
 	import Youtuber from '$lib/components/Youtuber.svelte';
@@ -10,6 +19,12 @@
 	let audio: any;
 	audioStore.subscribe((value) => (audio = value));
 	let fake = false;
+
+	$pageTitle = 'Videos at Fractal Maṇḍala';
+	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
+	$pageUrl = 'https://www.fractalmandala.in/video';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function fauxfake() {
 		fake = !fake;

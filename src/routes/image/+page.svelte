@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { lazyLoadImageAction } from '$lib/utils/lazyloader';
+	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
 	import { supaImages } from '$lib/utils/supabase';
 
 	let low = 1;
@@ -8,6 +9,12 @@
 	let photos: any;
 	let isBig = Array(800).fill(false);
 	let fake = false;
+
+	$pageTitle = 'Midjourney Generated Images at Fractal Maṇḍala';
+	$pageDescription = 'Experiments in generative image tech, narrative and written supplements...';
+	$pageUrl = 'https://www.fractalmandala.in/image';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function loadMore() {
 		low += 100;

@@ -35,7 +35,7 @@
 	const submitInput = async (chatIdToAddMessage: string) => {
 		loading = true;
 		chatMessages = [...chatMessages, { role: 'user', content: query }];
-		const eventSource = new SSE('/api/chat', {
+		const eventSource = new SSE('/api/openchat', {
 			headers: {
 				'Content-Type': 'application/json'
 			},

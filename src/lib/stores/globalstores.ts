@@ -7,9 +7,12 @@ export const indexLinks = writable({})
 export const indexCategory = writable('')
 export const indexImage = writable('')
 export const indexTags = writable({})
-export const pageTitle = writable('')
-export const pageDescription = writable('')
+export const pageTitle = writable('Fractal Maṇḍala')
+export const pageDescription = writable('Digital garden and buildstation')
 export const pageImage = writable('/images/cheggit.webp')
+export const shareImage = writable('https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp')
+export const pageUrl = writable('https://www.fractalmandala.in')
+export const thisChap = writable('')
 
 export const scrollY = writable(0);
 

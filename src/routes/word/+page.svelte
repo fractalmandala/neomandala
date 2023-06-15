@@ -1,7 +1,16 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { onMount } from 'svelte';
-	import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		themeMode,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 	import { audioStore } from '$lib/stores/modalstores';
 	import {
 		allWritings,
@@ -13,6 +22,12 @@
 	let hists: any;
 	let archs: any;
 	let mands: any;
+
+	$pageTitle = 'Writings at Fractal Maṇḍala';
+	$pageDescription = 'Collection of essays, research and musings over the years.';
+	$pageUrl = 'https://www.fractalmandala.in/word';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	onMount(async () => {
 		pens = await allWritings();

@@ -1,6 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		themeMode,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 	import Social from '$lib/components/SocialShare.svelte';
 	import Gridder from '$lib/components/Gridder.svelte';
 	import Parallax from '$lib/components/Parallax.svelte';
@@ -33,6 +42,11 @@
 	} else {
 		nonSticky = false;
 	}
+
+	$pageTitle = data.title;
+	$pageDescription = data.description;
+	$shareImage = data.image;
+	$pageUrl = 'https://www.fractalmandala.in' + $page.url.pathname;
 
 	onMount(async () => {
 		theme = $page.url.pathname.slice(6);

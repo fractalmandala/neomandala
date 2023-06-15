@@ -4,7 +4,13 @@
 	import { featuredWritings, mandalapedia } from '$lib/utils/supabase';
 	import { allIndex, allWebdev } from '$lib/utils/localpulls';
 	import { elementVisibilityStore } from '$lib/stores/elementvisibilitystore';
-	import { themeMode } from '$lib/stores/globalstores';
+	import {
+		themeMode,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
+	} from '$lib/stores/globalstores';
 	import { mouseStore } from '$lib/stores/mousestore';
 	let ref: HTMLElement | null = null;
 	const position = mouseStore();
@@ -19,6 +25,12 @@
 	let trY: number;
 	let indices: any;
 	let webs: any;
+
+	$pageTitle = 'Fractal Maṇḍala';
+	$pageDescription = 'digital garden and buildstation';
+	$pageUrl = 'https://www.fractalmandala.in';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function handlePath(event: MouseEvent) {
 		const gridElement = document.querySelector('.this');

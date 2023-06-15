@@ -115,10 +115,8 @@
 .notepad
 	border: 1px solid var(--onlyblack)
 	padding: 8px
-	border-radius: 0 0 4px 4px
-	min-height: 400px
-	background: white
-	color: #272727
+	border-radius: 6px
+	min-height: 300px
 
 .inputtiptap
 	padding: 8px

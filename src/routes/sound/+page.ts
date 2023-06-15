@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export const prerender = true;
 import type { PageLoad } from './$types';
 

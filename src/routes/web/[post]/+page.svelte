@@ -1,14 +1,18 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		themeMode,
+		pageTitle,
+		pageDescription,
+		pageUrl,
+		shareImage
+	} from '$lib/stores/globalstores';
 	import Social from '$lib/components/SocialShare.svelte';
-	import Copy from '$lib/icons/Copy.svelte';
-	import Pagination from '$lib/components/Pagination.svelte';
-	import ChevFRight from '$lib/icons/ChevFRight.svelte';
-	import ChevFLeft from '$lib/icons/ChevFLeft.svelte';
-	import ChevRight from '$lib/icons/ChevRight.svelte';
+	import { page } from '$app/stores';
 	import GoodAlert from '$lib/components/GoodAlert.svelte';
-	import { marked } from 'marked';
 	import Prism from 'prismjs';
 	import '$lib/utils/prismsql';
 	import '$lib/styles/prism.css';
@@ -16,11 +20,11 @@
 
 	export let data;
 
-	let prevID: number;
-	let nextID: number;
-	let prevPost: any;
-	let nextPost: any;
-	let ttt: any;
+	$pageTitle = data.title;
+	$pageDescription = data.description;
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$pageUrl = 'https://www.fractalmandala.in' + $page.url.pathname;
 
 	onMount(() => {
 		Prism.highlightAll();

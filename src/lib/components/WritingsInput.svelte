@@ -76,8 +76,7 @@ button.glass
 	@media screen and (min-width: 1024px)
 		width: 720px
 		padding: 16px
-		margin-left: 64px
-		min-height: calc(100vh - 200px)
+		min-height: calc(100vh - 360px)
 
 .janapadainput
 	overflow-y: scroll

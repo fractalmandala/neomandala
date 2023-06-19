@@ -257,8 +257,12 @@
 	.rta-row
 		column-gap: 24px
 
-.fm-header
-	background: var(--this)
+.fm-header.darkmode
+	background: #070707
+	border-bottom: 1px solid var(--onlyblack)
+
+.fm-header.lightmode
+	background: #f7f7f7
 	border-bottom: 1px solid var(--onlyblack)
 
 .fm-header.levelzero, .fm-header.levelone

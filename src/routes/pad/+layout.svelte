@@ -19,8 +19,6 @@
 	import Acco7 from '$lib/design/MandAccordionItem.svelte';
 	import Acco8 from '$lib/design/MandAccordionItem.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
-	import Refresh from '$lib/design/iconset/refresh.svelte';
-	import NotesForm from '$lib/dash/NotesForm.svelte';
 	import { breakTwo } from '$lib/stores/globalstores';
 	let session: ChatSession | undefined;
 	let builds: any;
@@ -185,8 +183,7 @@
 		<slot />
 	</div>
 	<div class="rta-column rowgap200 fullW" slot="right">
-		<NotesForm />
-		<div class="rta-column listitems bord-top p-top-16 p-bot-16 xleft">
+		<div class="rta-column listitems p-top-16 p-bot-16 xleft">
 			{#if items && items.length > 0}
 				{#each items as item}
 					<label>

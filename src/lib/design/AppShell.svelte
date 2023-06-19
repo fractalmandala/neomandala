@@ -3,13 +3,14 @@
 	import Menu from '$lib/design/iconset/menu.svelte';
 
 	let toggleOpen = false;
+	export let altgrid = false;
 
 	function toggleDrop() {
 		toggleOpen = !toggleOpen;
 	}
 </script>
 
-<div class="rta-thecontain" class:light={$themeMode} class:dark={!$themeMode}>
+<div class="rta-thecontain" class:light={$themeMode} class:dark={!$themeMode} class:alt={altgrid}>
 	<div class="leftside grot">
 		<div class="strip">
 			<button class="blank-button" on:click={toggleDrop}>
@@ -122,5 +123,25 @@
 			padding-right: 16px
 			padding-bottom: 32px
 			padding-top: 32px
+
+.rta-thecontain.alt
+	@media screen and (min-width: 1024px)
+		grid-template-columns: 16vw 1fr
+		grid-template-areas: "leftside mainpage"	
+		.leftside
+			padding-left: 40px
+			height: calc(100vh - 112px)
+			position: sticky
+			top: 64px
+			overflow-y: scroll
+			border-right: 1px solid var(--contraster)
+		.mainpage
+			padding-bottom: 64px	
+			display: flex
+			flex-direction: column
+			align-items: stretch
+			padding-left: 6vw
+		.rightside
+			display: none
 
 </style>

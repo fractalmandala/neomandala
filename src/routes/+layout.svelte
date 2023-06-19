@@ -24,6 +24,7 @@
 	import '$lib/styles/theme.sass';
 	import '$lib/styles/fonts.sass';
 	import Modal from '$lib/components/Modal.svelte';
+	import Sidebar from '$lib/components/Sidebar.svelte';
 	import Chip from '$lib/components/Chip.svelte';
 	import AlertNew from '$lib/dash/Alert.svelte';
 	import Toast from '$lib/components/Toast.svelte';
@@ -141,6 +142,7 @@
 	</script>
 </svelte:head>
 
+<Sidebar logger={logged} />
 <div
 	class="cover"
 	class:levelzero={$breakZero}
@@ -151,7 +153,7 @@
 	style="background-image: url('{$pageImage}')"
 >
 	<header>
-		<Header {logged} />
+		<Header />
 	</header>
 	<main class="low minH">
 		{#key data.pathname}

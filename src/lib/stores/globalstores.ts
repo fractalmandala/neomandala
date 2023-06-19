@@ -37,6 +37,20 @@ export function headerBelow() {
 	}
 }
 
+const storedSideMode = browser ? JSON.parse(localStorage.getItem('sideMode') || 'false') : false
+
+export const sideMode = writable(storedSideMode)
+
+export function toggleSide(){
+	if (browser) {
+		sideMode.update((mode) => {
+			const newMode = !mode;
+			localStorage.setItem('sideMode', JSON.stringify(newMode))
+			return newMode
+		})
+	}
+}
+
 const storedThemeMode = browser ? JSON.parse(localStorage.getItem('themeMode') || 'false') : false;
 
 export const themeMode = writable(storedThemeMode);
@@ -97,3 +111,5 @@ export const chatMode = writable(storedChatMode);
 export const appKey = writable('');
 
 export const uuidStore = writable('');
+
+

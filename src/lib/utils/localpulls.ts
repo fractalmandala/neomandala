@@ -110,6 +110,25 @@ export async function featuredWebdev() {
 	return eachfiled
 }
 
+export async function featuredWord() {
+	const allfiles = import.meta.glob('/src/routes/word/*.md');
+	const filed = Object.entries(allfiles);
+	const eachfiled = await Promise.all(
+		filed.map(async ([path, resolver]) => {
+			// @ts-ignore
+			const { metadata } = await resolver();
+			const postPath = path.slice(11, -3);
+			return {
+				meta: metadata,
+				linkpath: postPath
+			};
+		})
+	);
+	eachfiled.sort((a, b) => b.meta.id - a.meta.id);
+	const featuredPosts = eachfiled.filter((post) => post.meta.featured === true)
+	return featuredPosts
+}
+
 export async function thisWebdev(id: any) {
 	const allfiles = import.meta.glob('/src/routes/web/*.md');
 	const filed = Object.entries(allfiles);

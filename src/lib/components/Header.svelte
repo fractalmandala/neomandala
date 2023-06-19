@@ -1,11 +1,19 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import Motif from '$lib/assets/Motif.svelte';
-	import { themeMode, breakZero, breakOne, breakTwo, pageTitle } from '$lib/stores/globalstores';
+	import {
+		themeMode,
+		breakZero,
+		breakOne,
+		breakTwo,
+		pageTitle,
+		toggleSide
+	} from '$lib/stores/globalstores';
 	import { clickOutsideAction } from '$lib/utils/clickoutside';
 	import { slide } from 'svelte/transition';
 	import Moon from '$lib/design/iconset/moon.svelte';
 	import Sun from '$lib/design/iconset/sun.svelte';
+	import Side from '$lib/design/iconset/sidebar.svelte';
 	import Add from '$lib/design/iconset/add.svelte';
 	import Pin from '$lib/design/iconset/chevrondown.svelte';
 	import { showPinned, hidePinned } from '$lib/dash/modalstores';
@@ -14,7 +22,6 @@
 	let menuNav = false;
 	let fake = false;
 	let dropped = false;
-	export let logged: boolean;
 
 	let link1 = 'pad';
 	let link2 = 'cod';
@@ -70,6 +77,10 @@
 		dropped = !dropped;
 	}
 
+	function handleClick() {
+		toggleSide();
+	}
+
 	function toggleMenuNav() {
 		menuNav = !menuNav;
 	}
@@ -115,57 +126,9 @@
 		</a>
 	</div>
 	<div class="rta-row colgap400 ycenter xend outrow">
-		<div class="rta-column">
-			<button class="blank-button" style="z-index: 1200" on:click={toggleDrop}>
-				<Pin />
-			</button>
-			{#if dropped}
-				<div
-					class="rta-column dropped"
-					use:clickOutsideAction
-					on:clickOutside={toggleDrop}
-					transition:slide={{ duration: 200 }}
-					on:click={toggleDrop}
-					on:keydown={fauxfake}
-				>
-					<p>
-						<a href="/know">KNOW</a>
-					</p>
-					{#if logged}
-						<p>
-							<a href="/bot">BOT</a>
-						</p>
-						<p>
-							<a href="/pad">PAD</a>
-						</p>
-						<p>
-							<a href="/code">CODE</a>
-						</p>
-						<p>
-							<a href="/dashboard">DASH</a>
-						</p>
-						<p>
-							<a href="/jp">JP</a>
-						</p>
-					{/if}
-					<p>
-						<a href="/word">WORD</a>
-					</p>
-					<p>
-						<a href="/web">WEB</a>
-					</p>
-					<p>
-						<a href="/image">IMAGE</a>
-					</p>
-					<p>
-						<a href="/sound">SOUND</a>
-					</p>
-					<p>
-						<a href="/video">VIDEO</a>
-					</p>
-				</div>
-			{/if}
-		</div>
+		<button class="blank-button" on:click={handleClick}>
+			<Side />
+		</button>
 
 		<button class="blank-button" on:click={handleSwitch}>
 			{#if $themeMode}
@@ -179,41 +142,6 @@
 
 <style lang="sass">
 
-.dropped
-	position: absolute
-	background: var(--this)
-	top: 56px
-	right: 64px
-	text-align: right
-	padding: 16px
-	row-gap: 4px	
-	p a
-		font-size: 18px
-		color: var(--texttwo)
-		&:hover
-			color: #10D56C
-	@media screen and (max-width: 768px)
-		right: 0
-		left: 0
-		min-width: 100vw
-		height: calc(100vh - 56px)
-		top: 56px
-		background: rgba(0,0,0,0.8)
-		p a
-			color: var(--texttwo)
-			font-size: 24px
-			
-
-.lightmode
-	.dropped
-		box-shadow: 5px 4px 12px #e1e1e1
-		width: 120px
-
-
-.darkmode
-	.dropped
-		box-shadow: 5px 4px 12px #070707
-		width: 120px
 
 .logo
 	cursor: pointer

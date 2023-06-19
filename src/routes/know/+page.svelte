@@ -16,7 +16,6 @@
 		pageUrl
 	} from '$lib/stores/globalstores';
 
-	export let data;
 	let element: any;
 	let editor: any;
 	let name = 'name';
@@ -77,12 +76,7 @@
 		<p>
 			Each entry is accompanied by a set of related links, and appended with code snippets where
 			relevant. The snippets are more for my own record. I also follow a tagging and categorisation
-			system, let's call it the garden's ontology.
+			system, let's call it the garden's <a href="/know/ontology">ontology.</a>
 		</p>
 	</div>
-	{#if data.in === true}
-		<div class="newindex bord-bot p-bot-32">
-			<NewIndex />
-		</div>
-	{/if}
 </div>

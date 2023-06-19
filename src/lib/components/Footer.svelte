@@ -43,9 +43,9 @@
 		padding: 0 16px
 
 .footermain.light
-	background: white
+	background: #f7f7f7
 
 .footermain.dark
-	background: #171717
+	background: #070707
 
 </style>

@@ -5,6 +5,7 @@ interface Attributes {
 	"on:clickOutside": (e: CustomEvent<void>) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function clickOutsideAction(node: HTMLElement): ActionReturn<{}, Attributes> {
 	const handleClick = (event: Event) => {
 		if (event.target !== null && !node.contains(event.target as Node)) {

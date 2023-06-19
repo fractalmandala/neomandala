@@ -31,6 +31,7 @@
 	import Alert from '$lib/components/Alert.svelte';
 	import GoodAlert from '$lib/components/GoodAlert.svelte';
 	import Transition from '$lib/components/TransitionPage.svelte';
+	import Cursor from '$lib/components/Cursor.svelte';
 	import '$lib/styles/animate.css';
 
 	let okayCol = false;
@@ -150,7 +151,7 @@
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
-	style="background-image: url('{$pageImage}')"
+	style="background-image: url('{$shareImage}')"
 >
 	<header>
 		<Header />

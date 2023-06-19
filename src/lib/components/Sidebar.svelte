@@ -5,13 +5,20 @@
 	import { clickOutsideAction } from '$lib/utils/clickoutside';
 	import { slide, fly } from 'svelte/transition';
 	import Acco from '$lib/design/MandAccordionItem.svelte';
-	import { allIndex, featuredWord, allWebdev } from '$lib/utils/localpulls';
+	import { allIndex, featuredWord, allWebdev, allThea, janaPada } from '$lib/utils/localpulls';
 
 	let knows: any;
 	let posts: any;
 	let webs: any;
+	let thes: any;
+	let novel: any;
 	let isOn = Array(10).fill(false);
 	export let logger = false;
+	let fake = false;
+
+	function fauxfake() {
+		fake = !fake;
+	}
 
 	function toggleOn(index: number) {
 		isOn[index] = !isOn[index];
@@ -30,6 +37,8 @@
 		knows = await allIndex();
 		posts = await featuredWord();
 		webs = await allWebdev();
+		thes = await allThea();
+		novel = await janaPada();
 	});
 </script>
 
@@ -56,7 +65,12 @@
 				<button class="titular blank-button" on:click={() => toggleOn(1)}> Know </button>
 				{#if isOn[1]}
 					{#if knows && knows.length > 0}
-						<div class="rta-column rowgap100 p-bot-32" transition:slide>
+						<div
+							class="rta-column rowgap100 p-bot-32"
+							transition:slide
+							on:click={handleClose}
+							on:keydown={fauxfake}
+						>
 							{#each knows as item}
 								<div class="itemer ta-r tt-c">
 									<a href={item.linkpath}>
@@ -70,7 +84,12 @@
 				<button class="titular blank-button" on:click={() => toggleOn(2)}> Word </button>
 				{#if isOn[2]}
 					{#if posts && posts.length > 0}
-						<div class="rta-column rowgap100 p-bot-32" transition:slide>
+						<div
+							class="rta-column rowgap100 p-bot-32"
+							transition:slide
+							on:click={handleClose}
+							on:keydown={fauxfake}
+						>
 							{#each posts as item}
 								<div class="itemer ta-r tt-c">
 									<a href={item.linkpath}>
@@ -84,7 +103,12 @@
 				<button class="titular blank-button" on:click={() => toggleOn(3)}>Webdev</button>
 				{#if isOn[3]}
 					{#if webs && webs.length > 0}
-						<div class="rta-column rowgap100 p-bot-32" transition:slide>
+						<div
+							class="rta-column rowgap100 p-bot-32"
+							transition:slide
+							on:click={handleClose}
+							on:keydown={fauxfake}
+						>
 							{#each webs as item}
 								<div class="itemer ta-r tt-c">
 									<a href={item.linkpath}>
@@ -97,7 +121,12 @@
 				{/if}
 				<button class="titular blank-button" on:click={() => toggleOn(4)}>Visual Tales</button>
 				{#if isOn[4]}
-					<div class="rta-column rowgap100 p-bot-32" transition:slide>
+					<div
+						class="rta-column rowgap100 p-bot-32"
+						transition:slide
+						on:click={handleClose}
+						on:keydown={fauxfake}
+					>
 						<div class="itemer ta-r tt-c">
 							<a href="/image/sutaandsuda">Sūta and Sudā</a>
 						</div>
@@ -121,13 +150,52 @@
 						</div>
 					</div>
 				{/if}
-				<a class="titular" href="/sound">Sound</a>
-				<a class="titular" href="/video">Video</a>
+				<button class="blank-button ta-r" on:click={handleClose} on:keydown={fauxfake}>
+					<a class="titular" href="/sound">Sound</a>
+				</button>
+				<button class="blank-button ta-r" on:click={handleClose} on:keydown={fauxfake}>
+					<a class="titular" href="/video">Video</a>
+				</button>
 				{#if logger}
-					<a class="titular" href="/pad">Pad</a>
-					<a class="titular" href="/dashboard">Dash</a>
-					<a class="titular" href="/jp">Janapada</a>
-					<a class="titular" href="/bot">Bot</a>
+					<div on:click={handleClose} on:keydown={fauxfake} class="ta-r rta-column rowgap200">
+						<a class="titular" href="/pad">Pad</a>
+						<a class="titular" href="/dashboard">Dash</a>
+						<a class="titular" href="/bot">Bot</a>
+					</div>
+					<button class="titular blank-button" on:click={() => toggleOn(5)}>Thea</button>
+					{#if isOn[5]}
+						{#if thes && thes.length > 0}
+							<div
+								class="rta-column rowgap100 p-bot-32"
+								transition:slide
+								on:click={handleClose}
+								on:keydown={fauxfake}
+							>
+								{#each thes as item}
+									<div class="itemer ta-r tt-c">
+										<a href="/thea/{item.meta.title.replace(/\s/g, '')}">{item.meta.title}</a>
+									</div>
+								{/each}
+							</div>
+						{/if}
+					{/if}
+					<button class="titular blank-button" on:click={() => toggleOn(6)}>Janapada</button>
+					{#if isOn[6]}
+						{#if novel && novel.length > 0}
+							<div
+								class="rta-column rowgap100 p-bot-32"
+								transition:slide
+								on:click={handleClose}
+								on:keydown={fauxfake}
+							>
+								{#each novel as item}
+									<div class="itemer ta-r tt-c">
+										<a href="/janapada/{item.meta.title.replace(/\s/g, '')}">{item.meta.title}</a>
+									</div>
+								{/each}
+							</div>
+						{/if}
+					{/if}
 				{/if}
 			</div>
 		{/if}
@@ -153,6 +221,8 @@
 		&::after
 			animation: lining 0.43s ease
 	@media screen and (min-width: 1024px)
+		font-size: 32px
+	@media screen and (max-width: 1023px)
 		font-size: 32px
 
 @keyframes lining
@@ -208,6 +278,9 @@
 	@media screen and (min-width: 1024px)
 		width: 480px
 		padding: 40px
+	@media screen and (max-width: 1023px)
+		width: 100vw
+		padding: 24px
 
 .light
 	.insider

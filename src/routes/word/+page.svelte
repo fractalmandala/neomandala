@@ -45,7 +45,7 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="rta-grid grid4 colgap100 rowgap100">
+	<div class="rta-grid grid4 stay2 colgap100 rowgap100">
 		{#if pens && pens.length > 0}
 			{#each pens as item}
 				<a
@@ -55,7 +55,7 @@
 				>
 					<div class="rta-column rowgap100 null insider xcenter ycenter ta-c">
 						<p class="green">{item.type}</p>
-						<div class="font">
+						<div class="grot">
 							<h5 class="white tt-c">{item.title}</h5>
 						</div>
 						<small class="green">{item.tags}</small>
@@ -73,7 +73,7 @@
 		padding: 16px
 
 .levelzero.p40
-	padding: 56px 40px
+	padding: 40px
 
 .levelone.p40
 	padding: 32px

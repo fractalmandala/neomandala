@@ -1,64 +1,61 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
+	import { marked } from 'marked';
+	import { breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
+	import { Editor } from '@tiptap/core';
+	import StarterKit from '@tiptap/starter-kit';
+	import { Markdown } from 'tiptap-markdown';
+	import '$lib/styles/tiptap.sass';
+	export let data;
+	let element: any;
+	let editor: any;
+	let title: any;
+	let markdownOutput: any;
+	let processed = marked(data.content);
 
-	import { onMount, onDestroy } from 'svelte'
-  import { Editor } from '@tiptap/core'
-  import StarterKit from '@tiptap/starter-kit'
+	onMount(() => {
+		return (editor = new Editor({
+			element: element,
+			extensions: [
+				StarterKit,
+				Markdown.configure({
+					html: true,
+					tightLists: true,
+					bulletListMarker: '-'
+				})
+			],
+			content: processed,
+			onTransaction: () => {
+				// force re-render so `editor.isActive` works as expected
+				editor = editor;
+			},
+			onUpdate: ({ editor }) => {
+				markdownOutput = editor.storage.markdown.getMarkdown();
+			}
+		}));
+	});
 
-	import { breakZero, breakOne, breakTwo, themeMode, readingMode } from '$lib/stores/globalstores';
-	export let data
-	import { allThea } from '$lib/utils/localpulls'
-	let pens: any;
-  let element:any
-  let editor:any
-
-	$: (async() => {
-		pens = await allThea();
-	})();
-
-  onMount(() => {
-    editor = new Editor({
-      element: element,
-      extensions: [
-        StarterKit,
-      ],
-      content: data.content,
-      onTransaction: () => {
-        // force re-render so `editor.isActive` works as expected
-        editor = editor
-      },
-    })
-  })
-
-  onDestroy(() => {
-    if (editor) {
-      editor.destroy()
-    }
-  })
-
+	onDestroy(() => {
+		if (editor) {
+			editor.destroy();
+		}
+	});
 </script>
 
-<div
-	class="appshell"
-	class:levelzero={$breakZero}
-	class:levelone={$breakOne}
-	class:leveltwo={$breakTwo}
-	class:light={$themeMode}
-	class:dark={!$themeMode}
->
-	<div class="shellmain thisispost">
-		<div bind:this={element} />
-		<svelte:component this={data.content}/>
-	</div>
-	<div class="shellside rta-column null">
-		<h4>{data.title}</h4>
-			{#if pens && pens.length > 0}
-				{#each pens as item}
-					<h6>
-						<a href={item.linkpath}>
-							{item.meta.id}-{item.meta.title}
-						</a>
-					</h6>
-				{/each}
-			{/if}
-	</div>
+<div class="grot stories" class:lzero={$breakZero} class:lone={$breakOne} class:ltwo={$breakTwo}>
+	<div bind:this={element} />
 </div>
+
+<style lang="sass">
+
+.stories
+	width: 100vw
+
+.stories.lzero
+	padding-top: 64px
+	padding-bottom: 64px
+	width: 680px
+	margin-left: 25%
+
+
+</style>

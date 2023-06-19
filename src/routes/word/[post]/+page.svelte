@@ -141,6 +141,9 @@
 .levelzero, .levelone
 	.lowerone
 		display: none
+	h1
+		padding-left: 256px
+		padding-right: 256px
 
 .levelzero
 	.thisguy

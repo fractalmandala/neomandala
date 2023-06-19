@@ -8,7 +8,7 @@ description: This is an example of how to integrate Tiptap WYSIWYG editor in Sve
 id: 23
 ---
 
-##### core installer
+#### core installer
 
 ```shell
 npm install @tiptap/core @tiptap/pm @tiptap/starter-kit

@@ -1,5 +1,5 @@
 ---
-title: aldocs
+title: alldoc
 ---
 
 

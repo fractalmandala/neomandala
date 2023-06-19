@@ -3,7 +3,7 @@ import { VITE_GITHUB_TOKEN } from '$env/static/private';
 export async function GET() {
   const owner = 'fractalmandala';
   const repo = 'neomandala';
-  const path = 'static/files/philid.pdf';
+  const path = 'src/routes/thea/assorted.md';
 
   const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
     headers: {
@@ -11,12 +11,11 @@ export async function GET() {
     }
   });
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  } else {
-    const file = await response.json();
-    const pdfUrl = file.download_url;
+  const data = await response.json();
+  const content = atob(data.content);  // The content is base64 encoded
 
-    return pdfUrl;
-  }
+  return { 
+    status: 200, 
+    body: content 
+  };
 }

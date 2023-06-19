@@ -63,8 +63,8 @@
 	});
 </script>
 
-<div class="rta-column rowgap300 pagemin">
-	<div class="rta-column mainpage grot rowgap200">
+<div class="rta-column rowgap300">
+	<div class="rta-column grot rowgap200">
 		<p>
 			This is the main page for my digital garden. The sidebar on the left (top on mobile) lists all
 			entries in it in alphabetical order. In time, I anticipate folders and sub-folders to emerge.

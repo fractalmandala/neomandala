@@ -6,6 +6,9 @@
 	import { elementVisibilityStore } from '$lib/stores/elementvisibilitystore';
 	import {
 		themeMode,
+		breakZero,
+		breakOne,
+		breakTwo,
 		pageTitle,
 		pageDescription,
 		shareImage,
@@ -77,134 +80,131 @@
 
 <svelte:window bind:scrollY={scY} />
 
-<div class="grot pagetwogrid back" class:light={$themeMode} class:dark={!$themeMode}>
-	<div
-		class="rta-column back this"
-		on:mousemove={handlePath}
-		bind:this={ref}
-		style="background-image: url('/images/psychedelic.webp')"
-	>
-		<h5 style="color: white">
-			Today a young man on acid realized that all matter is merely energy condensed to a slow
-			vibration, that we are all one consciousness experiencing itself subjectively, there is no
-			such thing as death, life is only a dream, and we are the imagination of ourselves.
-		</h5>
-		<h4 style="color: white">Here's Tom with the weather...</h4>
+<div
+	class="minH mainpagegrid grot"
+	class:lzero={$breakZero}
+	class:lone={$breakOne}
+	class:ltwo={$breakTwo}
+	class:light={$themeMode}
+	class:dark={!$themeMode}
+>
+	<div class="block" style="background-image: url('/images/webback1.webp')">
+		<h4>
+			<a href="/know">Knowledge Index</a>
+		</h4>
 	</div>
-	<div class="rta-column half" data-lenis-prevent>
-		<small class="p-bot-16" style="color: #10D56C">
-			<a href="/know">knowledge index</a>
-		</small>
-		{#if indices && indices.length > 0}
-			{#each indices as item}
-				<h6 class="tt-c">
-					<a href={item.linkpath}>{item.meta.title}</a>
-				</h6>
-			{/each}
-		{/if}
-		<small class="p-bot-16 p-top-32 bord-top m-top-32" style="color: #10D56C">
-			<a href="/word">written words</a>
-		</small>
-		{#if posts && posts.length > 0}
-			{#each posts as item}
-				<h6 class="tt-c">
-					<a href="/word/{item.slug}">
-						{item.title}
-					</a>
-				</h6>
-			{/each}
-		{/if}
-		<small class="p-bot-16 p-top-32 bord-top m-top-32" style="color: #10D56C"> visual tales </small>
-		<h6 class="tt-c">
-			<a href="/image/sutaandsuda">Sūta and Sudā</a>
-		</h6>
-		<h6 class="tt-c">
-			<a href="/image/midjourneys"> the realm psychedelic </a>
-		</h6>
-		<h6 class="tt-c">
-			<a href="/image/deepgreen">deep green</a>
-		</h6>
-		<h6 class="tt-c">
-			<a href="/image/nasadiya">Nasadīya Across Space and Time</a>
-		</h6>
-		<h6 class="tt-c">
-			<a href="/image/bijatobrahman">Bīja to Brahman</a>
-		</h6>
-		<h6 class="tt-c">
-			<a href="/image/realitywall">Reality Wall</a>
-		</h6>
-		<h6 class="tt-c">
-			<a href="/image/wombo">It Began at Wombo</a>
-		</h6>
-		<small class="p-bot-16 p-top-32 bord-top m-top-32" style="color: #10D56C">web dev guides</small>
-		{#if webs && webs.length > 0}
-			{#each webs as item}
-				<h6 class="tt-c">
-					<a href={item.linkpath}>
-						{item.meta.title}
-					</a>
-				</h6>
-			{/each}
-		{/if}
+	<div class="block" style="background-image: url('/images/k-writings.webp')">
+		<h4>
+			<a href="/word">Word</a>
+		</h4>
+	</div>
+	<div class="block" style="background-image: url('/images/k-webdev.webp')">
+		<h4>
+			<a href="/web">Code</a>
+		</h4>
+	</div>
+	<div class="block" style="background-image: url('/images/k-music.webp')">
+		<h4>
+			<a href="/video">Video</a>
+		</h4>
+	</div>
+	<div class="block" style="background-image: url('/images/sveltelowda.webp')">
+		<h4>
+			<a href="/sound">Sound</a>
+		</h4>
+	</div>
+	<div class="block" style="background-image: url('/images/k-images.webp')">
+		<h4>
+			<a href="/image">Image</a>
+		</h4>
 	</div>
 </div>
 
 <style lang="sass">
 
-.pagetwogrid
+.mainpagegrid
 	display: grid
 	grid-auto-flow: row
-	.half
-		grid-area: half
-	.this
-		grid-area: this
-	@media screen and (max-width: 900px)
-		grid-template-columns: 1fr
-		grid-template-areas: "half"
-		padding: 80px 16px 32px 16px
-		.half
-			width: calc(100vw - 64px)
-			h6
-				font-size: 20px
-				padding: 6px 0
-			small
-				font-size: 14px
-		.this
-			display: none
-	@media screen and (max-width: 1023px)
-		grid-template-columns: 1fr 30%
-		grid-template-areas: "half this"
-		padding: 80px 32px 32px 32px
-	@media screen and (min-width: 1024px)
-		grid-template-columns: 1fr 1fr
-		grid-template-areas: "this half"
-		padding: 0 40px 0 0
-		.half
-			text-align: right
-			padding: 32px 8px 32px 0
-		.half, .this
-			height: calc(100vh - 112px)
-		.half
-			overflow-y: scroll
-		.half::-webkit-scrollbar
-			width: 4px
-		.half::-webkit-scrollbar-thumb
-			background: #10D56C
-		.this
-			padding: 40px
+	box-sizing: border-box
 
+.mainpagegrid.ltwo
+	grid-template-columns: 1fr
+	grid-template-areas: "."
+	gap: 8px
+	height: 100%
+	padding-left: 8px
+	padding-right: 8px
+	.block
+		display: flex
+		flex-direction: column
+		height: 20vh
+		background-position: center center
+		background-size: cover
+		justify-content: center
+		align-items: center
+		transition: 0.2s
+		border-radius: 8px
+		h4
+			transition: 0.1s
+			opacity: 1
+			background: rgba(0,0,0,0.6)
+			padding: 4px 8px
+			border: 1px solid rgba(0,0,0,0.6)
+			border-radius: 4px
+			box-shadow: 4px 4px 8px 5px rgba(0,0,0,0.8)
+			text-align: center
+			font-size: 24px
 
+.mainpagegrid.lzero, .mainpagegrid.lone
+	grid-template-columns: 1fr 1fr 1fr
+	grid-template-areas: ". . ."
+	gap: 8px
+	height: calc(100vh - 128px)
+	align-items: center
+	align-content: center
+	.block
+		display: flex
+		flex-direction: column
+		height: calc(50vh - 64px)
+		background-position: center center
+		background-size: cover
+		justify-content: center
+		align-items: center
+		transition: 0.2s
+		border-radius: 8px
+		h4
+			transition: 0.4s
+			opacity: 0
+			background: rgba(0,0,0,0.6)
+			padding: 4px 8px
+			border: 1px solid rgba(0,0,0,0.6)
+			border-radius: 4px
+			box-shadow: 4px 4px 8px 5px rgba(0,0,0,0.8)
+			text-align: center
+		&:hover
+			h4
+				opacity: 1
+				&:hover
+					border: 1px solid white
+					box-shadow: 4px 4px 8px rgba(0,0,0,0.0)
+
+.mainpagegrid
+	&:hover
+		.block
+			filter: saturate(0.1)
+			&:hover
+				filter: saturate(1)
 
 a
 	&:hover
 		color: #10D56C
 
-h6
-	font-weight: 400
-	padding-bottom: 4px
-	color: var(--texttwo)
-	@media screen and (max-width: 1023px)
-		padding-bottom: 8px
+h4
+	font-weight: bold
+	color: white
+	a
+		&:hover
+			color: white
 
 
 </style>

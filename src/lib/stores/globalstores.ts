@@ -51,7 +51,7 @@ export function toggleSide(){
 	}
 }
 
-const storedThemeMode = browser ? JSON.parse(localStorage.getItem('themeMode') || 'false') : false;
+const storedThemeMode = browser ? JSON.parse(localStorage.getItem('themeMode') || 'true') : true;
 
 export const themeMode = writable(storedThemeMode);
 

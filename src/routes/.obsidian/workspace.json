@@ -18,6 +18,14 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e375f1b1ee327609",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
         ]
       }
@@ -149,6 +157,7 @@
   },
   "active": "5ba5e5b5f9ecacc9",
   "lastOpenFiles": [
+    "notepad.md",
     "image/sutaandsuda/+page.svelte",
     "image/sutaandsuda",
     "mycanv.canvas",
@@ -170,13 +179,11 @@
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_d7a1e287-2ad8-468a-8b4c-742ea67f1538.webp",
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_ca9b8083-9580-4de5-bc7a-f21ad7f848ee.webp",
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_bc5524a6-ce35-4a60-a7d2-32ff7fa52739.webp",
-    "notepad.md",
     "web/[post]/+layout.svelte",
     "know/fractal maṇḍala.md",
     "know/42.md",
     "know/dharma.md",
     "Untitled",
-    "api/translate/+server.ts",
     "know/operating system redux.md",
     "know/sanskrit.md",
     "know/documentation.md",

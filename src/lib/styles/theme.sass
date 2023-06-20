@@ -469,6 +469,25 @@ $unit128: 128px
 .transistor-side.invisible
 	opacity: 0
 
+.glass-button
+	border: none
+	position: relative
+	background: none
+	color: var(--texttwo)
+	cursor: pointer
+	font-size: 12px
+	&::after
+		background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgb(255, 255, 255) 50%, rgba(17, 17, 17, 0))
+		position: absolute
+		left: 0
+		bottom: -1px
+		content: ''
+		height: 1px
+		width: 100%
+	&:hover
+		color: #10D56c
+	
+
 .levelzero
 	.glassbutton
 		min-width: 160px

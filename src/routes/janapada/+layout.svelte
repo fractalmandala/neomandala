@@ -1,23 +1,22 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Shell from '$lib/design/ShellTwo.svelte';
-	import { allThea } from '$lib/utils/supastream';
+	import { allJanapada } from '$lib/utils/supastream';
 	import '$lib/styles/tiptap.sass';
 
-	let altgrid = true;
-	let theas: any;
+	let novels: any;
 
 	onMount(async () => {
-		theas = await allThea();
+		novels = await allJanapada();
 	});
 </script>
 
 <Shell>
 	<div slot="side" class="rta-column rowgap50">
-		{#if theas && theas.length > 0}
-			{#each theas as item}
-				<p class="tt-c">
-					<a href="/thea/{item.title}">{item.title}</a>
+		{#if novels && novels.length > 0}
+			{#each novels as item}
+				<p>
+					<a href="/janapada/{item.title}">{item.title}</a>
 				</p>
 			{/each}
 		{/if}

@@ -1,17 +1,47 @@
-import { showChip } from '$lib/stores/modalstores'
+import { createClient } from '@supabase/supabase-js';
+import { showNote } from '$lib/dash/alerts'
 
-import supabase from '$lib/utils/supabase'
+const supabase = createClient(
+	import.meta.env.VITE_SUPATWO_URL,
+	import.meta.env.VITE_SUPATWO_ANON_KEY
+);
 
-export async function signInWithEmail(email:any, password:any) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
-  })
-  if (error) {
-    console.log(error)
-    showChip('invalid!','#fe4a49')
-  } else {
-    showChip('LOGGED IN!','#10D56C')
-    console.log(data)
-  }
+export default supabase;
+
+export async function allJanapada(){
+	const { data, error } = await supabase
+	.from('db-janapada')
+	.select()
+	.order('id')
+	if ( error ) throw new Error(error.message)
+	return data
+}
+
+export async function allThea(){
+	const { data, error } = await supabase
+	.from('db-thea')
+	.select()
+	.order('id')
+	if ( error ) throw new Error(error.message)
+	return data
+}
+
+export async function saveJanapada(content: string, id: number){
+	const { error } = await supabase
+	.from('db-janapada')
+	.update({ content: content })
+	.eq('id', id)
+	if (error) {
+		showNote('error!', true)
+	} else showNote('done!', false)
+}
+
+export async function saveThea(content: string, id: number){
+	const { error } = await supabase
+	.from('db-thea')
+	.update({ content: content })
+	.eq('id', id)
+	if (error) {
+		showNote('error!', true)
+	} else showNote('done!', false)
 }

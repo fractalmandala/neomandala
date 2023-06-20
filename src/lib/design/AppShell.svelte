@@ -140,7 +140,11 @@
 			display: flex
 			flex-direction: column
 			align-items: stretch
-			padding-left: 6vw
+			padding: 0
+			.pagemin
+				width: 100%
+				max-width: 100%
+				padding: 0 !important
 		.rightside
 			display: none
 

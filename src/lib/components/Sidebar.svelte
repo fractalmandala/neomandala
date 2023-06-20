@@ -4,8 +4,9 @@
 	import Close from '$lib/design/iconset/close.svelte';
 	import { clickOutsideAction } from '$lib/utils/clickoutside';
 	import { slide, fly } from 'svelte/transition';
+	import { allJanapada, allThea } from '$lib/utils/supastream';
 	import Acco from '$lib/design/MandAccordionItem.svelte';
-	import { allIndex, featuredWord, allWebdev, allThea, janaPada } from '$lib/utils/localpulls';
+	import { allIndex, featuredWord, allWebdev } from '$lib/utils/localpulls';
 
 	let knows: any;
 	let posts: any;
@@ -38,7 +39,7 @@
 		posts = await featuredWord();
 		webs = await allWebdev();
 		thes = await allThea();
-		novel = await janaPada();
+		novel = await allJanapada();
 	});
 </script>
 
@@ -171,9 +172,12 @@
 								on:click={handleClose}
 								on:keydown={fauxfake}
 							>
+								<div class="itemer ta-r tt-c">
+									<a href="/thea">Main</a>
+								</div>
 								{#each thes as item}
 									<div class="itemer ta-r tt-c">
-										<a href="/thea/{item.meta.title.replace(/\s/g, '')}">{item.meta.title}</a>
+										<a href="/thea/{item.title}">{item.title}</a>
 									</div>
 								{/each}
 							</div>
@@ -188,9 +192,12 @@
 								on:click={handleClose}
 								on:keydown={fauxfake}
 							>
+								<div class="itemer ta-r tt-c">
+									<a href="/janapada">Janapada</a>
+								</div>
 								{#each novel as item}
 									<div class="itemer ta-r tt-c">
-										<a href="/janapada/{item.meta.title.replace(/\s/g, '')}">{item.meta.title}</a>
+										<a href="/janapada/{item.title}">{item.title}</a>
 									</div>
 								{/each}
 							</div>

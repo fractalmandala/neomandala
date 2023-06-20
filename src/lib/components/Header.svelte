@@ -126,10 +126,12 @@
 		</a>
 	</div>
 	<div class="rta-row colgap400 ycenter xend outrow">
+		<a href="/thea">T</a>
+		<a href="/janapada">J</a>
+		<a href="/uicomp">D</a>
 		<button class="blank-button" on:click={handleClick}>
 			<Side />
 		</button>
-
 		<button class="blank-button" on:click={handleSwitch}>
 			{#if $themeMode}
 				<Moon {dimension} />
@@ -142,6 +144,13 @@
 
 <style lang="sass">
 
+.outrow
+	a
+		margin-bottom: 4px
+		color: var(--texttwo)
+		font-size: 18px
+		&:hover
+			color: #10D56C
 
 .logo
 	cursor: pointer

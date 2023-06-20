@@ -163,6 +163,7 @@
 						<a class="titular" href="/dashboard">Dash</a>
 						<a class="titular" href="/bot">Bot</a>
 					</div>
+					<a class="titular blank-button ta-r" href="/uicomp">Design</a>
 					<button class="titular blank-button" on:click={() => toggleOn(5)}>Thea</button>
 					{#if isOn[5]}
 						{#if thes && thes.length > 0}

@@ -8,7 +8,10 @@
 		pageTitle,
 		pageDescription,
 		pageUrl,
-		shareImage
+		shareImage,
+		noteName,
+		showSave,
+		hideSave
 	} from '$lib/stores/globalstores';
 	import Social from '$lib/components/SocialShare.svelte';
 	import { page } from '$app/stores';
@@ -20,6 +23,13 @@
 
 	export let data;
 
+	let fuller = data.type + ' | ' + data.tags;
+
+	$: if (data) {
+		$noteName = data.title;
+		showSave(fuller);
+	}
+
 	$pageTitle = data.title;
 	$pageDescription = data.description;
 	$shareImage =
@@ -27,7 +37,13 @@
 	$pageUrl = 'https://www.fractalmandala.in' + $page.url.pathname;
 
 	onMount(() => {
+		$noteName = data.title;
 		Prism.highlightAll();
+	});
+
+	onDestroy(() => {
+		$noteName = '';
+		hideSave();
 	});
 </script>
 
@@ -40,14 +56,10 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="thisguy rta-column xcenter ycenter null p-top-64 rowgap100 grot">
-		<h3 class="ta-c tt-u bord-bot p-bot-32">{data.title}</h3>
-		<div class="rta-row">
-			<small><span style="color: #10D56C">{data.type}</span> | {data.tags}</small>
-		</div>
+	<div class="thisguy rta-column xcenter ycenter null rowgap100 grot">
 		<Social />
 	</div>
-	<div class="rta-column x101 p-top-32">
+	<div class="rta-column x101">
 		<div class="blogger">
 			<svelte:component this={data.content} />
 		</div>

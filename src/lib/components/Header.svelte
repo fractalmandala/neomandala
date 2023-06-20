@@ -7,9 +7,10 @@
 		breakOne,
 		breakTwo,
 		pageTitle,
-		toggleSide
+		toggleSide,
+		noteName
 	} from '$lib/stores/globalstores';
-	import { clickOutsideAction } from '$lib/utils/clickoutside';
+	import SaveModal from '$lib/components/SaveModal.svelte';
 	import { slide } from 'svelte/transition';
 	import Moon from '$lib/design/iconset/moon.svelte';
 	import Sun from '$lib/design/iconset/sun.svelte';
@@ -125,6 +126,10 @@
 			{/each}
 		</a>
 	</div>
+	<div class="conditional rta-row between">
+		<div class="notename">{$noteName}</div>
+		<SaveModal />
+	</div>
 	<div class="rta-row colgap400 ycenter xend outrow">
 		<a href="/thea">T</a>
 		<a href="/janapada">J</a>
@@ -143,6 +148,10 @@
 </div>
 
 <style lang="sass">
+
+.notename
+	font-size: 20px
+	text-transform: uppercase
 
 .outrow
 	a
@@ -205,10 +214,14 @@
 .fm-header.levelzero, .fm-header.levelone
 	padding-left: 40px
 	padding-right: 40px
+	.conditional
+		width: 50%
 
 .fm-header.leveltwo
 	padding-left: 16px
 	padding-right: 16px
+	.conditional
+		display: none
 
 .logo
 	font-family: 'Space Grotesk', sans-serif

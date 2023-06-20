@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { cubicOut, circInOut, quintOut, quadIn } from 'svelte/easing';
-	import { fly } from 'svelte/transition';
+	import { fly, scale } from 'svelte/transition';
 	import { themeMode } from '$lib/stores/globalstores';
 	import type { FadeParams } from 'svelte/transition';
 
@@ -37,16 +37,19 @@
 </script>
 
 <div
-	in:fly={{ delay: 450, duration: 400, y: -900, easing: quintOut }}
-	out:fly={{ delay: 0, duration: 400, y: 900, easing: quadIn }}
+	in:scale={{ delay: 250, duration: 400, easing: quintOut }}
+	out:scale={{ delay: 0, duration: 400, easing: quadIn }}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
-	class="minH"
+	class="minu"
 >
 	<slot />
 </div>
 
 <style lang="sass">
+
+.minu
+	height: 100%
 
 .light
 	background: #FFFFFF

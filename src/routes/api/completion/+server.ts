@@ -10,32 +10,14 @@ export const config = {
 	runtime: 'edge'
 };
  
-// Build a prompt from the messages
-// Note: this is specific to the OpenAssistant model we're using
-// @see https://huggingface.co/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5#prompting
-function buildOpenAssistantPrompt(
-  messages: { content: string; role: 'system' | 'user' | 'assistant' }[]
-) {
-  return (
-    messages
-      .map(({ content, role }) => {
-        if (role === 'user') {
-          return `<|prompter|>${content}<|endoftext|>`
-        } else {
-          return `<|assistant|>${content}<|endoftext|>`
-        }
-      })
-      .join('') + '<|assistant|>'
-  )
-}
- 
-export async function POST(req: Request) {
+
+export async function POST({ request }) {
   // Extract the `messages` from the body of the request
-  const { messages } = await req.json()
+  const { prompt } = await request.json()
  
   const response = Hf.textGenerationStream({
-    model: 'OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5',
-    inputs: buildOpenAssistantPrompt(messages),
+    model: 'OpenAssistant/oasst-sft-6-llama-30b',
+    inputs: prompt,
     parameters: {
       max_new_tokens: 200,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment

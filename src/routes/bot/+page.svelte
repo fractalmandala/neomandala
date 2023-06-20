@@ -1,13 +1,20 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { SSE } from 'sse.js';
-	import { createLocalStorageStore, chatSessions } from '$lib/gpt/chatstore';
+	import { page } from '$app/stores';
+	import ModOpenAI from '$lib/gpt/ModOpenAI.svelte';
+	import Mod2 from '$lib/gpt/ModOpenAI.svelte';
+	import Mod3 from '$lib/gpt/ModOpenAI.svelte';
+	import type { PageData } from './$types';
+	import { chatSessions } from '$lib/gpt/chatstore';
 	import { browser } from '$app/environment';
-	import type { ChatSession } from '$lib/gpt/chatstore';
+	import { thisPrompt, thisSession } from '$lib/stores/globalstores';
+	import type { ChatSession, Message } from '$lib/gpt/chatstore';
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
-	import type { Message } from '$lib/gpt/chatstore';
 	import type { ChatCompletionRequestMessage } from 'openai';
 	import Send from '$lib/design/iconset/send.svelte';
+
+	export let data;
 	let session: ChatSession | undefined;
 	let scrollContainer: HTMLElement;
 	let chatMessages: ChatCompletionRequestMessage[] = [];
@@ -15,7 +22,11 @@
 	let answer = '';
 	let query = '';
 	let loading = false;
-	let fake = false;
+
+	$: ({ testTable, session } = data);
+
+	$: $thisSession = session.id;
+	$: $thisPrompt = session.prompt;
 
 	$: if (browser) {
 		if (scrollContainer) {
@@ -54,10 +65,7 @@
 						answer: answer,
 						timestamp: new Date().toISOString()
 					};
-
-					// update the session with new message
 					updateMessagesInSession(chatIdToAddMessage, newMessage);
-
 					console.log(chatIdToAddMessage);
 					return;
 				}
@@ -73,28 +81,6 @@
 		eventSource.stream();
 	};
 
-	// The function to update messages in a specific session
-	const updateMessagesInSession = (sessionId: string, newMessage: Message) => {
-		const sessionToUpdateIndex = $chatSessions.findIndex((session) => session.id === sessionId);
-
-		// If the session is found in the array
-		if (sessionToUpdateIndex !== -1) {
-			// Clone the session to avoid mutating it directly
-			const sessionToUpdate = { ...$chatSessions[sessionToUpdateIndex] };
-
-			// Update the messages array
-			sessionToUpdate.messages = [...sessionToUpdate.messages, newMessage];
-
-			// Replace the session in the array with the updated session
-			chatSessions.update((sessions) => {
-				sessions[sessionToUpdateIndex] = sessionToUpdate;
-				return sessions;
-			});
-		} else {
-			console.error(`Session with id ${sessionId} not found`);
-		}
-	};
-
 	export function handleError<T>(err: T) {
 		loading = false;
 		query = '';
@@ -103,15 +89,27 @@
 	}
 </script>
 
-<div class="thisguy" data-lenis-prevent>
+<div class="thisguys rta-column" data-lenis-prevent>
 	<div class="rta-column areaofchat">
 		<div class="grot scrollbox" bind:this={scrollContainer}>
+			{#if $chatSessions && $chatSessions.length > 0}
+				{#each $chatSessions as item}
+					{#if item.id === $thisSession}
+						{#each item.messages as mess}
+							{#if mess.query !== 'init'}
+								<div class="userclass ta-r bord-top p-top-16 p-bot-16">
+									<Mod2 role={'user'} content={mess.query} greying={true} />
+								</div>
+								<div class="agentclass bord-top p-top-16 p-bot-16">
+									<Mod3 role={'assistant'} content={mess.answer} />
+								</div>
+							{/if}
+						{/each}
+					{/if}
+				{/each}
+			{/if}
 			{#each chatMessages as message}
-				<div class="rta-column null">
-					<div class="rta-column userquery null">
-						<pre><b>{message.role} - </b>{message.content}</pre>
-					</div>
-				</div>
+				<ModOpenAI role={message.role} content={message.content} />
 			{/each}
 			{#if answer}
 				<div class="rta-column null agentanswer">
@@ -131,7 +129,7 @@
 		<textarea bind:value={query} use:textareaAutosizeAction data-lenis-prevent />
 		{#if session !== undefined}
 			<button class="blank-button" on:click={() => submitInput(session.id)}>
-				<Send color={'#10D56C'} dimension={18} />
+				<Send color={'#878787'} dimension={18} />
 			</button>
 		{/if}
 	</form>
@@ -139,28 +137,41 @@
 
 <style lang="sass">
 
-.thisguy
+.thisguys
 	position: relative
 	@media screen and (min-width: 1024px)
-		height: calc(100vh - 240px)
+		height: calc(100vh - 200px)
 		overflow-y: scroll
+		align-items: center
 
 .areaofchat
 	@media screen and (min-width: 1024px)
-		width: 620px
+		width: 720px
 		height: calc(100% - 64px)
 		overflow-y: scroll
+	@media screen and (max-width: 1023px)
+		max-width: 640px
 
 .thisforminput
 	position: absolute
 	bottom: 0
-	left: 0
-	width: 620px !important
+	width: 720px !important
+	align-items: center
+	min-height: 48px
 	min-width: 620px
 	column-gap: 8px
+	background: var(--background)
+	border-radius: 8px
+	.blank-button
+		height: 32px
+		margin-top: 4px
 	textarea
-		width: 588px
+		background: transparent
+		width: calc(100% - 42px)
 		min-height: 48px
+		border: none
+		padding: 4px 8px
+		font-family: 'Space Grotesk', sans-serif
 
 .agentanswer
 	pre

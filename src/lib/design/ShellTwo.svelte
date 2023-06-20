@@ -23,14 +23,16 @@
 	@media screen and (min-width: 1024px)
 		grid-template-columns: 280px 1fr
 		grid-template-areas: "left prime"
+		min-height: calc(100vh - 160px)
 		.shell-l
-			min-height: calc(100vh - 112px)
+			height: calc(100vh - 112px)
 			position: sticky
 			top: 56px
 			padding: 40px
 			border-right: 1px solid var(--contraster)
 		.shell-m
 			padding: 40px
+			min-height: calc(100vh - 160px)
 	@media screen and (max-width: 1023px)
 		grid-template-columns: 1fr
 		grid-template-areas: "prime"

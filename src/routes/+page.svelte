@@ -12,14 +12,15 @@
 		pageTitle,
 		pageDescription,
 		shareImage,
-		pageUrl
+		pageUrl,
+		thisSession,
+		thisPrompt
 	} from '$lib/stores/globalstores';
 	import { mouseStore } from '$lib/stores/mousestore';
 	let ref: HTMLElement | null = null;
 	const position = mouseStore();
 	let x = 0;
 	let y = 0;
-
 	let temp = 0;
 	let tomp = 0;
 	let rafId: any;

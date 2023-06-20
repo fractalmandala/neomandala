@@ -13,6 +13,27 @@ export const pageImage = writable('/images/cheggit.webp')
 export const shareImage = writable('https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp')
 export const pageUrl = writable('https://www.fractalmandala.in')
 export const thisChap = writable('')
+export const thisSession = writable('')
+export const thisPrompt = writable('')
+export const noteName = writable('')
+
+const initialSave = {
+	isShown: false,
+	text: ''
+}
+export const saveStore = writable(initialSave)
+
+export function showSave(text:string) {
+	saveStore.update((state) => ({ ...state, isShown: true, text }));
+}
+
+export function hideSave() {
+	saveStore.update((state) => ({
+		...state,
+		isShown: false,
+		text: ''
+	}));
+}
 
 export const scrollY = writable(0);
 

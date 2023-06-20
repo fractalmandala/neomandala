@@ -2,7 +2,14 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { saveThea } from '$lib/utils/supastream';
 	import { marked } from 'marked';
-	import { breakZero, breakOne, breakTwo } from '$lib/stores/globalstores';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		noteName,
+		showSave,
+		hideSave
+	} from '$lib/stores/globalstores';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import { Markdown } from 'tiptap-markdown';
@@ -22,6 +29,11 @@
 
 	async function handleSave() {
 		saveThea(markdownOutput, data.id);
+	}
+
+	$: if (data) {
+		$noteName = data.title;
+		showSave('SAVE');
 	}
 
 	onMount(() => {
@@ -50,6 +62,8 @@
 		if (editor) {
 			editor.destroy();
 		}
+		$noteName = '';
+		hideSave();
 	});
 </script>
 
@@ -59,36 +73,18 @@
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
 >
-	<div class="rta-row between ycenter m-bot-16 titleshitle">
-		<h4>{data.title}</h4>
-		<button class="glass-button" on:click={handleSave}>Save</button>
-	</div>
 	<div bind:this={element} />
 </div>
 
 <style lang="sass">
 
-.titleshitle
-	background: var(--this)
-	z-index: 500
-
-h4
-	margin-top: 0
-	padding-top: 8px
-	border-top: none
-	color: var(--texttwo)
-
 .stories
 	width: 100vw
 
 .stories.lzero
-	padding-top: 32px
 	padding-bottom: 64px
 	width: 680px
 	margin-left: calc(25vw - 240px)
-	.titleshitle
-		position: sticky
-		top: 54px
 
 .stories.ltwo, .stories.lone
 	padding: 32px

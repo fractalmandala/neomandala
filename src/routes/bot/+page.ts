@@ -13,7 +13,7 @@ export const load: PageLoad = async ({ parent }) => {
 		a: 'signed in',
 		in: true,
 		testTable,
-		user: session.user,
-		sessionID: session
+		supabase, 
+		session, 
 	};
 };

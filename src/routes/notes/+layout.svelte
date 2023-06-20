@@ -14,6 +14,9 @@
 
 <Shell>
 	<div slot="side" class="rta-column rowgap50">
+		<p class="tt-u">
+			<a href="/notes">Notes</a>
+		</p>
 		{#if theas && theas.length > 0}
 			{#each theas as item}
 				<p class="tt-c">

@@ -64,8 +64,6 @@
 	class:lzero={$breakZero}
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
-	class:light={$themeMode}
-	class:dark={!$themeMode}
 >
 	<div
 		class="block"
@@ -99,9 +97,12 @@
 			<a href="/image/nasadiya">Nāsadīya Across Space and Time</a>
 		</h5>
 	</div>
-	<div class="block" style="background-image: url('/images/bijamin.webp')">
+	<div
+		class="block"
+		style="background-image: url('https://rnfvzaelmwbbvfbsppir.supabase.co/storage/v1/object/public/brhatwebsite/13scrolls/midmap2.webp')"
+	>
 		<h5>
-			<a href="/image/bijatobrahman">Bīja to Brahman</a>
+			<a href="/image/aryavarta">Āryavarta</a>
 		</h5>
 	</div>
 	<div class="block" style="background-image: url('/images/realitywall.webp')">
@@ -177,6 +178,8 @@
 		transition: 0.2s
 		border-radius: 8px
 		padding: 16px
+		border: 2px solid transparent
+		transform-origin: center center
 		h5
 			transition: 0.4s
 			opacity: 0
@@ -187,6 +190,7 @@
 			box-shadow: 4px 4px 8px 5px rgba(0,0,0,0.8)
 			text-align: center
 		&:hover
+			border: 2px solid var(--default)
 			h5
 				opacity: 1
 				&:hover

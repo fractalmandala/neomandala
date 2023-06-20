@@ -131,6 +131,7 @@
 		<SaveModal />
 	</div>
 	<div class="rta-row colgap400 ycenter xend outrow">
+		<a href="/notes">N</a>
 		<a href="/thea">T</a>
 		<a href="/janapada">J</a>
 		<a href="/uicomp">D</a>

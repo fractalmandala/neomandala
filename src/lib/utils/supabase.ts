@@ -36,6 +36,16 @@ export async function psyImages2() {
 	return data;
 }
 
+export async function aryaImages() {
+	const { data, error } = await supabase
+		.from('amrit-psygall')
+		.select()
+		.eq('chapter',3)
+		.order('id')
+	if (error) throw new Error(error.message);
+	return data;
+}
+
 
 export async function supaImages(low: number, top: number) {
 	const { data, error } = await supabase

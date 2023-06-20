@@ -4,7 +4,7 @@
 	import { allNotes } from '$lib/dash/db';
 	import { chatSessions } from '$lib/gpt/chatstore';
 	import BotUtil from '$lib/dash/BotUtil.svelte';
-	import Shell from '$lib/design/AppShell.svelte';
+	import Shell from '$lib/design/ShellTwo.svelte';
 	import { janaPada, allWebdev } from '$lib/utils/localpulls';
 	import { notesDiary } from '$lib/dash/notesutil';
 	import { toDo, gptTitles } from '$lib/utils/supabase';
@@ -70,7 +70,7 @@
 </script>
 
 <Shell>
-	<div slot="left" class="rta-column onleft" data-lenis-prevent>
+	<div slot="side" class="rta-column onleft" data-lenis-prevent>
 		<div class="forheight rta-column rowgap100">
 			<div class="rta-row ycenter colgap100 buttonschoice bord-bot p-bot-16">
 				<a class="blank-button" href="/pad">
@@ -184,19 +184,6 @@
 	<div slot="main" class="rta-column">
 		<slot />
 	</div>
-	<div class="rta-column rowgap200 fullW" slot="right">
-		<NotesForm />
-		<div class="rta-column listitems bord-top p-top-16 p-bot-16 xleft">
-			{#if items && items.length > 0}
-				{#each items as item}
-					<label>
-						<input type="checkbox" />
-						{item.title}
-					</label>
-				{/each}
-			{/if}
-		</div>
-	</div>
 </Shell>
 
 <style lang="sass">
@@ -216,7 +203,5 @@ p a
 .forheight p
 	font-size: 14px
 
-label
-	color: var(--texttwo)
 
 </style>

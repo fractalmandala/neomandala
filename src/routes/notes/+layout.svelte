@@ -1,24 +1,26 @@
 <script lang="ts">
-	import Shell from '$lib/design/AppShell.svelte';
-	import { allWriteups } from '$lib/dash/notesutil';
-	import Acco from '$lib/design/MandAccordionItem.svelte';
-	import Acco2 from '$lib/design/MandAccordionItem.svelte';
+	import { onMount } from 'svelte';
+	import Shell from '$lib/design/ShellTwo.svelte';
+	import { allNotes } from '$lib/utils/supastream';
+	import '$lib/styles/tiptap.sass';
 
 	let altgrid = true;
+	let theas: any;
+
+	onMount(async () => {
+		theas = await allNotes();
+	});
 </script>
 
-<Shell {altgrid}>
-	<div slot="left" class="rta-column rowgap100 onleft" data-lenis-prevent class:small={altgrid}>
-		<Acco>
-			Janapada
-			<div slot="body" class="rta-column">
-				{#if $allWriteups && $allWriteups.length > 0}
-					{#each $allWriteups as item}
-						<a href="/jp/{item.title}"><p>{item.title}</p></a>
-					{/each}
-				{/if}
-			</div>
-		</Acco>
+<Shell>
+	<div slot="side" class="rta-column rowgap50">
+		{#if theas && theas.length > 0}
+			{#each theas as item}
+				<p class="tt-c">
+					<a href="/notes/{item.title}">{item.title}</a>
+				</p>
+			{/each}
+		{/if}
 	</div>
 	<div slot="main" class="rta-column">
 		<slot />
@@ -27,9 +29,8 @@
 
 <style lang="sass">
 
-a 
-	p
-		font-size: 14px
+p a
+	color: var(--texttwo)
 	&:hover
 		color: #10D56C
 

@@ -1,9 +1,9 @@
 {
   "accentColor": "#08af59",
-  "theme": "obsidian",
-  "cssTheme": "Minimal",
+  "theme": "moonstone",
+  "cssTheme": "Sanctum",
   "interfaceFontFamily": "Space Grotesk",
   "textFontFamily": "Space Grotesk",
   "monospaceFontFamily": "JetBrains Mono",
-  "baseFontSize": 10
+  "baseFontSize": 14
 }

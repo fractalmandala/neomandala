@@ -1,52 +1,35 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { HfInference } from '@huggingface/inference';
-import { HuggingFaceStream, StreamingTextResponse } from 'ai';
-const Hf = new HfInference(process.env.HF_ACCESS_TOKEN);
+import { Configuration, OpenAIApi } from 'openai-edge'
+import { OpenAIStream, StreamingTextResponse } from 'ai'
+import { VITE_OPENAI_API_KEY } from '$env/static/private';
+// You may want to replace the above with a static private env variable
+// for dead-code elimination and build-time type-checking:
+// import { OPENAI_API_KEY } from '$env/static/private'
+
 import type { RequestHandler } from './$types'
 
-export const config = {
-	runtime: 'edge'
-};
- 
-// Build a prompt from the messages
-// Note: this is specific to the OpenAssistant model we're using
-// @see https://huggingface.co/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5#prompting
-function buildOpenAssistantPrompt(
-  messages: { content: string; role: 'system' | 'user' | 'assistant' }[]
-) {
-  return (
-    messages
-      .map(({ content, role }) => {
-        if (role === 'user') {
-          return `<|prompter|>${content}<|endoftext|>`;
-        } else {
-          return `<|assistant|>${content}<|endoftext|>`;
-        }
-      })
-      .join('') + '<|assistant|>'
-  );
-}
- 
+// Create an OpenAI API client
+const config = new Configuration({
+  apiKey: VITE_OPENAI_API_KEY
+})
+const openai = new OpenAIApi(config)
+
 export const POST = (async ({ request }) => {
-  // Extract the `messages` from the body of the request
-  const { messages } = await request.json();
- 
-  const response = Hf.textGenerationStream({
-    model: 'OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5',
-    inputs: buildOpenAssistantPrompt(messages),
-    parameters: {
-      max_new_tokens: 200,
-      // @ts-ignore (this is a valid parameter specifically in OpenAssistant models)
-      typical_p: 0.2,
-      repetition_penalty: 1,
-      truncate: 1000,
-      return_full_text: false,
-    },
-  });
- 
+  // Extract the `prompt` from the body of the request
+  const { messages } = await request.json()
+
+  // Ask OpenAI for a streaming chat completion given the prompt
+  const response = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo',
+    stream: true,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    messages: messages.map((message: any) => ({
+      content: message.content,
+      role: message.role
+    }))
+  })
+
   // Convert the response into a friendly text-stream
-  const stream = HuggingFaceStream(response);
- 
+  const stream = OpenAIStream(response)
   // Respond with the stream
-  return new StreamingTextResponse(stream);
+  return new StreamingTextResponse(stream)
 }) satisfies RequestHandler

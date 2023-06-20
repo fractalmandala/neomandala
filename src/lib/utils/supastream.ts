@@ -26,6 +26,15 @@ export async function allThea(){
 	return data
 }
 
+export async function allNotes(){
+	const { data, error } = await supabase
+	.from('db-notes')
+	.select()
+	.order('id')
+	if ( error ) throw new Error(error.message)
+	return data
+}
+
 export async function saveJanapada(content: string, id: number){
 	const { error } = await supabase
 	.from('db-janapada')
@@ -39,6 +48,16 @@ export async function saveJanapada(content: string, id: number){
 export async function saveThea(content: string, id: number){
 	const { error } = await supabase
 	.from('db-thea')
+	.update({ content: content })
+	.eq('id', id)
+	if (error) {
+		showNote('error!', true)
+	} else showNote('done!', false)
+}
+
+export async function saveNote(content: string, id: number){
+	const { error } = await supabase
+	.from('db-notes')
 	.update({ content: content })
 	.eq('id', id)
 	if (error) {

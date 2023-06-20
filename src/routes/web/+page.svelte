@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="rta-grid grid2 colgap400 rowgap400 x00"
+	class="rta-grid grid3 colgap400 rowgap400 x00"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -36,7 +36,7 @@
 	{#if pens && pens.length > 0}
 		{#each pens as item}
 			<a class="rta-column ybetween grot ticket" href={item.linkpath}>
-				<h5 class="white tt-c hover">{item.meta.id} - {item.meta.title}</h5>
+				<h6 class="white tt-c hover">{item.meta.id} - {item.meta.title}</h6>
 				<small>{item.meta.type} | {item.meta.tags}</small>
 			</a>
 		{/each}
@@ -63,8 +63,10 @@
 	padding: 16px
 	small
 		color: var(--greyish)
+	h6
+		color: var(--background)
 	&:hover
-		h5
+		h6
 			color: #10D56C
 
 .dark

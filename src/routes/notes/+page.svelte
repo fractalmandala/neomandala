@@ -65,7 +65,7 @@
 </script>
 
 <div
-	class="grot stories rta-column rowgap300"
+	class="grot storex rta-column rowgap300"
 	class:lzero={$breakZero}
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
@@ -74,7 +74,7 @@
 		<input type="text" bind:value={title} placeholder={title} />
 		<button on:click={newNote}>Save</button>
 	</div>
-	<div class="myguy" bind:this={element} />
+	<div class="notesguy" bind:this={element} />
 </div>
 
 <style lang="sass">

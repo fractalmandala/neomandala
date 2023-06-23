@@ -131,10 +131,10 @@
 		<SaveModal />
 	</div>
 	<div class="rta-row colgap400 ycenter xend outrow">
-		<a href="/notes">N</a>
-		<a href="/thea">T</a>
-		<a href="/janapada">J</a>
-		<a href="/uicomp">D</a>
+		<a class="loner" href="/notes">N</a>
+		<a class="loner" href="/thea">T</a>
+		<a class="loner" href="/janapada">J</a>
+		<a class="loner" href="/uicomp">D</a>
 		<button class="blank-button" on:click={handleClick}>
 			<Side />
 		</button>
@@ -149,6 +149,10 @@
 </div>
 
 <style lang="sass">
+
+.leveltwo
+	.loner
+		display: none
 
 .notename
 	font-size: 20px

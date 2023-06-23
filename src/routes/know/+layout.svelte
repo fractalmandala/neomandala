@@ -88,7 +88,6 @@
 		z-index: 1000
 		background: var(--this)
 		padding: 16px
-		border-bottom: 1px solid var(--textone)
 
 .inside, .sectionrest
 	p a

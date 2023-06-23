@@ -14,7 +14,7 @@
 	</button>
 
 	{#if rotated}
-		<div class="accordion-body ta-l" transition:slide={{ duration: 400 }}>
+		<div class="accordion-body ta-l" transition:slide|global={{ duration: 400 }}>
 			<slot name="body" />
 		</div>
 	{/if}

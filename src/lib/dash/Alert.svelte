@@ -28,7 +28,7 @@
 {#if isShown}
 	<div
 		class="chipper rta-column rowgap100 null"
-		transition:fly={{ x: 160 }}
+		transition:fly|global={{ x: 160 }}
 		class:light={$themeMode}
 		class:dark={!$themeMode}
 	>

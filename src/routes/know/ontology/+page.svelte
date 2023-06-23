@@ -64,7 +64,7 @@
 	{#if galls && galls.length > 0}
 		{#each galls as item, i}
 			{#if isOn[i]}
-				<div class="rta-column grot" transition:slide>
+				<div class="rta-column grot" transition:slide|global>
 					<h4 style="margin: 0; padding-bottom: 16px; color: var(--background)">{item.category}</h4>
 					<div class="rta-row bord-bot p-bot-16">
 						<small style="color: var(--background)">{item.evocation}</small>

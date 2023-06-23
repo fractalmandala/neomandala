@@ -51,7 +51,7 @@
 
 <div
 	class="rta-column rowgap200 null cutthis"
-	transition:slide
+	transition:slide|global
 	class:dark={!$themeMode}
 	class:light={$themeMode}
 	class:levelzero={$breakZero}
@@ -61,7 +61,7 @@
 	{#each blocks as block}
 		{#if block.type === 'text'}
 			<div class="rta-column nocodeparent">
-				<pre class="grey" transition:slide>{block.content}</pre>
+				<pre class="grey" transition:slide|global>{block.content}</pre>
 			</div>
 		{:else}
 			<div class="rta-column codeparent">

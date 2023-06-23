@@ -48,7 +48,7 @@
 		class="overlay"
 		class:light={$themeMode}
 		class:dark={!$themeMode}
-		transition:slide={{ axis: 'x', duration: 600 }}
+		transition:slide|global={{ axis: 'x', duration: 600 }}
 	>
 		{#if $sideMode}
 			<div
@@ -56,7 +56,7 @@
 				data-lenis-prevent
 				use:clickOutsideAction
 				on:clickOutside={handleClose}
-				transition:slide={{ axis: 'x', duration: 600 }}
+				transition:slide|global={{ axis: 'x', duration: 600 }}
 			>
 				<div class="rta-row xend m-bot-16">
 					<button class="blank-button" on:click={handleClose}>
@@ -68,7 +68,7 @@
 					{#if knows && knows.length > 0}
 						<div
 							class="rta-column rowgap100 p-bot-32"
-							transition:slide
+							transition:slide|global
 							on:click={handleClose}
 							on:keydown={fauxfake}
 						>
@@ -87,7 +87,7 @@
 					{#if posts && posts.length > 0}
 						<div
 							class="rta-column rowgap100 p-bot-32"
-							transition:slide
+							transition:slide|global
 							on:click={handleClose}
 							on:keydown={fauxfake}
 						>
@@ -106,7 +106,7 @@
 					{#if webs && webs.length > 0}
 						<div
 							class="rta-column rowgap100 p-bot-32"
-							transition:slide
+							transition:slide|global
 							on:click={handleClose}
 							on:keydown={fauxfake}
 						>
@@ -124,7 +124,7 @@
 				{#if isOn[4]}
 					<div
 						class="rta-column rowgap100 p-bot-32"
-						transition:slide
+						transition:slide|global
 						on:click={handleClose}
 						on:keydown={fauxfake}
 					>
@@ -169,7 +169,7 @@
 						{#if thes && thes.length > 0}
 							<div
 								class="rta-column rowgap100 p-bot-32"
-								transition:slide
+								transition:slide|global
 								on:click={handleClose}
 								on:keydown={fauxfake}
 							>
@@ -189,7 +189,7 @@
 						{#if novel && novel.length > 0}
 							<div
 								class="rta-column rowgap100 p-bot-32"
-								transition:slide
+								transition:slide|global
 								on:click={handleClose}
 								on:keydown={fauxfake}
 							>
@@ -231,7 +231,7 @@
 	@media screen and (min-width: 1024px)
 		font-size: 32px
 	@media screen and (max-width: 1023px)
-		font-size: 32px
+		font-size: 24px
 
 @keyframes lining
 	0%

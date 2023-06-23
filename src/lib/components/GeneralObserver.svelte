@@ -43,11 +43,11 @@
 
 <div bind:this={root} data-testid="general-observer">
 	{#if disable_observer}
-		<div transition:fade>
+		<div transition:fade|global>
 			<slot />
 		</div>
 	{:else if loaded}
-		<div transition:fade>
+		<div transition:fade|global>
 			<slot />
 		</div>
 	{/if}

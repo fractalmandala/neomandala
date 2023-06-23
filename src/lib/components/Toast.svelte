@@ -38,7 +38,7 @@
 </script>
 
 {#if isShown}
-<div class="toast rta-column rowgap100 null" transition:fly={{ x: 200 }} use:clickOutsideAction on:clickOutside={handleCloseClick}>
+<div class="toast rta-column rowgap100 null" transition:fly|global={{ x: 200 }} use:clickOutsideAction on:clickOutside={handleCloseClick}>
     <div class="rta-row fullW between ytop">
         <div class="rta-row colgap100 ycenter">
             <Info dimension={dimension}/>

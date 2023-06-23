@@ -33,7 +33,7 @@
 </script>
 
 {#if isShown}
-<div class="toast-overlay rta-row"  transition:fly={{ y: -200 }} use:clickOutsideAction on:clickOutside={handleCloseClick}>
+<div class="toast-overlay rta-row"  transition:fly|global={{ y: -200 }} use:clickOutsideAction on:clickOutside={handleCloseClick}>
 <div class="toast rta-column rowgap100 null">
     <div class="rta-row fullW between ytop">
         <div class="rta-row colgap100 ycenter">

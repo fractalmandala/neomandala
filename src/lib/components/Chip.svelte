@@ -37,7 +37,7 @@
 </script>
 
 {#if isShown}
-<div class="chip rta-column rowgap100 null" transition:fly={{ y: -160 }} use:clickOutsideAction on:clickOutside={handleCloseClick}>
+<div class="chip rta-column rowgap100 null" transition:fly|global={{ y: -160 }} use:clickOutsideAction on:clickOutside={handleCloseClick}>
         <div class="rta-column rowgap50 xcenter actualchip ycenter">
             <Info dimension={dimension} color={color}/>
             <small>{title}</small>

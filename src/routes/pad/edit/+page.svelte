@@ -36,7 +36,7 @@
 	{#if $notesDiary && $notesDiary.length > 0}
 		{#each $notesDiary as note, i}
 			{#if isNote[i]}
-				<div class="opened p-top-32 bord-bot p-bot-64 p-all-16" transition:slide>
+				<div class="opened p-top-32 bord-bot p-bot-64 p-all-16" transition:slide|global>
 					<div class="rta-row null p-top-32 ycenter">
 						<div class="thecirc" />
 						<div class="grot null">

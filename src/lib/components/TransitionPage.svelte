@@ -37,8 +37,8 @@
 </script>
 
 <div
-	in:scale={{ delay: 250, duration: 400, easing: quintOut }}
-	out:scale={{ delay: 0, duration: 400, easing: quadIn }}
+	in:scale|global={{ delay: 250, duration: 400, easing: quintOut }}
+	out:scale|global={{ delay: 0, duration: 400, easing: quadIn }}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 	class="minu"

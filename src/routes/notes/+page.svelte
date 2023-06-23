@@ -79,7 +79,7 @@
 
 <style lang="sass">
 
-.myguy
+.notesguy
 	position: relative
 	border-radius: 5px 0 0 0
 	padding: 8px
@@ -102,16 +102,16 @@
 		height: 64px
 		width: 1px
 
-.stories
+.storex
 	width: 100vw
 
-.stories.lzero
+.storex.lzero
 	padding-top: 32px
 	padding-bottom: 64px
 	width: 680px
 	margin-left: calc(25vw - 240px)
 
-.stories.ltwo, .stories.lone
+.storex.ltwo, .storex.lone
 	padding: 32px
 
 </style>

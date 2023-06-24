@@ -1,10 +1,4 @@
 <script lang="ts">
-	import { onMount, afterUpdate } from 'svelte';
-	import supabase from '$lib/utils/supabase';
-	import Box from '$lib/design/iconset/box.svelte';
-	import StarterKit from '@tiptap/starter-kit';
-	import { Editor } from '@tiptap/core';
-	import NewIndex from '$lib/dash/NewIndex.svelte';
 	import {
 		indexName,
 		indexCategory,
@@ -16,17 +10,8 @@
 		pageUrl
 	} from '$lib/stores/globalstores';
 
-	let element: any;
-	let editor: any;
-	let name = 'name';
-	let content = '';
-	let image = 'image';
-	let links = '';
-	let tags = 'tags';
-	let synapse = '';
-	let slug = 'slug';
-
 	$indexCategory = '';
+	$indexName = '';
 	$indexLinks = {};
 	$indexTags = '';
 	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
@@ -34,33 +19,6 @@
 	$pageUrl = 'https://www.fractalmandala.in/know';
 	$shareImage =
 		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
-
-	function handleTitleFocus() {
-		name = '';
-	}
-
-	function handleTagsFocus() {
-		tags = '';
-	}
-
-	onMount(() => {
-		editor = new Editor({
-			element: element,
-			extensions: [StarterKit],
-			content: '',
-			parseOptions: {
-				preserveWhitespace: 'full'
-			},
-			onTransaction: () => {
-				// force re-render so `editor.isActive` works as expected
-				editor = editor;
-			}
-		});
-	});
-
-	afterUpdate(() => {
-		content = editor.getText({ blockSeparator: '\n\n' });
-	});
 </script>
 
 <div class="rta-column rowgap300">

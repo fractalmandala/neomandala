@@ -133,7 +133,7 @@ All global stores can be imported in root layout and attached to base app shell 
 
 ```html
 <script lang="ts">
-import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores
+import { themeMode, breakZero, breakOne, breakTwo } from '$lib/stores/globalstores'
 </script>
 <div class="appshell"
 	class:levelzero={$breakZero}

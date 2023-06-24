@@ -70,7 +70,7 @@
 </script>
 
 <Shell>
-	<div slot="side" class="rta-column onleft" data-lenis-prevent>
+	<div slot="side" class="rta-column onleft">
 		<div class="forheight rta-column rowgap100">
 			<div class="rta-row ycenter colgap100 buttonschoice bord-bot p-bot-16">
 				<a class="blank-button" href="/pad">

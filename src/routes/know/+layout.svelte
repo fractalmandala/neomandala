@@ -31,6 +31,9 @@
 	<div slot="left" class="rta-column">
 		<div class="inside">
 			<p>
+				<a href="/know" style="color: var(--background)"> INDEX HOME</a>
+			</p>
+			<p>
 				<a href="/know/ontology" style="color: var(--background)">ONTOLOGY</a>
 			</p>
 			<p>

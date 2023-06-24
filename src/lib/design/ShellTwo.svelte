@@ -3,7 +3,7 @@
 </script>
 
 <div class="shelltwo">
-	<div class="shell-l rta-column rowgap50">
+	<div class="shell-l rta-column rowgap50" data-lenis-prevent>
 		<slot name="side" />
 	</div>
 	<div class="shell-m rta-column">
@@ -30,6 +30,7 @@
 			top: 56px
 			padding: 40px
 			border-right: 1px solid var(--contraster)
+			overflow-y: scroll
 		.shell-m
 			padding: 40px
 			min-height: calc(100vh - 160px)

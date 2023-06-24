@@ -11,7 +11,7 @@
 </script>
 
 <div class="rta-thecontain" class:light={$themeMode} class:dark={!$themeMode} class:alt={altgrid}>
-	<div class="leftside grot">
+	<div class="leftside grot" data-lenis-prevent>
 		<div class="strip">
 			<button class="blank-button" on:click={toggleDrop}>
 				<Menu dimension={24} />

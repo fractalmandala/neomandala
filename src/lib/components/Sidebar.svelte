@@ -229,7 +229,7 @@
 		&::after
 			animation: lining 0.43s ease
 	@media screen and (min-width: 1024px)
-		font-size: 32px
+		font-size: 28px
 	@media screen and (max-width: 1023px)
 		font-size: 24px
 

@@ -2,9 +2,9 @@
 	import supabase from '$lib/utils/supastream';
 	import { showNote } from '$lib/dash/alerts';
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
-	let title: string = '';
-	let content: string = '';
-	let snippet: string = '';
+	let title: string = 'title';
+	let content: string = 'content';
+	let snippet: string = 'snippet';
 
 	export let data;
 
@@ -16,6 +16,24 @@
 			showNote('error!', true);
 			console.log(error.message);
 		} else showNote('done!', false);
+	}
+
+	function focusTitle() {
+		title = '';
+	}
+
+	function focusContent() {
+		content = '';
+	}
+
+	function focusSnippet() {
+		snippet = '';
+	}
+
+	function blurTitle() {
+		if (title === '') {
+			title = 'title';
+		}
 	}
 </script>
 
@@ -52,9 +70,15 @@
 	<div class="rta-column">
 		{#if data.logged}
 			<form class="rta-column thisform rowgap100">
-				<input type="text" placeholder={title} bind:value={title} />
-				<textarea bind:value={content} use:textareaAutosizeAction />
-				<textarea bind:value={snippet} use:textareaAutosizeAction />
+				<input
+					type="text"
+					placeholder={title}
+					bind:value={title}
+					on:focus={focusTitle}
+					on:blur={blurTitle}
+				/>
+				<textarea bind:value={content} use:textareaAutosizeAction on:focus={focusContent} />
+				<textarea bind:value={snippet} use:textareaAutosizeAction on:focus={focusSnippet} />
 				<button class="genbutton" on:click={newComponent}>Submit</button>
 			</form>
 		{/if}
@@ -100,14 +124,14 @@ input
 	border-radius: 6px
 	background: transparent
 	border: 1px solid var(--contraster)
-	color: var(--background)
+	color: var(--texttwo)
 	font-family: 'Space Grotesk', sans-serif
 
 textarea
 	min-height: 80px
 	background: transparent
 	border: 1px solid var(--contraster)
-	color: var(--background)
+	color: var(--texttwo)
 	font-family: 'Space Grotesk', sans-serif
 
 </style>

@@ -95,6 +95,7 @@
 			flex-direction: column
 			align-items: stretch
 			padding-left: 6vw
+			padding-right: 3vw
 			.pagemin
 				max-width: 620px
 	@media screen and (max-width: 1023px)
@@ -116,13 +117,13 @@
 			padding-left: 16px
 			padding-right: 16px
 			padding-top: 16px
-			border-bottom: 1px solid var(--onlyblack)
 		.mainpage
 			width: 100%
 			padding-left: 16px
 			padding-right: 16px
 			padding-bottom: 32px
 			padding-top: 32px
+			min-height: calc(100vh - 176px)
 
 .rta-thecontain.alt
 	@media screen and (min-width: 1024px)

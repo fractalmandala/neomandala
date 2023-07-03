@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { saveStore, hideSave } from '$lib/stores/globalstores';
+	import { createEventDispatcher } from 'svelte';
 	import { onMount } from 'svelte';
 
 	let isShown: boolean, text: string;
+	const dispatch = createEventDispatcher<{ click: Event }>();
+
+	function handleClick(event: MouseEvent) {
+		dispatch('click', event);
+	}
 
 	const unsubscribe = saveStore.subscribe((value) => {
 		({ isShown, text } = value);
@@ -14,7 +20,7 @@
 </script>
 
 {#if isShown}
-	<button class="blank-button"> {text} </button>
+	<button class="blank-button" on:click={handleClick}> {text} </button>
 {/if}
 
 <style lang="sass">

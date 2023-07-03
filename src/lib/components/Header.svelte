@@ -109,6 +109,7 @@
 	let text = 'FRACTALMAṆḌALA';
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
 	class="fm-header"
 	class:levelzero={$breakZero}
@@ -128,7 +129,6 @@
 	</div>
 	<div class="conditional rta-row between">
 		<div class="notename">{$noteName}</div>
-		<SaveModal />
 	</div>
 	<div class="rta-row colgap400 ycenter xend outrow">
 		<a class="loner" href="/notes">N</a>
@@ -157,6 +157,7 @@
 .notename
 	font-size: 20px
 	text-transform: uppercase
+	color: var(--texttwo)
 
 .outrow
 	a

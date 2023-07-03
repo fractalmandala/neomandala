@@ -39,6 +39,12 @@ img
 	--rta: #FAB005
 	--anrt: #F03E3E
 	--smrt: #7429D4
+	--cubea: cubic-bezier(0.995, 0.225, 0.750, 0.750)
+	--cubeb: cubic-bezier(0.995, 0.225, 0.000, 0.965)
+	--cubec: cubic-bezier(0.320, 0.760, 0.875, 0.490)
+	--cubed: cubic-bezier(0.000, 1.240, 0.875, 0.490)
+	--cubee: cubic-bezier(1.000, 0.005, 1.000, 0.005)
+	--cubef: cubic-bezier(0.205, 0.655, 0.000, 0.995)
 
 
 .icon-green
@@ -94,11 +100,13 @@ button.gradback
 	--this: #171717
 	--liner: #474747
 	--darker: #070707
+	--thisnew: #313131
 
 //hsl009, rgb232323
 
 
 .light
+	--thisnew: #474747
 	--liner: #272727
 	--palio: #FAFAFA
 	--this: #FFFFFF
@@ -649,7 +657,76 @@ $unit128: 128px
 	border: none
 	cursor: pointer
 	font-family: 'Space Grotesk', sans-serif
-	color: var(--default)
+	text-transform: uppercase
+	color: var(--background)
+
+.zoom-button
+	padding: 0
+	background: none
+	border: none
+	cursor: pointer
+	font-family: 'Space Grotesk', sans-serif
+	text-transform: uppercase
+	color: var(--background)
+	position: relative
+	overflow: hidden
+	border-radius: 5px
+	border: 1px solid transparent
+	padding-top: 4px
+	padding-bottom: 4px
+	padding-right: 8px
+	padding-left: 8px
+	font-size: 12px
+	transition: all 0.1s var(--cubee)
+	transform-origin: center center
+	.sp1
+		position: absolute
+		top: 0
+		left: 0
+		height: 0
+		width: 1px
+		background: #10D56C
+		transition: 0.1s var(--cubea)
+		border-radius: 5px
+	.sp2
+		position: absolute
+		top: 0
+		left: 0
+		height: 1px
+		width: 0
+		background: #10D56C
+		transition: 0.14s var(--cubeb)
+		border-radius: 5px
+	.sp3
+		position: absolute
+		top: 0
+		right: 0
+		height: 0
+		width: 1px
+		background: #10D56C
+		transition: 0.2s var(--cubec)
+		border-radius: 5px
+	.sp4
+		position: absolute
+		bottom: 0
+		right: 0
+		width: 0
+		height: 1px
+		background: #10D56C
+		transition: 0.18s var(--cubed)
+		border-radius: 5px
+	&:hover
+		border: 1px solid #10D56c
+		transform: scale(0.9)
+		background: #10D56C
+		color: var(--opposite)
+		.sp1, .sp3
+			height: 100%
+		.sp2, .sp4
+			width: 100%
+	&:active
+		background: #10D56C
+		
 
 .bord-top
 	border-top: 1px solid var(--contraster)

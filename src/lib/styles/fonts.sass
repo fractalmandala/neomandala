@@ -50,6 +50,12 @@
 	src: url('/fonts/authentic/AUTHENTICSans-150.woff2') format('woff2'), url('/fonts/authentic/AUTHENTICSans-150.woff') format('woff'), url('/fonts/authentic/AUTHENTICSans-150.otf') format('otf')
 
 @font-face
+	font-family: 'Nohemi', sans-serif
+	font-style: normal
+	font-weight: 700
+	src: url('/fonts/nohemi/Nohemi-VF.woff') format('woff'), url('/fonts/nohemi/Nohemi-VF.woff2') format('woff2')
+
+@font-face
 	font-family: 'Adobe Devanagari', serif
 	src: url('/fonts/adobedevanagari/AdobeDevanagari-Regular.woff2') format('woff2'), url('/fonts/adobedevanagari/AdobeDevanagari-Regular.woff') format('woff')
 	font-style: normal
@@ -92,11 +98,11 @@ pre
 		margin: 0
 
 :root
-	font-family: 'Space Grotesk', sans-serif
+	font-family: 'Nohemi', sans-serif
 	font-size: 14px
 	font-weight: 400
-	--mainfont: 'Space Grotesk', sans-serif
-	--altfont: 'Authentic Sans', sans-serif
+	--mainfont: 'Nohemi', sans-serif
+	--altfont: 'Nohemi', sans-serif
 
 .pp64
 	padding-top: 64px
@@ -120,10 +126,16 @@ pre
 .ta-l
 	text-align: left
 
-p, h6, h5, h4, h3, h2, h1, cite
+h6, h5, h4, h3, h2, h1, cite
 	margin: 0
 	padding: 0
 	font-family: var(--mainfont)
+
+p
+	margin: 0
+	padding: 0
+	font-family: 'Authentic Sans', sans-serif
+	
 
 h6
 	color: var(--greyish)
@@ -599,9 +611,9 @@ $exp: 1.414
 
 .mainpage
 	p, ul, li, ol, blockquote, blockquote p, i, p i, em
-		font-family: 'Space Grotesk', sans-serif
+		font-family: 'Authentic Sans', sans-serif
 	h6, h5, h4, h3, h2, h1
-		font-family: 'Space Grotesk', sans-serif
+		font-family: 'Authentic Sans', sans-serif
 		text-transform: capitalize
 	pre
 		white-space: pre-line

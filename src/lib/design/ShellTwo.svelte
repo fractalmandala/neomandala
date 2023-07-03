@@ -25,15 +25,10 @@
 		grid-template-areas: "left prime"
 		min-height: calc(100vh - 160px)
 		.shell-l
-			height: calc(100vh - 112px)
-			position: sticky
-			top: 56px
-			padding: 40px
+			padding: 0 32px
 			border-right: 1px solid var(--contraster)
-			overflow-y: scroll
 		.shell-m
-			padding: 40px
-			min-height: calc(100vh - 160px)
+			min-height: calc(100vh - 112px)
 	@media screen and (max-width: 1023px)
 		grid-template-columns: 1fr
 		grid-template-areas: "prime"

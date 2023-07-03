@@ -9,8 +9,7 @@ export const actions: Actions = {
 		url,
 		locals: { supabase }
 	}): Promise<
-		ActionFailure<{ error: string; values?: { email: string } }> | { message: string }
-	> => {
+		ActionFailure<{ error: string; values?: { email: string } }> | { message: string }> => {
 		const formData = await request.formData();
 
 		const email = formData.get('email') as string;

@@ -30,6 +30,13 @@
 	let indices: any;
 	let webs: any;
 
+	let kkk = 'Knowledge';
+	let www = 'Word';
+	let ccc = 'Code';
+	let vvv = 'Video';
+	let sss = 'Sound';
+	let iii = 'Image';
+
 	$pageTitle = 'Fractal Maṇḍala';
 	$pageDescription = 'digital garden and buildstation';
 	$pageUrl = 'https://www.fractalmandala.in';
@@ -82,130 +89,130 @@
 <svelte:window bind:scrollY={scY} />
 
 <div
-	class="minH mainpagegrid grot"
+	class="rta-column grot"
 	class:lzero={$breakZero}
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="block" style="background-image: url('/images/webback1.webp')">
-		<h4>
-			<a href="/know">Knowledge Index</a>
-		</h4>
+	<div class="block">
+		<h5>
+			<a href="/know">
+				{#each kkk.split('') as char, i}
+					<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
+				{/each}
+			</a>
+		</h5>
+		<p>An index of things I know, think, learn or am in the process of...</p>
 	</div>
-	<div class="block" style="background-image: url('/images/k-writings.webp')">
-		<h4>
-			<a href="/word">Word</a>
-		</h4>
+	<div class="block">
+		<h5>
+			<a href="/word">
+				{#each www.split('') as char, i}
+					<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
+				{/each}
+			</a>
+		</h5>
+		<p>Assorted writings on history, dharma and other things over the years...</p>
 	</div>
-	<div class="block" style="background-image: url('/images/k-webdev.webp')">
-		<h4>
-			<a href="/web">Code</a>
-		</h4>
+	<div class="block">
+		<h5>
+			<a href="/web">
+				{#each ccc.split('') as char, i}
+					<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
+				{/each}
+			</a>
+		</h5>
+		<p>Code repos, nothing too interesting tbh...</p>
 	</div>
-	<div class="block" style="background-image: url('/images/k-music.webp')">
-		<h4>
-			<a href="/video">Video</a>
-		</h4>
+	<div class="block">
+		<h5>
+			<a href="/video">
+				{#each vvv.split('') as char, i}
+					<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
+				{/each}
+			</a>
+		</h5>
+		<p>Me on a screen, if you're into that kind of thing...</p>
 	</div>
-	<div class="block" style="background-image: url('/images/sveltelowda.webp')">
-		<h4>
-			<a href="/sound">Sound</a>
-		</h4>
+	<div class="block">
+		<h5>
+			<a href="/sound">
+				{#each sss.split('') as char, i}
+					<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
+				{/each}
+			</a>
+		</h5>
+		<p>Loopy psychedelic beats, 142BPM...</p>
 	</div>
-	<div class="block" style="background-image: url('/images/k-images.webp')">
-		<h4>
-			<a href="/image">Image</a>
-		</h4>
+	<div class="block">
+		<h5>
+			<a href="/image">
+				{#each iii.split('') as char, i}
+					<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
+				{/each}
+			</a>
+		</h5>
+		<p>Ohhh this is the best section just check out the galleries!</p>
 	</div>
 </div>
 
 <style lang="sass">
 
-.mainpagegrid
-	display: grid
-	grid-auto-flow: row
-	box-sizing: border-box
-
-.mainpagegrid.ltwo
-	grid-template-columns: 1fr
-	grid-template-areas: "."
-	gap: 8px
-	height: 100%
-	padding-left: 8px
-	padding-right: 8px
-	.block
-		display: flex
-		flex-direction: column
-		height: 20vh
-		background-position: center center
-		background-size: cover
-		justify-content: center
-		align-items: center
-		transition: 0.2s
-		border-radius: 8px
-		h4
-			transition: 0.1s
+.block
+	display: flex
+	flex-direction: column
+	transition: 0.2s
+	h5
+		transition: 0.1s
+		font-size: 24px
+		text-transform: uppercase
+		color: var(--thisnew)
+		a
+			color: inherit
+		&:hover
+			.text-animation
+				animation: colorchange 1s infinite forwards
+	p
+		font-size: 14px
+		opacity: 0
+		transition: 0.1s
+	&:hover
+		p
 			opacity: 1
-			background: rgba(0,0,0,0.6)
-			padding: 4px 8px
-			border: 1px solid rgba(0,0,0,0.6)
-			border-radius: 4px
-			box-shadow: 4px 4px 8px 5px rgba(0,0,0,0.8)
-			text-align: center
-			font-size: 24px
 
-.mainpagegrid.lzero, .mainpagegrid.lone
-	grid-template-columns: 1fr 1fr 1fr
-	grid-template-areas: ". . ."
-	gap: 8px
-	height: calc(100vh - 128px)
-	align-items: center
-	align-content: center
+@keyframes colorchange
+	0%
+		color: var(--thisnew)
+	50%
+		color: #10D56C
+	100%
+		color: var(--thisnew)
+
+
+.lzero, .lone
 	.block
 		display: flex
 		flex-direction: column
-		height: calc(50vh - 64px)
-		background-position: center center
-		background-size: cover
-		justify-content: center
-		align-items: center
 		transition: 0.2s
-		border-radius: 8px
-		h4
+		h5
 			transition: 0.4s
-			opacity: 0
-			background: rgba(0,0,0,0.6)
-			padding: 4px 8px
-			border: 1px solid rgba(0,0,0,0.6)
-			border-radius: 4px
-			box-shadow: 4px 4px 8px 5px rgba(0,0,0,0.8)
-			text-align: center
-		&:hover
-			h4
-				opacity: 1
-				&:hover
-					border: 1px solid white
-					box-shadow: 4px 4px 8px rgba(0,0,0,0.0)
 
-.mainpagegrid
-	&:hover
-		.block
-			filter: saturate(0.1)
-			&:hover
-				filter: saturate(1)
+.lzero
+	padding: 64px
+	.block
+		width: max-content
+		padding-bottom: 16px
 
-a
-	&:hover
-		color: #10D56C
+.lone, .ltwo
+	padding: 16px 16px 0 16px
+	.block
+		width: 100%
+		padding-bottom: 16px
 
-h4
-	font-weight: bold
-	color: white
-	a
-		&:hover
-			color: white
+h5
+	font-weight: 500
 
 
 </style>

@@ -16,7 +16,7 @@
 	import { Markdown } from 'tiptap-markdown';
 	import '$lib/styles/tiptap.sass';
 
-	let title: string;
+	let title: string = 'Note Title';
 	let element: any;
 	let editor: any;
 	let html: any;
@@ -26,6 +26,18 @@
 		headerIds: false,
 		mangle: false
 	});
+
+	function onFocus() {
+		if (title === 'Note Title') {
+			title = '';
+		}
+	}
+
+	function onBlur() {
+		if (title === '') {
+			title = 'Note Title';
+		}
+	}
 
 	export async function newNote() {
 		const { error } = await supabase.from('db-notes').insert({ title: title, content: html });
@@ -65,53 +77,53 @@
 </script>
 
 <div
-	class="grot storex rta-column rowgap300"
+	class="grot rta-column rowgap300"
 	class:lzero={$breakZero}
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
 >
-	<div class="rta-row ycenter between">
-		<input type="text" bind:value={title} placeholder={title} />
-		<button on:click={newNote}>Save</button>
+	<div class="rta-row ycenter between stripunos">
+		<input type="text" bind:value={title} placeholder={title} on:focus={onFocus} on:blur={onBlur} />
+		<button class="zoom-button" on:click={newNote}>
+			<span class="sp1" />
+			<span class="sp2" />
+			<span class="sp3" />
+			<span class="sp4" />
+			Save
+		</button>
 	</div>
-	<div class="notesguy" bind:this={element} />
+	<div class="notecontainer rta-column">
+		<div class="notesguy" bind:this={element} />
+	</div>
 </div>
 
 <style lang="sass">
 
+.lzero
+	padding-left: 32px
+	padding-right: 32px
+	.stripunos
+		border-bottom: 1px solid var(--contraster)
+		height: 56px
+		input
+			height: 100%
+			background: none
+			border: none
+			color: var(--texttwo)
+			font-size: 24px
+			outline: none
+			font-family: 'Space Grotesk', sans-serif
+			width: calc(100% - 80px)
+		.zoom-button
+			width: 56px
+	.notecontainer
+		.notesguy
+			min-height: 64vh
+	
+		
+
 .notesguy
-	position: relative
 	border-radius: 5px 0 0 0
 	padding: 8px
-	&::before
-		position: absolute
-		border-radius: 5px 0 0 0
-		top: 0
-		left: 0
-		content: ''
-		background: #10D56C
-		height: 1px
-		width: 64px
-	&::after
-		position: absolute
-		border-radius: 5px 0 0 0
-		top: 0
-		left: 0
-		content: ''
-		background: #10D56C
-		height: 64px
-		width: 1px
-
-.storex
-	width: 100vw
-
-.storex.lzero
-	padding-top: 32px
-	padding-bottom: 64px
-	width: 680px
-	margin-left: calc(25vw - 240px)
-
-.storex.ltwo, .storex.lone
-	padding: 32px
 
 </style>

@@ -67,7 +67,7 @@
 					{$indexCategory}
 				</div>
 			</div>
-			<div class="sectionrest rta-column p-top-32 p-bot-32">
+			<div class="sectionrest rta-column">
 				{#if $indexLinks && $indexLinks.length > 0}
 					<h6 class="p-bot-8" style="color: #10D56C">Links</h6>
 					{#each $indexLinks as item}
@@ -82,6 +82,12 @@
 </Shell>
 
 <style lang="sass">
+
+h4
+	font-weight: 500
+
+small, .islabel, h4
+	font-family: 'Space Grotesk', sans-serif
 
 .inside
 	row-gap: 8px

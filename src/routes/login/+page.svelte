@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ActionData } from './$types';
-	import { applyAction, enhance, type SubmitFunction } from '$app/forms';
+	import { applyAction, enhance } from '$app/forms';
+	import type { SubmitFunction } from '$app/forms';
 	import { invalidate } from '$app/navigation';
 
 	export let form: ActionData;

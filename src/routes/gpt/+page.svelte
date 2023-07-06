@@ -2,8 +2,6 @@
 	import Shell from '$lib/design/ShellTwo.svelte';
 	import ModOpenAI from '$lib/gpt/ModOpenAI.svelte';
 	import ModHF from '$lib/gpt/ModHF.svelte';
-	import { useChat } from 'ai/svelte';
-	const { input, handleSubmit, messages } = useChat();
 
 	let isBot = Array(4).fill(false);
 	isBot[0] = true;
@@ -27,14 +25,7 @@
 	</div>
 	<div slot="main" class="rta-column maincolumn">
 		<div class="rta-column chatarea rowgap100">
-			{#if isBot[0]}
-				<small>OpenAI</small>
-				<ModOpenAI />
-			{/if}
-			{#if isBot[1]}
-				<small>HuggingFace</small>
-				<ModHF />
-			{/if}
+			<p>hi</p>
 		</div>
 	</div>
 </Shell>

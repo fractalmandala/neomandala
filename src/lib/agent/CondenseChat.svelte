@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	export let query = '';
 
 	import type { ChatCompletionRequestMessage } from 'openai';
@@ -9,8 +8,8 @@
 
 	let chatMessages: ChatCompletionRequestMessage[] = [];
 	let answer: string;
-	let nullifier = false
-	
+	let nullifier = false;
+
 	const prompter =
 		'For the data given to you, condense it into less than 50 words, of any syntax or code that works best for you, such that these 50 words given to you later will help you remember the entire context and history again. Do not worry about making this human-readable, since it is only for your memory.';
 
@@ -54,7 +53,6 @@
 	}
 </script>
 
-
 <button class="blank-button" on:click={handleCondense}>
-	<Condense/>
+	<Condense />
 </button>

@@ -24,17 +24,19 @@
 		<button class="blank-button ta-l" on:click={handleRefresh}>
 			<Refresh />
 		</button>
-		<p class="tt-u p-top-16 bord-top p-bot-16">
-			<a href="/notes">Notes</a>
-		</p>
-		<div class="rta-column rowgap100">
-			{#if theas && theas.length > 0}
-				{#each theas as item}
-					<p class="tt-c">
-						<a href="/notes/{item.title}">{item.title}</a>
-					</p>
-				{/each}
-			{/if}
+		<div class="paddero">
+			<p class="tt-u p-top-16 p-bot-16">
+				<a href="/notes">Notes</a>
+			</p>
+			<div class="rta-column rowgap100">
+				{#if theas && theas.length > 0}
+					{#each theas as item}
+						<p class="tt-c">
+							<a href="/notes/{item.title}">{item.title}</a>
+						</p>
+					{/each}
+				{/if}
+			</div>
 		</div>
 	</div>
 	<div slot="main" class="rta-column">
@@ -47,9 +49,16 @@
 .sidos
 	height: 72vh
 	position: sticky
-	top: 56px
+	top: 40px
 	.blank-button
-		height: 56px
+		height: 40px
+		border-bottom: 1px solid var(--contraster)
+		@media screen and (min-width: 1024px)
+			padding-left: 32px
+
+.paddero
+	@media screen and (min-width: 1024px)
+		padding-left: 32px
 
 p, p a
 	font-family: 'Space Grotesk', sans-serif

@@ -8,7 +8,8 @@
 		breakTwo,
 		pageTitle,
 		toggleSide,
-		noteName
+		noteName,
+		headTitle
 	} from '$lib/stores/globalstores';
 	import SaveModal from '$lib/components/SaveModal.svelte';
 	import { slide } from 'svelte/transition';
@@ -119,7 +120,7 @@
 	class:darkmode={!$themeMode}
 	on:mouseleave={closeHelper}
 >
-	<div class="rta-row">
+	<div class="rta-row colgap200">
 		<Motif />
 		<a href="/" class="logo">
 			{#each text.split('') as char, i}
@@ -130,29 +131,72 @@
 	<div class="conditional rta-row between">
 		<div class="notename">{$noteName}</div>
 	</div>
-	<div class="rta-row colgap400 ycenter xend outrow">
-		<a class="loner" href="/notes">N</a>
-		<a class="loner" href="/thea">T</a>
-		<a class="loner" href="/janapada">J</a>
-		<a class="loner" href="/uicomp">D</a>
-		<button class="blank-button" on:click={handleClick}>
-			<Side />
-		</button>
-		<button class="blank-button" on:click={handleSwitch}>
-			{#if $themeMode}
-				<Moon {dimension} />
-			{:else}
-				<Sun {dimension} />
-			{/if}
-		</button>
+	<div class="rta-row ycenter outrow">
+		{#if $headTitle === 'notes'}
+			<div class="thispage">Notes</div>
+		{:else}
+			<a class="loner" href="/notes">N</a>
+		{/if}
+		{#if $headTitle === 'thea'}
+			<div class="thispage">Thea</div>
+		{:else}
+			<a class="loner" href="/thea"> T </a>
+		{/if}
+		{#if $headTitle === 'janapada'}
+			<div class="thispage">Janapada</div>
+		{:else}
+			<a class="loner" href="/janapada">J</a>
+		{/if}
+		{#if $headTitle === 'ui'}
+			<div class="thispage">UI</div>
+		{:else}
+			<a class="loner" href="/uicomp">U</a>
+		{/if}
+		<div class="rta-row colgap200 ycenter outinrow">
+			<button class="blank-button" on:click={handleClick}>
+				<Side />
+			</button>
+			<button class="blank-button" on:click={handleSwitch}>
+				{#if $themeMode}
+					<Moon {dimension} />
+				{:else}
+					<Sun {dimension} />
+				{/if}
+			</button>
+		</div>
 	</div>
 </div>
 
 <style lang="sass">
 
+.thispage
+	font-size: 16px
+	text-transform: uppercase
+	background: #10D56C
+	padding-left: 4px
+	padding-right: 4px
+	
+
+.levelone, .levelzero
+	.loner
+		border-right: 1px solid var(--contraster)
+		padding-right: 16px
+		padding-left: 16px
+		text-align: center
+	.outinrow
+		margin-left: 16px
+		height: 100%
+		padding-top: 4px
+
 .leveltwo
 	.loner
-		display: none
+		border-right: 1px solid var(--contraster)
+		padding-right: 8px
+		padding-left: 8px
+		text-align: center
+	.outinrow
+		margin-left: 8px
+		padding-top: 4px
 
 .notename
 	font-size: 20px
@@ -161,9 +205,8 @@
 
 .outrow
 	a
-		margin-bottom: 4px
 		color: var(--texttwo)
-		font-size: 18px
+		font-size: 16px
 		&:hover
 			color: #10D56C
 
@@ -203,25 +246,29 @@
 	flex-direction: row
 	justify-content: space-between
 	width: 100%
-	height: 56px
+	height: 40px
 	align-items: center
 	z-index: 1000
-	.rta-row
-		column-gap: 24px
 
 .fm-header.darkmode
-	background: #070707
+	background: #171717
 	border-bottom: 1px solid var(--onlyblack)
 
 .fm-header.lightmode
-	background: #f7f7f7
+	background: #FFFFFF
 	border-bottom: 1px solid var(--onlyblack)
 
-.fm-header.levelzero, .fm-header.levelone
+.fm-header.levelzero
 	padding-left: 40px
 	padding-right: 40px
 	.conditional
 		width: 50%
+
+.fm-header.levelone
+	padding-left: 24px
+	padding-right: 24px
+	.conditional
+		max-width: 40%
 
 .fm-header.leveltwo
 	padding-left: 16px

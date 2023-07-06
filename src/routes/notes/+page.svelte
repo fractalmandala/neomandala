@@ -9,7 +9,8 @@
 		breakTwo,
 		noteName,
 		showSave,
-		hideSave
+		hideSave,
+		headTitle
 	} from '$lib/stores/globalstores';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
@@ -46,7 +47,10 @@
 		} else showNote('done!', false);
 	}
 
+	$: $headTitle = 'notes';
+
 	onMount(() => {
+		$headTitle = 'notes';
 		return (editor = new Editor({
 			element: element,
 			extensions: [
@@ -99,26 +103,45 @@
 
 <style lang="sass">
 
+.stripunos
+	border-bottom: 1px solid var(--contraster)
+	input
+		height: 100%
+		background: none
+		border: none
+		color: var(--texttwo)
+		font-family: 'Space Grotesk', sans-serif
+		outline: none
+
 .lzero
-	padding-left: 32px
-	padding-right: 32px
 	.stripunos
-		border-bottom: 1px solid var(--contraster)
-		height: 56px
+		height: 40px
+		padding-left: 32px
+		padding-right: 32px
 		input
-			height: 100%
-			background: none
-			border: none
-			color: var(--texttwo)
 			font-size: 24px
-			outline: none
-			font-family: 'Space Grotesk', sans-serif
 			width: calc(100% - 80px)
 		.zoom-button
 			width: 56px
 	.notecontainer
 		.notesguy
 			min-height: 64vh
+
+.lone
+	.stripunos
+		height: 32px
+		padding-left: 24px
+		padding-right: 24px
+		input
+			font-size: 20px
+
+.ltwo
+	.stripunos
+		height: 32px
+		padding-left: 16px
+		padding-right: 16px
+		input
+			font-size: 20px
 	
 		
 

@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { applyAction, enhance, type SubmitFunction } from '$app/forms';
+	import { applyAction, enhance } from '$app/forms';
+	import type { SubmitFunction } from './$types';
 	import { invalidate } from '$app/navigation';
 	import { page } from '$app/stores';
 

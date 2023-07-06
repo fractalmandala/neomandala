@@ -25,7 +25,7 @@
 		grid-template-areas: "left prime"
 		min-height: calc(100vh - 160px)
 		.shell-l
-			padding: 0 32px
+			padding: 0
 			border-right: 1px solid var(--contraster)
 		.shell-m
 			min-height: calc(100vh - 112px)
@@ -34,5 +34,7 @@
 		grid-template-areas: "prime"
 		.shell-l
 			display: none
+		.shell-m
+			min-height: calc(100vh - 112px)
 
 </style>

@@ -10,7 +10,8 @@
 		breakTwo,
 		noteName,
 		showSave,
-		hideSave
+		hideSave,
+		headTitle
 	} from '$lib/stores/globalstores';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
@@ -50,6 +51,8 @@
 	async function navigateToLink(): Promise<void> {
 		await goto('/notes');
 	}
+
+	$: $headTitle = 'notes';
 
 	onMount(() => {
 		return (editor = new Editor({
@@ -94,21 +97,23 @@
 			<button class="zoom-button" on:click={deleteNote}>Delete</button>
 		</div>
 	</div>
-	<div class="notecontainer p-bot-32 rta-column">
+	<div class="notecontainer rta-column">
 		<div class="notesguy" bind:this={element} />
 	</div>
 </div>
 
 <style lang="sass">
 
+.stripunos
+	border-bottom: 1px solid var(--contraster)
+
 .lzero
-	padding-left: 32px
-	padding-right: 32px
 	.stripunos
-		border-bottom: 1px solid var(--contraster)
-		height: 56px
+		height: 40px
+		padding-left: 32px
+		padding-right: 32px
 		position: sticky
-		top: 56px
+		top: 40px
 		background: var(--this)
 		z-index: 50
 		.zoom-button

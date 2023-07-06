@@ -1,12 +1,23 @@
 <script lang="ts">
 	import supabase from '$lib/utils/supastream';
 	import { showNote } from '$lib/dash/alerts';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		noteName,
+		showSave,
+		hideSave,
+		headTitle
+	} from '$lib/stores/globalstores';
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
 	let title: string = 'title';
 	let content: string = 'content';
 	let snippet: string = 'snippet';
 
 	export let data;
+
+	$: $headTitle = 'ui';
 
 	export async function newComponent() {
 		const { error } = await supabase
@@ -37,9 +48,16 @@
 	}
 </script>
 
-<div class="rta-grid grid2">
-	<div class="grot rta-column rowgap300">
-		<h4 style="margin: 0" class="bord-bot p-bot-16">Sveltekit UI Components Library</h4>
+<div
+	class="grot rta-column rowgap300"
+	class:lzero={$breakZero}
+	class:lone={$breakOne}
+	class:ltwo={$breakTwo}
+>
+	<div class="rta-row ycenter between stripunos">
+		<div class="notetitle">Sveltekit UI Components Library</div>
+	</div>
+	<div class="notecontainer rta-column">
 		<h5>Why?</h5>
 		<p>
 			To begin with, for myself- for I find myself rewriting the same lines of code over and over
@@ -87,51 +105,22 @@
 
 <style lang="sass">
 
-.grid2
-	column-gap: 64px
-	.grot
-		grid-area: grot
-	.thisform
-		grid-area: thisform
-	@media screen and (min-width: 1024px)
-		grid-template-columns: 1fr 360px
-		grid-template-areas: "grot thisform"
-	@media screen and (max-width: 1023px)
-		grid-template-columns: 1fr
-		grid-template-areas: "grot" "thisform"
-		padding: 80px 40px
-
-p
-	color: var(--texttwo)
-
-a
-	color: #10D56C
-	&:hover
-		text-decoration: underline
-
-h5
+.stripunos
 	border-bottom: 1px solid var(--contraster)
-	padding-bottom: 16px
 
+.lzero
+	.stripunos
+		height: 40px
+		padding-left: 32px
+		padding-right: 32px
+		position: sticky
+		top: 40px
+		background: var(--this)
+		z-index: 50
+		.notetitle
+			color: var(--texttwo)
+			font-size: 24px
+			font-family: 'Space Grotesk', sans-serif
 
-.grot
-	@media screen and (min-width: 1024px)
-		max-width: 680px
-
-input
-	padding: 4px 8px
-	height: 32px
-	border-radius: 6px
-	background: transparent
-	border: 1px solid var(--contraster)
-	color: var(--texttwo)
-	font-family: 'Space Grotesk', sans-serif
-
-textarea
-	min-height: 80px
-	background: transparent
-	border: 1px solid var(--contraster)
-	color: var(--texttwo)
-	font-family: 'Space Grotesk', sans-serif
 
 </style>

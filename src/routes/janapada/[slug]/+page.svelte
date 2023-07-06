@@ -8,7 +8,8 @@
 		breakTwo,
 		noteName,
 		showSave,
-		hideSave
+		hideSave,
+		headTitle
 	} from '$lib/stores/globalstores';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
@@ -35,6 +36,8 @@
 		$noteName = data.title;
 		showSave('SAVE');
 	}
+
+	$: $headTitle = 'janapada';
 
 	onMount(() => {
 		return (editor = new Editor({
@@ -68,25 +71,51 @@
 </script>
 
 <div
-	class="grot stories rta-column rowgap300"
+	class="rta-column rowgap300 grot"
 	class:lzero={$breakZero}
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
 >
-	<div bind:this={element} />
+	<div class="rta-row ycenter between stripunos">
+		<div class="notetitle">{data.title}</div>
+		<div class="rta-row colgap200 ycenter">
+			<button class="zoom-button">Save</button>
+			<button class="zoom-button">Delete</button>
+		</div>
+	</div>
+	<div class="notecontainer rta-column">
+		<div class="notesguy" bind:this={element} />
+	</div>
 </div>
 
 <style lang="sass">
 
-.stories
-	width: 100vw
+.stripunos
+	border-bottom: 1px solid var(--contraster)
 
-.stories.lzero
-	padding-bottom: 64px
-	width: 680px
-	margin-left: calc(25vw - 240px)
+.lzero
+	.stripunos
+		height: 40px
+		padding-left: 32px
+		padding-right: 32px
+		position: sticky
+		top: 40px
+		background: var(--this)
+		z-index: 50
+		.zoom-button
+			width: 56px
+		.notetitle
+			color: var(--texttwo)
+			font-size: 24px
+			font-family: 'Space Grotesk', sans-serif
+	.notecontainer
+		.notesguy
+			width: 56vw
+			min-height: 64vh
 
-.stories.ltwo, .stories.lone
-	padding: 32px
+.notesguy
+	border-radius: 5px 0 0 0
+	padding: 8px
+
 
 </style>

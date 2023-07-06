@@ -89,7 +89,7 @@
 <svelte:window bind:scrollY={scY} />
 
 <div
-	class="rta-column grot"
+	class="rta-column grot minH"
 	class:lzero={$breakZero}
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
@@ -162,11 +162,11 @@
 
 .block
 	display: flex
-	flex-direction: column
+	flex-direction: row
 	transition: 0.2s
 	h5
 		transition: 0.1s
-		font-size: 24px
+		font-size: 64px
 		text-transform: uppercase
 		color: var(--thisnew)
 		a
@@ -194,7 +194,9 @@
 .lzero, .lone
 	.block
 		display: flex
-		flex-direction: column
+		flex-direction: row
+		align-items: center
+		column-gap: 24px
 		transition: 0.2s
 		h5
 			transition: 0.4s
@@ -203,7 +205,6 @@
 	padding: 64px
 	.block
 		width: max-content
-		padding-bottom: 16px
 
 .lone, .ltwo
 	padding: 16px 16px 0 16px

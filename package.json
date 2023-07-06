@@ -86,7 +86,7 @@
 		"svelte-local-storage-store": "^0.5.0",
 		"svelte-pdf": "^1.0.19",
 		"svelte-prism": "^1.1.6",
-		"svelte-tiptap": "^0.7.0",
+		"svelte-tiptap": "^1.1.0",
 		"swiper": "^9.3.2",
 		"talk2svelte": "^0.1.1",
 		"textify.js": "^2.4.3",

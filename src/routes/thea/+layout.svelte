@@ -55,7 +55,7 @@
 		padding-left: 32px
 
 p, p a
-	font-family: 'Space Grotesk', sans-serif
+	font-family: 'CommitMono', sans-serif
 
 p a
 	color: var(--texttwo)

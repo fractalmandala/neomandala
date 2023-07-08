@@ -21,6 +21,7 @@
 	import { showPinned, hidePinned } from '$lib/dash/modalstores';
 
 	let dimension = 16;
+	let color = 'var(--background)';
 	let menuNav = false;
 	let fake = false;
 	let dropped = false;
@@ -132,25 +133,27 @@
 		<div class="notename">{$noteName}</div>
 	</div>
 	<div class="rta-row ycenter outrow">
-		{#if $headTitle === 'notes'}
-			<div class="thispage">Notes</div>
-		{:else}
-			<a class="loner" href="/notes">N</a>
-		{/if}
-		{#if $headTitle === 'thea'}
-			<div class="thispage">Thea</div>
-		{:else}
-			<a class="loner" href="/thea"> T </a>
-		{/if}
-		{#if $headTitle === 'janapada'}
-			<div class="thispage">Janapada</div>
-		{:else}
-			<a class="loner" href="/janapada">J</a>
-		{/if}
-		{#if $headTitle === 'ui'}
-			<div class="thispage">UI</div>
-		{:else}
-			<a class="loner" href="/uicomp">U</a>
+		{#if !$breakTwo}
+			{#if $headTitle === 'notes'}
+				<div class="thispage">Notes</div>
+			{:else}
+				<a class="loner" href="/notes">N</a>
+			{/if}
+			{#if $headTitle === 'thea'}
+				<div class="thispage">Thea</div>
+			{:else}
+				<a class="loner" href="/thea"> T </a>
+			{/if}
+			{#if $headTitle === 'janapada'}
+				<div class="thispage">Janapada</div>
+			{:else}
+				<a class="loner" href="/janapada">J</a>
+			{/if}
+			{#if $headTitle === 'ui'}
+				<div class="thispage">UI</div>
+			{:else}
+				<a class="loner" href="/uicomp">U</a>
+			{/if}
 		{/if}
 		<div class="rta-row colgap200 ycenter outinrow">
 			<button class="blank-button" on:click={handleClick}>
@@ -158,9 +161,9 @@
 			</button>
 			<button class="blank-button" on:click={handleSwitch}>
 				{#if $themeMode}
-					<Moon {dimension} />
+					<Moon {dimension} {color} />
 				{:else}
-					<Sun {dimension} />
+					<Sun {dimension} {color} />
 				{/if}
 			</button>
 		</div>
@@ -170,12 +173,12 @@
 <style lang="sass">
 
 .thispage
-	font-size: 16px
+	font-size: 14px
 	text-transform: uppercase
 	background: #10D56C
-	padding-left: 4px
-	padding-right: 4px
-	
+	padding: 3px 6px
+	border-radius: 2px
+	color: white
 
 .levelone, .levelzero
 	.loner
@@ -205,8 +208,7 @@
 
 .outrow
 	a
-		color: var(--texttwo)
-		font-size: 16px
+		font-size: 14px
 		&:hover
 			color: #10D56C
 
@@ -252,11 +254,11 @@
 
 .fm-header.darkmode
 	background: #171717
-	border-bottom: 1px solid var(--onlyblack)
+	border-bottom: 1px solid var(--contraster)
 
 .fm-header.lightmode
 	background: #FFFFFF
-	border-bottom: 1px solid var(--onlyblack)
+	border-bottom: 1px solid var(--contraster)
 
 .fm-header.levelzero
 	padding-left: 40px
@@ -281,6 +283,9 @@
 	font-size: 18px
 	font-weight: 500
 	z-index: 1000
-	color: var(--texttwo)
+	color: var(--background)
+
+.loner
+	color: var(--background)
 
 </style>

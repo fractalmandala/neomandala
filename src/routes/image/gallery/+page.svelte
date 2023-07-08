@@ -9,6 +9,7 @@
 	let photos: any;
 	let isBig = Array(800).fill(false);
 	let fake = false;
+	let loading = false;
 
 	$pageTitle = 'Midjourney Generated Images at Fractal Maṇḍala';
 	$pageDescription = 'Experiments in generative image tech, narrative and written supplements...';
@@ -17,19 +18,25 @@
 		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	function loadMore() {
+		loading = true;
 		low += 100;
 		top += 100;
 		(async () => {
 			photos = await supaImages(low, top);
 		})();
+		window.scrollTo(0, 0);
+		loading = false;
 	}
 
 	function loadPrev() {
+		loading = true;
 		low -= 100;
 		top -= 100;
 		(async () => {
 			photos = await supaImages(low, top);
 		})();
+		window.scrollTo(0, 0);
+		loading = false;
 	}
 
 	function fauxfake() {
@@ -59,7 +66,11 @@
 				</div>
 			{:else}
 				<div class="rta-image" on:click={() => toggleBig(i)} on:keydown={fauxfake}>
-					<img src={item.link} alt={item.id} use:lazyLoadImageAction />
+					{#if loading}
+						<small>loading...</small>
+					{:else}
+						<img src={item.link} alt={item.id} use:lazyLoadImageAction />
+					{/if}
 				</div>
 			{/if}
 		{/each}
@@ -77,7 +88,7 @@
 		.rta-image
 			transform: scale(0.96)
 			&:hover
-				transform: scale(1.2)
+				transform: scale(1)
 		.rta-image.bigboy
 			&:hover
 				transform: scale(1)
@@ -95,13 +106,13 @@
 
 .rta-grid
 	@media screen and (min-width: 769px)
-		padding: 56px 3.2vw
-		grid-template-areas: "bigboy bigboy bigboy . . ." "bigboy bigboy bigboy . . ."
+		padding: 40px 3.2vw
+		grid-template-areas: "bigboy bigboy bigboy ." "bigboy bigboy bigboy ."
 		.bigboy
 			grid-column: span 3
 			grid-row: span 3
 		.rta-image
-			height: 20vh
+			height: 40vh
 		.rta-image.bigboy
 			height: 64vh
 	@media screen and (max-width: 768px)

@@ -110,7 +110,7 @@
 		background: none
 		border: none
 		color: var(--texttwo)
-		font-family: 'Space Grotesk', sans-serif
+		font-family: 'CommitMono', sans-serif
 		outline: none
 
 .lzero

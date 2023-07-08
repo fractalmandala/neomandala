@@ -102,7 +102,6 @@
 .x101
 	align-items: center
 
-
 .leveltwo
 	.blogger
 		padding-left: 32px
@@ -115,7 +114,6 @@
 		padding-right: 40px
 		padding-top: 64px
 
-
 .twohundred
 	height: 100vh
 
@@ -124,7 +122,7 @@
 
 .sticky
 	position: sticky
-	top: 56px
+	top: 40px
 	overflow: hidden
 	transition: position 0.3s ease-in-out
 
@@ -142,8 +140,8 @@
 	.lowerone
 		display: none
 	h1
-		padding-left: 256px
-		padding-right: 256px
+		padding-left: 128px
+		padding-right: 128px
 
 .levelzero
 	.thisguy

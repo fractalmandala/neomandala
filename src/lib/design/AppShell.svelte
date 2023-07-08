@@ -40,7 +40,7 @@
 		display: none
 	@media screen and (max-width: 1023px)
 		padding: 8px 16px
-		height: 48px
+		height: 40px
 
 .light
 	background: #FFFFFF
@@ -66,29 +66,28 @@
 	.mainpage
 		grid-area: mainpage
 	@media screen and (min-width: 1024px)
-		grid-template-columns: 20vw 56vw 24vw
+		grid-template-columns: 20vw 60vw 20vw
 		grid-template-areas: "leftside mainpage rightside"
 		width: 100vw
+		min-height: calc(100vh - 80px)
 		.leftside
 			padding-left: 40px
-			height: calc(100vh - 112px)
+			height: calc(100vh - 80px)
 			position: sticky
-			top: 64px
+			top: 40px
 			overflow-y: scroll
-			border-right: 1px solid var(--contraster)
 		.rightside
 			text-align: right
 			padding-right: 40px
 			padding-left: 40px	
-			height: calc(100vh - 112px)
+			height: calc(100vh - 80px)
 			position: sticky
-			top: 64px
+			top: 40px
 			align-items: flex-end
 			row-gap: 8px
-			border-left: 1px solid var(--contraster)
 			text-align: right
 		.mainpage, .leftside, .rightside
-			padding-top: 64px
+			padding-top: 40px
 		.mainpage
 			padding-bottom: 64px	
 			display: flex
@@ -96,6 +95,8 @@
 			align-items: stretch
 			padding-left: 6vw
 			padding-right: 3vw
+			border-right: 1px solid var(--background)
+			border-left: 1px solid var(--background)
 			.pagemin
 				max-width: 620px
 	@media screen and (max-width: 1023px)
@@ -103,12 +104,13 @@
 		grid-template-areas: "leftside" "rightside" "mainpage"
 		padding-top: 0
 		margin-top: 0
+		min-height: calc(100vh - 80px)
 		.leftside
 			width: 100%
 			height: 100%
-			top: 56px
+			top: 40px
 			position: sticky
-			height: 48px
+			height: 40px
 			background: var(--this)
 			z-index: 1000
 			border-bottom: 1px solid var(--contraster)

@@ -27,7 +27,6 @@
 	text-align: left
 
 .accordion-head
-	font-family: 'Space Grotesk', sans-serif
 	text-transform: capitalize
 	cursor: pointer
 	color: var(--texttwo)
@@ -43,7 +42,6 @@
 	font-size: 14px
 	line-height: 1.6
 	letter-spacing: 0.2px
-	font-family: 'Space Grotesk', sans-serif
 	text-transform: capitalize
 	color: var(--greyish)
 	padding: 8px 0

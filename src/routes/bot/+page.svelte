@@ -171,7 +171,7 @@
 		min-height: 48px
 		border: none
 		padding: 4px 8px
-		font-family: 'Space Grotesk', sans-serif
+		font-family: 'CommitMono', sans-serif
 
 .agentanswer
 	pre

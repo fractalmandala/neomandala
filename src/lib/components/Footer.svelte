@@ -29,11 +29,11 @@
 .footermain
 	display: flex
 	flex-direction: column
-	border-top: 1px solid var(--onlyblack)
+	border-top: 1px solid var(--contraster)
 	row-gap: 12px
 	align-items: center
 	justify-content: center
-	height: 56px
+	height: 40px
 	.rta-row small
 		color: #676767
 		margin: 0
@@ -43,9 +43,9 @@
 		padding: 0 16px
 
 .footermain.light
-	background: #f7f7f7
+	background: #FFFFFF
 
 .footermain.dark
-	background: #070707
+	background: #171717
 
 </style>

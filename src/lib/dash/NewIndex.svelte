@@ -132,7 +132,6 @@ label
 		border-radius: 4px
 		background: none
 		outline: none
-		font-family: 'Space Grotesk', sans-serif
 	.rta-column
 		row-gap: 4px
 

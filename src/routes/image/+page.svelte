@@ -163,22 +163,21 @@
 .mainpagegrid.lzero, .mainpagegrid.lone
 	grid-template-columns: 1fr 1fr 1fr 1fr
 	grid-template-areas: ". . . ."
-	gap: 8px
-	height: calc(100vh - 128px)
+	gap: 0px
+	height: calc(100vh - 80px)
 	align-items: center
 	align-content: center
 	.block
 		display: flex
 		flex-direction: column
-		height: calc(50vh - 64px)
+		height: calc(50vh - 40px)
 		background-position: center center
 		background-size: cover
 		justify-content: center
 		align-items: center
 		transition: 0.2s
-		border-radius: 8px
 		padding: 16px
-		border: 2px solid transparent
+		border: 1px solid transparent
 		transform-origin: center center
 		h5
 			transition: 0.4s
@@ -190,7 +189,7 @@
 			box-shadow: 4px 4px 8px 5px rgba(0,0,0,0.8)
 			text-align: center
 		&:hover
-			border: 2px solid var(--default)
+			border: 1px solid var(--default)
 			h5
 				opacity: 1
 				&:hover

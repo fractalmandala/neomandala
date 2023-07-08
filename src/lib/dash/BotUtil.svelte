@@ -89,7 +89,6 @@
 
 select
 	border: 1px solid var(--contraster)
-	font-family: 'Space Grotesk', sans-serif
 	font-size: 12px
 	font-weight: bold
 	background: #10D56C

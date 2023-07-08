@@ -84,10 +84,8 @@
 <style lang="sass">
 
 h4
-	font-weight: 500
-
-small, .islabel, h4
-	font-family: 'Space Grotesk', sans-serif
+	font-weight: 600
+	word-break: break-word
 
 .inside
 	row-gap: 8px
@@ -97,6 +95,8 @@ small, .islabel, h4
 		z-index: 1000
 		background: var(--this)
 		padding: 16px
+		height: calc(100vh - 80px)
+		overflow-y: scroll
 
 .inside, .sectionrest
 	p a

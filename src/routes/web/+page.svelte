@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="rta-grid grid3 colgap400 rowgap400 x00"
+	class="rta-grid grid3 colgap400 rowgap400 x00 minH"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -48,6 +48,7 @@
 .x00
 	@media screen and (min-width: 1024px)
 		padding: 40px
+		align-content: start
 	@media screen and (max-width: 1023px)
 		padding: 16px
 

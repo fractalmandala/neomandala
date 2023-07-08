@@ -29,7 +29,6 @@ pre
 
 small
 	text-transform: uppercase
-	font-family: 'Space Grotesk', sans-serif
 
 .strip
 	border-bottom: 1px solid #575757

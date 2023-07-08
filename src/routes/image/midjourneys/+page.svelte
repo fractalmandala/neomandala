@@ -77,7 +77,7 @@
 		direction: 'ltr',
 		pagination: false,
 		arrows: false,
-		height: 'calc(100vh - 160px)'
+		height: 'calc(100vh - 80px)'
 	}}
 >
 	<SplideTrack>
@@ -111,14 +111,14 @@
 .rta-grid.grid2
 	@media screen and (min-width: 769px)
 		padding: 0 3.2vw
-		height: calc(100vh - 160px)
+		height: calc(100vh - 80px)
 		.grot
 			display: flex
 			flex-direction: column
 			justify-content: center
 	@media screen and (max-width: 768px)
 		padding: 16px
-		height: calc(100vh - 128px)
+		height: calc(100vh - 80px)
 		h4
 			font-size: 20px
 			

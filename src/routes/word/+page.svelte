@@ -45,7 +45,7 @@
 	class:light={$themeMode}
 	class:dark={!$themeMode}
 >
-	<div class="rta-grid grid4 stay2 colgap100 rowgap100">
+	<div class="rta-grid grid4 colgap100 rowgap100">
 		{#if pens && pens.length > 0}
 			{#each pens as item}
 				<a

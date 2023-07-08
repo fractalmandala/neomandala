@@ -56,11 +56,9 @@
 	padding-bottom: 32px
 
 .userquery p
-	font-family: 'Space Grotesk', sans-serif
 	color: var(--greyish)
 
 .agentanswer
-	font-family: 'Space Grotesk', sans-serif
 	code
 		font-family: 'Space Mono', monospace
 		font-size: 14px

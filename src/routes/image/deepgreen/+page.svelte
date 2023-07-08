@@ -75,7 +75,7 @@
 		wheelMinThreshold: 1.1,
 		speed: 900,
 		direction: 'ltr',
-		height: 'calc(100vh - 112px)',
+		height: 'calc(100vh - 80px)',
 		easing: 'cubic-bezier(0.900, 0.005, 0.225, 1.035)',
 		pagination: false,
 		arrows: false
@@ -97,7 +97,7 @@
 <style lang="sass">
 
 .rta-image
-	height: calc(100vh - 112px)
+	height: calc(100vh - 80px)
 	img
 		object-fit: cover
 		height: 100%

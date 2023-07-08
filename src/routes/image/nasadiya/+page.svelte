@@ -77,7 +77,7 @@
 		wheelMinThreshold: 1.1,
 		speed: 900,
 		direction: 'ttb',
-		height: 'calc(100vh - 112px)',
+		height: 'calc(100vh - 80px)',
 		easing: 'cubic-bezier(0.900, 0.005, 0.225, 1.035)',
 		pagination: false,
 		arrows: false
@@ -116,7 +116,7 @@
 .rta-grid.grid2
 	@media screen and (min-width: 769px)
 		padding: 0
-		height: calc(100vh - 112px)
+		height: calc(100vh - 80px)
 		.grot
 			display: flex
 			flex-direction: column
@@ -128,7 +128,7 @@
 			font-size: 18px
 	@media screen and (max-width: 768px)
 		padding: 0px 16px 16px 16px
-		min-height: calc(100vh - 128px)
+		min-height: calc(100vh - 80px)
 		.back
 			height: 45vh
 		.movethis

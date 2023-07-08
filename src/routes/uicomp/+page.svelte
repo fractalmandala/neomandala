@@ -120,7 +120,7 @@
 		.notetitle
 			color: var(--texttwo)
 			font-size: 24px
-			font-family: 'Space Grotesk', sans-serif
+			font-family: 'CommitMono', sans-serif
 
 
 </style>

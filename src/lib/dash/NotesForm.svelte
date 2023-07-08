@@ -91,14 +91,12 @@ input[type=text]
 	padding: 4px 8px
 	color: var(--background)
 	font-size: 12px
-	font-family: 'Space Grotesk', sans-serif
 
 select
 	background: none
 	border: 1px solid var(--texttwo)
 	border-radius: 4px
 	color: var(--background)
-	font-family: 'Space Grotesk', sans-serif
 	font-size: 12px
 
 </style>

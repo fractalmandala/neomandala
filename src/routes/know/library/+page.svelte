@@ -192,7 +192,7 @@
 <style lang="sass">
 
 pre
-	font-family: 'Space Grotesk', sans-serif
+	font-family: 'CommitMono', sans-serif
 	margin-bottom: 16px
 	white-space: pre-line
 

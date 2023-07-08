@@ -162,13 +162,12 @@
 
 .block
 	display: flex
-	flex-direction: row
 	transition: 0.2s
 	h5
 		transition: 0.1s
-		font-size: 64px
 		text-transform: uppercase
 		color: var(--thisnew)
+		font-family: "CommitMono", sans-serif
 		a
 			color: inherit
 		&:hover
@@ -205,12 +204,30 @@
 	padding: 64px
 	.block
 		width: max-content
+		border-bottom: 1px solid var(--contraster)
+		h5
+			font-size: 72px
+
+.lone
+	.block
+		h5
+			font-size: 56px
+
+.ltwo
+	.block
+		flex-direction: column
+		height: 64px
+		h5
+			font-size: 32px
 
 .lone, .ltwo
 	padding: 16px 16px 0 16px
 	.block
 		width: 100%
-		padding-bottom: 16px
+
+.ltwo
+	justify-content: center
+	row-gap: 16px
 
 h5
 	font-weight: 500

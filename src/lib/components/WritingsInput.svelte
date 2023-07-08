@@ -93,6 +93,5 @@ input[type=text]
 	color: #272727
 	font-size: 32px
 	text-transform: capitalize
-	font-family: 'Space Grotesk', sans-serif
 
 </style>

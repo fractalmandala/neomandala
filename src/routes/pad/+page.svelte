@@ -132,7 +132,7 @@
 		background: none
 		outline: none
 		width: calc(100% - 120px)
-		font-family: 'Space Grotesk', sans-serif
+		font-family: 'CommitMono', sans-serif
 
 
 </style>

@@ -25,6 +25,7 @@
 	let menuNav = false;
 	let fake = false;
 	let dropped = false;
+	export let logger: boolean;
 
 	let link1 = 'pad';
 	let link2 = 'cod';
@@ -133,7 +134,7 @@
 		<div class="notename">{$noteName}</div>
 	</div>
 	<div class="rta-row ycenter outrow">
-		{#if !$breakTwo}
+		{#if !$breakTwo && logger}
 			{#if $headTitle === 'notes'}
 				<div class="thispage">Notes</div>
 			{:else}

@@ -95,8 +95,8 @@
 			align-items: stretch
 			padding-left: 6vw
 			padding-right: 3vw
-			border-right: 1px solid var(--background)
-			border-left: 1px solid var(--background)
+			border-right: 1px solid var(--contraster)
+			border-left: 1px solid var(--contraster)
 			.pagemin
 				max-width: 620px
 	@media screen and (max-width: 1023px)

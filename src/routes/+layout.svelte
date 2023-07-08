@@ -134,7 +134,7 @@
 	style="background-image: url('{$shareImage}')"
 >
 	<header>
-		<Header />
+		<Header logger={logged} />
 	</header>
 	<main class="low minH">
 		{#key data.pathname}

@@ -41,6 +41,7 @@
 		"@fontsource/oxygen-mono": "^5.0.0",
 		"@huggingface/inference": "^2.5.1",
 		"@markdoc/markdoc": "^0.3.0",
+		"@melt-ui/svelte": "^0.18.1",
 		"@milkdown/core": "^7.2.1",
 		"@milkdown/ctx": "^7.2.1",
 		"@milkdown/plugin-clipboard": "^7.2.1",

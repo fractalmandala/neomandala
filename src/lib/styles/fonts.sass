@@ -90,6 +90,10 @@ pre
 	word-break: break-word
 	color: inherit
 
+.notecontainer
+	pre
+		white-space: pre !important
+
 .null
 	margin: 0
 
@@ -696,3 +700,90 @@ $exp: 1.414
 		width: 720px
 
 		
+.sidos
+	height: calc(100vh - 80px)
+	position: sticky
+	top: 40px
+	overflow-y: scroll
+	.blank-button
+		height: 40px
+		border-bottom: 1px solid var(--contraster)
+		display: flex
+		align-items: center
+		@media screen and (min-width: 1024px)
+			padding-left: 32px
+			padding-bottom: 32px
+
+.paddero
+	p, p a
+		font-family: 'CommitMono', sans-serif
+	p a
+		color: var(--texttwo)
+		&:hover
+			color: #10D56C
+	@media screen and (min-width: 1024px)
+		padding-left: 32px
+
+.stripunos
+	border-bottom: 1px solid var(--contraster)
+	input
+		height: 100%
+		background: none
+		border: none
+		color: var(--texttwo)
+		font-family: 'CommitMono', sans-serif
+		outline: none
+
+.lzero
+	.stripunos
+		height: 40px
+		padding-left: 32px
+		padding-right: 32px
+		input
+			font-size: 24px
+			width: calc(100% - 80px)
+		.zoom-button
+			width: 56px
+	.notecontainer
+		.notesguy
+			min-height: 64vh
+
+.lone
+	.stripunos
+		height: 32px
+		padding-left: 24px
+		padding-right: 24px
+		input
+			font-size: 20px
+
+.lzero
+	.stripunos
+		height: 40px
+		padding-left: 32px
+		padding-right: 32px
+		position: sticky
+		top: 40px
+		background: var(--this)
+		z-index: 50
+		.zoom-button
+			width: 56px
+		.notetitle
+			color: var(--texttwo)
+			font-size: 24px
+			font-family: 'CommitMono', sans-serif
+	.notecontainer
+		.notesguy
+			width: 56vw
+			min-height: 64vh
+
+.ltwo
+	.stripunos
+		height: 32px
+		padding-left: 16px
+		padding-right: 16px
+		input
+			font-size: 20px
+
+.notesguy
+	border-radius: 5px 0 0 0
+	padding: 8px

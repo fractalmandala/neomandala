@@ -157,15 +157,15 @@
 			{/if}
 		{/if}
 		<div class="rta-row colgap200 ycenter outinrow">
-			<button class="blank-button" on:click={handleClick}>
-				<Side />
-			</button>
 			<button class="blank-button" on:click={handleSwitch}>
 				{#if $themeMode}
 					<Moon {dimension} {color} />
 				{:else}
 					<Sun {dimension} {color} />
 				{/if}
+			</button>
+			<button class="blank-button" on:click={handleClick}>
+				<Side />
 			</button>
 		</div>
 	</div>

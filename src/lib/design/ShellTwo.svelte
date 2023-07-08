@@ -32,6 +32,7 @@
 	@media screen and (max-width: 1023px)
 		grid-template-columns: 1fr
 		grid-template-areas: "prime"
+		min-height: calc(100vh - 80px)
 		.shell-l
 			display: none
 		.shell-m

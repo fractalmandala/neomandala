@@ -43,29 +43,3 @@
 		<slot />
 	</div>
 </Shell>
-
-<style lang="sass">
-
-.sidos
-	height: 72vh
-	position: sticky
-	top: 40px
-	.blank-button
-		height: 40px
-		border-bottom: 1px solid var(--contraster)
-		@media screen and (min-width: 1024px)
-			padding-left: 32px
-
-.paddero
-	@media screen and (min-width: 1024px)
-		padding-left: 32px
-
-p, p a
-	font-family: 'CommitMono', sans-serif
-
-p a
-	color: var(--texttwo)
-	&:hover
-		color: #10D56C
-
-</style>

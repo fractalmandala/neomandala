@@ -3,6 +3,7 @@
 	import supabase from '$lib/utils/supastream';
 	import { showNote } from '$lib/dash/alerts';
 	import { marked } from 'marked';
+	import { goto } from '$app/navigation';
 	import {
 		breakZero,
 		breakOne,
@@ -16,10 +17,10 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import { Markdown } from 'tiptap-markdown';
 	import '$lib/styles/tiptap.sass';
-
-	let title: string = 'Note Title';
+	export let data;
 	let element: any;
 	let editor: any;
+	let title: any;
 	let html: any;
 	let markdownOutput: any;
 
@@ -28,29 +29,32 @@
 		mangle: false
 	});
 
-	function onFocus() {
-		if (title === 'Note Title') {
-			title = '';
-		}
-	}
+	let processed = marked(data.content);
 
-	function onBlur() {
-		if (title === '') {
-			title = 'Note Title';
-		}
-	}
-
-	export async function newNote() {
-		const { error } = await supabase.from('db-notes').insert({ title: title, content: html });
+	export async function saveNote() {
+		const { error } = await supabase.from('db-notes').update({ content: html }).eq('id', data.id);
 		if (error) {
 			showNote('error!', true);
 		} else showNote('done!', false);
 	}
 
+	async function deleteNote() {
+		const { error } = await supabase.from('db-notes').delete().eq('id', data.id);
+		if (error) {
+			showNote('error!', true);
+		} else {
+			showNote('deleted!', false);
+			navigateToLink();
+		}
+	}
+
+	async function navigateToLink(): Promise<void> {
+		await goto('/notes');
+	}
+
 	$: $headTitle = 'notes';
 
 	onMount(() => {
-		$headTitle = 'notes';
 		return (editor = new Editor({
 			element: element,
 			extensions: [
@@ -61,7 +65,7 @@
 					bulletListMarker: '-'
 				})
 			],
-			content: '',
+			content: processed,
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
@@ -87,16 +91,45 @@
 	class:ltwo={$breakTwo}
 >
 	<div class="rta-row ycenter between stripunos">
-		<input type="text" bind:value={title} placeholder={title} on:focus={onFocus} on:blur={onBlur} />
-		<button class="zoom-button" on:click={newNote}>
-			<span class="sp1" />
-			<span class="sp2" />
-			<span class="sp3" />
-			<span class="sp4" />
-			Save
-		</button>
+		<div class="notetitle">{data.title}</div>
+		<div class="rta-row colgap200 ycenter">
+			<button class="zoom-button" on:click={saveNote}>Save</button>
+			<button class="zoom-button" on:click={deleteNote}>Delete</button>
+		</div>
 	</div>
 	<div class="notecontainer rta-column">
 		<div class="notesguy" bind:this={element} />
 	</div>
 </div>
+
+<style lang="sass">
+
+.stripunos
+	border-bottom: 1px solid var(--contraster)
+
+.lzero
+	.stripunos
+		height: 40px
+		padding-left: 32px
+		padding-right: 32px
+		position: sticky
+		top: 40px
+		background: var(--this)
+		z-index: 50
+		.zoom-button
+			width: 56px
+		.notetitle
+			color: var(--texttwo)
+			font-size: 24px
+			font-family: 'CommitMono', sans-serif
+	.notecontainer
+		.notesguy
+			width: 56vw
+			min-height: 64vh
+
+.notesguy
+	border-radius: 5px 0 0 0
+	padding: 8px
+
+
+</style>

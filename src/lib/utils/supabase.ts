@@ -247,6 +247,16 @@ export async function articleDrafts() {
 	return data;
 }
 
+export async function codeSnips() {
+	const { data, error } = await supabase
+		.from('amrit-notes')
+		.select()
+		.eq('agent', 'snippet')
+		.order('title');
+	if (error) throw new Error(error.message);
+	return data;
+}
+
 export async function mandalapedia(){
 	const { data, error } = await supabase
 		.from('mandalapedia')

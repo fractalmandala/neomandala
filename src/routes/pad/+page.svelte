@@ -1,31 +1,56 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import supabase from '$lib/utils/supastream';
+	import { showNote } from '$lib/dash/alerts';
+	import { marked } from 'marked';
+	import {
+		breakZero,
+		breakOne,
+		breakTwo,
+		noteName,
+		showSave,
+		hideSave,
+		headTitle
+	} from '$lib/stores/globalstores';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import { Markdown } from 'tiptap-markdown';
-	import { addNewNote } from '$lib/dash/notesutil';
 	import '$lib/styles/tiptap.sass';
 
+	let title: string = 'Snips';
 	let element: any;
 	let editor: any;
-	let title = '';
 	let html: any;
-	let prefill = '';
 	let markdownOutput: any;
 
-	let validator = false;
+	marked.use({
+		headerIds: false,
+		mangle: false
+	});
 
-	function handleSubmit() {
-		addNewNote(title, markdownOutput);
+	function onFocus() {
+		if (title === 'Snips') {
+			title = '';
+		}
 	}
 
-	$: if (markdownOutput === '' || title === '') {
-		validator = false;
-	} else {
-		validator = true;
+	function onBlur() {
+		if (title === '') {
+			title = 'Snips';
+		}
 	}
+
+	export async function newNote() {
+		const { error } = await supabase.from('db-notes').insert({ title: title, content: html });
+		if (error) {
+			showNote('error!', true);
+		} else showNote('done!', false);
+	}
+
+	$: $headTitle = 'snips';
 
 	onMount(() => {
+		$headTitle = 'snips';
 		return (editor = new Editor({
 			element: element,
 			extensions: [
@@ -36,14 +61,14 @@
 					bulletListMarker: '-'
 				})
 			],
-			content: prefill,
+			content: '',
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
 			},
 			onUpdate: ({ editor }) => {
-				html = editor.getHTML();
 				markdownOutput = editor.storage.markdown.getMarkdown();
+				html = editor.getHTML();
 			}
 		}));
 	});
@@ -55,84 +80,23 @@
 	});
 </script>
 
-<div class="rta-page">
-	<div class="rta-monobox">
-		{#if editor}
-			<div class="inputtiptap rta-row between colgap100">
-				<input type="text" bind:value={title} />
-				<div class="rta-row colgap100 buttons">
-					<button
-						on:click={() => editor.chain().focus().undo().run()}
-						disabled={!editor.can().chain().focus().undo().run()}
-						class="blank-button"
-					>
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M5.82843 6.99858L8.36396 9.53412L6.94975 10.9483L2 5.99858L6.94975 1.04883L8.36396 2.46305L5.82843 4.99858H13C17.4183 4.99858 21 8.5803 21 12.9986C21 17.4168 17.4183 20.9986 13 20.9986H4V18.9986H13C16.3137 18.9986 19 16.3123 19 12.9986C19 9.68487 16.3137 6.99858 13 6.99858H5.82843Z"
-								fill="#676767"
-							/>
-						</svg>
-					</button>
-					<button
-						on:click={() => editor.chain().focus().redo().run()}
-						disabled={!editor.can().chain().focus().redo().run()}
-						class="blank-button"
-					>
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 24 24"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M18.1716 6.99858H11C7.68629 6.99858 5 9.68487 5 12.9986C5 16.3123 7.68629 18.9986 11 18.9986H20V20.9986H11C6.58172 20.9986 3 17.4168 3 12.9986C3 8.5803 6.58172 4.99858 11 4.99858H18.1716L15.636 2.46305L17.0503 1.04883L22 5.99858L17.0503 10.9483L15.636 9.53412L18.1716 6.99858Z"
-								fill="#676767"
-							/>
-						</svg>
-					</button>
-					{#if validator}
-						<button class="genbutton" on:click={handleSubmit}>Submit</button>
-					{/if}
-				</div>
-			</div>
-		{/if}
-		<div class="notepad" bind:this={element} data-lenis-prevent />
+<div
+	class="grot rta-column rowgap300"
+	class:lzero={$breakZero}
+	class:lone={$breakOne}
+	class:ltwo={$breakTwo}
+>
+	<div class="rta-row ycenter between stripunos">
+		<input type="text" bind:value={title} placeholder={title} on:focus={onFocus} on:blur={onBlur} />
+		<button class="zoom-button" on:click={newNote}>
+			<span class="sp1" />
+			<span class="sp2" />
+			<span class="sp3" />
+			<span class="sp4" />
+			Save
+		</button>
+	</div>
+	<div class="notecontainer rta-column">
+		<div class="notesguy" bind:this={element} />
 	</div>
 </div>
-
-<style lang="sass">
-
-.rta-row
-	column-gap: 1.6vw
-
-.notepad
-	border: 1px solid var(--onlyblack)
-	padding: 8px
-	border-radius: 6px
-	min-height: 300px
-
-.inputtiptap
-	padding: 8px
-	border-radius: 4px 4px 0 0
-	input
-		border-bottom: 1px solid var(--onlyblack)
-		border-top: none
-		border-left: none
-		border-right: none
-		color: white
-		padding: 2px 4px
-		border-radius: 4px
-		background: none
-		outline: none
-		width: calc(100% - 120px)
-		font-family: 'CommitMono', sans-serif
-
-
-</style>

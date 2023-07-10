@@ -131,7 +131,6 @@
 	class:leveltwo={$breakTwo}
 	class:light={$themeMode}
 	class:dark={!$themeMode}
-	style="background-image: url('{$shareImage}')"
 >
 	<header>
 		<Header logger={logged} />

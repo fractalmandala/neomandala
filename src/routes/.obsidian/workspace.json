@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "71b95d478ff98d16",
+        "id": "7a797060071abb95",
         "type": "tabs",
         "children": [
           {
-            "id": "5ba5e5b5f9ecacc9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "notepad.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e375f1b1ee327609",
+            "id": "a62bcf8abcbca741",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -93,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notepad.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notepad.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "notepad.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -156,14 +140,14 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "5ba5e5b5f9ecacc9",
+  "active": "a62bcf8abcbca741",
   "lastOpenFiles": [
+    "notepad.md",
     "api/password/+server.ts",
     "api/password",
     "Untitled.canvas",
     "Untitled.md",
     "igot task.md",
-    "notepad.md",
     "notes/[note]/+page.svelte",
     "notes/[note]/+page.ts",
     "notes/[note]",
@@ -176,7 +160,6 @@
     "(protected)/pad/aiarticle.md",
     "image/realitywall/+page.svelte",
     "image/realitywall",
-    "image/bijatobrahman/+page.svelte",
     "tsurfer_a_psychedelic_trip_where_mind_is_wrapped_inside_of_mind_6ff6d0a5-2681-49be-bf08-c97753262e73.webp",
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_f2f94ddc-7b4b-404b-9003-44e924e36c6c.webp",
     "tsurfer_a_cornucopia_of_psychedelic_imagery_and_visuals_a_world_ef67f7e6-578b-43b5-bd20-de4a57edb843.webp",

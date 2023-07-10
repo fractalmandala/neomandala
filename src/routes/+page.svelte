@@ -89,7 +89,7 @@
 <svelte:window bind:scrollY={scY} />
 
 <div
-	class="rta-column grot minH"
+	class="rta-column xright ta-r grot minH"
 	class:lzero={$breakZero}
 	class:lone={$breakOne}
 	class:ltwo={$breakTwo}
@@ -156,6 +156,7 @@
 		</h5>
 		<p>Ohhh this is the best section just check out the galleries!</p>
 	</div>
+	<div class="mesh-gradient" />
 </div>
 
 <style lang="sass">
@@ -163,11 +164,14 @@
 .block
 	display: flex
 	transition: 0.2s
+	z-index: 1
 	h5
 		transition: 0.1s
 		text-transform: uppercase
-		color: var(--thisnew)
-		font-family: "CommitMono", sans-serif
+		color: var(--background)
+		font-family: 'Rota'
+		margin: 0
+		padding: 0
 		a
 			color: inherit
 		&:hover
@@ -177,6 +181,8 @@
 		font-size: 14px
 		opacity: 0
 		transition: 0.1s
+		margin: 0
+		color: var(--texttwo)
 	&:hover
 		p
 			opacity: 1
@@ -193,20 +199,21 @@
 .lzero, .lone
 	.block
 		display: flex
-		flex-direction: row
-		align-items: center
+		flex-direction: column
 		column-gap: 24px
 		transition: 0.2s
 		h5
 			transition: 0.4s
 
 .lzero
-	padding: 64px
+	padding: 32px
+	justify-content: center
+	row-gap: 32px
 	.block
 		width: max-content
-		border-bottom: 1px solid var(--contraster)
+		border-radius: 8px
 		h5
-			font-size: 72px
+			font-size: 24px
 
 .lone
 	.block
@@ -229,8 +236,30 @@
 	justify-content: center
 	row-gap: 16px
 
-h5
-	font-weight: 500
+.mesh-gradientsx
+	position: absolute
+	bottom: 64px
+	left: 0
+	width: 680px
+	height: 600px
+	background: #10D56C
+	filter: blur(50px)
+	z-index: 0
+	border-radius: 50%
 
+.light, .dark
+	background-size: cover
+	background-position: center center
+	background-repeat: no-repeat
+
+.light
+	background-image: url('/images/mainblob.png')
+	-webkit-animation: kenburns-bottom-left 5s ease-out both
+	animation: kenburns-bottom-left 5s ease-out both
+
+.dark
+	background-image: url('/images/blobblack.png')
+	-webkit-animation: kenburns-bottom-left 5s ease-out both
+	animation: kenburns-bottom-left 5s ease-out both
 
 </style>

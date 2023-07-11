@@ -263,6 +263,10 @@ pre
 .ta-c
 	text-align: center
 
+.ta-c-d
+	@media screen and (min-width: 1024px)
+		text-align: center
+
 .ta-r
 	text-align: right
 
@@ -328,73 +332,6 @@ $std: 16px
 $stdsm: 28px
 $exp: 1.414
 
-.adobe
-	font-family: 'Adobe Devanagari', serif
-	blockquote
-		font-style: italic
-		border-left: 3px solid #10D56C
-		padding-left: 16px
-	h5
-		font-family: 'Rota'
-	@media screen and (min-width: 1024px)
-		p, ul
-			font-size: $std * 1.6
-		h6
-			font-size: $std * 1.25
-		h5
-			font-size: $std * $exp * 1.25
-			padding: 40px 0
-			border-top: 1px solid var(--contraster)
-			border-bottom: 1px solid var(--contraster)
-		h4
-			font-size: $std * $exp * $exp * 1.5
-			padding-top: 80px
-		h3
-			font-size: $std *$exp * $exp * $exp * 1.25
-		h2
-			font-size: $std * $exp * $exp * $exp * $exp * 1.25
-		h1
-			font-size: $std * $exp * $exp * $exp * $exp * $exp * 1.25
-	@media screen and (min-width: 769px) and (max-width: 1023px)
-		p, ul
-			font-size: $std * 1.25 * 1.25
-		h6
-			font-size: $std * 1.25
-		h5
-			font-size: $std * 1.2 * 1.25 * 1.25
-			padding: 64px 0
-			border-top: 1px solid var(--contraster)
-			border-bottom: 1px solid var(--contraster)
-		h4
-			font-size: $std * $exp * 1.25 * 1.25 * 1.25
-			line-height: 1.2
-			padding: 80px 0 32px 0
-		h3
-			font-size: $std *$exp * $exp * 1.25
-		h2
-			font-size: $std * $exp * $exp * $exp * 1.25
-		h1
-			font-size: $std * $exp * $exp * $exp * $exp * 1.25
-	@media screen and (max-width: 768px)
-		p, ul
-			font-size: $std * 1.25 * 1.25
-		h6
-			font-size: $std * 1.25
-		h5
-			font-size: $std * $exp * 1.25
-			padding: 64px 0
-			border-top: 1px solid var(--contraster)
-			border-bottom: 1px solid var(--contraster)
-		h4
-			font-size: $std * $exp * $exp * 1.25
-			line-height: 1.2
-			padding: 80px 0 32px 0
-		h3
-			font-size: $std *$exp * $exp * 1.2 * 1.25
-		h2
-			font-size: $std * $exp * $exp * $exp * 1.25
-		h1
-			font-size: $std * $exp * $exp * $exp * $exp * 1.25
 
 .font, .grot
 	cite
@@ -426,7 +363,7 @@ $exp: 1.414
 		h5
 			font-size: $std * 1.2
 		h4
-			font-size: $std * $exp
+			font-size: $std * $exp * 1.2
 		h3
 			font-size: $std *$exp * $exp
 		h2
@@ -441,7 +378,7 @@ $exp: 1.414
 		h5
 			font-size: $std * $exp
 		h4
-			font-size: $std * $exp * $exp * 1.2
+			font-size: $std * $exp * 1.2
 		h3
 			font-size: $std *$exp * $exp * 1.2
 		h2
@@ -467,22 +404,33 @@ $exp: 1.414
 	line-height: 1.6
 	blockquote
 		margin: 0
-		padding: 16px
 		font-style: italic
-		border-top: 1px solid #10D56C
-		border-bottom: 1px solid #10D56C
+		border-top: 1px solid var(--contraster)
+		border-bottom: 1px solid var(--contraster)
 		p
 			line-height: 1.12
 	cite
 		font-size: 12px
 		font-style: normal
 		color: var(--greyish)
+	p, li, blockquote
+		letter-spacing: 0.35px
+	h4
+		line-height: 1.1
 	@media screen and (min-width: 769px)
-		p, li, blockquote
-			font-size: 16px
+		p, li
+			font-size: 18px
 			line-height: 1.8
 		blockquote
 			font-style: italic
+			font-size: 21px
+			padding: 24px 16px
+			margin-top: 16px
+			margin-bottom: 16px
+			p
+				font-size: 21px
+				font-weight: bold
+				color: var(--texttwo)
 		h6
 			font-weight: 500
 			font-size: 21px
@@ -495,6 +443,7 @@ $exp: 1.414
 			margin: 32px 0
 		h4
 			font-size: 32px
+			margin-top: 48px
 	@media screen and (max-width: 768px)
 		p, li, blockquote
 			font-size: 18px

@@ -36,6 +36,8 @@
 	height: 40px
 	.rta-row small
 		color: #676767
+		font-size: 10px
+		letter-spacing: 2px
 		margin: 0
 	@media screen and (min-width: 769px)
 		padding: 0 3.2vw

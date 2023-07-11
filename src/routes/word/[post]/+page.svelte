@@ -108,7 +108,7 @@
 		padding-right: 32px
 
 .blogger
-	@media screen and (min-width: 769px)
+	@media screen and (min-width: 1024px)
 		width: 720px
 		padding-left: 40px
 		padding-right: 40px

@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="rta-grid grid3 colgap400 rowgap400 x00 minH"
+	class="rta-column rowgap600 x00 minH"
 	class:levelzero={$breakZero}
 	class:levelone={$breakOne}
 	class:leveltwo={$breakTwo}
@@ -35,9 +35,10 @@
 >
 	{#if pens && pens.length > 0}
 		{#each pens as item}
-			<a class="rta-column ybetween grot ticket" href={item.linkpath}>
-				<h6 class="white tt-c hover">{item.meta.id} - {item.meta.title}</h6>
-				<small>{item.meta.type} | {item.meta.tags}</small>
+			<a class="rta-column xleft grot ticket" href={item.linkpath}>
+				<h4 class="tt-c hover p-bot-8">{item.meta.title}</h4>
+				<p>{item.meta.description}</p>
+				<small class="tt-u">{item.meta.type} | {item.meta.tags}</small>
 			</a>
 		{/each}
 	{/if}
@@ -47,39 +48,49 @@
 
 .x00
 	@media screen and (min-width: 1024px)
-		padding: 40px
-		align-content: start
+		padding: 64px
+		align-items: center
+		column-gap: 0
+		.ticket
+			width: 720px
 	@media screen and (max-width: 1023px)
 		padding: 16px
+		.ticket
+			width: 80%
 
 
 .leveltwo.x00
 	.ticket
 		width: 100%
-		border-radius: 4px
 
 .ticket
-	border-radius: 4px
 	transition: all .3s 
-	padding: 16px
+	p
+		color: var(--onlyblack)
+		padding-top: 4px
 	small
-		color: var(--greyish)
-	h6
-		color: var(--background)
-	&:hover
-		h6
-			color: #10D56C
-
-.dark
-	.ticket
-		background: #121212
+		color: #10D56C
+		letter-spacing: 2px	
+		font-size: 10px
+	h4
+		color: var(--texttwo)
+		position: relative
+		margin: 0
+		line-height: 1
+		&::after
+			position: absolute
+			bottom: 0
+			left: 50%
+			height: 1px
+			background: #10D56C
+			width: 0
+			content: ''
+			transition: 0.1s
 		&:hover
-			box-shadow: 4px 4px 8px #070707
+			color: var(--background)
+			&::after
+				left: 0
+				width: 100%
 
-.light
-	.ticket
-		background: #f7f7f7
-		&:hover
-			box-shadow: 4px 4px 8px #e7e7e7
 
 </style>

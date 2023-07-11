@@ -122,16 +122,13 @@
 	class:darkmode={!$themeMode}
 	on:mouseleave={closeHelper}
 >
-	<div class="rta-row colgap200">
+	<div class="rta-row colgap200 ycenter">
 		<Motif />
 		<a href="/" class="logo">
 			{#each text.split('') as char, i}
 				<span class="text-animation" style="animation-delay: {i * 0.04}s">{char}</span>
 			{/each}
 		</a>
-	</div>
-	<div class="conditional rta-row between">
-		<div class="notename">{$noteName}</div>
 	</div>
 	<div class="rta-row ycenter outrow">
 		{#if !$breakTwo && logger}
@@ -202,11 +199,6 @@
 		margin-left: 8px
 		padding-top: 4px
 
-.notename
-	font-size: 20px
-	text-transform: uppercase
-	color: var(--texttwo)
-
 .outrow
 	a
 		font-size: 14px
@@ -264,24 +256,18 @@
 .fm-header.levelzero
 	padding-left: 40px
 	padding-right: 40px
-	.conditional
-		width: 50%
 
 .fm-header.levelone
 	padding-left: 24px
 	padding-right: 24px
-	.conditional
-		max-width: 40%
 
 .fm-header.leveltwo
 	padding-left: 16px
 	padding-right: 16px
-	.conditional
-		display: none
 
 .logo
 	font-family: 'Space Grotesk', sans-serif
-	font-size: 18px
+	font-size: 16px
 	font-weight: 500
 	z-index: 1000
 	color: var(--background)

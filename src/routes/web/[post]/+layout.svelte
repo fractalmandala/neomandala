@@ -11,30 +11,21 @@
 
 <div class="rta-column top rowgap600 p-bot-64" class:leveltwo={$breakTwo}>
 	<slot />
-	<div class="rta-column posts bord-top grot p-top-64">
+	<div class="rta-column rowgap600 posts bord-top grot p-top-64">
 		{#if posts && posts.length > 0}
-			<h4 class="p-bot-32">More</h4>
+			<h4 class="p-bot-32 ta-c-d">More</h4>
 			{#each posts as item}
-				<div class="rta-column grot null p-bot-32">
-					<h5>
-						<a href={item.linkpath}>
-							{item.meta.title}
-						</a>
-					</h5>
-					<small><span style="color: #10D56C">{item.meta.type}</span> | {item.meta.tags}</small>
-				</div>
+				<a class="rta-column xleft grot ticket" href={item.linkpath}>
+					<h4 class="tt-c hover p-bot-8">{item.meta.title}</h4>
+					<p>{item.meta.description}</p>
+					<small class="tt-u">{item.meta.type} | {item.meta.tags}</small>
+				</a>
 			{/each}
 		{/if}
 	</div>
 </div>
 
 <style lang="sass">
-
-.posts
-	h5
-		color: var(--texttwo)
-		&:hover
-			color: var(--default)
 
 .top
 	align-items: center
@@ -45,9 +36,48 @@
 		padding-right: 32px
 
 .posts
-	@media screen and (min-width: 769px)
-		width: 720px
-		padding-left: 40px
-		padding-right: 40px
+	@media screen and (min-width: 1024px)
+		.ticket
+			width: 720px
+			padding-left: 40px
+			padding-right: 40px
+	@media screen and (max-width: 1023px)
+		padding: 16px
+		.ticket
+			width: 80%
+
+.leveltwo
+	.ticket
+		width: 100%
+
+.ticket
+	transition: all .3s 
+	p
+		color: var(--onlyblack)
+		padding-top: 4px
+	small
+		color: #10D56C
+		letter-spacing: 2px	
+		font-size: 10px
+	h4
+		color: var(--texttwo)
+		position: relative
+		margin: 0
+		line-height: 1
+		&::after
+			position: absolute
+			bottom: 0
+			left: 50%
+			height: 1px
+			background: #10D56C
+			width: 0
+			content: ''
+			transition: 0.1s
+		&:hover
+			color: var(--background)
+			&::after
+				left: 0
+				width: 100%
+
 
 </style>

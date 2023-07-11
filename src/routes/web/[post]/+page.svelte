@@ -60,6 +60,11 @@
 		<Social />
 	</div>
 	<div class="rta-column x101">
+		<div class="rta-column fullW">
+			<h1>{data.title}</h1>
+			<small>{data.description}</small>
+			<small class="cappy">{data.type} | {data.tags}</small>
+		</div>
 		<div class="blogger">
 			<svelte:component this={data.content} />
 		</div>
@@ -68,9 +73,33 @@
 
 <style lang="sass">
 
+.cappy
+	text-transform: uppercase
+	font-size: 10px
+	letter-spacing: 2px
+	border-top: 1px solid var(--contraster)
+	padding-top: 8px
+	margin-top: 8px
+	color: #10D56C
+
+small
+	color: var(--texttwo)
+	letter-spacing: 2px
+	font-weight: 700
+
 
 .x101
 	align-items: center
+	padding-top: 64px
+	padding-bottom: 64px
+	.fullW
+		padding-bottom: 64px
+	@media screen and (max-width: 1023px)
+		padding-left: 24px
+		padding-right: 24px
+		padding-top: 0
+		.fullW
+			padding-bottom: 32px
 
 
 .leveltwo
@@ -83,10 +112,12 @@
 		width: 720px
 		padding-left: 40px
 		padding-right: 40px
-		padding-top: 64px
 	@media screen and (max-width: 768px)
-		width: calc(100vw - 16px)
+		width: 100%
 
+h1
+	@media screen and (min-width: 1024px)
+		font-size: 48px
 
 .thisguy
 	background: var(--this)

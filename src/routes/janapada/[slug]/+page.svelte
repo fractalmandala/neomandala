@@ -3,6 +3,7 @@
 	import Meta from '$lib/components/Meta.svelte';
 	import { saveThea } from '$lib/utils/supastream';
 	import { marked } from 'marked';
+	import { page } from '$app/stores';
 	import {
 		breakZero,
 		breakOne,
@@ -43,11 +44,10 @@
 	}
 
 	$: $headTitle = 'janapada';
-	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
-	$pageDescription = 'The digital garden as a WIP and in indexed form...';
-	$pageUrl = 'https://www.fractalmandala.in/know';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$pageTitle = 'Janapada';
+	$pageDescription = 'janapada notes';
+	$pageUrl = `https://www.fractalmandala.in${$page.url.pathname}`;
+	$shareImage = '/images/blobblack.png';
 
 	onMount(() => {
 		return (editor = new Editor({

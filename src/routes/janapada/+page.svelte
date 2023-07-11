@@ -15,11 +15,10 @@
 	let novels: any;
 
 	$: $headTitle = 'janapada';
-	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
-	$pageDescription = 'The digital garden as a WIP and in indexed form...';
-	$pageUrl = 'https://www.fractalmandala.in/know';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$pageTitle = 'Janapada';
+	$pageDescription = 'janapada notes';
+	$pageUrl = 'https://www.fractalmandala.in/janapada';
+	$shareImage = '/images/blobblack.png';
 
 	onMount(async () => {
 		novels = await allJanapada();

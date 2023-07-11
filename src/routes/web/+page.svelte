@@ -17,8 +17,7 @@
 
 	$pageTitle = 'WebDev at Fractal Maṇḍala';
 	$pageDescription = 'Mostly Sveltekit dev guides and snippets';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$shareImage = '/images/blobblack.png';
 	$pageUrl = 'https://www.fractalmandala.in/web';
 
 	onMount(async () => {

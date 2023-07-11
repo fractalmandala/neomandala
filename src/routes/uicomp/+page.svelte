@@ -24,11 +24,10 @@
 
 	$: $headTitle = 'ui';
 
-	$pageTitle = 'Videos at Fractal Maṇḍala';
-	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
-	$pageUrl = 'https://www.fractalmandala.in/video';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$pageTitle = 'Design Components at Fractal Maṇḍala';
+	$pageDescription = 'UI Components Library Under Construction';
+	$pageUrl = 'https://www.fractalmandala.in/uicomp';
+	$shareImage = '/images/blobblack.png';
 
 	export async function newComponent() {
 		const { error } = await supabase

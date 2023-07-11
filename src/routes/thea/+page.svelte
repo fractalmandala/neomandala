@@ -16,11 +16,10 @@
 	} from '$lib/stores/globalstores';
 
 	$: $headTitle = 'thea';
-	$pageTitle = 'Videos at Fractal Maṇḍala';
-	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
-	$pageUrl = 'https://www.fractalmandala.in/video';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$pageTitle = 'Thea at Fractal Maṇḍala';
+	$pageDescription = 'thea';
+	$pageUrl = 'https://www.fractalmandala.in/thea';
+	$shareImage = '/images/blobblack.png';
 
 	onMount(() => {
 		$headTitle = 'thea';

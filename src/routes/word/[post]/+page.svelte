@@ -47,7 +47,7 @@
 	$pageTitle = data.title;
 	$pageDescription = data.description;
 	$shareImage = data.image;
-	$pageUrl = 'https://www.fractalmandala.in' + $page.url.pathname;
+	$pageUrl = `https://www.fractalmandala.in${$page.url.pathname}`;
 
 	onMount(async () => {
 		theme = $page.url.pathname.slice(6);
@@ -82,7 +82,7 @@
 	/>
 	<div class="twohundred" />
 	<div class="thisguy rta-column xcenter ycenter null p-top-64 rowgap100 grot">
-		<h1 class="ta-c tt-u bord-bot p-bot-32">{data.title}</h1>
+		<h3 class="ta-c tt-u bord-bot p-bot-32">{data.title}</h3>
 		<Social />
 	</div>
 
@@ -147,7 +147,7 @@
 .levelzero, .levelone
 	.lowerone
 		display: none
-	h1
+	h3
 		padding-left: 128px
 		padding-right: 128px
 

@@ -24,8 +24,7 @@
 	$pageTitle = 'Videos at Fractal Maṇḍala';
 	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
 	$pageUrl = 'https://www.fractalmandala.in/video';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$shareImage = '/images/blobblack.png';
 
 	function fauxfake() {
 		fake = !fake;

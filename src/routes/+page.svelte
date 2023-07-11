@@ -42,8 +42,7 @@
 	$pageTitle = 'Fractal Maṇḍala';
 	$pageDescription = 'digital garden and buildstation';
 	$pageUrl = 'https://www.fractalmandala.in';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$shareImage = '/images/blobblack.png';
 
 	function handlePath(event: MouseEvent) {
 		const gridElement = document.querySelector('.this');

@@ -23,8 +23,7 @@
 	$pageTitle = 'Midjourney Generated Images at Fractal Maṇḍala';
 	$pageDescription = 'Experiments in generative image tech, narrative and written supplements...';
 	$pageUrl = 'https://www.fractalmandala.in/image';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$shareImage = '/images/blobblack.png';
 
 	function loadMore() {
 		low += 100;

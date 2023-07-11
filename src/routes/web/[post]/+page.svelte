@@ -33,9 +33,8 @@
 
 	$pageTitle = data.title;
 	$pageDescription = data.description;
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
-	$pageUrl = 'https://www.fractalmandala.in' + $page.url.pathname;
+	$shareImage = '/images/blobblack.png';
+	$pageUrl = `https://www.fractalmandala.in${$page.url.pathname}`;
 
 	onMount(() => {
 		$noteName = data.title;

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import Meta from '$lib/components/Meta.svelte';
+	import { page } from '$app/stores';
 	import { saveThea } from '$lib/utils/supastream';
 	import { marked } from 'marked';
 	import {
@@ -43,11 +44,10 @@
 	}
 
 	$: $headTitle = 'thea';
-	$pageTitle = 'Videos at Fractal Maṇḍala';
-	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
-	$pageUrl = 'https://www.fractalmandala.in/video';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$pageTitle = data.title;
+	$pageDescription = 'thea notes';
+	$pageUrl = `https://www.fractalmandala.in${$page.url.pathname}`;
+	$shareImage = '/images/blobblack.png';
 
 	onMount(() => {
 		return (editor = new Editor({

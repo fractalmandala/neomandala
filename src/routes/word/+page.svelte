@@ -27,8 +27,7 @@
 	$pageTitle = 'Writings at Fractal Maṇḍala';
 	$pageDescription = 'Collection of essays, research and musings over the years.';
 	$pageUrl = 'https://www.fractalmandala.in/word';
-	$shareImage =
-		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
+	$shareImage = '/images/blobblack.png';
 
 	onMount(async () => {
 		pens = await allWritings();

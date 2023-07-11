@@ -115,7 +115,7 @@
 
 .rta-grid.grid2
 	@media screen and (min-width: 769px)
-		padding: 0
+		padding: 0 3.2vw
 		height: calc(100vh - 80px)
 		.grot
 			display: flex

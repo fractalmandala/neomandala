@@ -181,15 +181,15 @@
 		transform-origin: center center
 		h5
 			transition: 0.4s
-			opacity: 0
-			background: rgba(0,0,0,0.6)
-			padding: 4px 8px
-			border: 1px solid rgba(0,0,0,0.6)
+			opacity: 1
+			background: rgba(255, 255, 255, 0.1)
+			padding: 16px 8px
+			border: 1px solid rgba(255, 255, 255,0.26)
 			border-radius: 4px
-			box-shadow: 4px 4px 8px 5px rgba(0,0,0,0.8)
+			line-height: 1
+			margin: 0
 			text-align: center
 		&:hover
-			border: 1px solid var(--default)
 			h5
 				opacity: 1
 				&:hover

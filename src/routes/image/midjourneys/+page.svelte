@@ -71,13 +71,14 @@
 		keyboard: 'global',
 		waitForTransition: true,
 		wheel: true,
-		type: 'slide',
+		type: 'loop',
 		wheelMinThreshold: 1.1,
 		speed: 900,
-		direction: 'ltr',
+		direction: 'ttb',
+		height: 'calc(100vh - 80px)',
+		easing: 'cubic-bezier(0.900, 0.005, 0.225, 1.035)',
 		pagination: false,
-		arrows: false,
-		height: 'calc(100vh - 80px)'
+		arrows: false
 	}}
 >
 	<SplideTrack>
@@ -88,9 +89,9 @@
 						<div class="rta-image">
 							<img src={item.link} alt={item.id} />
 						</div>
-						<div class="grot">
+						<div class="grot rta-column rowgap100">
 							<small>{item.id}</small>
-							<h4 style="color: var(--background)">{item.quote}</h4>
+							<h4>{item.quote}</h4>
 							<p>{item.source}</p>
 						</div>
 					</div>
@@ -102,9 +103,12 @@
 
 <style lang="sass">
 
+small, p
+	color: var(--onlyblack)
+
 .rta-image
 	img
-		object-fit: contain
+		object-fit: cover
 		height: 100%
 
 
@@ -116,13 +120,18 @@
 			display: flex
 			flex-direction: column
 			justify-content: center
+		.grot, .rta-image
+			height: 100%
 	@media screen and (max-width: 768px)
 		padding: 16px
 		height: calc(100vh - 80px)
+		.rta-image
+			height: 50vh
 		h4
 			font-size: 20px
 			
 h4
 	font-weight: 400
+	color: var(--texttwo)
 
 </style>

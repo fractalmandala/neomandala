@@ -134,4 +134,36 @@ export const appKey = writable('');
 
 export const uuidStore = writable('');
 
+const storedAuthState = browser ? JSON.parse(localStorage.getItem('authState') || 'false') : false;
 
+export const authState = writable(storedAuthState)
+const initialAuth = {
+	isShown: false,
+	type: false
+}
+
+export const authStore = writable(initialAuth)
+
+export function showAuth(type: boolean){
+	authStore.update((state) => ({ ...state, isShown: true, type}))
+}
+
+export function hideAuth(){
+	authStore.update((state) => ({ ...state, isShown: false}))
+}
+
+
+const initialChip = {
+	isShown: false,
+	title: '',
+	color: ''
+};
+
+export const chipStore = writable(initialChip);
+
+export function showChip(title: string, color: string) {
+	chipStore.update((state) => ({ ...state, isShown: true, title, color }));
+}
+export function hideChip() {
+	chipStore.update((state) => ({ ...state, isShown: false, title: '', color: '' }));
+}

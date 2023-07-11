@@ -58,8 +58,11 @@
 				on:clickOutside={handleClose}
 				transition:slide|global={{ axis: 'x', duration: 600 }}
 			>
-				<div class="rta-row xend m-bot-16">
-					<button class="blank-button" on:click={handleClose}>
+				<div class="rta-row xend ycenter colgap200 m-bot-16">
+					<div on:click={handleClose} on:keydown={fauxfake}>
+						<slot name="autharea" />
+					</div>
+					<button class="blank-button rta-row ycenter" on:click={handleClose}>
 						<Close dimension={24} />
 					</button>
 				</div>
@@ -250,16 +253,23 @@
 		font-size: 16px
 
 .light
-	.titular, p a
-		color: white
-
-.dark
 	.titular
 		color: #171717
 	.itemer
 		color: #171717
 		a
 			color: #171717
+		&:hover
+			a
+				color: #10D56C
+
+.dark
+	.titular, p a
+		color: white
+	.itemer
+		color: #474747
+		a
+			color: #474747
 		&:hover
 			a
 				color: #10D56C
@@ -292,10 +302,10 @@
 
 .light
 	.insider
-		background: #171717
+		background: white
 
 .dark
 	.insider
-		background: white
+		background: #171717
 
 </style>

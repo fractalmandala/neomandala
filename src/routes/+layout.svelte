@@ -3,10 +3,11 @@
 	import { invalidate } from '$app/navigation';
 	import Lenis from '@studio-freight/lenis';
 	import Pinned from '$lib/dash/PinnedNotes.svelte';
-	import { page } from '$app/stores';
 	import type { LayoutData } from './$types';
+	import type { ActionData } from './$types';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import AuthModal from '$lib/components/AuthModal.svelte';
 	import { spring } from 'svelte/motion';
 	import {
 		breakZero,
@@ -19,7 +20,9 @@
 		pageTitle,
 		pageDescription,
 		pageUrl,
-		shareImage
+		shareImage,
+		showAuth,
+		authState
 	} from '$lib/stores/globalstores';
 	import '$lib/styles/theme.sass';
 	import '$lib/styles/fonts.sass';
@@ -33,28 +36,27 @@
 	import Transition from '$lib/components/TransitionPage.svelte';
 	import Cursor from '$lib/components/Cursor.svelte';
 	import '$lib/styles/animate.css';
-
+	export let form: ActionData;
+	export let data: LayoutData;
 	let okayCol = false;
 	let logged: boolean;
 
-	let coords = spring(
-		{ x: 50, y: 50 },
-		{
-			stiffness: 0.1,
-			damping: 0.25
-		}
-	);
-
 	$: ({ supabase, session } = data);
 
-	$: if (session) {
+	$: if (data.session && data.session.user.aud === 'authenticated') {
 		logged = true;
+		$authState = true;
 	} else {
 		logged = false;
+		$authState = false;
 	}
 
-	function signout() {
-		supabase.auth.signOut();
+	function toggleLogout() {
+		showAuth(true);
+	}
+
+	function toggleLogin() {
+		showAuth(false);
 	}
 
 	onMount(() => {
@@ -91,7 +93,6 @@
 	});
 
 	let linku = '';
-	export let data: LayoutData;
 
 	$: linku = data.pathname.slice(0, 4);
 
@@ -123,7 +124,20 @@
 	</script>
 </svelte:head>
 
-<Sidebar logger={logged} />
+<Sidebar logger={logged}>
+	<div
+		class="rta-row ycenter"
+		slot="autharea"
+		class:lightside={$themeMode}
+		class:darkside={!$themeMode}
+	>
+		{#if $authState}
+			<button class="blank-button xc" on:click={toggleLogout}>Logout</button>
+		{:else}
+			<button class="blank-button xc" on:click={toggleLogin}>Login</button>
+		{/if}
+	</div>
+</Sidebar>
 <div
 	class="cover"
 	class:levelzero={$breakZero}
@@ -153,9 +167,21 @@
 <GoodAlert />
 <Chip />
 <Pinned />
+<AuthModal {form} />
 
 <style lang="sass">
 
+.lightside
+	.xc
+		color: #d7d7d7
+		&:hover
+			color: #272727
+
+.darkside
+	.xc
+		color: #313131
+		&:hover
+			color: white
 
 header
 	z-index: 1000

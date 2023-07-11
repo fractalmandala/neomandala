@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { lazyLoadImageAction } from '$lib/utils/lazyloader';
 	import {
 		themeMode,
@@ -58,6 +59,13 @@
 		photos = await supaImages(low, top);
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="minH mainpagegrid grot"

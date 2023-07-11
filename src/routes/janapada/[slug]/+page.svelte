@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { saveThea } from '$lib/utils/supastream';
 	import { marked } from 'marked';
 	import {
@@ -9,7 +10,11 @@
 		noteName,
 		showSave,
 		hideSave,
-		headTitle
+		headTitle,
+		pageTitle,
+		pageDescription,
+		shareImage,
+		pageUrl
 	} from '$lib/stores/globalstores';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
@@ -38,6 +43,11 @@
 	}
 
 	$: $headTitle = 'janapada';
+	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
+	$pageDescription = 'The digital garden as a WIP and in indexed form...';
+	$pageUrl = 'https://www.fractalmandala.in/know';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	onMount(() => {
 		return (editor = new Editor({
@@ -69,6 +79,13 @@
 		hideSave();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="rta-column rowgap300 grot"

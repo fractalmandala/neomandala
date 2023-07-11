@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { browser } from '$app/environment';
 	import { featuredWritings, mandalapedia } from '$lib/utils/supabase';
 	import { allIndex, allWebdev } from '$lib/utils/localpulls';
@@ -14,7 +15,8 @@
 		shareImage,
 		pageUrl,
 		thisSession,
-		thisPrompt
+		thisPrompt,
+		pageImage
 	} from '$lib/stores/globalstores';
 	import { mouseStore } from '$lib/stores/mousestore';
 	let ref: HTMLElement | null = null;
@@ -87,6 +89,13 @@
 </script>
 
 <svelte:window bind:scrollY={scY} />
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="rta-column xright ta-r grot minH"
@@ -169,7 +178,6 @@
 		transition: 0.1s
 		text-transform: uppercase
 		color: var(--background)
-		font-family: 'Rota'
 		margin: 0
 		padding: 0
 		a
@@ -235,17 +243,6 @@
 .ltwo
 	justify-content: center
 	row-gap: 16px
-
-.mesh-gradientsx
-	position: absolute
-	bottom: 64px
-	left: 0
-	width: 680px
-	height: 600px
-	background: #10D56C
-	filter: blur(50px)
-	z-index: 0
-	border-radius: 50%
 
 .light, .dark
 	background-size: cover

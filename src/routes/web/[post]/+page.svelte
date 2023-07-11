@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -46,6 +47,13 @@
 		hideSave();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <GoodAlert />
 <div

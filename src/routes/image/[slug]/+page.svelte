@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, afterUpdate } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { breakZero, breakOne, breakTwo, themeMode } from '$lib/stores/globalstores';
 	import { thisImage } from '$lib/utils/supabase';
 

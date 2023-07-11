@@ -1,6 +1,7 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { onMount, tick, afterUpdate } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -9,7 +10,11 @@
 		showSave,
 		hideSave,
 		headTitle,
-		themeMode
+		themeMode,
+		pageTitle,
+		pageDescription,
+		pageUrl,
+		shareImage
 	} from '$lib/stores/globalstores';
 	import Prism from 'prismjs';
 	import '$lib/styles/prism.css';
@@ -22,6 +27,12 @@
 	export let data;
 	let fullHeight = false;
 	let isPinned = false;
+
+	$pageTitle = 'Videos at Fractal Maṇḍala';
+	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
+	$pageUrl = 'https://www.fractalmandala.in/video';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	async function pinItem() {
 		const { error } = await supabase.from('amrit-notes').update({ bool: true }).eq('id', data.id);
@@ -62,6 +73,13 @@
 		Prism.highlightAll();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="grot rta-column rowgap300"

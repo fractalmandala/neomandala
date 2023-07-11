@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import type { ChatSession } from '$lib/gpt/chatstore';
 	import ModOpenAI from '$lib/gpt/ModOpenAI.svelte';
 	import Parser from '$lib/agent/Parser.svelte';
@@ -12,8 +13,14 @@
 	import { marked } from 'marked';
 	import Clock from '$lib/design/iconset/clock.svelte';
 	import { showModal } from '$lib/stores/modalstores';
+	import { pageTitle, pageDescription, shareImage, pageUrl } from '$lib/stores/globalstores';
 
 	let init = false;
+	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
+	$pageDescription = 'The digital garden as a WIP and in indexed form...';
+	$pageUrl = 'https://www.fractalmandala.in/know';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	export let data: ChatSession = {
 		id: '',
@@ -39,6 +46,13 @@
 		Prism.highlightAll();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div class="rta-column grot intern">
 	<div class="rta-column grot p-top-8 areaofchat">

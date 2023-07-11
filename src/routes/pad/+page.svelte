@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import supabase from '$lib/utils/supastream';
 	import { showNote } from '$lib/dash/alerts';
 	import { marked } from 'marked';
@@ -10,7 +11,11 @@
 		noteName,
 		showSave,
 		hideSave,
-		headTitle
+		headTitle,
+		pageTitle,
+		pageDescription,
+		pageUrl,
+		shareImage
 	} from '$lib/stores/globalstores';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
@@ -48,6 +53,11 @@
 	}
 
 	$: $headTitle = 'snips';
+	$pageTitle = 'Videos at Fractal Maṇḍala';
+	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
+	$pageUrl = 'https://www.fractalmandala.in/video';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	onMount(() => {
 		$headTitle = 'snips';
@@ -79,6 +89,13 @@
 		}
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="grot rta-column rowgap300"

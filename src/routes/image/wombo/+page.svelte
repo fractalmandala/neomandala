@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { womboImages } from '$lib/utils/supabase';
 	import ChevRight from '$lib/icons/ChevRight.svelte';
 	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
@@ -70,6 +71,13 @@
 		images = await womboImages();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 {#if images && images.length > 0}
 	<Splide

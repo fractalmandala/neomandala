@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { soaCh2 } from '$lib/utils/supabase';
 	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
@@ -62,6 +63,13 @@
 		panels = await soaCh2();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div class="rta-column">
 	{#if panels && panels.length > 0}

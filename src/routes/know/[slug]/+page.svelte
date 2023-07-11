@@ -1,6 +1,7 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { themeMode } from '$lib/stores/globalstores';
 	import { page } from '$app/stores';
 	import '$lib/styles/prism.css';
@@ -31,6 +32,13 @@
 		Prism.highlightAll();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div class="contentbox pagemin" class:light={$themeMode} class:dark={!$themeMode}>
 	<div class="content">

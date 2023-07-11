@@ -1,5 +1,6 @@
 <script lang="ts">
 	//@ts-nocheck
+	import Meta from '$lib/components/Meta.svelte';
 	import { SSE } from 'sse.js';
 	import { page } from '$app/stores';
 	import ModOpenAI from '$lib/gpt/ModOpenAI.svelte';
@@ -9,6 +10,7 @@
 	import { chatSessions } from '$lib/gpt/chatstore';
 	import { browser } from '$app/environment';
 	import { thisPrompt, thisSession } from '$lib/stores/globalstores';
+	import { pageTitle, pageDescription, shareImage, pageUrl } from '$lib/stores/globalstores';
 	import type { ChatSession, Message } from '$lib/gpt/chatstore';
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
 	import type { ChatCompletionRequestMessage } from 'openai';
@@ -22,6 +24,11 @@
 	let answer = '';
 	let query = '';
 	let loading = false;
+	$pageTitle = 'Knowledge Index at Fractal Maṇḍala';
+	$pageDescription = 'The digital garden as a WIP and in indexed form...';
+	$pageUrl = 'https://www.fractalmandala.in/know';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	$: ({ testTable, session } = data);
 
@@ -88,6 +95,13 @@
 		console.error(err);
 	}
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div class="thisguys rta-column" data-lenis-prevent>
 	<div class="rta-column areaofchat">

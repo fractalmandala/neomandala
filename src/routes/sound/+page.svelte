@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { allMusic } from '$lib/utils/localpulls';
 	import {
 		breakZero,
@@ -37,6 +38,13 @@
 		images = await allMusic();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="rta-grid grid2 minH left"

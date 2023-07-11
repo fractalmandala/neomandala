@@ -1,5 +1,6 @@
 <script lang="ts">
 	import supabase from '$lib/utils/supastream';
+	import Meta from '$lib/components/Meta.svelte';
 	import { showNote } from '$lib/dash/alerts';
 	import {
 		breakZero,
@@ -8,7 +9,11 @@
 		noteName,
 		showSave,
 		hideSave,
-		headTitle
+		headTitle,
+		pageTitle,
+		pageDescription,
+		pageUrl,
+		shareImage
 	} from '$lib/stores/globalstores';
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
 	let title: string = 'title';
@@ -18,6 +23,12 @@
 	export let data;
 
 	$: $headTitle = 'ui';
+
+	$pageTitle = 'Videos at Fractal Maṇḍala';
+	$pageDescription = 'Talks and dialogues on itihāsa, dharma, bhārata...';
+	$pageUrl = 'https://www.fractalmandala.in/video';
+	$shareImage =
+		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 
 	export async function newComponent() {
 		const { error } = await supabase
@@ -47,6 +58,13 @@
 		}
 	}
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="grot rta-column rowgap300"

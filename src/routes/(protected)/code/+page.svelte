@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Meta from '$lib/components/Meta.svelte';
 	import { textareaAutosizeAction } from '$lib/gpt/textautoresize';
 	import { showNote } from '$lib/dash/alerts';
 	import supabase from '$lib/utils/supabase';

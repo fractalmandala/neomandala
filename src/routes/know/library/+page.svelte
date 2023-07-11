@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Meta from '$lib/components/Meta.svelte';
 	import {
 		indexName,
 		indexCategory,
@@ -113,6 +114,13 @@
 		return text.replace(/(\d+\))/g, '\n\n');
 	}
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <p class="p-bot-32">A set of search tools in Sanskrit.</p>
 

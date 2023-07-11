@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -55,6 +56,13 @@
 		nextPost = await pageWritings(nextID);
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <svelte:window bind:scrollY={y} />
 <div class="measure" style="width: {(y / $size.height) * 100}%" />

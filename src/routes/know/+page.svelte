@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Meta from '$lib/components/Meta.svelte';
 	import {
 		indexName,
 		indexCategory,
@@ -20,6 +21,13 @@
 	$shareImage =
 		'https://wganhlzrylmkvvaoalco.supabase.co/storage/v1/object/public/images/website/grid.webp';
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div class="rta-column rowgap300">
 	<div class="rta-column grot rowgap200">

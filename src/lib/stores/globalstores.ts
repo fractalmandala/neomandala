@@ -18,6 +18,7 @@ export const thisSession = writable('')
 export const thisPrompt = writable('')
 export const noteName = writable('')
 
+
 const initialSave = {
 	isShown: false,
 	text: ''

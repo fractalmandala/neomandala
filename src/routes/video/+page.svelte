@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import AppShell from '$lib/design/AppShell.svelte';
 	import {
 		breakZero,
@@ -34,6 +35,13 @@
 		images = await allVideos();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="rta-grid grid2 minH left"

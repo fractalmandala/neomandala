@@ -1,6 +1,7 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { onMount, tick, afterUpdate } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { themeMode } from '$lib/stores/globalstores';
 	import Prism from 'prismjs';
 	import '$lib/styles/prism.css';

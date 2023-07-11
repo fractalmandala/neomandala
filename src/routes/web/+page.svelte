@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { allWebdev } from '$lib/utils/localpulls';
+	import Meta from '$lib/components/Meta.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -24,6 +25,13 @@
 		pens = await allWebdev();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="rta-column rowgap600 x00 minH"

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
 	import { aryaImages } from '$lib/utils/supabase';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
@@ -76,6 +77,13 @@
 		images = await aryaImages();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div class="rta-grid grid4">
 	{#if images && images.length > 0}

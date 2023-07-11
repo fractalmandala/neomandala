@@ -1,6 +1,7 @@
 <script lang="ts">
 	//@ts-nocheck
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import {
 		breakZero,
 		breakOne,
@@ -36,6 +37,13 @@
 		mands = await mandalaWritings();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div
 	class="rta-column p40"

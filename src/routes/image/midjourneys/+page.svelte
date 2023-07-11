@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { psyImages } from '$lib/utils/supabase';
 	import { pageTitle, pageDescription, pageUrl, shareImage } from '$lib/stores/globalstores';
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
@@ -62,6 +63,13 @@
 		images = await psyImages();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <Splide
 	aria-label="midjourneys"

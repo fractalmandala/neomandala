@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import { singleTitle } from '$lib/utils/supabase';
 	import Parser from '$lib/agent/Parser.svelte';
 	import Clock from '$lib/design/iconset/clock.svelte';

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Meta from '$lib/components/Meta.svelte';
 	import supabase from '$lib/utils/supabase';
 	import { slide } from 'svelte/transition';
 	import {
@@ -50,6 +51,13 @@
 		galls = await getRID();
 	});
 </script>
+
+<Meta
+	title={$pageTitle}
+	metaDescription={$pageDescription}
+	metaUrl={$pageUrl}
+	metaImage={$shareImage}
+/>
 
 <div class="rta-row colgap100 between strip bord-bot p-bot-8">
 	{#if galls && galls.length > 0}

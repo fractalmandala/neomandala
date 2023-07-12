@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let dimension = 24;
-	export let color = '#878787';
+	export let dimension = 16;
+	export let color = 'var(--background)';
 </script>
 
 <svg
@@ -23,8 +23,6 @@
 
 svg
 	cursor: pointer
-	&:hover
-		stroke: #10D56C
 
 
 </style>

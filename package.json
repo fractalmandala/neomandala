@@ -67,6 +67,7 @@
 		"@tiptap/extension-image": "^2.0.3",
 		"@tiptap/pm": "^2.0.3",
 		"@tiptap/starter-kit": "^2.0.3",
+		"@types/wicg-file-system-access": "^2020.9.6",
 		"dexie": "^4.0.1-alpha.10",
 		"gpt3-tokenizer": "^1.1.5",
 		"gsap": "file:gsap-bonus.tgz",

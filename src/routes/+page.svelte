@@ -176,7 +176,7 @@
 	h5
 		transition: 0.1s
 		text-transform: uppercase
-		color: var(--background)
+		color: var(--thisnew)
 		margin: 0
 		padding: 0
 		a
@@ -185,14 +185,10 @@
 			.text-animation
 				animation: colorchange 1s infinite forwards
 	p
-		font-size: 14px
-		opacity: 0
+		font-size: 12px
 		transition: 0.1s
 		margin: 0
-		color: var(--texttwo)
-	&:hover
-		p
-			opacity: 1
+		letter-spacing: 0.25px
 
 @keyframes colorchange
 	0%
@@ -207,10 +203,12 @@
 	.block
 		display: flex
 		flex-direction: column
-		column-gap: 24px
+		row-gap: 4px
 		transition: 0.2s
 		h5
 			transition: 0.4s
+		p
+			color: var(--texttwo)
 
 .lzero
 	padding: 32px
@@ -233,6 +231,8 @@
 		height: 64px
 		h5
 			font-size: 32px
+		p
+			color: var(--background)
 
 .lone, .ltwo
 	padding: 16px 16px 0 16px

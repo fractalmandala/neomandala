@@ -26,9 +26,6 @@
 			<slot name="main" />
 		</div>
 	</div>
-	<div class="rightside grot">
-		<slot name="right" />
-	</div>
 </div>
 
 <style lang="sass">
@@ -59,15 +56,11 @@
 	grid-template-rows: auto
 	.leftside
 		grid-area: leftside
-	.rightside
-		grid-area: rightside
-		display: flex
-		flex-direction: column
 	.mainpage
 		grid-area: mainpage
 	@media screen and (min-width: 1024px)
-		grid-template-columns: 20vw 60vw 20vw
-		grid-template-areas: "leftside mainpage rightside"
+		grid-template-columns: 20vw 1fr
+		grid-template-areas: "leftside mainpage"
 		width: 100vw
 		min-height: calc(100vh - 80px)
 		.leftside
@@ -76,17 +69,7 @@
 			position: sticky
 			top: 40px
 			overflow-y: scroll
-		.rightside
-			text-align: right
-			padding-right: 40px
-			padding-left: 40px	
-			height: calc(100vh - 80px)
-			position: sticky
-			top: 40px
-			align-items: flex-end
-			row-gap: 8px
-			text-align: right
-		.mainpage, .leftside, .rightside
+		.mainpage, .leftside
 			padding-top: 40px
 		.mainpage
 			padding-bottom: 64px	
@@ -98,10 +81,10 @@
 			border-right: 1px solid var(--contraster)
 			border-left: 1px solid var(--contraster)
 			.pagemin
-				max-width: 620px
+				max-width: 720px
 	@media screen and (max-width: 1023px)
 		grid-template-columns: 1fr
-		grid-template-areas: "leftside" "rightside" "mainpage"
+		grid-template-areas: "leftside" "mainpage"
 		padding-top: 0
 		margin-top: 0
 		min-height: calc(100vh - 80px)
@@ -114,11 +97,6 @@
 			background: var(--this)
 			z-index: 1000
 			border-bottom: 1px solid var(--contraster)
-		.rightside
-			width: 100%
-			padding-left: 16px
-			padding-right: 16px
-			padding-top: 16px
 		.mainpage
 			width: 100%
 			padding-left: 16px
@@ -148,7 +126,5 @@
 				width: 100%
 				max-width: 100%
 				padding: 0 !important
-		.rightside
-			display: none
 
 </style>

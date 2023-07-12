@@ -89,7 +89,6 @@ p
 	margin: 0
 	padding: 0
 	font-family: 'Libre Franklin', sans-serif
-	font-weight: 500
 	
 
 h6
@@ -212,22 +211,29 @@ $exp: 1.414
 	blockquote
 		margin: 0
 		font-style: italic
-		border-top: 1px solid var(--contraster)
-		border-bottom: 1px solid var(--contraster)
+		border-left: 1px solid #10D56C
 		p
 			line-height: 1.12
 	cite
 		font-size: 12px
 		font-style: normal
 		color: var(--greyish)
-	p, li, blockquote
+	p, li
 		letter-spacing: 0.35px
+		color: var(--texttwo)
+	blockquote, blockquote p
+		letter-spacing: 0.35px
+		color: var(--background)
 	h4
 		line-height: 1.1
+		color: var(--background)
+	h4.topper
+		margin-top: 0
 	@media screen and (min-width: 769px)
 		p, li
 			font-size: 18px
 			line-height: 1.8
+			font-weight: 300
 		blockquote
 			font-style: italic
 			font-size: 21px
@@ -236,40 +242,46 @@ $exp: 1.414
 			margin-bottom: 16px
 			p
 				font-size: 21px
-				font-weight: bold
-				color: var(--texttwo)
+				font-weight: 300
 		h6
 			font-weight: 500
 			font-size: 21px
 			color: var(--background)
+		h4
+			font-size: 36px
+			margin-top: 48px	
 		h5
 			font-size: 21px
 			padding: 32px 0
 			border-top: 1px solid var(--contraster)
 			border-bottom: 1px solid var(--contraster)
-			margin: 32px 0
-		h4
-			font-size: 32px
-			margin-top: 48px
+			margin: 0
 	@media screen and (max-width: 768px)
 		p, li, blockquote
 			font-size: 18px
 			line-height: 1.8
 		blockquote
-			margin-right: 0
+			font-style: italic
+			font-size: 20px
+			padding: 12px
+			margin-top: 16px
+			margin-bottom: 16px
+			p
+				font-size: 20px
+				font-weight: 300
 		h6
 			font-weight: 500
 			font-size: 21px
 			color: var(--background)
+		h4
+			font-size: 32px
+			margin-top: 64px
 		h5
 			font-size: 21px
 			padding: 32px 0
 			border-top: 1px solid var(--contraster)
 			border-bottom: 1px solid var(--contraster)
-			margin: 32px 0
-		h4
-			font-size: 32px
-			margin-top: 64px
+			margin: 0
 
 .light
 	color: var(--default)

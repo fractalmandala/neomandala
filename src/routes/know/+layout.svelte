@@ -56,36 +56,9 @@
 	<div slot="main" class="rta-column">
 		<slot />
 	</div>
-	<div class="rta-column rightcol rowgap100" slot="right">
-		{#if $indexName}
-			<h4 class="tt-u" style="color: var(--background)">{$indexName}</h4>
-			<div class="rta-row colgap200">
-				{#if $indexTags}
-					<small>{$indexTags}</small>
-				{/if}
-				<div class="islabel {$indexCategory}">
-					{$indexCategory}
-				</div>
-			</div>
-			<div class="sectionrest rta-column">
-				{#if $indexLinks && $indexLinks.length > 0}
-					<h6 class="p-bot-8" style="color: #10D56C">Links</h6>
-					{#each $indexLinks as item}
-						<p>
-							<a href={item.url} target="_blank" rel="noreferrer">{item.name}</a>
-						</p>
-					{/each}
-				{/if}
-			</div>
-		{/if}
-	</div>
 </Shell>
 
 <style lang="sass">
-
-h4
-	font-weight: 600
-	word-break: break-word
 
 .inside
 	row-gap: 8px
@@ -98,11 +71,12 @@ h4
 		height: calc(100vh - 80px)
 		overflow-y: scroll
 
-.inside, .sectionrest
+.inside
 	p a
 		color: var(--texttwo)
 		text-transform: capitalize
 		&:hover
 			color: var(--greenb)
+
 
 </style>

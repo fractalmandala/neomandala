@@ -59,7 +59,7 @@ In Narasiṁha we also see a progression in civilisational trajectory. The era o
 
 Or the incarnation as dwarf-man. This appeared in the lifetime of Mahābali, bringing us full circle to where the daśāvatāra begins. With Matsya as the formative myth of the ‘current era,’ the sequence returns to the avatāra that incarnates before Kūrma, chronologically speaking. Vāmana is clearly pre-Samudra Manthana, as it appears before Bali’s exile to Pātāla and the consequent invitation for him to return to churn. The chronological ordering is visually represented such:
 
-<img style="height: 320px" src="/images/avataras.png" alt="avataras"/>
+<img class="imagebyheight" src="/images/avataras.png" alt="avataras"/>
 
 The Paurāṇika sequence begins at the center with Matsya, the first avatāra of the 7th manvantara. Then it names the avatāra preceding Matsya, as a prologue to our current era. It then jumps back in time to the origin of it all, to the first avatāra of the first manvantara, and hence the first overall. From there it circles back, coming up to Vāmana, the avatāra preceding Kūrma. And we declare that this sequence begins at the center with Matsya because after Vāmana, it skips ahead to the current era proper- to all the mortal avatāras that follow. 
 

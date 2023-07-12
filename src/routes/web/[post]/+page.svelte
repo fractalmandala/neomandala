@@ -92,7 +92,6 @@
 small
 	color: var(--texttwo)
 	letter-spacing: 2px
-	font-weight: 700
 
 
 .x101

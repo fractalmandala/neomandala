@@ -40,14 +40,25 @@
 	metaImage={$shareImage}
 />
 
-<div class="contentbox pagemin" class:light={$themeMode} class:dark={!$themeMode}>
-	<div class="content">
+<div class="contentbox" class:light={$themeMode} class:dark={!$themeMode}>
+	<div class="rta-column rowgap100 null bord-bot p-bot-16">
+		<h3>{data.title}</h3>
+		<small><span class="tt-u green">{$indexCategory}</span> | {$indexTags}</small>
+	</div>
+	<div class="content p-top-32">
 		<svelte:component this={data.content} />
 	</div>
 </div>
 
 <style lang="sass">
 
+.contentbox
+	h3
+		border-top: none
+		margin: 0
+		padding: 0
+	small
+		color: var(--texttwo)
 
 .content
 	display: flex

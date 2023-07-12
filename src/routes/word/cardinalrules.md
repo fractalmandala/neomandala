@@ -70,11 +70,9 @@ Also remember—set and setting differ from person to person. How the set differ
 
 Too many people limit the implications of set to their mental makeup alone, thus requiring a separate rule to drive home an important point—your biological state is equally important. Follow this prescription religiously:
 
-> Do not drink alcohol at least 24 hours before you begin the psychedelic journey. Sure, a pint or two of beer is fine—as long as it really is a pint or two. Anything more or anything else, generally avoid.
-
-> Do not eat anything heavy at least 12 hours before you begin the journey. This includes all oily and fried things. 
-
-> Make sure that you have been well-slept for the past 3-4 days, and are adequately rested on the day of embarkation itself.
+1. Do not drink alcohol at least 24 hours before you begin the psychedelic journey. Sure, a pint or two of beer is fine—as long as it really is a pint or two. Anything more or anything else, generally avoid.
+2. Do not eat anything heavy at least 12 hours before you begin the journey. This includes all oily and fried things. 
+3. Make sure that you have been well-slept for the past 3-4 days, and are adequately rested on the day of embarkation itself.
 
 #### 6. The Law Is Real
 
